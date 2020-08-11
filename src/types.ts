@@ -8,6 +8,8 @@ export interface Schema {
   "x-enumNames": ["Rial"];
   enum: string[];
   $ref: string;
+  items: Schema;
+  allOf: Schema[];
 }
 
 export interface Parameter {
@@ -18,35 +20,23 @@ export interface Parameter {
   "x-position": number;
 }
 
+export interface SwaggerResponse {
+  description: "";
+  content: {
+    "application/json": {
+      schema: Schema;
+    };
+  };
+}
+
 export interface SwaggerRequest {
   tags: string; // ["Account"];
   summary: string; // "Get user account balance";
   operationId: string; // "Account_GetBalance";
   parameters?: Parameter[];
-  requestBody?: {
-    "x-name"?: "model";
-    content: {
-      "multipart/form-data": {
-        schema: Schema;
-      };
-      "application/json": {
-        schema: Schema;
-      };
-    };
-    required?: true;
-    "x-position"?: 1;
-  };
-  responses2: {
-    "200": {
-      description: "";
-      content: {
-        "application/json": {
-          schema: {
-            $ref: "#/components/schemas/AccountBalanceSummaryQuery";
-          };
-        };
-      };
-    };
+  requestBody?: SwaggerResponse;
+  responses: {
+    "200": SwaggerResponse;
   };
   security: [
     {

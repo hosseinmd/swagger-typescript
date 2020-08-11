@@ -6,24 +6,17 @@ import {
   generateServiceName,
   getTsType,
 } from "./utils";
-import { SwaggerSchemas, SwaggerRequest, SwaggerJson, Schema } from "./types";
-import { HTTP_REQUEST } from "./strings";
+import {
+  SwaggerSchemas,
+  SwaggerRequest,
+  SwaggerJson,
+  Schema,
+  SwaggerResponse,
+} from "./types";
+import { HTTP_REQUEST, SERVICE_BEGINNING } from "./strings";
 
 function generate() {
-  let code = `
-import { AxiosRequestConfig} from "axios";
-import { Http } from "./httpRequest";
-
-function template(path: string, obj: { [x: string]: any } = {}) {
-    Object.keys(obj).forEach((key) => {
-      let re = new RegExp(\`{\${key}}\`, "i");
-      path = path.replace(re, obj[key]);
-    });
-  
-    return path;
-  }
-  
-`;
+  let code = SERVICE_BEGINNING;
 
   try {
     const input: SwaggerJson = JSON.parse(
@@ -38,9 +31,9 @@ function template(path: string, obj: { [x: string]: any } = {}) {
 
           let queryParams = getQueryParams(options.parameters);
 
-          let requestBody =
-            options.requestBody?.content["application/json"] ||
-            options.requestBody?.content["multipart/form-data"];
+          let requestBody = getBodyContent(options.requestBody);
+
+          let responses = getBodyContent(options.responses?.[200]);
 
           let pathParamsRefString = pathParams.reduce(
             (prev, { name }) => `${prev}${name},`,
@@ -64,12 +57,13 @@ export async function ${method}${generateServiceName(endPoint)}(
       ${queryParams ? `queryParams:${queryParams},` : ""}
       ${
         requestBody
-          ? `${getDefineParam("requestBody", true, requestBody.schema)},`
+          ? `${getDefineParam("requestBody", true, requestBody)},`
           : ""
       }
       configOverride:AxiosRequestConfig
       
-) {
+): Promise<AxiosResponse<${responses ? getTsType(responses) : "any"}>> {
+
     return await Http.${method}Request(
       template("${endPoint}",${pathParamsRefString}),
       ${queryParams ? "queryParams" : "undefined"},
@@ -84,26 +78,29 @@ export async function ${method}${generateServiceName(endPoint)}(
 
     Object.entries(
       (input.components.schemas as unknown) as SwaggerSchemas,
-    ).forEach(([name, { type, properties, enum: Enum }]) => {
+    ).forEach(([name, schema]) => {
+      const { type, enum: Enum, allOf } = schema;
       if (type === "object") {
-        let typeObject = Object.entries(properties)
-          .map(([pName, value]) => ({ ...value, name: pName }))
-          .reduce((prev, schema) => {
-            return `${prev}${schema.name}: ${getTsType(schema)},`;
-          }, "{");
-
-        typeObject = typeObject ? typeObject + "}" : "";
+        let typeObject = getTsType(schema);
 
         code += `
-export interface ${name}${typeObject}
+export interface ${name} ${typeObject}
         `;
       }
       if (Enum) {
         code += `
-export enum ${name}{${Enum.map(
+export enum ${name} {${Enum.map(
           (e) => `${e}=${typeof e === "string" ? `"${e}"` : ""}`,
         )}}
 `;
+      }
+
+      if (allOf) {
+        code += `
+        export interface ${name} extends ${allOf
+          .map((_schema) => getTsType(_schema))
+          .join(" ")}
+                `;
       }
     });
 
@@ -119,6 +116,14 @@ export enum ${name}{${Enum.map(
   } catch (error) {
     console.log({ error });
   }
+}
+
+function getBodyContent(responses?: SwaggerResponse) {
+  if (!responses) {
+    return responses;
+  }
+
+  return Object.values(responses.content)[0].schema;
 }
 
 function getDefineParam(

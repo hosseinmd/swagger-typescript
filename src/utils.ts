@@ -47,18 +47,42 @@ const TYPES = {
   boolean: "boolean",
   object: "object",
   string: "string",
+  array: "array",
 };
 
-function getTsType({ type, nullable, $ref, enum: Enum }: Schema): string {
+function getTsType({
+  type,
+  nullable,
+  $ref,
+  enum: Enum,
+  items,
+  properties,
+}: Schema): string {
   let tsType = TYPES[type as keyof typeof TYPES];
-  if (nullable) {
-    tsType + "| null";
-  }
+
   if ($ref) {
     tsType = getRefName($ref);
   }
   if (Enum) {
     tsType = JSON.stringify(Enum);
+  }
+
+  if (items) {
+    tsType = `${getTsType(items)}[]`;
+  }
+
+  if (properties) {
+    tsType = Object.entries(properties)
+      .map(([pName, value]) => ({ ...(value as any), name: pName }))
+      .reduce((prev, schema) => {
+        return `${prev}${schema.name}: ${getTsType(schema)},`;
+      }, "{");
+
+    tsType = tsType ? tsType + "}" : "";
+  }
+
+  if (nullable) {
+    tsType + "| null";
   }
 
   return tsType;

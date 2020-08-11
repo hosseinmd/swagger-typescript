@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { Http } from "./httpRequest";
 
 function template(path: string, obj: { [x: string]: any } = {}) {
@@ -11,7 +11,9 @@ function template(path: string, obj: { [x: string]: any } = {}) {
 }
 
 /** Get user accounts [Or get sub user authorized accounts] */
-export async function getAccount(configOverride: AxiosRequestConfig) {
+export async function getAccount(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<AccountSummaryWithBalanceQuery[]>> {
   return await Http.getRequest(
     template("/Account", {}),
     undefined,
@@ -24,7 +26,7 @@ export async function getAccount(configOverride: AxiosRequestConfig) {
 export async function postAccount(
   requestBody: AccountInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<AccountSummaryWithBalanceQuery>> {
   return await Http.postRequest(
     template("/Account", {}),
     undefined,
@@ -37,7 +39,7 @@ export async function postAccount(
 export async function getAccountId(
   id: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<AccountDetailQuery>> {
   return await Http.getRequest(
     template("/Account/{id}", { id }),
     undefined,
@@ -51,7 +53,7 @@ export async function putAccountId(
   id: number,
   requestBody: AccountInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<AccountSummaryWithBalanceQuery>> {
   return await Http.putRequest(
     template("/Account/{id}", { id }),
     undefined,
@@ -68,7 +70,7 @@ export async function putAccountIdNotification(
   id: number,
   requestBody: AccountNotificationStatusInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.putRequest(
     template("/Account/{id}/notification", { id }),
     undefined,
@@ -81,7 +83,7 @@ export async function putAccountIdNotification(
 export async function getAccountIdBalance(
   id: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<AccountBalanceSummaryQuery>> {
   return await Http.getRequest(
     template("/Account/{id}/balance", { id }),
     undefined,
@@ -94,7 +96,7 @@ export async function getAccountIdBalance(
 export async function getAccountAccountIdPermittedSubUsers(
   accountId: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<AccountPermittedSubUserQuery>> {
   return await Http.getRequest(
     template("/Account/{accountId}/PermittedSubUsers", { accountId }),
     undefined,
@@ -108,7 +110,7 @@ export async function postAccountIdCharge(
   id: number,
   requestBody: NewChargeRequestInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<NewChargeRequestResultQuery>> {
   return await Http.postRequest(
     template("/Account/{id}/charge", { id }),
     undefined,
@@ -123,7 +125,7 @@ export async function getAccountIdEpayRequestComission(
   queryParams: { amount: number },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<CommissionApiModel>> {
   return await Http.getRequest(
     template("/Account/{id}/epayRequest/comission", { id }),
     queryParams,
@@ -137,7 +139,7 @@ export async function postAccountIdEpayRequest(
   id: number,
   requestBody: NewEpayRequestInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<NewEpayRequestResultQuery>> {
   return await Http.postRequest(
     template("/Account/{id}/epayRequest", { id }),
     undefined,
@@ -152,7 +154,7 @@ export async function getAccountIdSettlementRequestComission(
   queryParams: { amount: number },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<CommissionApiModel>> {
   return await Http.getRequest(
     template("/Account/{id}/settlementRequest/comission", { id }),
     queryParams,
@@ -166,7 +168,7 @@ export async function postAccountIdSettlementRequest(
   id: number,
   requestBody: NewSettlementRequestInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SettlementRequestQuery>> {
   return await Http.postRequest(
     template("/Account/{id}/settlementRequest", { id }),
     undefined,
@@ -186,7 +188,7 @@ export async function getAccountSearch(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<InsensitiveAccountApiModel>> {
   return await Http.getRequest(
     template("/Account/search", {}),
     queryParams,
@@ -201,7 +203,7 @@ export async function getAccountIdTransferMoneyCommission(
   queryParams: { amount: number },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<CommissionApiModel>> {
   return await Http.getRequest(
     template("/Account/{id}/transferMoney/commission", { id }),
     queryParams,
@@ -215,7 +217,7 @@ export async function postAccountIdTransferMoney(
   id: number,
   requestBody: TransferMoneyInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<TransferMoneyApiModel>> {
   return await Http.postRequest(
     template("/Account/{id}/transferMoney", { id }),
     undefined,
@@ -228,7 +230,7 @@ export async function postAccountIdTransferMoney(
 export async function postAuthApilogin(
   requestBody: ApiLoginInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/apilogin", {}),
     undefined,
@@ -241,7 +243,7 @@ export async function postAuthApilogin(
 export async function postAuthLogin(
   requestBody: LoginInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/login", {}),
     undefined,
@@ -254,7 +256,7 @@ export async function postAuthLogin(
 export async function postAuthLoginOtp(
   requestBody: TotpLoginInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/login/otp", {}),
     undefined,
@@ -267,7 +269,7 @@ export async function postAuthLoginOtp(
 export async function postAuthLoginOtpGenerate(
   requestBody: RequestTotpInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/login/otp/generate", {}),
     undefined,
@@ -280,7 +282,7 @@ export async function postAuthLoginOtpGenerate(
 export async function postAuthLoginSubuser(
   requestBody: SubUserLoginInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/login/subuser", {}),
     undefined,
@@ -293,7 +295,7 @@ export async function postAuthLoginSubuser(
 export async function postAuthLoginSecurity(
   requestBody: SecureLoginInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/login/security", {}),
     undefined,
@@ -305,7 +307,7 @@ export async function postAuthLoginSecurity(
 /** Refresh the short-lived JWT, using current short-lived one */
 export async function getAuthLoginSecurityRefresh(
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.getRequest(
     template("/Auth/login/security/refresh", {}),
     undefined,
@@ -318,7 +320,7 @@ export async function getAuthLoginSecurityRefresh(
 export async function postAuthCheck(
   requestBody: LoginInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/check", {}),
     undefined,
@@ -328,7 +330,9 @@ export async function postAuthCheck(
 }
 
 /** Log out */
-export async function postAuthLogout(configOverride: AxiosRequestConfig) {
+export async function postAuthLogout(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/logout", {}),
     undefined,
@@ -341,7 +345,7 @@ export async function postAuthLogout(configOverride: AxiosRequestConfig) {
 export async function postAuthRegister(
   requestBody: RegisterInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<RegisterNewUserQuery>> {
   return await Http.postRequest(
     template("/Auth/register", {}),
     undefined,
@@ -354,7 +358,7 @@ export async function postAuthRegister(
 export async function postAuthRegisterVerify(
   requestBody: ConfirmPhoneNumberOrEmailInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<ConfirmPhoneNumberQuery>> {
   return await Http.postRequest(
     template("/Auth/register/verify", {}),
     undefined,
@@ -367,7 +371,7 @@ export async function postAuthRegisterVerify(
 export async function postAuthRegisterPoslogin(
   requestBody: ConfirmPhoneNumberOrEmailInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/register/poslogin", {}),
     undefined,
@@ -380,7 +384,7 @@ export async function postAuthRegisterPoslogin(
 export async function postAuthRegisterBasic(
   requestBody: SetUserBasicInfoInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/register/basic", {}),
     undefined,
@@ -393,7 +397,7 @@ export async function postAuthRegisterBasic(
 export async function postAuthForgetPassword(
   requestBody: UserForgetPasswordInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/forgetPassword", {}),
     undefined,
@@ -406,7 +410,7 @@ export async function postAuthForgetPassword(
 export async function postAuthForgetPasswordVerify(
   requestBody: UserVerifyForgetPasswordInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<ConfirmPhoneNumberQuery>> {
   return await Http.postRequest(
     template("/Auth/forgetPassword/verify", {}),
     undefined,
@@ -419,7 +423,7 @@ export async function postAuthForgetPasswordVerify(
 export async function postAuthForgetPasswordResetPassword(
   requestBody: UserResetForgetPasswordInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/forgetPassword/resetPassword", {}),
     undefined,
@@ -432,7 +436,7 @@ export async function postAuthForgetPasswordResetPassword(
 export async function postAuthRegisterDevice(
   requestBody: RegisterDeviceInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/register/device", {}),
     undefined,
@@ -442,7 +446,9 @@ export async function postAuthRegisterDevice(
 }
 
 /** Get available banks */
-export async function getBank(configOverride: AxiosRequestConfig) {
+export async function getBank(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<BankQuery[]>> {
   return await Http.getRequest(
     template("/Bank", {}),
     undefined,
@@ -454,7 +460,7 @@ export async function getBank(configOverride: AxiosRequestConfig) {
 /** Get Business categories */
 export async function getBusinessUserCategory(
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<BusinessCategoryQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/category", {}),
     undefined,
@@ -470,7 +476,7 @@ export async function getBusinessUserCategory(
 export async function postBusinessUserInvite(
   requestBody: SendConnectionRequestInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.postRequest(
     template("/BusinessUser/invite", {}),
     undefined,
@@ -486,7 +492,7 @@ export async function postBusinessUserInvite(
 export async function postBusinessUserInviteInvitationIdResend(
   invitationId: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.postRequest(
     template("/BusinessUser/invite/{invitationId}/resend", { invitationId }),
     undefined,
@@ -502,7 +508,7 @@ export async function postBusinessUserInviteInvitationIdResend(
 export async function deleteBusinessUserInviteInvitationIdRemove(
   invitationId: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.deleteRequest(
     template("/BusinessUser/invite/{invitationId}/remove", { invitationId }),
     undefined,
@@ -518,7 +524,7 @@ export async function deleteBusinessUserInviteInvitationIdRemove(
 export async function postBusinessUserResendInvitationId(
   invitationId: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.postRequest(
     template("/BusinessUser/resend/{invitationId}", { invitationId }),
     undefined,
@@ -536,7 +542,7 @@ export async function deleteBusinessUserConnectionInvitationIdRemove(
   queryParams: { id: number },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.deleteRequest(
     template("/BusinessUser/connection/{invitationId}/remove", {
       invitationId,
@@ -556,7 +562,7 @@ export async function getBusinessUserConnection(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubUserConnectionQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/connection", {}),
     queryParams,
@@ -573,7 +579,7 @@ export async function getBusinessUserConnectionActive(
   queryParams: { skip: number; take: number },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubUserConnectionQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/connection/active", {}),
     queryParams,
@@ -589,7 +595,7 @@ export async function getBusinessUserConnectionActive(
 export async function getBusinessUserConnectionId(
   id: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubUserConnectionAmountsReportQuery>> {
   return await Http.getRequest(
     template("/BusinessUser/connection/{id}", { id }),
     undefined,
@@ -606,7 +612,7 @@ export async function putBusinessUserConnectionId(
   id: number,
   requestBody: EditConnectionInfoInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.putRequest(
     template("/BusinessUser/connection/{id}", { id }),
     undefined,
@@ -622,7 +628,7 @@ export async function putBusinessUserConnectionId(
 export async function deleteBusinessUserConnectionId(
   id: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.deleteRequest(
     template("/BusinessUser/connection/{id}", { id }),
     undefined,
@@ -638,7 +644,7 @@ export async function deleteBusinessUserConnectionId(
 export async function getBusinessUserConnectionIdPermission(
   id: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubUserPermissionQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/connection/{id}/permission", { id }),
     undefined,
@@ -655,7 +661,7 @@ export async function postBusinessUserConnectionIdPermission(
   id: number,
   requestBody: SetAccountAccessForSubUserInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/BusinessUser/connection/{id}/permission", { id }),
     undefined,
@@ -673,7 +679,7 @@ export async function putBusinessUserConnectionIdPermissionAccountId(
   accountId: number,
   requestBody: EditSubUserPermissionInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.putRequest(
     template("/BusinessUser/connection/{id}/permission/{accountId}", {
       id,
@@ -693,7 +699,7 @@ export async function deleteBusinessUserConnectionIdPermissionAccountId(
   id: number,
   accountId: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.deleteRequest(
     template("/BusinessUser/connection/{id}/permission/{accountId}", {
       id,
@@ -734,7 +740,7 @@ export async function getBusinessUserConnectionIdEpay(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<EpayRequestQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/connection/{id}/epay", { id }),
     queryParams,
@@ -760,7 +766,7 @@ export async function getBusinessUserConnectionIdSettlement(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SettlementRequestQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/connection/{id}/settlement", { id }),
     queryParams,
@@ -797,7 +803,7 @@ export async function getEpayRequest(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<EpayRequestQuery[]>> {
   return await Http.getRequest(
     template("/EpayRequest", {}),
     queryParams,
@@ -810,7 +816,7 @@ export async function getEpayRequest(
 export async function getEpayRequestId(
   id: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<NewEpayRequestResultQuery>> {
   return await Http.getRequest(
     template("/EpayRequest/{id}", { id }),
     undefined,
@@ -823,7 +829,7 @@ export async function getEpayRequestId(
 export async function getEpayRequestTokenQrCode(
   token: string,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.getRequest(
     template("/EpayRequest/{token}/qrCode", { token }),
     undefined,
@@ -838,7 +844,7 @@ export async function getEpayRequestPosQrAccountNo(
   queryParams: { amount: number; subUserConId: number },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.getRequest(
     template("/EpayRequest/pos/Qr/{accountNo}", { accountNo }),
     queryParams,
@@ -862,7 +868,7 @@ export async function getEpayRequestForMe(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<EpayRequestForUserQuery[]>> {
   return await Http.getRequest(
     template("/EpayRequest/forMe", {}),
     queryParams,
@@ -876,7 +882,7 @@ export async function postEpayRequestIdTask(
   id: number,
   requestBody: EpayRequestTaskInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/EpayRequest/{id}/task", { id }),
     undefined,
@@ -888,7 +894,7 @@ export async function postEpayRequestIdTask(
 /** Undefined */
 export async function getEpayRequestAudiencesRecent(
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<ContactApiModel[]>> {
   return await Http.getRequest(
     template("/EpayRequest/audiences/recent", {}),
     undefined,
@@ -899,9 +905,9 @@ export async function getEpayRequestAudiencesRecent(
 
 /** Upload new file [Allowed files are images and pdf / Max Size: 3 MB] */
 export async function postFile(
-  requestBody: object,
+  requestBody: { file: string },
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<FileUploadQuery>> {
   return await Http.postRequest(
     template("/File", {}),
     undefined,
@@ -914,7 +920,7 @@ export async function postFile(
 export async function getFileId(
   id: string,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.getRequest(
     template("/File/{id}", { id }),
     undefined,
@@ -927,7 +933,7 @@ export async function getFileId(
 export async function putGroupTransferAdd(
   requestBody: GroupTransferTargetValidationInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<GroupTransferTargetValidationQuery>> {
   return await Http.putRequest(
     template("/GroupTransfer/add", {}),
     undefined,
@@ -938,9 +944,9 @@ export async function putGroupTransferAdd(
 
 /** For Business users only] */
 export async function postGroupTransferImport(
-  requestBody: object,
+  requestBody: { file: string },
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<GroupTransferTargetValidationQuery[]>> {
   return await Http.postRequest(
     template("/GroupTransfer/import", {}),
     undefined,
@@ -951,9 +957,9 @@ export async function postGroupTransferImport(
 
 /** For Business users only] */
 export async function postGroupTransferExport(
-  requestBody: undefined,
+  requestBody: GroupTransferTargetValidationQuery[],
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/GroupTransfer/export", {}),
     undefined,
@@ -966,7 +972,7 @@ export async function postGroupTransferExport(
 export async function postGroupTransferTransfer(
   requestBody: GroupTransferInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<GroupTransferQuery>> {
   return await Http.postRequest(
     template("/GroupTransfer/transfer", {}),
     undefined,
@@ -980,7 +986,7 @@ export async function getGroupTransferCommission(
   queryParams: { accountId: number; amount: number },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<CommissionApiModel>> {
   return await Http.getRequest(
     template("/GroupTransfer/commission", {}),
     queryParams,
@@ -990,7 +996,9 @@ export async function getGroupTransferCommission(
 }
 
 /** Undefined */
-export async function getNotificationIa(configOverride: AxiosRequestConfig) {
+export async function getNotificationIa(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<ImportantActionApiModel[]>> {
   return await Http.getRequest(
     template("/Notification/ia", {}),
     undefined,
@@ -1003,7 +1011,7 @@ export async function getNotificationIa(configOverride: AxiosRequestConfig) {
 export async function putNotificationIaNotifId(
   notifId: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<FileUploadQuery>> {
   return await Http.putRequest(
     template("/Notification/ia/{notifId}", { notifId }),
     undefined,
@@ -1016,7 +1024,7 @@ export async function putNotificationIaNotifId(
 export async function getPluginId(
   id: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<PluginApiModel>> {
   return await Http.getRequest(
     template("/Plugin/{id}", { id }),
     undefined,
@@ -1031,7 +1039,7 @@ export async function getPosAccountNo(
   queryParams: { subUserConId: number },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<PosLandingPageApiModel>> {
   return await Http.getRequest(
     template("/Pos/{accountNo}", { accountNo }),
     queryParams,
@@ -1045,7 +1053,7 @@ export async function postPosPayTargetAccountNoWallet(
   targetAccountNo: string,
   requestBody: PosWalletPayInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<ReceiptApiModel>> {
   return await Http.postRequest(
     template("/Pos/pay/{targetAccountNo}/wallet", { targetAccountNo }),
     undefined,
@@ -1059,7 +1067,7 @@ export async function postPosPayTargetAccountNoOnline(
   targetAccountNo: string,
   requestBody: PosOnlinePayInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<NewEpayRequestResultQuery>> {
   return await Http.postRequest(
     template("/Pos/pay/{targetAccountNo}/online", { targetAccountNo }),
     undefined,
@@ -1072,7 +1080,7 @@ export async function postPosPayTargetAccountNoOnline(
 export async function getReceiptToken(
   token: string,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<ReceiptApiModel>> {
   return await Http.getRequest(
     template("/Receipt/{token}", { token }),
     undefined,
@@ -1085,7 +1093,9 @@ export async function getReceiptToken(
  * Get the Resellership info of current Reseller user [Feature just allowed for
  * Resellers]
  */
-export async function getResellerUser(configOverride: AxiosRequestConfig) {
+export async function getResellerUser(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<ResellerApiModel>> {
   return await Http.getRequest(
     template("/ResellerUser", {}),
     undefined,
@@ -1100,7 +1110,7 @@ export async function getResellerUser(configOverride: AxiosRequestConfig) {
  */
 export async function getResellerUserIntroducedFilterData(
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<ReselledUserFilterData>> {
   return await Http.getRequest(
     template("/ResellerUser/introduced/filterData", {}),
     undefined,
@@ -1118,7 +1128,7 @@ export async function getResellerUserIntroduced(
     searchInput: string;
     isActive: boolean;
     isPerson: boolean;
-    identityStatuses: undefined;
+    identityStatuses: IdentityStatus[];
     lastActivityFrom: string;
     lastActivityTo: string;
     registeredFrom: string;
@@ -1130,7 +1140,7 @@ export async function getResellerUserIntroduced(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<ReselledUserApiModel[]>> {
   return await Http.getRequest(
     template("/ResellerUser/introduced", {}),
     queryParams,
@@ -1143,7 +1153,7 @@ export async function getResellerUserIntroduced(
 export async function getResellerUserIntroducedUserIdActivity(
   userId: string,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<ReselledUserActivityApiModel>> {
   return await Http.getRequest(
     template("/ResellerUser/introduced/{userId}/activity", { userId }),
     undefined,
@@ -1170,7 +1180,7 @@ export async function getResellerUserDashboardCommissionSum(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<AggregationReportQueryOfDecimal>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/commission/sum", {}),
     queryParams,
@@ -1197,7 +1207,7 @@ export async function getResellerUserDashboardCommissionReport(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<DateReportQueryOfDecimal[]>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/commission/report", {}),
     queryParams,
@@ -1224,7 +1234,7 @@ export async function getResellerUserDashboardLinksCount(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/links/count", {}),
     queryParams,
@@ -1251,7 +1261,7 @@ export async function getResellerUserDashboardLinksReport(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/links/report", {}),
     queryParams,
@@ -1278,7 +1288,7 @@ export async function getResellerUserDashboardLinksPaidCount(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/links/paid/count", {}),
     queryParams,
@@ -1305,7 +1315,7 @@ export async function getResellerUserDashboardLinksPaidReport(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/links/paid/report", {}),
     queryParams,
@@ -1332,7 +1342,7 @@ export async function getResellerUserDashboardTransactionsCount(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/transactions/count", {}),
     queryParams,
@@ -1359,7 +1369,7 @@ export async function getResellerUserDashboardTransactionsReport(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/transactions/report", {}),
     queryParams,
@@ -1386,7 +1396,7 @@ export async function getResellerUserDashboardIntroducedCount(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/introduced/count", {}),
     queryParams,
@@ -1413,7 +1423,7 @@ export async function getResellerUserDashboardIntroducedReport(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/introduced/report", {}),
     queryParams,
@@ -1426,7 +1436,7 @@ export async function getResellerUserDashboardIntroducedReport(
 export async function postServiceNewEpayRequest(
   requestBody: EpayRequestServiceInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<EpayRequestWcfResult>> {
   return await Http.postRequest(
     template("/Service/NewEpayRequest", {}),
     undefined,
@@ -1439,7 +1449,7 @@ export async function postServiceNewEpayRequest(
 export async function postServiceCheckEpayRequest(
   requestBody: string,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<EpayRequestCheckStatusResult>> {
   return await Http.postRequest(
     template("/Service/CheckEpayRequest", {}),
     undefined,
@@ -1451,7 +1461,7 @@ export async function postServiceCheckEpayRequest(
 /** Verify the ApiKey for authorizing the [User] */
 export async function postServiceVerifyApiKey(
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<boolean>> {
   return await Http.postRequest(
     template("/Service/VerifyApiKey", {}),
     undefined,
@@ -1464,7 +1474,7 @@ export async function postServiceVerifyApiKey(
 export async function postServiceNewDivideEpayRequest(
   requestBody: DivideEpayRequestServiceInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<EpayRequestWcfResult>> {
   return await Http.postRequest(
     template("/Service/NewDivideEpayRequest", {}),
     undefined,
@@ -1477,7 +1487,7 @@ export async function postServiceNewDivideEpayRequest(
 export async function postServiceUnblockAmount(
   requestBody: DividedEpayRequestUnblockInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<DividedEpayRequestUnblockResult>> {
   return await Http.postRequest(
     template("/Service/UnblockAmount", {}),
     undefined,
@@ -1490,7 +1500,7 @@ export async function postServiceUnblockAmount(
 export async function postServiceCancelAmount(
   requestBody: DividedEpayRequestCancelInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<DividedEpayRequestCancelResult>> {
   return await Http.postRequest(
     template("/Service/CancelAmount", {}),
     undefined,
@@ -1503,7 +1513,7 @@ export async function postServiceCancelAmount(
 export async function postServiceCancelPayment(
   requestBody: string,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<boolean>> {
   return await Http.postRequest(
     template("/Service/CancelPayment", {}),
     undefined,
@@ -1528,7 +1538,7 @@ export async function getSettlementRequest(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SettlementRequestQuery[]>> {
   return await Http.getRequest(
     template("/SettlementRequest", {}),
     queryParams,
@@ -1541,7 +1551,7 @@ export async function getSettlementRequest(
 export async function getSubDomainSubDomainAddress(
   subDomainAddress: string,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubDomainApiModel>> {
   return await Http.getRequest(
     template("/SubDomain/{subDomainAddress}", { subDomainAddress }),
     undefined,
@@ -1551,7 +1561,9 @@ export async function getSubDomainSubDomainAddress(
 }
 
 /** Get the SubDomain of current Reseller user [Feature just allowed for Resellers] */
-export async function getSubDomain(configOverride: AxiosRequestConfig) {
+export async function getSubDomain(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<SubDomainApiModel>> {
   return await Http.getRequest(
     template("/SubDomain", {}),
     undefined,
@@ -1567,7 +1579,7 @@ export async function getSubDomain(configOverride: AxiosRequestConfig) {
 export async function putSubDomain(
   requestBody: SubDomainUpdateApiModel,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubDomainApiModel>> {
   return await Http.putRequest(
     template("/SubDomain", {}),
     undefined,
@@ -1583,7 +1595,7 @@ export async function putSubDomain(
 export async function deleteSubUserConnectionId(
   id: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<BusinessUserConnectionQuery>> {
   return await Http.deleteRequest(
     template("/SubUser/connection/{id}", { id }),
     undefined,
@@ -1593,7 +1605,9 @@ export async function deleteSubUserConnectionId(
 }
 
 /** Get the connections [Feature just allowed for the sub users] */
-export async function getSubUserConnection(configOverride: AxiosRequestConfig) {
+export async function getSubUserConnection(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<BusinessUserConnectionQuery[]>> {
   return await Http.getRequest(
     template("/SubUser/connection", {}),
     undefined,
@@ -1606,7 +1620,7 @@ export async function getSubUserConnection(configOverride: AxiosRequestConfig) {
 export async function getSubUserAccountId(
   id: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<SubUserAccountDetailQuery>> {
   return await Http.getRequest(
     template("/SubUser/account/{id}", { id }),
     undefined,
@@ -1623,7 +1637,7 @@ export async function postSubUserNotificationId(
   id: number,
   requestBody: SubUserNotificationStatusInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/SubUser/notification/{id}", { id }),
     undefined,
@@ -1647,7 +1661,7 @@ export async function getTransaction(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<TransactionApiModel[]>> {
   return await Http.getRequest(
     template("/Transaction", {}),
     queryParams,
@@ -1667,7 +1681,7 @@ export async function getTransferSearch(
   },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<InsensitiveAccountApiModel>> {
   return await Http.getRequest(
     template("/Transfer/search", {}),
     queryParams,
@@ -1681,7 +1695,7 @@ export async function getTransferRecent(
   queryParams: { take: number },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<TransferMoneyApiModel[]>> {
   return await Http.getRequest(
     template("/Transfer/recent", {}),
     queryParams,
@@ -1696,7 +1710,7 @@ export async function getTransferAccountIdCommission(
   queryParams: { amount: number },
 
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<CommissionApiModel>> {
   return await Http.getRequest(
     template("/Transfer/{accountId}/commission", { accountId }),
     queryParams,
@@ -1710,7 +1724,7 @@ export async function postTransferAccountId(
   accountId: number,
   requestBody: TransferMoneyInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<TransferMoneyApiModel>> {
   return await Http.postRequest(
     template("/Transfer/{accountId}", { accountId }),
     undefined,
@@ -1720,7 +1734,9 @@ export async function postTransferAccountId(
 }
 
 /** Get user banks [Feature is not allowed for sub users.] */
-export async function getUserBank(configOverride: AxiosRequestConfig) {
+export async function getUserBank(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<UserBankQuery[]>> {
   return await Http.getRequest(
     template("/UserBank", {}),
     undefined,
@@ -1736,7 +1752,7 @@ export async function getUserBank(configOverride: AxiosRequestConfig) {
 export async function postUserBank(
   requestBody: UserBankInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<UserBankQuery>> {
   return await Http.postRequest(
     template("/UserBank", {}),
     undefined,
@@ -1746,7 +1762,9 @@ export async function postUserBank(
 }
 
 /** Get available user banks [Feature is not allowed for sub users.] */
-export async function getUserBankReady(configOverride: AxiosRequestConfig) {
+export async function getUserBankReady(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<UserBankQuery[]>> {
   return await Http.getRequest(
     template("/UserBank/ready", {}),
     undefined,
@@ -1759,7 +1777,7 @@ export async function getUserBankReady(configOverride: AxiosRequestConfig) {
 export async function getUserBankId(
   id: number,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<UserBankDetailQuery>> {
   return await Http.getRequest(
     template("/UserBank/{id}", { id }),
     undefined,
@@ -1773,7 +1791,7 @@ export async function putUserBankId(
   id: number,
   requestBody: UserBankInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<UserBankQuery>> {
   return await Http.putRequest(
     template("/UserBank/{id}", { id }),
     undefined,
@@ -1787,7 +1805,7 @@ export async function putUserBankIdChangeVisibility(
   id: number,
   requestBody: UserBankChangeVisibilityInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.putRequest(
     template("/UserBank/{id}/changeVisibility", { id }),
     undefined,
@@ -1797,7 +1815,9 @@ export async function putUserBankIdChangeVisibility(
 }
 
 /** Get [normal/sub/business] user profile detail */
-export async function getUser(configOverride: AxiosRequestConfig) {
+export async function getUser(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<UserDetailQuery>> {
   return await Http.getRequest(
     template("/User", {}),
     undefined,
@@ -1813,7 +1833,7 @@ export async function getUser(configOverride: AxiosRequestConfig) {
 export async function putUser(
   requestBody: UserProfileInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<UserDetailQuery>> {
   return await Http.putRequest(
     template("/User", {}),
     undefined,
@@ -1826,7 +1846,7 @@ export async function putUser(
 export async function getUserContactInput(
   input: string,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<ContactApiModel>> {
   return await Http.getRequest(
     template("/User/contact/{input}", { input }),
     undefined,
@@ -1839,7 +1859,7 @@ export async function getUserContactInput(
 export async function putUserChangeAvatar(
   requestBody: UserProfileAvatarInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.putRequest(
     template("/User/changeAvatar", {}),
     undefined,
@@ -1855,7 +1875,7 @@ export async function putUserChangeAvatar(
 export async function postUserIdentityRequest(
   requestBody: NewUserIdentityRequestInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<UserDetailQuery>> {
   return await Http.postRequest(
     template("/User/identityRequest", {}),
     undefined,
@@ -1870,7 +1890,7 @@ export async function postUserIdentityRequest(
  */
 export async function getUserIdentityRequest(
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<UserIdentityRequestQuery>> {
   return await Http.getRequest(
     template("/User/identityRequest", {}),
     undefined,
@@ -1883,7 +1903,7 @@ export async function getUserIdentityRequest(
 export async function postUserChangePhoneNumber(
   requestBody: UserChangePhoneNumberInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/User/changePhoneNumber", {}),
     undefined,
@@ -1896,7 +1916,7 @@ export async function postUserChangePhoneNumber(
 export async function postUserChangePhoneNumberVerify(
   requestBody: UserVerifyChangePhoneNumberInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/User/changePhoneNumber/verify", {}),
     undefined,
@@ -1909,7 +1929,7 @@ export async function postUserChangePhoneNumberVerify(
 export async function postUserChangePassword(
   requestBody: UserChangePasswordInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/User/changePassword", {}),
     undefined,
@@ -1919,7 +1939,9 @@ export async function postUserChangePassword(
 }
 
 /** Get user profile summary */
-export async function getUserMe(configOverride: AxiosRequestConfig) {
+export async function getUserMe(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<UserMeQuery>> {
   return await Http.getRequest(
     template("/User/me", {}),
     undefined,
@@ -1935,7 +1957,7 @@ export async function getUserMe(configOverride: AxiosRequestConfig) {
 export async function postUserUpgradeToBusinessRequest(
   requestBody: UpgradeToBusinessUserInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<UpgradeToBusinessUserQuery>> {
   return await Http.postRequest(
     template("/User/upgradeToBusinessRequest", {}),
     undefined,
@@ -1950,7 +1972,7 @@ export async function postUserUpgradeToBusinessRequest(
  */
 export async function getUserUpgradeToBusinessRequest(
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<UpgradeToBusinessUserQuery>> {
   return await Http.getRequest(
     template("/User/upgradeToBusinessRequest", {}),
     undefined,
@@ -1967,7 +1989,7 @@ export async function postUserInvitationIdTask(
   id: number,
   requestBody: SubuserInvitationTaskInput,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/User/invitation/{id}/task", { id }),
     undefined,
@@ -1977,7 +1999,9 @@ export async function postUserInvitationIdTask(
 }
 
 /** Get business user invitations for me [Feature is not allowed for sub users] */
-export async function getUserInvitation(configOverride: AxiosRequestConfig) {
+export async function getUserInvitation(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<SubUserInvitationQuery[]>> {
   return await Http.getRequest(
     template("/User/invitation", {}),
     undefined,
@@ -1987,7 +2011,9 @@ export async function getUserInvitation(configOverride: AxiosRequestConfig) {
 }
 
 /** Get user workspaces [Feature is not allowed for sub users] */
-export async function getUserWorkspace(configOverride: AxiosRequestConfig) {
+export async function getUserWorkspace(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<UserWorkspaceQuery[]>> {
   return await Http.getRequest(
     template("/User/workspace", {}),
     undefined,
@@ -1997,7 +2023,9 @@ export async function getUserWorkspace(configOverride: AxiosRequestConfig) {
 }
 
 /** Undefined */
-export async function getUserPlugin(configOverride: AxiosRequestConfig) {
+export async function getUserPlugin(
+  configOverride: AxiosRequestConfig,
+): Promise<AxiosResponse<UserPluginInfoApiModel[]>> {
   return await Http.getRequest(
     template("/UserPlugin", {}),
     undefined,
@@ -2011,7 +2039,7 @@ export async function putUserPluginIdChangeStatus(
   id: number,
   requestBody: UserPluginTogggleApiModel,
   configOverride: AxiosRequestConfig,
-) {
+): Promise<AxiosResponse<UserPluginApiModel>> {
   return await Http.putRequest(
     template("/UserPlugin/{id}/ChangeStatus", { id }),
     undefined,
@@ -2037,6 +2065,18 @@ export interface AccountSummaryWithBalanceQuery {
   getComissionFromPayer: boolean;
   totalBalance: number;
   realBalance: number;
+}
+
+export interface AccountDetailQuery extends AccountSummaryWithBalanceQuery {
+  automaticSettlement: boolean;
+  currencyType: CurrencyType;
+  actionPolicies: ActionPolicyCommissionDetailQuery[];
+  accountQrCodeUrl: string;
+  posLinkUrl: string;
+  notificationEnabled: boolean;
+  posScanCount: number;
+  posPaidCount: number;
+  permittedSubuserCount: number;
 }
 
 export enum CurrencyType {
@@ -2124,8 +2164,8 @@ export interface NewEpayRequestResultQuery {
   qrCodeLink: string;
   epayRequestStatus: EpayRequestStatus;
   description: string;
-  epayRequestAudience: undefined;
-  epayRequestPluginSpecific: undefined;
+  epayRequestAudience: EPayRequestAudienceInput[];
+  epayRequestPluginSpecific: EpayRequestPluginSpecificOutput[];
 }
 
 export enum EpayRequestStatus {
@@ -2157,9 +2197,9 @@ export interface NewEpayRequestInput {
   description: string;
   invoiceNumber: string;
   invoiceDate: string;
-  audiences: undefined;
+  audiences: EPayRequestAudienceInput[];
   pluginId: number;
-  pluginSpecifics: undefined;
+  pluginSpecifics: EpayRequestPluginSpecificInput[];
   getComissionByPayer: boolean;
 }
 
@@ -2377,6 +2417,14 @@ export interface EditConnectionInfoInput {
   position: string;
 }
 
+export interface SubUserPermissionQuery extends SubUserActionPermission {
+  accountId: number;
+  accountTitle: string;
+  accountNumber: string;
+  totalBalance: number;
+  realBalance: number;
+}
+
 export interface SubUserActionPermission {
   canAccessToAccount: boolean;
   canReceiveMoney: boolean;
@@ -2424,7 +2472,7 @@ export interface EpayRequestQuery {
   paymentLink: string;
   qrCodeLink: string;
   epayRequestStatus: EpayRequestStatus;
-  epayRequestAudience: undefined;
+  epayRequestAudience: EPayRequestAudienceInput[];
 }
 
 export interface EpayRequestForUserQuery {
@@ -2506,7 +2554,7 @@ export interface GroupTransferQuery {
   voucherId: number;
   createDate: string;
   createDateDisplay: string;
-  targets: undefined;
+  targets: GroupTransferTargetQuery[];
 }
 
 export interface GroupTransferTargetQuery {
@@ -2521,7 +2569,7 @@ export interface GroupTransferInput {
   userAccountId: number;
   totalAmount: number;
   description: string;
-  targets: undefined;
+  targets: GroupTransferTargetInput[];
 }
 
 export interface GroupTransferTargetInput {
@@ -2576,7 +2624,7 @@ export interface PluginApiModel {
   logoFileName: string;
   logoFileUniqueId: string;
   logoFileUrl: string;
-  properties: undefined;
+  properties: PluginPropertyApiModel[];
 }
 
 export interface PluginPropertyApiModel {
@@ -2638,7 +2686,7 @@ export interface ReceiptApiModel {
   payerUserAccountName: string;
   payerUserAccountNumber: string;
   targetUserDisplayName: string;
-  audiences: undefined;
+  audiences: ReceiptAudienceApiModel[];
 }
 
 export enum EpayRequestType {
@@ -2696,7 +2744,7 @@ export interface ReselledUserFilterData {
 }
 
 export interface DropDownResultOfIdentityStatus {
-  items: undefined;
+  items: DropDownResultItemOfIdentityStatus[];
 }
 
 export interface DropDownResultItemOfIdentityStatus {
@@ -2781,7 +2829,7 @@ export interface EpayRequestServiceInput {
   userAccountId: number;
   isAutoConfirm: boolean;
   callbackType: CallbackType;
-  audiences: undefined;
+  audiences: EPayRequestAudienceInput[];
   getComissionFromPayer: boolean;
 }
 
@@ -2793,7 +2841,7 @@ export interface EpayRequestCheckStatusResult {
 
 export interface DivideEpayRequestServiceInput {
   amount: number;
-  divisions: undefined;
+  divisions: DivideEpayRequestShareModel[];
   invoiceNumber: string;
   invoiceDate: string;
   expiresAfterDays: number;
@@ -2956,6 +3004,11 @@ export enum BusinessShareType {
   Cooperative = "Cooperative",
 }
 
+export interface UserBankDetailQuery extends UserBankQuery {
+  nationalCode: string;
+  documents: DocumentQuery[];
+}
+
 export interface DocumentQuery {
   uniqueId: string;
   fileName: string;
@@ -2991,7 +3044,7 @@ export interface UserBankInput {
   bankId: number;
   accountNumber: string;
   shebaNo: string;
-  documents: undefined;
+  documents: DocumentInput[];
   isVisible: boolean;
 }
 
@@ -3002,6 +3055,15 @@ export interface DocumentInput {
 
 export interface UserBankChangeVisibilityInput {
   isVisible: boolean;
+}
+
+export interface UserDetailQuery extends UserMeQuery {
+  nationalCode: string;
+  state: string;
+  city: string;
+  address: string;
+  phoneNumber: string;
+  introducedBySubDomain: string;
 }
 
 export interface UserMeQuery {
@@ -3032,14 +3094,14 @@ export interface NewUserIdentityRequestInput {
   firstName: string;
   lastName: string;
   nationalCode: string;
-  documents: undefined;
+  documents: DocumentInput[];
 }
 
 export interface UserIdentityRequestQuery {
   firstName: string;
   lastName: string;
   nationalCode: string;
-  documents: undefined;
+  documents: DocumentQuery[];
   userIdentityRequestStatus: IdentityStatus;
   userIdentityRequestStatusDescription: string;
 }
@@ -3078,7 +3140,7 @@ export interface UpgradeToBusinessUserQuery {
   city: string;
   address: string;
   personNationalCode: string;
-  documents: undefined;
+  documents: DocumentQuery[];
 }
 
 export interface UpgradeToBusinessUserInput {
@@ -3097,7 +3159,7 @@ export interface UpgradeToBusinessUserInput {
   state: string;
   city: string;
   address: string;
-  documents: undefined;
+  documents: DocumentInput[];
 }
 
 export interface SubuserInvitationTaskInput {
@@ -3142,7 +3204,7 @@ export interface UserPluginInfoApiModel {
   pluginLogoFileName: string;
   pluginLogoFileUniqueId: string;
   pluginLogoFileUrl: string;
-  properties: undefined;
+  properties: PluginPropertyApiModel[];
 }
 
 export interface UserPluginApiModel {
