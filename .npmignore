@@ -1,0 +1,12 @@
+.prettierrc
+.gitattributes
+.vscode
+.eslintignore
+.eslintrc.js
+.gitignore
+.prettierrc
+commitlint.config.js
+CODE_OF_CONDUCT.md
+__tests__/
+examples/
+src/
