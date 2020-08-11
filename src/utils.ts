@@ -1,6 +1,6 @@
 import { Schema, Parameter } from "./types";
 
-function getPathParams(parameters: Parameter[]): Parameter[] {
+function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (
     parameters?.filter(({ in: In }) => {
       return In === "path";
@@ -8,7 +8,7 @@ function getPathParams(parameters: Parameter[]): Parameter[] {
   );
 }
 
-function getQueryParams(parameters: Parameter[]): string {
+function getQueryParams(parameters?: Parameter[]): string {
   let queryParams = parameters?.reduce((prev, { in: In, name, schema }) => {
     if (In !== "query") {
       return prev;
@@ -55,7 +55,7 @@ function getTsType({ type, nullable, $ref, enum: Enum }: Schema): string {
     tsType + "| null";
   }
   if ($ref) {
-    tsType = $ref.replace("#/components/schemas/", "");
+    tsType = getRefName($ref);
   }
   if (Enum) {
     tsType = JSON.stringify(Enum);
@@ -64,4 +64,14 @@ function getTsType({ type, nullable, $ref, enum: Enum }: Schema): string {
   return tsType;
 }
 
-export { getPathParams, getQueryParams, generateServiceName, getTsType };
+function getRefName($ref: string): string {
+  return $ref.replace("#/components/schemas/", "");
+}
+
+export {
+  getPathParams,
+  getQueryParams,
+  generateServiceName,
+  getTsType,
+  getRefName,
+};

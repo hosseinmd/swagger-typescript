@@ -22,8 +22,8 @@ export interface SwaggerRequest {
   tags: string; // ["Account"];
   summary: string; // "Get user account balance";
   operationId: string; // "Account_GetBalance";
-  parameters: Parameter[];
-  requestBody: {
+  parameters?: Parameter[];
+  requestBody?: {
     "x-name"?: "model";
     content: {
       "multipart/form-data": {
@@ -36,7 +36,7 @@ export interface SwaggerRequest {
     required?: true;
     "x-position"?: 1;
   };
-  responses: {
+  responses2: {
     "200": {
       description: "";
       content: {

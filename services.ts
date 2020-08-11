@@ -1,229 +1,715 @@
+import { AxiosRequestConfig } from "axios";
+import { Http } from "./httpRequest";
+
+function template(path: string, obj: { [x: string]: any } = {}) {
+  Object.keys(obj).forEach((key) => {
+    let re = new RegExp(`{${key}}`, "i");
+    path = path.replace(re, obj[key]);
+  });
+
+  return path;
+}
+
 /** Get user accounts [Or get sub user authorized accounts] */
-export function getAccount() {}
+export async function getAccount(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/Account", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Create a new account. [Feature is not allowed for sub users] */
-export function postAccount() {}
+export async function postAccount(
+  requestBody: AccountInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Account", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get user account detail [Feature is not allowed for sub users] */
-export function getAccountId(id: number) {}
+export async function getAccountId(
+  id: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Account/{id}", { id }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Edit user account [Feature is not allowed for sub users] [Needs secure login] */
-export function putAccountId(id: number) {}
+export async function putAccountId(
+  id: number,
+  requestBody: AccountInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/Account/{id}", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /**
  * Edit user account notification status [Feature is not allowed for sub users]
  * [Needs secure login]
  */
-export function putAccountIdNotification(id: number) {}
+export async function putAccountIdNotification(
+  id: number,
+  requestBody: AccountNotificationStatusInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/Account/{id}/notification", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get user account balance */
-export function getAccountIdBalance(id: number) {}
+export async function getAccountIdBalance(
+  id: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Account/{id}/balance", { id }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function getAccountAccountIdPermittedSubUsers(accountId: number) {}
+export async function getAccountAccountIdPermittedSubUsers(
+  accountId: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Account/{accountId}/PermittedSubUsers", { accountId }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Create a new account charge request */
-export function postAccountIdCharge(id: number) {}
+export async function postAccountIdCharge(
+  id: number,
+  requestBody: NewChargeRequestInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Account/{id}/charge", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get comission amount for epay request amount */
-export function getAccountIdEpayRequestComission(
+export async function getAccountIdEpayRequestComission(
   id: number,
-  queryParams: { amount: number }
-) {}
+  queryParams: { amount: number },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Account/{id}/epayRequest/comission", { id }),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Create a new epay request */
-export function postAccountIdEpayRequest(id: number) {}
+export async function postAccountIdEpayRequest(
+  id: number,
+  requestBody: NewEpayRequestInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Account/{id}/epayRequest", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get comission amount for settlement request amount */
-export function getAccountIdSettlementRequestComission(
+export async function getAccountIdSettlementRequestComission(
   id: number,
-  queryParams: { amount: number }
-) {}
+  queryParams: { amount: number },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Account/{id}/settlementRequest/comission", { id }),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Create a new settlement request [Needs secure login] */
-export function postAccountIdSettlementRequest(id: number) {}
+export async function postAccountIdSettlementRequest(
+  id: number,
+  requestBody: NewSettlementRequestInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Account/{id}/settlementRequest", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get insensitive data of account owner */
-export function getAccountSearch(queryParams: {
-  userId: string;
-  accountId: number;
-  customerNumber: number;
-  accountNumber: string;
-  contact: string;
-}) {}
+export async function getAccountSearch(
+  queryParams: {
+    userId: string;
+    accountId: number;
+    customerNumber: number;
+    accountNumber: string;
+    contact: string;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Account/search", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get comission amount for transfer money amount */
-export function getAccountIdTransferMoneyCommission(
+export async function getAccountIdTransferMoneyCommission(
   id: number,
-  queryParams: { amount: number }
-) {}
+  queryParams: { amount: number },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Account/{id}/transferMoney/commission", { id }),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Transfer money */
-export function postAccountIdTransferMoney(id: number) {}
+export async function postAccountIdTransferMoney(
+  id: number,
+  requestBody: TransferMoneyInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Account/{id}/transferMoney", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** SiginIn using ApiKey and SecretKey */
-export function postAuthApilogin() {}
+export async function postAuthApilogin(
+  requestBody: ApiLoginInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/apilogin", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Sign in and get a new long-lived JWT */
-export function postAuthLogin() {}
+export async function postAuthLogin(
+  requestBody: LoginInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/login", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function postAuthLoginOtp() {}
+export async function postAuthLoginOtp(
+  requestBody: TotpLoginInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/login/otp", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function postAuthLoginOtpGenerate() {}
+export async function postAuthLoginOtpGenerate(
+  requestBody: RequestTotpInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/login/otp/generate", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Sign in as a sub user (JWT) */
-export function postAuthLoginSubuser() {}
+export async function postAuthLoginSubuser(
+  requestBody: SubUserLoginInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/login/subuser", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get a new short-lived JWT, using current long-lived one */
-export function postAuthLoginSecurity() {}
+export async function postAuthLoginSecurity(
+  requestBody: SecureLoginInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/login/security", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Refresh the short-lived JWT, using current short-lived one */
-export function getAuthLoginSecurityRefresh() {}
+export async function getAuthLoginSecurityRefresh(
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Auth/login/security/refresh", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Check the data that the user has been logged in */
-export function postAuthCheck() {}
+export async function postAuthCheck(
+  requestBody: LoginInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/check", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Log out */
-export function postAuthLogout() {}
+export async function postAuthLogout(configOverride: AxiosRequestConfig) {
+  return await Http.postRequest(
+    template("/Auth/logout", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Register new user with the phone number (Two factor authentication) */
-export function postAuthRegister() {}
+export async function postAuthRegister(
+  requestBody: RegisterInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/register", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Confirm the phone number with verification code */
-export function postAuthRegisterVerify() {}
+export async function postAuthRegisterVerify(
+  requestBody: ConfirmPhoneNumberOrEmailInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/register/verify", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Confirm phone number with the given token and auto signin user to app. */
-export function postAuthRegisterPoslogin() {}
+export async function postAuthRegisterPoslogin(
+  requestBody: ConfirmPhoneNumberOrEmailInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/register/poslogin", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Set basic data for your registration [fullname, password] */
-export function postAuthRegisterBasic() {}
+export async function postAuthRegisterBasic(
+  requestBody: SetUserBasicInfoInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/register/basic", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Recover forgotten password with phone number (Two factor authentication) */
-export function postAuthForgetPassword() {}
+export async function postAuthForgetPassword(
+  requestBody: UserForgetPasswordInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/forgetPassword", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Confirm the phone number with a verification code for recover password */
-export function postAuthForgetPasswordVerify() {}
+export async function postAuthForgetPasswordVerify(
+  requestBody: UserVerifyForgetPasswordInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/forgetPassword/verify", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Reset forgotten password */
-export function postAuthForgetPasswordResetPassword() {}
+export async function postAuthForgetPasswordResetPassword(
+  requestBody: UserResetForgetPasswordInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/forgetPassword/resetPassword", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Register new Device for current user. */
-export function postAuthRegisterDevice() {}
+export async function postAuthRegisterDevice(
+  requestBody: RegisterDeviceInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Auth/register/device", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get available banks */
-export function getBank() {}
+export async function getBank(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/Bank", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get Business categories */
-export function getBusinessUserCategory() {}
+export async function getBusinessUserCategory(
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/BusinessUser/category", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Send a connection request to sub user [Feature just allowed for the business
  * users]
  */
-export function postBusinessUserInvite() {}
+export async function postBusinessUserInvite(
+  requestBody: SendConnectionRequestInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/BusinessUser/invite", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /**
  * Resend Connection Request to Sub-User [Feature just allowed for the business
  * users]
  */
-export function postBusinessUserInviteInvitationIdResend(
-  invitationId: number
-) {}
+export async function postBusinessUserInviteInvitationIdResend(
+  invitationId: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/BusinessUser/invite/{invitationId}/resend", { invitationId }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Remove an invitation [Feature just allowed for the business users] [Needs
  * secure login]
  */
-export function deleteBusinessUserInviteInvitationIdRemove(
-  invitationId: number
-) {}
+export async function deleteBusinessUserInviteInvitationIdRemove(
+  invitationId: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.deleteRequest(
+    template("/BusinessUser/invite/{invitationId}/remove", { invitationId }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Resend Connection Request to Sub-User [Feature just allowed for the business
  * users]
  */
-export function postBusinessUserResendInvitationId(invitationId: number) {}
+export async function postBusinessUserResendInvitationId(
+  invitationId: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/BusinessUser/resend/{invitationId}", { invitationId }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Remove an invitation [Feature just allowed for the business users] [Needs
  * secure login]
  */
-export function deleteBusinessUserConnectionInvitationIdRemove(
+export async function deleteBusinessUserConnectionInvitationIdRemove(
   invitationId: string,
-  queryParams: { id: number }
-) {}
+  queryParams: { id: number },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.deleteRequest(
+    template("/BusinessUser/connection/{invitationId}/remove", {
+      invitationId,
+    }),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get the connections [Feature just allowed for the business users] */
-export function getBusinessUserConnection(queryParams: {
-  subUserConnectionStatus: undefined;
-  skip: number;
-  take: number;
-}) {}
+export async function getBusinessUserConnection(
+  queryParams: {
+    subUserConnectionStatus: undefined;
+    skip: number;
+    take: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/BusinessUser/connection", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get active connections ordered by Transactions count [Feature just allowed for
  * the business users]
  */
-export function getBusinessUserConnectionActive(queryParams: {
-  skip: number;
-  take: number;
-}) {}
+export async function getBusinessUserConnectionActive(
+  queryParams: { skip: number; take: number },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/BusinessUser/connection/active", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get the connection amounts report [Feature just allowed for the business users]
  * [Needs secure login]
  */
-export function getBusinessUserConnectionId(id: number) {}
+export async function getBusinessUserConnectionId(
+  id: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/BusinessUser/connection/{id}", { id }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Change sub user connection info [Feature just allowed for the business users]
  * [Needs secure login]
  */
-export function putBusinessUserConnectionId(id: number) {}
+export async function putBusinessUserConnectionId(
+  id: number,
+  requestBody: EditConnectionInfoInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/BusinessUser/connection/{id}", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /**
  * Disconnect sub user connection [Feature just allowed for the business users]
  * [Needs secure login]
  */
-export function deleteBusinessUserConnectionId(id: number) {}
+export async function deleteBusinessUserConnectionId(
+  id: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.deleteRequest(
+    template("/BusinessUser/connection/{id}", { id }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get sub user permissions for accounts [Feature just allowed for the business
  * users] [Needs secure login]
  */
-export function getBusinessUserConnectionIdPermission(id: number) {}
+export async function getBusinessUserConnectionIdPermission(
+  id: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/BusinessUser/connection/{id}/permission", { id }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Set access to the account for sub user [Feature just allowed for the business
  * users] [Needs secure login]
  */
-export function postBusinessUserConnectionIdPermission(id: number) {}
+export async function postBusinessUserConnectionIdPermission(
+  id: number,
+  requestBody: SetAccountAccessForSubUserInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/BusinessUser/connection/{id}/permission", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /**
  * Edit sub user permission for the account [Feature just allowed for the business
  * users] [Needs secure token]
  */
-export function putBusinessUserConnectionIdPermissionAccountId(
+export async function putBusinessUserConnectionIdPermissionAccountId(
   id: number,
-  accountId: number
-) {}
+  accountId: number,
+  requestBody: EditSubUserPermissionInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/BusinessUser/connection/{id}/permission/{accountId}", {
+      id,
+      accountId,
+    }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /**
  * Remove access to the account for sub user [Feature just allowed for the
  * business users] [Needs secure token]
  */
-export function deleteBusinessUserConnectionIdPermissionAccountId(
+export async function deleteBusinessUserConnectionIdPermissionAccountId(
   id: number,
-  accountId: number
-) {}
+  accountId: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.deleteRequest(
+    template("/BusinessUser/connection/{id}/permission/{accountId}", {
+      id,
+      accountId,
+    }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get EPay Requests created by SubUser [Feature just allowed for the business
  * users] [Needs secure login]
  */
-export function getBusinessUserConnectionIdEpay(
+export async function getBusinessUserConnectionIdEpay(
   id: number,
   queryParams: {
     accountId: number;
@@ -245,14 +731,23 @@ export function getBusinessUserConnectionIdEpay(
     plugin_SepidarVoucherType: string;
     skip: number;
     take: number;
-  }
-) {}
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/BusinessUser/connection/{id}/epay", { id }),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get Settlement Requests created by a SubUser [Feature just allowed for the
  * business users] [Needs secure login]
  */
-export function getBusinessUserConnectionIdSettlement(
+export async function getBusinessUserConnectionIdSettlement(
   id: number,
   queryParams: {
     accountId: number;
@@ -262,496 +757,1268 @@ export function getBusinessUserConnectionIdSettlement(
     maximumAmount: number;
     skip: number;
     take: number;
-  }
-) {}
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/BusinessUser/connection/{id}/settlement", { id }),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get user pay requests (and sub user authorized accounts pay requests) [Needs
  * secure login]
  */
-export function getEpayRequest(queryParams: {
-  accountId: number;
-  epayRequestStatus: undefined;
-  startDate: string;
-  endDate: string;
-  pluginId: number;
-  plugin_ZhenicCustomerName: string;
-  plugin_ZhenicCustomerNumber: string;
-  plugin_ZhenicInvoiceNumber: string;
-  plugin_ZhenicRialAmount: string;
-  plugin_ZhenicDollarAmount: string;
-  plugin_ZhenicDollarAmountRate: string;
-  plugin_ZhenicEuroAmount: string;
-  plugin_ZhenicEuroAmountRate: string;
-  plugin_SepidarCustomerName: string;
-  plugin_SepidarCustomerNumber: string;
-  plugin_SepidarDocumentNumber: string;
-  plugin_SepidarVoucherType: string;
-  skip: number;
-  take: number;
-}) {}
+export async function getEpayRequest(
+  queryParams: {
+    accountId: number;
+    epayRequestStatus: undefined;
+    startDate: string;
+    endDate: string;
+    pluginId: number;
+    plugin_ZhenicCustomerName: string;
+    plugin_ZhenicCustomerNumber: string;
+    plugin_ZhenicInvoiceNumber: string;
+    plugin_ZhenicRialAmount: string;
+    plugin_ZhenicDollarAmount: string;
+    plugin_ZhenicDollarAmountRate: string;
+    plugin_ZhenicEuroAmount: string;
+    plugin_ZhenicEuroAmountRate: string;
+    plugin_SepidarCustomerName: string;
+    plugin_SepidarCustomerNumber: string;
+    plugin_SepidarDocumentNumber: string;
+    plugin_SepidarVoucherType: string;
+    skip: number;
+    take: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/EpayRequest", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get epay request detail based on Id */
-export function getEpayRequestId(id: number) {}
+export async function getEpayRequestId(
+  id: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/EpayRequest/{id}", { id }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get QR code image file for epay request */
-export function getEpayRequestTokenQrCode(token: string) {}
+export async function getEpayRequestTokenQrCode(
+  token: string,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/EpayRequest/{token}/qrCode", { token }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function getEpayRequestPosQrAccountNo(
+export async function getEpayRequestPosQrAccountNo(
   accountNo: string,
-  queryParams: { amount: number; subUserConId: number }
-) {}
+  queryParams: { amount: number; subUserConId: number },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/EpayRequest/pos/Qr/{accountNo}", { accountNo }),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get pay requests that the user is one of its audiences. [Feature is not allowed
  * for sub users] [Needs secure login]
  */
-export function getEpayRequestForMe(queryParams: {
-  applicantName: string;
-  startDate: string;
-  endDate: string;
-  epayRequestStatus: undefined;
-  skip: number;
-  take: number;
-}) {}
+export async function getEpayRequestForMe(
+  queryParams: {
+    applicantName: string;
+    startDate: string;
+    endDate: string;
+    epayRequestStatus: undefined;
+    skip: number;
+    take: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/EpayRequest/forMe", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Create a new task for executing the actions of epay request [Resend/Cancel] */
-export function postEpayRequestIdTask(id: number) {}
+export async function postEpayRequestIdTask(
+  id: number,
+  requestBody: EpayRequestTaskInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/EpayRequest/{id}/task", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function getEpayRequestAudiencesRecent() {}
+export async function getEpayRequestAudiencesRecent(
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/EpayRequest/audiences/recent", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Upload new file [Allowed files are images and pdf / Max Size: 3 MB] */
-export function postFile() {}
+export async function postFile(
+  requestBody: object,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/File", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Download a file. */
-export function getFileId(id: string) {}
+export async function getFileId(
+  id: string,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/File/{id}", { id }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** For Business users only] */
-export function putGroupTransferAdd() {}
+export async function putGroupTransferAdd(
+  requestBody: GroupTransferTargetValidationInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/GroupTransfer/add", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** For Business users only] */
-export function postGroupTransferImport() {}
+export async function postGroupTransferImport(
+  requestBody: object,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/GroupTransfer/import", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** For Business users only] */
-export function postGroupTransferExport() {}
+export async function postGroupTransferExport(
+  requestBody: undefined,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/GroupTransfer/export", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** For Business users only] */
-export function postGroupTransferTransfer() {}
+export async function postGroupTransferTransfer(
+  requestBody: GroupTransferInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/GroupTransfer/transfer", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get commission amount for group transfer [for Business users only] */
-export function getGroupTransferCommission(queryParams: {
-  accountId: number;
-  amount: number;
-}) {}
+export async function getGroupTransferCommission(
+  queryParams: { accountId: number; amount: number },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/GroupTransfer/commission", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function getNotificationIa() {}
+export async function getNotificationIa(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/Notification/ia", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function putNotificationIaNotifId(notifId: number) {}
+export async function putNotificationIaNotifId(
+  notifId: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/Notification/ia/{notifId}", { notifId }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function getPluginId(id: number) {}
+export async function getPluginId(
+  id: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Plugin/{id}", { id }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get epay request detail */
-export function getPosAccountNo(
+export async function getPosAccountNo(
   accountNo: string,
-  queryParams: { subUserConId: number }
-) {}
+  queryParams: { subUserConId: number },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Pos/{accountNo}", { accountNo }),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Pay POS link with Wallet */
-export function postPosPayTargetAccountNoWallet(targetAccountNo: string) {}
+export async function postPosPayTargetAccountNoWallet(
+  targetAccountNo: string,
+  requestBody: PosWalletPayInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Pos/pay/{targetAccountNo}/wallet", { targetAccountNo }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Pay POS link Online */
-export function postPosPayTargetAccountNoOnline(targetAccountNo: string) {}
+export async function postPosPayTargetAccountNoOnline(
+  targetAccountNo: string,
+  requestBody: PosOnlinePayInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Pos/pay/{targetAccountNo}/online", { targetAccountNo }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get a receipt by it's id */
-export function getReceiptToken(token: string) {}
+export async function getReceiptToken(
+  token: string,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Receipt/{token}", { token }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get the Resellership info of current Reseller user [Feature just allowed for
  * Resellers]
  */
-export function getResellerUser() {}
+export async function getResellerUser(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/ResellerUser", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get filter data items to populate DropDowns [Feature just allowed for
  * Resellers]
  */
-export function getResellerUserIntroducedFilterData() {}
+export async function getResellerUserIntroducedFilterData(
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/introduced/filterData", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get the Users Introduced by current Reseller user [Feature just allowed for
  * Resellers]
  */
-export function getResellerUserIntroduced(queryParams: {
-  searchInput: string;
-  isActive: boolean;
-  isPerson: boolean;
-  identityStatuses: undefined;
-  lastActivityFrom: string;
-  lastActivityTo: string;
-  registeredFrom: string;
-  registeredTo: string;
-  skip: number;
-  take: number;
-  orderBy: string;
-  orderDesc: boolean;
-}) {}
+export async function getResellerUserIntroduced(
+  queryParams: {
+    searchInput: string;
+    isActive: boolean;
+    isPerson: boolean;
+    identityStatuses: undefined;
+    lastActivityFrom: string;
+    lastActivityTo: string;
+    registeredFrom: string;
+    registeredTo: string;
+    skip: number;
+    take: number;
+    orderBy: string;
+    orderDesc: boolean;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/introduced", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get the User activity [Feature just allowed for Resellers] */
-export function getResellerUserIntroducedUserIdActivity(userId: string) {}
+export async function getResellerUserIntroducedUserIdActivity(
+  userId: string,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/introduced/{userId}/activity", { userId }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get sum of all commissions paid to current Reseller user [Feature just allowed
  * for Resellers]
  */
-export function getResellerUserDashboardCommissionSum(queryParams: {
-  month: number;
-  year: number;
-  takeDays: number;
-  takeMonths: number;
-  takeYears: number;
-  fromMonth: number;
-  fromYear: number;
-  toMonth: number;
-  toYear: number;
-}) {}
+export async function getResellerUserDashboardCommissionSum(
+  queryParams: {
+    month: number;
+    year: number;
+    takeDays: number;
+    takeMonths: number;
+    takeYears: number;
+    fromMonth: number;
+    fromYear: number;
+    toMonth: number;
+    toYear: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/dashboard/commission/sum", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get the time-based report of commissions paid to current Reseller user [Feature
  * just allowed for Resellers]
  */
-export function getResellerUserDashboardCommissionReport(queryParams: {
-  month: number;
-  year: number;
-  takeDays: number;
-  takeMonths: number;
-  takeYears: number;
-  fromMonth: number;
-  fromYear: number;
-  toMonth: number;
-  toYear: number;
-}) {}
+export async function getResellerUserDashboardCommissionReport(
+  queryParams: {
+    month: number;
+    year: number;
+    takeDays: number;
+    takeMonths: number;
+    takeYears: number;
+    fromMonth: number;
+    fromYear: number;
+    toMonth: number;
+    toYear: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/dashboard/commission/report", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get count of all links generated by users, who are introduced by current
  * Reseller user [Feature just allowed for Resellers]
  */
-export function getResellerUserDashboardLinksCount(queryParams: {
-  month: number;
-  year: number;
-  takeDays: number;
-  takeMonths: number;
-  takeYears: number;
-  fromMonth: number;
-  fromYear: number;
-  toMonth: number;
-  toYear: number;
-}) {}
+export async function getResellerUserDashboardLinksCount(
+  queryParams: {
+    month: number;
+    year: number;
+    takeDays: number;
+    takeMonths: number;
+    takeYears: number;
+    fromMonth: number;
+    fromYear: number;
+    toMonth: number;
+    toYear: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/dashboard/links/count", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get time-based report of links generated by users, who are introduced by
  * current Reseller user [Feature just allowed for Resellers]
  */
-export function getResellerUserDashboardLinksReport(queryParams: {
-  month: number;
-  year: number;
-  takeDays: number;
-  takeMonths: number;
-  takeYears: number;
-  fromMonth: number;
-  fromYear: number;
-  toMonth: number;
-  toYear: number;
-}) {}
+export async function getResellerUserDashboardLinksReport(
+  queryParams: {
+    month: number;
+    year: number;
+    takeDays: number;
+    takeMonths: number;
+    takeYears: number;
+    fromMonth: number;
+    fromYear: number;
+    toMonth: number;
+    toYear: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/dashboard/links/report", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get count of all paid links generated by users, who are introduced by current
  * Reseller user [Feature just allowed for Resellers]
  */
-export function getResellerUserDashboardLinksPaidCount(queryParams: {
-  month: number;
-  year: number;
-  takeDays: number;
-  takeMonths: number;
-  takeYears: number;
-  fromMonth: number;
-  fromYear: number;
-  toMonth: number;
-  toYear: number;
-}) {}
+export async function getResellerUserDashboardLinksPaidCount(
+  queryParams: {
+    month: number;
+    year: number;
+    takeDays: number;
+    takeMonths: number;
+    takeYears: number;
+    fromMonth: number;
+    fromYear: number;
+    toMonth: number;
+    toYear: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/dashboard/links/paid/count", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get time-based report of paid links generated by users, who are introduced by
  * current Reseller user [Feature just allowed for Resellers]
  */
-export function getResellerUserDashboardLinksPaidReport(queryParams: {
-  month: number;
-  year: number;
-  takeDays: number;
-  takeMonths: number;
-  takeYears: number;
-  fromMonth: number;
-  fromYear: number;
-  toMonth: number;
-  toYear: number;
-}) {}
+export async function getResellerUserDashboardLinksPaidReport(
+  queryParams: {
+    month: number;
+    year: number;
+    takeDays: number;
+    takeMonths: number;
+    takeYears: number;
+    fromMonth: number;
+    fromYear: number;
+    toMonth: number;
+    toYear: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/dashboard/links/paid/report", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get count of all commission transactions, paid to current Reseller user
  * [Feature just allowed for Resellers]
  */
-export function getResellerUserDashboardTransactionsCount(queryParams: {
-  month: number;
-  year: number;
-  takeDays: number;
-  takeMonths: number;
-  takeYears: number;
-  fromMonth: number;
-  fromYear: number;
-  toMonth: number;
-  toYear: number;
-}) {}
+export async function getResellerUserDashboardTransactionsCount(
+  queryParams: {
+    month: number;
+    year: number;
+    takeDays: number;
+    takeMonths: number;
+    takeYears: number;
+    fromMonth: number;
+    fromYear: number;
+    toMonth: number;
+    toYear: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/dashboard/transactions/count", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get time-based report of commission transactions, paid to current Reseller user
  * [Feature just allowed for Resellers]
  */
-export function getResellerUserDashboardTransactionsReport(queryParams: {
-  month: number;
-  year: number;
-  takeDays: number;
-  takeMonths: number;
-  takeYears: number;
-  fromMonth: number;
-  fromYear: number;
-  toMonth: number;
-  toYear: number;
-}) {}
+export async function getResellerUserDashboardTransactionsReport(
+  queryParams: {
+    month: number;
+    year: number;
+    takeDays: number;
+    takeMonths: number;
+    takeYears: number;
+    fromMonth: number;
+    fromYear: number;
+    toMonth: number;
+    toYear: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/dashboard/transactions/report", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get count of all users reselled by current Reseller user [Feature just allowed
  * for Resellers]
  */
-export function getResellerUserDashboardIntroducedCount(queryParams: {
-  month: number;
-  year: number;
-  takeDays: number;
-  takeMonths: number;
-  takeYears: number;
-  fromMonth: number;
-  fromYear: number;
-  toMonth: number;
-  toYear: number;
-}) {}
+export async function getResellerUserDashboardIntroducedCount(
+  queryParams: {
+    month: number;
+    year: number;
+    takeDays: number;
+    takeMonths: number;
+    takeYears: number;
+    fromMonth: number;
+    fromYear: number;
+    toMonth: number;
+    toYear: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/dashboard/introduced/count", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Get time-based report of users reselled by current Reseller user [Feature just
  * allowed for Resellers]
  */
-export function getResellerUserDashboardIntroducedReport(queryParams: {
-  month: number;
-  year: number;
-  takeDays: number;
-  takeMonths: number;
-  takeYears: number;
-  fromMonth: number;
-  fromYear: number;
-  toMonth: number;
-  toYear: number;
-}) {}
+export async function getResellerUserDashboardIntroducedReport(
+  queryParams: {
+    month: number;
+    year: number;
+    takeDays: number;
+    takeMonths: number;
+    takeYears: number;
+    fromMonth: number;
+    fromYear: number;
+    toMonth: number;
+    toYear: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/ResellerUser/dashboard/introduced/report", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Create an new [EpayRequest] with the given model. */
-export function postServiceNewEpayRequest() {}
+export async function postServiceNewEpayRequest(
+  requestBody: EpayRequestServiceInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Service/NewEpayRequest", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Check the [EpayRequest] based on token */
-export function postServiceCheckEpayRequest() {}
+export async function postServiceCheckEpayRequest(
+  requestBody: string,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Service/CheckEpayRequest", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Verify the ApiKey for authorizing the [User] */
-export function postServiceVerifyApiKey() {}
+export async function postServiceVerifyApiKey(
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Service/VerifyApiKey", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Create a Divided [EpayRequest] for the given model. */
-export function postServiceNewDivideEpayRequest() {}
+export async function postServiceNewDivideEpayRequest(
+  requestBody: DivideEpayRequestServiceInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Service/NewDivideEpayRequest", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Unblock Amount of an Divided[EpayRequest] */
-export function postServiceUnblockAmount() {}
+export async function postServiceUnblockAmount(
+  requestBody: DividedEpayRequestUnblockInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Service/UnblockAmount", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Cancel Amount of an Divided[EpayRequest] */
-export function postServiceCancelAmount() {}
+export async function postServiceCancelAmount(
+  requestBody: DividedEpayRequestCancelInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Service/CancelAmount", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Set [EPayRequest] status to 'Cancel' and cancel the payment */
-export function postServiceCancelPayment() {}
+export async function postServiceCancelPayment(
+  requestBody: string,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Service/CancelPayment", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /**
  * Get user settlement requests (or sub user authorized accounts settlement
  * requests)
  */
-export function getSettlementRequest(queryParams: {
-  accountId: number;
-  startDate: string;
-  endDate: string;
-  minimumAmount: number;
-  maximumAmount: number;
-  skip: number;
-  take: number;
-}) {}
+export async function getSettlementRequest(
+  queryParams: {
+    accountId: number;
+    startDate: string;
+    endDate: string;
+    minimumAmount: number;
+    maximumAmount: number;
+    skip: number;
+    take: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/SettlementRequest", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get info of a SubDomain by it's address. */
-export function getSubDomainSubDomainAddress(subDomainAddress: string) {}
+export async function getSubDomainSubDomainAddress(
+  subDomainAddress: string,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/SubDomain/{subDomainAddress}", { subDomainAddress }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get the SubDomain of current Reseller user [Feature just allowed for Resellers] */
-export function getSubDomain() {}
+export async function getSubDomain(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/SubDomain", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Update the SubDomain of current Reseller user [Feature just allowed for
  * Resellers]
  */
-export function putSubDomain() {}
+export async function putSubDomain(
+  requestBody: SubDomainUpdateApiModel,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/SubDomain", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /**
  * Disconnect business user connection [Feature just allowed for the sub users]
  * [Needs secure login]
  */
-export function deleteSubUserConnectionId(id: number) {}
+export async function deleteSubUserConnectionId(
+  id: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.deleteRequest(
+    template("/SubUser/connection/{id}", { id }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get the connections [Feature just allowed for the sub users] */
-export function getSubUserConnection() {}
+export async function getSubUserConnection(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/SubUser/connection", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function getSubUserAccountId(id: number) {}
+export async function getSubUserAccountId(
+  id: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/SubUser/account/{id}", { id }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Enables/Disables sending notifications to current SubUser for transactions on
  * specified Account [allowed for the SubUsers only]
  */
-export function postSubUserNotificationId(id: number) {}
+export async function postSubUserNotificationId(
+  id: number,
+  requestBody: SubUserNotificationStatusInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/SubUser/notification/{id}", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /**
  * Get user account transactions (sub user authorized accounts transactions)
  * [Needs secure login]
  */
-export function getTransaction(queryParams: {
-  accountId: number;
-  transactionType: undefined;
-  startDate: string;
-  endDate: string;
-  limit: number;
-  take: number;
-}) {}
+export async function getTransaction(
+  queryParams: {
+    accountId: number;
+    transactionType: undefined;
+    startDate: string;
+    endDate: string;
+    limit: number;
+    take: number;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Transaction", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get insensitive data of account owner */
-export function getTransferSearch(queryParams: {
-  userId: string;
-  accountId: number;
-  customerNumber: number;
-  accountNumber: string;
-  contact: string;
-}) {}
+export async function getTransferSearch(
+  queryParams: {
+    userId: string;
+    accountId: number;
+    customerNumber: number;
+    accountNumber: string;
+    contact: string;
+  },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Transfer/search", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get recent money transfers */
-export function getTransferRecent(queryParams: { take: number }) {}
+export async function getTransferRecent(
+  queryParams: { take: number },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Transfer/recent", {}),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get commission amount for transfer money amount */
-export function getTransferAccountIdCommission(
+export async function getTransferAccountIdCommission(
   accountId: number,
-  queryParams: { amount: number }
-) {}
+  queryParams: { amount: number },
+
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/Transfer/{accountId}/commission", { accountId }),
+    queryParams,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Transfer money */
-export function postTransferAccountId(accountId: number) {}
+export async function postTransferAccountId(
+  accountId: number,
+  requestBody: TransferMoneyInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/Transfer/{accountId}", { accountId }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get user banks [Feature is not allowed for sub users.] */
-export function getUserBank() {}
+export async function getUserBank(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/UserBank", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Create a new user bank [Feature is not allowed for sub users] [Needs secure
  * login]
  */
-export function postUserBank() {}
+export async function postUserBank(
+  requestBody: UserBankInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/UserBank", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get available user banks [Feature is not allowed for sub users.] */
-export function getUserBankReady() {}
+export async function getUserBankReady(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/UserBank/ready", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get user bank detail [Needs secure login] */
-export function getUserBankId(id: number) {}
+export async function getUserBankId(
+  id: number,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/UserBank/{id}", { id }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Edit user bank [Needs secure login] */
-export function putUserBankId(id: number) {}
+export async function putUserBankId(
+  id: number,
+  requestBody: UserBankInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/UserBank/{id}", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Change user bank show-in-list property [Needs secure login] */
-export function putUserBankIdChangeVisibility(id: number) {}
+export async function putUserBankIdChangeVisibility(
+  id: number,
+  requestBody: UserBankChangeVisibilityInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/UserBank/{id}/changeVisibility", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get [normal/sub/business] user profile detail */
-export function getUser() {}
+export async function getUser(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/User", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Edit profile [state, city, address] [Feature is not allowed for business users]
  * [Needs secure login]
  */
-export function putUser() {}
+export async function putUser(
+  requestBody: UserProfileInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/User", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function getUserContactInput(input: string) {}
+export async function getUserContactInput(
+  input: string,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/User/contact/{input}", { input }),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Change user avatar [Needs secure login] */
-export function putUserChangeAvatar() {}
+export async function putUserChangeAvatar(
+  requestBody: UserProfileAvatarInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/User/changeAvatar", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /**
  * Create a new national id verification request [Feature is not allowed for
  * business users]
  */
-export function postUserIdentityRequest() {}
+export async function postUserIdentityRequest(
+  requestBody: NewUserIdentityRequestInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/User/identityRequest", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /**
  * Get last national id verification request [Feature is not allowed for business
  * users]
  */
-export function getUserIdentityRequest() {}
+export async function getUserIdentityRequest(
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/User/identityRequest", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Change user phone number [Needs secure login] */
-export function postUserChangePhoneNumber() {}
+export async function postUserChangePhoneNumber(
+  requestBody: UserChangePhoneNumberInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/User/changePhoneNumber", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Confirm the phone number with a verification code for change phone number */
-export function postUserChangePhoneNumberVerify() {}
+export async function postUserChangePhoneNumberVerify(
+  requestBody: UserVerifyChangePhoneNumberInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/User/changePhoneNumber/verify", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Change user password */
-export function postUserChangePassword() {}
+export async function postUserChangePassword(
+  requestBody: UserChangePasswordInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/User/changePassword", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get user profile summary */
-export function getUserMe() {}
+export async function getUserMe(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/User/me", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Request for upgrade account to the business [Feature just allowed for the
  * normal users]
  */
-export function postUserUpgradeToBusinessRequest() {}
+export async function postUserUpgradeToBusinessRequest(
+  requestBody: UpgradeToBusinessUserInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/User/upgradeToBusinessRequest", {}),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /**
  * Get Last Request for upgrade account to the business [Feature just allowed for
  * the normal users]
  */
-export function getUserUpgradeToBusinessRequest() {}
+export async function getUserUpgradeToBusinessRequest(
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.getRequest(
+    template("/User/upgradeToBusinessRequest", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /**
  * Create a new task for executing the actions of the business user invitation
  * [Accept/Reject] [Feature is not allowed for sub users]
  */
-export function postUserInvitationIdTask(id: number) {}
+export async function postUserInvitationIdTask(
+  id: number,
+  requestBody: SubuserInvitationTaskInput,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.postRequest(
+    template("/User/invitation/{id}/task", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 /** Get business user invitations for me [Feature is not allowed for sub users] */
-export function getUserInvitation() {}
+export async function getUserInvitation(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/User/invitation", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Get user workspaces [Feature is not allowed for sub users] */
-export function getUserWorkspace() {}
+export async function getUserWorkspace(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/User/workspace", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function getUserPlugin() {}
+export async function getUserPlugin(configOverride: AxiosRequestConfig) {
+  return await Http.getRequest(
+    template("/UserPlugin", {}),
+    undefined,
+    undefined,
+    configOverride,
+  );
+}
 
 /** Undefined */
-export function putUserPluginIdChangeStatus(id: number) {}
+export async function putUserPluginIdChangeStatus(
+  id: number,
+  requestBody: UserPluginTogggleApiModel,
+  configOverride: AxiosRequestConfig,
+) {
+  return await Http.putRequest(
+    template("/UserPlugin/{id}/ChangeStatus", { id }),
+    undefined,
+    requestBody,
+    configOverride,
+  );
+}
 
 export interface AccountSummaryWithBalanceQuery {
   id: number;

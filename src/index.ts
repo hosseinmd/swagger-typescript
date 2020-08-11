@@ -6,16 +6,30 @@ import {
   generateServiceName,
   getTsType,
 } from "./utils";
-import { SwaggerSchemas, SwaggerRequest, SwaggerJson } from "./types";
+import { SwaggerSchemas, SwaggerRequest, SwaggerJson, Schema } from "./types";
+import { HTTP_REQUEST } from "./strings";
 
 function generate() {
+  let code = `
+import { AxiosRequestConfig} from "axios";
+import { Http } from "./httpRequest";
+
+function template(path: string, obj: { [x: string]: any } = {}) {
+    Object.keys(obj).forEach((key) => {
+      let re = new RegExp(\`{\${key}}\`, "i");
+      path = path.replace(re, obj[key]);
+    });
+  
+    return path;
+  }
+  
+`;
+
   try {
     const input: SwaggerJson = JSON.parse(
       readFileSync("./swagger.json", "utf8"),
     ); // Input can be any JS object (OpenAPI format)
     //   const output = swaggerToTS(input); // Outputs TypeScript defs as a string (to be parsed, or written to a file)
-
-    let code = "";
 
     Object.entries(input.paths).forEach(([endPoint, value]) => {
       Object.entries(value).forEach(
@@ -24,26 +38,44 @@ function generate() {
 
           let queryParams = getQueryParams(options.parameters);
 
-          //   let requestBody =
-          //     options.requestBody.content["application/json"] ||
-          //     options.requestBody.content["multipart/form-data"];
+          let requestBody =
+            options.requestBody?.content["application/json"] ||
+            options.requestBody?.content["multipart/form-data"];
+
+          let pathParamsRefString = pathParams.reduce(
+            (prev, { name }) => `${prev}${name},`,
+            "{",
+          );
+          pathParamsRefString = pathParamsRefString
+            ? pathParamsRefString + "}"
+            : "";
 
           code += `
 /**
  * ${options.summary}
  */
-export function ${method}${generateServiceName(endPoint)}(
+export async function ${method}${generateServiceName(endPoint)}(
     ${pathParams
-      .map(
-        ({ name, required, schema }) =>
-          `${name}${required ? "" : "?"}: ${getTsType(schema)}`,
+      .map(({ name, required, schema }) =>
+        getDefineParam(name, required, schema),
       )
       .join(",")}
       ${pathParams.length > 0 ? "," : ""}
-      ${queryParams ? `queryParams:${queryParams}` : ""}
+      ${queryParams ? `queryParams:${queryParams},` : ""}
+      ${
+        requestBody
+          ? `${getDefineParam("requestBody", true, requestBody.schema)},`
+          : ""
+      }
+      configOverride:AxiosRequestConfig
       
 ) {
-    
+    return await Http.${method}Request(
+      template("${endPoint}",${pathParamsRefString}),
+      ${queryParams ? "queryParams" : "undefined"},
+      ${requestBody ? "requestBody" : "undefined"},
+      configOverride,
+    )
 }
 `;
         },
@@ -79,9 +111,22 @@ export enum ${name}{${Enum.map(
       "./services.ts",
       format(code, { parser: "jsdoc-parser" } as any),
     );
+
+    writeFileSync(
+      "./httpRequest.ts",
+      format(HTTP_REQUEST, { parser: "jsdoc-parser" } as any),
+    );
   } catch (error) {
     console.log({ error });
   }
+}
+
+function getDefineParam(
+  name: string,
+  required: boolean = false,
+  schema: Schema,
+): string {
+  return `${name}${required ? "" : "?"}: ${getTsType(schema)}`;
 }
 
 export { generate };
