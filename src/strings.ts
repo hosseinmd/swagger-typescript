@@ -81,15 +81,15 @@ const Http = {
 };
 
 function overrideConfig(
-  config: AxiosRequestConfig,
-  configOverride: AxiosRequestConfig,
+  config?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig,
 ): AxiosRequestConfig {
   return {
     ...config,
     ...configOverride,
     headers: {
-      ...config.headers,
-      ...configOverride.headers,
+      ...config?.headers,
+      ...configOverride?.headers,
     },
   };
 }
