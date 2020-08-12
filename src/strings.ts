@@ -13,7 +13,7 @@ const Http = {
     try {
       return await Axios.get(
         url,
-        overrideConfig(getBaseConfig(), {
+        overrideConfig(await getBaseConfig(), {
           params: queryParams,
           ...configOverride,
         }),
@@ -117,7 +117,7 @@ const CONFIG = `
 // Please add your custom config
 import { AxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
 
-function getBaseConfig(): AxiosRequestConfig {
+async function getBaseConfig(): Promise<AxiosRequestConfig> {
   return {
     baseURL: "",
     headers: {
