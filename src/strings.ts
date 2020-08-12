@@ -1,102 +1,104 @@
-const REQUEST_PARAMS =
-  "url:string,queryParams:any|undefined,requestBody:any|undefined,configOverride?:AxiosRequestConfig";
-
-const REQUEST_RESPONSE = "Promise<AxiosResponse<any>>";
-
 const HTTP_REQUEST = `
-import Axios,{ AxiosRequestConfig, AxiosResponse } from "axios";
-  
-function getBaseUrl(){
-  return ''
-}
+import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import { getBaseConfig, errorCatch } from "./config";
 
-const axios = Axios.create({
-  baseURL: getBaseUrl(),
-  headers: {
-    'Content-Encoding': 'UTF-8',
-    Accept: 'application/json',
-    'Content-Type': 'application/json-patch+json',
+const Http = {
+  async getRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<AxiosResponse<any>> {
+    try {
+      return await Axios.get(
+        url,
+        overrideConfig(getBaseConfig(), {
+          params: queryParams,
+          ...configOverride,
+        }),
+      );
+    } catch (error) {
+      return errorCatch(error);
+    }
   },
-});
+  async postRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<AxiosResponse<any>> {
+    try {
+      return await Axios.post(
+        url,
+        requestBody,
+        overrideConfig(getBaseConfig(), {
+          params: queryParams,
+          ...configOverride,
+        }),
+      );
+    } catch (error) {
+      return errorCatch(error);
+    }
+  },
+  async putRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<AxiosResponse<any>> {
+    try {
+      return await Axios.put(
+        url,
+        requestBody,
+        overrideConfig(getBaseConfig(), {
+          params: queryParams,
+          ...configOverride,
+        }),
+      );
+    } catch (error) {
+      return errorCatch(error);
+    }
+  },
+  async deleteRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<AxiosResponse<any>> {
+    try {
+      return await Axios.get(
+        url,
+        overrideConfig(getBaseConfig(), {
+          params: queryParams,
+          ...configOverride,
+        }),
+      );
+    } catch (error) {
+      return errorCatch(error);
+    }
+  },
+};
 
-const Http={
-    async getRequest(${REQUEST_PARAMS}):${REQUEST_RESPONSE}{
-      try {
-        return await axios.get(url, {params:queryParams,...configOverride});
-      } catch (error) {
-        throwError(error);
-      }
+function overrideConfig(
+  config: AxiosRequestConfig,
+  configOverride: AxiosRequestConfig,
+): AxiosRequestConfig {
+  return {
+    ...config,
+    ...configOverride,
+    headers: {
+      ...config.headers,
+      ...configOverride.headers,
     },
-    async postRequest(${REQUEST_PARAMS}):${REQUEST_RESPONSE}{
-      try {
-        return await axios.post(url, requestBody, {params:queryParams,...configOverride});
-      } catch (error) {
-        throwError(error);
-      }
-    },
-    async putRequest(${REQUEST_PARAMS}):${REQUEST_RESPONSE}{
-      try {
-        return await axios.put(url, requestBody, {params:queryParams,...configOverride});
-      } catch (error) {
-        throwError(error);
-      }
-    },
-    async deleteRequest(${REQUEST_PARAMS}):${REQUEST_RESPONSE}{
-      try {
-        return await axios.get(url, {params:queryParams,...configOverride});
-      } catch (error) {
-        throwError(error);
-      }
-    },
+  };
 }
 
-interface ErrorParam {
-  message: string;
-  status?: number;
-  response?: string;
-}
-
- class Exception extends Error {
-  message: string;
-  status?: number;
-  response?: string;
-
-  constructor({message, status, response}: ErrorParam) {
-    super();
-    this.message = message;
-    this.status = status;
-    this.response = response;
-  }
-
-  isApiException = true;
-}
-
-
-function throwError(error) {
-  if (error.response) {
-    throw new Exception({
-      message: error.response.data,
-      status: error.response.status,
-      response:error.response,
-    });
-  }
-
-  if (error.isAxiosError) {
-    throw new Exception({
-      message: 'noInternetConnection',
-    });
-  }
-
-  throw error;
-}
-
-
-export {Http,Exception}
+export { Http, overrideConfig };
 `;
 
 const SERVICE_BEGINNING = `
 import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { Http } from "./httpRequest";
+import { Http, overrideConfig } from "./httpRequest";
 
 function template(path: string, obj: { [x: string]: any } = {}) {
     Object.keys(obj).forEach((key) => {
@@ -108,4 +110,68 @@ function template(path: string, obj: { [x: string]: any } = {}) {
 }
 `;
 
-export { HTTP_REQUEST, SERVICE_BEGINNING };
+const CONFIG = `
+import { AxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
+
+function getBaseConfig(): AxiosRequestConfig {
+  return {
+    baseURL: "",
+    headers: {
+      "Content-Encoding": "UTF-8",
+      Accept: "application/json",
+      "Content-Type": "application/json-patch+json",
+    },
+  };
+}
+
+function getOverride(): AxiosRequestConfig {
+  return {
+    headers: {
+      Authentication: "",
+    },
+  };
+}
+
+function errorCatch(error: AxiosError): any {
+  if (error.response) {
+    throw new Exception({
+      message: error.response.data,
+      status: error.response.status,
+      response: error.response,
+    });
+  }
+
+  if (error.isAxiosError) {
+    throw new Exception({
+      message: "noInternetConnection",
+    });
+  }
+
+  throw error;
+}
+
+interface ErrorParam {
+  message: string;
+  status?: number;
+  response?: AxiosResponse;
+}
+
+class Exception extends Error {
+  message: string;
+  status?: number;
+  response?: AxiosResponse;
+
+  constructor({ message, status, response }: ErrorParam) {
+    super();
+    this.message = message;
+    this.status = status;
+    this.response = response;
+  }
+
+  isApiException = true;
+}
+
+export { getBaseConfig, errorCatch, getOverride, Exception };
+`;
+
+export { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG };

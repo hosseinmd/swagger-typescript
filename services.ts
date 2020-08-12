@@ -1,5 +1,5 @@
 import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { Http } from "./httpRequest";
+import { Http, overrideConfig } from "./httpRequest";
 
 function template(path: string, obj: { [x: string]: any } = {}) {
   Object.keys(obj).forEach((key) => {
@@ -14,14 +14,17 @@ function template(path: string, obj: { [x: string]: any } = {}) {
 export async function getAccount(
   configOverride?: AxiosRequestConfig,
 ): Promise<AxiosResponse<AccountSummaryWithBalanceQuery[]>> {
-  return await Http.getRequest(template("/Account", {}), undefined, undefined, {
-    ...configOverride,
-    headers: {
-      ...configOverride?.headers,
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  });
+  return await Http.getRequest(
+    template("/Account", {}),
+    undefined,
+    undefined,
+    overrideConfig(configOverride, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }),
+  );
 }
 
 /** Create a new account. [Feature is not allowed for sub users] */
@@ -33,14 +36,12 @@ export async function postAccount(
     template("/Account", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -53,14 +54,12 @@ export async function getAccountId(
     template("/Account/{id}", { id }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -74,14 +73,12 @@ export async function putAccountId(
     template("/Account/{id}", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -98,14 +95,12 @@ export async function putAccountIdNotification(
     template("/Account/{id}/notification", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -118,14 +113,12 @@ export async function getAccountIdBalance(
     template("/Account/{id}/balance", { id }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -138,14 +131,12 @@ export async function getAccountAccountIdPermittedSubUsers(
     template("/Account/{accountId}/PermittedSubUsers", { accountId }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -159,14 +150,12 @@ export async function postAccountIdCharge(
     template("/Account/{id}/charge", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -181,14 +170,12 @@ export async function getAccountIdEpayRequestComission(
     template("/Account/{id}/epayRequest/comission", { id }),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -202,14 +189,12 @@ export async function postAccountIdEpayRequest(
     template("/Account/{id}/epayRequest", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -224,14 +209,12 @@ export async function getAccountIdSettlementRequestComission(
     template("/Account/{id}/settlementRequest/comission", { id }),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -245,14 +228,12 @@ export async function postAccountIdSettlementRequest(
     template("/Account/{id}/settlementRequest", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -272,14 +253,12 @@ export async function getAccountSearch(
     template("/Account/search", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -294,14 +273,12 @@ export async function getAccountIdTransferMoneyCommission(
     template("/Account/{id}/transferMoney/commission", { id }),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -315,14 +292,12 @@ export async function postAccountIdTransferMoney(
     template("/Account/{id}/transferMoney", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -335,14 +310,12 @@ export async function postAuthApilogin(
     template("/Auth/apilogin", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -355,14 +328,12 @@ export async function postAuthLogin(
     template("/Auth/login", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -375,14 +346,12 @@ export async function postAuthLoginOtp(
     template("/Auth/login/otp", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -395,14 +364,12 @@ export async function postAuthLoginOtpGenerate(
     template("/Auth/login/otp/generate", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -415,14 +382,12 @@ export async function postAuthLoginSubuser(
     template("/Auth/login/subuser", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -435,14 +400,12 @@ export async function postAuthLoginSecurity(
     template("/Auth/login/security", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -454,14 +417,12 @@ export async function getAuthLoginSecurityRefresh(
     template("/Auth/login/security/refresh", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -474,14 +435,12 @@ export async function postAuthCheck(
     template("/Auth/check", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -493,14 +452,12 @@ export async function postAuthLogout(
     template("/Auth/logout", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -513,14 +470,12 @@ export async function postAuthRegister(
     template("/Auth/register", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -533,14 +488,12 @@ export async function postAuthRegisterVerify(
     template("/Auth/register/verify", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -553,14 +506,12 @@ export async function postAuthRegisterPoslogin(
     template("/Auth/register/poslogin", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -573,14 +524,12 @@ export async function postAuthRegisterBasic(
     template("/Auth/register/basic", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -593,14 +542,12 @@ export async function postAuthForgetPassword(
     template("/Auth/forgetPassword", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -613,14 +560,12 @@ export async function postAuthForgetPasswordVerify(
     template("/Auth/forgetPassword/verify", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -633,14 +578,12 @@ export async function postAuthForgetPasswordResetPassword(
     template("/Auth/forgetPassword/resetPassword", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -653,14 +596,12 @@ export async function postAuthRegisterDevice(
     template("/Auth/register/device", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -668,14 +609,17 @@ export async function postAuthRegisterDevice(
 export async function getBank(
   configOverride?: AxiosRequestConfig,
 ): Promise<AxiosResponse<BankQuery[]>> {
-  return await Http.getRequest(template("/Bank", {}), undefined, undefined, {
-    ...configOverride,
-    headers: {
-      ...configOverride?.headers,
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  });
+  return await Http.getRequest(
+    template("/Bank", {}),
+    undefined,
+    undefined,
+    overrideConfig(configOverride, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }),
+  );
 }
 
 /** Get Business categories */
@@ -686,14 +630,12 @@ export async function getBusinessUserCategory(
     template("/BusinessUser/category", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -709,14 +651,12 @@ export async function postBusinessUserInvite(
     template("/BusinessUser/invite", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -732,14 +672,12 @@ export async function postBusinessUserInviteInvitationIdResend(
     template("/BusinessUser/invite/{invitationId}/resend", { invitationId }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -755,14 +693,12 @@ export async function deleteBusinessUserInviteInvitationIdRemove(
     template("/BusinessUser/invite/{invitationId}/remove", { invitationId }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -778,14 +714,12 @@ export async function postBusinessUserResendInvitationId(
     template("/BusinessUser/resend/{invitationId}", { invitationId }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -805,14 +739,12 @@ export async function deleteBusinessUserConnectionInvitationIdRemove(
     }),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -830,14 +762,12 @@ export async function getBusinessUserConnection(
     template("/BusinessUser/connection", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -854,14 +784,12 @@ export async function getBusinessUserConnectionActive(
     template("/BusinessUser/connection/active", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -877,14 +805,12 @@ export async function getBusinessUserConnectionId(
     template("/BusinessUser/connection/{id}", { id }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -901,14 +827,12 @@ export async function putBusinessUserConnectionId(
     template("/BusinessUser/connection/{id}", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -924,14 +848,12 @@ export async function deleteBusinessUserConnectionId(
     template("/BusinessUser/connection/{id}", { id }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -947,14 +869,12 @@ export async function getBusinessUserConnectionIdPermission(
     template("/BusinessUser/connection/{id}/permission", { id }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -971,14 +891,12 @@ export async function postBusinessUserConnectionIdPermission(
     template("/BusinessUser/connection/{id}/permission", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -999,14 +917,12 @@ export async function putBusinessUserConnectionIdPermissionAccountId(
     }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -1026,14 +942,12 @@ export async function deleteBusinessUserConnectionIdPermissionAccountId(
     }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -1071,14 +985,12 @@ export async function getBusinessUserConnectionIdEpay(
     template("/BusinessUser/connection/{id}/epay", { id }),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1104,14 +1016,12 @@ export async function getBusinessUserConnectionIdSettlement(
     template("/BusinessUser/connection/{id}/settlement", { id }),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1148,14 +1058,12 @@ export async function getEpayRequest(
     template("/EpayRequest", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1168,14 +1076,12 @@ export async function getEpayRequestId(
     template("/EpayRequest/{id}", { id }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1188,14 +1094,12 @@ export async function getEpayRequestTokenQrCode(
     template("/EpayRequest/{token}/qrCode", { token }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -1210,14 +1114,12 @@ export async function getEpayRequestPosQrAccountNo(
     template("/EpayRequest/pos/Qr/{accountNo}", { accountNo }),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -1241,14 +1143,12 @@ export async function getEpayRequestForMe(
     template("/EpayRequest/forMe", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1262,14 +1162,12 @@ export async function postEpayRequestIdTask(
     template("/EpayRequest/{id}/task", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -1281,14 +1179,12 @@ export async function getEpayRequestAudiencesRecent(
     template("/EpayRequest/audiences/recent", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1297,14 +1193,17 @@ export async function postFile(
   requestBody: { file?: string },
   configOverride?: AxiosRequestConfig,
 ): Promise<AxiosResponse<FileUploadQuery>> {
-  return await Http.postRequest(template("/File", {}), undefined, requestBody, {
-    ...configOverride,
-    headers: {
-      ...configOverride?.headers,
-      "Content-Type": "multipart/form-data",
-      Accept: "application/json",
-    },
-  });
+  return await Http.postRequest(
+    template("/File", {}),
+    undefined,
+    requestBody,
+    overrideConfig(configOverride, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Accept: "application/json",
+      },
+    }),
+  );
 }
 
 /** Download a file. */
@@ -1316,14 +1215,12 @@ export async function getFileId(
     template("/File/{id}", { id }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -1336,14 +1233,12 @@ export async function putGroupTransferAdd(
     template("/GroupTransfer/add", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1356,14 +1251,12 @@ export async function postGroupTransferImport(
     template("/GroupTransfer/import", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "multipart/form-data",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1376,14 +1269,12 @@ export async function postGroupTransferExport(
     template("/GroupTransfer/export", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -1396,14 +1287,12 @@ export async function postGroupTransferTransfer(
     template("/GroupTransfer/transfer", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1417,14 +1306,12 @@ export async function getGroupTransferCommission(
     template("/GroupTransfer/commission", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1436,14 +1323,12 @@ export async function getNotificationIa(
     template("/Notification/ia", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1456,14 +1341,12 @@ export async function putNotificationIaNotifId(
     template("/Notification/ia/{notifId}", { notifId }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1476,14 +1359,12 @@ export async function getPluginId(
     template("/Plugin/{id}", { id }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1498,14 +1379,12 @@ export async function getPosAccountNo(
     template("/Pos/{accountNo}", { accountNo }),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1519,14 +1398,12 @@ export async function postPosPayTargetAccountNoWallet(
     template("/Pos/pay/{targetAccountNo}/wallet", { targetAccountNo }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1540,14 +1417,12 @@ export async function postPosPayTargetAccountNoOnline(
     template("/Pos/pay/{targetAccountNo}/online", { targetAccountNo }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1560,14 +1435,12 @@ export async function getReceiptToken(
     template("/Receipt/{token}", { token }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1582,14 +1455,12 @@ export async function getResellerUser(
     template("/ResellerUser", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1604,14 +1475,12 @@ export async function getResellerUserIntroducedFilterData(
     template("/ResellerUser/introduced/filterData", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1641,14 +1510,12 @@ export async function getResellerUserIntroduced(
     template("/ResellerUser/introduced", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1661,14 +1528,12 @@ export async function getResellerUserIntroducedUserIdActivity(
     template("/ResellerUser/introduced/{userId}/activity", { userId }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1695,14 +1560,12 @@ export async function getResellerUserDashboardCommissionSum(
     template("/ResellerUser/dashboard/commission/sum", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1729,14 +1592,12 @@ export async function getResellerUserDashboardCommissionReport(
     template("/ResellerUser/dashboard/commission/report", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1763,14 +1624,12 @@ export async function getResellerUserDashboardLinksCount(
     template("/ResellerUser/dashboard/links/count", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1797,14 +1656,12 @@ export async function getResellerUserDashboardLinksReport(
     template("/ResellerUser/dashboard/links/report", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1831,14 +1688,12 @@ export async function getResellerUserDashboardLinksPaidCount(
     template("/ResellerUser/dashboard/links/paid/count", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1865,14 +1720,12 @@ export async function getResellerUserDashboardLinksPaidReport(
     template("/ResellerUser/dashboard/links/paid/report", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1899,14 +1752,12 @@ export async function getResellerUserDashboardTransactionsCount(
     template("/ResellerUser/dashboard/transactions/count", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1933,14 +1784,12 @@ export async function getResellerUserDashboardTransactionsReport(
     template("/ResellerUser/dashboard/transactions/report", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -1967,14 +1816,12 @@ export async function getResellerUserDashboardIntroducedCount(
     template("/ResellerUser/dashboard/introduced/count", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2001,14 +1848,12 @@ export async function getResellerUserDashboardIntroducedReport(
     template("/ResellerUser/dashboard/introduced/report", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2021,14 +1866,12 @@ export async function postServiceNewEpayRequest(
     template("/Service/NewEpayRequest", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2041,14 +1884,12 @@ export async function postServiceCheckEpayRequest(
     template("/Service/CheckEpayRequest", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2060,14 +1901,12 @@ export async function postServiceVerifyApiKey(
     template("/Service/VerifyApiKey", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2080,14 +1919,12 @@ export async function postServiceNewDivideEpayRequest(
     template("/Service/NewDivideEpayRequest", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2100,14 +1937,12 @@ export async function postServiceUnblockAmount(
     template("/Service/UnblockAmount", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2120,14 +1955,12 @@ export async function postServiceCancelAmount(
     template("/Service/CancelAmount", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2140,14 +1973,12 @@ export async function postServiceCancelPayment(
     template("/Service/CancelPayment", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2172,14 +2003,12 @@ export async function getSettlementRequest(
     template("/SettlementRequest", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2192,14 +2021,12 @@ export async function getSubDomainSubDomainAddress(
     template("/SubDomain/{subDomainAddress}", { subDomainAddress }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2211,14 +2038,12 @@ export async function getSubDomain(
     template("/SubDomain", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2234,14 +2059,12 @@ export async function putSubDomain(
     template("/SubDomain", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2257,14 +2080,12 @@ export async function deleteSubUserConnectionId(
     template("/SubUser/connection/{id}", { id }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2276,14 +2097,12 @@ export async function getSubUserConnection(
     template("/SubUser/connection", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2296,14 +2115,12 @@ export async function getSubUserAccountId(
     template("/SubUser/account/{id}", { id }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2320,14 +2137,12 @@ export async function postSubUserNotificationId(
     template("/SubUser/notification/{id}", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -2351,14 +2166,12 @@ export async function getTransaction(
     template("/Transaction", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2378,14 +2191,12 @@ export async function getTransferSearch(
     template("/Transfer/search", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2399,14 +2210,12 @@ export async function getTransferRecent(
     template("/Transfer/recent", {}),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2421,14 +2230,12 @@ export async function getTransferAccountIdCommission(
     template("/Transfer/{accountId}/commission", { accountId }),
     queryParams,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2442,14 +2249,12 @@ export async function postTransferAccountId(
     template("/Transfer/{accountId}", { accountId }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2461,14 +2266,12 @@ export async function getUserBank(
     template("/UserBank", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2484,14 +2287,12 @@ export async function postUserBank(
     template("/UserBank", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2503,14 +2304,12 @@ export async function getUserBankReady(
     template("/UserBank/ready", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2523,14 +2322,12 @@ export async function getUserBankId(
     template("/UserBank/{id}", { id }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2544,14 +2341,12 @@ export async function putUserBankId(
     template("/UserBank/{id}", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2565,14 +2360,12 @@ export async function putUserBankIdChangeVisibility(
     template("/UserBank/{id}/changeVisibility", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -2580,14 +2373,17 @@ export async function putUserBankIdChangeVisibility(
 export async function getUser(
   configOverride?: AxiosRequestConfig,
 ): Promise<AxiosResponse<UserDetailQuery>> {
-  return await Http.getRequest(template("/User", {}), undefined, undefined, {
-    ...configOverride,
-    headers: {
-      ...configOverride?.headers,
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  });
+  return await Http.getRequest(
+    template("/User", {}),
+    undefined,
+    undefined,
+    overrideConfig(configOverride, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }),
+  );
 }
 
 /**
@@ -2598,14 +2394,17 @@ export async function putUser(
   requestBody: UserProfileInput,
   configOverride?: AxiosRequestConfig,
 ): Promise<AxiosResponse<UserDetailQuery>> {
-  return await Http.putRequest(template("/User", {}), undefined, requestBody, {
-    ...configOverride,
-    headers: {
-      ...configOverride?.headers,
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  });
+  return await Http.putRequest(
+    template("/User", {}),
+    undefined,
+    requestBody,
+    overrideConfig(configOverride, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }),
+  );
 }
 
 /** Undefined */
@@ -2617,14 +2416,12 @@ export async function getUserContactInput(
     template("/User/contact/{input}", { input }),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2637,14 +2434,12 @@ export async function putUserChangeAvatar(
     template("/User/changeAvatar", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -2660,14 +2455,12 @@ export async function postUserIdentityRequest(
     template("/User/identityRequest", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2682,14 +2475,12 @@ export async function getUserIdentityRequest(
     template("/User/identityRequest", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2702,14 +2493,12 @@ export async function postUserChangePhoneNumber(
     template("/User/changePhoneNumber", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -2722,14 +2511,12 @@ export async function postUserChangePhoneNumberVerify(
     template("/User/changePhoneNumber/verify", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -2742,14 +2529,12 @@ export async function postUserChangePassword(
     template("/User/changePassword", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -2757,14 +2542,17 @@ export async function postUserChangePassword(
 export async function getUserMe(
   configOverride?: AxiosRequestConfig,
 ): Promise<AxiosResponse<UserMeQuery>> {
-  return await Http.getRequest(template("/User/me", {}), undefined, undefined, {
-    ...configOverride,
-    headers: {
-      ...configOverride?.headers,
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  });
+  return await Http.getRequest(
+    template("/User/me", {}),
+    undefined,
+    undefined,
+    overrideConfig(configOverride, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }),
+  );
 }
 
 /**
@@ -2779,14 +2567,12 @@ export async function postUserUpgradeToBusinessRequest(
     template("/User/upgradeToBusinessRequest", {}),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2801,14 +2587,12 @@ export async function getUserUpgradeToBusinessRequest(
     template("/User/upgradeToBusinessRequest", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2825,14 +2609,12 @@ export async function postUserInvitationIdTask(
     template("/User/invitation/{id}/task", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/octet-stream",
       },
-    },
+    }),
   );
 }
 
@@ -2844,14 +2626,12 @@ export async function getUserInvitation(
     template("/User/invitation", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2863,14 +2643,12 @@ export async function getUserWorkspace(
     template("/User/workspace", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2882,14 +2660,12 @@ export async function getUserPlugin(
     template("/UserPlugin", {}),
     undefined,
     undefined,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 
@@ -2903,14 +2679,12 @@ export async function putUserPluginIdChangeStatus(
     template("/UserPlugin/{id}/ChangeStatus", { id }),
     undefined,
     requestBody,
-    {
-      ...configOverride,
+    overrideConfig(configOverride, {
       headers: {
-        ...configOverride?.headers,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    },
+    }),
   );
 }
 

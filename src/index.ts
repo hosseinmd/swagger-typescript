@@ -13,7 +13,7 @@ import {
   Schema,
   SwaggerResponse,
 } from "./types";
-import { HTTP_REQUEST, SERVICE_BEGINNING } from "./strings";
+import { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG } from "./strings";
 
 function generate() {
   let code = SERVICE_BEGINNING;
@@ -84,14 +84,13 @@ export async function ${method}${generateServiceName(endPoint)}(
       template("${endPoint}",${pathParamsRefString}),
       ${queryParams ? "queryParams" : "undefined"},
       ${requestBody ? "requestBody" : "undefined"},
-      {
-        ...configOverride,
+      overrideConfig(
+        configOverride,{
         headers: {
-          ...configOverride?.headers,
           "Content-Type": "${contentType}",
           Accept: "${accept}",
         },
-      },
+      }),
     )
 }
 `;
@@ -135,6 +134,11 @@ export enum ${name} {${Enum.map(
     writeFileSync(
       "./httpRequest.ts",
       format(HTTP_REQUEST, { parser: "jsdoc-parser" } as any),
+    );
+
+    writeFileSync(
+      "./config.ts",
+      format(CONFIG, { parser: "jsdoc-parser" } as any),
     );
   } catch (error) {
     console.log({ error });
