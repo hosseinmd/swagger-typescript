@@ -12,39 +12,39 @@ function template(path: string, obj: { [x: string]: any } = {}) {
 
 /** Get user accounts [Or get sub user authorized accounts] */
 export async function getAccount(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<AccountSummaryWithBalanceQuery[]>> {
   return await Http.getRequest(
     template("/Account", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Create a new account. [Feature is not allowed for sub users] */
 export async function postAccount(
   requestBody: AccountInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<AccountSummaryWithBalanceQuery>> {
   return await Http.postRequest(
     template("/Account", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get user account detail [Feature is not allowed for sub users] */
 export async function getAccountId(
   id: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<AccountDetailQuery>> {
   return await Http.getRequest(
     template("/Account/{id}", { id }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -52,13 +52,13 @@ export async function getAccountId(
 export async function putAccountId(
   id: number,
   requestBody: AccountInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<AccountSummaryWithBalanceQuery>> {
   return await Http.putRequest(
     template("/Account/{id}", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -69,39 +69,39 @@ export async function putAccountId(
 export async function putAccountIdNotification(
   id: number,
   requestBody: AccountNotificationStatusInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.putRequest(
     template("/Account/{id}/notification", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get user account balance */
 export async function getAccountIdBalance(
   id: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<AccountBalanceSummaryQuery>> {
   return await Http.getRequest(
     template("/Account/{id}/balance", { id }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Undefined */
 export async function getAccountAccountIdPermittedSubUsers(
   accountId: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<AccountPermittedSubUserQuery>> {
   return await Http.getRequest(
     template("/Account/{accountId}/PermittedSubUsers", { accountId }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -109,13 +109,13 @@ export async function getAccountAccountIdPermittedSubUsers(
 export async function postAccountIdCharge(
   id: number,
   requestBody: NewChargeRequestInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<NewChargeRequestResultQuery>> {
   return await Http.postRequest(
     template("/Account/{id}/charge", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -124,13 +124,13 @@ export async function getAccountIdEpayRequestComission(
   id: number,
   queryParams: { amount: number },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<CommissionApiModel>> {
   return await Http.getRequest(
     template("/Account/{id}/epayRequest/comission", { id }),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -138,13 +138,13 @@ export async function getAccountIdEpayRequestComission(
 export async function postAccountIdEpayRequest(
   id: number,
   requestBody: NewEpayRequestInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<NewEpayRequestResultQuery>> {
   return await Http.postRequest(
     template("/Account/{id}/epayRequest", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -153,13 +153,13 @@ export async function getAccountIdSettlementRequestComission(
   id: number,
   queryParams: { amount: number },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<CommissionApiModel>> {
   return await Http.getRequest(
     template("/Account/{id}/settlementRequest/comission", { id }),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -167,33 +167,33 @@ export async function getAccountIdSettlementRequestComission(
 export async function postAccountIdSettlementRequest(
   id: number,
   requestBody: NewSettlementRequestInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SettlementRequestQuery>> {
   return await Http.postRequest(
     template("/Account/{id}/settlementRequest", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get insensitive data of account owner */
 export async function getAccountSearch(
-  queryParams: {
-    userId: string;
-    accountId: number;
-    customerNumber: number;
-    accountNumber: string;
-    contact: string;
+  queryParams?: {
+    userId?: string;
+    accountId?: number;
+    customerNumber?: number;
+    accountNumber?: string;
+    contact?: string;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<InsensitiveAccountApiModel>> {
   return await Http.getRequest(
     template("/Account/search", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -202,13 +202,13 @@ export async function getAccountIdTransferMoneyCommission(
   id: number,
   queryParams: { amount: number },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<CommissionApiModel>> {
   return await Http.getRequest(
     template("/Account/{id}/transferMoney/commission", { id }),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -216,256 +216,256 @@ export async function getAccountIdTransferMoneyCommission(
 export async function postAccountIdTransferMoney(
   id: number,
   requestBody: TransferMoneyInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<TransferMoneyApiModel>> {
   return await Http.postRequest(
     template("/Account/{id}/transferMoney", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** SiginIn using ApiKey and SecretKey */
 export async function postAuthApilogin(
   requestBody: ApiLoginInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/apilogin", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Sign in and get a new long-lived JWT */
 export async function postAuthLogin(
   requestBody: LoginInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/login", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Undefined */
 export async function postAuthLoginOtp(
   requestBody: TotpLoginInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/login/otp", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Undefined */
 export async function postAuthLoginOtpGenerate(
   requestBody: RequestTotpInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/login/otp/generate", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Sign in as a sub user (JWT) */
 export async function postAuthLoginSubuser(
   requestBody: SubUserLoginInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/login/subuser", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get a new short-lived JWT, using current long-lived one */
 export async function postAuthLoginSecurity(
   requestBody: SecureLoginInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/login/security", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Refresh the short-lived JWT, using current short-lived one */
 export async function getAuthLoginSecurityRefresh(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.getRequest(
     template("/Auth/login/security/refresh", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Check the data that the user has been logged in */
 export async function postAuthCheck(
   requestBody: LoginInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/check", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Log out */
 export async function postAuthLogout(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/logout", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Register new user with the phone number (Two factor authentication) */
 export async function postAuthRegister(
   requestBody: RegisterInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<RegisterNewUserQuery>> {
   return await Http.postRequest(
     template("/Auth/register", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Confirm the phone number with verification code */
 export async function postAuthRegisterVerify(
   requestBody: ConfirmPhoneNumberOrEmailInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<ConfirmPhoneNumberQuery>> {
   return await Http.postRequest(
     template("/Auth/register/verify", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Confirm phone number with the given token and auto signin user to app. */
 export async function postAuthRegisterPoslogin(
   requestBody: ConfirmPhoneNumberOrEmailInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<NewTokenResult>> {
   return await Http.postRequest(
     template("/Auth/register/poslogin", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Set basic data for your registration [fullname, password] */
 export async function postAuthRegisterBasic(
   requestBody: SetUserBasicInfoInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/register/basic", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Recover forgotten password with phone number (Two factor authentication) */
 export async function postAuthForgetPassword(
   requestBody: UserForgetPasswordInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/forgetPassword", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Confirm the phone number with a verification code for recover password */
 export async function postAuthForgetPasswordVerify(
   requestBody: UserVerifyForgetPasswordInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<ConfirmPhoneNumberQuery>> {
   return await Http.postRequest(
     template("/Auth/forgetPassword/verify", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Reset forgotten password */
 export async function postAuthForgetPasswordResetPassword(
   requestBody: UserResetForgetPasswordInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/forgetPassword/resetPassword", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Register new Device for current user. */
 export async function postAuthRegisterDevice(
   requestBody: RegisterDeviceInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/Auth/register/device", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get available banks */
 export async function getBank(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<BankQuery[]>> {
   return await Http.getRequest(
     template("/Bank", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get Business categories */
 export async function getBusinessUserCategory(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<BusinessCategoryQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/category", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -475,13 +475,13 @@ export async function getBusinessUserCategory(
  */
 export async function postBusinessUserInvite(
   requestBody: SendConnectionRequestInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.postRequest(
     template("/BusinessUser/invite", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -491,13 +491,13 @@ export async function postBusinessUserInvite(
  */
 export async function postBusinessUserInviteInvitationIdResend(
   invitationId: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.postRequest(
     template("/BusinessUser/invite/{invitationId}/resend", { invitationId }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -507,13 +507,13 @@ export async function postBusinessUserInviteInvitationIdResend(
  */
 export async function deleteBusinessUserInviteInvitationIdRemove(
   invitationId: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.deleteRequest(
     template("/BusinessUser/invite/{invitationId}/remove", { invitationId }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -523,13 +523,13 @@ export async function deleteBusinessUserInviteInvitationIdRemove(
  */
 export async function postBusinessUserResendInvitationId(
   invitationId: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.postRequest(
     template("/BusinessUser/resend/{invitationId}", { invitationId }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -541,7 +541,7 @@ export async function deleteBusinessUserConnectionInvitationIdRemove(
   invitationId: string,
   queryParams: { id: number },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.deleteRequest(
     template("/BusinessUser/connection/{invitationId}/remove", {
@@ -549,25 +549,25 @@ export async function deleteBusinessUserConnectionInvitationIdRemove(
     }),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get the connections [Feature just allowed for the business users] */
 export async function getBusinessUserConnection(
-  queryParams: {
-    subUserConnectionStatus: undefined;
-    skip: number;
-    take: number;
+  queryParams?: {
+    subUserConnectionStatus?: undefined;
+    skip?: number;
+    take?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserConnectionQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/connection", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -576,15 +576,15 @@ export async function getBusinessUserConnection(
  * the business users]
  */
 export async function getBusinessUserConnectionActive(
-  queryParams: { skip: number; take: number },
+  queryParams?: { skip?: number; take?: number },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserConnectionQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/connection/active", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -594,13 +594,13 @@ export async function getBusinessUserConnectionActive(
  */
 export async function getBusinessUserConnectionId(
   id: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserConnectionAmountsReportQuery>> {
   return await Http.getRequest(
     template("/BusinessUser/connection/{id}", { id }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -611,13 +611,13 @@ export async function getBusinessUserConnectionId(
 export async function putBusinessUserConnectionId(
   id: number,
   requestBody: EditConnectionInfoInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.putRequest(
     template("/BusinessUser/connection/{id}", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -627,13 +627,13 @@ export async function putBusinessUserConnectionId(
  */
 export async function deleteBusinessUserConnectionId(
   id: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserConnectionQuery>> {
   return await Http.deleteRequest(
     template("/BusinessUser/connection/{id}", { id }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -643,13 +643,13 @@ export async function deleteBusinessUserConnectionId(
  */
 export async function getBusinessUserConnectionIdPermission(
   id: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserPermissionQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/connection/{id}/permission", { id }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -660,13 +660,13 @@ export async function getBusinessUserConnectionIdPermission(
 export async function postBusinessUserConnectionIdPermission(
   id: number,
   requestBody: SetAccountAccessForSubUserInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/BusinessUser/connection/{id}/permission", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -678,7 +678,7 @@ export async function putBusinessUserConnectionIdPermissionAccountId(
   id: number,
   accountId: number,
   requestBody: EditSubUserPermissionInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.putRequest(
     template("/BusinessUser/connection/{id}/permission/{accountId}", {
@@ -687,7 +687,7 @@ export async function putBusinessUserConnectionIdPermissionAccountId(
     }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -698,7 +698,7 @@ export async function putBusinessUserConnectionIdPermissionAccountId(
 export async function deleteBusinessUserConnectionIdPermissionAccountId(
   id: number,
   accountId: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.deleteRequest(
     template("/BusinessUser/connection/{id}/permission/{accountId}", {
@@ -707,7 +707,7 @@ export async function deleteBusinessUserConnectionIdPermissionAccountId(
     }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -717,35 +717,35 @@ export async function deleteBusinessUserConnectionIdPermissionAccountId(
  */
 export async function getBusinessUserConnectionIdEpay(
   id: number,
-  queryParams: {
-    accountId: number;
-    epayRequestStatus: undefined;
-    startDate: string;
-    endDate: string;
-    pluginId: number;
-    plugin_ZhenicCustomerName: string;
-    plugin_ZhenicCustomerNumber: string;
-    plugin_ZhenicInvoiceNumber: string;
-    plugin_ZhenicRialAmount: string;
-    plugin_ZhenicDollarAmount: string;
-    plugin_ZhenicDollarAmountRate: string;
-    plugin_ZhenicEuroAmount: string;
-    plugin_ZhenicEuroAmountRate: string;
-    plugin_SepidarCustomerName: string;
-    plugin_SepidarCustomerNumber: string;
-    plugin_SepidarDocumentNumber: string;
-    plugin_SepidarVoucherType: string;
-    skip: number;
-    take: number;
+  queryParams?: {
+    accountId?: number;
+    epayRequestStatus?: undefined;
+    startDate?: string;
+    endDate?: string;
+    pluginId?: number;
+    plugin_ZhenicCustomerName?: string;
+    plugin_ZhenicCustomerNumber?: string;
+    plugin_ZhenicInvoiceNumber?: string;
+    plugin_ZhenicRialAmount?: string;
+    plugin_ZhenicDollarAmount?: string;
+    plugin_ZhenicDollarAmountRate?: string;
+    plugin_ZhenicEuroAmount?: string;
+    plugin_ZhenicEuroAmountRate?: string;
+    plugin_SepidarCustomerName?: string;
+    plugin_SepidarCustomerNumber?: string;
+    plugin_SepidarDocumentNumber?: string;
+    plugin_SepidarVoucherType?: string;
+    skip?: number;
+    take?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<EpayRequestQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/connection/{id}/epay", { id }),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -755,23 +755,23 @@ export async function getBusinessUserConnectionIdEpay(
  */
 export async function getBusinessUserConnectionIdSettlement(
   id: number,
-  queryParams: {
-    accountId: number;
-    startDate: string;
-    endDate: string;
-    minimumAmount: number;
-    maximumAmount: number;
-    skip: number;
-    take: number;
+  queryParams?: {
+    accountId?: number;
+    startDate?: string;
+    endDate?: string;
+    minimumAmount?: number;
+    maximumAmount?: number;
+    skip?: number;
+    take?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SettlementRequestQuery[]>> {
   return await Http.getRequest(
     template("/BusinessUser/connection/{id}/settlement", { id }),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -780,76 +780,76 @@ export async function getBusinessUserConnectionIdSettlement(
  * secure login]
  */
 export async function getEpayRequest(
-  queryParams: {
-    accountId: number;
-    epayRequestStatus: undefined;
-    startDate: string;
-    endDate: string;
-    pluginId: number;
-    plugin_ZhenicCustomerName: string;
-    plugin_ZhenicCustomerNumber: string;
-    plugin_ZhenicInvoiceNumber: string;
-    plugin_ZhenicRialAmount: string;
-    plugin_ZhenicDollarAmount: string;
-    plugin_ZhenicDollarAmountRate: string;
-    plugin_ZhenicEuroAmount: string;
-    plugin_ZhenicEuroAmountRate: string;
-    plugin_SepidarCustomerName: string;
-    plugin_SepidarCustomerNumber: string;
-    plugin_SepidarDocumentNumber: string;
-    plugin_SepidarVoucherType: string;
-    skip: number;
-    take: number;
+  queryParams?: {
+    accountId?: number;
+    epayRequestStatus?: undefined;
+    startDate?: string;
+    endDate?: string;
+    pluginId?: number;
+    plugin_ZhenicCustomerName?: string;
+    plugin_ZhenicCustomerNumber?: string;
+    plugin_ZhenicInvoiceNumber?: string;
+    plugin_ZhenicRialAmount?: string;
+    plugin_ZhenicDollarAmount?: string;
+    plugin_ZhenicDollarAmountRate?: string;
+    plugin_ZhenicEuroAmount?: string;
+    plugin_ZhenicEuroAmountRate?: string;
+    plugin_SepidarCustomerName?: string;
+    plugin_SepidarCustomerNumber?: string;
+    plugin_SepidarDocumentNumber?: string;
+    plugin_SepidarVoucherType?: string;
+    skip?: number;
+    take?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<EpayRequestQuery[]>> {
   return await Http.getRequest(
     template("/EpayRequest", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get epay request detail based on Id */
 export async function getEpayRequestId(
   id: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<NewEpayRequestResultQuery>> {
   return await Http.getRequest(
     template("/EpayRequest/{id}", { id }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get QR code image file for epay request */
 export async function getEpayRequestTokenQrCode(
   token: string,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.getRequest(
     template("/EpayRequest/{token}/qrCode", { token }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Undefined */
 export async function getEpayRequestPosQrAccountNo(
   accountNo: string,
-  queryParams: { amount: number; subUserConId: number },
+  queryParams?: { amount?: number; subUserConId?: number },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.getRequest(
     template("/EpayRequest/pos/Qr/{accountNo}", { accountNo }),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -858,22 +858,22 @@ export async function getEpayRequestPosQrAccountNo(
  * for sub users] [Needs secure login]
  */
 export async function getEpayRequestForMe(
-  queryParams: {
-    applicantName: string;
-    startDate: string;
-    endDate: string;
-    epayRequestStatus: undefined;
-    skip: number;
-    take: number;
+  queryParams?: {
+    applicantName?: string;
+    startDate?: string;
+    endDate?: string;
+    epayRequestStatus?: undefined;
+    skip?: number;
+    take?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<EpayRequestForUserQuery[]>> {
   return await Http.getRequest(
     template("/EpayRequest/forMe", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -881,103 +881,103 @@ export async function getEpayRequestForMe(
 export async function postEpayRequestIdTask(
   id: number,
   requestBody: EpayRequestTaskInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/EpayRequest/{id}/task", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Undefined */
 export async function getEpayRequestAudiencesRecent(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<ContactApiModel[]>> {
   return await Http.getRequest(
     template("/EpayRequest/audiences/recent", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Upload new file [Allowed files are images and pdf / Max Size: 3 MB] */
 export async function postFile(
-  requestBody: { file: string },
-  configOverride: AxiosRequestConfig,
+  requestBody: { file?: string },
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<FileUploadQuery>> {
   return await Http.postRequest(
     template("/File", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Download a file. */
 export async function getFileId(
   id: string,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.getRequest(
     template("/File/{id}", { id }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** For Business users only] */
 export async function putGroupTransferAdd(
   requestBody: GroupTransferTargetValidationInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<GroupTransferTargetValidationQuery>> {
   return await Http.putRequest(
     template("/GroupTransfer/add", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** For Business users only] */
 export async function postGroupTransferImport(
-  requestBody: { file: string },
-  configOverride: AxiosRequestConfig,
+  requestBody: { file?: string },
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<GroupTransferTargetValidationQuery[]>> {
   return await Http.postRequest(
     template("/GroupTransfer/import", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** For Business users only] */
 export async function postGroupTransferExport(
   requestBody: GroupTransferTargetValidationQuery[],
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/GroupTransfer/export", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** For Business users only] */
 export async function postGroupTransferTransfer(
   requestBody: GroupTransferInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<GroupTransferQuery>> {
   return await Http.postRequest(
     template("/GroupTransfer/transfer", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -985,66 +985,66 @@ export async function postGroupTransferTransfer(
 export async function getGroupTransferCommission(
   queryParams: { accountId: number; amount: number },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<CommissionApiModel>> {
   return await Http.getRequest(
     template("/GroupTransfer/commission", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Undefined */
 export async function getNotificationIa(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<ImportantActionApiModel[]>> {
   return await Http.getRequest(
     template("/Notification/ia", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Undefined */
 export async function putNotificationIaNotifId(
   notifId: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<FileUploadQuery>> {
   return await Http.putRequest(
     template("/Notification/ia/{notifId}", { notifId }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Undefined */
 export async function getPluginId(
   id: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<PluginApiModel>> {
   return await Http.getRequest(
     template("/Plugin/{id}", { id }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get epay request detail */
 export async function getPosAccountNo(
   accountNo: string,
-  queryParams: { subUserConId: number },
+  queryParams?: { subUserConId?: number },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<PosLandingPageApiModel>> {
   return await Http.getRequest(
     template("/Pos/{accountNo}", { accountNo }),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1052,13 +1052,13 @@ export async function getPosAccountNo(
 export async function postPosPayTargetAccountNoWallet(
   targetAccountNo: string,
   requestBody: PosWalletPayInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<ReceiptApiModel>> {
   return await Http.postRequest(
     template("/Pos/pay/{targetAccountNo}/wallet", { targetAccountNo }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1066,26 +1066,26 @@ export async function postPosPayTargetAccountNoWallet(
 export async function postPosPayTargetAccountNoOnline(
   targetAccountNo: string,
   requestBody: PosOnlinePayInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<NewEpayRequestResultQuery>> {
   return await Http.postRequest(
     template("/Pos/pay/{targetAccountNo}/online", { targetAccountNo }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get a receipt by it's id */
 export async function getReceiptToken(
   token: string,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<ReceiptApiModel>> {
   return await Http.getRequest(
     template("/Receipt/{token}", { token }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1094,13 +1094,13 @@ export async function getReceiptToken(
  * Resellers]
  */
 export async function getResellerUser(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<ResellerApiModel>> {
   return await Http.getRequest(
     template("/ResellerUser", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1109,13 +1109,13 @@ export async function getResellerUser(
  * Resellers]
  */
 export async function getResellerUserIntroducedFilterData(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<ReselledUserFilterData>> {
   return await Http.getRequest(
     template("/ResellerUser/introduced/filterData", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1124,41 +1124,41 @@ export async function getResellerUserIntroducedFilterData(
  * Resellers]
  */
 export async function getResellerUserIntroduced(
-  queryParams: {
-    searchInput: string;
-    isActive: boolean;
-    isPerson: boolean;
-    identityStatuses: IdentityStatus[];
-    lastActivityFrom: string;
-    lastActivityTo: string;
-    registeredFrom: string;
-    registeredTo: string;
-    skip: number;
-    take: number;
-    orderBy: string;
-    orderDesc: boolean;
+  queryParams?: {
+    searchInput?: string;
+    isActive?: boolean;
+    isPerson?: boolean;
+    identityStatuses?: IdentityStatus[];
+    lastActivityFrom?: string;
+    lastActivityTo?: string;
+    registeredFrom?: string;
+    registeredTo?: string;
+    skip?: number;
+    take?: number;
+    orderBy?: string;
+    orderDesc?: boolean;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<ReselledUserApiModel[]>> {
   return await Http.getRequest(
     template("/ResellerUser/introduced", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get the User activity [Feature just allowed for Resellers] */
 export async function getResellerUserIntroducedUserIdActivity(
   userId: string,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<ReselledUserActivityApiModel>> {
   return await Http.getRequest(
     template("/ResellerUser/introduced/{userId}/activity", { userId }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1167,25 +1167,25 @@ export async function getResellerUserIntroducedUserIdActivity(
  * for Resellers]
  */
 export async function getResellerUserDashboardCommissionSum(
-  queryParams: {
-    month: number;
-    year: number;
-    takeDays: number;
-    takeMonths: number;
-    takeYears: number;
-    fromMonth: number;
-    fromYear: number;
-    toMonth: number;
-    toYear: number;
+  queryParams?: {
+    month?: number;
+    year?: number;
+    takeDays?: number;
+    takeMonths?: number;
+    takeYears?: number;
+    fromMonth?: number;
+    fromYear?: number;
+    toMonth?: number;
+    toYear?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<AggregationReportQueryOfDecimal>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/commission/sum", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1194,25 +1194,25 @@ export async function getResellerUserDashboardCommissionSum(
  * just allowed for Resellers]
  */
 export async function getResellerUserDashboardCommissionReport(
-  queryParams: {
-    month: number;
-    year: number;
-    takeDays: number;
-    takeMonths: number;
-    takeYears: number;
-    fromMonth: number;
-    fromYear: number;
-    toMonth: number;
-    toYear: number;
+  queryParams?: {
+    month?: number;
+    year?: number;
+    takeDays?: number;
+    takeMonths?: number;
+    takeYears?: number;
+    fromMonth?: number;
+    fromYear?: number;
+    toMonth?: number;
+    toYear?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<DateReportQueryOfDecimal[]>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/commission/report", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1221,25 +1221,25 @@ export async function getResellerUserDashboardCommissionReport(
  * Reseller user [Feature just allowed for Resellers]
  */
 export async function getResellerUserDashboardLinksCount(
-  queryParams: {
-    month: number;
-    year: number;
-    takeDays: number;
-    takeMonths: number;
-    takeYears: number;
-    fromMonth: number;
-    fromYear: number;
-    toMonth: number;
-    toYear: number;
+  queryParams?: {
+    month?: number;
+    year?: number;
+    takeDays?: number;
+    takeMonths?: number;
+    takeYears?: number;
+    fromMonth?: number;
+    fromYear?: number;
+    toMonth?: number;
+    toYear?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/links/count", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1248,25 +1248,25 @@ export async function getResellerUserDashboardLinksCount(
  * current Reseller user [Feature just allowed for Resellers]
  */
 export async function getResellerUserDashboardLinksReport(
-  queryParams: {
-    month: number;
-    year: number;
-    takeDays: number;
-    takeMonths: number;
-    takeYears: number;
-    fromMonth: number;
-    fromYear: number;
-    toMonth: number;
-    toYear: number;
+  queryParams?: {
+    month?: number;
+    year?: number;
+    takeDays?: number;
+    takeMonths?: number;
+    takeYears?: number;
+    fromMonth?: number;
+    fromYear?: number;
+    toMonth?: number;
+    toYear?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/links/report", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1275,25 +1275,25 @@ export async function getResellerUserDashboardLinksReport(
  * Reseller user [Feature just allowed for Resellers]
  */
 export async function getResellerUserDashboardLinksPaidCount(
-  queryParams: {
-    month: number;
-    year: number;
-    takeDays: number;
-    takeMonths: number;
-    takeYears: number;
-    fromMonth: number;
-    fromYear: number;
-    toMonth: number;
-    toYear: number;
+  queryParams?: {
+    month?: number;
+    year?: number;
+    takeDays?: number;
+    takeMonths?: number;
+    takeYears?: number;
+    fromMonth?: number;
+    fromYear?: number;
+    toMonth?: number;
+    toYear?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/links/paid/count", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1302,25 +1302,25 @@ export async function getResellerUserDashboardLinksPaidCount(
  * current Reseller user [Feature just allowed for Resellers]
  */
 export async function getResellerUserDashboardLinksPaidReport(
-  queryParams: {
-    month: number;
-    year: number;
-    takeDays: number;
-    takeMonths: number;
-    takeYears: number;
-    fromMonth: number;
-    fromYear: number;
-    toMonth: number;
-    toYear: number;
+  queryParams?: {
+    month?: number;
+    year?: number;
+    takeDays?: number;
+    takeMonths?: number;
+    takeYears?: number;
+    fromMonth?: number;
+    fromYear?: number;
+    toMonth?: number;
+    toYear?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/links/paid/report", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1329,25 +1329,25 @@ export async function getResellerUserDashboardLinksPaidReport(
  * [Feature just allowed for Resellers]
  */
 export async function getResellerUserDashboardTransactionsCount(
-  queryParams: {
-    month: number;
-    year: number;
-    takeDays: number;
-    takeMonths: number;
-    takeYears: number;
-    fromMonth: number;
-    fromYear: number;
-    toMonth: number;
-    toYear: number;
+  queryParams?: {
+    month?: number;
+    year?: number;
+    takeDays?: number;
+    takeMonths?: number;
+    takeYears?: number;
+    fromMonth?: number;
+    fromYear?: number;
+    toMonth?: number;
+    toYear?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/transactions/count", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1356,25 +1356,25 @@ export async function getResellerUserDashboardTransactionsCount(
  * [Feature just allowed for Resellers]
  */
 export async function getResellerUserDashboardTransactionsReport(
-  queryParams: {
-    month: number;
-    year: number;
-    takeDays: number;
-    takeMonths: number;
-    takeYears: number;
-    fromMonth: number;
-    fromYear: number;
-    toMonth: number;
-    toYear: number;
+  queryParams?: {
+    month?: number;
+    year?: number;
+    takeDays?: number;
+    takeMonths?: number;
+    takeYears?: number;
+    fromMonth?: number;
+    fromYear?: number;
+    toMonth?: number;
+    toYear?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/transactions/report", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1383,25 +1383,25 @@ export async function getResellerUserDashboardTransactionsReport(
  * for Resellers]
  */
 export async function getResellerUserDashboardIntroducedCount(
-  queryParams: {
-    month: number;
-    year: number;
-    takeDays: number;
-    takeMonths: number;
-    takeYears: number;
-    fromMonth: number;
-    fromYear: number;
-    toMonth: number;
-    toYear: number;
+  queryParams?: {
+    month?: number;
+    year?: number;
+    takeDays?: number;
+    takeMonths?: number;
+    takeYears?: number;
+    fromMonth?: number;
+    fromYear?: number;
+    toMonth?: number;
+    toYear?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/introduced/count", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1410,115 +1410,115 @@ export async function getResellerUserDashboardIntroducedCount(
  * allowed for Resellers]
  */
 export async function getResellerUserDashboardIntroducedReport(
-  queryParams: {
-    month: number;
-    year: number;
-    takeDays: number;
-    takeMonths: number;
-    takeYears: number;
-    fromMonth: number;
-    fromYear: number;
-    toMonth: number;
-    toYear: number;
+  queryParams?: {
+    month?: number;
+    year?: number;
+    takeDays?: number;
+    takeMonths?: number;
+    takeYears?: number;
+    fromMonth?: number;
+    fromYear?: number;
+    toMonth?: number;
+    toYear?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
   return await Http.getRequest(
     template("/ResellerUser/dashboard/introduced/report", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Create an new [EpayRequest] with the given model. */
 export async function postServiceNewEpayRequest(
   requestBody: EpayRequestServiceInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<EpayRequestWcfResult>> {
   return await Http.postRequest(
     template("/Service/NewEpayRequest", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Check the [EpayRequest] based on token */
 export async function postServiceCheckEpayRequest(
   requestBody: string,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<EpayRequestCheckStatusResult>> {
   return await Http.postRequest(
     template("/Service/CheckEpayRequest", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Verify the ApiKey for authorizing the [User] */
 export async function postServiceVerifyApiKey(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<boolean>> {
   return await Http.postRequest(
     template("/Service/VerifyApiKey", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Create a Divided [EpayRequest] for the given model. */
 export async function postServiceNewDivideEpayRequest(
   requestBody: DivideEpayRequestServiceInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<EpayRequestWcfResult>> {
   return await Http.postRequest(
     template("/Service/NewDivideEpayRequest", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Unblock Amount of an Divided[EpayRequest] */
 export async function postServiceUnblockAmount(
   requestBody: DividedEpayRequestUnblockInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<DividedEpayRequestUnblockResult>> {
   return await Http.postRequest(
     template("/Service/UnblockAmount", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Cancel Amount of an Divided[EpayRequest] */
 export async function postServiceCancelAmount(
   requestBody: DividedEpayRequestCancelInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<DividedEpayRequestCancelResult>> {
   return await Http.postRequest(
     template("/Service/CancelAmount", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Set [EPayRequest] status to 'Cancel' and cancel the payment */
 export async function postServiceCancelPayment(
   requestBody: string,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<boolean>> {
   return await Http.postRequest(
     template("/Service/CancelPayment", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1527,48 +1527,48 @@ export async function postServiceCancelPayment(
  * requests)
  */
 export async function getSettlementRequest(
-  queryParams: {
-    accountId: number;
-    startDate: string;
-    endDate: string;
-    minimumAmount: number;
-    maximumAmount: number;
-    skip: number;
-    take: number;
+  queryParams?: {
+    accountId?: number;
+    startDate?: string;
+    endDate?: string;
+    minimumAmount?: number;
+    maximumAmount?: number;
+    skip?: number;
+    take?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SettlementRequestQuery[]>> {
   return await Http.getRequest(
     template("/SettlementRequest", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get info of a SubDomain by it's address. */
 export async function getSubDomainSubDomainAddress(
   subDomainAddress: string,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubDomainApiModel>> {
   return await Http.getRequest(
     template("/SubDomain/{subDomainAddress}", { subDomainAddress }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get the SubDomain of current Reseller user [Feature just allowed for Resellers] */
 export async function getSubDomain(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubDomainApiModel>> {
   return await Http.getRequest(
     template("/SubDomain", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1578,13 +1578,13 @@ export async function getSubDomain(
  */
 export async function putSubDomain(
   requestBody: SubDomainUpdateApiModel,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubDomainApiModel>> {
   return await Http.putRequest(
     template("/SubDomain", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1594,38 +1594,38 @@ export async function putSubDomain(
  */
 export async function deleteSubUserConnectionId(
   id: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<BusinessUserConnectionQuery>> {
   return await Http.deleteRequest(
     template("/SubUser/connection/{id}", { id }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get the connections [Feature just allowed for the sub users] */
 export async function getSubUserConnection(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<BusinessUserConnectionQuery[]>> {
   return await Http.getRequest(
     template("/SubUser/connection", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Undefined */
 export async function getSubUserAccountId(
   id: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserAccountDetailQuery>> {
   return await Http.getRequest(
     template("/SubUser/account/{id}", { id }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1636,13 +1636,13 @@ export async function getSubUserAccountId(
 export async function postSubUserNotificationId(
   id: number,
   requestBody: SubUserNotificationStatusInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/SubUser/notification/{id}", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1651,56 +1651,56 @@ export async function postSubUserNotificationId(
  * [Needs secure login]
  */
 export async function getTransaction(
-  queryParams: {
-    accountId: number;
-    transactionType: undefined;
-    startDate: string;
-    endDate: string;
-    limit: number;
-    take: number;
+  queryParams?: {
+    accountId?: number;
+    transactionType?: undefined;
+    startDate?: string;
+    endDate?: string;
+    limit?: number;
+    take?: number;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<TransactionApiModel[]>> {
   return await Http.getRequest(
     template("/Transaction", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get insensitive data of account owner */
 export async function getTransferSearch(
-  queryParams: {
-    userId: string;
-    accountId: number;
-    customerNumber: number;
-    accountNumber: string;
-    contact: string;
+  queryParams?: {
+    userId?: string;
+    accountId?: number;
+    customerNumber?: number;
+    accountNumber?: string;
+    contact?: string;
   },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<InsensitiveAccountApiModel>> {
   return await Http.getRequest(
     template("/Transfer/search", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get recent money transfers */
 export async function getTransferRecent(
-  queryParams: { take: number },
+  queryParams?: { take?: number },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<TransferMoneyApiModel[]>> {
   return await Http.getRequest(
     template("/Transfer/recent", {}),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1709,13 +1709,13 @@ export async function getTransferAccountIdCommission(
   accountId: number,
   queryParams: { amount: number },
 
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<CommissionApiModel>> {
   return await Http.getRequest(
     template("/Transfer/{accountId}/commission", { accountId }),
     queryParams,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1723,25 +1723,25 @@ export async function getTransferAccountIdCommission(
 export async function postTransferAccountId(
   accountId: number,
   requestBody: TransferMoneyInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<TransferMoneyApiModel>> {
   return await Http.postRequest(
     template("/Transfer/{accountId}", { accountId }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get user banks [Feature is not allowed for sub users.] */
 export async function getUserBank(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserBankQuery[]>> {
   return await Http.getRequest(
     template("/UserBank", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1751,38 +1751,38 @@ export async function getUserBank(
  */
 export async function postUserBank(
   requestBody: UserBankInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserBankQuery>> {
   return await Http.postRequest(
     template("/UserBank", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get available user banks [Feature is not allowed for sub users.] */
 export async function getUserBankReady(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserBankQuery[]>> {
   return await Http.getRequest(
     template("/UserBank/ready", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get user bank detail [Needs secure login] */
 export async function getUserBankId(
   id: number,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserBankDetailQuery>> {
   return await Http.getRequest(
     template("/UserBank/{id}", { id }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1790,13 +1790,13 @@ export async function getUserBankId(
 export async function putUserBankId(
   id: number,
   requestBody: UserBankInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserBankQuery>> {
   return await Http.putRequest(
     template("/UserBank/{id}", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1804,25 +1804,25 @@ export async function putUserBankId(
 export async function putUserBankIdChangeVisibility(
   id: number,
   requestBody: UserBankChangeVisibilityInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.putRequest(
     template("/UserBank/{id}/changeVisibility", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get [normal/sub/business] user profile detail */
 export async function getUser(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserDetailQuery>> {
   return await Http.getRequest(
     template("/User", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1832,39 +1832,39 @@ export async function getUser(
  */
 export async function putUser(
   requestBody: UserProfileInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserDetailQuery>> {
   return await Http.putRequest(
     template("/User", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Undefined */
 export async function getUserContactInput(
   input: string,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<ContactApiModel>> {
   return await Http.getRequest(
     template("/User/contact/{input}", { input }),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Change user avatar [Needs secure login] */
 export async function putUserChangeAvatar(
   requestBody: UserProfileAvatarInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.putRequest(
     template("/User/changeAvatar", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1874,13 +1874,13 @@ export async function putUserChangeAvatar(
  */
 export async function postUserIdentityRequest(
   requestBody: NewUserIdentityRequestInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserDetailQuery>> {
   return await Http.postRequest(
     template("/User/identityRequest", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1889,64 +1889,64 @@ export async function postUserIdentityRequest(
  * users]
  */
 export async function getUserIdentityRequest(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserIdentityRequestQuery>> {
   return await Http.getRequest(
     template("/User/identityRequest", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Change user phone number [Needs secure login] */
 export async function postUserChangePhoneNumber(
   requestBody: UserChangePhoneNumberInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/User/changePhoneNumber", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Confirm the phone number with a verification code for change phone number */
 export async function postUserChangePhoneNumberVerify(
   requestBody: UserVerifyChangePhoneNumberInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/User/changePhoneNumber/verify", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Change user password */
 export async function postUserChangePassword(
   requestBody: UserChangePasswordInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/User/changePassword", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get user profile summary */
 export async function getUserMe(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserMeQuery>> {
   return await Http.getRequest(
     template("/User/me", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1956,13 +1956,13 @@ export async function getUserMe(
  */
 export async function postUserUpgradeToBusinessRequest(
   requestBody: UpgradeToBusinessUserInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UpgradeToBusinessUserQuery>> {
   return await Http.postRequest(
     template("/User/upgradeToBusinessRequest", {}),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1971,13 +1971,13 @@ export async function postUserUpgradeToBusinessRequest(
  * the normal users]
  */
 export async function getUserUpgradeToBusinessRequest(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UpgradeToBusinessUserQuery>> {
   return await Http.getRequest(
     template("/User/upgradeToBusinessRequest", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -1988,49 +1988,49 @@ export async function getUserUpgradeToBusinessRequest(
 export async function postUserInvitationIdTask(
   id: number,
   requestBody: SubuserInvitationTaskInput,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<string>> {
   return await Http.postRequest(
     template("/User/invitation/{id}/task", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get business user invitations for me [Feature is not allowed for sub users] */
 export async function getUserInvitation(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<SubUserInvitationQuery[]>> {
   return await Http.getRequest(
     template("/User/invitation", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Get user workspaces [Feature is not allowed for sub users] */
 export async function getUserWorkspace(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserWorkspaceQuery[]>> {
   return await Http.getRequest(
     template("/User/workspace", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
 /** Undefined */
 export async function getUserPlugin(
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserPluginInfoApiModel[]>> {
   return await Http.getRequest(
     template("/UserPlugin", {}),
     undefined,
     undefined,
-    configOverride,
+    configOverride
   );
 }
 
@@ -2038,30 +2038,30 @@ export async function getUserPlugin(
 export async function putUserPluginIdChangeStatus(
   id: number,
   requestBody: UserPluginTogggleApiModel,
-  configOverride: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<AxiosResponse<UserPluginApiModel>> {
   return await Http.putRequest(
     template("/UserPlugin/{id}/ChangeStatus", { id }),
     undefined,
     requestBody,
-    configOverride,
+    configOverride
   );
 }
 
 export interface AccountSummaryWithBalanceQuery {
   id: number;
-  title: string;
-  number: string;
+  title?: string;
+  number?: string;
   isActive: boolean;
-  intermediateUserBankBankId: number;
-  intermediateUserBankBankName: string;
-  intermediateUserBankAccountNumber: string;
-  intermediateUserBankShebaNumber: string;
-  directUserBankBankId: number;
-  directUserBankBankName: string;
-  directUserBankAccountNumber: string;
-  directUserBankShebaNumber: string;
-  relatedUserAccountIndex: number;
+  intermediateUserBankBankId?: number;
+  intermediateUserBankBankName?: string;
+  intermediateUserBankAccountNumber?: string;
+  intermediateUserBankShebaNumber?: string;
+  directUserBankBankId?: number;
+  directUserBankBankName?: string;
+  directUserBankAccountNumber?: string;
+  directUserBankShebaNumber?: string;
+  relatedUserAccountIndex?: number;
   getComissionFromPayer: boolean;
   totalBalance: number;
   realBalance: number;
@@ -2070,9 +2070,9 @@ export interface AccountSummaryWithBalanceQuery {
 export interface AccountDetailQuery extends AccountSummaryWithBalanceQuery {
   automaticSettlement: boolean;
   currencyType: CurrencyType;
-  actionPolicies: ActionPolicyCommissionDetailQuery[];
-  accountQrCodeUrl: string;
-  posLinkUrl: string;
+  actionPolicies?: ActionPolicyCommissionDetailQuery[];
+  accountQrCodeUrl?: string;
+  posLinkUrl?: string;
   notificationEnabled: boolean;
   posScanCount: number;
   posPaidCount: number;
@@ -2084,17 +2084,17 @@ export enum CurrencyType {
 }
 
 export interface ActionPolicyCommissionDetailQuery {
-  title: string;
-  value: string;
+  title?: string;
+  value?: string;
 }
 
 export interface AccountInput {
-  title: string;
-  isActive: boolean;
-  userBankId: number;
-  getComissionFromPayer: boolean;
-  automaticSettlement: boolean;
-  currencyType: undefined;
+  title?: string;
+  isActive?: boolean;
+  userBankId?: number;
+  getComissionFromPayer?: boolean;
+  automaticSettlement?: boolean;
+  currencyType?: undefined;
 }
 
 export interface AccountNotificationStatusInput {
@@ -2108,15 +2108,15 @@ export interface AccountBalanceSummaryQuery {
 
 export interface AccountPermittedSubUserQuery {
   subuserId: string;
-  subUserTitle: string;
-  subUserPositionTitle: string;
-  subUserContact: string;
-  connectDate: string;
-  disconnectDate: string;
+  subUserTitle?: string;
+  subUserPositionTitle?: string;
+  subUserContact?: string;
+  connectDate?: string;
+  disconnectDate?: string;
   subuserStatus: SubuserStatus;
   subUserConnectionStatus: SubUserConnectionStatus;
-  subuserStatusDisplay: string;
-  subUserAvatarUrl: string;
+  subuserStatusDisplay?: string;
+  subUserAvatarUrl?: string;
   connectionId: number;
 }
 
@@ -2135,12 +2135,12 @@ export enum SubUserConnectionStatus {
 }
 
 export interface NewChargeRequestResultQuery {
-  paymentLink: string;
+  paymentLink?: string;
 }
 
 export interface NewChargeRequestInput {
   amount: number;
-  callbackUrl: string;
+  callbackUrl?: string;
 }
 
 export interface CommissionApiModel {
@@ -2150,22 +2150,22 @@ export interface CommissionApiModel {
 
 export interface NewEpayRequestResultQuery {
   id: number;
-  token: string;
-  createDate: string;
-  pluginName: string;
-  pluginId: number;
+  token?: string;
+  createDate?: string;
+  pluginName?: string;
+  pluginId?: number;
   amount: number;
   userAccountId: number;
-  userAccountName: string;
-  expireDate: string;
+  userAccountName?: string;
+  expireDate?: string;
   getComissionByPayer: boolean;
   comissionAmount: number;
-  paymentLink: string;
-  qrCodeLink: string;
+  paymentLink?: string;
+  qrCodeLink?: string;
   epayRequestStatus: EpayRequestStatus;
-  description: string;
-  epayRequestAudience: EPayRequestAudienceInput[];
-  epayRequestPluginSpecific: EpayRequestPluginSpecificOutput[];
+  description?: string;
+  epayRequestAudience?: EPayRequestAudienceInput[];
+  epayRequestPluginSpecific?: EpayRequestPluginSpecificOutput[];
 }
 
 export enum EpayRequestStatus {
@@ -2177,30 +2177,30 @@ export enum EpayRequestStatus {
 }
 
 export interface EPayRequestAudienceInput {
-  fullName: string;
-  contact: string;
+  fullName?: string;
+  contact?: string;
 }
 
 export interface EpayRequestPluginSpecificOutput {
-  pluginPropertyName: string;
-  pluginPropertyPersianName: string;
-  pluginPropertyId: string;
-  value: string;
+  pluginPropertyName?: string;
+  pluginPropertyPersianName?: string;
+  pluginPropertyId?: string;
+  value?: string;
 }
 
 export interface NewEpayRequestInput {
   amount: number;
   expireDays: number;
   isAutoConfirm: boolean;
-  callbackUrl: string;
+  callbackUrl?: string;
   callbackType: undefined;
-  description: string;
-  invoiceNumber: string;
-  invoiceDate: string;
-  audiences: EPayRequestAudienceInput[];
-  pluginId: number;
-  pluginSpecifics: EpayRequestPluginSpecificInput[];
-  getComissionByPayer: boolean;
+  description?: string;
+  invoiceNumber?: string;
+  invoiceDate?: string;
+  audiences?: EPayRequestAudienceInput[];
+  pluginId?: number;
+  pluginSpecifics?: EpayRequestPluginSpecificInput[];
+  getComissionByPayer?: boolean;
 }
 
 export enum CallbackType {
@@ -2211,18 +2211,18 @@ export enum CallbackType {
 }
 
 export interface EpayRequestPluginSpecificInput {
-  pluginPropertyId: string;
-  value: string;
+  pluginPropertyId?: string;
+  value?: string;
 }
 
 export interface SettlementRequestQuery {
   id: number;
   accountId: number;
-  accountName: string;
-  accountNumber: string;
+  accountName?: string;
+  accountNumber?: string;
   bankId: number;
-  bankName: string;
-  createDate: string;
+  bankName?: string;
+  createDate?: string;
   createDateTime: string;
   automaticSettlement: boolean;
   status: SettlementRequestStatus;
@@ -2238,34 +2238,34 @@ export enum SettlementRequestStatus {
 
 export interface NewSettlementRequestInput {
   amount: number;
-  description: string;
+  description?: string;
 }
 
 export interface InsensitiveAccountApiModel {
   accountId: number;
-  accountOwnerTitle: string;
-  accountOwnerAvatarUrl: string;
+  accountOwnerTitle?: string;
+  accountOwnerAvatarUrl?: string;
 }
 
 export interface TransferMoneyApiModel {
   id: number;
   amount: number;
   domainCommissionAmount: number;
-  description: string;
+  description?: string;
   targetAccountId: number;
-  targetAccountNumber: string;
-  targetUserDisplayName: string;
-  targetUserAvatarUrl: string;
-  createdDate: string;
+  targetAccountNumber?: string;
+  targetUserDisplayName?: string;
+  targetUserAvatarUrl?: string;
+  createdDate?: string;
   createdDateTime: string;
   userAccountId: number;
-  userAccountName: string;
+  userAccountName?: string;
 }
 
 export interface TransferMoneyInput {
   targetUserAccountId: number;
   amount: number;
-  description: string;
+  description?: string;
 }
 
 export interface NewTokenResult {
@@ -2275,22 +2275,22 @@ export interface NewTokenResult {
 }
 
 export interface ApiLoginInput {
-  secretKey: string;
-  apiKey: string;
+  secretKey?: string;
+  apiKey?: string;
 }
 
 export interface LoginInput {
-  userName: string;
-  password: string;
+  userName?: string;
+  password?: string;
 }
 
 export interface TotpLoginInput {
-  phoneNumber: string;
-  token: string;
+  phoneNumber?: string;
+  token?: string;
 }
 
 export interface RequestTotpInput {
-  phoneNumber: string;
+  phoneNumber?: string;
 }
 
 export interface SubUserLoginInput {
@@ -2298,7 +2298,7 @@ export interface SubUserLoginInput {
 }
 
 export interface SecureLoginInput {
-  password: string;
+  password?: string;
 }
 
 export interface RegisterNewUserQuery {
@@ -2319,61 +2319,61 @@ export enum OsPlatformType {
 }
 
 export interface RegisterInput {
-  phoneNumber: string;
-  deviceId: string;
-  deviceBrandName: string;
-  deviceOsVersion: string;
+  phoneNumber?: string;
+  deviceId?: string;
+  deviceBrandName?: string;
+  deviceOsVersion?: string;
 }
 
 export interface ConfirmPhoneNumberQuery {
-  token: string;
+  token?: string;
 }
 
 export interface ConfirmPhoneNumberOrEmailInput {
-  userId: string;
-  token: string;
-  subDomainId: string;
+  userId?: string;
+  token?: string;
+  subDomainId?: string;
 }
 
 export interface SetUserBasicInfoInput {
-  userId: string;
-  token: string;
-  password: string;
-  fullName: string;
-  introducerCode: string;
+  userId?: string;
+  token?: string;
+  password?: string;
+  fullName?: string;
+  introducerCode?: string;
 }
 
 export interface UserForgetPasswordInput {
-  phoneNumber: string;
+  phoneNumber?: string;
 }
 
 export interface UserVerifyForgetPasswordInput {
-  phoneNumber: string;
-  token: string;
+  phoneNumber?: string;
+  token?: string;
 }
 
 export interface UserResetForgetPasswordInput {
-  phoneNumber: string;
-  token: string;
-  newPassword: string;
+  phoneNumber?: string;
+  token?: string;
+  newPassword?: string;
 }
 
 export interface RegisterDeviceInput {
-  deviceId: string;
-  deviceBrandName: string;
-  deviceOsVersion: string;
-  deviceToken: string;
+  deviceId?: string;
+  deviceBrandName?: string;
+  deviceOsVersion?: string;
+  deviceToken?: string;
 }
 
 export interface BankQuery {
   id: number;
-  name: string;
-  logoUrl: string;
+  name?: string;
+  logoUrl?: string;
 }
 
 export interface BusinessCategoryQuery {
   id: BusinessType;
-  title: string;
+  title?: string;
 }
 
 export enum BusinessType {
@@ -2386,22 +2386,22 @@ export enum BusinessType {
 
 export interface SubUserConnectionQuery {
   invitationId: number;
-  connectDate: string;
-  disconnectDate: string;
-  requestDate: string;
-  removeDate: string;
-  subUserAvatarUrl: string;
-  subUserTitle: string;
-  subUserContact: string;
-  subUserPositionTitle: string;
+  connectDate?: string;
+  disconnectDate?: string;
+  requestDate?: string;
+  removeDate?: string;
+  subUserAvatarUrl?: string;
+  subUserTitle?: string;
+  subUserContact?: string;
+  subUserPositionTitle?: string;
   subUserConnectionStatus: SubUserConnectionStatus;
-  connectionId: number;
+  connectionId?: number;
 }
 
 export interface SendConnectionRequestInput {
-  phoneNumber: string;
-  email: string;
-  position: string;
+  phoneNumber?: string;
+  email?: string;
+  position?: string;
 }
 
 export interface SubUserConnectionAmountsReportQuery {
@@ -2414,13 +2414,13 @@ export interface SubUserConnectionAmountsReportQuery {
 }
 
 export interface EditConnectionInfoInput {
-  position: string;
+  position?: string;
 }
 
 export interface SubUserPermissionQuery extends SubUserActionPermission {
   accountId: number;
-  accountTitle: string;
-  accountNumber: string;
+  accountTitle?: string;
+  accountNumber?: string;
   totalBalance: number;
   realBalance: number;
 }
@@ -2438,12 +2438,12 @@ export interface SubUserActionPermission {
 }
 
 export interface SetAccountAccessForSubUserInput {
-  accountId: number;
+  accountId?: number;
 }
 
 export interface EditSubUserPermissionInput {
-  subUserPermissionType: undefined;
-  isEnabled: boolean;
+  subUserPermissionType?: undefined;
+  isEnabled?: boolean;
 }
 
 export enum SubUserPermissionType {
@@ -2459,30 +2459,30 @@ export enum SubUserPermissionType {
 
 export interface EpayRequestQuery {
   id: number;
-  createDate: string;
+  createDate?: string;
   createDateTime: string;
-  expireDate: string;
+  expireDate?: string;
   expireDateTime: string;
-  payDate: string;
-  payDateTime: string;
+  payDate?: string;
+  payDateTime?: string;
   amount: number;
-  description: string;
+  description?: string;
   userAccountId: number;
-  userAccountName: string;
-  paymentLink: string;
-  qrCodeLink: string;
+  userAccountName?: string;
+  paymentLink?: string;
+  qrCodeLink?: string;
   epayRequestStatus: EpayRequestStatus;
-  epayRequestAudience: EPayRequestAudienceInput[];
+  epayRequestAudience?: EPayRequestAudienceInput[];
 }
 
 export interface EpayRequestForUserQuery {
   id: number;
-  applicantName: string;
-  expireDate: string;
+  applicantName?: string;
+  expireDate?: string;
   amount: number;
-  description: string;
+  description?: string;
   canBeCanceled: boolean;
-  paymentUrl: string;
+  paymentUrl?: string;
   epayRequestStatus: EpayRequestStatus;
 }
 
@@ -2496,15 +2496,15 @@ export enum EpayRequestTaskType {
 }
 
 export interface ContactApiModel {
-  fullName: string;
-  contact: string;
+  fullName?: string;
+  contact?: string;
   audienceType: EpayRequestAudienceType;
-  audienceTypeDisplay: string;
-  userId: string;
-  userDisplayName: string;
-  userProfileImageLink: string;
-  userProfileImageName: string;
-  userProfileImageUniqueId: string;
+  audienceTypeDisplay?: string;
+  userId?: string;
+  userDisplayName?: string;
+  userProfileImageLink?: string;
+  userProfileImageName?: string;
+  userProfileImageUniqueId?: string;
 }
 
 export enum EpayRequestAudienceType {
@@ -2516,20 +2516,20 @@ export enum EpayRequestAudienceType {
 
 export interface FileUploadQuery {
   uniqueId: string;
-  fileName: string;
+  fileName?: string;
   fileSize: number;
-  fileUrl: string;
+  fileUrl?: string;
 }
 
 export interface GroupTransferTargetValidationQuery {
   amount: number;
-  name: string;
-  identifier: string;
-  accountNumber: string;
-  userDisplayName: string;
-  userPhoneNumber: string;
+  name?: string;
+  identifier?: string;
+  accountNumber?: string;
+  userDisplayName?: string;
+  userPhoneNumber?: string;
   status: GroupTransferTargetStatus;
-  statusDescription: string;
+  statusDescription?: string;
 }
 
 export enum GroupTransferTargetStatus {
@@ -2542,54 +2542,54 @@ export enum GroupTransferTargetStatus {
 
 export interface GroupTransferTargetValidationInput {
   amount: number;
-  description: string;
-  identifier: string;
+  description?: string;
+  identifier?: string;
 }
 
 export interface GroupTransferQuery {
   amount: number;
-  description: string;
-  userAccountName: string;
-  userDisplayName: string;
+  description?: string;
+  userAccountName?: string;
+  userDisplayName?: string;
   voucherId: number;
   createDate: string;
-  createDateDisplay: string;
-  targets: GroupTransferTargetQuery[];
+  createDateDisplay?: string;
+  targets?: GroupTransferTargetQuery[];
 }
 
 export interface GroupTransferTargetQuery {
-  accountName: string;
+  accountName?: string;
   amount: number;
-  description: string;
-  userDisplayName: string;
-  userPhoneNumber: string;
+  description?: string;
+  userDisplayName?: string;
+  userPhoneNumber?: string;
 }
 
 export interface GroupTransferInput {
   userAccountId: number;
   totalAmount: number;
-  description: string;
-  targets: GroupTransferTargetInput[];
+  description?: string;
+  targets?: GroupTransferTargetInput[];
 }
 
 export interface GroupTransferTargetInput {
   amount: number;
-  description: string;
-  identifier: string;
+  description?: string;
+  identifier?: string;
 }
 
 export interface ImportantActionApiModel {
   id: number;
   createTime: string;
-  createTimeDisplay: string;
+  createTimeDisplay?: string;
   type: NotificationType;
   level: NotificationLevel;
   closeable: boolean;
   dismissible: boolean;
-  title: string;
-  text: string;
-  dataId: string;
-  data: string;
+  title?: string;
+  text?: string;
+  dataId?: string;
+  data?: string;
 }
 
 export enum NotificationType {
@@ -2619,23 +2619,23 @@ export enum NotificationLevel {
 
 export interface PluginApiModel {
   id: number;
-  name: string;
-  amountCalculationExpression: string;
-  logoFileName: string;
-  logoFileUniqueId: string;
-  logoFileUrl: string;
-  properties: PluginPropertyApiModel[];
+  name?: string;
+  amountCalculationExpression?: string;
+  logoFileName?: string;
+  logoFileUniqueId?: string;
+  logoFileUrl?: string;
+  properties?: PluginPropertyApiModel[];
 }
 
 export interface PluginPropertyApiModel {
-  name: string;
-  title: string;
+  name?: string;
+  title?: string;
   fieldType: FieldDisplayType;
   isRequired: boolean;
-  value: string;
-  currencyName: string;
+  value?: string;
+  currencyName?: string;
   isFilterable: boolean;
-  description: string;
+  description?: string;
 }
 
 export enum FieldDisplayType {
@@ -2650,43 +2650,43 @@ export enum FieldDisplayType {
 
 export interface PosLandingPageApiModel {
   domainId: number;
-  domainEnglishName: string;
-  domainPersianName: string;
-  domainLogoFileName: string;
-  domainLogoFileUniqueId: string;
-  domainLogoFileUrl: string;
-  accountNumber: string;
-  getCommissionFromPayer: boolean;
+  domainEnglishName?: string;
+  domainPersianName?: string;
+  domainLogoFileName?: string;
+  domainLogoFileUniqueId?: string;
+  domainLogoFileUrl?: string;
+  accountNumber?: string;
+  getCommissionFromPayer?: boolean;
   userId: string;
-  userDisplayName: string;
-  userAvatarFileName: string;
-  userAvatarFileUniqueId: string;
-  userAvatarFileUrl: string;
-  subUserId: string;
-  subUserDisplayName: string;
-  subUserAvatarFileName: string;
-  subUserAvatarFileUniqueId: string;
-  subUserAvatarFileUrl: string;
+  userDisplayName?: string;
+  userAvatarFileName?: string;
+  userAvatarFileUniqueId?: string;
+  userAvatarFileUrl?: string;
+  subUserId?: string;
+  subUserDisplayName?: string;
+  subUserAvatarFileName?: string;
+  subUserAvatarFileUniqueId?: string;
+  subUserAvatarFileUrl?: string;
 }
 
 export interface ReceiptApiModel {
   amount: number;
-  callbackUrl: string;
+  callbackUrl?: string;
   createdDate: string;
-  createDateDisplay: string;
-  description: string;
+  createDateDisplay?: string;
+  description?: string;
   id: number;
   type: EpayRequestType;
-  typeDisplay: string;
-  token: string;
-  shareUrl: string;
+  typeDisplay?: string;
+  token?: string;
+  shareUrl?: string;
   failed: boolean;
-  failureMessage: string;
-  payerUserAccountId: number;
-  payerUserAccountName: string;
-  payerUserAccountNumber: string;
-  targetUserDisplayName: string;
-  audiences: ReceiptAudienceApiModel[];
+  failureMessage?: string;
+  payerUserAccountId?: number;
+  payerUserAccountName?: string;
+  payerUserAccountNumber?: string;
+  targetUserDisplayName?: string;
+  audiences?: ReceiptAudienceApiModel[];
 }
 
 export enum EpayRequestType {
@@ -2698,39 +2698,39 @@ export enum EpayRequestType {
 }
 
 export interface ReceiptAudienceApiModel {
-  fullName: string;
-  contact: string;
+  fullName?: string;
+  contact?: string;
 }
 
 export interface PosWalletPayInput {
   userAccountId: number;
   amount: number;
-  description: string;
-  subUserId: string;
+  description?: string;
+  subUserId?: string;
 }
 
 export interface PosOnlinePayInput {
   terminalId: string;
-  subuserId: string;
+  subuserId?: string;
   amount: number;
-  description: string;
+  description?: string;
 }
 
 export interface ResellerApiModel {
   startDate: string;
-  startDateDisplay: string;
+  startDateDisplay?: string;
   endDate: string;
-  endDateDisplay: string;
+  endDateDisplay?: string;
   isActive: boolean;
   commissionId: number;
-  commissionDisplay: string;
-  commissionName: string;
+  commissionDisplay?: string;
+  commissionName?: string;
   commissionType: ComissionType;
-  commissionTypeDisplay: string;
-  commissionPercent: number;
-  commissionFixedValue: number;
-  commissionMaxValue: number;
-  introduceLink: string;
+  commissionTypeDisplay?: string;
+  commissionPercent?: number;
+  commissionFixedValue?: number;
+  commissionMaxValue?: number;
+  introduceLink?: string;
   hasSubDomain: boolean;
 }
 
@@ -2740,16 +2740,16 @@ export enum ComissionType {
 }
 
 export interface ReselledUserFilterData {
-  identityStatuses: undefined;
+  identityStatuses?: undefined;
 }
 
 export interface DropDownResultOfIdentityStatus {
-  items: DropDownResultItemOfIdentityStatus[];
+  items?: DropDownResultItemOfIdentityStatus[];
 }
 
 export interface DropDownResultItemOfIdentityStatus {
   value: IdentityStatus;
-  display: string;
+  display?: string;
 }
 
 export enum IdentityStatus {
@@ -2763,14 +2763,14 @@ export enum IdentityStatus {
 
 export interface ReselledUserApiModel {
   userId: string;
-  displayName: string;
-  phoneNumber: string;
-  registerDate: string;
+  displayName?: string;
+  phoneNumber?: string;
+  registerDate?: string;
   isPerson: boolean;
   identityStatus: IdentityStatus;
-  identityStatusDisplay: string;
+  identityStatusDisplay?: string;
   isActive: boolean;
-  lastActivityDate: string;
+  lastActivityDate?: string;
 }
 
 export interface ReselledUserActivityApiModel {
@@ -2786,12 +2786,12 @@ export interface AggregationReportQueryOfDecimal {
 
 export interface DateReportQueryOfDecimal {
   key: number;
-  label: string;
+  label?: string;
   value: number;
   day: number;
-  dayName: string;
+  dayName?: string;
   month: number;
-  monthName: string;
+  monthName?: string;
   year: number;
 }
 
@@ -2801,61 +2801,61 @@ export interface AggregationReportQueryOfInteger {
 
 export interface DateReportQueryOfInteger {
   key: number;
-  label: string;
+  label?: string;
   value: number;
   day: number;
-  dayName: string;
+  dayName?: string;
   month: number;
-  monthName: string;
+  monthName?: string;
   year: number;
 }
 
 export interface EpayRequestWcfResult {
-  requestToken: string;
-  paymentUrl: string;
+  requestToken?: string;
+  paymentUrl?: string;
 }
 
 export interface EpayRequestServiceInput {
   userId: string;
   amount: number;
-  invoiceNumber: string;
+  invoiceNumber?: string;
   invoiceDate: string;
   expiresAfterDays: number;
-  description: string;
-  callbackUrl: string;
+  description?: string;
+  callbackUrl?: string;
   isAutoRedirect: boolean;
   domainId: number;
   terminalId: string;
   userAccountId: number;
   isAutoConfirm: boolean;
   callbackType: CallbackType;
-  audiences: EPayRequestAudienceInput[];
+  audiences?: EPayRequestAudienceInput[];
   getComissionFromPayer: boolean;
 }
 
 export interface EpayRequestCheckStatusResult {
   requestStatus: EpayRequestStatus;
-  bankReferenceId: string;
-  verifyDate: string;
+  bankReferenceId?: string;
+  verifyDate?: string;
 }
 
 export interface DivideEpayRequestServiceInput {
   amount: number;
-  divisions: DivideEpayRequestShareModel[];
-  invoiceNumber: string;
+  divisions?: DivideEpayRequestShareModel[];
+  invoiceNumber?: string;
   invoiceDate: string;
   expiresAfterDays: number;
-  description: string;
-  callBackUrl: string;
+  description?: string;
+  callBackUrl?: string;
   isAutoRedirect: boolean;
   isBlocking: boolean;
 }
 
 export interface DivideEpayRequestShareModel {
-  apiKey: string;
+  apiKey?: string;
   amount: number;
   dividerAmount: number;
-  invoiceNumber: string;
+  invoiceNumber?: string;
 }
 
 export interface DividedEpayRequestUnblockResult {
@@ -2863,12 +2863,12 @@ export interface DividedEpayRequestUnblockResult {
 }
 
 export interface DividedEpayRequestUnblockInput {
-  paymentToken: string;
-  userApiKey: string;
-  invoiceNumber: string;
+  paymentToken?: string;
+  userApiKey?: string;
+  invoiceNumber?: string;
   dividerAmount: number;
   userAmount: number;
-  description: string;
+  description?: string;
 }
 
 export interface DividedEpayRequestCancelResult {
@@ -2876,60 +2876,60 @@ export interface DividedEpayRequestCancelResult {
 }
 
 export interface DividedEpayRequestCancelInput {
-  paymentToken: string;
-  userApiKey: string;
-  invoiceNumber: string;
+  paymentToken?: string;
+  userApiKey?: string;
+  invoiceNumber?: string;
   dividerAmount: number;
   userAmount: number;
-  shebaNo: string;
-  firstName: string;
-  lastName: string;
-  description: string;
+  shebaNo?: string;
+  firstName?: string;
+  lastName?: string;
+  description?: string;
 }
 
 export interface SubDomainApiModel {
   domainId: number;
-  persianName: string;
-  englishName: string;
-  subDomainAddress: string;
+  persianName?: string;
+  englishName?: string;
+  subDomainAddress?: string;
   resellerUserId: string;
   isActive: boolean;
-  logoFileUniqueId: string;
-  logoFileName: string;
-  logoFileUrl: string;
-  domainPersianName: string;
-  domainEnglishName: string;
-  resellerUserDisplayName: string;
-  about: string;
+  logoFileUniqueId?: string;
+  logoFileName?: string;
+  logoFileUrl?: string;
+  domainPersianName?: string;
+  domainEnglishName?: string;
+  resellerUserDisplayName?: string;
+  about?: string;
 }
 
 export interface SubDomainUpdateApiModel {
-  logoFileUniqueId: string;
-  about: string;
+  logoFileUniqueId?: string;
+  about?: string;
 }
 
 export interface BusinessUserConnectionQuery {
   businessId: string;
-  businessAvatarUrl: string;
-  businessName: string;
-  connectDate: string;
-  disconnectDate: string;
+  businessAvatarUrl?: string;
+  businessName?: string;
+  connectDate?: string;
+  disconnectDate?: string;
   subUserConnectionStatus: SubUserConnectionStatus;
-  connectionId: number;
+  connectionId?: number;
 }
 
 export interface SubUserAccountDetailQuery {
   id: number;
-  name: string;
-  accountNumber: string;
+  name?: string;
+  accountNumber?: string;
   accountStatus: AccountStatus;
-  accountStatusDisplay: string;
+  accountStatusDisplay?: string;
   isActive: boolean;
-  accountQrCodeUrl: string;
+  accountQrCodeUrl?: string;
   notificationEnabled: boolean;
   posScanCount: number;
   posPaidCount: number;
-  posLinkUrl: string;
+  posLinkUrl?: string;
   canReceiveMoney: boolean;
   canTransferMoney: boolean;
   canSeeEpayRequests: boolean;
@@ -2951,20 +2951,20 @@ export interface SubUserNotificationStatusInput {
 export interface TransactionApiModel {
   id: number;
   accountId: number;
-  accountTitle: string;
-  accountNumber: string;
+  accountTitle?: string;
+  accountNumber?: string;
   amount: number;
   createDateTime: string;
-  createDate: string;
-  description: string;
+  createDate?: string;
+  description?: string;
   remain: number;
   transactionType: TransactionType;
-  transactionTypeDisplay: string;
+  transactionTypeDisplay?: string;
   transactionOperationType: TransactionOperationType;
-  transactionOperationTypeDisplay: string;
-  targetBusinessCategoryId: number;
-  targetBusinessCategoryName: string;
-  operationId: number;
+  transactionOperationTypeDisplay?: string;
+  targetBusinessCategoryId?: number;
+  targetBusinessCategoryName?: string;
+  operationId?: number;
   voucherId: number;
 }
 
@@ -2982,16 +2982,16 @@ export interface UserBankQuery {
   id: number;
   identityType: BusinessShareType;
   bankId: number;
-  bankName: string;
-  bankLogo: string;
-  accountNumber: string;
-  shebaNo: string;
-  firstName: string;
-  lastName: string;
+  bankName?: string;
+  bankLogo?: string;
+  accountNumber?: string;
+  shebaNo?: string;
+  firstName?: string;
+  lastName?: string;
   status: IdentityStatus;
-  statusDescription: string;
+  statusDescription?: string;
   isVisible: boolean;
-  name: string;
+  name?: string;
 }
 
 export enum BusinessShareType {
@@ -3005,18 +3005,18 @@ export enum BusinessShareType {
 }
 
 export interface UserBankDetailQuery extends UserBankQuery {
-  nationalCode: string;
-  documents: DocumentQuery[];
+  nationalCode?: string;
+  documents?: DocumentQuery[];
 }
 
 export interface DocumentQuery {
   uniqueId: string;
-  fileName: string;
+  fileName?: string;
   fileSize: number;
   fileTypes: FileTypes;
-  createDate: string;
+  createDate?: string;
   documentContentType: DocumentContentType;
-  fileUrl: string;
+  fileUrl?: string;
 }
 
 export enum FileTypes {
@@ -3036,16 +3036,16 @@ export enum DocumentContentType {
 }
 
 export interface UserBankInput {
-  name: string;
-  identityType: undefined;
-  firstName: string;
-  lastName: string;
-  nationalCode: string;
-  bankId: number;
-  accountNumber: string;
-  shebaNo: string;
-  documents: DocumentInput[];
-  isVisible: boolean;
+  name?: string;
+  identityType?: undefined;
+  firstName?: string;
+  lastName?: string;
+  nationalCode?: string;
+  bankId?: number;
+  accountNumber?: string;
+  shebaNo?: string;
+  documents?: DocumentInput[];
+  isVisible?: boolean;
 }
 
 export interface DocumentInput {
@@ -3054,112 +3054,112 @@ export interface DocumentInput {
 }
 
 export interface UserBankChangeVisibilityInput {
-  isVisible: boolean;
+  isVisible?: boolean;
 }
 
 export interface UserDetailQuery extends UserMeQuery {
-  nationalCode: string;
-  state: string;
-  city: string;
-  address: string;
-  phoneNumber: string;
-  introducedBySubDomain: string;
+  nationalCode?: string;
+  state?: string;
+  city?: string;
+  address?: string;
+  phoneNumber?: string;
+  introducedBySubDomain?: string;
 }
 
 export interface UserMeQuery {
   userId: string;
-  title: string;
-  profileImageLink: string;
+  title?: string;
+  profileImageLink?: string;
   identityStatus: IdentityStatus;
   isBusinessUser: boolean;
   isResellerUser: boolean;
   isSubUser: boolean;
   shareCode: number;
-  referredBy: string;
-  businessName: string;
-  businessUserId: string;
+  referredBy?: string;
+  businessName?: string;
+  businessUserId?: string;
 }
 
 export interface UserProfileInput {
-  state: string;
-  city: string;
-  address: string;
+  state?: string;
+  city?: string;
+  address?: string;
 }
 
 export interface UserProfileAvatarInput {
-  fileUniqueId: string;
+  fileUniqueId?: string;
 }
 
 export interface NewUserIdentityRequestInput {
-  firstName: string;
-  lastName: string;
-  nationalCode: string;
-  documents: DocumentInput[];
+  firstName?: string;
+  lastName?: string;
+  nationalCode?: string;
+  documents?: DocumentInput[];
 }
 
 export interface UserIdentityRequestQuery {
-  firstName: string;
-  lastName: string;
-  nationalCode: string;
-  documents: DocumentQuery[];
+  firstName?: string;
+  lastName?: string;
+  nationalCode?: string;
+  documents?: DocumentQuery[];
   userIdentityRequestStatus: IdentityStatus;
-  userIdentityRequestStatusDescription: string;
+  userIdentityRequestStatusDescription?: string;
 }
 
 export interface UserChangePhoneNumberInput {
-  phoneNumber: string;
+  phoneNumber?: string;
 }
 
 export interface UserVerifyChangePhoneNumberInput {
-  token: string;
-  phoneNumber: string;
+  token?: string;
+  phoneNumber?: string;
 }
 
 export interface UserChangePasswordInput {
-  currentPassword: string;
-  newPassword: string;
+  currentPassword?: string;
+  newPassword?: string;
 }
 
 export interface UpgradeToBusinessUserQuery {
-  businessName: string;
-  organizationName: string;
-  businessLogoImageLink: string;
-  businessLogoImageUniqueId: string;
-  organizationNationalCode: string;
+  businessName?: string;
+  organizationName?: string;
+  businessLogoImageLink?: string;
+  businessLogoImageUniqueId?: string;
+  organizationNationalCode?: string;
   businessType: BusinessType;
   userIdentityType: BusinessShareType;
   upgradeToBusinessRequestStatus: IdentityStatus;
-  upgradeToBusinessRequestStatusDescription: string;
-  managerName: string;
-  managerPhoneNumber: string;
-  phoneNumber: string;
-  faxNumber: string;
-  webSiteUrl: string;
-  email: string;
-  state: string;
-  city: string;
-  address: string;
-  personNationalCode: string;
-  documents: DocumentQuery[];
+  upgradeToBusinessRequestStatusDescription?: string;
+  managerName?: string;
+  managerPhoneNumber?: string;
+  phoneNumber?: string;
+  faxNumber?: string;
+  webSiteUrl?: string;
+  email?: string;
+  state?: string;
+  city?: string;
+  address?: string;
+  personNationalCode?: string;
+  documents?: DocumentQuery[];
 }
 
 export interface UpgradeToBusinessUserInput {
-  logoFileUniqueId: string;
-  businessName: string;
-  organizationName: string;
-  organizationNationalCode: string;
-  businessType: undefined;
-  userIdentityType: undefined;
-  managerName: string;
-  managerPhoneNumber: string;
-  phoneNumber: string;
-  faxNumber: string;
-  webSiteUrl: string;
-  email: string;
-  state: string;
-  city: string;
-  address: string;
-  documents: DocumentInput[];
+  logoFileUniqueId?: string;
+  businessName?: string;
+  organizationName?: string;
+  organizationNationalCode?: string;
+  businessType?: undefined;
+  userIdentityType?: undefined;
+  managerName?: string;
+  managerPhoneNumber?: string;
+  phoneNumber?: string;
+  faxNumber?: string;
+  webSiteUrl?: string;
+  email?: string;
+  state?: string;
+  city?: string;
+  address?: string;
+  documents?: DocumentInput[];
 }
 
 export interface SubuserInvitationTaskInput {
@@ -3173,17 +3173,17 @@ export enum SubuserInvitationTaskType {
 
 export interface SubUserInvitationQuery {
   invitationId: number;
-  businessUserAvatarUrl: string;
-  businessUserTitle: string;
-  message: string;
-  invitationDate: string;
+  businessUserAvatarUrl?: string;
+  businessUserTitle?: string;
+  message?: string;
+  invitationDate?: string;
 }
 
 export interface UserWorkspaceQuery {
   businessUserId: string;
-  businessAvatarUrl: string;
-  businessName: string;
-  positionTitle: string;
+  businessAvatarUrl?: string;
+  businessName?: string;
+  positionTitle?: string;
   workspaceType: WorkspaceType;
 }
 
@@ -3196,24 +3196,24 @@ export interface UserPluginInfoApiModel {
   id: number;
   isActive: boolean;
   userId: string;
-  userDisplayName: string;
+  userDisplayName?: string;
   pluginId: number;
-  pluginName: string;
-  pluginConfig: string;
-  pluginAmountCalculationExpression: string;
-  pluginLogoFileName: string;
-  pluginLogoFileUniqueId: string;
-  pluginLogoFileUrl: string;
-  properties: PluginPropertyApiModel[];
+  pluginName?: string;
+  pluginConfig?: string;
+  pluginAmountCalculationExpression?: string;
+  pluginLogoFileName?: string;
+  pluginLogoFileUniqueId?: string;
+  pluginLogoFileUrl?: string;
+  properties?: PluginPropertyApiModel[];
 }
 
 export interface UserPluginApiModel {
   id: number;
   userId: string;
-  userDisplayName: string;
+  userDisplayName?: string;
   isActive: boolean;
-  pluginConfig: string;
-  pluginName: string;
+  pluginConfig?: string;
+  pluginName?: string;
 }
 
 export interface UserPluginTogggleApiModel {

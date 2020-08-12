@@ -11551,10 +11551,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier-plugin-jsdoc@^0.0.22:
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-jsdoc/-/prettier-plugin-jsdoc-0.0.22.tgz#cf823ef85046a39674a90756c899eea52b26bc14"
-  integrity sha512-xPI52KVrXlQFjQ/a0pZYwq1TX9rsoqE9hxfAYW1mzXdS+EEucTI0wNKsjc84/6phQ8FHhQPV4gRTFC1Ps2bCyw==
+prettier-plugin-jsdoc@^0.0.23:
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-jsdoc/-/prettier-plugin-jsdoc-0.0.23.tgz#6b3e70d931889478630073f5cb16cbd21317c4ae"
+  integrity sha512-h8vTZv5zSYrhxT14fCk8t3lY+1uzIb2fYbvdTqn4ey+JjKzO915xD+ym/Jp7G2u3sFEjd6mK8hllAfNDJ4aBMA==
   dependencies:
     babel-flow "^2.0.2"
     comment-parser "^0.7.5"

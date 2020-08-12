@@ -1,5 +1,5 @@
 const REQUEST_PARAMS =
-  "url:string,queryParams:any|undefined,requestBody:any|undefined,configOverride:AxiosRequestConfig";
+  "url:string,queryParams:any|undefined,requestBody:any|undefined,configOverride?:AxiosRequestConfig";
 
 const REQUEST_RESPONSE = "Promise<AxiosResponse<any>>";
 

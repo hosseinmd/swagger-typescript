@@ -29,7 +29,7 @@ function generate() {
         ([method, options]: [string, SwaggerRequest]) => {
           const pathParams = getPathParams(options.parameters);
 
-          let queryParams = getQueryParams(options.parameters);
+          let { queryParams, hasNullable } = getQueryParams(options.parameters);
 
           let requestBody = getBodyContent(options.requestBody);
 
@@ -54,13 +54,17 @@ export async function ${method}${generateServiceName(endPoint)}(
       )
       .join(",")}
       ${pathParams.length > 0 ? "," : ""}
-      ${queryParams ? `queryParams:${queryParams},` : ""}
+      ${
+        queryParams
+          ? `queryParams${hasNullable ? "?" : ""}:${queryParams},`
+          : ""
+      }
       ${
         requestBody
           ? `${getDefineParam("requestBody", true, requestBody)},`
           : ""
       }
-      configOverride:AxiosRequestConfig
+      configOverride?:AxiosRequestConfig
       
 ): Promise<AxiosResponse<${responses ? getTsType(responses) : "any"}>> {
 

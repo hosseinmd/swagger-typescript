@@ -8,19 +8,22 @@ function getPathParams(parameters?: Parameter[]): Parameter[] {
   );
 }
 
-function getQueryParams(parameters?: Parameter[]): string {
-  let queryParams = parameters?.reduce((prev, { in: In, name, schema }) => {
-    if (In !== "query") {
-      return prev;
-    }
-
-    return `${prev}${name}: ${getTsType(schema)},`;
+function getQueryParams(parameters?: Parameter[]) {
+  const queryParamsArray =
+    parameters?.filter(({ in: In }) => {
+      return In === "query";
+    }) || [];
+  let queryParams = queryParamsArray.reduce((prev, { name, schema }) => {
+    return `${prev}${name}${schema.nullable ? "?" : ""}: ${getTsType(schema)},`;
   }, "{");
 
   const hasQueryParams = queryParams && queryParams.length > 1;
   queryParams = hasQueryParams ? queryParams + "}" : "";
 
-  return queryParams;
+  return {
+    queryParams,
+    hasNullable: queryParamsArray.find(({ schema }) => schema.nullable),
+  };
 }
 
 function generateServiceName(endPoint: string): string {
@@ -52,7 +55,6 @@ const TYPES = {
 
 function getTsType({
   type,
-  nullable,
   $ref,
   enum: Enum,
   items,
@@ -74,16 +76,18 @@ function getTsType({
   if (properties) {
     tsType = Object.entries(properties)
       .map(([pName, value]) => ({ ...(value as any), name: pName }))
-      .reduce((prev, schema) => {
-        return `${prev}${schema.name}: ${getTsType(schema)},`;
+      .reduce((prev, schema: Schema & { name: string }) => {
+        return `${prev}${schema.name}${schema.nullable ? "?" : ""}: ${getTsType(
+          schema,
+        )},`;
       }, "{");
 
     tsType = tsType ? tsType + "}" : "";
   }
 
-  if (nullable) {
-    tsType + "| null";
-  }
+  // if (nullable) {
+  //   tsType + "| null";
+  // }
 
   return tsType;
 }

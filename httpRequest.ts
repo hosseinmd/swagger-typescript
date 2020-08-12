@@ -5,25 +5,25 @@ const Http = {
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride: AxiosRequestConfig
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {},
   postRequest(
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride: AxiosRequestConfig
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {},
   putRequest(
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride: AxiosRequestConfig
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {},
   deleteRequest(
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride: AxiosRequestConfig
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {},
 };
 
