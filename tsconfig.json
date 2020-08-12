@@ -61,8 +61,6 @@
   },
   "exclude": [
     "node_modules",
-    "services.ts",
-    "httpRequest.ts",
-    "config.ts"
+    "test/",
   ]
 }

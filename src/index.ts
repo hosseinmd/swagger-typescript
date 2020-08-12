@@ -1,4 +1,4 @@
-import { writeFileSync, existsSync } from "fs";
+import { writeFileSync, existsSync, mkdirSync } from "fs";
 import { format } from "prettier";
 import {
   getPathParams,
@@ -16,14 +16,21 @@ import {
 import { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG } from "./strings";
 import { getSwaggerJson } from "./getJson";
 
+function getParam(name: string): string {
+  name += "=";
+  const index = process.argv.findIndex((v) => v.startsWith(name));
+
+  return process.argv[index].substring(name.length);
+}
+
 async function generate() {
   let code = SERVICE_BEGINNING;
-  console.log(process.argv);
+  const url = getParam("url");
+  const dir = getParam("dir") || ".";
 
-  const index = process.argv.findIndex((v) => v.startsWith("url="));
-
-  const url = process.argv[index].substring(4);
-  console.log(url);
+  if (!existsSync(dir)) {
+    mkdirSync(dir);
+  }
 
   try {
     const input: SwaggerJson = await getSwaggerJson(url);
@@ -135,18 +142,18 @@ export enum ${name} {${Enum.map(
     });
 
     writeFileSync(
-      "./services.ts",
+      `${dir}/services.ts`,
       format(code, { parser: "jsdoc-parser" } as any),
     );
 
     writeFileSync(
-      "./httpRequest.ts",
+      `${dir}/httpRequest.ts`,
       format(HTTP_REQUEST, { parser: "jsdoc-parser" } as any),
     );
 
-    if (!existsSync("./config.ts")) {
+    if (!existsSync(`${dir}/config.ts`)) {
       writeFileSync(
-        "./config.ts",
+        `${dir}/config.ts`,
         format(CONFIG, { parser: "jsdoc-parser" } as any),
       );
     }

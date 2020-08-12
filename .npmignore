@@ -7,6 +7,6 @@
 .prettierrc
 commitlint.config.js
 CODE_OF_CONDUCT.md
-__tests__/
+test/
 examples/
 src/

@@ -9,6 +9,12 @@
 yarn swagger-generate url='http://example.com'
 ```
 
+## dir 
+
+```
+yarn swagger-generate url='http://example.com' dir='./services'
+```
+
 
 ## responseWrapper
 

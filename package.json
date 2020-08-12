@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "generate": "tsc && node ./index.js url='http://94.182.181.229:8090/swagger/v1/swagger.json'",
+    "generate": "tsc && node ./index.js url='http://94.182.181.229:8090/swagger/v1/swagger.json' dir='./test'",
     "prepare": "tsc",
     "build": "tsc",
     "test": "jest",
