@@ -178,4 +178,6 @@ function getDefineParam(
   return `${name}${required ? "" : "?"}: ${getTsType(schema)}`;
 }
 
+generate();
+
 export { generate };

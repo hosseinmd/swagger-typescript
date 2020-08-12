@@ -3,9 +3,8 @@
   "version": "1.1.4",
   "description": "A state management with react context for apps which using hooks.",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "scripts": {
-    "generate": "tsc && node ./index.js url='http://94.182.181.229:8090/swagger/v1/swagger.json' dir='./test'",
+    "generate": "tsc && node ./lib/index.js url='http://94.182.181.229:8090/swagger/v1/swagger.json' dir='./test'",
     "prepare": "tsc",
     "build": "tsc",
     "test": "jest",
@@ -67,7 +66,7 @@
     "typescript": "3.9.7"
   },
   "bin": {
-    "swagger-generate": "./index.js"
+    "swagger-generate": "./lib/index.js"
   },
   "files": [
     "lib"
