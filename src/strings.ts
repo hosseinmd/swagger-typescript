@@ -99,7 +99,8 @@ export { Http, overrideConfig };
 
 const SERVICE_BEGINNING = `
 // AUTO_GENERATED Do not change this file directly change config.ts file instead
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosRequestConfig } from "axios";
+import { SwaggerResponse, responseWrapper } from "./config";
 import { Http, overrideConfig } from "./httpRequest";
 
 function template(path: string, obj: { [x: string]: any } = {}) {
@@ -123,14 +124,6 @@ function getBaseConfig(): AxiosRequestConfig {
       "Content-Encoding": "UTF-8",
       Accept: "application/json",
       "Content-Type": "application/json-patch+json",
-    },
-  };
-}
-
-function getOverride(): AxiosRequestConfig {
-  return {
-    headers: {
-      Authentication: "",
     },
   };
 }
@@ -174,7 +167,15 @@ class Exception extends Error {
   isApiException = true;
 }
 
-export { getBaseConfig, errorCatch, getOverride, Exception };
+export interface SwaggerResponse<R> extends AxiosResponse<R> {}
+
+async function responseWrapper(
+  response: AxiosResponse<any>,
+): Promise<SwaggerResponse<any>> {
+  return response;
+}
+
+export { getBaseConfig, errorCatch, Exception, responseWrapper };
 `;
 
 export { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG };

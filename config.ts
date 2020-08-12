@@ -1,3 +1,4 @@
+// Please add your custom config
 import { AxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
 
 function getBaseConfig(): AxiosRequestConfig {
@@ -50,4 +51,12 @@ class Exception extends Error {
   isApiException = true;
 }
 
-export { getBaseConfig, errorCatch, Exception };
+export interface SwaggerResponse<R> extends AxiosResponse<R> {}
+
+async function responseWrapper(
+  response: AxiosResponse<any>,
+): Promise<SwaggerResponse<any>> {
+  return response;
+}
+
+export { getBaseConfig, errorCatch, Exception, responseWrapper };

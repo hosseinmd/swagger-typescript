@@ -1,5 +1,6 @@
 // AUTO_GENERATED Do not change this file directly change config.ts file instead
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosRequestConfig } from "axios";
+import { SwaggerResponse, responseWrapper } from "./config";
 import { Http, overrideConfig } from "./httpRequest";
 
 function template(path: string, obj: { [x: string]: any } = {}) {
@@ -14,17 +15,19 @@ function template(path: string, obj: { [x: string]: any } = {}) {
 /** Get user accounts [Or get sub user authorized accounts] */
 export async function getAccount(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<AccountSummaryWithBalanceQuery[]>> {
-  return await Http.getRequest(
-    template("/Account", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<AccountSummaryWithBalanceQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Account", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -32,17 +35,19 @@ export async function getAccount(
 export async function postAccount(
   requestBody: AccountInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<AccountSummaryWithBalanceQuery>> {
-  return await Http.postRequest(
-    template("/Account", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<AccountSummaryWithBalanceQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Account", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -50,17 +55,19 @@ export async function postAccount(
 export async function getAccountId(
   id: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<AccountDetailQuery>> {
-  return await Http.getRequest(
-    template("/Account/{id}", { id }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<AccountDetailQuery>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Account/{id}", { id }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -69,17 +76,19 @@ export async function putAccountId(
   id: number,
   requestBody: AccountInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<AccountSummaryWithBalanceQuery>> {
-  return await Http.putRequest(
-    template("/Account/{id}", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<AccountSummaryWithBalanceQuery>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/Account/{id}", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -91,17 +100,19 @@ export async function putAccountIdNotification(
   id: number,
   requestBody: AccountNotificationStatusInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.putRequest(
-    template("/Account/{id}/notification", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/Account/{id}/notification", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -109,17 +120,19 @@ export async function putAccountIdNotification(
 export async function getAccountIdBalance(
   id: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<AccountBalanceSummaryQuery>> {
-  return await Http.getRequest(
-    template("/Account/{id}/balance", { id }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<AccountBalanceSummaryQuery>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Account/{id}/balance", { id }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -127,17 +140,19 @@ export async function getAccountIdBalance(
 export async function getAccountAccountIdPermittedSubUsers(
   accountId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<AccountPermittedSubUserQuery>> {
-  return await Http.getRequest(
-    template("/Account/{accountId}/PermittedSubUsers", { accountId }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<AccountPermittedSubUserQuery>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Account/{accountId}/PermittedSubUsers", { accountId }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -146,17 +161,19 @@ export async function postAccountIdCharge(
   id: number,
   requestBody: NewChargeRequestInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<NewChargeRequestResultQuery>> {
-  return await Http.postRequest(
-    template("/Account/{id}/charge", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<NewChargeRequestResultQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Account/{id}/charge", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -166,17 +183,19 @@ export async function getAccountIdEpayRequestComission(
   queryParams: { amount: number },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<CommissionApiModel>> {
-  return await Http.getRequest(
-    template("/Account/{id}/epayRequest/comission", { id }),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<CommissionApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Account/{id}/epayRequest/comission", { id }),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -185,17 +204,19 @@ export async function postAccountIdEpayRequest(
   id: number,
   requestBody: NewEpayRequestInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<NewEpayRequestResultQuery>> {
-  return await Http.postRequest(
-    template("/Account/{id}/epayRequest", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<NewEpayRequestResultQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Account/{id}/epayRequest", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -205,17 +226,19 @@ export async function getAccountIdSettlementRequestComission(
   queryParams: { amount: number },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<CommissionApiModel>> {
-  return await Http.getRequest(
-    template("/Account/{id}/settlementRequest/comission", { id }),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<CommissionApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Account/{id}/settlementRequest/comission", { id }),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -224,17 +247,19 @@ export async function postAccountIdSettlementRequest(
   id: number,
   requestBody: NewSettlementRequestInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SettlementRequestQuery>> {
-  return await Http.postRequest(
-    template("/Account/{id}/settlementRequest", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SettlementRequestQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Account/{id}/settlementRequest", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -249,17 +274,19 @@ export async function getAccountSearch(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<InsensitiveAccountApiModel>> {
-  return await Http.getRequest(
-    template("/Account/search", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<InsensitiveAccountApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Account/search", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -269,17 +296,19 @@ export async function getAccountIdTransferMoneyCommission(
   queryParams: { amount: number },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<CommissionApiModel>> {
-  return await Http.getRequest(
-    template("/Account/{id}/transferMoney/commission", { id }),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<CommissionApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Account/{id}/transferMoney/commission", { id }),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -288,17 +317,19 @@ export async function postAccountIdTransferMoney(
   id: number,
   requestBody: TransferMoneyInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<TransferMoneyApiModel>> {
-  return await Http.postRequest(
-    template("/Account/{id}/transferMoney", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<TransferMoneyApiModel>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Account/{id}/transferMoney", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -306,17 +337,19 @@ export async function postAccountIdTransferMoney(
 export async function postAuthApilogin(
   requestBody: ApiLoginInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<NewTokenResult>> {
-  return await Http.postRequest(
-    template("/Auth/apilogin", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<NewTokenResult>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/apilogin", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -324,17 +357,19 @@ export async function postAuthApilogin(
 export async function postAuthLogin(
   requestBody: LoginInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<NewTokenResult>> {
-  return await Http.postRequest(
-    template("/Auth/login", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<NewTokenResult>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/login", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -342,17 +377,19 @@ export async function postAuthLogin(
 export async function postAuthLoginOtp(
   requestBody: TotpLoginInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<NewTokenResult>> {
-  return await Http.postRequest(
-    template("/Auth/login/otp", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<NewTokenResult>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/login/otp", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -360,17 +397,19 @@ export async function postAuthLoginOtp(
 export async function postAuthLoginOtpGenerate(
   requestBody: RequestTotpInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/Auth/login/otp/generate", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/login/otp/generate", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -378,17 +417,19 @@ export async function postAuthLoginOtpGenerate(
 export async function postAuthLoginSubuser(
   requestBody: SubUserLoginInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<NewTokenResult>> {
-  return await Http.postRequest(
-    template("/Auth/login/subuser", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<NewTokenResult>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/login/subuser", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -396,34 +437,38 @@ export async function postAuthLoginSubuser(
 export async function postAuthLoginSecurity(
   requestBody: SecureLoginInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<NewTokenResult>> {
-  return await Http.postRequest(
-    template("/Auth/login/security", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<NewTokenResult>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/login/security", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
 /** Refresh the short-lived JWT, using current short-lived one */
 export async function getAuthLoginSecurityRefresh(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<NewTokenResult>> {
-  return await Http.getRequest(
-    template("/Auth/login/security/refresh", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<NewTokenResult>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Auth/login/security/refresh", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -431,34 +476,38 @@ export async function getAuthLoginSecurityRefresh(
 export async function postAuthCheck(
   requestBody: LoginInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/Auth/check", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/check", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
 /** Log out */
 export async function postAuthLogout(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/Auth/logout", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/logout", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -466,17 +515,19 @@ export async function postAuthLogout(
 export async function postAuthRegister(
   requestBody: RegisterInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<RegisterNewUserQuery>> {
-  return await Http.postRequest(
-    template("/Auth/register", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<RegisterNewUserQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/register", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -484,17 +535,19 @@ export async function postAuthRegister(
 export async function postAuthRegisterVerify(
   requestBody: ConfirmPhoneNumberOrEmailInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<ConfirmPhoneNumberQuery>> {
-  return await Http.postRequest(
-    template("/Auth/register/verify", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<ConfirmPhoneNumberQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/register/verify", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -502,17 +555,19 @@ export async function postAuthRegisterVerify(
 export async function postAuthRegisterPoslogin(
   requestBody: ConfirmPhoneNumberOrEmailInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<NewTokenResult>> {
-  return await Http.postRequest(
-    template("/Auth/register/poslogin", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<NewTokenResult>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/register/poslogin", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -520,17 +575,19 @@ export async function postAuthRegisterPoslogin(
 export async function postAuthRegisterBasic(
   requestBody: SetUserBasicInfoInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/Auth/register/basic", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/register/basic", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -538,17 +595,19 @@ export async function postAuthRegisterBasic(
 export async function postAuthForgetPassword(
   requestBody: UserForgetPasswordInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/Auth/forgetPassword", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/forgetPassword", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -556,17 +615,19 @@ export async function postAuthForgetPassword(
 export async function postAuthForgetPasswordVerify(
   requestBody: UserVerifyForgetPasswordInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<ConfirmPhoneNumberQuery>> {
-  return await Http.postRequest(
-    template("/Auth/forgetPassword/verify", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<ConfirmPhoneNumberQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/forgetPassword/verify", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -574,17 +635,19 @@ export async function postAuthForgetPasswordVerify(
 export async function postAuthForgetPasswordResetPassword(
   requestBody: UserResetForgetPasswordInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/Auth/forgetPassword/resetPassword", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/forgetPassword/resetPassword", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -592,51 +655,57 @@ export async function postAuthForgetPasswordResetPassword(
 export async function postAuthRegisterDevice(
   requestBody: RegisterDeviceInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/Auth/register/device", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Auth/register/device", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
 /** Get available banks */
 export async function getBank(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<BankQuery[]>> {
-  return await Http.getRequest(
-    template("/Bank", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<BankQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Bank", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
 /** Get Business categories */
 export async function getBusinessUserCategory(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<BusinessCategoryQuery[]>> {
-  return await Http.getRequest(
-    template("/BusinessUser/category", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<BusinessCategoryQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/BusinessUser/category", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -647,17 +716,19 @@ export async function getBusinessUserCategory(
 export async function postBusinessUserInvite(
   requestBody: SendConnectionRequestInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserConnectionQuery>> {
-  return await Http.postRequest(
-    template("/BusinessUser/invite", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserConnectionQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/BusinessUser/invite", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -668,17 +739,19 @@ export async function postBusinessUserInvite(
 export async function postBusinessUserInviteInvitationIdResend(
   invitationId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserConnectionQuery>> {
-  return await Http.postRequest(
-    template("/BusinessUser/invite/{invitationId}/resend", { invitationId }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserConnectionQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/BusinessUser/invite/{invitationId}/resend", { invitationId }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -689,17 +762,19 @@ export async function postBusinessUserInviteInvitationIdResend(
 export async function deleteBusinessUserInviteInvitationIdRemove(
   invitationId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserConnectionQuery>> {
-  return await Http.deleteRequest(
-    template("/BusinessUser/invite/{invitationId}/remove", { invitationId }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserConnectionQuery>> {
+  return await responseWrapper(
+    await Http.deleteRequest(
+      template("/BusinessUser/invite/{invitationId}/remove", { invitationId }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -710,17 +785,19 @@ export async function deleteBusinessUserInviteInvitationIdRemove(
 export async function postBusinessUserResendInvitationId(
   invitationId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserConnectionQuery>> {
-  return await Http.postRequest(
-    template("/BusinessUser/resend/{invitationId}", { invitationId }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserConnectionQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/BusinessUser/resend/{invitationId}", { invitationId }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -733,19 +810,21 @@ export async function deleteBusinessUserConnectionInvitationIdRemove(
   queryParams: { id: number },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserConnectionQuery>> {
-  return await Http.deleteRequest(
-    template("/BusinessUser/connection/{invitationId}/remove", {
-      invitationId,
-    }),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserConnectionQuery>> {
+  return await responseWrapper(
+    await Http.deleteRequest(
+      template("/BusinessUser/connection/{invitationId}/remove", {
+        invitationId,
+      }),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -758,17 +837,19 @@ export async function getBusinessUserConnection(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserConnectionQuery[]>> {
-  return await Http.getRequest(
-    template("/BusinessUser/connection", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserConnectionQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/BusinessUser/connection", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -780,17 +861,19 @@ export async function getBusinessUserConnectionActive(
   queryParams?: { skip?: number; take?: number },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserConnectionQuery[]>> {
-  return await Http.getRequest(
-    template("/BusinessUser/connection/active", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserConnectionQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/BusinessUser/connection/active", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -801,17 +884,19 @@ export async function getBusinessUserConnectionActive(
 export async function getBusinessUserConnectionId(
   id: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserConnectionAmountsReportQuery>> {
-  return await Http.getRequest(
-    template("/BusinessUser/connection/{id}", { id }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserConnectionAmountsReportQuery>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/BusinessUser/connection/{id}", { id }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -823,17 +908,19 @@ export async function putBusinessUserConnectionId(
   id: number,
   requestBody: EditConnectionInfoInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.putRequest(
-    template("/BusinessUser/connection/{id}", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/BusinessUser/connection/{id}", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -844,17 +931,19 @@ export async function putBusinessUserConnectionId(
 export async function deleteBusinessUserConnectionId(
   id: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserConnectionQuery>> {
-  return await Http.deleteRequest(
-    template("/BusinessUser/connection/{id}", { id }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserConnectionQuery>> {
+  return await responseWrapper(
+    await Http.deleteRequest(
+      template("/BusinessUser/connection/{id}", { id }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -865,17 +954,19 @@ export async function deleteBusinessUserConnectionId(
 export async function getBusinessUserConnectionIdPermission(
   id: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserPermissionQuery[]>> {
-  return await Http.getRequest(
-    template("/BusinessUser/connection/{id}/permission", { id }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserPermissionQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/BusinessUser/connection/{id}/permission", { id }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -887,17 +978,19 @@ export async function postBusinessUserConnectionIdPermission(
   id: number,
   requestBody: SetAccountAccessForSubUserInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/BusinessUser/connection/{id}/permission", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/BusinessUser/connection/{id}/permission", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -910,20 +1003,22 @@ export async function putBusinessUserConnectionIdPermissionAccountId(
   accountId: number,
   requestBody: EditSubUserPermissionInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.putRequest(
-    template("/BusinessUser/connection/{id}/permission/{accountId}", {
-      id,
-      accountId,
-    }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/BusinessUser/connection/{id}/permission/{accountId}", {
+        id,
+        accountId,
+      }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -935,20 +1030,22 @@ export async function deleteBusinessUserConnectionIdPermissionAccountId(
   id: number,
   accountId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.deleteRequest(
-    template("/BusinessUser/connection/{id}/permission/{accountId}", {
-      id,
-      accountId,
-    }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.deleteRequest(
+      template("/BusinessUser/connection/{id}/permission/{accountId}", {
+        id,
+        accountId,
+      }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -981,17 +1078,19 @@ export async function getBusinessUserConnectionIdEpay(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<EpayRequestQuery[]>> {
-  return await Http.getRequest(
-    template("/BusinessUser/connection/{id}/epay", { id }),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<EpayRequestQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/BusinessUser/connection/{id}/epay", { id }),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1012,17 +1111,19 @@ export async function getBusinessUserConnectionIdSettlement(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SettlementRequestQuery[]>> {
-  return await Http.getRequest(
-    template("/BusinessUser/connection/{id}/settlement", { id }),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SettlementRequestQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/BusinessUser/connection/{id}/settlement", { id }),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1054,17 +1155,19 @@ export async function getEpayRequest(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<EpayRequestQuery[]>> {
-  return await Http.getRequest(
-    template("/EpayRequest", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<EpayRequestQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/EpayRequest", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1072,17 +1175,19 @@ export async function getEpayRequest(
 export async function getEpayRequestId(
   id: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<NewEpayRequestResultQuery>> {
-  return await Http.getRequest(
-    template("/EpayRequest/{id}", { id }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<NewEpayRequestResultQuery>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/EpayRequest/{id}", { id }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1090,17 +1195,19 @@ export async function getEpayRequestId(
 export async function getEpayRequestTokenQrCode(
   token: string,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.getRequest(
-    template("/EpayRequest/{token}/qrCode", { token }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/EpayRequest/{token}/qrCode", { token }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -1110,17 +1217,19 @@ export async function getEpayRequestPosQrAccountNo(
   queryParams?: { amount?: number; subUserConId?: number },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.getRequest(
-    template("/EpayRequest/pos/Qr/{accountNo}", { accountNo }),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/EpayRequest/pos/Qr/{accountNo}", { accountNo }),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -1139,17 +1248,19 @@ export async function getEpayRequestForMe(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<EpayRequestForUserQuery[]>> {
-  return await Http.getRequest(
-    template("/EpayRequest/forMe", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<EpayRequestForUserQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/EpayRequest/forMe", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1158,34 +1269,38 @@ export async function postEpayRequestIdTask(
   id: number,
   requestBody: EpayRequestTaskInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/EpayRequest/{id}/task", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/EpayRequest/{id}/task", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
 /** Undefined */
 export async function getEpayRequestAudiencesRecent(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<ContactApiModel[]>> {
-  return await Http.getRequest(
-    template("/EpayRequest/audiences/recent", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<ContactApiModel[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/EpayRequest/audiences/recent", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1193,17 +1308,19 @@ export async function getEpayRequestAudiencesRecent(
 export async function postFile(
   requestBody: { file?: string },
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<FileUploadQuery>> {
-  return await Http.postRequest(
-    template("/File", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<FileUploadQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/File", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1211,17 +1328,19 @@ export async function postFile(
 export async function getFileId(
   id: string,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.getRequest(
-    template("/File/{id}", { id }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/File/{id}", { id }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -1229,17 +1348,19 @@ export async function getFileId(
 export async function putGroupTransferAdd(
   requestBody: GroupTransferTargetValidationInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<GroupTransferTargetValidationQuery>> {
-  return await Http.putRequest(
-    template("/GroupTransfer/add", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<GroupTransferTargetValidationQuery>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/GroupTransfer/add", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1247,17 +1368,19 @@ export async function putGroupTransferAdd(
 export async function postGroupTransferImport(
   requestBody: { file?: string },
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<GroupTransferTargetValidationQuery[]>> {
-  return await Http.postRequest(
-    template("/GroupTransfer/import", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<GroupTransferTargetValidationQuery[]>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/GroupTransfer/import", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1265,17 +1388,19 @@ export async function postGroupTransferImport(
 export async function postGroupTransferExport(
   requestBody: GroupTransferTargetValidationQuery[],
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/GroupTransfer/export", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/GroupTransfer/export", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -1283,17 +1408,19 @@ export async function postGroupTransferExport(
 export async function postGroupTransferTransfer(
   requestBody: GroupTransferInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<GroupTransferQuery>> {
-  return await Http.postRequest(
-    template("/GroupTransfer/transfer", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<GroupTransferQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/GroupTransfer/transfer", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1302,34 +1429,38 @@ export async function getGroupTransferCommission(
   queryParams: { accountId: number; amount: number },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<CommissionApiModel>> {
-  return await Http.getRequest(
-    template("/GroupTransfer/commission", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<CommissionApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/GroupTransfer/commission", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
 /** Undefined */
 export async function getNotificationIa(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<ImportantActionApiModel[]>> {
-  return await Http.getRequest(
-    template("/Notification/ia", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<ImportantActionApiModel[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Notification/ia", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1337,17 +1468,19 @@ export async function getNotificationIa(
 export async function putNotificationIaNotifId(
   notifId: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<FileUploadQuery>> {
-  return await Http.putRequest(
-    template("/Notification/ia/{notifId}", { notifId }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<FileUploadQuery>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/Notification/ia/{notifId}", { notifId }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1355,17 +1488,19 @@ export async function putNotificationIaNotifId(
 export async function getPluginId(
   id: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<PluginApiModel>> {
-  return await Http.getRequest(
-    template("/Plugin/{id}", { id }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<PluginApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Plugin/{id}", { id }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1375,17 +1510,19 @@ export async function getPosAccountNo(
   queryParams?: { subUserConId?: number },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<PosLandingPageApiModel>> {
-  return await Http.getRequest(
-    template("/Pos/{accountNo}", { accountNo }),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<PosLandingPageApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Pos/{accountNo}", { accountNo }),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1394,17 +1531,19 @@ export async function postPosPayTargetAccountNoWallet(
   targetAccountNo: string,
   requestBody: PosWalletPayInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<ReceiptApiModel>> {
-  return await Http.postRequest(
-    template("/Pos/pay/{targetAccountNo}/wallet", { targetAccountNo }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<ReceiptApiModel>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Pos/pay/{targetAccountNo}/wallet", { targetAccountNo }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1413,17 +1552,19 @@ export async function postPosPayTargetAccountNoOnline(
   targetAccountNo: string,
   requestBody: PosOnlinePayInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<NewEpayRequestResultQuery>> {
-  return await Http.postRequest(
-    template("/Pos/pay/{targetAccountNo}/online", { targetAccountNo }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<NewEpayRequestResultQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Pos/pay/{targetAccountNo}/online", { targetAccountNo }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1431,17 +1572,19 @@ export async function postPosPayTargetAccountNoOnline(
 export async function getReceiptToken(
   token: string,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<ReceiptApiModel>> {
-  return await Http.getRequest(
-    template("/Receipt/{token}", { token }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<ReceiptApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Receipt/{token}", { token }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1451,17 +1594,19 @@ export async function getReceiptToken(
  */
 export async function getResellerUser(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<ResellerApiModel>> {
-  return await Http.getRequest(
-    template("/ResellerUser", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<ResellerApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1471,17 +1616,19 @@ export async function getResellerUser(
  */
 export async function getResellerUserIntroducedFilterData(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<ReselledUserFilterData>> {
-  return await Http.getRequest(
-    template("/ResellerUser/introduced/filterData", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<ReselledUserFilterData>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/introduced/filterData", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1506,17 +1653,19 @@ export async function getResellerUserIntroduced(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<ReselledUserApiModel[]>> {
-  return await Http.getRequest(
-    template("/ResellerUser/introduced", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<ReselledUserApiModel[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/introduced", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1524,17 +1673,19 @@ export async function getResellerUserIntroduced(
 export async function getResellerUserIntroducedUserIdActivity(
   userId: string,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<ReselledUserActivityApiModel>> {
-  return await Http.getRequest(
-    template("/ResellerUser/introduced/{userId}/activity", { userId }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<ReselledUserActivityApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/introduced/{userId}/activity", { userId }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1556,17 +1707,19 @@ export async function getResellerUserDashboardCommissionSum(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<AggregationReportQueryOfDecimal>> {
-  return await Http.getRequest(
-    template("/ResellerUser/dashboard/commission/sum", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<AggregationReportQueryOfDecimal>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/dashboard/commission/sum", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1588,17 +1741,19 @@ export async function getResellerUserDashboardCommissionReport(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<DateReportQueryOfDecimal[]>> {
-  return await Http.getRequest(
-    template("/ResellerUser/dashboard/commission/report", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<DateReportQueryOfDecimal[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/dashboard/commission/report", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1620,17 +1775,19 @@ export async function getResellerUserDashboardLinksCount(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
-  return await Http.getRequest(
-    template("/ResellerUser/dashboard/links/count", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<AggregationReportQueryOfInteger>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/dashboard/links/count", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1652,17 +1809,19 @@ export async function getResellerUserDashboardLinksReport(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
-  return await Http.getRequest(
-    template("/ResellerUser/dashboard/links/report", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<DateReportQueryOfInteger[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/dashboard/links/report", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1684,17 +1843,19 @@ export async function getResellerUserDashboardLinksPaidCount(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
-  return await Http.getRequest(
-    template("/ResellerUser/dashboard/links/paid/count", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<AggregationReportQueryOfInteger>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/dashboard/links/paid/count", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1716,17 +1877,19 @@ export async function getResellerUserDashboardLinksPaidReport(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
-  return await Http.getRequest(
-    template("/ResellerUser/dashboard/links/paid/report", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<DateReportQueryOfInteger[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/dashboard/links/paid/report", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1748,17 +1911,19 @@ export async function getResellerUserDashboardTransactionsCount(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
-  return await Http.getRequest(
-    template("/ResellerUser/dashboard/transactions/count", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<AggregationReportQueryOfInteger>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/dashboard/transactions/count", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1780,17 +1945,19 @@ export async function getResellerUserDashboardTransactionsReport(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
-  return await Http.getRequest(
-    template("/ResellerUser/dashboard/transactions/report", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<DateReportQueryOfInteger[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/dashboard/transactions/report", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1812,17 +1979,19 @@ export async function getResellerUserDashboardIntroducedCount(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<AggregationReportQueryOfInteger>> {
-  return await Http.getRequest(
-    template("/ResellerUser/dashboard/introduced/count", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<AggregationReportQueryOfInteger>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/dashboard/introduced/count", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1844,17 +2013,19 @@ export async function getResellerUserDashboardIntroducedReport(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<DateReportQueryOfInteger[]>> {
-  return await Http.getRequest(
-    template("/ResellerUser/dashboard/introduced/report", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<DateReportQueryOfInteger[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/ResellerUser/dashboard/introduced/report", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1862,17 +2033,19 @@ export async function getResellerUserDashboardIntroducedReport(
 export async function postServiceNewEpayRequest(
   requestBody: EpayRequestServiceInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<EpayRequestWcfResult>> {
-  return await Http.postRequest(
-    template("/Service/NewEpayRequest", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<EpayRequestWcfResult>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Service/NewEpayRequest", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1880,34 +2053,38 @@ export async function postServiceNewEpayRequest(
 export async function postServiceCheckEpayRequest(
   requestBody: string,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<EpayRequestCheckStatusResult>> {
-  return await Http.postRequest(
-    template("/Service/CheckEpayRequest", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<EpayRequestCheckStatusResult>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Service/CheckEpayRequest", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
 /** Verify the ApiKey for authorizing the [User] */
 export async function postServiceVerifyApiKey(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<boolean>> {
-  return await Http.postRequest(
-    template("/Service/VerifyApiKey", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<boolean>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Service/VerifyApiKey", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1915,17 +2092,19 @@ export async function postServiceVerifyApiKey(
 export async function postServiceNewDivideEpayRequest(
   requestBody: DivideEpayRequestServiceInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<EpayRequestWcfResult>> {
-  return await Http.postRequest(
-    template("/Service/NewDivideEpayRequest", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<EpayRequestWcfResult>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Service/NewDivideEpayRequest", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1933,17 +2112,19 @@ export async function postServiceNewDivideEpayRequest(
 export async function postServiceUnblockAmount(
   requestBody: DividedEpayRequestUnblockInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<DividedEpayRequestUnblockResult>> {
-  return await Http.postRequest(
-    template("/Service/UnblockAmount", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<DividedEpayRequestUnblockResult>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Service/UnblockAmount", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1951,17 +2132,19 @@ export async function postServiceUnblockAmount(
 export async function postServiceCancelAmount(
   requestBody: DividedEpayRequestCancelInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<DividedEpayRequestCancelResult>> {
-  return await Http.postRequest(
-    template("/Service/CancelAmount", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<DividedEpayRequestCancelResult>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Service/CancelAmount", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1969,17 +2152,19 @@ export async function postServiceCancelAmount(
 export async function postServiceCancelPayment(
   requestBody: string,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<boolean>> {
-  return await Http.postRequest(
-    template("/Service/CancelPayment", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<boolean>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Service/CancelPayment", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -1999,17 +2184,19 @@ export async function getSettlementRequest(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SettlementRequestQuery[]>> {
-  return await Http.getRequest(
-    template("/SettlementRequest", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SettlementRequestQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/SettlementRequest", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2017,34 +2204,38 @@ export async function getSettlementRequest(
 export async function getSubDomainSubDomainAddress(
   subDomainAddress: string,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubDomainApiModel>> {
-  return await Http.getRequest(
-    template("/SubDomain/{subDomainAddress}", { subDomainAddress }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubDomainApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/SubDomain/{subDomainAddress}", { subDomainAddress }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
 /** Get the SubDomain of current Reseller user [Feature just allowed for Resellers] */
 export async function getSubDomain(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubDomainApiModel>> {
-  return await Http.getRequest(
-    template("/SubDomain", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubDomainApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/SubDomain", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2055,17 +2246,19 @@ export async function getSubDomain(
 export async function putSubDomain(
   requestBody: SubDomainUpdateApiModel,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubDomainApiModel>> {
-  return await Http.putRequest(
-    template("/SubDomain", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubDomainApiModel>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/SubDomain", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2076,34 +2269,38 @@ export async function putSubDomain(
 export async function deleteSubUserConnectionId(
   id: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<BusinessUserConnectionQuery>> {
-  return await Http.deleteRequest(
-    template("/SubUser/connection/{id}", { id }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<BusinessUserConnectionQuery>> {
+  return await responseWrapper(
+    await Http.deleteRequest(
+      template("/SubUser/connection/{id}", { id }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
 /** Get the connections [Feature just allowed for the sub users] */
 export async function getSubUserConnection(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<BusinessUserConnectionQuery[]>> {
-  return await Http.getRequest(
-    template("/SubUser/connection", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<BusinessUserConnectionQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/SubUser/connection", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2111,17 +2308,19 @@ export async function getSubUserConnection(
 export async function getSubUserAccountId(
   id: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserAccountDetailQuery>> {
-  return await Http.getRequest(
-    template("/SubUser/account/{id}", { id }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserAccountDetailQuery>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/SubUser/account/{id}", { id }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2133,17 +2332,19 @@ export async function postSubUserNotificationId(
   id: number,
   requestBody: SubUserNotificationStatusInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/SubUser/notification/{id}", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/SubUser/notification/{id}", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -2162,17 +2363,19 @@ export async function getTransaction(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<TransactionApiModel[]>> {
-  return await Http.getRequest(
-    template("/Transaction", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<TransactionApiModel[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Transaction", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2187,17 +2390,19 @@ export async function getTransferSearch(
   },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<InsensitiveAccountApiModel>> {
-  return await Http.getRequest(
-    template("/Transfer/search", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<InsensitiveAccountApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Transfer/search", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2206,17 +2411,19 @@ export async function getTransferRecent(
   queryParams?: { take?: number },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<TransferMoneyApiModel[]>> {
-  return await Http.getRequest(
-    template("/Transfer/recent", {}),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<TransferMoneyApiModel[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Transfer/recent", {}),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2226,17 +2433,19 @@ export async function getTransferAccountIdCommission(
   queryParams: { amount: number },
 
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<CommissionApiModel>> {
-  return await Http.getRequest(
-    template("/Transfer/{accountId}/commission", { accountId }),
-    queryParams,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<CommissionApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/Transfer/{accountId}/commission", { accountId }),
+      queryParams,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2245,34 +2454,38 @@ export async function postTransferAccountId(
   accountId: number,
   requestBody: TransferMoneyInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<TransferMoneyApiModel>> {
-  return await Http.postRequest(
-    template("/Transfer/{accountId}", { accountId }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<TransferMoneyApiModel>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/Transfer/{accountId}", { accountId }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
 /** Get user banks [Feature is not allowed for sub users.] */
 export async function getUserBank(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserBankQuery[]>> {
-  return await Http.getRequest(
-    template("/UserBank", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserBankQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/UserBank", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2283,34 +2496,38 @@ export async function getUserBank(
 export async function postUserBank(
   requestBody: UserBankInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserBankQuery>> {
-  return await Http.postRequest(
-    template("/UserBank", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserBankQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/UserBank", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
 /** Get available user banks [Feature is not allowed for sub users.] */
 export async function getUserBankReady(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserBankQuery[]>> {
-  return await Http.getRequest(
-    template("/UserBank/ready", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserBankQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/UserBank/ready", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2318,17 +2535,19 @@ export async function getUserBankReady(
 export async function getUserBankId(
   id: number,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserBankDetailQuery>> {
-  return await Http.getRequest(
-    template("/UserBank/{id}", { id }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserBankDetailQuery>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/UserBank/{id}", { id }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2337,17 +2556,19 @@ export async function putUserBankId(
   id: number,
   requestBody: UserBankInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserBankQuery>> {
-  return await Http.putRequest(
-    template("/UserBank/{id}", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserBankQuery>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/UserBank/{id}", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2356,34 +2577,38 @@ export async function putUserBankIdChangeVisibility(
   id: number,
   requestBody: UserBankChangeVisibilityInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.putRequest(
-    template("/UserBank/{id}/changeVisibility", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/UserBank/{id}/changeVisibility", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
 /** Get [normal/sub/business] user profile detail */
 export async function getUser(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserDetailQuery>> {
-  return await Http.getRequest(
-    template("/User", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserDetailQuery>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/User", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2394,17 +2619,19 @@ export async function getUser(
 export async function putUser(
   requestBody: UserProfileInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserDetailQuery>> {
-  return await Http.putRequest(
-    template("/User", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserDetailQuery>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/User", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2412,17 +2639,19 @@ export async function putUser(
 export async function getUserContactInput(
   input: string,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<ContactApiModel>> {
-  return await Http.getRequest(
-    template("/User/contact/{input}", { input }),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<ContactApiModel>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/User/contact/{input}", { input }),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2430,17 +2659,19 @@ export async function getUserContactInput(
 export async function putUserChangeAvatar(
   requestBody: UserProfileAvatarInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.putRequest(
-    template("/User/changeAvatar", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/User/changeAvatar", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -2451,17 +2682,19 @@ export async function putUserChangeAvatar(
 export async function postUserIdentityRequest(
   requestBody: NewUserIdentityRequestInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserDetailQuery>> {
-  return await Http.postRequest(
-    template("/User/identityRequest", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserDetailQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/User/identityRequest", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2471,17 +2704,19 @@ export async function postUserIdentityRequest(
  */
 export async function getUserIdentityRequest(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserIdentityRequestQuery>> {
-  return await Http.getRequest(
-    template("/User/identityRequest", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserIdentityRequestQuery>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/User/identityRequest", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2489,17 +2724,19 @@ export async function getUserIdentityRequest(
 export async function postUserChangePhoneNumber(
   requestBody: UserChangePhoneNumberInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/User/changePhoneNumber", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/User/changePhoneNumber", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -2507,17 +2744,19 @@ export async function postUserChangePhoneNumber(
 export async function postUserChangePhoneNumberVerify(
   requestBody: UserVerifyChangePhoneNumberInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/User/changePhoneNumber/verify", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/User/changePhoneNumber/verify", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
@@ -2525,34 +2764,38 @@ export async function postUserChangePhoneNumberVerify(
 export async function postUserChangePassword(
   requestBody: UserChangePasswordInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/User/changePassword", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/User/changePassword", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
 /** Get user profile summary */
 export async function getUserMe(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserMeQuery>> {
-  return await Http.getRequest(
-    template("/User/me", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserMeQuery>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/User/me", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2563,17 +2806,19 @@ export async function getUserMe(
 export async function postUserUpgradeToBusinessRequest(
   requestBody: UpgradeToBusinessUserInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UpgradeToBusinessUserQuery>> {
-  return await Http.postRequest(
-    template("/User/upgradeToBusinessRequest", {}),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UpgradeToBusinessUserQuery>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/User/upgradeToBusinessRequest", {}),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2583,17 +2828,19 @@ export async function postUserUpgradeToBusinessRequest(
  */
 export async function getUserUpgradeToBusinessRequest(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UpgradeToBusinessUserQuery>> {
-  return await Http.getRequest(
-    template("/User/upgradeToBusinessRequest", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UpgradeToBusinessUserQuery>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/User/upgradeToBusinessRequest", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2605,68 +2852,76 @@ export async function postUserInvitationIdTask(
   id: number,
   requestBody: SubuserInvitationTaskInput,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<string>> {
-  return await Http.postRequest(
-    template("/User/invitation/{id}/task", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/octet-stream",
-      },
-    }),
+): Promise<SwaggerResponse<string>> {
+  return await responseWrapper(
+    await Http.postRequest(
+      template("/User/invitation/{id}/task", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/octet-stream",
+        },
+      }),
+    ),
   );
 }
 
 /** Get business user invitations for me [Feature is not allowed for sub users] */
 export async function getUserInvitation(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<SubUserInvitationQuery[]>> {
-  return await Http.getRequest(
-    template("/User/invitation", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<SubUserInvitationQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/User/invitation", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
 /** Get user workspaces [Feature is not allowed for sub users] */
 export async function getUserWorkspace(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserWorkspaceQuery[]>> {
-  return await Http.getRequest(
-    template("/User/workspace", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserWorkspaceQuery[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/User/workspace", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
 /** Undefined */
 export async function getUserPlugin(
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserPluginInfoApiModel[]>> {
-  return await Http.getRequest(
-    template("/UserPlugin", {}),
-    undefined,
-    undefined,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserPluginInfoApiModel[]>> {
+  return await responseWrapper(
+    await Http.getRequest(
+      template("/UserPlugin", {}),
+      undefined,
+      undefined,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 
@@ -2675,17 +2930,19 @@ export async function putUserPluginIdChangeStatus(
   id: number,
   requestBody: UserPluginTogggleApiModel,
   configOverride?: AxiosRequestConfig,
-): Promise<AxiosResponse<UserPluginApiModel>> {
-  return await Http.putRequest(
-    template("/UserPlugin/{id}/ChangeStatus", { id }),
-    undefined,
-    requestBody,
-    overrideConfig(configOverride, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }),
+): Promise<SwaggerResponse<UserPluginApiModel>> {
+  return await responseWrapper(
+    await Http.putRequest(
+      template("/UserPlugin/{id}/ChangeStatus", { id }),
+      undefined,
+      requestBody,
+      overrideConfig(configOverride, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    ),
   );
 }
 

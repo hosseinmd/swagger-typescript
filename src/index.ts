@@ -78,9 +78,9 @@ export async function ${method}${generateServiceName(endPoint)}(
       }
       configOverride?:AxiosRequestConfig
       
-): Promise<AxiosResponse<${responses ? getTsType(responses) : "any"}>> {
+): Promise<SwaggerResponse<${responses ? getTsType(responses) : "any"}>> {
 
-    return await Http.${method}Request(
+    return await responseWrapper(await Http.${method}Request(
       template("${endPoint}",${pathParamsRefString}),
       ${queryParams ? "queryParams" : "undefined"},
       ${requestBody ? "requestBody" : "undefined"},
@@ -91,7 +91,7 @@ export async function ${method}${generateServiceName(endPoint)}(
           Accept: "${accept}",
         },
       }),
-    )
+    ))
 }
 `;
         },
