@@ -18,7 +18,7 @@ const Http = {
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride?: AxiosRequestConfig,
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {
     try {
       return await axios.get(url, { params: queryParams, ...configOverride });
@@ -30,7 +30,7 @@ const Http = {
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride?: AxiosRequestConfig,
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {
     try {
       return await axios.post(url, requestBody, {
@@ -45,7 +45,7 @@ const Http = {
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride?: AxiosRequestConfig,
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {
     try {
       return await axios.put(url, requestBody, {
@@ -60,7 +60,7 @@ const Http = {
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride?: AxiosRequestConfig,
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {
     try {
       return await axios.get(url, { params: queryParams, ...configOverride });

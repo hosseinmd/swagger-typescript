@@ -33,6 +33,18 @@ function generate() {
 
           let requestBody = getBodyContent(options.requestBody);
 
+          let contentType = Object.keys(
+            options.requestBody?.content || {
+              "application/json": null,
+            },
+          )[0];
+
+          let accept = Object.keys(
+            options.responses?.[200].content || {
+              "application/json": null,
+            },
+          )[0];
+
           let responses = getBodyContent(options.responses?.[200]);
 
           let pathParamsRefString = pathParams.reduce(
@@ -72,7 +84,14 @@ export async function ${method}${generateServiceName(endPoint)}(
       template("${endPoint}",${pathParamsRefString}),
       ${queryParams ? "queryParams" : "undefined"},
       ${requestBody ? "requestBody" : "undefined"},
-      configOverride,
+      {
+        ...configOverride,
+        headers: {
+          ...configOverride?.headers,
+          "Content-Type": "${contentType}",
+          Accept: "${accept}",
+        },
+      },
     )
 }
 `;
