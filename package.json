@@ -1,6 +1,6 @@
 {
   "name": "swagger-typescript",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "swagger auto generate typescript service.ts",
   "main": "lib/index.js",
   "scripts": {
@@ -31,11 +31,10 @@
   },
   "homepage": "https://github.com/hosseinmd/swagger-typescript#readme",
   "devDependencies": {
-    "axios": "^0.19.2",
-    "@babel/parser": "^7.11.3",
     "@babel/generator": "^7.11.0",
-    "@manifoldco/swagger-to-ts": "^1.0.8",
+    "@babel/parser": "^7.11.3",
     "@commitlint/config-conventional": "^8.3.4",
+    "@manifoldco/swagger-to-ts": "^1.0.8",
     "@react-native-community/eslint-config": "1.1.0",
     "@testing-library/react-hooks": "3.2.1",
     "@testing-library/react-native": "5.0.3",
@@ -45,6 +44,7 @@
     "@types/react-native": "0.62.18",
     "@typescript-eslint/eslint-plugin": "^3.8.0",
     "@typescript-eslint/parser": "^2.20.0",
+    "axios": "^0.19.2",
     "babel-jest": "^24.9.0",
     "babel-preset-react-native": "^4.0.1",
     "commitlint": "^8.3.5",
