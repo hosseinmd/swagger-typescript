@@ -32,7 +32,7 @@ const Http = {
       return await Axios.post(
         url,
         requestBody,
-        overrideConfig(getBaseConfig(), {
+        overrideConfig(await getBaseConfig(), {
           params: queryParams,
           ...configOverride,
         }),
@@ -51,7 +51,7 @@ const Http = {
       return await Axios.put(
         url,
         requestBody,
-        overrideConfig(getBaseConfig(), {
+        overrideConfig(await getBaseConfig(), {
           params: queryParams,
           ...configOverride,
         }),
@@ -69,7 +69,7 @@ const Http = {
     try {
       return await Axios.get(
         url,
-        overrideConfig(getBaseConfig(), {
+        overrideConfig(await getBaseConfig(), {
           params: queryParams,
           ...configOverride,
         }),
