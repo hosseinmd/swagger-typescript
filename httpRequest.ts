@@ -1,3 +1,4 @@
+// AUTO_GENERATED Do not change this file directly change config.ts file instead
 import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { getBaseConfig, errorCatch } from "./config";
 

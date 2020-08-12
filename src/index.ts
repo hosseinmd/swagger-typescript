@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync, existsSync } from "fs";
 import { format } from "prettier";
 import {
   getPathParams,
@@ -136,10 +136,12 @@ export enum ${name} {${Enum.map(
       format(HTTP_REQUEST, { parser: "jsdoc-parser" } as any),
     );
 
-    writeFileSync(
-      "./config.ts",
-      format(CONFIG, { parser: "jsdoc-parser" } as any),
-    );
+    if (!existsSync("./config.ts")) {
+      writeFileSync(
+        "./config.ts",
+        format(CONFIG, { parser: "jsdoc-parser" } as any),
+      );
+    }
   } catch (error) {
     console.log({ error });
   }

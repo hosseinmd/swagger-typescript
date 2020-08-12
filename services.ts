@@ -1,3 +1,4 @@
+// AUTO_GENERATED Do not change this file directly change config.ts file instead
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { Http, overrideConfig } from "./httpRequest";
 

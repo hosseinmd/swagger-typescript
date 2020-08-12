@@ -1,4 +1,5 @@
 const HTTP_REQUEST = `
+// AUTO_GENERATED Do not change this file directly change config.ts file instead
 import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { getBaseConfig, errorCatch } from "./config";
 
@@ -97,6 +98,7 @@ export { Http, overrideConfig };
 `;
 
 const SERVICE_BEGINNING = `
+// AUTO_GENERATED Do not change this file directly change config.ts file instead
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { Http, overrideConfig } from "./httpRequest";
 
@@ -111,6 +113,7 @@ function template(path: string, obj: { [x: string]: any } = {}) {
 `;
 
 const CONFIG = `
+// Please add your custom config
 import { AxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
 
 function getBaseConfig(): AxiosRequestConfig {
