@@ -51,6 +51,8 @@ class Exception extends Error {
   isApiException = true;
 }
 
+// export type SwaggerResponse<R> = R;
+
 export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 
 async function responseWrapper(

@@ -2,9 +2,18 @@
 
 [![install size](https://packagephobia.now.sh/badge?p=react-principal)](https://packagephobia.now.sh/result?p=react-principal) [![dependencies](https://david-dm.org/poolkhord/react-principal.svg)](https://david-dm.org/poolkhord/react-principal.svg)
 
-# react-principal
 
-A state management with react context for apps which using hooks.
-Acutely, react-principal is a wrapper for react context with better developer experience.
-High performance since provided observed connect to context.
-It's useful for global state management and complex component state.
+
+## responseWrapper
+
+for customize responseWrapper your can do something like this
+
+```js
+export type SwaggerResponse<R> = R;
+
+async function responseWrapper(
+  response: AxiosResponse<any>,
+): Promise<SwaggerResponse<any>> {
+  return response.data;
+}
+``
