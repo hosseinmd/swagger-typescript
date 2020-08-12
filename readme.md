@@ -1,18 +1,18 @@
-[![NPM](https://nodei.co/npm/react-principal.png)](https://nodei.co/npm/react-principal/)
+[![NPM](https://nodei.co/npm/swagger-typescript.png)](https://nodei.co/npm/swagger-typescript/)
 
-[![install size](https://packagephobia.now.sh/badge?p=react-principal)](https://packagephobia.now.sh/result?p=react-principal) [![dependencies](https://david-dm.org/poolkhord/react-principal.svg)](https://david-dm.org/poolkhord/react-principal.svg)
+[![install size](https://packagephobia.now.sh/badge?p=swagger-typescript)](https://packagephobia.now.sh/result?p=swagger-typescript) [![dependencies](https://david-dm.org/hosseinmd/swagger-typescript.svg)](https://david-dm.org/hosseinmd/swagger-typescript.svg)
 
 
 ## url 
 
 ```
-yarn swagger-generate url='http://example.com'
+node ./node_modules/swagger-typescript/lib/index.js url='http://example.com'
 ```
 
 ## dir 
 
 ```
-yarn swagger-generate url='http://example.com' dir='./services'
+node ./node_modules/swagger-typescript/lib/index.js url='http://example.com' dir='./services'
 ```
 
 
