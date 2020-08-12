@@ -7,7 +7,7 @@ const Http = {
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride?: AxiosRequestConfig,
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {
     try {
       return await Axios.get(
@@ -15,7 +15,7 @@ const Http = {
         overrideConfig(getBaseConfig(), {
           params: queryParams,
           ...configOverride,
-        }),
+        })
       );
     } catch (error) {
       return errorCatch(error);
@@ -25,7 +25,7 @@ const Http = {
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride?: AxiosRequestConfig,
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {
     try {
       return await Axios.post(
@@ -34,7 +34,7 @@ const Http = {
         overrideConfig(getBaseConfig(), {
           params: queryParams,
           ...configOverride,
-        }),
+        })
       );
     } catch (error) {
       return errorCatch(error);
@@ -44,7 +44,7 @@ const Http = {
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride?: AxiosRequestConfig,
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {
     try {
       return await Axios.put(
@@ -53,7 +53,7 @@ const Http = {
         overrideConfig(getBaseConfig(), {
           params: queryParams,
           ...configOverride,
-        }),
+        })
       );
     } catch (error) {
       return errorCatch(error);
@@ -63,7 +63,7 @@ const Http = {
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
-    configOverride?: AxiosRequestConfig,
+    configOverride?: AxiosRequestConfig
   ): Promise<AxiosResponse<any>> {
     try {
       return await Axios.get(
@@ -71,7 +71,7 @@ const Http = {
         overrideConfig(getBaseConfig(), {
           params: queryParams,
           ...configOverride,
-        }),
+        })
       );
     } catch (error) {
       return errorCatch(error);
@@ -81,7 +81,7 @@ const Http = {
 
 function overrideConfig(
   config: AxiosRequestConfig,
-  configOverride: AxiosRequestConfig,
+  configOverride: AxiosRequestConfig
 ): AxiosRequestConfig {
   return {
     ...config,

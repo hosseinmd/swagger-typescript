@@ -14,7 +14,7 @@ function template(path: string, obj: { [x: string]: any } = {}) {
 
 /** Get user accounts [Or get sub user authorized accounts] */
 export async function getAccount(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<AccountSummaryWithBalanceQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -26,15 +26,15 @@ export async function getAccount(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Create a new account. [Feature is not allowed for sub users] */
 export async function postAccount(
   requestBody: AccountInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<AccountSummaryWithBalanceQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -46,15 +46,15 @@ export async function postAccount(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get user account detail [Feature is not allowed for sub users] */
 export async function getAccountId(
   id: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<AccountDetailQuery>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -66,8 +66,8 @@ export async function getAccountId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -75,7 +75,7 @@ export async function getAccountId(
 export async function putAccountId(
   id: number,
   requestBody: AccountInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<AccountSummaryWithBalanceQuery>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -87,8 +87,8 @@ export async function putAccountId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -99,7 +99,7 @@ export async function putAccountId(
 export async function putAccountIdNotification(
   id: number,
   requestBody: AccountNotificationStatusInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -111,15 +111,15 @@ export async function putAccountIdNotification(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get user account balance */
 export async function getAccountIdBalance(
   id: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<AccountBalanceSummaryQuery>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -131,15 +131,15 @@ export async function getAccountIdBalance(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Undefined */
 export async function getAccountAccountIdPermittedSubUsers(
   accountId: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<AccountPermittedSubUserQuery>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -151,8 +151,8 @@ export async function getAccountAccountIdPermittedSubUsers(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -160,7 +160,7 @@ export async function getAccountAccountIdPermittedSubUsers(
 export async function postAccountIdCharge(
   id: number,
   requestBody: NewChargeRequestInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<NewChargeRequestResultQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -172,8 +172,8 @@ export async function postAccountIdCharge(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -182,7 +182,7 @@ export async function getAccountIdEpayRequestComission(
   id: number,
   queryParams: { amount: number },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<CommissionApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -194,8 +194,8 @@ export async function getAccountIdEpayRequestComission(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -203,7 +203,7 @@ export async function getAccountIdEpayRequestComission(
 export async function postAccountIdEpayRequest(
   id: number,
   requestBody: NewEpayRequestInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<NewEpayRequestResultQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -215,8 +215,8 @@ export async function postAccountIdEpayRequest(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -225,7 +225,7 @@ export async function getAccountIdSettlementRequestComission(
   id: number,
   queryParams: { amount: number },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<CommissionApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -237,8 +237,8 @@ export async function getAccountIdSettlementRequestComission(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -246,7 +246,7 @@ export async function getAccountIdSettlementRequestComission(
 export async function postAccountIdSettlementRequest(
   id: number,
   requestBody: NewSettlementRequestInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SettlementRequestQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -258,8 +258,8 @@ export async function postAccountIdSettlementRequest(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -273,7 +273,7 @@ export async function getAccountSearch(
     contact?: string;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<InsensitiveAccountApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -285,8 +285,8 @@ export async function getAccountSearch(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -295,7 +295,7 @@ export async function getAccountIdTransferMoneyCommission(
   id: number,
   queryParams: { amount: number },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<CommissionApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -307,8 +307,8 @@ export async function getAccountIdTransferMoneyCommission(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -316,7 +316,7 @@ export async function getAccountIdTransferMoneyCommission(
 export async function postAccountIdTransferMoney(
   id: number,
   requestBody: TransferMoneyInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<TransferMoneyApiModel>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -328,15 +328,15 @@ export async function postAccountIdTransferMoney(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** SiginIn using ApiKey and SecretKey */
 export async function postAuthApilogin(
   requestBody: ApiLoginInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<NewTokenResult>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -348,15 +348,15 @@ export async function postAuthApilogin(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Sign in and get a new long-lived JWT */
 export async function postAuthLogin(
   requestBody: LoginInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<NewTokenResult>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -368,15 +368,15 @@ export async function postAuthLogin(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Undefined */
 export async function postAuthLoginOtp(
   requestBody: TotpLoginInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<NewTokenResult>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -388,15 +388,15 @@ export async function postAuthLoginOtp(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Undefined */
 export async function postAuthLoginOtpGenerate(
   requestBody: RequestTotpInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -408,15 +408,15 @@ export async function postAuthLoginOtpGenerate(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Sign in as a sub user (JWT) */
 export async function postAuthLoginSubuser(
   requestBody: SubUserLoginInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<NewTokenResult>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -428,15 +428,15 @@ export async function postAuthLoginSubuser(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get a new short-lived JWT, using current long-lived one */
 export async function postAuthLoginSecurity(
   requestBody: SecureLoginInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<NewTokenResult>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -448,14 +448,14 @@ export async function postAuthLoginSecurity(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Refresh the short-lived JWT, using current short-lived one */
 export async function getAuthLoginSecurityRefresh(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<NewTokenResult>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -467,15 +467,15 @@ export async function getAuthLoginSecurityRefresh(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Check the data that the user has been logged in */
 export async function postAuthCheck(
   requestBody: LoginInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -487,14 +487,14 @@ export async function postAuthCheck(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Log out */
 export async function postAuthLogout(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -506,15 +506,15 @@ export async function postAuthLogout(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Register new user with the phone number (Two factor authentication) */
 export async function postAuthRegister(
   requestBody: RegisterInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<RegisterNewUserQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -526,15 +526,15 @@ export async function postAuthRegister(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Confirm the phone number with verification code */
 export async function postAuthRegisterVerify(
   requestBody: ConfirmPhoneNumberOrEmailInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<ConfirmPhoneNumberQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -546,15 +546,15 @@ export async function postAuthRegisterVerify(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Confirm phone number with the given token and auto signin user to app. */
 export async function postAuthRegisterPoslogin(
   requestBody: ConfirmPhoneNumberOrEmailInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<NewTokenResult>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -566,15 +566,15 @@ export async function postAuthRegisterPoslogin(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Set basic data for your registration [fullname, password] */
 export async function postAuthRegisterBasic(
   requestBody: SetUserBasicInfoInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -586,15 +586,15 @@ export async function postAuthRegisterBasic(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Recover forgotten password with phone number (Two factor authentication) */
 export async function postAuthForgetPassword(
   requestBody: UserForgetPasswordInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -606,15 +606,15 @@ export async function postAuthForgetPassword(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Confirm the phone number with a verification code for recover password */
 export async function postAuthForgetPasswordVerify(
   requestBody: UserVerifyForgetPasswordInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<ConfirmPhoneNumberQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -626,15 +626,15 @@ export async function postAuthForgetPasswordVerify(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Reset forgotten password */
 export async function postAuthForgetPasswordResetPassword(
   requestBody: UserResetForgetPasswordInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -646,15 +646,15 @@ export async function postAuthForgetPasswordResetPassword(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Register new Device for current user. */
 export async function postAuthRegisterDevice(
   requestBody: RegisterDeviceInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -666,14 +666,14 @@ export async function postAuthRegisterDevice(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get available banks */
 export async function getBank(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<BankQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -685,14 +685,14 @@ export async function getBank(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get Business categories */
 export async function getBusinessUserCategory(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<BusinessCategoryQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -704,8 +704,8 @@ export async function getBusinessUserCategory(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -715,7 +715,7 @@ export async function getBusinessUserCategory(
  */
 export async function postBusinessUserInvite(
   requestBody: SendConnectionRequestInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserConnectionQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -727,8 +727,8 @@ export async function postBusinessUserInvite(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -738,7 +738,7 @@ export async function postBusinessUserInvite(
  */
 export async function postBusinessUserInviteInvitationIdResend(
   invitationId: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserConnectionQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -750,8 +750,8 @@ export async function postBusinessUserInviteInvitationIdResend(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -761,7 +761,7 @@ export async function postBusinessUserInviteInvitationIdResend(
  */
 export async function deleteBusinessUserInviteInvitationIdRemove(
   invitationId: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserConnectionQuery>> {
   return await responseWrapper(
     await Http.deleteRequest(
@@ -773,8 +773,8 @@ export async function deleteBusinessUserInviteInvitationIdRemove(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -784,7 +784,7 @@ export async function deleteBusinessUserInviteInvitationIdRemove(
  */
 export async function postBusinessUserResendInvitationId(
   invitationId: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserConnectionQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -796,8 +796,8 @@ export async function postBusinessUserResendInvitationId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -809,7 +809,7 @@ export async function deleteBusinessUserConnectionInvitationIdRemove(
   invitationId: string,
   queryParams: { id: number },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserConnectionQuery>> {
   return await responseWrapper(
     await Http.deleteRequest(
@@ -823,8 +823,8 @@ export async function deleteBusinessUserConnectionInvitationIdRemove(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -836,7 +836,7 @@ export async function getBusinessUserConnection(
     take?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserConnectionQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -848,8 +848,8 @@ export async function getBusinessUserConnection(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -860,7 +860,7 @@ export async function getBusinessUserConnection(
 export async function getBusinessUserConnectionActive(
   queryParams?: { skip?: number; take?: number },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserConnectionQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -872,8 +872,8 @@ export async function getBusinessUserConnectionActive(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -883,7 +883,7 @@ export async function getBusinessUserConnectionActive(
  */
 export async function getBusinessUserConnectionId(
   id: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserConnectionAmountsReportQuery>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -895,8 +895,8 @@ export async function getBusinessUserConnectionId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -907,7 +907,7 @@ export async function getBusinessUserConnectionId(
 export async function putBusinessUserConnectionId(
   id: number,
   requestBody: EditConnectionInfoInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -919,8 +919,8 @@ export async function putBusinessUserConnectionId(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -930,7 +930,7 @@ export async function putBusinessUserConnectionId(
  */
 export async function deleteBusinessUserConnectionId(
   id: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserConnectionQuery>> {
   return await responseWrapper(
     await Http.deleteRequest(
@@ -942,8 +942,8 @@ export async function deleteBusinessUserConnectionId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -953,7 +953,7 @@ export async function deleteBusinessUserConnectionId(
  */
 export async function getBusinessUserConnectionIdPermission(
   id: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserPermissionQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -965,8 +965,8 @@ export async function getBusinessUserConnectionIdPermission(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -977,7 +977,7 @@ export async function getBusinessUserConnectionIdPermission(
 export async function postBusinessUserConnectionIdPermission(
   id: number,
   requestBody: SetAccountAccessForSubUserInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -989,8 +989,8 @@ export async function postBusinessUserConnectionIdPermission(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1002,7 +1002,7 @@ export async function putBusinessUserConnectionIdPermissionAccountId(
   id: number,
   accountId: number,
   requestBody: EditSubUserPermissionInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -1017,8 +1017,8 @@ export async function putBusinessUserConnectionIdPermissionAccountId(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1029,7 +1029,7 @@ export async function putBusinessUserConnectionIdPermissionAccountId(
 export async function deleteBusinessUserConnectionIdPermissionAccountId(
   id: number,
   accountId: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.deleteRequest(
@@ -1044,8 +1044,8 @@ export async function deleteBusinessUserConnectionIdPermissionAccountId(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1077,7 +1077,7 @@ export async function getBusinessUserConnectionIdEpay(
     take?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<EpayRequestQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1089,8 +1089,8 @@ export async function getBusinessUserConnectionIdEpay(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1110,7 +1110,7 @@ export async function getBusinessUserConnectionIdSettlement(
     take?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SettlementRequestQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1122,8 +1122,8 @@ export async function getBusinessUserConnectionIdSettlement(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1154,7 +1154,7 @@ export async function getEpayRequest(
     take?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<EpayRequestQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1166,15 +1166,15 @@ export async function getEpayRequest(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get epay request detail based on Id */
 export async function getEpayRequestId(
   id: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<NewEpayRequestResultQuery>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1186,15 +1186,15 @@ export async function getEpayRequestId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get QR code image file for epay request */
 export async function getEpayRequestTokenQrCode(
   token: string,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1206,8 +1206,8 @@ export async function getEpayRequestTokenQrCode(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1216,7 +1216,7 @@ export async function getEpayRequestPosQrAccountNo(
   accountNo: string,
   queryParams?: { amount?: number; subUserConId?: number },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1228,8 +1228,8 @@ export async function getEpayRequestPosQrAccountNo(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1247,7 +1247,7 @@ export async function getEpayRequestForMe(
     take?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<EpayRequestForUserQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1259,8 +1259,8 @@ export async function getEpayRequestForMe(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1268,7 +1268,7 @@ export async function getEpayRequestForMe(
 export async function postEpayRequestIdTask(
   id: number,
   requestBody: EpayRequestTaskInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -1280,14 +1280,14 @@ export async function postEpayRequestIdTask(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Undefined */
 export async function getEpayRequestAudiencesRecent(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<ContactApiModel[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1299,15 +1299,15 @@ export async function getEpayRequestAudiencesRecent(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Upload new file [Allowed files are images and pdf / Max Size: 3 MB] */
 export async function postFile(
   requestBody: { file?: string },
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<FileUploadQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -1319,15 +1319,15 @@ export async function postFile(
           "Content-Type": "multipart/form-data",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Download a file. */
 export async function getFileId(
   id: string,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1339,15 +1339,15 @@ export async function getFileId(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** For Business users only] */
 export async function putGroupTransferAdd(
   requestBody: GroupTransferTargetValidationInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<GroupTransferTargetValidationQuery>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -1359,15 +1359,15 @@ export async function putGroupTransferAdd(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** For Business users only] */
 export async function postGroupTransferImport(
   requestBody: { file?: string },
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<GroupTransferTargetValidationQuery[]>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -1379,15 +1379,15 @@ export async function postGroupTransferImport(
           "Content-Type": "multipart/form-data",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** For Business users only] */
 export async function postGroupTransferExport(
   requestBody: GroupTransferTargetValidationQuery[],
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -1399,15 +1399,15 @@ export async function postGroupTransferExport(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** For Business users only] */
 export async function postGroupTransferTransfer(
   requestBody: GroupTransferInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<GroupTransferQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -1419,8 +1419,8 @@ export async function postGroupTransferTransfer(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1428,7 +1428,7 @@ export async function postGroupTransferTransfer(
 export async function getGroupTransferCommission(
   queryParams: { accountId: number; amount: number },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<CommissionApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1440,14 +1440,14 @@ export async function getGroupTransferCommission(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Undefined */
 export async function getNotificationIa(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<ImportantActionApiModel[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1459,15 +1459,15 @@ export async function getNotificationIa(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Undefined */
 export async function putNotificationIaNotifId(
   notifId: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<FileUploadQuery>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -1479,15 +1479,15 @@ export async function putNotificationIaNotifId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Undefined */
 export async function getPluginId(
   id: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<PluginApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1499,8 +1499,8 @@ export async function getPluginId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1509,7 +1509,7 @@ export async function getPosAccountNo(
   accountNo: string,
   queryParams?: { subUserConId?: number },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<PosLandingPageApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1521,8 +1521,8 @@ export async function getPosAccountNo(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1530,7 +1530,7 @@ export async function getPosAccountNo(
 export async function postPosPayTargetAccountNoWallet(
   targetAccountNo: string,
   requestBody: PosWalletPayInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<ReceiptApiModel>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -1542,8 +1542,8 @@ export async function postPosPayTargetAccountNoWallet(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1551,7 +1551,7 @@ export async function postPosPayTargetAccountNoWallet(
 export async function postPosPayTargetAccountNoOnline(
   targetAccountNo: string,
   requestBody: PosOnlinePayInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<NewEpayRequestResultQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -1563,15 +1563,15 @@ export async function postPosPayTargetAccountNoOnline(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get a receipt by it's id */
 export async function getReceiptToken(
   token: string,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<ReceiptApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1583,8 +1583,8 @@ export async function getReceiptToken(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1593,7 +1593,7 @@ export async function getReceiptToken(
  * Resellers]
  */
 export async function getResellerUser(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<ResellerApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1605,8 +1605,8 @@ export async function getResellerUser(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1615,7 +1615,7 @@ export async function getResellerUser(
  * Resellers]
  */
 export async function getResellerUserIntroducedFilterData(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<ReselledUserFilterData>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1627,8 +1627,8 @@ export async function getResellerUserIntroducedFilterData(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1652,7 +1652,7 @@ export async function getResellerUserIntroduced(
     orderDesc?: boolean;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<ReselledUserApiModel[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1664,15 +1664,15 @@ export async function getResellerUserIntroduced(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get the User activity [Feature just allowed for Resellers] */
 export async function getResellerUserIntroducedUserIdActivity(
   userId: string,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<ReselledUserActivityApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1684,8 +1684,8 @@ export async function getResellerUserIntroducedUserIdActivity(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1706,7 +1706,7 @@ export async function getResellerUserDashboardCommissionSum(
     toYear?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<AggregationReportQueryOfDecimal>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1718,8 +1718,8 @@ export async function getResellerUserDashboardCommissionSum(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1740,7 +1740,7 @@ export async function getResellerUserDashboardCommissionReport(
     toYear?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<DateReportQueryOfDecimal[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1752,8 +1752,8 @@ export async function getResellerUserDashboardCommissionReport(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1774,7 +1774,7 @@ export async function getResellerUserDashboardLinksCount(
     toYear?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<AggregationReportQueryOfInteger>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1786,8 +1786,8 @@ export async function getResellerUserDashboardLinksCount(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1808,7 +1808,7 @@ export async function getResellerUserDashboardLinksReport(
     toYear?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<DateReportQueryOfInteger[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1820,8 +1820,8 @@ export async function getResellerUserDashboardLinksReport(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1842,7 +1842,7 @@ export async function getResellerUserDashboardLinksPaidCount(
     toYear?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<AggregationReportQueryOfInteger>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1854,8 +1854,8 @@ export async function getResellerUserDashboardLinksPaidCount(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1876,7 +1876,7 @@ export async function getResellerUserDashboardLinksPaidReport(
     toYear?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<DateReportQueryOfInteger[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1888,8 +1888,8 @@ export async function getResellerUserDashboardLinksPaidReport(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1910,7 +1910,7 @@ export async function getResellerUserDashboardTransactionsCount(
     toYear?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<AggregationReportQueryOfInteger>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1922,8 +1922,8 @@ export async function getResellerUserDashboardTransactionsCount(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1944,7 +1944,7 @@ export async function getResellerUserDashboardTransactionsReport(
     toYear?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<DateReportQueryOfInteger[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1956,8 +1956,8 @@ export async function getResellerUserDashboardTransactionsReport(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -1978,7 +1978,7 @@ export async function getResellerUserDashboardIntroducedCount(
     toYear?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<AggregationReportQueryOfInteger>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -1990,8 +1990,8 @@ export async function getResellerUserDashboardIntroducedCount(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2012,7 +2012,7 @@ export async function getResellerUserDashboardIntroducedReport(
     toYear?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<DateReportQueryOfInteger[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2024,15 +2024,15 @@ export async function getResellerUserDashboardIntroducedReport(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Create an new [EpayRequest] with the given model. */
 export async function postServiceNewEpayRequest(
   requestBody: EpayRequestServiceInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<EpayRequestWcfResult>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2044,15 +2044,15 @@ export async function postServiceNewEpayRequest(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Check the [EpayRequest] based on token */
 export async function postServiceCheckEpayRequest(
   requestBody: string,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<EpayRequestCheckStatusResult>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2064,14 +2064,14 @@ export async function postServiceCheckEpayRequest(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Verify the ApiKey for authorizing the [User] */
 export async function postServiceVerifyApiKey(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<boolean>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2083,15 +2083,15 @@ export async function postServiceVerifyApiKey(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Create a Divided [EpayRequest] for the given model. */
 export async function postServiceNewDivideEpayRequest(
   requestBody: DivideEpayRequestServiceInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<EpayRequestWcfResult>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2103,15 +2103,15 @@ export async function postServiceNewDivideEpayRequest(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Unblock Amount of an Divided[EpayRequest] */
 export async function postServiceUnblockAmount(
   requestBody: DividedEpayRequestUnblockInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<DividedEpayRequestUnblockResult>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2123,15 +2123,15 @@ export async function postServiceUnblockAmount(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Cancel Amount of an Divided[EpayRequest] */
 export async function postServiceCancelAmount(
   requestBody: DividedEpayRequestCancelInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<DividedEpayRequestCancelResult>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2143,15 +2143,15 @@ export async function postServiceCancelAmount(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Set [EPayRequest] status to 'Cancel' and cancel the payment */
 export async function postServiceCancelPayment(
   requestBody: string,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<boolean>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2163,8 +2163,8 @@ export async function postServiceCancelPayment(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2183,7 +2183,7 @@ export async function getSettlementRequest(
     take?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SettlementRequestQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2195,15 +2195,15 @@ export async function getSettlementRequest(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get info of a SubDomain by it's address. */
 export async function getSubDomainSubDomainAddress(
   subDomainAddress: string,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubDomainApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2215,14 +2215,14 @@ export async function getSubDomainSubDomainAddress(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get the SubDomain of current Reseller user [Feature just allowed for Resellers] */
 export async function getSubDomain(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubDomainApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2234,8 +2234,8 @@ export async function getSubDomain(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2245,7 +2245,7 @@ export async function getSubDomain(
  */
 export async function putSubDomain(
   requestBody: SubDomainUpdateApiModel,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubDomainApiModel>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -2257,8 +2257,8 @@ export async function putSubDomain(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2268,7 +2268,7 @@ export async function putSubDomain(
  */
 export async function deleteSubUserConnectionId(
   id: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<BusinessUserConnectionQuery>> {
   return await responseWrapper(
     await Http.deleteRequest(
@@ -2280,14 +2280,14 @@ export async function deleteSubUserConnectionId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get the connections [Feature just allowed for the sub users] */
 export async function getSubUserConnection(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<BusinessUserConnectionQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2299,15 +2299,15 @@ export async function getSubUserConnection(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Undefined */
 export async function getSubUserAccountId(
   id: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserAccountDetailQuery>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2319,8 +2319,8 @@ export async function getSubUserAccountId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2331,7 +2331,7 @@ export async function getSubUserAccountId(
 export async function postSubUserNotificationId(
   id: number,
   requestBody: SubUserNotificationStatusInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2343,8 +2343,8 @@ export async function postSubUserNotificationId(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2362,7 +2362,7 @@ export async function getTransaction(
     take?: number;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<TransactionApiModel[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2374,8 +2374,8 @@ export async function getTransaction(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2389,7 +2389,7 @@ export async function getTransferSearch(
     contact?: string;
   },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<InsensitiveAccountApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2401,8 +2401,8 @@ export async function getTransferSearch(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2410,7 +2410,7 @@ export async function getTransferSearch(
 export async function getTransferRecent(
   queryParams?: { take?: number },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<TransferMoneyApiModel[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2422,8 +2422,8 @@ export async function getTransferRecent(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2432,7 +2432,7 @@ export async function getTransferAccountIdCommission(
   accountId: number,
   queryParams: { amount: number },
 
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<CommissionApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2444,8 +2444,8 @@ export async function getTransferAccountIdCommission(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2453,7 +2453,7 @@ export async function getTransferAccountIdCommission(
 export async function postTransferAccountId(
   accountId: number,
   requestBody: TransferMoneyInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<TransferMoneyApiModel>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2465,14 +2465,14 @@ export async function postTransferAccountId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get user banks [Feature is not allowed for sub users.] */
 export async function getUserBank(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserBankQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2484,8 +2484,8 @@ export async function getUserBank(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2495,7 +2495,7 @@ export async function getUserBank(
  */
 export async function postUserBank(
   requestBody: UserBankInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserBankQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2507,14 +2507,14 @@ export async function postUserBank(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get available user banks [Feature is not allowed for sub users.] */
 export async function getUserBankReady(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserBankQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2526,15 +2526,15 @@ export async function getUserBankReady(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get user bank detail [Needs secure login] */
 export async function getUserBankId(
   id: number,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserBankDetailQuery>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2546,8 +2546,8 @@ export async function getUserBankId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2555,7 +2555,7 @@ export async function getUserBankId(
 export async function putUserBankId(
   id: number,
   requestBody: UserBankInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserBankQuery>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -2567,8 +2567,8 @@ export async function putUserBankId(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2576,7 +2576,7 @@ export async function putUserBankId(
 export async function putUserBankIdChangeVisibility(
   id: number,
   requestBody: UserBankChangeVisibilityInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -2588,14 +2588,14 @@ export async function putUserBankIdChangeVisibility(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get [normal/sub/business] user profile detail */
 export async function getUser(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserDetailQuery>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2607,8 +2607,8 @@ export async function getUser(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2618,7 +2618,7 @@ export async function getUser(
  */
 export async function putUser(
   requestBody: UserProfileInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserDetailQuery>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -2630,15 +2630,15 @@ export async function putUser(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Undefined */
 export async function getUserContactInput(
   input: string,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<ContactApiModel>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2650,15 +2650,15 @@ export async function getUserContactInput(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Change user avatar [Needs secure login] */
 export async function putUserChangeAvatar(
   requestBody: UserProfileAvatarInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -2670,8 +2670,8 @@ export async function putUserChangeAvatar(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2681,7 +2681,7 @@ export async function putUserChangeAvatar(
  */
 export async function postUserIdentityRequest(
   requestBody: NewUserIdentityRequestInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserDetailQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2693,8 +2693,8 @@ export async function postUserIdentityRequest(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2703,7 +2703,7 @@ export async function postUserIdentityRequest(
  * users]
  */
 export async function getUserIdentityRequest(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserIdentityRequestQuery>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2715,15 +2715,15 @@ export async function getUserIdentityRequest(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Change user phone number [Needs secure login] */
 export async function postUserChangePhoneNumber(
   requestBody: UserChangePhoneNumberInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2735,15 +2735,15 @@ export async function postUserChangePhoneNumber(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Confirm the phone number with a verification code for change phone number */
 export async function postUserChangePhoneNumberVerify(
   requestBody: UserVerifyChangePhoneNumberInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2755,15 +2755,15 @@ export async function postUserChangePhoneNumberVerify(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Change user password */
 export async function postUserChangePassword(
   requestBody: UserChangePasswordInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2775,14 +2775,14 @@ export async function postUserChangePassword(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get user profile summary */
 export async function getUserMe(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserMeQuery>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2794,8 +2794,8 @@ export async function getUserMe(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2805,7 +2805,7 @@ export async function getUserMe(
  */
 export async function postUserUpgradeToBusinessRequest(
   requestBody: UpgradeToBusinessUserInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UpgradeToBusinessUserQuery>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2817,8 +2817,8 @@ export async function postUserUpgradeToBusinessRequest(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2827,7 +2827,7 @@ export async function postUserUpgradeToBusinessRequest(
  * the normal users]
  */
 export async function getUserUpgradeToBusinessRequest(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UpgradeToBusinessUserQuery>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2839,8 +2839,8 @@ export async function getUserUpgradeToBusinessRequest(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2851,7 +2851,7 @@ export async function getUserUpgradeToBusinessRequest(
 export async function postUserInvitationIdTask(
   id: number,
   requestBody: SubuserInvitationTaskInput,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> {
   return await responseWrapper(
     await Http.postRequest(
@@ -2863,14 +2863,14 @@ export async function postUserInvitationIdTask(
           "Content-Type": "application/json",
           Accept: "application/octet-stream",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get business user invitations for me [Feature is not allowed for sub users] */
 export async function getUserInvitation(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserInvitationQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2882,14 +2882,14 @@ export async function getUserInvitation(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Get user workspaces [Feature is not allowed for sub users] */
 export async function getUserWorkspace(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserWorkspaceQuery[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2901,14 +2901,14 @@ export async function getUserWorkspace(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
 /** Undefined */
 export async function getUserPlugin(
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserPluginInfoApiModel[]>> {
   return await responseWrapper(
     await Http.getRequest(
@@ -2920,8 +2920,8 @@ export async function getUserPlugin(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 
@@ -2929,7 +2929,7 @@ export async function getUserPlugin(
 export async function putUserPluginIdChangeStatus(
   id: number,
   requestBody: UserPluginTogggleApiModel,
-  configOverride?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<UserPluginApiModel>> {
   return await responseWrapper(
     await Http.putRequest(
@@ -2941,8 +2941,8 @@ export async function putUserPluginIdChangeStatus(
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      }),
-    ),
+      })
+    )
   );
 }
 

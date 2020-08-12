@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "generate": "tsc && node ./index.js",
+    "generate": "tsc && node ./index.js url='http://94.182.181.229:8090/swagger/v1/swagger.json'",
     "prepare": "tsc",
     "build": "tsc",
     "test": "jest",
@@ -65,6 +65,9 @@
     "react-test-renderer": "16.13.1",
     "ts-jest": "25.5.1",
     "typescript": "3.9.7"
+  },
+  "bin": {
+    "swagger-generate": "./index.js"
   },
   "files": [
     "lib"

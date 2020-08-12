@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, existsSync } from "fs";
+import { writeFileSync, existsSync } from "fs";
 import { format } from "prettier";
 import {
   getPathParams,
@@ -14,14 +14,22 @@ import {
   SwaggerResponse,
 } from "./types";
 import { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG } from "./strings";
+import { getSwaggerJson } from "./getJson";
 
-function generate() {
+async function generate() {
   let code = SERVICE_BEGINNING;
+  console.log(process.argv);
+
+  const index = process.argv.findIndex((v) => v.startsWith("url="));
+
+  const url = process.argv[index].substring(4);
+  console.log(url);
 
   try {
-    const input: SwaggerJson = JSON.parse(
-      readFileSync("./swagger.json", "utf8"),
-    ); // Input can be any JS object (OpenAPI format)
+    const input: SwaggerJson = await getSwaggerJson(url);
+    // JSON.parse(
+    //   readFileSync("./swagger.json", "utf8"),
+    // ); // Input can be any JS object (OpenAPI format)
     //   const output = swaggerToTS(input); // Outputs TypeScript defs as a string (to be parsed, or written to a file)
 
     Object.entries(input.paths).forEach(([endPoint, value]) => {
