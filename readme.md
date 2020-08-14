@@ -2,6 +2,9 @@
 
 [![install size](https://packagephobia.now.sh/badge?p=swagger-typescript)](https://packagephobia.now.sh/result?p=swagger-typescript) [![dependencies](https://david-dm.org/hosseinmd/swagger-typescript.svg)](https://david-dm.org/hosseinmd/swagger-typescript.svg)
 
+## install
+
+`$ yarn add swagger-typescript`
 
 ## url 
 
