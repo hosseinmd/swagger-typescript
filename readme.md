@@ -15,8 +15,10 @@ node ./node_modules/swagger-typescript/lib/index.js url='http://example.com'
 node ./node_modules/swagger-typescript/lib/index.js url='http://example.com' dir='./services'
 ```
 
+## config.ts
+You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
 
-## responseWrapper
+### responseWrapper
 
 for customize responseWrapper your can do something like this
 
