@@ -58,3 +58,11 @@ export interface SwaggerJson {
     schemas: SwaggerSchemas;
   };
 }
+
+export interface SwaggerConfig {
+  url: string;
+  dir: string;
+  ignore: {
+    headerParams: string[];
+  };
+}

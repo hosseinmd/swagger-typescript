@@ -1,4 +1,4 @@
-import { Schema, Parameter } from "./types";
+import { Schema, Parameter, SwaggerConfig } from "./types";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (
@@ -12,18 +12,20 @@ function getQueryParams(parameters?: Parameter[]) {
   return getParams(parameters, "query");
 }
 
-function getHeaderParams(parameters?: Parameter[]) {
-  return getParams(parameters, "header");
+function getHeaderParams(parameters?: Parameter[], config?: SwaggerConfig) {
+  return getParams(parameters, "header", config?.ignore?.headerParams);
 }
 
 function getParams(
   parameters: Parameter[] | undefined,
   type: "query" | "header",
+  ignoreParams?: string[],
 ) {
   const queryParamsArray =
-    parameters?.filter(({ in: In }) => {
-      return In === type;
+    parameters?.filter(({ in: In, name }) => {
+      return In === type && !ignoreParams?.includes(name);
     }) || [];
+
   let params = queryParamsArray.reduce((prev, { name, schema }) => {
     return `${prev}${name}${schema.nullable ? "?" : ""}: ${getTsType(schema)},`;
   }, "{");

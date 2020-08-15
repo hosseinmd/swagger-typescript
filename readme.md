@@ -6,16 +6,25 @@
 
 `$ yarn add swagger-typescript`
 
-## url 
+## run 
 
 ```
-node ./node_modules/swagger-typescript/lib/index.js url='http://example.com'
+node ./node_modules/swagger-typescript/lib/index.js' config='./swaggerConfigFileName.json'
 ```
+config default is swaggerConfig.json
 
-## dir 
+## swaggerConfig 
 
-```
-node ./node_modules/swagger-typescript/lib/index.js url='http://example.com' dir='./services'
+```json
+{
+    "url": "http://example.swagger.json",
+    "dir": "./test",
+    "ignore": {
+        "headerParams": [
+            "terminalId"
+        ]
+    }
+}
 ```
 
 ## config.ts

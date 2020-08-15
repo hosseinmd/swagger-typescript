@@ -1,4 +1,4 @@
-import { writeFileSync, existsSync, mkdirSync } from "fs";
+import { writeFileSync, existsSync, mkdirSync, readFileSync } from "fs";
 import { format } from "prettier";
 import {
   getPathParams,
@@ -13,6 +13,7 @@ import {
   SwaggerJson,
   Schema,
   SwaggerResponse,
+  SwaggerConfig,
 } from "./types";
 import { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG } from "./strings";
 import { getSwaggerJson } from "./getJson";
@@ -21,13 +22,26 @@ function getParam(name: string): string {
   name += "=";
   const index = process.argv.findIndex((v) => v.startsWith(name));
 
-  return process.argv[index].substring(name.length);
+  return process.argv[index]?.substring(name.length);
 }
 
 async function generate() {
   let code = SERVICE_BEGINNING;
-  const url = getParam("url");
-  const dir = getParam("dir") || ".";
+  const configUrl = getParam("config") || "./swaggerConfig.json";
+  let config: SwaggerConfig;
+
+  try {
+    config = JSON.parse(readFileSync(configUrl).toString());
+
+    if (!config) {
+      throw "";
+    }
+  } catch (error) {
+    console.log(error);
+    throw new Error("Please define swaggerConfig.json");
+  }
+
+  const { url, dir } = config;
 
   if (!existsSync(dir)) {
     mkdirSync(dir);
@@ -51,7 +65,7 @@ async function generate() {
           let {
             params: headerParams,
             hasNullable: hasNullableHeaderParams,
-          } = getHeaderParams(options.parameters);
+          } = getHeaderParams(options.parameters, config);
 
           let requestBody = getBodyContent(options.requestBody);
 
