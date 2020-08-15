@@ -70,6 +70,7 @@ function getTsType({
   enum: Enum,
   items,
   properties,
+  oneOf,
 }: Schema): string {
   let tsType = TYPES[type as keyof typeof TYPES];
 
@@ -82,6 +83,10 @@ function getTsType({
 
   if (items) {
     tsType = `${getTsType(items)}[]`;
+  }
+
+  if (oneOf) {
+    tsType = `${oneOf.map((t) => `(${getTsType(t)})`).join(" | ")}`;
   }
 
   if (properties) {

@@ -10,6 +10,7 @@ export interface Schema {
   $ref: string;
   items: Schema;
   allOf: Schema[];
+  oneOf: Schema[];
 }
 
 export interface Parameter {
