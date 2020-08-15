@@ -14,7 +14,7 @@ export interface Schema {
 
 export interface Parameter {
   name: string; // "id";
-  in: "path" | "query"; // "path";
+  in: "path" | "query" | "header"; // "path";
   required: boolean; // true;
   schema: Schema;
   "x-position": number;

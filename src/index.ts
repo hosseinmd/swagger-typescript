@@ -5,6 +5,7 @@ import {
   getQueryParams,
   generateServiceName,
   getTsType,
+  getHeaderParams,
 } from "./utils";
 import {
   SwaggerSchemas,
@@ -43,8 +44,14 @@ async function generate() {
       Object.entries(value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
           const pathParams = getPathParams(options.parameters);
+          let { params: queryParams, hasNullable } = getQueryParams(
+            options.parameters,
+          );
 
-          let { queryParams, hasNullable } = getQueryParams(options.parameters);
+          let {
+            params: headerParams,
+            hasNullable: hasNullableHeaderParams,
+          } = getHeaderParams(options.parameters);
 
           let requestBody = getBodyContent(options.requestBody);
 
@@ -83,12 +90,21 @@ export async function ${method}${generateServiceName(endPoint)}(
       ${pathParams.length > 0 ? "," : ""}
       ${
         queryParams
-          ? `queryParams${hasNullable ? "?" : ""}:${queryParams},`
+          ? `${getParamString("queryParams", !hasNullable, queryParams)},`
           : ""
       }
       ${
         requestBody
           ? `${getDefineParam("requestBody", true, requestBody)},`
+          : ""
+      }
+      ${
+        headerParams
+          ? `${getParamString(
+              "headerParams",
+              !hasNullableHeaderParams,
+              headerParams,
+            )},`
           : ""
       }
       configOverride?:AxiosRequestConfig
@@ -104,6 +120,7 @@ export async function ${method}${generateServiceName(endPoint)}(
         headers: {
           "Content-Type": "${contentType}",
           Accept: "${accept}",
+          ${headerParams ? "...headerParams," : ""}
         },
       }),
     ))
@@ -175,7 +192,15 @@ function getDefineParam(
   required: boolean = false,
   schema: Schema,
 ): string {
-  return `${name}${required ? "" : "?"}: ${getTsType(schema)}`;
+  return getParamString(name, required, getTsType(schema));
+}
+
+function getParamString(
+  name: string,
+  required: boolean = false,
+  type: any,
+): string {
+  return `${name}${required ? "" : "?"}: ${type}`;
 }
 
 generate();

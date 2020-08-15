@@ -9,20 +9,31 @@ function getPathParams(parameters?: Parameter[]): Parameter[] {
 }
 
 function getQueryParams(parameters?: Parameter[]) {
+  return getParams(parameters, "query");
+}
+
+function getHeaderParams(parameters?: Parameter[]) {
+  return getParams(parameters, "header");
+}
+
+function getParams(
+  parameters: Parameter[] | undefined,
+  type: "query" | "header",
+) {
   const queryParamsArray =
     parameters?.filter(({ in: In }) => {
-      return In === "query";
+      return In === type;
     }) || [];
-  let queryParams = queryParamsArray.reduce((prev, { name, schema }) => {
+  let params = queryParamsArray.reduce((prev, { name, schema }) => {
     return `${prev}${name}${schema.nullable ? "?" : ""}: ${getTsType(schema)},`;
   }, "{");
 
-  const hasQueryParams = queryParams && queryParams.length > 1;
-  queryParams = hasQueryParams ? queryParams + "}" : "";
+  const hasQueryParams = params && params.length > 1;
+  params = hasQueryParams ? params + "}" : "";
 
   return {
-    queryParams,
-    hasNullable: queryParamsArray.find(({ schema }) => schema.nullable),
+    params,
+    hasNullable: !queryParamsArray.find(({ schema }) => !schema.nullable),
   };
 }
 
@@ -99,6 +110,7 @@ function getRefName($ref: string): string {
 export {
   getPathParams,
   getQueryParams,
+  getHeaderParams,
   generateServiceName,
   getTsType,
   getRefName,
