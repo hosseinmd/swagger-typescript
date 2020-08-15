@@ -115,14 +115,15 @@ export async function ${method}${generateServiceName(endPoint)}(
       template("${endPoint}",${pathParamsRefString}),
       ${queryParams ? "queryParams" : "undefined"},
       ${requestBody ? "requestBody" : "undefined"},
-      overrideConfig(
-        configOverride,{
-        headers: {
-          "Content-Type": "${contentType}",
-          Accept: "${accept}",
-          ${headerParams ? "...headerParams," : ""}
+      overrideConfig({
+          headers: {
+            "Content-Type": "${contentType}",
+            Accept: "${accept}",
+            ${headerParams ? "...headerParams," : ""}
+          },
         },
-      }),
+        configOverride,
+      )
     ))
 }
 `;
