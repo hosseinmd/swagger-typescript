@@ -1,6 +1,6 @@
 {
   "name": "swagger-typescript",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "swagger auto generate typescript service.ts",
   "main": "lib/index.js",
   "scripts": {
