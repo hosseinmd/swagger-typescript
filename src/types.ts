@@ -62,6 +62,7 @@ export interface SwaggerJson {
 export interface SwaggerConfig {
   url: string;
   dir: string;
+  prettierPath: string;
   ignore: {
     headerParams: string[];
   };

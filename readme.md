@@ -19,6 +19,7 @@ config default is swaggerConfig.json
 {
     "url": "http://example.swagger.json",
     "dir": "./test",
+    "prettierPath": ".prettierrc",
     "ignore": {
         "headerParams": [
             "terminalId"

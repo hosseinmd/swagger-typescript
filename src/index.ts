@@ -41,10 +41,22 @@ async function generate() {
     throw new Error("Please define swaggerConfig.json");
   }
 
-  const { url, dir } = config;
+  const { url, dir, prettierPath } = config;
 
   if (!existsSync(dir)) {
     mkdirSync(dir);
+  }
+
+  let prettierOptions;
+
+  if (prettierPath && existsSync(prettierPath)) {
+    prettierOptions = JSON.parse(readFileSync(prettierPath).toString());
+  } else {
+    if (existsSync(".prettierrc")) {
+      prettierOptions = JSON.parse(readFileSync(".prettierrc").toString());
+    } else {
+      prettierOptions = JSON.parse(readFileSync("prettier.json").toString());
+    }
   }
 
   try {
@@ -173,21 +185,15 @@ export enum ${name} {${Enum.map(
       }
     });
 
-    writeFileSync(
-      `${dir}/services.ts`,
-      format(code, { parser: "jsdoc-parser" } as any),
-    );
+    writeFileSync(`${dir}/services.ts`, format(code, prettierOptions as any));
 
     writeFileSync(
       `${dir}/httpRequest.ts`,
-      format(HTTP_REQUEST, { parser: "jsdoc-parser" } as any),
+      format(HTTP_REQUEST, prettierOptions as any),
     );
 
     if (!existsSync(`${dir}/config.ts`)) {
-      writeFileSync(
-        `${dir}/config.ts`,
-        format(CONFIG, { parser: "jsdoc-parser" } as any),
-      );
+      writeFileSync(`${dir}/config.ts`, format(CONFIG, prettierOptions as any));
     }
   } catch (error) {
     console.log({ error });
