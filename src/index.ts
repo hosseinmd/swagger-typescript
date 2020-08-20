@@ -5,26 +5,21 @@ import { HTTP_REQUEST, CONFIG } from "./strings";
 import { getSwaggerJson } from "./getJson";
 import { generator } from "./generator";
 
-function getParam(name: string): string {
-  name += "=";
-  const index = process.argv.findIndex((v) => v.startsWith(name));
-
-  return process.argv[index]?.substring(name.length);
-}
-
 async function generate() {
-  const configUrl = getParam("config") || "./swaggerConfig.json";
   let config: SwaggerConfig;
 
   try {
-    config = JSON.parse(readFileSync(configUrl).toString());
+    config = JSON.parse(readFileSync("swagger.config.json").toString());
 
     if (!config) {
       throw "";
     }
   } catch (error) {
-    console.log(error);
-    throw new Error("Please define swaggerConfig.json");
+    try {
+      config = JSON.parse(readFileSync("./swaggerConfig.json").toString()); // backward compatible for  v1
+    } catch {
+      throw new Error("Please define swagger.config.json");
+    }
   }
 
   const { url, dir, prettierPath } = config;
