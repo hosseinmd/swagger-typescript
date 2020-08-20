@@ -15,7 +15,12 @@ import {
   SwaggerResponse,
   SwaggerConfig,
 } from "./types";
-import { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG } from "./strings";
+import {
+  HTTP_REQUEST,
+  SERVICE_BEGINNING,
+  CONFIG,
+  DEPRECATED_WARM_MESSAGE,
+} from "./strings";
 import { getSwaggerJson } from "./getJson";
 
 function getParam(name: string): string {
@@ -69,31 +74,32 @@ async function generate() {
     Object.entries(input.paths).forEach(([endPoint, value]) => {
       Object.entries(value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
+          const serviceName = `${method}${generateServiceName(endPoint)}`;
           const pathParams = getPathParams(options.parameters);
-          let { params: queryParams, hasNullable } = getQueryParams(
+          const { params: queryParams, hasNullable } = getQueryParams(
             options.parameters,
           );
 
-          let {
+          const {
             params: headerParams,
             hasNullable: hasNullableHeaderParams,
           } = getHeaderParams(options.parameters, config);
 
-          let requestBody = getBodyContent(options.requestBody);
+          const requestBody = getBodyContent(options.requestBody);
 
-          let contentType = Object.keys(
+          const contentType = Object.keys(
             options.requestBody?.content || {
               "application/json": null,
             },
           )[0];
 
-          let accept = Object.keys(
+          const accept = Object.keys(
             options.responses?.[200].content || {
               "application/json": null,
             },
           )[0];
 
-          let responses = getBodyContent(options.responses?.[200]);
+          const responses = getBodyContent(options.responses?.[200]);
 
           let pathParamsRefString = pathParams.reduce(
             (prev, { name }) => `${prev}${name},`,
@@ -106,51 +112,57 @@ async function generate() {
           code += `
 /**
  * ${options.summary}
+ ${options.deprecated ? `* @deprecated ${DEPRECATED_WARM_MESSAGE}` : ""}
  */
-export async function ${method}${generateServiceName(endPoint)}(
+export const ${serviceName}${options.deprecated ? ": any" : ""} = async (
     ${pathParams
       .map(({ name, required, schema }) =>
         getDefineParam(name, required, schema),
       )
       .join(",")}
-      ${pathParams.length > 0 ? "," : ""}
-      ${
-        queryParams
-          ? `${getParamString("queryParams", !hasNullable, queryParams)},`
-          : ""
-      }
-      ${
-        requestBody
-          ? `${getDefineParam("requestBody", true, requestBody)},`
-          : ""
-      }
-      ${
-        headerParams
-          ? `${getParamString(
-              "headerParams",
-              !hasNullableHeaderParams,
-              headerParams,
-            )},`
-          : ""
-      }
-      configOverride?:AxiosRequestConfig
-      
-): Promise<SwaggerResponse<${responses ? getTsType(responses) : "any"}>> {
-
-    return await responseWrapper(await Http.${method}Request(
-      template("${endPoint}",${pathParamsRefString}),
-      ${queryParams ? "queryParams" : "undefined"},
-      ${requestBody ? "requestBody" : "undefined"},
-      overrideConfig({
-          headers: {
-            "Content-Type": "${contentType}",
-            Accept: "${accept}",
-            ${headerParams ? "...headerParams," : ""}
-          },
+    ${pathParams.length > 0 ? "," : ""}
+    ${
+      queryParams
+        ? `${getParamString("queryParams", !hasNullable, queryParams)},`
+        : ""
+    }
+    ${requestBody ? `${getDefineParam("requestBody", true, requestBody)},` : ""}
+    ${
+      headerParams
+        ? `${getParamString(
+            "headerParams",
+            !hasNullableHeaderParams,
+            headerParams,
+          )},`
+        : ""
+    }
+    configOverride?:AxiosRequestConfig
+): Promise<SwaggerResponse<${responses ? getTsType(responses) : "any"}>> => {
+  ${
+    options.deprecated
+      ? `
+  if (__DEV__) {
+    console.warn(
+      "${serviceName}",
+      "${DEPRECATED_WARM_MESSAGE}",
+    );
+  }`
+      : ""
+  }
+  return await responseWrapper(await Http.${method}Request(
+    template("${endPoint}",${pathParamsRefString}),
+    ${queryParams ? "queryParams" : "undefined"},
+    ${requestBody ? "requestBody" : "undefined"},
+    overrideConfig({
+        headers: {
+          "Content-Type": "${contentType}",
+          Accept: "${accept}",
+          ${headerParams ? "...headerParams," : ""}
         },
-        configOverride,
-      )
-    ))
+      },
+      configOverride,
+    )
+  ))
 }
 `;
         },
@@ -160,9 +172,9 @@ export async function ${method}${generateServiceName(endPoint)}(
     Object.entries(
       (input.components.schemas as unknown) as SwaggerSchemas,
     ).forEach(([name, schema]) => {
-      const { type, enum: Enum, allOf } = schema;
+      const { type, enum: Enum, allOf, oneOf } = schema;
       if (type === "object") {
-        let typeObject = getTsType(schema);
+        const typeObject = getTsType(schema);
 
         code += `
 export interface ${name} ${typeObject}
@@ -181,6 +193,13 @@ export enum ${name} {${Enum.map(
         export interface ${name} extends ${allOf
           .map((_schema) => getTsType(_schema))
           .join(" ")}
+                `;
+      }
+      if (oneOf) {
+        code += `
+        export type ${name} = ${oneOf
+          .map((_schema) => getTsType(_schema))
+          .join(" | ")}
                 `;
       }
     });

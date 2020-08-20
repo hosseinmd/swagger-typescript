@@ -39,6 +39,7 @@ export interface SwaggerRequest {
   responses: {
     "200": SwaggerResponse;
   };
+  deprecated: boolean;
   security: [
     {
       "JWT token": [];
