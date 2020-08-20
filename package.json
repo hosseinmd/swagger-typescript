@@ -4,9 +4,8 @@
   "description": "swagger auto generate typescript service.ts",
   "main": "lib/index.js",
   "scripts": {
-    "generate": "tsc && node ./lib/index.js",
-    "prepare": "tsc",
-    "build": "tsc",
+    "generate": "yarn prepare && node ./lib/index.js",
+    "prepare": "rm -rf ./lib && tsc",
     "test": "jest",
     "lint": "eslint src/**/*.ts",
     "eslint-fix": "eslint src/**/*.ts --fix",
