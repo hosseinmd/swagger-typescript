@@ -1,7 +1,7 @@
 {
   "name": "swagger-typescript",
   "version": "1.2.0",
-  "description": "swagger auto generate typescript service.ts",
+  "description": "A auto generate typescript code from swagger",
   "main": "lib/index.js",
   "scripts": {
     "generate": "yarn prepare && node ./lib/index.js",
@@ -18,10 +18,11 @@
     "url": "git+https://github.com/hosseinmd/swagger-typescript.git"
   },
   "keywords": [
-    "react-native",
-    "react-native-web",
-    "calendar",
-    "jalali"
+    "swagger",
+    "typescript",
+    "nswag",
+    "openApi 3",
+    "code generator"
   ],
   "author": "Hossein mohammadi",
   "license": "MIT",

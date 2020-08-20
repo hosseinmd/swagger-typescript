@@ -2,18 +2,28 @@
 
 [![install size](https://packagephobia.now.sh/badge?p=swagger-typescript)](https://packagephobia.now.sh/result?p=swagger-typescript) [![dependencies](https://david-dm.org/hosseinmd/swagger-typescript.svg)](https://david-dm.org/hosseinmd/swagger-typescript.svg)
 
+An auto typescript code generator from swagger.
+Every endpoint create as function and full type base.
+For Example:
+Get method of '/Account' path will be this code in services.ts
+
+```js
+export const getAccountList = async (
+  queryParams: { id: string },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<CommissionAmountApiModel>> => {
+  // internal code
+  return response
+};
+```
+
 ## install
 
 `$ yarn add swagger-typescript`
 
-## run 
+Before running, add your config to swagger.config.json
 
-```
-node ./node_modules/swagger-typescript/lib/index.js' config='./swaggerConfigFileName.json'
-```
-config default is swaggerConfig.json
-
-## swaggerConfig 
+## swagger.config.json
 
 ```json
 {
@@ -28,8 +38,15 @@ config default is swaggerConfig.json
 }
 ```
 
+## run 
+
+```
+node ./node_modules/swagger-typescript/lib/index.js'
+```
+
 ## config.ts
-You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
+
+This file automatically will be create after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
 
 ### responseWrapper
 
@@ -43,4 +60,29 @@ async function responseWrapper(
 ): Promise<SwaggerResponse<any>> {
   return response.data;
 }
-``
+```
+
+### getBaseConfig
+
+```ts
+async function getBaseConfig(): Promise<AxiosRequestConfig> {
+  return {
+    baseURL: "http://your_base_url.com",
+    headers: {
+      // any headers you want to assign for all request
+      "Content-Encoding": "UTF-8",
+      Accept: "application/json",
+      "Content-Type": "application/json-patch+json",
+    },
+  };
+}
+```
+
+### errorCatch
+
+```ts
+function errorCatch(error: AxiosError): any {
+  // any things you want
+  throw error;
+}
+```
