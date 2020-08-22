@@ -59,6 +59,7 @@
     "swagger-generate": "./lib/index.js"
   },
   "files": [
-    "lib"
+    "lib",
+    "files"
   ]
 }
