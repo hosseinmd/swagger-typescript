@@ -10,12 +10,14 @@ import { AxiosRequestConfig } from "axios";
 import { SwaggerResponse, responseWrapper } from "./config";
 import { Http, overrideConfig } from "./httpRequest";
 
+const __DEV__ = process.env.NODE_ENV !== "production";
+
 function template(path: string, obj: { [x: string]: any } = {}) {
     Object.keys(obj).forEach((key) => {
-      let re = new RegExp(\`{\${key}}\`, "i");
+      const re = new RegExp(\`{\${key}}\`, "i");
       path = path.replace(re, obj[key]);
     });
-  
+
     return path;
 }
 `;
@@ -87,4 +89,7 @@ async function responseWrapper(
 export { getBaseConfig, errorCatch, Exception, responseWrapper };
 `;
 
-export { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG };
+const DEPRECATED_WARM_MESSAGE =
+  "This endpoint deprecated and will be remove. Please use an alternative";
+
+export { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG, DEPRECATED_WARM_MESSAGE };
