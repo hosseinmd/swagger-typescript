@@ -58,33 +58,37 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             : "";
 
           code += `
-/**
- * ${options.summary}
- ${options.deprecated ? `* @deprecated ${DEPRECATED_WARM_MESSAGE}` : ""}
- */
+${
+  options.summary || options.deprecated
+    ? `
+/**${options.summary ? `\n * ${options.summary}` : ""}${
+        options.deprecated ? `\n * @deprecated ${DEPRECATED_WARM_MESSAGE}` : ""
+      }
+ */`
+    : ""
+}
 export const ${serviceName}${options.deprecated ? ": any" : ""} = async (
     ${pathParams
       .map(({ name, required, schema }) =>
         getDefineParam(name, required, schema),
       )
-      .join(",")}
-    ${pathParams.length > 0 ? "," : ""}
-    ${
-      queryParams
-        ? `${getParamString("queryParams", !hasNullable, queryParams)},`
-        : ""
-    }
-    ${requestBody ? `${getDefineParam("requestBody", true, requestBody)},` : ""}
-    ${
-      headerParams
-        ? `${getParamString(
-            "headerParams",
-            !hasNullableHeaderParams,
-            headerParams,
-          )},`
-        : ""
-    }
-    configOverride?:AxiosRequestConfig
+      .join(",")}${pathParams.length > 0 ? "," : ""}${
+            requestBody
+              ? `${getDefineParam("requestBody", true, requestBody)},`
+              : ""
+          }${
+            queryParams
+              ? `${getParamString("queryParams", !hasNullable, queryParams)},`
+              : ""
+          }${
+            headerParams
+              ? `${getParamString(
+                  "headerParams",
+                  !hasNullableHeaderParams,
+                  headerParams,
+                )},`
+              : ""
+          }configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<${responses ? getTsType(responses) : "any"}>> => {
   ${
     options.deprecated
