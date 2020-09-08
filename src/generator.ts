@@ -72,24 +72,23 @@ export const ${serviceName}${options.deprecated ? ": any" : ""} = async (
       .map(({ name, required, schema }) =>
         getDefineParam(name, required, schema),
       )
-      .join(",")}
-    ${pathParams.length > 0 ? "," : ""}
-    ${requestBody ? `${getDefineParam("requestBody", true, requestBody)},` : ""}
-    ${
-      queryParams
-        ? `${getParamString("queryParams", !hasNullable, queryParams)},`
-        : ""
-    }
-    ${
-      headerParams
-        ? `${getParamString(
-            "headerParams",
-            !hasNullableHeaderParams,
-            headerParams,
-          )},`
-        : ""
-    }
-    configOverride?:AxiosRequestConfig
+      .join(",")}${pathParams.length > 0 ? "," : ""}${
+            requestBody
+              ? `${getDefineParam("requestBody", true, requestBody)},`
+              : ""
+          }${
+            queryParams
+              ? `${getParamString("queryParams", !hasNullable, queryParams)},`
+              : ""
+          }${
+            headerParams
+              ? `${getParamString(
+                  "headerParams",
+                  !hasNullableHeaderParams,
+                  headerParams,
+                )},`
+              : ""
+          }configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<${responses ? getTsType(responses) : "any"}>> => {
   ${
     options.deprecated
