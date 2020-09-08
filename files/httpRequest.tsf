@@ -6,6 +6,7 @@ const Http = {
   async getRequest(
     url: string,
     queryParams: any | undefined,
+    requestBody: any | undefined,
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
     try {
@@ -61,6 +62,7 @@ const Http = {
   async deleteRequest(
     url: string,
     queryParams: any | undefined,
+    requestBody: any | undefined,
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
     try {
