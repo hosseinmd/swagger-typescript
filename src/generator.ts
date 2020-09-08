@@ -69,12 +69,12 @@ export const ${serviceName}${options.deprecated ? ": any" : ""} = async (
       )
       .join(",")}
     ${pathParams.length > 0 ? "," : ""}
+    ${requestBody ? `${getDefineParam("requestBody", true, requestBody)},` : ""}
     ${
       queryParams
         ? `${getParamString("queryParams", !hasNullable, queryParams)},`
         : ""
     }
-    ${requestBody ? `${getDefineParam("requestBody", true, requestBody)},` : ""}
     ${
       headerParams
         ? `${getParamString(
