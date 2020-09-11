@@ -5,16 +5,12 @@
 An auto typescript code generator from swagger.
 Every endpoint create as function and full type base.
 For Example:
-Get method of '/Account' path will be this code in services.ts
+Get method of '/Account/{id}' path will be this code in services.ts
 
 ```js
-export const getAccountList = async (
-  queryParams: { id: string },
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<CommissionAmountApiModel>> => {
-  // internal code
-  return response
-};
+import { getAccount } from "./services";
+
+const response = await getAccount({ id: 1234 });
 ```
 
 ## install
@@ -27,18 +23,17 @@ Before running, add your config to swagger.config.json
 
 ```json
 {
-    "url": "http://example.swagger.json",
-    "dir": "./test",
-    "prettierPath": ".prettierrc",
-    "ignore": {
-        "headerParams": [
-            "terminalId"
-        ]
-    }
+  "url": "http://example.com/api/swagger.json",
+  "dir": "./test",
+  "prettierPath": ".prettierrc",
+  "ignore": {
+    //Will be ignore from services functions.
+    "headerParams": ["terminalId"]
+  }
 }
 ```
 
-## run 
+## run
 
 ```
 node ./node_modules/swagger-typescript/lib/index.js'
@@ -50,15 +45,17 @@ This file automatically will be create after first run. You could change this fi
 
 ### responseWrapper
 
-for customize responseWrapper your can do something like this
+For create custom response change responseWrapper function in config. You could do something like this.
 
 ```js
-export type SwaggerResponse<R> = R;
+export type SwaggerResponse<R> = R & { counter: number };
+
+const counter = 0;
 
 async function responseWrapper(
   response: AxiosResponse<any>,
 ): Promise<SwaggerResponse<any>> {
-  return response.data;
+  return { ...response.data, counter: counter + 1 };
 }
 ```
 
