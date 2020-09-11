@@ -28,7 +28,7 @@ async function generate() {
     mkdirSync(dir);
   }
 
-  let prettierOptions;
+  let prettierOptions: any = {};
 
   if (prettierPath && existsSync(prettierPath)) {
     prettierOptions = JSON.parse(readFileSync(prettierPath).toString());
@@ -37,9 +37,11 @@ async function generate() {
       prettierOptions = JSON.parse(readFileSync(".prettierrc").toString());
     } else if (existsSync("prettier.json")) {
       prettierOptions = JSON.parse(readFileSync("prettier.json").toString());
-    } else {
-      prettierOptions = { parser: "typescript" };
     }
+  }
+
+  if (!prettierOptions.parser) {
+    prettierOptions.parser = "typescript";
   }
 
   try {
