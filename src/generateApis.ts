@@ -37,7 +37,7 @@ ${
   summary || deprecated
     ? `/**${summary ? `\n * ${summary}` : ""}${
         deprecated ? `\n * @deprecated ${DEPRECATED_WARM_MESSAGE}` : ""
-      } */`
+      }\n */`
     : ""
 }
 export const ${serviceName}${deprecated ? ": any" : ""} = async (
