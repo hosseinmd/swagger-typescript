@@ -2,7 +2,6 @@ import {
   getPathParams,
   getQueryParams,
   generateServiceName,
-  getTsType,
   getHeaderParams,
 } from "./utils";
 import type {
@@ -12,8 +11,10 @@ import type {
   SwaggerResponse,
   SwaggerConfig,
   ApiAST,
+  TypeAST,
 } from "./types";
 import { generateApis } from "./generateApis";
+import { generateTypes } from "./generateTypes";
 
 function generator(input: SwaggerJson, config: SwaggerConfig): string {
   const apis: ApiAST[] = [];
@@ -78,42 +79,17 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
       );
     });
 
-    let code = generateApis(apis);
-
-    Object.entries(
+    const types: TypeAST[] = Object.entries(
       (input.components.schemas as unknown) as SwaggerSchemas,
-    ).forEach(([name, schema]) => {
-      const { type, enum: Enum, allOf, oneOf } = schema;
-      if (type === "object") {
-        const typeObject = getTsType(schema);
-
-        code += `
-export interface ${name} ${typeObject}
-        `;
-      }
-      if (Enum) {
-        code += `
-export enum ${name} {${Enum.map(
-          (e) => `${e}=${typeof e === "string" ? `"${e}"` : ""}`,
-        )}}
-`;
-      }
-
-      if (allOf) {
-        code += `
-        export interface ${name} extends ${allOf
-          .map((_schema) => getTsType(_schema))
-          .join(" ")}
-                `;
-      }
-      if (oneOf) {
-        code += `
-        export type ${name} = ${oneOf
-          .map((_schema) => getTsType(_schema))
-          .join(" | ")}
-                `;
-      }
+    ).map(([name, schema]) => {
+      return {
+        name,
+        schema,
+      };
     });
+
+    let code = generateApis(apis);
+    code += generateTypes(types);
 
     return code;
   } catch (error) {

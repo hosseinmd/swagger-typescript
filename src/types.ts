@@ -86,3 +86,8 @@ export type ApiAST = {
   accept: string;
   method: string;
 };
+
+export type TypeAST = {
+  name: string;
+  schema: Schema;
+};
