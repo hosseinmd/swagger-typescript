@@ -6,21 +6,7 @@ import { getSwaggerJson } from "./getJson";
 import { generator } from "./generator";
 
 async function generate() {
-  let config: SwaggerConfig;
-
-  try {
-    config = JSON.parse(readFileSync("swagger.config.json").toString());
-
-    if (!config) {
-      throw "";
-    }
-  } catch (error) {
-    try {
-      config = JSON.parse(readFileSync("./swaggerConfig.json").toString()); // backward compatible for  v1
-    } catch {
-      throw new Error("Please define swagger.config.json");
-    }
-  }
+  const config: SwaggerConfig = getSwaggerConfig();
 
   const { url, dir, prettierPath } = config;
 
@@ -28,21 +14,7 @@ async function generate() {
     mkdirSync(dir);
   }
 
-  let prettierOptions: any = {};
-
-  if (prettierPath && existsSync(prettierPath)) {
-    prettierOptions = JSON.parse(readFileSync(prettierPath).toString());
-  } else {
-    if (existsSync(".prettierrc")) {
-      prettierOptions = JSON.parse(readFileSync(".prettierrc").toString());
-    } else if (existsSync("prettier.json")) {
-      prettierOptions = JSON.parse(readFileSync("prettier.json").toString());
-    }
-  }
-
-  if (!prettierOptions.parser) {
-    prettierOptions.parser = "typescript";
-  }
+  const prettierOptions = getPrettierOptions(prettierPath);
 
   try {
     const input: SwaggerJson = await getSwaggerJson(url);
@@ -60,8 +32,45 @@ async function generate() {
       writeFileSync(`${dir}/config.ts`, format(CONFIG, prettierOptions));
     }
   } catch (error) {
-    console.log({ error });
+    console.error(error);
   }
+}
+
+function getSwaggerConfig() {
+  try {
+    const config = JSON.parse(readFileSync("swagger.config.json").toString());
+
+    if (!config) {
+      throw "";
+    }
+
+    return config;
+  } catch (error) {
+    try {
+      return JSON.parse(readFileSync("./swaggerConfig.json").toString()); // backward compatible for  v1
+    } catch {
+      throw new Error("Please define swagger.config.json");
+    }
+  }
+}
+
+function getPrettierOptions(prettierPath: string) {
+  let prettierOptions: any = {};
+  if (prettierPath && existsSync(prettierPath)) {
+    prettierOptions = JSON.parse(readFileSync(prettierPath).toString());
+  } else {
+    if (existsSync(".prettierrc")) {
+      prettierOptions = JSON.parse(readFileSync(".prettierrc").toString());
+    } else if (existsSync("prettier.json")) {
+      prettierOptions = JSON.parse(readFileSync("prettier.json").toString());
+    }
+  }
+
+  if (!prettierOptions.parser) {
+    prettierOptions.parser = "typescript";
+  }
+
+  return prettierOptions;
 }
 
 generate();
