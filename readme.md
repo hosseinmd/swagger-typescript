@@ -2,8 +2,11 @@
 
 [![install size](https://packagephobia.now.sh/badge?p=swagger-typescript)](https://packagephobia.now.sh/result?p=swagger-typescript) [![dependencies](https://david-dm.org/hosseinmd/swagger-typescript.svg)](https://david-dm.org/hosseinmd/swagger-typescript.svg)
 
+Support OpenApi v3
+
 An auto typescript code generator from swagger.
 Every endpoint create as function and full type base.
+
 For Example:
 Get method of '/Account/{id}' path will be this code in services.ts
 
