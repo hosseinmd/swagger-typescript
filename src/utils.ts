@@ -26,16 +26,11 @@ function getParams(
       return In === type && !ignoreParams?.includes(name);
     }) || [];
 
-  let params = queryParamsArray.reduce((prev, { name, schema }) => {
-    return `${prev}${name}${schema.nullable ? "?" : ""}: ${getTsType(schema)},`;
-  }, "{");
-
-  const hasQueryParams = params && params.length > 1;
-  params = hasQueryParams ? params + "}" : "";
+  const params = getObjectType(queryParamsArray);
 
   return {
     params,
-    hasNullable: !queryParamsArray.find(({ schema }) => !schema.nullable),
+    hasNullable: queryParamsArray.every(({ schema }) => schema.nullable),
   };
 }
 
@@ -92,15 +87,12 @@ function getTsType({
   }
 
   if (properties) {
-    tsType = Object.entries(properties)
-      .map(([pName, value]) => ({ ...(value as any), name: pName }))
-      .reduce((prev, schema: Schema & { name: string }) => {
-        return `${prev}${schema.name}${schema.nullable ? "?" : ""}: ${getTsType(
-          schema,
-        )},`;
-      }, "{");
-
-    tsType = tsType ? tsType + "}" : "";
+    tsType = getObjectType(
+      Object.entries(properties).map(([pName, schema]) => ({
+        schema,
+        name: pName,
+      })),
+    );
   }
 
   // if (nullable) {
@@ -108,6 +100,31 @@ function getTsType({
   // }
 
   return tsType;
+}
+
+function getObjectType(parameter: { schema: Schema; name: string }[]) {
+  const object = parameter
+    .sort(
+      (
+        { name, schema: { nullable } },
+        { name: _name, schema: { nullable: _nullable } },
+      ) => {
+        if (!nullable && _nullable) {
+          return -1;
+        } else if (nullable && !_nullable) {
+          return 1;
+        }
+
+        return isAscending(name, _name);
+      },
+    )
+    .reduce((prev, { schema, name }) => {
+      return `${prev}${name}${schema.nullable ? "?" : ""}: ${getTsType(
+        schema,
+      )},`;
+    }, "");
+
+  return object ? `{${object}}` : "";
 }
 
 function getRefName($ref: string): string {
