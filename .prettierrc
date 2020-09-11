@@ -1,5 +1,6 @@
 {
   "trailingComma": "all",
+  "parser": "babel-ts",
   "overrides": [
     {
       "files": [

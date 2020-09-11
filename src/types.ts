@@ -68,3 +68,21 @@ export interface SwaggerConfig {
     headerParams: string[];
   };
 }
+
+export type ApiAST = {
+  summary: string;
+  deprecated: boolean;
+  serviceName: string;
+  pathParams: Parameter[];
+  requestBody: Schema | undefined;
+  queryParams: string;
+  headerParams: string;
+  isQueryParamsNullable: boolean;
+  isHeaderParamsNullable: boolean;
+  responses: Schema | undefined;
+  pathParamsRefString: string;
+  endPoint: string;
+  contentType: string;
+  accept: string;
+  method: string;
+};

@@ -5,18 +5,18 @@ import {
   getTsType,
   getHeaderParams,
 } from "./utils";
-import {
+import type {
   SwaggerSchemas,
   SwaggerRequest,
   SwaggerJson,
-  Schema,
   SwaggerResponse,
   SwaggerConfig,
+  ApiAST,
 } from "./types";
-import { SERVICE_BEGINNING, DEPRECATED_WARM_MESSAGE } from "./strings";
+import { generateApis } from "./generateApis";
 
 function generator(input: SwaggerJson, config: SwaggerConfig): string {
-  let code = SERVICE_BEGINNING;
+  const apis: ApiAST[] = [];
 
   try {
     Object.entries(input.paths).forEach(([endPoint, value]) => {
@@ -57,69 +57,28 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             ? pathParamsRefString + "}"
             : "";
 
-          code += `
-${
-  options.summary || options.deprecated
-    ? `
-/**${options.summary ? `\n * ${options.summary}` : ""}${
-        options.deprecated ? `\n * @deprecated ${DEPRECATED_WARM_MESSAGE}` : ""
-      }
- */`
-    : ""
-}
-export const ${serviceName}${options.deprecated ? ": any" : ""} = async (
-    ${pathParams
-      .map(({ name, required, schema }) =>
-        getDefineParam(name, required, schema),
-      )
-      .join(",")}${pathParams.length > 0 ? "," : ""}${
-            requestBody
-              ? `${getDefineParam("requestBody", true, requestBody)},`
-              : ""
-          }${
-            queryParams
-              ? `${getParamString("queryParams", !hasNullable, queryParams)},`
-              : ""
-          }${
-            headerParams
-              ? `${getParamString(
-                  "headerParams",
-                  !hasNullableHeaderParams,
-                  headerParams,
-                )},`
-              : ""
-          }configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse<${responses ? getTsType(responses) : "any"}>> => {
-  ${
-    options.deprecated
-      ? `
-  if (__DEV__) {
-    console.warn(
-      "${serviceName}",
-      "${DEPRECATED_WARM_MESSAGE}",
-    );
-  }`
-      : ""
-  }
-  return await responseWrapper(await Http.${method}Request(
-    template("${endPoint}",${pathParamsRefString}),
-    ${queryParams ? "queryParams" : "undefined"},
-    ${requestBody ? "requestBody" : "undefined"},
-    overrideConfig({
-        headers: {
-          "Content-Type": "${contentType}",
-          Accept: "${accept}",
-          ${headerParams ? "...headerParams," : ""}
-        },
-      },
-      configOverride,
-    )
-  ))
-}
-`;
+          apis.push({
+            summary: options.summary,
+            deprecated: options.deprecated,
+            serviceName,
+            pathParams,
+            requestBody,
+            queryParams,
+            headerParams,
+            isQueryParamsNullable: hasNullable,
+            isHeaderParamsNullable: hasNullableHeaderParams,
+            responses,
+            pathParamsRefString,
+            endPoint,
+            contentType,
+            accept,
+            method,
+          });
         },
       );
     });
+
+    let code = generateApis(apis);
 
     Object.entries(
       (input.components.schemas as unknown) as SwaggerSchemas,
@@ -169,22 +128,6 @@ function getBodyContent(responses?: SwaggerResponse) {
   }
 
   return Object.values(responses.content)[0].schema;
-}
-
-function getDefineParam(
-  name: string,
-  required: boolean = false,
-  schema: Schema,
-): string {
-  return getParamString(name, required, getTsType(schema));
-}
-
-function getParamString(
-  name: string,
-  required: boolean = false,
-  type: any,
-): string {
-  return `${name}${required ? "" : "?"}: ${type}`;
 }
 
 export { generator };
