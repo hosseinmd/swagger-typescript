@@ -114,6 +114,16 @@ function getRefName($ref: string): string {
   return $ref.replace("#/components/schemas/", "");
 }
 
+function isAscending(a: string, b: string) {
+  if (a > b) {
+    return 1;
+  }
+  if (b > a) {
+    return -1;
+  }
+  return 0;
+}
+
 export {
   getPathParams,
   getQueryParams,
@@ -121,4 +131,5 @@ export {
   generateServiceName,
   getTsType,
   getRefName,
+  isAscending,
 };

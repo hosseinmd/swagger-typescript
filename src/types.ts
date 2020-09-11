@@ -80,7 +80,7 @@ export type ApiAST = {
   isQueryParamsNullable: boolean;
   isHeaderParamsNullable: boolean;
   responses: Schema | undefined;
-  pathParamsRefString: string;
+  pathParamsRefString: string | undefined;
   endPoint: string;
   contentType: string;
   accept: string;

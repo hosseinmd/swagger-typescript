@@ -50,13 +50,13 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
 
           const responses = getBodyContent(options.responses?.[200]);
 
-          let pathParamsRefString = pathParams.reduce(
+          let pathParamsRefString: string | undefined = pathParams.reduce(
             (prev, { name }) => `${prev}${name},`,
-            "{",
+            "",
           );
           pathParamsRefString = pathParamsRefString
-            ? pathParamsRefString + "}"
-            : "";
+            ? `{${pathParamsRefString}}`
+            : undefined;
 
           apis.push({
             summary: options.summary,

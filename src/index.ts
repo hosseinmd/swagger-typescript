@@ -35,8 +35,10 @@ async function generate() {
   } else {
     if (existsSync(".prettierrc")) {
       prettierOptions = JSON.parse(readFileSync(".prettierrc").toString());
-    } else {
+    } else if (existsSync("prettier.json")) {
       prettierOptions = JSON.parse(readFileSync("prettier.json").toString());
+    } else {
+      prettierOptions = { parser: "typescript" };
     }
   }
 
@@ -45,15 +47,15 @@ async function generate() {
 
     const code = generator(input, config);
 
-    writeFileSync(`${dir}/services.ts`, format(code, prettierOptions as any));
+    writeFileSync(`${dir}/services.ts`, format(code, prettierOptions));
 
     writeFileSync(
       `${dir}/httpRequest.ts`,
-      format(HTTP_REQUEST, prettierOptions as any),
+      format(HTTP_REQUEST, prettierOptions),
     );
 
     if (!existsSync(`${dir}/config.ts`)) {
-      writeFileSync(`${dir}/config.ts`, format(CONFIG, prettierOptions as any));
+      writeFileSync(`${dir}/config.ts`, format(CONFIG, prettierOptions));
     }
   } catch (error) {
     console.log({ error });
