@@ -15,6 +15,7 @@ import type {
 } from "./types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
+import { generateParamsType } from "./generateParamsType";
 
 function generator(input: SwaggerJson, config: SwaggerConfig): string {
   const apis: ApiAST[] = [];
@@ -87,10 +88,12 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
         schema,
       };
     });
-
+    const parameters = apis.map(({ pathParams, serviceName }) => {
+      return { pathParams, serviceName };
+    });
     let code = generateApis(apis);
     code += generateTypes(types);
-
+    code += generateParamsType(parameters);
     return code;
   } catch (error) {
     console.error({ error });

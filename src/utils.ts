@@ -61,6 +61,21 @@ const TYPES = {
   array: "array",
 };
 
+function getDefineParam(
+  name: string,
+  required: boolean = false,
+  schema: Schema,
+): string {
+  return getParamString(name, required, getTsType(schema));
+}
+function getParamString(
+  name: string,
+  required: boolean = false,
+  type: any,
+): string {
+  return `${name}${required ? "" : "?"}: ${type}`;
+}
+
 function getTsType({
   type,
   $ref,
@@ -149,4 +164,6 @@ export {
   getTsType,
   getRefName,
   isAscending,
+  getDefineParam,
+  getParamString,
 };
