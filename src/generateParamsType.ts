@@ -3,17 +3,18 @@ import { Parameter } from "./types";
 
 interface ApiParameters {
   pathParams: Parameter[];
+  queryParams: string;
   serviceName: string;
 }
 
 function generateParamsType(parameters: ApiParameters[]): string {
-  let code = "\n/** Generate parameters type */ \n";
+  let code = "\n /** Generate parameters type */ \n";
   try {
     code += parameters
       .sort(({ serviceName }, { serviceName: _serviceName }) =>
         isAscending(serviceName, _serviceName),
       )
-      .reduce((prev, { serviceName, pathParams }) => {
+      .reduce((prev, { serviceName, pathParams, queryParams }) => {
         if (pathParams.length > 0) {
           return (
             prev +
@@ -25,6 +26,15 @@ function generateParamsType(parameters: ApiParameters[]): string {
       )
       .join(",")}
     }
+  `
+          );
+        }
+        if (queryParams) {
+          return (
+            prev +
+            `
+  export interface ${serviceName}QueryParams  
+    ${queryParams}
   `
           );
         } else {

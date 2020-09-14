@@ -88,8 +88,8 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
         schema,
       };
     });
-    const parameters = apis.map(({ pathParams, serviceName }) => {
-      return { pathParams, serviceName };
+    const parameters = apis.map(({ pathParams, serviceName, queryParams }) => {
+      return { pathParams, serviceName, queryParams };
     });
     let code = generateApis(apis);
     code += generateTypes(types);
