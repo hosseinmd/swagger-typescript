@@ -21,6 +21,7 @@ function generateApis(apis: ApiAST[]): string {
             summary,
             deprecated,
             serviceName,
+            serviceParametersName,
             pathParams,
             requestBody,
             queryParams,
@@ -59,7 +60,7 @@ export const ${serviceName}${deprecated ? ": any" : ""} = async (
                 ? `${getParamString(
                     "queryParams",
                     !isQueryParamsNullable,
-                    queryParams,
+                    `${serviceParametersName}QueryParams`,
                   )},`
                 : ""
             }${
