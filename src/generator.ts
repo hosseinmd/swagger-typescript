@@ -1,8 +1,8 @@
 import {
   getPathParams,
-  getQueryParams,
   generateServiceName,
   getHeaderParams,
+  getParametersInfo,
 } from "./utils";
 import type {
   SwaggerSchemas,
@@ -15,25 +15,49 @@ import type {
 } from "./types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
-import { generateParamsType } from "./generateParamsType";
 
 function generator(input: SwaggerJson, config: SwaggerConfig): string {
   const apis: ApiAST[] = [];
+  const types: TypeAST[] = [];
 
   try {
     Object.entries(input.paths).forEach(([endPoint, value]) => {
       Object.entries(value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
           const serviceName = `${method}${generateServiceName(endPoint)}`;
-          let methodName = method.substring(0, 1).toUpperCase();
-          methodName += method.substring(1);
-          const serviceParametersName = `${methodName}${generateServiceName(
-            endPoint,
-          )}`;
+
           const pathParams = getPathParams(options.parameters);
-          const { params: queryParams, hasNullable } = getQueryParams(
-            options.parameters,
-          );
+
+          const {
+            exist: queryParams,
+            isNullable: isQueryParamsNullable,
+            params: queryParameters,
+          } = getParametersInfo(options.parameters, "query");
+          let queryParamsTypeName: string | false = serviceName
+            .substring(0, 1)
+            .toUpperCase();
+          queryParamsTypeName += `${serviceName.substring(1)}QueryParams`;
+
+          queryParamsTypeName = queryParams && queryParamsTypeName;
+
+          if (queryParamsTypeName) {
+            types.push({
+              name: queryParamsTypeName,
+              schema: {
+                type: "object",
+                nullable: isQueryParamsNullable,
+                properties: queryParameters?.reduce(
+                  (prev, { name, schema }) => {
+                    return {
+                      ...prev,
+                      [name]: schema,
+                    };
+                  },
+                  {},
+                ),
+              },
+            });
+          }
 
           const {
             params: headerParams,
@@ -68,12 +92,11 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             summary: options.summary,
             deprecated: options.deprecated,
             serviceName,
-            serviceParametersName,
+            queryParamsTypeName,
             pathParams,
             requestBody,
-            queryParams,
             headerParams,
-            isQueryParamsNullable: hasNullable,
+            isQueryParamsNullable,
             isHeaderParamsNullable: hasNullableHeaderParams,
             responses,
             pathParamsRefString,
@@ -86,20 +109,20 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
       );
     });
 
-    const types: TypeAST[] = Object.entries(
-      (input.components.schemas as unknown) as SwaggerSchemas,
-    ).map(([name, schema]) => {
-      return {
-        name,
-        schema,
-      };
-    });
-    const parameters = apis.map(({ serviceParametersName, queryParams }) => {
-      return { serviceParametersName, queryParams };
-    });
+    types.push(
+      ...Object.entries(
+        (input.components.schemas as unknown) as SwaggerSchemas,
+      ).map(([name, schema]) => {
+        return {
+          name,
+          schema,
+        };
+      }),
+    );
+
     let code = generateApis(apis);
     code += generateTypes(types);
-    code += generateParamsType(parameters);
+
     return code;
   } catch (error) {
     console.error({ error });
