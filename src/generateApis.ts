@@ -1,5 +1,10 @@
-import { getTsType, isAscending } from "./utils";
-import { Schema, ApiAST } from "./types";
+import {
+  getTsType,
+  isAscending,
+  getDefineParam,
+  getParamString,
+} from "./utils";
+import { ApiAST } from "./types";
 import { SERVICE_BEGINNING, DEPRECATED_WARM_MESSAGE } from "./strings";
 
 function generateApis(apis: ApiAST[]): string {
@@ -16,6 +21,7 @@ function generateApis(apis: ApiAST[]): string {
             summary,
             deprecated,
             serviceName,
+            serviceParametersName,
             pathParams,
             requestBody,
             queryParams,
@@ -54,7 +60,7 @@ export const ${serviceName}${deprecated ? ": any" : ""} = async (
                 ? `${getParamString(
                     "queryParams",
                     !isQueryParamsNullable,
-                    queryParams,
+                    `${serviceParametersName}QueryParams`,
                   )},`
                 : ""
             }${
@@ -107,22 +113,6 @@ export const ${serviceName}${deprecated ? ": any" : ""} = async (
     console.error(error);
     return "";
   }
-}
-
-function getDefineParam(
-  name: string,
-  required: boolean = false,
-  schema: Schema,
-): string {
-  return getParamString(name, required, getTsType(schema));
-}
-
-function getParamString(
-  name: string,
-  required: boolean = false,
-  type: any,
-): string {
-  return `${name}${required ? "" : "?"}: ${type}`;
 }
 
 export { generateApis };

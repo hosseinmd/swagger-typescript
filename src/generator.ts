@@ -15,6 +15,7 @@ import type {
 } from "./types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
+import { generateParamsType } from "./generateParamsType";
 
 function generator(input: SwaggerJson, config: SwaggerConfig): string {
   const apis: ApiAST[] = [];
@@ -24,6 +25,11 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
       Object.entries(value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
           const serviceName = `${method}${generateServiceName(endPoint)}`;
+          let methodName = method.substring(0, 1).toUpperCase();
+          methodName += method.substring(1);
+          const serviceParametersName = `${methodName}${generateServiceName(
+            endPoint,
+          )}`;
           const pathParams = getPathParams(options.parameters);
           const { params: queryParams, hasNullable } = getQueryParams(
             options.parameters,
@@ -62,6 +68,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             summary: options.summary,
             deprecated: options.deprecated,
             serviceName,
+            serviceParametersName,
             pathParams,
             requestBody,
             queryParams,
@@ -87,10 +94,12 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
         schema,
       };
     });
-
+    const parameters = apis.map(({ serviceParametersName, queryParams }) => {
+      return { serviceParametersName, queryParams };
+    });
     let code = generateApis(apis);
     code += generateTypes(types);
-
+    code += generateParamsType(parameters);
     return code;
   } catch (error) {
     console.error({ error });

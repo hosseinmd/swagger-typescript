@@ -73,6 +73,7 @@ export type ApiAST = {
   summary: string;
   deprecated: boolean;
   serviceName: string;
+  serviceParametersName: string;
   pathParams: Parameter[];
   requestBody: Schema | undefined;
   queryParams: string;
