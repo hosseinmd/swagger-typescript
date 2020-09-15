@@ -21,10 +21,9 @@ function generateApis(apis: ApiAST[]): string {
             summary,
             deprecated,
             serviceName,
-            serviceParametersName,
+            queryParamsTypeName,
             pathParams,
             requestBody,
-            queryParams,
             headerParams,
             isQueryParamsNullable,
             isHeaderParamsNullable,
@@ -56,11 +55,11 @@ export const ${serviceName}${deprecated ? ": any" : ""} = async (
                 ? `${getDefineParam("requestBody", true, requestBody)},`
                 : ""
             }${
-              queryParams
+              queryParamsTypeName
                 ? `${getParamString(
                     "queryParams",
                     !isQueryParamsNullable,
-                    `${serviceParametersName}QueryParams`,
+                    queryParamsTypeName,
                   )},`
                 : ""
             }${
@@ -90,7 +89,7 @@ export const ${serviceName}${deprecated ? ": any" : ""} = async (
         ? `template("${endPoint}",${pathParamsRefString})`
         : `"${endPoint}"`
     },
-    ${queryParams ? "queryParams" : "undefined"},
+    ${queryParamsTypeName ? "queryParams" : "undefined"},
     ${requestBody ? "requestBody" : "undefined"},
     overrideConfig({
         headers: {

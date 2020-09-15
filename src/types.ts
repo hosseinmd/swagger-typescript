@@ -1,16 +1,16 @@
 export interface Schema {
   type: string;
-  format: "int64" | "binary";
+  format?: "int64" | "binary";
   nullable: boolean;
-  additionalProperties: false;
-  properties: { [name: string]: Schema };
-  description: string;
-  "x-enumNames": ["Rial"];
-  enum: string[];
-  $ref: string;
-  items: Schema;
-  allOf: Schema[];
-  oneOf: Schema[];
+  additionalProperties?: false;
+  properties?: { [name: string]: Schema };
+  description?: string;
+  "x-enumNames"?: ["Rial"];
+  enum?: string[];
+  $ref?: string;
+  items?: Schema;
+  allOf?: Schema[];
+  oneOf?: Schema[];
 }
 
 export interface Parameter {
@@ -73,10 +73,9 @@ export type ApiAST = {
   summary: string;
   deprecated: boolean;
   serviceName: string;
-  serviceParametersName: string;
   pathParams: Parameter[];
   requestBody: Schema | undefined;
-  queryParams: string;
+  queryParamsTypeName: string | false;
   headerParams: string;
   isQueryParamsNullable: boolean;
   isHeaderParamsNullable: boolean;

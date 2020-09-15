@@ -8,10 +8,6 @@ function getPathParams(parameters?: Parameter[]): Parameter[] {
   );
 }
 
-function getQueryParams(parameters?: Parameter[]) {
-  return getParams(parameters, "query");
-}
-
 function getHeaderParams(parameters?: Parameter[], config?: SwaggerConfig) {
   return getParams(parameters, "header", config?.ignore?.headerParams);
 }
@@ -156,9 +152,24 @@ function isAscending(a: string, b: string) {
   return 0;
 }
 
+function getParametersInfo(
+  parameters: Parameter[] | undefined,
+  type: "query" | "header",
+) {
+  const params =
+    parameters?.filter(({ in: In }) => {
+      return In === type;
+    }) || [];
+
+  return {
+    params,
+    exist: params.length > 0,
+    isNullable: params.every(({ schema }) => schema.nullable),
+  };
+}
+
 export {
   getPathParams,
-  getQueryParams,
   getHeaderParams,
   generateServiceName,
   getTsType,
@@ -166,4 +177,5 @@ export {
   isAscending,
   getDefineParam,
   getParamString,
+  getParametersInfo,
 };
