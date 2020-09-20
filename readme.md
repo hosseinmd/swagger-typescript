@@ -39,7 +39,7 @@ Before running, add your config to swagger.config.json
 ## run
 
 ```
-node ./node_modules/swagger-typescript/lib/index.js'
+yarn swag-ts
 ```
 
 ## config.ts
