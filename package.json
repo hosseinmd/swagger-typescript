@@ -7,9 +7,9 @@
     "swag-ts": "bin/index.js"
   },
   "scripts": {
-    "generate": "yarn prepare && node ./lib/index.js",
+    "generate": "yarn test",
     "prepare": "rm -rf ./lib && tsc",
-    "test": "jest",
+    "test": "yarn prepare && node ./lib/index.js",
     "lint": "eslint src/**/*.ts",
     "eslint-fix": "eslint src/**/*.ts --fix",
     "prettier-fix": "prettier --write \"**/*.{ts,tsx}\"",

@@ -1,4 +1,4 @@
-import { Schema, Parameter, SwaggerConfig } from "./types";
+import { Schema, Parameter, SwaggerConfig, JsdocAST } from "./types";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (
@@ -61,15 +61,19 @@ function getDefineParam(
   name: string,
   required: boolean = false,
   schema: Schema,
+  description?: string,
 ): string {
-  return getParamString(name, required, getTsType(schema));
+  return getParamString(name, required, getTsType(schema), description);
 }
 function getParamString(
   name: string,
   required: boolean = false,
-  type: any,
+  type: string,
+  description?: string,
 ): string {
-  return `${name}${required ? "" : "?"}: ${type}`;
+  return `${getJsdoc({
+    description,
+  })}${name}${required ? "" : "?"}: ${type}`;
 }
 
 function getTsType({
@@ -130,9 +134,15 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
       },
     )
     .reduce((prev, { schema, name }) => {
-      return `${prev}${name}${schema.nullable ? "?" : ""}: ${getTsType(
-        schema,
-      )},`;
+      return `${prev}${getJsdoc({
+        description: schema.description,
+        tags: {
+          deprecated: {
+            value: Boolean(schema.deprecated),
+            description: schema["x-deprecatedMessage"],
+          },
+        },
+      })}${name}${schema.nullable ? "?" : ""}: ${getTsType(schema)},`;
     }, "");
 
   return object ? `{${object}}` : "";
@@ -168,6 +178,21 @@ function getParametersInfo(
   };
 }
 
+function getJsdoc({ description, tags: { deprecated } = {} }: JsdocAST) {
+  return deprecated?.value || description
+    ? `
+/**${
+        description
+          ? `
+* ${description}
+`
+          : ""
+      }${deprecated ? `* @deprecated ${deprecated.description || ""}` : ""}
+*/
+`
+    : "";
+}
+
 export {
   getPathParams,
   getHeaderParams,
@@ -178,4 +203,5 @@ export {
   getDefineParam,
   getParamString,
   getParametersInfo,
+  getJsdoc,
 };

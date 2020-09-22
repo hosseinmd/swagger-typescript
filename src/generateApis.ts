@@ -45,10 +45,10 @@ ${
       }\n */`
     : ""
 }
-export const ${serviceName}${deprecated ? ": any" : ""} = async (
+export const ${serviceName} = async (
     ${pathParams
-      .map(({ name, required, schema }) =>
-        getDefineParam(name, required, schema),
+      .map(({ name, required, schema, description }) =>
+        getDefineParam(name, required, schema, description),
       )
       .join(",")}${pathParams.length > 0 ? "," : ""}${
               requestBody

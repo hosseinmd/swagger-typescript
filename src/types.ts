@@ -6,6 +6,8 @@ export interface Schema {
   properties?: { [name: string]: Schema };
   description?: string;
   "x-enumNames"?: ["Rial"];
+  deprecated?: boolean;
+  "x-deprecatedMessage"?: string;
   enum?: string[];
   $ref?: string;
   items?: Schema;
@@ -18,6 +20,7 @@ export interface Parameter {
   in: "path" | "query" | "header"; // "path";
   required: boolean; // true;
   schema: Schema;
+  description?: string;
   "x-position": number;
 }
 
@@ -90,4 +93,14 @@ export type ApiAST = {
 export type TypeAST = {
   name: string;
   schema: Schema;
+};
+
+export type JsdocAST = {
+  description?: string;
+  tags?: {
+    deprecated?: {
+      value: boolean;
+      description?: string;
+    };
+  };
 };

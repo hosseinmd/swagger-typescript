@@ -47,10 +47,10 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
                 type: "object",
                 nullable: isQueryParamsNullable,
                 properties: queryParameters?.reduce(
-                  (prev, { name, schema }) => {
+                  (prev, { name, schema, description }) => {
                     return {
                       ...prev,
-                      [name]: schema,
+                      [name]: { ...schema, description },
                     };
                   },
                   {},
