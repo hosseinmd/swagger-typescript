@@ -1,25 +1,26 @@
-import { getTsType, isAscending } from "./utils";
+import { getJsdoc, getTsType, isAscending } from "./utils";
 import type { TypeAST } from "./types";
 
 function generateTypes(types: TypeAST[]): string {
   try {
     return types
       .sort(({ name }, { name: _name }) => isAscending(name, _name))
-      .reduce((prev, { name, schema }) => {
-        const { type, enum: Enum, allOf, oneOf } = schema;
+      .reduce((prev, { name, schema, description }) => {
+        const { type, enum: Enum, allOf, oneOf, items } = schema;
         if (type === "object") {
           const typeObject = getTsType(schema);
 
           prev += `
-export interface ${name} ${typeObject}
+        export interface ${name} ${typeObject}
         `;
         }
+
         if (Enum) {
           prev += `
-export enum ${name} {${Enum.map(
+         ${getJsdoc({ description })}export enum ${name} {${Enum.map(
             (e) => `${e}=${typeof e === "string" ? `"${e}"` : ""}`,
           )}}
-`;
+         `;
         }
 
         if (allOf) {
@@ -36,6 +37,11 @@ export enum ${name} {${Enum.map(
             .join(" | ")}
                 `;
         }
+        if (type === "array" && items) {
+          prev += `
+        export type ${name} = ${getTsType(items)}`;
+        }
+
         return prev;
       }, "");
   } catch (error) {

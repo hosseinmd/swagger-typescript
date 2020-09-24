@@ -83,14 +83,18 @@ function getTsType({
   items,
   properties,
   oneOf,
+  additionalProperties,
 }: Schema): string {
   let tsType = TYPES[type as keyof typeof TYPES];
 
+  if (type === "object" && additionalProperties) {
+    tsType = `{[x: string]: ${getTsType(additionalProperties)}}`;
+  }
   if ($ref) {
     tsType = getRefName($ref);
   }
   if (Enum) {
-    tsType = JSON.stringify(Enum);
+    tsType = `${Enum.map((t) => `"${t}"`).join(" | ")}`;
   }
 
   if (items) {
@@ -149,7 +153,7 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
 }
 
 function getRefName($ref: string): string {
-  return $ref.replace("#/components/schemas/", "");
+  return $ref.replace(/(#\/components\/\w+\/)/g, "");
 }
 
 function isAscending(a: string, b: string) {

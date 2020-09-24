@@ -12,6 +12,7 @@ import type {
   SwaggerConfig,
   ApiAST,
   TypeAST,
+  Schema,
 } from "./types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
@@ -24,15 +25,26 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
     Object.entries(input.paths).forEach(([endPoint, value]) => {
       Object.entries(value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
+          const parameters = options.parameters?.map((parameter) => {
+            const { $ref } = parameter;
+            if ($ref) {
+              const name = $ref.replace("#/components/parameters/", "");
+              return {
+                ...input.components.parameters[name],
+                schema: { $ref },
+              };
+            }
+            return parameter;
+          });
           const serviceName = `${method}${generateServiceName(endPoint)}`;
 
-          const pathParams = getPathParams(options.parameters);
+          const pathParams = getPathParams(parameters);
 
           const {
             exist: queryParams,
             isNullable: isQueryParamsNullable,
             params: queryParameters,
-          } = getParametersInfo(options.parameters, "query");
+          } = getParametersInfo(parameters, "query");
           let queryParamsTypeName: string | false = serviceName
             .substring(0, 1)
             .toUpperCase();
@@ -47,10 +59,14 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
                 type: "object",
                 nullable: isQueryParamsNullable,
                 properties: queryParameters?.reduce(
-                  (prev, { name, schema, description }) => {
+                  (prev, { name, schema, $ref, required, description }) => {
                     return {
                       ...prev,
-                      [name]: { ...schema, description },
+                      [name]: {
+                        ...($ref ? { $ref } : schema),
+                        nullable: !required,
+                        description,
+                      } as Schema,
                     };
                   },
                   {},
@@ -119,6 +135,8 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
         };
       }),
     );
+
+    types.push(...Object.values(input.components.parameters || {}));
 
     let code = generateApis(apis);
     code += generateTypes(types);

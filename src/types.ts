@@ -1,8 +1,8 @@
 export interface Schema {
-  type: string;
+  type?: string;
+  nullable?: boolean;
   format?: "int64" | "binary";
-  nullable: boolean;
-  additionalProperties?: false;
+  additionalProperties?: Schema;
   properties?: { [name: string]: Schema };
   description?: string;
   "x-enumNames"?: ["Rial"];
@@ -20,6 +20,7 @@ export interface Parameter {
   in: "path" | "query" | "header"; // "path";
   required: boolean; // true;
   schema: Schema;
+  $ref: string;
   description?: string;
   "x-position": number;
 }
@@ -60,6 +61,7 @@ export interface SwaggerJson {
   };
   components: {
     schemas: SwaggerSchemas;
+    parameters: { [x: string]: Parameter };
   };
 }
 
@@ -94,6 +96,7 @@ export type ApiAST = {
 export type TypeAST = {
   name: string;
   schema: Schema;
+  description?: string;
 };
 
 export type JsdocAST = {
