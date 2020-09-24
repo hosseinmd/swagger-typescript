@@ -31,7 +31,8 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
               const name = $ref.replace("#/components/parameters/", "");
               return {
                 ...input.components.parameters[name],
-                schema: { $ref },
+                $ref,
+                schema: { $ref } as Schema,
               };
             }
             return parameter;
