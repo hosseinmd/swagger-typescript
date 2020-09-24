@@ -6,6 +6,7 @@ export interface Schema {
   additionalProperties?: Schema;
   properties?: { [name: string]: Schema };
   description?: string;
+  example?: string;
   "x-enumNames"?: ["Rial"];
   deprecated?: boolean;
   "x-deprecatedMessage"?: string;
@@ -108,5 +109,6 @@ export type JsdocAST = {
       value: boolean;
       description?: string;
     };
+    example?: string;
   };
 };

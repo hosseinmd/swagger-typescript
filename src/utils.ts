@@ -137,18 +137,36 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
         return isAscending(name, _name);
       },
     )
-    .reduce((prev, { schema, name }) => {
-      return `${prev}${getJsdoc({
-        title: schema.title,
-        description: schema.description,
-        tags: {
-          deprecated: {
-            value: Boolean(schema.deprecated),
-            description: schema["x-deprecatedMessage"],
+    .reduce(
+      (
+        prev,
+        {
+          schema: {
+            title,
+            description,
+            deprecated,
+            "x-deprecatedMessage": deprecatedMessage,
+            example,
+            nullable,
           },
+          schema,
+          name,
         },
-      })}${name}${schema.nullable ? "?" : ""}: ${getTsType(schema)},`;
-    }, "");
+      ) => {
+        return `${prev}${getJsdoc({
+          title: title,
+          description: description,
+          tags: {
+            deprecated: {
+              value: Boolean(deprecated),
+              description: deprecatedMessage,
+            },
+            example,
+          },
+        })}${name}${nullable ? "?" : ""}: ${getTsType(schema)},`;
+      },
+      "",
+    );
 
   return object ? `{${object}}` : "";
 }
@@ -183,27 +201,38 @@ function getParametersInfo(
   };
 }
 
-function getJsdoc({ title, description, tags: { deprecated } = {} }: JsdocAST) {
+function getJsdoc({
+  title,
+  description,
+  tags: { deprecated, example } = {},
+}: JsdocAST) {
   return deprecated?.value || description
     ? `
-/**${
+      /**${
         title
           ? `
-* ${title}
-*`
+      * ${title}
+      *`
           : ""
       }${
         description
           ? `
-* ${description}`
+      * ${description}`
           : ""
       }${
         deprecated
           ? `
-* @deprecated ${deprecated.description || ""}`
+      * @deprecated ${deprecated.description || ""}`
+          : ""
+      }${
+        example
+          ? `
+      * @example 
+      *   ${example}
+      `
           : ""
       }
-*/
+      */
 `
     : "";
 }
