@@ -1,6 +1,6 @@
 {
   "name": "swagger-typescript",
-  "version": "3.0.7",
+  "version": "3.1.0",
   "description": "A auto generate typescript code from swagger",
   "main": "bin/index.js",
   "bin": {
@@ -36,11 +36,11 @@
   "dependencies": {
     "@babel/core": "^7.11.6",
     "@babel/generator": "^7.11.6",
-    "@babel/preset-typescript": "^7.10.4",
     "@babel/plugin-transform-typescript": "^7.11.0",
-    "tsc-prog": "^2.2.1",
+    "@babel/preset-typescript": "^7.10.4",
     "axios": "^0.19.2",
-    "prettier": "^2.1.1"
+    "prettier": "^2.1.1",
+    "tsc-prog": "^2.2.1"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
