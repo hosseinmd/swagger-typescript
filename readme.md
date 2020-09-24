@@ -4,7 +4,7 @@
 
 Support OpenApi v3
 
-An auto typescript code generator from swagger.
+An auto typescript/javascript code generator from swagger.
 Every endpoint create as function and full type base.
 
 For Example:
@@ -26,9 +26,10 @@ Before running, add your config to swagger.config.json
 
 ```json
 {
-  "url": "http://example.com/api/swagger.json",
-  "dir": "./test",
+  "url": "http://example.com/api/swagger.json", // required
+  "dir": "./test", //required
   "prettierPath": ".prettierrc",
+  "language": "typescript", // "javascript" | "typescript"
   "ignore": {
     //Will be ignore from services functions.
     "headerParams": ["terminalId"]
