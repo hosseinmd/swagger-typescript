@@ -1,14 +1,3 @@
 {
-  "trailingComma": "all",
-  "overrides": [
-    {
-      "files": [
-        "*.ts",
-        "*.js"
-      ],
-      "options": {
-        "parser": "jsdoc-parser"
-      }
-    }
-  ]
+  "trailingComma": "all"
 }
