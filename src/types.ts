@@ -1,5 +1,6 @@
 export interface Schema {
   type?: string;
+  title?: string;
   nullable?: boolean;
   format?: "int64" | "binary";
   additionalProperties?: Schema;
@@ -100,6 +101,7 @@ export type TypeAST = {
 };
 
 export type JsdocAST = {
+  title?: string;
   description?: string;
   tags?: {
     deprecated?: {

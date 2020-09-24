@@ -139,6 +139,7 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
     )
     .reduce((prev, { schema, name }) => {
       return `${prev}${getJsdoc({
+        title: schema.title,
         description: schema.description,
         tags: {
           deprecated: {
@@ -182,16 +183,26 @@ function getParametersInfo(
   };
 }
 
-function getJsdoc({ description, tags: { deprecated } = {} }: JsdocAST) {
+function getJsdoc({ title, description, tags: { deprecated } = {} }: JsdocAST) {
   return deprecated?.value || description
     ? `
 /**${
+        title
+          ? `
+* ${title}
+*`
+          : ""
+      }${
         description
           ? `
-* ${description}
-`
+* ${description}`
           : ""
-      }${deprecated ? `* @deprecated ${deprecated.description || ""}` : ""}
+      }${
+        deprecated
+          ? `
+* @deprecated ${deprecated.description || ""}`
+          : ""
+      }
 */
 `
     : "";
