@@ -91,7 +91,12 @@ function getTsType({
     tsType = `{[x: string]: ${getTsType(additionalProperties)}}`;
   }
   if ($ref) {
-    tsType = getRefName($ref);
+    const refArray = $ref.split("/");
+    if (refArray[refArray.length - 2] === "requestBodies") {
+      tsType = `RequestBody${getRefName($ref)}`;
+    } else {
+      tsType = getRefName($ref);
+    }
   }
   if (Enum) {
     tsType = `${Enum.map((t) => `"${t}"`).join(" | ")}`;

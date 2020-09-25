@@ -3,6 +3,7 @@ import {
   generateServiceName,
   getHeaderParams,
   getParametersInfo,
+  getRefName,
 } from "./utils";
 import type {
   SwaggerSchemas,
@@ -13,6 +14,7 @@ import type {
   ApiAST,
   TypeAST,
   Schema,
+  Parameter,
 } from "./types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
@@ -30,10 +32,10 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             if ($ref) {
               const name = $ref.replace("#/components/parameters/", "");
               return {
-                ...input.components.parameters[name],
+                ...input.components.parameters?.[name],
                 $ref,
                 schema: { $ref } as Schema,
-              };
+              } as Parameter;
             }
             return parameter;
           });
@@ -84,13 +86,17 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
           const requestBody = getBodyContent(options.requestBody);
 
           const contentType = Object.keys(
-            options.requestBody?.content || {
-              "application/json": null,
-            },
+            options.requestBody?.content ||
+              (options.requestBody?.$ref &&
+                input.components.requestBodies?.[
+                  getRefName(options.requestBody.$ref as string)
+                ]?.content) || {
+                "application/json": null,
+              },
           )[0];
 
           const accept = Object.keys(
-            options.responses?.[200].content || {
+            options.responses?.[200]?.content || {
               "application/json": null,
             },
           )[0];
@@ -138,6 +144,16 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
     );
 
     types.push(...Object.values(input.components.parameters || {}));
+    types.push(
+      ...(Object.entries(input.components.requestBodies || {})
+        .map(([name, _requestBody]) => {
+          return {
+            name: `RequestBody${name}`,
+            schema: _requestBody.content?.["application/json"].schema,
+          };
+        })
+        .filter((v) => v.schema) as any),
+    );
 
     let code = generateApis(apis);
     code += generateTypes(types);
@@ -149,12 +165,18 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
   }
 }
 
-function getBodyContent(responses?: SwaggerResponse) {
+function getBodyContent(responses?: SwaggerResponse): Schema | undefined {
   if (!responses) {
     return responses;
   }
 
-  return Object.values(responses.content)[0].schema;
+  return responses.content
+    ? Object.values(responses.content)[0].schema
+    : responses.$ref
+    ? ({
+        $ref: responses.$ref,
+      } as Schema)
+    : undefined;
 }
 
 export { generator };

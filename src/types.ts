@@ -52,8 +52,9 @@ export type Parameter = {
 };
 
 export interface SwaggerResponse {
-  description: "";
-  content: {
+  $ref?: string;
+  description?: string;
+  content?: {
     "application/json": {
       schema: Schema;
     };
@@ -66,9 +67,7 @@ export interface SwaggerRequest {
   operationId: string; // "Account_GetBalance";
   parameters?: Parameter[];
   requestBody?: SwaggerResponse;
-  responses: {
-    "200": SwaggerResponse;
-  };
+  responses: { [x: string]: SwaggerResponse };
   deprecated: boolean;
   security: [
     {
@@ -87,7 +86,8 @@ export interface SwaggerJson {
   };
   components: {
     schemas: SwaggerSchemas;
-    parameters: { [x: string]: Parameter };
+    parameters?: { [x: string]: Parameter };
+    requestBodies?: { [x: string]: SwaggerResponse };
   };
 }
 
