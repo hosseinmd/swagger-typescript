@@ -5,7 +5,7 @@
 Support OpenApi v3
 
 An auto typescript/javascript code generator from swagger.
-Every endpoint create as function and full type base.
+Each endpoint will be constructed as a function, full type base.
 
 For Example:
 Get method of '/Account/{id}' path will be this code in services.ts
