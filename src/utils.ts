@@ -225,7 +225,7 @@ function getJsdoc({
       * ${description}`
           : ""
       }${
-        deprecated
+        deprecated?.value
           ? `
       * @deprecated ${deprecated.description || ""}`
           : ""
