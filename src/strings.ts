@@ -14,6 +14,7 @@ import { AxiosRequestConfig } from "axios";
 import { SwaggerResponse, responseWrapper } from "./config";
 import { Http, overrideConfig } from "./httpRequest";
 
+//@ts-ignore
 const __DEV__ = process.env.NODE_ENV !== "production";
 
 function template(path: string, obj: { [x: string]: any } = {}) {
