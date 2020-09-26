@@ -1,6 +1,6 @@
 {
   "name": "swagger-typescript",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "A auto generate typescript code from swagger",
   "main": "bin/index.js",
   "bin": {
