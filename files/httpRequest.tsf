@@ -15,7 +15,9 @@ const Http = {
       return await Axios.get(
         url,
         overrideConfig(await getBaseConfig(), {
-          params: qs.stringify(queryParams),
+          params: qs.stringify(queryParams, {
+            indices: false,
+          }),
           ...configOverride,
         }),
       );
@@ -34,7 +36,9 @@ const Http = {
         url,
         requestBody,
         overrideConfig(await getBaseConfig(), {
-          params: qs.stringify(queryParams),
+          params: qs.stringify(queryParams, {
+            indices: false,
+          }),
           ...configOverride,
         }),
       );
@@ -53,7 +57,9 @@ const Http = {
         url,
         requestBody,
         overrideConfig(await getBaseConfig(), {
-          params: qs.stringify(queryParams),
+          params: qs.stringify(queryParams, {
+            indices: false,
+          }),
           ...configOverride,
         }),
       );
@@ -72,7 +78,9 @@ const Http = {
       return await Axios.delete(
         url,
         overrideConfig(await getBaseConfig(), {
-          params: qs.stringify(queryParams),
+          params: qs.stringify(queryParams, {
+            indices: false,
+          }),
           ...configOverride,
         }),
       );
