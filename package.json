@@ -40,7 +40,8 @@
     "@babel/preset-typescript": "^7.10.4",
     "axios": "^0.19.2",
     "prettier": "^2.1.1",
-    "tsc-prog": "^2.2.1"
+    "tsc-prog": "^2.2.1",
+    "qs": "^6.9.4"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
@@ -50,6 +51,7 @@
     "@types/jest": "25.2.3",
     "@typescript-eslint/eslint-plugin": "^3.8.0",
     "@typescript-eslint/parser": "^2.20.0",
+    "@types/qs": "^6.9.5",
     "babel-jest": "^24.9.0",
     "babel-preset-react-native": "^4.0.1",
     "commitlint": "^8.3.5",

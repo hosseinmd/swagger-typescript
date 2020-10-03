@@ -1,5 +1,6 @@
 // AUTO_GENERATED Do not change this file directly change config.ts file instead
 import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import qs from "qs";
 import { getBaseConfig, errorCatch } from "./config";
 
 const Http = {
@@ -14,7 +15,7 @@ const Http = {
       return await Axios.get(
         url,
         overrideConfig(await getBaseConfig(), {
-          params: queryParams,
+          params: qs.stringify(queryParams),
           ...configOverride,
         }),
       );
@@ -33,7 +34,7 @@ const Http = {
         url,
         requestBody,
         overrideConfig(await getBaseConfig(), {
-          params: queryParams,
+          params: qs.stringify(queryParams),
           ...configOverride,
         }),
       );
@@ -52,7 +53,7 @@ const Http = {
         url,
         requestBody,
         overrideConfig(await getBaseConfig(), {
-          params: queryParams,
+          params: qs.stringify(queryParams),
           ...configOverride,
         }),
       );
@@ -71,7 +72,7 @@ const Http = {
       return await Axios.delete(
         url,
         overrideConfig(await getBaseConfig(), {
-          params: queryParams,
+          params: qs.stringify(queryParams),
           ...configOverride,
         }),
       );
