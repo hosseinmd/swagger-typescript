@@ -3,6 +3,12 @@ import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import qs from "qs";
 import { getBaseConfig, errorCatch } from "./config";
 
+function paramsSerializer(param) {
+  return qs.stringify(param, {
+    indices: false,
+  });
+}
+
 const Http = {
   async getRequest(
     url: string,
@@ -15,9 +21,8 @@ const Http = {
       return await Axios.get(
         url,
         overrideConfig(await getBaseConfig(), {
-          params: qs.stringify(queryParams, {
-            indices: false,
-          }),
+          paramsSerializer,
+          params: queryParams,
           ...configOverride,
         }),
       );
@@ -36,9 +41,8 @@ const Http = {
         url,
         requestBody,
         overrideConfig(await getBaseConfig(), {
-          params: qs.stringify(queryParams, {
-            indices: false,
-          }),
+          paramsSerializer,
+          params: queryParams,
           ...configOverride,
         }),
       );
@@ -57,9 +61,8 @@ const Http = {
         url,
         requestBody,
         overrideConfig(await getBaseConfig(), {
-          params: qs.stringify(queryParams, {
-            indices: false,
-          }),
+          paramsSerializer,
+          params: queryParams,
           ...configOverride,
         }),
       );
@@ -78,9 +81,8 @@ const Http = {
       return await Axios.delete(
         url,
         overrideConfig(await getBaseConfig(), {
-          params: qs.stringify(queryParams, {
-            indices: false,
-          }),
+          paramsSerializer,
+          params: queryParams,
           ...configOverride,
         }),
       );
