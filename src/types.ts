@@ -81,6 +81,7 @@ export interface SwaggerSchemas {
 }
 
 export interface SwaggerJson {
+  openapi: string;
   paths: {
     [url: string]: SwaggerRequest;
   };

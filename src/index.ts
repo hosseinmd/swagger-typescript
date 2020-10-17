@@ -11,6 +11,7 @@ import { HTTP_REQUEST, CONFIG } from "./strings";
 import { getSwaggerJson } from "./getJson";
 import { generator } from "./generator";
 import { build } from "tsc-prog";
+import { majorVersionsCheck } from "./utils";
 
 async function generate() {
   const config: SwaggerConfig = getSwaggerConfig();
@@ -27,6 +28,8 @@ async function generate() {
 
   try {
     const input: SwaggerJson = await getSwaggerJson(url);
+
+    majorVersionsCheck("3.0.0", input.openapi);
 
     const code = generator(input, config);
 

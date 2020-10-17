@@ -242,7 +242,40 @@ function getJsdoc({
     : "";
 }
 
+function majorVersionsCheck(expectedV: string, inputV?: string) {
+  if (!inputV) {
+    throw new Error(
+      `Swagger-Typescript working with openApi v3, seem your json is not openApi v3`,
+    );
+  }
+
+  const expectedVMajor = expectedV.split(".")[0];
+  const inputVMajor = inputV.split(".")[0];
+  function isValidPart(x: string) {
+    return /^\d+$/.test(x);
+  }
+  if (!isValidPart(expectedVMajor) || !isValidPart(inputVMajor)) {
+    throw new Error(
+      `Swagger-Typescript working with openApi v3 your json openApi version is not valid "${inputV}"`,
+    );
+  }
+
+  const expectedMajorNumber = Number(expectedVMajor);
+  const inputMajorNumber = Number(inputVMajor);
+
+  if (expectedMajorNumber === inputMajorNumber) {
+    return;
+  } else if (expectedMajorNumber < inputMajorNumber) {
+    return;
+  }
+
+  throw new Error(
+    `Swagger-Typescript working with openApi v3 your json openApi version is ${inputV}`,
+  );
+}
+
 export {
+  majorVersionsCheck,
   getPathParams,
   getHeaderParams,
   generateServiceName,
