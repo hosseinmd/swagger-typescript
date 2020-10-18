@@ -3,7 +3,7 @@ import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import qs from "qs";
 import { getBaseConfig, errorCatch } from "./config";
 
-function paramsSerializer(param) {
+function paramsSerializer(param: any) {
   return qs.stringify(param, {
     indices: false,
   });
