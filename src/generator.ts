@@ -6,7 +6,6 @@ import {
   getRefName,
 } from "./utils";
 import type {
-  SwaggerSchemas,
   SwaggerRequest,
   SwaggerJson,
   SwaggerResponse,
@@ -32,7 +31,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             if ($ref) {
               const name = $ref.replace("#/components/parameters/", "");
               return {
-                ...input.components.parameters?.[name],
+                ...input.components?.parameters?.[name],
                 $ref,
                 schema: { $ref } as Schema,
               } as Parameter;
@@ -88,7 +87,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
           const contentType = Object.keys(
             options.requestBody?.content ||
               (options.requestBody?.$ref &&
-                input.components.requestBodies?.[
+                input.components?.requestBodies?.[
                   getRefName(options.requestBody.$ref as string)
                 ]?.content) || {
                 "application/json": null,
@@ -132,28 +131,32 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
       );
     });
 
-    types.push(
-      ...Object.entries(
-        (input.components.schemas as unknown) as SwaggerSchemas,
-      ).map(([name, schema]) => {
-        return {
-          name,
-          schema,
-        };
-      }),
-    );
-
-    types.push(...Object.values(input.components.parameters || {}));
-    types.push(
-      ...(Object.entries(input.components.requestBodies || {})
-        .map(([name, _requestBody]) => {
+    if (input?.components?.schemas) {
+      types.push(
+        ...Object.entries(input.components.schemas).map(([name, schema]) => {
           return {
-            name: `RequestBody${name}`,
-            schema: _requestBody.content?.["application/json"].schema,
+            name,
+            schema,
           };
-        })
-        .filter((v) => v.schema) as any),
-    );
+        }),
+      );
+    }
+
+    if (input?.components?.parameters) {
+      types.push(...Object.values(input.components.parameters));
+    }
+    if (input?.components?.requestBodies) {
+      types.push(
+        ...(Object.entries(input.components.requestBodies)
+          .map(([name, _requestBody]) => {
+            return {
+              name: `RequestBody${name}`,
+              schema: _requestBody.content?.["application/json"].schema,
+            };
+          })
+          .filter((v) => v.schema) as any),
+      );
+    }
 
     let code = generateApis(apis);
     code += generateTypes(types);

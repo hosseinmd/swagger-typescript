@@ -85,8 +85,8 @@ export interface SwaggerJson {
   paths: {
     [url: string]: SwaggerRequest;
   };
-  components: {
-    schemas: SwaggerSchemas;
+  components?: {
+    schemas?: SwaggerSchemas;
     parameters?: { [x: string]: Parameter };
     requestBodies?: { [x: string]: SwaggerResponse };
   };
