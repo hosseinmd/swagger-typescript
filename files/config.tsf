@@ -23,11 +23,11 @@ function getAxiosInstance(): AxiosInstance {
   if (!axiosInstance) {
     axiosInstance = Axios.create();
     axiosInstance.interceptors.request.use(
-      async (request) => {
-        if (request.url?.includes("/")) {
-          request.headers.authorization = ""; // Add authorization header conditionaly.
+      async (requestConfig) => {
+        if (requestConfig.url?.includes("/")) {
+          requestConfig.headers.authorization = ""; // Add authorization header conditionaly.
         }
-        return request;
+        return requestConfig;
       },
       (error) => {
         Promise.reject(error);
