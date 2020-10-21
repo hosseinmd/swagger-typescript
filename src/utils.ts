@@ -40,10 +40,7 @@ function generateServiceName(endPoint: string): string {
     return pointArray.join("");
   }
 
-  const name = replaceWithUpper(
-    replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"),
-    "}",
-  );
+  const name = replaceWithUpper(replaceWithUpper(replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"),"}"),"-");
 
   return name;
 }
