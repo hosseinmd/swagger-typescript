@@ -1,5 +1,10 @@
 // Please add your custom config
-import { AxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
+import Axios, {
+  AxiosRequestConfig,
+  AxiosError,
+  AxiosResponse,
+  AxiosInstance,
+} from "axios";
 
 async function getBaseConfig(): Promise<AxiosRequestConfig> {
   return {
@@ -10,6 +15,36 @@ async function getBaseConfig(): Promise<AxiosRequestConfig> {
       "Content-Type": "application/json-patch+json",
     },
   };
+}
+
+let axiosInstance: AxiosInstance;
+
+function getAxiosInstance(): AxiosInstance {
+  if (!axiosInstance) {
+    axiosInstance = Axios.create();
+    axiosInstance.interceptors.request.use(
+      async (request) => {
+        if (request.url?.includes("/")) {
+          request.headers.authorization = ""; // Add authorization header conditionaly.
+        }
+        return request;
+      },
+      (error) => {
+        Promise.reject(error);
+      },
+    );
+
+    axiosInstance.interceptors.response.use(
+      async (response) => {
+        return response;
+      },
+      (error) => {
+        Promise.reject(error);
+      },
+    );
+  }
+
+  return axiosInstance;
 }
 
 function errorCatch(error: AxiosError): any {
@@ -61,4 +96,10 @@ async function responseWrapper(
   return response;
 }
 
-export { getBaseConfig, errorCatch, Exception, responseWrapper };
+export {
+  getBaseConfig,
+  errorCatch,
+  Exception,
+  responseWrapper,
+  getAxiosInstance,
+};

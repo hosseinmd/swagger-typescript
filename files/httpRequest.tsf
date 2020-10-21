@@ -1,8 +1,8 @@
 // AUTO_GENERATED Do not change this file directly change config.ts file instead
-import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
 //@ts-ignore
 import qs from "qs";
-import { getBaseConfig, errorCatch } from "./config";
+import { getBaseConfig, errorCatch, getAxiosInstance } from "./config";
 
 function paramsSerializer(param: any) {
   return qs.stringify(param, {
@@ -19,7 +19,7 @@ const Http = {
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
     try {
-      return await Axios.get(
+      return await getAxiosInstance().get(
         url,
         overrideConfig(await getBaseConfig(), {
           paramsSerializer,
@@ -38,7 +38,7 @@ const Http = {
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
     try {
-      return await Axios.post(
+      return await getAxiosInstance().post(
         url,
         requestBody,
         overrideConfig(await getBaseConfig(), {
@@ -58,7 +58,7 @@ const Http = {
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
     try {
-      return await Axios.put(
+      return await getAxiosInstance().put(
         url,
         requestBody,
         overrideConfig(await getBaseConfig(), {
@@ -79,7 +79,7 @@ const Http = {
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
     try {
-      return await Axios.delete(
+      return await getAxiosInstance().delete(
         url,
         overrideConfig(await getBaseConfig(), {
           paramsSerializer,
