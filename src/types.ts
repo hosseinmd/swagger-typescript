@@ -1,11 +1,34 @@
+type DataType =
+  /** This includes dates and files */
+  "string" | "number" | "integer" | "boolean" | "array" | "object";
+
 export interface Schema {
   title?: string;
   nullable?: boolean;
-  type: "object" | "array";
-  items?: Schema;
-  format?: "int64" | "binary";
-  additionalProperties?: Schema;
+  type: DataType;
+  /**
+   * An array of arbitrary types can be defined as:
+   *
+   *     Type: array
+   *     items: {}
+   */
+  items?: Schema | {};
+  /** Files are defined as strings: "binary" | "byte" */
+  format?: "int64" | "binary" | "byte";
+  /**
+   * A free-form object (arbitrary property/value pairs) is defined as:
+   *
+   *     Type: object
+   *     additionalProperties: {}
+   *     Or additionalProperties: true
+   */
+  additionalProperties?: Schema | true | {};
   properties?: { [name: string]: Schema };
+  /**
+   * By default, all object properties are optional. You can specify the
+   * required properties in the required list:
+   */
+  required?: string[];
   description?: string;
   example?: string;
   "x-enumNames"?: ["Rial"];
@@ -15,6 +38,29 @@ export interface Schema {
   $ref?: string;
   allOf?: Schema[];
   oneOf?: Schema[];
+  /** Is something link oneOf */
+  anyOf?: Schema[];
+  /**
+   * Use the minimum and maximum keywords to specify the range of possible
+   * values:
+   *
+   *     Type: integer
+   *     minimum: 1
+   *     maximum: 20
+   *
+   * By default, the minimum and maximum values are included in the range, that
+   * is:
+   *
+   *     Minimum ≤ value ≤ maximum
+   *
+   * To exclude the boundary values, specify exclusiveMinimum: true and
+   * exclusiveMaximum: true. For example, you can define a floating-point
+   * number range as 0–50 and exclude the 0 value:
+   */
+  minimum?: number;
+  exclusiveMinimum?: boolean;
+  exclusiveMaximum?: boolean;
+  maximum?: number;
 }
 
 export type Parameter = {
