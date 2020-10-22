@@ -5,6 +5,7 @@ import Axios, {
   AxiosResponse,
   AxiosInstance,
 } from "axios";
+import qs from "qs";
 
 const baseConfig: AxiosRequestConfig = {
   baseURL: "",
@@ -13,7 +14,8 @@ const baseConfig: AxiosRequestConfig = {
     Accept: "application/json",
     "Content-Type": "application/json-patch+json",
   },
-}
+  paramsSerializer: (param) => qs.stringify(param, { indices: false }),
+};
 
 let axiosInstance: AxiosInstance;
 
