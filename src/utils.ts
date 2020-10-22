@@ -81,6 +81,7 @@ function getTsType({
   properties,
   oneOf,
   additionalProperties,
+  required,
 }: Schema): string {
   let tsType = TYPES[type as keyof typeof TYPES];
 
@@ -112,6 +113,7 @@ function getTsType({
       Object.entries(properties).map(([pName, schema]) => ({
         schema,
         name: pName,
+        isRequired:required && required.filter((propReq) => propReq == pName).length > 0,
       })),
     );
   }
@@ -165,7 +167,7 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
             },
             example,
           },
-        })}${name}${nullable ? "?" : ""}: ${getTsType(schema)},`;
+        })}${name}${nullable || !isRequired ? "?" : ""}: ${getTsType(schema)},`;
       },
       "",
     );
