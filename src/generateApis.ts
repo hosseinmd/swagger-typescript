@@ -91,15 +91,14 @@ export const ${serviceName} = async (
     },
     ${queryParamsTypeName ? "queryParams" : "undefined"},
     ${requestBody ? "requestBody" : "undefined"},
-    overrideConfig({
-        headers: {
-          "Content-Type": "${contentType}",
-          Accept: "${accept}",
-          ${headerParams ? "...headerParams," : ""}
-        },
+    {
+      headers: {
+        "Content-Type": "${contentType}",
+        Accept: "${accept}",
+        ${headerParams ? "...headerParams," : ""}
       },
-      configOverride,
-    )
+      ...configOverride,
+    },
   ))
 }
 `

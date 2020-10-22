@@ -1,14 +1,8 @@
 // AUTO_GENERATED Do not change this file directly change config.ts file instead
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 //@ts-ignore
-import qs from "qs";
-import { getBaseConfig, getAxiosInstance } from "./config";
 
-function paramsSerializer(param: any) {
-  return qs.stringify(param, {
-    indices: false,
-  });
-}
+import { getAxiosInstance } from "./config";
 
 const Http = {
   async getRequest(
@@ -20,11 +14,10 @@ const Http = {
   ): Promise<AxiosResponse<any>> {
     return getAxiosInstance().get(
       url,
-      overrideConfig(await getBaseConfig(), {
-        paramsSerializer,
+      {
         params: queryParams,
         ...configOverride,
-      }),
+      },
     );
   },
   async postRequest(
@@ -36,11 +29,10 @@ const Http = {
     return getAxiosInstance().post(
       url,
       requestBody,
-      overrideConfig(await getBaseConfig(), {
-        paramsSerializer,
+      {
         params: queryParams,
         ...configOverride,
-      }),
+      },
     );
   },
   async putRequest(
@@ -52,11 +44,10 @@ const Http = {
     return getAxiosInstance().put(
       url,
       requestBody,
-      overrideConfig(await getBaseConfig(), {
-        paramsSerializer,
+      {
         params: queryParams,
         ...configOverride,
-      }),
+      },
     );
   },
   async deleteRequest(
@@ -68,11 +59,10 @@ const Http = {
   ): Promise<AxiosResponse<any>> {
     return getAxiosInstance().delete(
       url,
-      overrideConfig(await getBaseConfig(), {
-        paramsSerializer,
+      {
         params: queryParams,
         ...configOverride,
-      }),
+      },
     );
   },
 };
