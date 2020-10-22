@@ -38,7 +38,20 @@ function getAxiosInstance(): AxiosInstance {
       async (response) => {
         return response;
       },
-      (error) => {
+      (error: AxiosError) => {
+        if (error.response) {
+          Promise.reject(new SwaggerError({
+            message: error.response.data,
+            status: error.response.status,
+            response: error.response,
+          }));
+        }
+      
+        if (error.isAxiosError) {
+          Promise.reject(new SwaggerError({
+            message: "noInternetConnection",
+          }));
+        }
         Promise.reject(error);
       },
     );
@@ -47,31 +60,13 @@ function getAxiosInstance(): AxiosInstance {
   return axiosInstance;
 }
 
-function errorCatch(error: AxiosError): any {
-  if (error.response) {
-    throw new Exception({
-      message: error.response.data,
-      status: error.response.status,
-      response: error.response,
-    });
-  }
-
-  if (error.isAxiosError) {
-    throw new Exception({
-      message: "noInternetConnection",
-    });
-  }
-
-  throw error;
-}
-
 interface ErrorParam {
   message: string;
   status?: number;
   response?: AxiosResponse;
 }
 
-class Exception extends Error {
+class SwaggerError extends Error {
   message: string;
   status?: number;
   response?: AxiosResponse;
@@ -86,8 +81,6 @@ class Exception extends Error {
   isApiException = true;
 }
 
-// export type SwaggerResponse<R> = R;
-
 export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 
 async function responseWrapper(
@@ -98,8 +91,6 @@ async function responseWrapper(
 
 export {
   getBaseConfig,
-  errorCatch,
-  Exception,
   responseWrapper,
   getAxiosInstance,
 };

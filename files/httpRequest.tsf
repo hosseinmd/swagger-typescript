@@ -2,7 +2,7 @@
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 //@ts-ignore
 import qs from "qs";
-import { getBaseConfig, errorCatch, getAxiosInstance } from "./config";
+import { getBaseConfig, getAxiosInstance } from "./config";
 
 function paramsSerializer(param: any) {
   return qs.stringify(param, {
@@ -18,18 +18,14 @@ const Http = {
     requestBody: undefined,
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    try {
-      return await getAxiosInstance().get(
-        url,
-        overrideConfig(await getBaseConfig(), {
-          paramsSerializer,
-          params: queryParams,
-          ...configOverride,
-        }),
-      );
-    } catch (error) {
-      return errorCatch(error);
-    }
+    return getAxiosInstance().get(
+      url,
+      overrideConfig(await getBaseConfig(), {
+        paramsSerializer,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
   },
   async postRequest(
     url: string,
@@ -37,19 +33,15 @@ const Http = {
     requestBody: any | undefined,
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    try {
-      return await getAxiosInstance().post(
-        url,
-        requestBody,
-        overrideConfig(await getBaseConfig(), {
-          paramsSerializer,
-          params: queryParams,
-          ...configOverride,
-        }),
-      );
-    } catch (error) {
-      return errorCatch(error);
-    }
+    return getAxiosInstance().post(
+      url,
+      requestBody,
+      overrideConfig(await getBaseConfig(), {
+        paramsSerializer,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
   },
   async putRequest(
     url: string,
@@ -57,19 +49,15 @@ const Http = {
     requestBody: any | undefined,
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    try {
-      return await getAxiosInstance().put(
-        url,
-        requestBody,
-        overrideConfig(await getBaseConfig(), {
-          paramsSerializer,
-          params: queryParams,
-          ...configOverride,
-        }),
-      );
-    } catch (error) {
-      return errorCatch(error);
-    }
+    return getAxiosInstance().put(
+      url,
+      requestBody,
+      overrideConfig(await getBaseConfig(), {
+        paramsSerializer,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
   },
   async deleteRequest(
     url: string,
@@ -78,18 +66,14 @@ const Http = {
     requestBody: undefined,
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    try {
-      return await getAxiosInstance().delete(
-        url,
-        overrideConfig(await getBaseConfig(), {
-          paramsSerializer,
-          params: queryParams,
-          ...configOverride,
-        }),
-      );
-    } catch (error) {
-      return errorCatch(error);
-    }
+    return getAxiosInstance().delete(
+      url,
+      overrideConfig(await getBaseConfig(), {
+        paramsSerializer,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
   },
 };
 
