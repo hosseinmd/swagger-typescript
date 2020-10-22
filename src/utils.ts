@@ -40,7 +40,7 @@ function generateServiceName(endPoint: string): string {
     return pointArray.join("");
   }
 
-  const name = replaceWithUpper(replaceWithUpper(replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"),"}"),"-");
+  const name = replaceWithUpper(replaceWithUpper(replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"), "}"), "-");
 
   return name;
 }
@@ -109,11 +109,12 @@ function getTsType({
   }
 
   if (properties) {
+    
     tsType = getObjectType(
-      Object.entries(properties).map(([pName, schema]) => ({
+      Object.entries(properties).map<{schema:Schema,name:string, isRequired:boolean | undefined}>(([pName, schema]) => ({
         schema,
         name: pName,
-        isRequired:required && required.filter((propReq) => propReq == pName).length > 0,
+        isRequired: required && required.filter((propReq) => propReq == pName).length > 0,
       })),
     );
   }
@@ -125,7 +126,7 @@ function getTsType({
   return tsType;
 }
 
-function getObjectType(parameter: { schema: Schema; name: string }[]) {
+function getObjectType(parameter: { schema: Schema; name: string, isRequired?: boolean  }[]) {
   const object = parameter
     .sort(
       (
@@ -213,30 +214,26 @@ function getJsdoc({
 }: JsdocAST) {
   return deprecated?.value || description
     ? `
-      /**${
-        title
-          ? `
+      /**${title
+      ? `
       * ${title}
       *`
-          : ""
-      }${
-        description
-          ? `
+      : ""
+    }${description
+      ? `
       * ${description}`
-          : ""
-      }${
-        deprecated?.value
-          ? `
+      : ""
+    }${deprecated?.value
+      ? `
       * @deprecated ${deprecated.description || ""}`
-          : ""
-      }${
-        example
-          ? `
+      : ""
+    }${example
+      ? `
       * @example 
       *   ${example}
       `
-          : ""
-      }
+      : ""
+    }
       */
 `
     : "";

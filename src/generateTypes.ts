@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { getJsdoc, getRefName, getTsType, isAscending } from "./utils";
 import type { Schema, TypeAST } from "./types";
 

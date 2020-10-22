@@ -17,6 +17,7 @@ import type {
 } from "./types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
+import { generateTags } from "./generateTags";
 
 function generator(input: SwaggerJson, config: SwaggerConfig): string {
   const apis: ApiAST[] = [];
@@ -86,12 +87,12 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
 
           const contentType = Object.keys(
             options.requestBody?.content ||
-              (options.requestBody?.$ref &&
-                input.components?.requestBodies?.[
-                  getRefName(options.requestBody.$ref as string)
-                ]?.content) || {
-                "application/json": null,
-              },
+            (options.requestBody?.$ref &&
+              input.components?.requestBodies?.[
+                getRefName(options.requestBody.$ref as string)
+              ]?.content) || {
+              "application/json": null,
+            },
           )[0];
 
           const accept = Object.keys(
@@ -126,6 +127,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             contentType,
             accept,
             method,
+            tags:options.tags
           });
         },
       );
@@ -159,6 +161,9 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
     }
 
     let code = generateApis(apis);
+    if (input.tags) {
+      code += generateTags(apis, input.tags);
+    }
     code += generateTypes(types);
 
     return code;
@@ -176,10 +181,10 @@ function getBodyContent(responses?: SwaggerResponse): Schema | undefined {
   return responses.content
     ? Object.values(responses.content)[0].schema
     : responses.$ref
-    ? ({
+      ? ({
         $ref: responses.$ref,
       } as Schema)
-    : undefined;
+      : undefined;
 }
 
 export { generator };

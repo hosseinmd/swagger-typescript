@@ -15,6 +15,7 @@ export interface Schema {
   $ref?: string;
   allOf?: Schema[];
   oneOf?: Schema[];
+  required?:string[];
 }
 
 export type Parameter = {
@@ -62,7 +63,7 @@ export interface SwaggerResponse {
 }
 
 export interface SwaggerRequest {
-  tags: string; // ["Account"];
+  tags: string[]; // ["Account"];
   summary: string; // "Get user account balance";
   operationId: string; // "Account_GetBalance";
   parameters?: Parameter[];
@@ -82,6 +83,7 @@ export interface SwaggerSchemas {
 
 export interface SwaggerJson {
   openapi: string;
+  tags: {name:string}[]
   paths: {
     [url: string]: SwaggerRequest;
   };
@@ -103,6 +105,7 @@ export interface SwaggerConfig {
 }
 
 export type ApiAST = {
+  tags:string[],
   summary: string;
   deprecated: boolean;
   serviceName: string;

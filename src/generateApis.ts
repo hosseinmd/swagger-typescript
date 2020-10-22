@@ -33,6 +33,7 @@ function generateApis(apis: ApiAST[]): string {
             pathParamsRefString,
             contentType,
             accept,
+            tags,
           },
         ) => {
           return (
