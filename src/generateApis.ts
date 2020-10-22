@@ -71,7 +71,7 @@ export const ${serviceName} = async (
                   )},`
                 : ""
             }configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse<${responses ? getTsType(responses) : "any"}>> => {
+): Promise<AxiosResponse<${responses ? getTsType(responses) : "any"}>> => {
   ${
     deprecated
       ? `
@@ -83,7 +83,7 @@ export const ${serviceName} = async (
   }`
       : ""
   }
-  return responseWrapper(await Http.${method}Request(
+  return Http.${method}Request(
     ${
       pathParamsRefString
         ? `template("${endPoint}",${pathParamsRefString})`
@@ -99,7 +99,7 @@ export const ${serviceName} = async (
       },
       ...configOverride,
     },
-  ))
+  )
 }
 `
           );

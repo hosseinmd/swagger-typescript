@@ -81,15 +81,6 @@ class SwaggerError extends Error {
   isApiException = true;
 }
 
-export interface SwaggerResponse<R> extends AxiosResponse<R> {}
-
-async function responseWrapper(
-  response: AxiosResponse<any>,
-): Promise<SwaggerResponse<any>> {
-  return response;
-}
-
 export {
-  responseWrapper,
   getAxiosInstance,
 };

@@ -10,9 +10,8 @@ const CONFIG = readFileSync(
 
 const SERVICE_BEGINNING = `
 // AUTO_GENERATED Do not change this file directly change config.ts file instead
-import { AxiosRequestConfig } from "axios";
-import { SwaggerResponse, responseWrapper } from "./config";
-import { Http, overrideConfig } from "./httpRequest";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { Http } from "./httpRequest";
 
 //@ts-ignore
 const __DEV__ = process.env.NODE_ENV !== "production";
