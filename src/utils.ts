@@ -155,6 +155,7 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
           },
           schema,
           name,
+          isRequired,
         },
       ) => {
         return `${prev}${getJsdoc({
