@@ -8,6 +8,9 @@ const CONFIG = readFileSync(
   path.resolve(__dirname, "../files/config.tsf"),
 ).toString();
 
+const APIS_BEGINNING = `// APIS grouped by tags of OAS
+`;
+
 const SERVICE_BEGINNING = `
 // AUTO_GENERATED Do not change this file directly change config.ts file instead
 import { AxiosRequestConfig } from "axios";
@@ -30,4 +33,4 @@ function template(path: string, obj: { [x: string]: any } = {}) {
 const DEPRECATED_WARM_MESSAGE =
   "This endpoint deprecated and will be remove. Please use an alternative";
 
-export { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG, DEPRECATED_WARM_MESSAGE };
+export { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG, DEPRECATED_WARM_MESSAGE, APIS_BEGINNING };

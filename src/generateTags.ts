@@ -2,33 +2,44 @@ import {
   isAscending,
 } from "./utils";
 import { ApiAST } from "./types";
+import { APIS_BEGINNING } from "./strings";
 
 function generateTags(apis: ApiAST[], tags: { name: string }[]): string {
-  let code = "";
   try {
-    code += tags
-      .reduce(
-        (
-          prev,
-          tag,
-        ) => {
-          
-          const apisFilterByTag = apis.filter((api) => {
-            return api.tags && api.tags.filter((tagApi) => tagApi == tag.name).length>0;
-          });
+    let code:string="";
+    if (tags && tags.length > 0) {
+      code += APIS_BEGINNING;
+      code += ` export const Apis = {
+        `;
+      code += tags
+        .sort(({ name }) => isAscending(name, name))
+        .reduce(
+          (
+            prev,
+            tag,
+          ) => {
 
-          if (apisFilterByTag.length === 0) {
-            return "";
-          }
+            const apisFilterByTag = apis.filter((api) => {
+              return api.tags && api.tags.filter((tagApi) => tagApi == tag.name).length > 0;
+            });
 
-          let nameApi = "Api" + tag.name.substr(0, 1).toUpperCase() + tag.name.substr(1);
+            if (apisFilterByTag.length === 0) {
+              return "";
+            }
 
-          return (
-            prev +
-            `
-export const Api${nameApi} = {
-    ${apisFilterByTag.map(({ serviceName }) => serviceName + ":" + serviceName)} }`)
-        }, "");
+            let nameApi = tag.name.substr(0, 1).toUpperCase() + tag.name.substr(1);
+
+            return (
+              prev +
+              `
+            ${nameApi} : {
+    ${apisFilterByTag.map(({ serviceName }) => serviceName + ":" + serviceName)} },
+    `)
+          }, "");
+
+          code += ` }
+          `;
+    }
     return code;
   } catch (error) {
     console.error(error);

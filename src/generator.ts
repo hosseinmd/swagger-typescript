@@ -161,10 +161,12 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
     }
 
     let code = generateApis(apis);
+
+    code += generateTypes(types);
+
     if (input.tags) {
       code += generateTags(apis, input.tags);
     }
-    code += generateTypes(types);
 
     return code;
   } catch (error) {
