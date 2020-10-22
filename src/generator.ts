@@ -26,6 +26,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
     Object.entries(input.paths).forEach(([endPoint, value]) => {
       Object.entries(value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
+          const { operationId } = options;
           const parameters = options.parameters?.map((parameter) => {
             const { $ref } = parameter;
             if ($ref) {
@@ -38,7 +39,13 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             }
             return parameter;
           });
-          const serviceName = `${method}${generateServiceName(endPoint)}`;
+
+          const serviceName = generateServiceName(
+            endPoint,
+            method,
+            operationId,
+            config,
+          );
 
           const pathParams = getPathParams(parameters);
 

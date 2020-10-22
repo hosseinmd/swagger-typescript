@@ -30,7 +30,12 @@ function getParams(
   };
 }
 
-function generateServiceName(endPoint: string): string {
+function generateServiceName(
+  endPoint: string,
+  method: string,
+  operationId: string | undefined,
+  config: SwaggerConfig,
+): string {
   function replaceWithUpper(str: string, sp: string) {
     let pointArray = str.split(sp);
     pointArray = pointArray.map(
@@ -40,7 +45,7 @@ function generateServiceName(endPoint: string): string {
     return pointArray.join("");
   }
 
-  const name = replaceWithUpper(
+  const path = replaceWithUpper(
     replaceWithUpper(
       replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"),
       "}",
@@ -48,7 +53,21 @@ function generateServiceName(endPoint: string): string {
     "-",
   );
 
-  return name;
+  const { methodName } = config;
+  const hasMethodNameOperationId = /(\{operationId\})/i.test(methodName);
+  let methodNameTemplate = hasMethodNameOperationId
+    ? operationId
+      ? methodName
+      : false
+    : methodName;
+  methodNameTemplate = methodNameTemplate || "{method}{path}";
+
+  const serviceName = template(methodNameTemplate, {
+    path,
+    method,
+    ...(operationId ? { operationId } : {}),
+  });
+  return serviceName;
 }
 
 const TYPES = {
@@ -298,6 +317,20 @@ function isTypeAny(type: true | {} | Schema) {
   return false;
 }
 
+/** Used to replace {name} in string with obj.name */
+function template(str: string, obj: { [x: string]: string } = {}) {
+  Object.entries(obj).forEach(([key, value]) => {
+    const re = new RegExp(`{${key}}`, "i");
+    str = str.replace(re, value);
+  });
+
+  const re = new RegExp("{*}", "g");
+  if (re.test(str)) {
+    throw new Error(`methodName: Some A key is missed "${str}"`);
+  }
+  return str;
+}
+
 export {
   majorVersionsCheck,
   getPathParams,
@@ -311,4 +344,5 @@ export {
   getParametersInfo,
   getJsdoc,
   isTypeAny,
+  template,
 };
