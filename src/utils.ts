@@ -40,7 +40,13 @@ function generateServiceName(endPoint: string): string {
     return pointArray.join("");
   }
 
-  const name = replaceWithUpper(replaceWithUpper(replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"),"}"),"-");
+  const name = replaceWithUpper(
+    replaceWithUpper(
+      replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"),
+      "}",
+    ),
+    "-",
+  );
 
   return name;
 }
@@ -73,15 +79,20 @@ function getParamString(
   })}${name}${required ? "" : "?"}: ${type}`;
 }
 
-function getTsType({
-  type,
-  $ref,
-  enum: Enum,
-  items,
-  properties,
-  oneOf,
-  additionalProperties,
-}: Schema): string {
+function getTsType(schema: true | {} | Schema): string {
+  if (isTypeAny(schema)) {
+    return "any";
+  }
+
+  const {
+    type,
+    $ref,
+    enum: Enum,
+    items,
+    properties,
+    oneOf,
+    additionalProperties,
+  } = schema as Schema;
   let tsType = TYPES[type as keyof typeof TYPES];
 
   if (type === "object" && additionalProperties) {
@@ -109,8 +120,8 @@ function getTsType({
 
   if (properties) {
     tsType = getObjectType(
-      Object.entries(properties).map(([pName, schema]) => ({
-        schema,
+      Object.entries(properties).map(([pName, _schema]) => ({
+        schema: _schema,
         name: pName,
       })),
     );
@@ -271,6 +282,22 @@ function majorVersionsCheck(expectedV: string, inputV?: string) {
   );
 }
 
+function isTypeAny(type: true | {} | Schema) {
+  if (type === true) {
+    return true;
+  }
+
+  if (typeof type === "object" && Object.keys(type).length <= 0) {
+    return true;
+  }
+
+  if ((type as Schema).AnyValue) {
+    return true;
+  }
+
+  return false;
+}
+
 export {
   majorVersionsCheck,
   getPathParams,
@@ -283,4 +310,5 @@ export {
   getParamString,
   getParametersInfo,
   getJsdoc,
+  isTypeAny,
 };

@@ -61,6 +61,23 @@ export interface Schema {
   exclusiveMinimum?: boolean;
   exclusiveMaximum?: boolean;
   maximum?: number;
+
+  /**
+   * A schema without a type matches any data type – numbers, strings, objects,
+   * and so on. {} is shorthand syntax for an arbitrary-type schema:
+   *
+   * @example
+   *   components: {
+   *     schemas: {
+   *       AnyValue: {
+   *       }
+   *     }
+   *   }
+   */
+  AnyValue?: {
+    nullable?: boolean;
+    description?: string;
+  };
 }
 
 export type Parameter = {
