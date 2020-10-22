@@ -8,7 +8,7 @@ An auto typescript/javascript code generator from swagger.
 Each endpoint will be constructed as a function, full type base.
 
 For Example:
-Get method of '/Account/{id}' path will be this code in services.ts
+Get method of '/Account' path will be this code in services.ts
 
 ```js
 import { getAccount } from "./services";
@@ -20,28 +20,65 @@ const response = await getAccount({ id: 1234 });
 
 `$ yarn add swagger-typescript`
 
+## get start
+
 Before running, add your config to swagger.config.json
 
-## swagger.config.json
+#### swagger.config.json
 
 ```json
 {
-  "url": "http://example.com/api/swagger.json", // required
-  "dir": "./test", //required
+  "url": "http://example.com/api/swagger.json",
+  "dir": "./test"
+}
+```
+
+#### run
+
+```
+yarn swag-ts
+```
+
+#### config.ts
+
+This file automatically will be create after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
+
+getBaseConfig
+
+```ts
+async function getBaseConfig(): Promise<AxiosRequestConfig> {
+  return {
+    baseURL: "http://your_base_url.com",
+    headers: {
+      Authorization: `Bearer ${token}`, // <---- authorization
+    },
+  };
+}
+```
+
+## swagger.config.json
+
+For Example:
+
+```json
+{
+  "url": "http://example.com/api/swagger.json",
+  "dir": "./test",
   "prettierPath": ".prettierrc",
-  "language": "typescript", // "javascript" | "typescript"
+  "language": "typescript",
   "ignore": {
-    //Will be ignore from services functions.
     "headerParams": ["terminalId"]
   }
 }
 ```
 
-## run
-
-```
-yarn swag-ts
-```
+| [`Key`]      | [`default`]      | Comment                                                                                |
+| ------------ | ---------------- | -------------------------------------------------------------------------------------- |
+| `url`        | Required         | Address of swagger.json                                                                |
+| `dir`        | Required         | Address of output                                                                      |
+| `language`   | `typescript`     | export to "javascript" or "typescript"                                                 |
+| `methodName` | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}' |
+| `ignore`     | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]} `   |
 
 ## config.ts
 
