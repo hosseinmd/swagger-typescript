@@ -7,7 +7,7 @@ import {
 } from "fs";
 import { format } from "prettier";
 import { SwaggerJson, SwaggerConfig } from "./types";
-import { HTTP_REQUEST, CONFIG } from "./strings";
+import { HTTP_REQUEST, CONFIG, DTO_BASE } from "./strings";
 import { getSwaggerJson } from "./getJson";
 import { generator } from "./generator";
 import { build } from "tsc-prog";
@@ -36,6 +36,10 @@ async function generate() {
     writeFileSync(`${dir}/services.ts`, code);
 
     writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
+
+    if (!existsSync(`${dir}/DtoBase.${isToJs ? "js" : "ts"}`)) {
+      writeFileSync(`${dir}/DtoBase.ts`, DTO_BASE);
+    }
 
     if (!existsSync(`${dir}/config.${isToJs ? "js" : "ts"}`)) {
       writeFileSync(`${dir}/config.ts`, CONFIG);

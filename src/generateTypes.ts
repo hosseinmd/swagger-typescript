@@ -19,11 +19,11 @@ function generateTypes(types: TypeAST[]): string {
 
 function getTypeDefinition(name: string, schema: Schema, description?: string) {
   const { type, enum: Enum, allOf, oneOf, items, $ref } = schema;
+  name=name.substr(0,1).toUpperCase() + name.substr(1);
   if (type === "object") {
     const typeObject = getTsType(schema);
-
     return `
-  export interface ${name} ${typeObject}
+  export class ${name} extends DtoBase ${typeObject} 
   `;
   }
 

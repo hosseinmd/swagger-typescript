@@ -1,9 +1,13 @@
 export interface Schema {
   title?: string;
   nullable?: boolean;
-  type: "object" | "array";
+  type: "object" | "array" | "string";
   items?: Schema;
-  format?: "int64" | "binary";
+  maxLength?: number,
+  max?: number,
+  min?: number,
+  pattern?: string,
+  format?: "int64" | "binary" | "date-time" | "date";
   additionalProperties?: Schema;
   properties?: { [name: string]: Schema };
   description?: string;
@@ -15,7 +19,7 @@ export interface Schema {
   $ref?: string;
   allOf?: Schema[];
   oneOf?: Schema[];
-  required?:string[];
+  required?: string[];
 }
 
 export type Parameter = {
@@ -83,7 +87,7 @@ export interface SwaggerSchemas {
 
 export interface SwaggerJson {
   openapi: string;
-  tags: {name:string}[]
+  tags: { name: string }[]
   paths: {
     [url: string]: SwaggerRequest;
   };
@@ -105,7 +109,7 @@ export interface SwaggerConfig {
 }
 
 export type ApiAST = {
-  tags:string[],
+  tags: string[],
   summary: string;
   deprecated: boolean;
   serviceName: string;
@@ -132,6 +136,11 @@ export type TypeAST = {
 export type JsdocAST = {
   title?: string;
   description?: string;
+  format?: string,
+  pattern?: string,
+  maxLength?: number,
+  min?: number,
+  max?: number,
   tags?: {
     deprecated?: {
       value: boolean;

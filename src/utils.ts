@@ -82,6 +82,7 @@ function getTsType({
   oneOf,
   additionalProperties,
   required,
+  format
 }: Schema): string {
   let tsType = TYPES[type as keyof typeof TYPES];
 
@@ -122,11 +123,11 @@ function getTsType({
   // if (nullable) {
   //   tsType + "| null";
   // }
-
+  tsType=tsType.substr(0,1).toUpperCase() + tsType.substr(1);
   return tsType;
 }
 
-function getObjectType(parameter: { schema: Schema; name: string, isRequired?: boolean  }[]) {
+function getObjectType(parameter: { schema: Schema; name: string, isRequired?: boolean }[]) {
   const object = parameter
     .sort(
       (
@@ -152,16 +153,22 @@ function getObjectType(parameter: { schema: Schema; name: string, isRequired?: b
             deprecated,
             "x-deprecatedMessage": deprecatedMessage,
             example,
-            nullable,
+            nullable,           
           },
           schema,
           name,
           isRequired,
         },
       ) => {
+      
         return `${prev}${getJsdoc({
           title: title,
           description: description,
+          format: schema.format,
+          maxLength: schema.maxLength,
+          min: schema.min,
+          max: schema.max,
+          pattern:schema.pattern,
           tags: {
             deprecated: {
               value: Boolean(deprecated),
@@ -169,7 +176,7 @@ function getObjectType(parameter: { schema: Schema; name: string, isRequired?: b
             },
             example,
           },
-        })}${name}${nullable || !isRequired ? "?" : ""}: ${getTsType(schema)},`;
+        })}${name}${nullable || !isRequired ? "?" : ""}: ${getTsType(schema)};`;
       },
       "",
     );
@@ -210,9 +217,14 @@ function getParametersInfo(
 function getJsdoc({
   title,
   description,
+  format,
+  maxLength,
+  max,
+  min,
+  pattern,
   tags: { deprecated, example } = {},
 }: JsdocAST) {
-  return deprecated?.value || description
+  return deprecated?.value || description || format || maxLength || min || max || pattern
     ? `
       /**${title
       ? `
@@ -222,6 +234,26 @@ function getJsdoc({
     }${description
       ? `
       * ${description}`
+      : ""
+    }${format
+      ? `
+      * Format: ${format}`
+      : ""
+    }${maxLength
+      ? `
+      * maxLength: ${maxLength}`
+      : ""
+    }${min
+      ? `
+      * min: ${min}`
+      : ""
+    }${max
+      ? `
+      * max: ${max}`
+      : ""
+    }${pattern
+      ? `
+      * pattern: ${pattern}`
       : ""
     }${deprecated?.value
       ? `

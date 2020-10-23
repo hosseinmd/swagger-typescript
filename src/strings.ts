@@ -8,6 +8,10 @@ const CONFIG = readFileSync(
   path.resolve(__dirname, "../files/config.tsf"),
 ).toString();
 
+const DTO_BASE = readFileSync(
+  path.resolve(__dirname, "../files/DtoBase.tsf"),
+).toString();
+
 const APIS_BEGINNING = `// APIS grouped by tags of OAS
 `;
 
@@ -16,6 +20,7 @@ const SERVICE_BEGINNING = `
 import { AxiosRequestConfig } from "axios";
 import { SwaggerResponse, responseWrapper } from "./config";
 import { Http, overrideConfig } from "./httpRequest";
+import { DtoBase } from "./DtoBase";
 
 //@ts-ignore
 const __DEV__ = process.env.NODE_ENV !== "production";
@@ -33,4 +38,4 @@ function template(path: string, obj: { [x: string]: any } = {}) {
 const DEPRECATED_WARM_MESSAGE =
   "This endpoint deprecated and will be remove. Please use an alternative";
 
-export { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG, DEPRECATED_WARM_MESSAGE, APIS_BEGINNING };
+export { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG, DEPRECATED_WARM_MESSAGE, APIS_BEGINNING ,DTO_BASE};
