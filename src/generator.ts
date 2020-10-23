@@ -14,13 +14,33 @@ import type {
   TypeAST,
   Schema,
   Parameter,
+  ConstantsAST,
 } from "./types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
+import { generateConstants } from "./generateConstants";
 
 function generator(input: SwaggerJson, config: SwaggerConfig): string {
   const apis: ApiAST[] = [];
   const types: TypeAST[] = [];
+  let constantsCounter = 0;
+  const constants: ConstantsAST[] = [];
+
+  function getConstantName(value: string) {
+    const constant = constants.find((_constant) => _constant.value === value);
+    if (constant) {
+      return constant.name;
+    }
+
+    const name = `_CONSTANT${constantsCounter++}`;
+
+    constants.push({
+      name,
+      value,
+    });
+
+    return name;
+  }
 
   try {
     Object.entries(input.paths).forEach(([endPoint, value]) => {
@@ -117,6 +137,24 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             ? `{${pathParamsRefString}}`
             : undefined;
 
+          const additionalAxiosConfig = headerParams
+            ? `{
+              headers:{
+                ...${getConstantName(`{
+                  "Content-Type": "${contentType}",
+                  Accept: "${accept}",
+
+                }`)},
+                ...headerParams,
+              },
+            }`
+            : getConstantName(`{
+              headers: {
+                "Content-Type": "${contentType}",
+                Accept: "${accept}",
+              },
+            }`);
+
           apis.push({
             summary: options.summary,
             deprecated: options.deprecated,
@@ -130,10 +168,11 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             responses,
             pathParamsRefString,
             endPoint,
-            contentType,
-            accept,
             method,
-            security: JSON.stringify(security),
+            security: security
+              ? getConstantName(JSON.stringify(security))
+              : "undefined",
+            additionalAxiosConfig,
           });
         },
       );
@@ -168,6 +207,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
 
     let code = generateApis(apis);
     code += generateTypes(types);
+    code += generateConstants(constants);
 
     return code;
   } catch (error) {

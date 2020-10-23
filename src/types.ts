@@ -175,10 +175,9 @@ export type ApiAST = {
   responses: Schema | undefined;
   pathParamsRefString: string | undefined;
   endPoint: string;
-  contentType: string;
-  accept: string;
   method: string;
   security: string;
+  additionalAxiosConfig: string;
 };
 
 export type TypeAST = {
@@ -198,3 +197,5 @@ export type JsdocAST = {
     example?: string;
   };
 };
+
+export type ConstantsAST = { value: string; name: string };

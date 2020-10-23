@@ -32,8 +32,7 @@ function generateApis(apis: ApiAST[]): string {
             method,
             endPoint,
             pathParamsRefString,
-            contentType,
-            accept,
+            additionalAxiosConfig,
             security,
           },
         ) => {
@@ -101,13 +100,7 @@ ${getJsdoc({
     ${queryParamsTypeName ? "queryParams" : "undefined"},
     ${requestBody ? "requestBody" : "undefined"},
     ${security},
-    overrideConfig({
-        headers: {
-          "Content-Type": "${contentType}",
-          Accept: "${accept}",
-          ${headerParams ? "...headerParams," : ""}
-        },
-      },
+    overrideConfig(${additionalAxiosConfig},
       configOverride,
     )
   )
