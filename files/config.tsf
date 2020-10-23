@@ -1,4 +1,8 @@
-// Please add your custom config
+/**
+ * Please add your custom config
+ *
+ * @version 4
+ */
 import Axios, {
   AxiosRequestConfig,
   AxiosError,

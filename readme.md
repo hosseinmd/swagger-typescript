@@ -43,18 +43,16 @@ yarn swag-ts
 
 This file automatically will be create after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
 
-getBaseConfig
+baseConfig
 
 ```ts
-async function getBaseConfig(): Promise<AxiosRequestConfig> {
-  return {
-    baseURL: "http://your_base_url.com",
-    headers: {
-      Authorization: `Bearer ${token}`, // <---- authorization
-    },
-  };
-}
+const baseConfig: AxiosRequestConfig = {
+  baseURL: "", // <--- Add your base url
+  //other static configs
+};
 ```
+
+Now you can use apis, So for advanced config read below.
 
 ## swagger.config.json
 
@@ -84,47 +82,18 @@ For Example:
 
 This file automatically will be create after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
 
-### responseWrapper
+#### getAxiosInstance
 
-For create custom response change responseWrapper function in config. You could do something like this.
+getAxiosInstance used for create an instance of axios request you can customize that for what you needed
 
-```js
-export type SwaggerResponse<R> = R & { counter: number };
+#### baseConfig
 
-const counter = 0;
-
-async function responseWrapper(
-  response: AxiosResponse<any>,
-): Promise<SwaggerResponse<any>> {
-  return { ...response.data, counter: counter + 1 };
-}
-```
-
-### getBaseConfig
-
-```ts
-async function getBaseConfig(): Promise<AxiosRequestConfig> {
-  return {
-    baseURL: "http://your_base_url.com",
-    headers: {
-      // any headers you want to assign for all request
-      "Content-Encoding": "UTF-8",
-      Accept: "application/json",
-      "Content-Type": "application/json-patch+json",
-    },
-  };
-}
-```
-
-### errorCatch
-
-```ts
-function errorCatch(error: AxiosError): any {
-  // any things you want
-  throw error;
-}
-```
+baseConfig used for get static configs and headers. if you need some dynamic configs like add authentication to headers use `requestConfig.headers.authorization` into of `axiosInstance.interceptors.request.use` function.
 
 ## Stories
 
 [why-you-should-use-swagger-typescript-for-generate-apis-code](https://medium.com/@hosseinm.developer/why-you-should-use-swagger-typescript-for-generate-apis-code-63eb8623fef8?source=friends_link&sk=2aa0e2d30b3be158d18c1feb4e12d4a6)
+
+```
+
+```

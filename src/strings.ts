@@ -9,7 +9,11 @@ const CONFIG = readFileSync(
 ).toString();
 
 const SERVICE_BEGINNING = `
-// AUTO_GENERATED Do not change this file directly change config.ts file instead
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 4
+ */
 import { AxiosRequestConfig } from "axios";
 import { SwaggerResponse } from "./config";
 import { Http } from "./httpRequest";

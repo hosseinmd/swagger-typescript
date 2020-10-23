@@ -1,4 +1,8 @@
-// AUTO_GENERATED Do not change this file directly change config.ts file instead
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 4
+ */
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { getAxiosInstance } from "./config";
 
