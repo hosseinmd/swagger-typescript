@@ -2,6 +2,8 @@
 
 [![install size](https://packagephobia.now.sh/badge?p=swagger-typescript)](https://packagephobia.now.sh/result?p=swagger-typescript) [![dependencies](https://david-dm.org/hosseinmd/swagger-typescript.svg)](https://david-dm.org/hosseinmd/swagger-typescript.svg)
 
+[Migrate Swagger-Typescript v3 to Swagger-Typescript v4](https://github.com/hosseinmd/swagger-typescript/blob/master/migrateToV4.md)
+
 Support OpenApi v3
 
 An auto typescript/javascript code generator from swagger.
@@ -52,7 +54,7 @@ const baseConfig: AxiosRequestConfig = {
 };
 ```
 
-Now you can use apis, So for advanced config read below.
+Now you can use APIs, So for advanced config read below.
 
 ## swagger.config.json
 
@@ -80,7 +82,7 @@ For Example:
 
 ## config.ts
 
-This file automatically will be create after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
+This file automatically will be created after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
 
 #### getAxiosInstance
 
@@ -94,6 +96,3 @@ baseConfig used for get static configs and headers. if you need some dynamic con
 
 [why-you-should-use-swagger-typescript-for-generate-apis-code](https://medium.com/@hosseinm.developer/why-you-should-use-swagger-typescript-for-generate-apis-code-63eb8623fef8?source=friends_link&sk=2aa0e2d30b3be158d18c1feb4e12d4a6)
 
-```
-
-```
