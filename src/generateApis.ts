@@ -83,7 +83,7 @@ export const ${serviceName} = async (
   }`
       : ""
   }
-  return responseWrapper(await Http.${method}Request(
+  return Http.${method}Request(
     ${
       pathParamsRefString
         ? `template("${endPoint}",${pathParamsRefString})`
@@ -92,14 +92,13 @@ export const ${serviceName} = async (
     ${queryParamsTypeName ? "queryParams" : "undefined"},
     ${requestBody ? "requestBody" : "undefined"},
     overrideConfig({
-        headers: {
-          "Content-Type": "${contentType}",
-          Accept: "${accept}",
-          ${headerParams ? "...headerParams," : ""}
-        },
+      headers: {
+        "Content-Type": "${contentType}",
+        Accept: "${accept}",
+        ${headerParams ? "...headerParams," : ""}
       },
-      configOverride,
-    )
+    },
+    configOverride,
   ))
 }
 `
