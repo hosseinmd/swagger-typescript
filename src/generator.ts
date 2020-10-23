@@ -39,7 +39,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             }
             return parameter;
           });
-          const serviceName = `${method}${generateServiceName(endPoint)}`;
+          const serviceName = `${generateServiceName(method,endPoint,options)}`;
 
           const pathParams = getPathParams(parameters);
 

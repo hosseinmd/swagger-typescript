@@ -1,4 +1,4 @@
-import { Schema, Parameter, SwaggerConfig, JsdocAST } from "./types";
+import { Schema, Parameter, SwaggerConfig, JsdocAST, SwaggerRequest } from "./types";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (
@@ -30,7 +30,7 @@ function getParams(
   };
 }
 
-function generateServiceName(endPoint: string): string {
+function generateServiceName(method:string, endPoint: string, options: SwaggerRequest): string {
   function replaceWithUpper(str: string, sp: string) {
     let pointArray = str.split(sp);
     pointArray = pointArray.map(
@@ -40,7 +40,9 @@ function generateServiceName(endPoint: string): string {
     return pointArray.join("");
   }
 
-  const name = replaceWithUpper(replaceWithUpper(replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"), "}"), "-");
+  const name = options.operationId ?
+    options.operationId : 
+    method + replaceWithUpper(replaceWithUpper(replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"), "}"), "-");
 
   return name;
 }
@@ -81,8 +83,7 @@ function getTsType({
   properties,
   oneOf,
   additionalProperties,
-  required,
-  format
+  required
 }: Schema): string {
   let tsType = TYPES[type as keyof typeof TYPES];
 
@@ -110,9 +111,9 @@ function getTsType({
   }
 
   if (properties) {
-    
+
     tsType = getObjectType(
-      Object.entries(properties).map<{schema:Schema,name:string, isRequired:boolean | undefined}>(([pName, schema]) => ({
+      Object.entries(properties).map<{ schema: Schema, name: string, isRequired: boolean | undefined }>(([pName, schema]) => ({
         schema,
         name: pName,
         isRequired: required && required.filter((propReq) => propReq == pName).length > 0,
@@ -123,7 +124,7 @@ function getTsType({
   // if (nullable) {
   //   tsType + "| null";
   // }
-  tsType=tsType.substr(0,1).toUpperCase() + tsType.substr(1);
+  tsType = tsType.substr(0, 1).toUpperCase() + tsType.substr(1);
   return tsType;
 }
 
@@ -153,14 +154,14 @@ function getObjectType(parameter: { schema: Schema; name: string, isRequired?: b
             deprecated,
             "x-deprecatedMessage": deprecatedMessage,
             example,
-            nullable,           
+            nullable,
           },
           schema,
           name,
           isRequired,
         },
       ) => {
-      
+
         return `${prev}${getJsdoc({
           title: title,
           description: description,
@@ -168,7 +169,7 @@ function getObjectType(parameter: { schema: Schema; name: string, isRequired?: b
           maxLength: schema.maxLength,
           min: schema.min,
           max: schema.max,
-          pattern:schema.pattern,
+          pattern: schema.pattern,
           tags: {
             deprecated: {
               value: Boolean(deprecated),
