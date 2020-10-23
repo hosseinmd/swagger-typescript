@@ -34,6 +34,7 @@ function generateApis(apis: ApiAST[]): string {
             pathParamsRefString,
             contentType,
             accept,
+            security,
           },
         ) => {
           return (
@@ -99,6 +100,7 @@ ${getJsdoc({
     },
     ${queryParamsTypeName ? "queryParams" : "undefined"},
     ${requestBody ? "requestBody" : "undefined"},
+    ${security},
     overrideConfig({
         headers: {
           "Content-Type": "${contentType}",

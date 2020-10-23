@@ -126,17 +126,13 @@ export interface SwaggerResponse {
 
 export interface SwaggerRequest {
   tags: string; // ["Account"];
-  summary: string; // "Get user account balance";
-  operationId: string; // "Account_GetBalance";
+  summary?: string; // "Get user account balance";
+  operationId?: string; // "Account_GetBalance";
   parameters?: Parameter[];
   requestBody?: SwaggerResponse;
   responses: { [x: string]: SwaggerResponse };
-  deprecated: boolean;
-  security: [
-    {
-      "JWT token": [];
-    },
-  ];
+  deprecated?: boolean;
+  security?: any[];
 }
 
 export interface SwaggerSchemas {
@@ -167,8 +163,8 @@ export interface SwaggerConfig {
 }
 
 export type ApiAST = {
-  summary: string;
-  deprecated: boolean;
+  summary: string | undefined;
+  deprecated: boolean | undefined;
   serviceName: string;
   pathParams: Parameter[];
   requestBody: Schema | undefined;
@@ -182,6 +178,7 @@ export type ApiAST = {
   contentType: string;
   accept: string;
   method: string;
+  security: string;
 };
 
 export type TypeAST = {

@@ -24,28 +24,9 @@ const baseConfig: AxiosRequestConfig = {
 
 let axiosInstance: AxiosInstance;
 
-function getAxiosInstance(): AxiosInstance {
+function getAxiosInstance(security: Security): AxiosInstance {
   if (!axiosInstance) {
     axiosInstance = Axios.create(baseConfig);
-    // ًًRequest interceptor
-    axiosInstance.interceptors.request.use(
-      async (requestConfig) => {
-        // Do something before request is sent
-        /**
-         * Example on how to add authorization to specific paths
-         *
-         * @example
-         *   if (requestConfig.url?.includes("/")) {
-         *     requestConfig.headers.authorization = "";
-         *   }
-         */
-        return requestConfig;
-      },
-      (error) => {
-        // Do something with request error
-        return Promise.reject(error);
-      },
-    );
 
     // Response interceptor
     axiosInstance.interceptors.response.use(
@@ -89,6 +70,23 @@ function getAxiosInstance(): AxiosInstance {
     );
   }
 
+  // ًًRequest interceptor
+  axiosInstance.interceptors.request.use(
+    async (requestConfig) => {
+      // Do something before request is sent
+      /** Example on how to add authorization based on security */
+      if (security?.[0]) {
+        // requestConfig.headers.authorization = "";
+      }
+
+      return requestConfig;
+    },
+    (error) => {
+      // Do something with request error
+      return Promise.reject(error);
+    },
+  );
+
   return axiosInstance;
 }
 
@@ -112,6 +110,8 @@ class RequestError extends Error {
 
   isApiException = true;
 }
+
+export type Security = any[] | undefined;
 
 export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 

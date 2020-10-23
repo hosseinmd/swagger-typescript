@@ -26,7 +26,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
     Object.entries(input.paths).forEach(([endPoint, value]) => {
       Object.entries(value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
-          const { operationId } = options;
+          const { operationId, security } = options;
           const parameters = options.parameters?.map((parameter) => {
             const { $ref } = parameter;
             if ($ref) {
@@ -133,6 +133,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             contentType,
             accept,
             method,
+            security: JSON.stringify(security),
           });
         },
       );
