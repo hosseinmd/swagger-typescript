@@ -4,7 +4,7 @@ import { AxiosRequestConfig, AxiosResponse } from "axios";
 
 import { getAxiosInstance } from "./config";
 
-const Http = {
+export const Http = {
   async getRequest(
     url: string,
     queryParams: any | undefined,
@@ -66,19 +66,3 @@ const Http = {
     );
   },
 };
-
-function overrideConfig(
-  config?: AxiosRequestConfig,
-  configOverride?: AxiosRequestConfig,
-): AxiosRequestConfig {
-  return {
-    ...config,
-    ...configOverride,
-    headers: {
-      ...config?.headers,
-      ...configOverride?.headers,
-    },
-  };
-}
-
-export { Http, overrideConfig };

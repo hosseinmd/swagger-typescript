@@ -24,9 +24,9 @@ function getAxiosInstance(): AxiosInstance {
     axiosInstance = Axios.create(baseConfig);
     axiosInstance.interceptors.request.use(
       async (requestConfig) => {
-        /*
+        /* Example on how to add authorization to specific paths
         if (requestConfig.url?.includes("/")) {
-          requestConfig.headers.authorization = ""; // Add authorization header conditionaly.
+          requestConfig.headers.authorization = "";
         }
         */
         return requestConfig;
@@ -37,8 +37,14 @@ function getAxiosInstance(): AxiosInstance {
     );
 
     axiosInstance.interceptors.response.use(
-      async (response) => {
+      async (response: AxiosResponse) => {
         return response;
+        /* Example on response manipulation
+        const swaggerResponse: SwaggerResponse = {
+          ...response
+        };        
+        return swaggerResponse;
+        */
       },
       (error: AxiosError) => {
         if (error.response) {
@@ -82,6 +88,8 @@ class SwaggerError extends Error {
 
   isApiException = true;
 }
+
+export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 
 export {
   getAxiosInstance,

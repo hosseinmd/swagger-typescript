@@ -71,7 +71,7 @@ export const ${serviceName} = async (
                   )},`
                 : ""
             }configOverride?:AxiosRequestConfig
-): Promise<AxiosResponse<${responses ? getTsType(responses) : "any"}>> => {
+): Promise<SwaggerResponse<${responses ? getTsType(responses) : "any"}>> => {
   ${
     deprecated
       ? `
@@ -91,15 +91,15 @@ export const ${serviceName} = async (
     },
     ${queryParamsTypeName ? "queryParams" : "undefined"},
     ${requestBody ? "requestBody" : "undefined"},
-    {
+    overrideConfig({
       headers: {
         "Content-Type": "${contentType}",
         Accept: "${accept}",
         ${headerParams ? "...headerParams," : ""}
       },
-      ...configOverride,
     },
-  )
+    configOverride,
+  ))
 }
 `
           );

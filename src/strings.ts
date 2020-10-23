@@ -10,11 +10,26 @@ const CONFIG = readFileSync(
 
 const SERVICE_BEGINNING = `
 // AUTO_GENERATED Do not change this file directly change config.ts file instead
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosRequestConfig } from "axios";
+import { SwaggerResponse } from "./config";
 import { Http } from "./httpRequest";
 
 //@ts-ignore
 const __DEV__ = process.env.NODE_ENV !== "production";
+
+function overrideConfig(
+  config?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig,
+): AxiosRequestConfig {
+  return {
+    ...config,
+    ...configOverride,
+    headers: {
+      ...config?.headers,
+      ...configOverride?.headers,
+    },
+  };
+}
 
 function template(path: string, obj: { [x: string]: any } = {}) {
     Object.keys(obj).forEach((key) => {
