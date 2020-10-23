@@ -1,7 +1,5 @@
 // AUTO_GENERATED Do not change this file directly change config.ts file instead
 import { AxiosRequestConfig, AxiosResponse } from "axios";
-//@ts-ignore
-
 import { getAxiosInstance } from "./config";
 
 export const Http = {
@@ -12,13 +10,10 @@ export const Http = {
     requestBody: undefined,
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    return getAxiosInstance().get(
-      url,
-      {
-        params: queryParams,
-        ...configOverride,
-      },
-    );
+    return getAxiosInstance().get(url, {
+      params: queryParams,
+      ...configOverride,
+    });
   },
   async postRequest(
     url: string,
@@ -26,14 +21,10 @@ export const Http = {
     requestBody: any | undefined,
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    return getAxiosInstance().post(
-      url,
-      requestBody,
-      {
-        params: queryParams,
-        ...configOverride,
-      },
-    );
+    return getAxiosInstance().post(url, requestBody, {
+      params: queryParams,
+      ...configOverride,
+    });
   },
   async putRequest(
     url: string,
@@ -41,14 +32,10 @@ export const Http = {
     requestBody: any | undefined,
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    return getAxiosInstance().put(
-      url,
-      requestBody,
-      {
-        params: queryParams,
-        ...configOverride,
-      },
-    );
+    return getAxiosInstance().put(url, requestBody, {
+      params: queryParams,
+      ...configOverride,
+    });
   },
   async deleteRequest(
     url: string,
@@ -57,12 +44,9 @@ export const Http = {
     requestBody: undefined,
     configOverride?: AxiosRequestConfig,
   ): Promise<AxiosResponse<any>> {
-    return getAxiosInstance().delete(
-      url,
-      {
-        params: queryParams,
-        ...configOverride,
-      },
-    );
+    return getAxiosInstance().delete(url, {
+      params: queryParams,
+      ...configOverride,
+    });
   },
 };

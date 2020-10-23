@@ -31,6 +31,7 @@ function overrideConfig(
   };
 }
 
+//@ts-ignore
 function template(path: string, obj: { [x: string]: any } = {}) {
     Object.keys(obj).forEach((key) => {
       const re = new RegExp(\`{\${key}}\`, "i");

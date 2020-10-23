@@ -5,10 +5,11 @@ import Axios, {
   AxiosResponse,
   AxiosInstance,
 } from "axios";
+//@ts-ignore
 import qs from "qs";
 
 const baseConfig: AxiosRequestConfig = {
-  baseURL: "",
+  baseURL: "", // <--- Add your base url
   headers: {
     "Content-Encoding": "UTF-8",
     Accept: "application/json",
@@ -24,11 +25,14 @@ function getAxiosInstance(): AxiosInstance {
     axiosInstance = Axios.create(baseConfig);
     axiosInstance.interceptors.request.use(
       async (requestConfig) => {
-        /* Example on how to add authorization to specific paths
-        if (requestConfig.url?.includes("/")) {
-          requestConfig.headers.authorization = "";
-        }
-        */
+        /**
+         * Example on how to add authorization to specific paths
+         *
+         * @example
+         *   if (requestConfig.url?.includes("/")) {
+         *     requestConfig.headers.authorization = "";
+         *   }
+         */
         return requestConfig;
       },
       (error) => {
@@ -37,28 +41,35 @@ function getAxiosInstance(): AxiosInstance {
     );
 
     axiosInstance.interceptors.response.use(
-      async (response: AxiosResponse) => {
+      async (response: AxiosResponse): Promise<SwaggerResponse<any>> => {
+        /**
+         * Example on response manipulation
+         *
+         * @example
+         *   const swaggerResponse: SwaggerResponse = {
+         *     ...response,
+         *   };
+         *   return swaggerResponse;
+         */
         return response;
-        /* Example on response manipulation
-        const swaggerResponse: SwaggerResponse = {
-          ...response
-        };        
-        return swaggerResponse;
-        */
       },
       (error: AxiosError) => {
         if (error.response) {
-          Promise.reject(new SwaggerError({
-            message: error.response.data,
-            status: error.response.status,
-            response: error.response,
-          }));
+          Promise.reject(
+            new RequestError({
+              message: error.response.data,
+              status: error.response.status,
+              response: error.response,
+            }),
+          );
         }
-      
+
         if (error.isAxiosError) {
-          Promise.reject(new SwaggerError({
-            message: "noInternetConnection",
-          }));
+          Promise.reject(
+            new RequestError({
+              message: "noInternetConnection",
+            }),
+          );
         }
         Promise.reject(error);
       },
@@ -74,7 +85,7 @@ interface ErrorParam {
   response?: AxiosResponse;
 }
 
-class SwaggerError extends Error {
+class RequestError extends Error {
   message: string;
   status?: number;
   response?: AxiosResponse;
@@ -91,6 +102,4 @@ class SwaggerError extends Error {
 
 export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 
-export {
-  getAxiosInstance,
-};
+export { getAxiosInstance };
