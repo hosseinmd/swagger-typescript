@@ -27,8 +27,10 @@ let axiosInstance: AxiosInstance;
 function getAxiosInstance(): AxiosInstance {
   if (!axiosInstance) {
     axiosInstance = Axios.create(baseConfig);
+    // ًًRequest interceptor
     axiosInstance.interceptors.request.use(
-      async (requestConfig) => {
+      (async (response: AxiosResponse): Promise<SwaggerResponse<any>> => {
+        // Do something before request is sent
         /**
          * Example on how to add authorization to specific paths
          *
@@ -37,15 +39,19 @@ function getAxiosInstance(): AxiosInstance {
          *     requestConfig.headers.authorization = "";
          *   }
          */
-        return requestConfig;
-      },
+        return response;
+      }) as any,
       (error) => {
-        Promise.reject(error);
+        // Do something with request error
+        return Promise.reject(error);
       },
     );
 
+    // Response interceptor
     axiosInstance.interceptors.response.use(
       async (response: AxiosResponse): Promise<SwaggerResponse<any>> => {
+        // Any status code that lie within the range of 2xx cause this function to trigger
+        // Do something with response data
         /**
          * Example on response manipulation
          *
@@ -58,8 +64,11 @@ function getAxiosInstance(): AxiosInstance {
         return response;
       },
       (error: AxiosError) => {
+        // Any status codes that falls outside the range of 2xx cause this function to trigger
+        // Do something with response error
+
         if (error.response) {
-          Promise.reject(
+          return Promise.reject(
             new RequestError({
               message: error.response.data,
               status: error.response.status,
@@ -69,13 +78,13 @@ function getAxiosInstance(): AxiosInstance {
         }
 
         if (error.isAxiosError) {
-          Promise.reject(
+          return Promise.reject(
             new RequestError({
               message: "noInternetConnection",
             }),
           );
         }
-        Promise.reject(error);
+        return Promise.reject(error);
       },
     );
   }
@@ -106,4 +115,9 @@ class RequestError extends Error {
 
 export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 
-export { getAxiosInstance };
+export {
+  getAxiosInstance,
+  RequestError,
+  // as backward compatible v3
+  RequestError as Exception,
+};
