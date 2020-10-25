@@ -5,10 +5,10 @@ type DataType =
 export interface Schema {
   title?: string;
   nullable?: boolean;
-  maxLength?: number,
-  max?: number,
-  min?: number,
-  pattern?: string,
+  maxLength?: number;
+  max?: number;
+  min?: number;
+  pattern?: string;
   type: DataType;
   /**
    * An array of arbitrary types can be defined as:
@@ -17,8 +17,32 @@ export interface Schema {
    *     items: {}
    */
   items?: Schema | {};
-  /** Files are defined as strings: "binary" | "byte" */
-  format?: "int64" | "binary" | "date-time" | "date";
+
+  /**
+   * Files are defined as strings: "binary" | "byte"
+   *
+   *     - integer int32	signed 32 bits
+   *     - integer int64	signed 64 bits (a.k.a long)
+   *     - number float
+   *     - number double
+   *     - string
+   *     - string byte	base64 encoded characters
+   *     - string binary	any sequence of octets
+   *     - boolean
+   *     - string date	As defined by full-date - RFC3339
+   *     - string date-time	As defined by date-time - RFC3339
+   *     - string password	A hint to UIs to obscure input.
+   */
+  format?:
+    | "int32"
+    | "int64"
+    | "float"
+    | "double"
+    | "byte"
+    | "binary"
+    | "date"
+    | "date"
+    | "password";
   /**
    * A free-form object (arbitrary property/value pairs) is defined as:
    *
@@ -144,7 +168,7 @@ export interface SwaggerSchemas {
 }
 
 export interface SwaggerJson {
-  openapi: string;
+  openapi: string;  
   tags: { name: string }[]
   paths: {
     [url: string]: SwaggerRequest;
@@ -168,7 +192,7 @@ export interface SwaggerConfig {
 }
 
 export type ApiAST = {
-  tags: string[],
+  tags:string[],
   summary: string | undefined;
   deprecated: boolean | undefined;
   serviceName: string;
