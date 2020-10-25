@@ -2,6 +2,8 @@
 
 [![install size](https://packagephobia.now.sh/badge?p=swagger-typescript)](https://packagephobia.now.sh/result?p=swagger-typescript) [![dependencies](https://david-dm.org/hosseinmd/swagger-typescript.svg)](https://david-dm.org/hosseinmd/swagger-typescript.svg)
 
+:star::star::star: If you would like to contribute, please refer to [To do list](https://github.com/hosseinmd/swagger-typescript/projects/1) and a list of [open tasks](https://github.com/hosseinmd/swagger-typescript/issues?q=is%3Aopen).:star::star::star:
+
 [Migrate Swagger-Typescript v3 to Swagger-Typescript v4](https://github.com/hosseinmd/swagger-typescript/blob/master/migrateToV4.md)
 
 Support OpenApi v3
