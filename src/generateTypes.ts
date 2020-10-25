@@ -59,7 +59,7 @@ function getTypeDefinition(name: string, schema: Schema, description?: string) {
   export type ${name} = ${getRefName($ref)}`;
   }
 
-  return "";
+  return `export type ${name} = any`;
 }
 
 export { generateTypes };

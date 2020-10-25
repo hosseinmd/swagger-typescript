@@ -30,7 +30,12 @@ function getParams(
   };
 }
 
-function generateServiceName(method:string, endPoint: string, options: SwaggerRequest): string {
+function generateServiceName(
+  endPoint: string,
+  method: string,
+  operationId: string | undefined,
+  config: SwaggerConfig,
+): string {
   function replaceWithUpper(str: string, sp: string) {
     let pointArray = str.split(sp);
     pointArray = pointArray.map(
@@ -40,11 +45,29 @@ function generateServiceName(method:string, endPoint: string, options: SwaggerRe
     return pointArray.join("");
   }
 
-  const name = options.operationId ?
-    options.operationId : 
-    method + replaceWithUpper(replaceWithUpper(replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"), "}"), "-");
+  const path = replaceWithUpper(
+    replaceWithUpper(
+      replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"),
+      "}",
+    ),
+    "-",
+  );
 
-  return name;
+  const { methodName } = config;
+  const hasMethodNameOperationId = /(\{operationId\})/i.test(methodName);
+  let methodNameTemplate = hasMethodNameOperationId
+    ? operationId
+      ? methodName
+      : false
+    : methodName;
+  methodNameTemplate = methodNameTemplate || "{method}{path}";
+
+  const serviceName = template(methodNameTemplate, {
+    path,
+    method,
+    ...(operationId ? { operationId } : {}),
+  });
+  return serviceName;
 }
 
 const TYPES = {
@@ -75,16 +98,22 @@ function getParamString(
   })}${name}${required ? "" : "?"}: ${type}`;
 }
 
-function getTsType({
-  type,
-  $ref,
-  enum: Enum,
-  items,
-  properties,
-  oneOf,
-  additionalProperties,
-  required
-}: Schema): string {
+function getTsType(schema: true | {} | Schema): string {
+  if (isTypeAny(schema)) {
+    return "any";
+  }
+
+  const {
+      type,
+      $ref,
+      enum: Enum,
+      items,
+      properties,
+      oneOf,
+      additionalProperties,
+      required
+
+  } = schema as Schema;
   let tsType = TYPES[type as keyof typeof TYPES];
 
   if (type === "object" && additionalProperties) {
@@ -113,8 +142,8 @@ function getTsType({
   if (properties) {
 
     tsType = getObjectType(
-      Object.entries(properties).map<{ schema: Schema, name: string, isRequired: boolean | undefined }>(([pName, schema]) => ({
-        schema,
+      Object.entries(properties).map<{ schema: Schema, name: string, isRequired: boolean | undefined }>(([pName, _schema]) => ({
+        schema: _schema,
         name: pName,
         isRequired: required && required.filter((propReq) => propReq == pName).length > 0,
       })),
@@ -304,6 +333,36 @@ function majorVersionsCheck(expectedV: string, inputV?: string) {
   );
 }
 
+function isTypeAny(type: true | {} | Schema) {
+  if (type === true) {
+    return true;
+  }
+
+  if (typeof type === "object" && Object.keys(type).length <= 0) {
+    return true;
+  }
+
+  if ((type as Schema).AnyValue) {
+    return true;
+  }
+
+  return false;
+}
+
+/** Used to replace {name} in string with obj.name */
+function template(str: string, obj: { [x: string]: string } = {}) {
+  Object.entries(obj).forEach(([key, value]) => {
+    const re = new RegExp(`{${key}}`, "i");
+    str = str.replace(re, value);
+  });
+
+  const re = new RegExp("{*}", "g");
+  if (re.test(str)) {
+    throw new Error(`methodName: Some A key is missed "${str}"`);
+  }
+  return str;
+}
+
 export {
   majorVersionsCheck,
   getPathParams,
@@ -316,4 +375,6 @@ export {
   getParamString,
   getParametersInfo,
   getJsdoc,
+  isTypeAny,
+  template,
 };

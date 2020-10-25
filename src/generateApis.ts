@@ -3,6 +3,7 @@ import {
   isAscending,
   getDefineParam,
   getParamString,
+  getJsdoc,
 } from "./utils";
 import { ApiAST } from "./types";
 import { SERVICE_BEGINNING, DEPRECATED_WARM_MESSAGE } from "./strings";
@@ -31,31 +32,36 @@ function generateApis(apis: ApiAST[]): string {
             method,
             endPoint,
             pathParamsRefString,
-            contentType,
-            accept,
-            tags,
+            additionalAxiosConfig,
+            security,
           },
         ) => {
           return (
             prev +
             `
-${
-  summary || deprecated
-    ? `/**${summary ? `\n * ${summary}` : ""}${
-        deprecated ? `\n * @deprecated ${DEPRECATED_WARM_MESSAGE}` : ""
-      }\n */`
-    : ""
-}
-export const ${serviceName} = async (
-    ${pathParams
-      .map(({ name, required, schema, description }) =>
-        getDefineParam(name, required, schema, description),
-      )
-      .join(",")}${pathParams.length > 0 ? "," : ""}${
+${getJsdoc({
+  description: summary,
+  tags: {
+    deprecated: {
+      value: Boolean(deprecated),
+      description: DEPRECATED_WARM_MESSAGE,
+    },
+  },
+})}export const ${serviceName} = async (
+    ${
+      /** Path parameters */
+      pathParams
+        .map(({ name, required, schema, description }) =>
+          getDefineParam(name, required, schema, description),
+        )
+        .join(",")
+    }${pathParams.length > 0 ? "," : ""}${
+              /** Request Body */
               requestBody
                 ? `${getDefineParam("requestBody", true, requestBody)},`
                 : ""
             }${
+              /** Query parameters */
               queryParamsTypeName
                 ? `${getParamString(
                     "queryParams",
@@ -64,6 +70,7 @@ export const ${serviceName} = async (
                   )},`
                 : ""
             }${
+              /** Header parameters */
               headerParams
                 ? `${getParamString(
                     "headerParams",
@@ -84,7 +91,7 @@ export const ${serviceName} = async (
   }`
       : ""
   }
-  return responseWrapper(await Http.${method}Request(
+  return Http.${method}Request(
     ${
       pathParamsRefString
         ? `template("${endPoint}",${pathParamsRefString})`
@@ -92,16 +99,11 @@ export const ${serviceName} = async (
     },
     ${queryParamsTypeName ? "queryParams" : "undefined"},
     ${requestBody ? "requestBody" : "undefined"},
-    overrideConfig({
-        headers: {
-          "Content-Type": "${contentType}",
-          Accept: "${accept}",
-          ${headerParams ? "...headerParams," : ""}
-        },
-      },
+    ${security},
+    overrideConfig(${additionalAxiosConfig},
       configOverride,
     )
-  ))
+  )
 }
 `
           );

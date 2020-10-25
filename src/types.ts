@@ -1,15 +1,38 @@
+type DataType =
+  /** This includes dates and files */
+  "string" | "number" | "integer" | "boolean" | "array" | "object";
+
 export interface Schema {
   title?: string;
   nullable?: boolean;
-  type: "object" | "array" | "string";
-  items?: Schema;
   maxLength?: number,
   max?: number,
   min?: number,
   pattern?: string,
+  type: DataType;
+  /**
+   * An array of arbitrary types can be defined as:
+   *
+   *     Type: array
+   *     items: {}
+   */
+  items?: Schema | {};
+  /** Files are defined as strings: "binary" | "byte" */
   format?: "int64" | "binary" | "date-time" | "date";
-  additionalProperties?: Schema;
+  /**
+   * A free-form object (arbitrary property/value pairs) is defined as:
+   *
+   *     Type: object
+   *     additionalProperties: {}
+   *     Or additionalProperties: true
+   */
+  additionalProperties?: Schema | true | {};
   properties?: { [name: string]: Schema };
+  /**
+   * By default, all object properties are optional. You can specify the
+   * required properties in the required list:
+   */
+  required?: string[];
   description?: string;
   example?: string;
   "x-enumNames"?: ["Rial"];
@@ -19,7 +42,46 @@ export interface Schema {
   $ref?: string;
   allOf?: Schema[];
   oneOf?: Schema[];
-  required?: string[];
+  /** Is something link oneOf */
+  anyOf?: Schema[];
+  /**
+   * Use the minimum and maximum keywords to specify the range of possible
+   * values:
+   *
+   *     Type: integer
+   *     minimum: 1
+   *     maximum: 20
+   *
+   * By default, the minimum and maximum values are included in the range, that
+   * is:
+   *
+   *     Minimum ≤ value ≤ maximum
+   *
+   * To exclude the boundary values, specify exclusiveMinimum: true and
+   * exclusiveMaximum: true. For example, you can define a floating-point
+   * number range as 0–50 and exclude the 0 value:
+   */
+  minimum?: number;
+  exclusiveMinimum?: boolean;
+  exclusiveMaximum?: boolean;
+  maximum?: number;
+
+  /**
+   * A schema without a type matches any data type – numbers, strings, objects,
+   * and so on. {} is shorthand syntax for an arbitrary-type schema:
+   *
+   * @example
+   *   components: {
+   *     schemas: {
+   *       AnyValue: {
+   *       }
+   *     }
+   *   }
+   */
+  AnyValue?: {
+    nullable?: boolean;
+    description?: string;
+  };
 }
 
 export type Parameter = {
@@ -68,17 +130,13 @@ export interface SwaggerResponse {
 
 export interface SwaggerRequest {
   tags: string[]; // ["Account"];
-  summary: string; // "Get user account balance";
-  operationId: string; // "Account_GetBalance";
+  summary?: string; // "Get user account balance";
+  operationId?: string; // "Account_GetBalance";
   parameters?: Parameter[];
   requestBody?: SwaggerResponse;
   responses: { [x: string]: SwaggerResponse };
-  deprecated: boolean;
-  security: [
-    {
-      "JWT token": [];
-    },
-  ];
+  deprecated?: boolean;
+  security?: any[];
 }
 
 export interface SwaggerSchemas {
@@ -103,6 +161,7 @@ export interface SwaggerConfig {
   dir: string;
   prettierPath: string;
   language: "javascript" | "typescript";
+  methodName: string;
   ignore: {
     headerParams: string[];
   };
@@ -110,8 +169,8 @@ export interface SwaggerConfig {
 
 export type ApiAST = {
   tags: string[],
-  summary: string;
-  deprecated: boolean;
+  summary: string | undefined;
+  deprecated: boolean | undefined;
   serviceName: string;
   pathParams: Parameter[];
   requestBody: Schema | undefined;
@@ -122,9 +181,9 @@ export type ApiAST = {
   responses: Schema | undefined;
   pathParamsRefString: string | undefined;
   endPoint: string;
-  contentType: string;
-  accept: string;
   method: string;
+  security: string;
+  additionalAxiosConfig: string;
 };
 
 export type TypeAST = {
@@ -149,3 +208,5 @@ export type JsdocAST = {
     example?: string;
   };
 };
+
+export type ConstantsAST = { value: string; name: string };

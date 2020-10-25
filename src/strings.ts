@@ -16,15 +16,34 @@ const APIS_BEGINNING = `// APIS grouped by tags of OAS
 `;
 
 const SERVICE_BEGINNING = `
-// AUTO_GENERATED Do not change this file directly change config.ts file instead
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 4
+ */
 import { AxiosRequestConfig } from "axios";
-import { SwaggerResponse, responseWrapper } from "./config";
-import { Http, overrideConfig } from "./httpRequest";
+import { SwaggerResponse } from "./config";
+import { Http } from "./httpRequest";
 import { DtoBase } from "./DtoBase";
 
 //@ts-ignore
 const __DEV__ = process.env.NODE_ENV !== "production";
 
+function overrideConfig(
+  config?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig,
+): AxiosRequestConfig {
+  return {
+    ...config,
+    ...configOverride,
+    headers: {
+      ...config?.headers,
+      ...configOverride?.headers,
+    },
+  };
+}
+
+//@ts-ignore
 function template(path: string, obj: { [x: string]: any } = {}) {
     Object.keys(obj).forEach((key) => {
       const re = new RegExp(\`{\${key}}\`, "i");
