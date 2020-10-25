@@ -20,6 +20,7 @@ function getTypeDefinition(name: string, schema: Schema, description?: string) {
   const { type, enum: Enum, allOf, oneOf, items, $ref } = schema;
   if (type === "object") {
     const typeObject = getTsType(schema);
+
     return `
     export interface ${name} ${typeObject}
   `;

@@ -206,7 +206,6 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
     }
 
     let code = generateApis(apis);
-
     code += generateTypes(types);
     code += generateConstants(constants);
 
