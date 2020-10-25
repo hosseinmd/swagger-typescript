@@ -5,6 +5,10 @@ type DataType =
 export interface Schema {
   title?: string;
   nullable?: boolean;
+  maxLength?: number;
+  max?: number;
+  min?: number;
+  pattern?: string;
   type: DataType;
   /**
    * An array of arbitrary types can be defined as:
@@ -13,8 +17,32 @@ export interface Schema {
    *     items: {}
    */
   items?: Schema | {};
-  /** Files are defined as strings: "binary" | "byte" */
-  format?: "int64" | "binary" | "byte";
+
+  /**
+   * Files are defined as strings: "binary" | "byte"
+   *
+   *     - integer int32	signed 32 bits
+   *     - integer int64	signed 64 bits (a.k.a long)
+   *     - number float
+   *     - number double
+   *     - string
+   *     - string byte	base64 encoded characters
+   *     - string binary	any sequence of octets
+   *     - boolean
+   *     - string date	As defined by full-date - RFC3339
+   *     - string date-time	As defined by date-time - RFC3339
+   *     - string password	A hint to UIs to obscure input.
+   */
+  format?:
+    | "int32"
+    | "int64"
+    | "float"
+    | "double"
+    | "byte"
+    | "binary"
+    | "date"
+    | "date"
+    | "password";
   /**
    * A free-form object (arbitrary property/value pairs) is defined as:
    *
@@ -125,7 +153,7 @@ export interface SwaggerResponse {
 }
 
 export interface SwaggerRequest {
-  tags: string; // ["Account"];
+  tags: string[]; // ["Account"];
   summary?: string; // "Get user account balance";
   operationId?: string; // "Account_GetBalance";
   parameters?: Parameter[];
@@ -187,7 +215,6 @@ export type TypeAST = {
 };
 
 export type JsdocAST = {
-  title?: string;
   description?: string;
   tags?: {
     deprecated?: {

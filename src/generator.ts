@@ -4,6 +4,7 @@ import {
   getHeaderParams,
   getParametersInfo,
   getRefName,
+  toPascalCase,
 } from "./utils";
 import type {
   SwaggerRequest,
@@ -74,10 +75,9 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             isNullable: isQueryParamsNullable,
             params: queryParameters,
           } = getParametersInfo(parameters, "query");
-          let queryParamsTypeName: string | false = serviceName
-            .substring(0, 1)
-            .toUpperCase();
-          queryParamsTypeName += `${serviceName.substring(1)}QueryParams`;
+          let queryParamsTypeName: string | false = `${toPascalCase(
+            serviceName,
+          )}QueryParams`;
 
           queryParamsTypeName = queryParams && queryParamsTypeName;
 

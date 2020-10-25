@@ -30,6 +30,10 @@ function getParams(
   };
 }
 
+function toPascalCase(str: string): string {
+  return `${str.substring(0, 1).toUpperCase()}${str.substring(1)}`;
+}
+
 function generateServiceName(
   endPoint: string,
   method: string,
@@ -38,9 +42,7 @@ function generateServiceName(
 ): string {
   function replaceWithUpper(str: string, sp: string) {
     let pointArray = str.split(sp);
-    pointArray = pointArray.map(
-      (point) => `${point.substring(0, 1).toUpperCase()}${point.substring(1)}`,
-    );
+    pointArray = pointArray.map((point) => toPascalCase(point));
 
     return pointArray.join("");
   }
@@ -111,6 +113,7 @@ function getTsType(schema: true | {} | Schema): string {
     properties,
     oneOf,
     additionalProperties,
+    required,
   } = schema as Schema;
   let tsType = TYPES[type as keyof typeof TYPES];
 
@@ -140,15 +143,14 @@ function getTsType(schema: true | {} | Schema): string {
   if (properties) {
     tsType = getObjectType(
       Object.entries(properties).map(([pName, _schema]) => ({
-        schema: _schema,
+        schema: {
+          ..._schema,
+          nullable: !required?.find((name) => name === pName),
+        },
         name: pName,
       })),
     );
   }
-
-  // if (nullable) {
-  //   tsType + "| null";
-  // }
 
   return tsType;
 }
@@ -186,8 +188,15 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
         },
       ) => {
         return `${prev}${getJsdoc({
-          title: title,
-          description: description,
+          description: assignToDescription({
+            description,
+            title,
+            format: schema.format,
+            maxLength: schema.maxLength,
+            min: schema.min,
+            max: schema.max,
+            pattern: schema.pattern,
+          }),
           tags: {
             deprecated: {
               value: Boolean(deprecated),
@@ -195,7 +204,7 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
             },
             example,
           },
-        })}${name}${nullable ? "?" : ""}: ${getTsType(schema)},`;
+        })}${name}${nullable ? "?" : ""}: ${getTsType(schema)};`;
       },
       "",
     );
@@ -233,20 +242,70 @@ function getParametersInfo(
   };
 }
 
-function getJsdoc({
+function assignToDescription({
+  description,
   title,
+  format,
+  maxLength,
+  max,
+  min,
+  pattern,
+}: {
+  title?: string;
+  description?: string;
+  format?: string;
+  pattern?: string;
+  maxLength?: number;
+  min?: number;
+  max?: number;
+}) {
+  return `${
+    title
+      ? `
+  * ${title}
+  *`
+      : ""
+  }${
+    description
+      ? `
+  * ${description}
+  `
+      : ""
+  }${
+    format
+      ? `
+  *    Format: ${format}`
+      : ""
+  }${
+    maxLength
+      ? `
+  *    maxLength: ${maxLength}`
+      : ""
+  }${
+    min
+      ? `
+  *    min: ${min}`
+      : ""
+  }${
+    max
+      ? `
+  *    max: ${max}`
+      : ""
+  }${
+    pattern
+      ? `
+  *    pattern: ${pattern}`
+      : ""
+  }`;
+}
+
+function getJsdoc({
   description,
   tags: { deprecated, example } = {},
 }: JsdocAST) {
-  return deprecated?.value || description
+  return deprecated?.value || description || example
     ? `
       /**${
-        title
-          ? `
-      * ${title}
-      *`
-          : ""
-      }${
         description
           ? `
       * ${description}`
@@ -260,8 +319,7 @@ function getJsdoc({
         example
           ? `
       * @example 
-      *   ${example}
-      `
+      *   ${example}`
           : ""
       }
       */
@@ -345,4 +403,5 @@ export {
   getJsdoc,
   isTypeAny,
   template,
+  toPascalCase,
 };
