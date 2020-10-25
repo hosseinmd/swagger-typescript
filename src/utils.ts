@@ -1,4 +1,4 @@
-import { Schema, Parameter, SwaggerConfig, JsdocAST, SwaggerRequest } from "./types";
+import { Schema, Parameter, SwaggerConfig, JsdocAST } from "./types";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (
@@ -30,6 +30,10 @@ function getParams(
   };
 }
 
+function toPascalCase(str: string): string {
+  return `${str.substring(0, 1).toUpperCase()}${str.substring(1)}`;
+}
+
 function generateServiceName(
   endPoint: string,
   method: string,
@@ -38,9 +42,7 @@ function generateServiceName(
 ): string {
   function replaceWithUpper(str: string, sp: string) {
     let pointArray = str.split(sp);
-    pointArray = pointArray.map(
-      (point) => `${point.substring(0, 1).toUpperCase()}${point.substring(1)}`,
-    );
+    pointArray = pointArray.map((point) => toPascalCase(point));
 
     return pointArray.join("");
   }
@@ -104,15 +106,14 @@ function getTsType(schema: true | {} | Schema): string {
   }
 
   const {
-      type,
-      $ref,
-      enum: Enum,
-      items,
-      properties,
-      oneOf,
-      additionalProperties,
-      required
-
+    type,
+    $ref,
+    enum: Enum,
+    items,
+    properties,
+    oneOf,
+    additionalProperties,
+    required,
   } = schema as Schema;
   let tsType = TYPES[type as keyof typeof TYPES];
 
@@ -140,24 +141,21 @@ function getTsType(schema: true | {} | Schema): string {
   }
 
   if (properties) {
-
     tsType = getObjectType(
-      Object.entries(properties).map<{ schema: Schema, name: string, isRequired: boolean | undefined }>(([pName, _schema]) => ({
-        schema: _schema,
+      Object.entries(properties).map(([pName, _schema]) => ({
+        schema: {
+          ..._schema,
+          nullable: !required?.find((name) => name === pName),
+        },
         name: pName,
-        isRequired: required && required.filter((propReq) => propReq == pName).length > 0,
       })),
     );
   }
 
-  // if (nullable) {
-  //   tsType + "| null";
-  // }
-  tsType = tsType.substr(0, 1).toUpperCase() + tsType.substr(1);
   return tsType;
 }
 
-function getObjectType(parameter: { schema: Schema; name: string, isRequired?: boolean }[]) {
+function getObjectType(parameter: { schema: Schema; name: string }[]) {
   const object = parameter
     .sort(
       (
@@ -187,18 +185,18 @@ function getObjectType(parameter: { schema: Schema; name: string, isRequired?: b
           },
           schema,
           name,
-          isRequired,
         },
       ) => {
-
         return `${prev}${getJsdoc({
-          title: title,
-          description: description,
-          format: schema.format,
-          maxLength: schema.maxLength,
-          min: schema.min,
-          max: schema.max,
-          pattern: schema.pattern,
+          description: assignToDescription({
+            description,
+            title,
+            format: schema.format,
+            maxLength: schema.maxLength,
+            min: schema.min,
+            max: schema.max,
+            pattern: schema.pattern,
+          }),
           tags: {
             deprecated: {
               value: Boolean(deprecated),
@@ -206,7 +204,7 @@ function getObjectType(parameter: { schema: Schema; name: string, isRequired?: b
             },
             example,
           },
-        })}${name}${nullable || !isRequired ? "?" : ""}: ${getTsType(schema)};`;
+        })}${name}${nullable ? "?" : ""}: ${getTsType(schema)};`;
       },
       "",
     );
@@ -244,58 +242,86 @@ function getParametersInfo(
   };
 }
 
-function getJsdoc({
-  title,
+function assignToDescription({
   description,
+  title,
   format,
   maxLength,
   max,
   min,
   pattern,
+}: {
+  title?: string;
+  description?: string;
+  format?: string;
+  pattern?: string;
+  maxLength?: number;
+  min?: number;
+  max?: number;
+}) {
+  return `${
+    title
+      ? `
+  * ${title}
+  *`
+      : ""
+  }${
+    description
+      ? `
+  * ${description}
+  `
+      : ""
+  }${
+    format
+      ? `
+  *    Format: ${format}`
+      : ""
+  }${
+    maxLength
+      ? `
+  *    maxLength: ${maxLength}`
+      : ""
+  }${
+    min
+      ? `
+  *    min: ${min}`
+      : ""
+  }${
+    max
+      ? `
+  *    max: ${max}`
+      : ""
+  }${
+    pattern
+      ? `
+  *    pattern: ${pattern}`
+      : ""
+  }`;
+}
+
+function getJsdoc({
+  description,
   tags: { deprecated, example } = {},
 }: JsdocAST) {
-  return deprecated?.value || description || format || maxLength || min || max || pattern
+  return deprecated?.value || description || example
     ? `
-      /**${title
-      ? `
-      * ${title}
-      *`
-      : ""
-    }${description
-      ? `
+      /**${
+        description
+          ? `
       * ${description}`
-      : ""
-    }${format
-      ? `
-      * Format: ${format}`
-      : ""
-    }${maxLength
-      ? `
-      * maxLength: ${maxLength}`
-      : ""
-    }${min
-      ? `
-      * min: ${min}`
-      : ""
-    }${max
-      ? `
-      * max: ${max}`
-      : ""
-    }${pattern
-      ? `
-      * pattern: ${pattern}`
-      : ""
-    }${deprecated?.value
-      ? `
+          : ""
+      }${
+        deprecated?.value
+          ? `
       * @deprecated ${deprecated.description || ""}`
-      : ""
-    }${example
-      ? `
+          : ""
+      }${
+        example
+          ? `
       * @example 
-      *   ${example}
-      `
-      : ""
-    }
+      *   ${example}`
+          : ""
+      }
       */
 `
     : "";
@@ -377,4 +403,5 @@ export {
   getJsdoc,
   isTypeAny,
   template,
+  toPascalCase,
 };

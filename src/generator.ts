@@ -4,6 +4,7 @@ import {
   getHeaderParams,
   getParametersInfo,
   getRefName,
+  toPascalCase,
 } from "./utils";
 import type {
   SwaggerRequest,
@@ -18,7 +19,6 @@ import type {
 } from "./types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
-import { generateTags } from "./generateTags";
 import { generateConstants } from "./generateConstants";
 
 function generator(input: SwaggerJson, config: SwaggerConfig): string {
@@ -75,10 +75,9 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             isNullable: isQueryParamsNullable,
             params: queryParameters,
           } = getParametersInfo(parameters, "query");
-          let queryParamsTypeName: string | false = serviceName
-            .substring(0, 1)
-            .toUpperCase();
-          queryParamsTypeName += `${serviceName.substring(1)}QueryParams`;
+          let queryParamsTypeName: string | false = `${toPascalCase(
+            serviceName,
+          )}QueryParams`;
 
           queryParamsTypeName = queryParams && queryParamsTypeName;
 
@@ -114,12 +113,12 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
 
           const contentType = Object.keys(
             options.requestBody?.content ||
-            (options.requestBody?.$ref &&
-              input.components?.requestBodies?.[
-                getRefName(options.requestBody.$ref as string)
-              ]?.content) || {
-              "application/json": null,
-            },
+              (options.requestBody?.$ref &&
+                input.components?.requestBodies?.[
+                  getRefName(options.requestBody.$ref as string)
+                ]?.content) || {
+                "application/json": null,
+              },
           )[0];
 
           const accept = Object.keys(
@@ -170,7 +169,6 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             pathParamsRefString,
             endPoint,
             method,
-            tags:options.tags,
             security: security
               ? getConstantName(JSON.stringify(security))
               : "undefined",
@@ -212,10 +210,6 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
     code += generateTypes(types);
     code += generateConstants(constants);
 
-    if (input.tags) {
-      code += generateTags(apis, input.tags);
-    }
-
     return code;
   } catch (error) {
     console.error({ error });
@@ -231,10 +225,10 @@ function getBodyContent(responses?: SwaggerResponse): Schema | undefined {
   return responses.content
     ? Object.values(responses.content)[0].schema
     : responses.$ref
-      ? ({
+    ? ({
         $ref: responses.$ref,
       } as Schema)
-      : undefined;
+    : undefined;
 }
 
 export { generator };

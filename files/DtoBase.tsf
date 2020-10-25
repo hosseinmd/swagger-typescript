@@ -1,7 +1,0 @@
-// AUTO_GENERATED Do not change this file directly
-
-class DtoBase {
-
-}
-
-export { DtoBase };
