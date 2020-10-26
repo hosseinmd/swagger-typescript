@@ -2,7 +2,6 @@
     "url": "https://generator3.swagger.io/openapi.json",
     "dir": "./test",
     "language": "typescript",
-    "modelNaming":"snake-upper",
     "ignore": {
         "headerParams": [
             "terminalId"
