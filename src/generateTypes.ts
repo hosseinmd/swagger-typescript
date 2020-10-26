@@ -1,4 +1,5 @@
-import { getJsdoc, getRefName, getTsType, isAscending } from "./utils";
+/* eslint-disable prettier/prettier */
+import { getJsdoc, getRefName, getTsType, isAscending, getNamingModel, getNamingPropertyEnum } from "./utils";
 import type { Schema, TypeAST } from "./types";
 
 function generateTypes(types: TypeAST[]): string {
@@ -18,34 +19,38 @@ function generateTypes(types: TypeAST[]): string {
 
 function getTypeDefinition(name: string, schema: Schema, description?: string) {
   const { type, enum: Enum, allOf, oneOf, items, $ref } = schema;
+
+  name = getNamingModel(name);
   if (type === "object") {
     const typeObject = getTsType(schema);
-
     return `
     export interface ${name} ${typeObject}
-  `;
+    `;
   }
 
   if (Enum) {
     return `
    ${getJsdoc({ description })}export enum ${name} {${Enum.map(
-      (e) => `${e}=${typeof e === "string" ? `"${e}"` : ""}`,
-    )}}
+      (e) => {
+        const valueEnum =e;
+        e = getNamingPropertyEnum(e);
+        return `${e}=${typeof e === "string" ? `"${valueEnum}"` : ""}`
+      })}}
    `;
   }
 
   if (allOf) {
     return `
   export interface ${name} extends ${allOf
-      .map((_schema) => getTsType(_schema))
-      .join(" ")}
+        .map((_schema) => getTsType(_schema))
+        .join(" ")}
           `;
   }
   if (oneOf) {
     return `
   export type ${name} = ${oneOf
-      .map((_schema) => getTsType(_schema))
-      .join(" | ")}
+        .map((_schema) => getTsType(_schema))
+        .join(" | ")}
           `;
   }
   if (type === "array" && items) {

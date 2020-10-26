@@ -5,6 +5,8 @@ import {
   getParametersInfo,
   getRefName,
   toPascalCase,
+  getNamingService,
+  getNamingModel,
 } from "./utils";
 import type {
   SwaggerRequest,
@@ -20,8 +22,10 @@ import type {
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
 import { generateConstants } from "./generateConstants";
+import { configSwagger } from "./swagger-config";
+import { generateTags } from "./generateTags";
 
-function generator(input: SwaggerJson, config: SwaggerConfig): string {
+function generator(input: SwaggerJson): string {
   const apis: ApiAST[] = [];
   const types: TypeAST[] = [];
   let constantsCounter = 0;
@@ -61,12 +65,11 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             return parameter;
           });
 
-          const serviceName = generateServiceName(
+          const serviceName = getNamingService(generateServiceName(
             endPoint,
             method,
-            operationId,
-            config,
-          );
+            operationId
+          ));
 
           const pathParams = getPathParams(parameters);
 
@@ -75,9 +78,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             isNullable: isQueryParamsNullable,
             params: queryParameters,
           } = getParametersInfo(parameters, "query");
-          let queryParamsTypeName: string | false = `${toPascalCase(
-            serviceName,
-          )}QueryParams`;
+          let queryParamsTypeName: string | false = `${getNamingModel( serviceName + "QueryParams")}`;
 
           queryParamsTypeName = queryParams && queryParamsTypeName;
 
@@ -107,7 +108,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
           const {
             params: headerParams,
             hasNullable: hasNullableHeaderParams,
-          } = getHeaderParams(options.parameters, config);
+          } = getHeaderParams(options.parameters);
 
           const requestBody = getBodyContent(options.requestBody);
 
@@ -169,6 +170,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             pathParamsRefString,
             endPoint,
             method,
+            tags: options.tags,
             security: security
               ? getConstantName(JSON.stringify(security))
               : "undefined",
@@ -208,6 +210,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
     let code = generateApis(apis);
     code += generateTypes(types);
     code += generateConstants(constants);
+    code += generateTags(apis, input.tags);
 
     return code;
   } catch (error) {
