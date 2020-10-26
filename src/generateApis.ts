@@ -5,7 +5,7 @@ import {
   getParamString,
   getJsdoc,
 } from "./utils";
-import { ApiAST } from "./types";
+import { ApiAST, SwaggerConfig } from "./types";
 import { SERVICE_BEGINNING, DEPRECATED_WARM_MESSAGE } from "./strings";
 
 function generateApis(apis: ApiAST[]): string {

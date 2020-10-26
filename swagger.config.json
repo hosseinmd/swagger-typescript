@@ -1,7 +1,8 @@
 {
-    "url": "http://94.182.181.229:8022/swagger/v1/swagger.json",
+    "url": "https://generator3.swagger.io/openapi.json",
     "dir": "./test",
     "language": "typescript",
+    "modelNaming":"snake-upper",
     "ignore": {
         "headerParams": [
             "terminalId"

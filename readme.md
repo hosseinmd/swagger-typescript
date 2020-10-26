@@ -62,13 +62,19 @@ For Example:
 
 ```json
 {
-  "url": "http://example.com/api/swagger.json",
-  "dir": "./test",
-  "prettierPath": ".prettierrc",
-  "language": "typescript",
-  "ignore": {
-    "headerParams": ["terminalId"]
-  }
+    "url": "https://generator3.swagger.io/openapi.json",
+    "dir": "./test",
+    "language": "typescript",
+    "modelNaming":"camel",
+    "modelPropertyNaming":"original",
+    "enumPropertyNaming":"pascal",
+    "serviceNaming":"canel",
+    "tagNaming":"snake-upper",
+    "ignore": {
+        "headerParams": [
+            "terminalId"
+        ]
+    }
 }
 ```
 
@@ -78,7 +84,12 @@ For Example:
 | `dir`        | Required         | Address of output                                                                      |
 | `language`   | `typescript`     | export to "javascript" or "typescript"                                                 |
 | `methodName` | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}' |
-| `ignore`     | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]} `   |
+| `modelNaming`     | `original`         | `camel` or `pascal` or `snake` or `snake-upper` or `original`   |
+| `modelPropertyNaming`     | `original` | `camel` or `pascal` or `snake` or `snake-upper` or `original`   |
+| `enumPropertyNaming`     | `original`  | `camel` or `pascal` or `snake` or `snake-upper` or `original`   |
+| `serviceNaming`     | `original`       | `camel` or `pascal` or `snake` or `snake-upper` or `original`   |
+| `tagNaming`     | `original`         | `camel` or `pascal` or `snake` or `snake-upper` or `original`   |
+| `ignore`     | Optional        | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]} `   |
 
 ## config.ts
 
@@ -91,6 +102,23 @@ getAxiosInstance used for create an instance of axios request you can customize 
 #### baseConfig
 
 baseConfig used for get static configs and headers. if you need some dynamic configs like add authentication to headers use `requestConfig.headers.authorization` into of `axiosInstance.interceptors.request.use` function.
+
+## Typescript / Factories
+
+Operations grouped by tags like Swagger UI.
+
+```code
+
+import { getApi, getService } from "../apis-generated/serviceFactory";
+
+// Api factory
+const apiUsuario = getApi("Usuario");
+
+// Service factory
+let response = await getService("Usuario","getUsuario")({ id: this.controller.IdUsuario });
+
+```
+
 
 ## Stories
 
