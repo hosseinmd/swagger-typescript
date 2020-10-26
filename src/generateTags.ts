@@ -1,4 +1,5 @@
 import {
+  getNamingTag,
   isAscending,
 } from "./utils";
 import { ApiAST } from "./types";
@@ -6,10 +7,10 @@ import { APIS_BEGINNING } from "./strings";
 
 function generateTags(apis: ApiAST[], tags: { name: string }[]): string {
   try {
-    let code:string="";
+    let code: string = "";
     if (tags && tags.length > 0) {
       code += APIS_BEGINNING;
-      code += ` export const Apis = {
+      code += ` export class Apis {
         `;
       code += tags
         .sort(({ name }) => isAscending(name, name))
@@ -27,17 +28,17 @@ function generateTags(apis: ApiAST[], tags: { name: string }[]): string {
               return "";
             }
 
-            let nameApi = tag.name.substr(0, 1).toUpperCase() + tag.name.substr(1);
+            let nameApi = getNamingTag(tag.name);
 
             return (
               prev +
               `
-            ${nameApi} : {
-    ${apisFilterByTag.map(({ serviceName }) => serviceName + ":" + serviceName)} },
+            ${nameApi} = {
+    ${apisFilterByTag.map(({ serviceName }) => serviceName + ":" + serviceName)} };
     `)
           }, "");
 
-          code += ` }
+      code += ` }
           `;
     }
     return code;

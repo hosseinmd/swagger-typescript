@@ -2,6 +2,11 @@
     "url": "http://94.182.181.229:8022/swagger/v1/swagger.json",
     "dir": "./test",
     "language": "typescript",
+    "modelNaming":"original",
+    "modelPropertyNaming":"originalr",
+    "enumPropertyNaming":"original",
+    "serviceNaming":"original",
+    "tagNaming":"original",
     "ignore": {
         "headerParams": [
             "terminalId"

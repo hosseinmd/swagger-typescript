@@ -1,0 +1,13 @@
+import { Apis } from "./services";
+
+const apis = new Apis();
+
+function getApi<T extends keyof Apis>(apiName: T): Apis[T] {
+    return apis[apiName];
+};
+
+function getService<T extends keyof Apis, Y extends keyof Apis[T]>(apiName: T, serviceName: Y): Apis[T][Y] {
+    return apis[apiName][serviceName];
+};
+
+export { getApi, getService }

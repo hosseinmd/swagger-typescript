@@ -1,3 +1,5 @@
+import { getNamingParse } from "./naming-parser";
+import { configSwagger } from "./swagger-config";
 import { Schema, Parameter, SwaggerConfig, JsdocAST } from "./types";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
@@ -38,12 +40,11 @@ function generateServiceName(
   endPoint: string,
   method: string,
   operationId: string | undefined,
-  config: SwaggerConfig,
 ): string {
+
   function replaceWithUpper(str: string, sp: string) {
     let pointArray = str.split(sp);
     pointArray = pointArray.map((point) => toPascalCase(point));
-
     return pointArray.join("");
   }
 
@@ -55,7 +56,8 @@ function generateServiceName(
     "-",
   );
 
-  const { methodName } = config;
+  const { methodName } = configSwagger;
+
   const hasMethodNameOperationId = /(\{operationId\})/i.test(methodName);
   let methodNameTemplate = hasMethodNameOperationId
     ? operationId
@@ -69,7 +71,63 @@ function generateServiceName(
     method,
     ...(operationId ? { operationId } : {}),
   });
+
   return serviceName;
+}
+
+function getNamingModel(str: string): string {
+  const { modelNaming } = configSwagger;
+
+  let namingConvention = modelNaming ? modelNaming : "original";
+
+  if (namingConvention == "original")
+    return str;
+  else
+    return getNamingParse(namingConvention)(str);
+}
+
+function getNamingTag(str: string): string {
+  const { tagNaming } = configSwagger;
+
+  let namingConvention = tagNaming ? tagNaming : "original";
+
+  if (namingConvention == "original")
+    return str;
+  else
+    return getNamingParse(namingConvention)(str);
+}
+
+function getNamingService(str: string): string {
+  const { serviceNaming } = configSwagger;
+
+  let namingConvention = serviceNaming ? serviceNaming : "original";
+
+  if (namingConvention == "original")
+    return str;
+  else
+    return getNamingParse(namingConvention)(str);
+}
+
+function getNamingPropertyModel(str: string): string {
+  const { modelPropertyNaming } = configSwagger;
+
+  let namingConvention = modelPropertyNaming ? modelPropertyNaming : "original";
+
+  if (namingConvention == "original")
+    return str;
+  else
+    return getNamingParse(namingConvention)(str);
+}
+
+function getNamingPropertyEnum(str: string): string {
+  const { enumPropertyNaming } = configSwagger;
+
+  let namingConvention = enumPropertyNaming ? enumPropertyNaming : "original";
+
+  if (namingConvention == "original")
+    return str;
+  else
+    return getNamingParse(namingConvention)(str);
 }
 
 const TYPES = {
@@ -85,7 +143,7 @@ function getDefineParam(
   name: string,
   required: boolean = false,
   schema: Schema,
-  description?: string,
+  description?: string
 ): string {
   return getParamString(name, required, getTsType(schema), description);
 }
@@ -142,17 +200,22 @@ function getTsType(schema: true | {} | Schema): string {
 
   if (properties) {
     tsType = getObjectType(
-      Object.entries(properties).map(([pName, _schema]) => ({
-        schema: {
-          ..._schema,
-          nullable: !required?.find((name) => name === pName),
-        },
-        name: pName,
-      })),
+      Object.entries(properties).map(([pName, _schema]) => {
+        pName = getNamingPropertyModel(pName);
+        return {
+          schema: {
+            ..._schema,
+            nullable: !required?.find((name) => name === pName),
+          },
+          name: pName,
+        }}),
     );
-  }
 
-  return tsType;
+} else {
+  tsType = getNamingModel(tsType);
+}
+
+return tsType;
 }
 
 function getObjectType(parameter: { schema: Schema; name: string }[]) {
@@ -259,44 +322,37 @@ function assignToDescription({
   min?: number;
   max?: number;
 }) {
-  return `${
-    title
-      ? `
+  return `${title
+    ? `
   * ${title}
   *`
-      : ""
-  }${
-    description
+    : ""
+    }${description
       ? `
   * ${description}
   `
       : ""
-  }${
-    format
+    }${format
       ? `
   *    Format: ${format}`
       : ""
-  }${
-    maxLength
+    }${maxLength
       ? `
   *    maxLength: ${maxLength}`
       : ""
-  }${
-    min
+    }${min
       ? `
   *    min: ${min}`
       : ""
-  }${
-    max
+    }${max
       ? `
   *    max: ${max}`
       : ""
-  }${
-    pattern
+    }${pattern
       ? `
   *    pattern: ${pattern}`
       : ""
-  }`;
+    }`;
 }
 
 function getJsdoc({
@@ -305,23 +361,20 @@ function getJsdoc({
 }: JsdocAST) {
   return deprecated?.value || description || example
     ? `
-      /**${
-        description
-          ? `
+      /**${description
+      ? `
       * ${description}`
-          : ""
-      }${
-        deprecated?.value
-          ? `
+      : ""
+    }${deprecated?.value
+      ? `
       * @deprecated ${deprecated.description || ""}`
-          : ""
-      }${
-        example
-          ? `
+      : ""
+    }${example
+      ? `
       * @example 
       *   ${example}`
-          : ""
-      }
+      : ""
+    }
       */
 `
     : "";
@@ -404,4 +457,9 @@ export {
   isTypeAny,
   template,
   toPascalCase,
+  getNamingModel,
+  getNamingPropertyModel,
+  getNamingService,
+  getNamingTag,
+  getNamingPropertyEnum
 };

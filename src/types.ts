@@ -34,15 +34,15 @@ export interface Schema {
    *     - string password	A hint to UIs to obscure input.
    */
   format?:
-    | "int32"
-    | "int64"
-    | "float"
-    | "double"
-    | "byte"
-    | "binary"
-    | "date"
-    | "date"
-    | "password";
+  | "int32"
+  | "int64"
+  | "float"
+  | "double"
+  | "byte"
+  | "binary"
+  | "date"
+  | "date"
+  | "password";
   /**
    * A free-form object (arbitrary property/value pairs) is defined as:
    *
@@ -168,7 +168,7 @@ export interface SwaggerSchemas {
 }
 
 export interface SwaggerJson {
-  openapi: string;  
+  openapi: string;
   tags: { name: string }[]
   paths: {
     [url: string]: SwaggerRequest;
@@ -180,19 +180,26 @@ export interface SwaggerJson {
   };
 }
 
+type NamingTypes = 'camel' | 'pascal' | 'snake' | 'snake-upper' | 'original' ;
+
 export interface SwaggerConfig {
   url: string;
   dir: string;
   prettierPath: string;
   language: "javascript" | "typescript";
   methodName: string;
+  modelNaming: NamingTypes,
+  modelPropertyNaming: NamingTypes,
+  enumPropertyNaming:NamingTypes,
+  serviceNaming: NamingTypes,
+  tagNaming: NamingTypes,
   ignore: {
     headerParams: string[];
   };
 }
 
 export type ApiAST = {
-  tags:string[],
+  tags: string[],
   summary: string | undefined;
   deprecated: boolean | undefined;
   serviceName: string;

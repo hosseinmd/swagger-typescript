@@ -7,16 +7,17 @@ import {
 } from "fs";
 import { format } from "prettier";
 import { SwaggerJson, SwaggerConfig } from "./types";
-import { HTTP_REQUEST, CONFIG, DTO_BASE } from "./strings";
+import { HTTP_REQUEST, CONFIG, SERVICE_FACTORY } from "./strings";
 import { getSwaggerJson } from "./getJson";
 import { generator } from "./generator";
 import { build } from "tsc-prog";
 import { majorVersionsCheck } from "./utils";
+import { configSwagger } from "./swagger-config";
 
 async function generate() {
-  const config: SwaggerConfig = getSwaggerConfig();
 
-  const { url, dir, prettierPath, language } = config;
+
+  const { url, dir, prettierPath, language } = configSwagger;
 
   const isToJs = language === "javascript";
 
@@ -31,14 +32,14 @@ async function generate() {
 
     majorVersionsCheck("3.0.0", input.openapi);
 
-    const code = generator(input, config);
+    const code = generator(input);
 
     writeFileSync(`${dir}/services.ts`, code);
 
     writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
-
-    if (!existsSync(`${dir}/DtoBase.${isToJs ? "js" : "ts"}`)) {
-      writeFileSync(`${dir}/DtoBase.ts`, DTO_BASE);
+ 
+    if (!existsSync(`${dir}/serviceFactory.${isToJs ? "js" : "ts"}`)) {
+      writeFileSync(`${dir}/serviceFactory.ts`, SERVICE_FACTORY);
     }
 
     if (!existsSync(`${dir}/config.${isToJs ? "js" : "ts"}`)) {
@@ -96,23 +97,7 @@ function convertTsToJs(dir: string) {
   }
 }
 
-function getSwaggerConfig() {
-  try {
-    const config = JSON.parse(readFileSync("swagger.config.json").toString());
 
-    if (!config) {
-      throw "";
-    }
-
-    return config;
-  } catch (error) {
-    try {
-      return JSON.parse(readFileSync("./swaggerConfig.json").toString()); // backward compatible for  v1
-    } catch {
-      throw new Error("Please define swagger.config.json");
-    }
-  }
-}
 
 function getPrettierOptions(prettierPath: string) {
   let prettierOptions: any = {};

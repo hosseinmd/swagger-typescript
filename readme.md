@@ -78,7 +78,12 @@ For Example:
 | `dir`        | Required         | Address of output                                                                      |
 | `language`   | `typescript`     | export to "javascript" or "typescript"                                                 |
 | `methodName` | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}' |
-| `ignore`     | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]} `   |
+| `modelNaming`     | `original`         | `camel` or `pascal` or `snake` or `snake-upper` or `original`   |
+| `modelPropertyNaming`     | `original` | `camel` or `pascal` or `snake` or `snake-upper` or `original`   |
+| `enumPropertyNaming`     | `original`  | `camel` or `pascal` or `snake` or `snake-upper` or `original`   |
+| `serviceNaming`     | `original`       | `camel` or `pascal` or `snake` or `snake-upper` or `original`   |
+| `tagNaming`     | `original`         | `camel` or `pascal` or `snake` or `snake-upper` or `original`   |
+| `ignore`     | `original`        | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]} `   |
 
 ## config.ts
 
