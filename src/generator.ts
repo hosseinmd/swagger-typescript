@@ -210,9 +210,7 @@ function generator(input: SwaggerJson): string {
     let code = generateApis(apis);
     code += generateTypes(types);
     code += generateConstants(constants);
-    if (input.tags) {
-      code += generateTags(apis, input.tags);
-    }
+    code += generateTags(apis, input.tags);
 
     return code;
   } catch (error) {

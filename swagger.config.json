@@ -3,7 +3,7 @@
     "dir": "./test",
     "language": "typescript",
     "modelNaming":"original",
-    "modelPropertyNaming":"originalr",
+    "modelPropertyNaming":"original",
     "enumPropertyNaming":"original",
     "serviceNaming":"original",
     "tagNaming":"original",

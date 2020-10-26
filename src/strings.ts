@@ -12,7 +12,8 @@ const SERVICE_FACTORY = readFileSync(
   path.resolve(__dirname, "../files/ServiceFactory.tsf"),
 ).toString();
 
-const APIS_BEGINNING = `// APIS grouped by tags of OAS
+const APIS_BEGINNING = `
+// APIS grouped by tags of OAS
 `;
 
 const SERVICE_BEGINNING = `
