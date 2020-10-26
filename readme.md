@@ -97,16 +97,21 @@ getAxiosInstance used for create an instance of axios request you can customize 
 
 baseConfig used for get static configs and headers. if you need some dynamic configs like add authentication to headers use `requestConfig.headers.authorization` into of `axiosInstance.interceptors.request.use` function.
 
-#### Typescript / Service Factories
+## Typescript / Factories
 
-##### Factory Apis
+Operations grouped by tags like Swagger UI.
 
 ```code
 
+import { getApi, getService } from "../apis-generated/serviceFactory";
+
+// Api factory
+const apiUsuario = getApi("Usuario");
+
+// Service factory
+let response = await getService("Usuario","getUsuario")({ id: this.controller.IdUsuario });
 
 ```
-
-##### Factory Service
 
 
 ## Stories
