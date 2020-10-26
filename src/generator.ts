@@ -4,7 +4,6 @@ import {
   getHeaderParams,
   getParametersInfo,
   getRefName,
-  toPascalCase,
   getNamingService,
   getNamingModel,
 } from "./utils";
@@ -12,7 +11,6 @@ import type {
   SwaggerRequest,
   SwaggerJson,
   SwaggerResponse,
-  SwaggerConfig,
   ApiAST,
   TypeAST,
   Schema,
@@ -22,7 +20,6 @@ import type {
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
 import { generateConstants } from "./generateConstants";
-import { configSwagger } from "./swagger-config";
 import { generateTags } from "./generateTags";
 
 function generator(input: SwaggerJson): string {

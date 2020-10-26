@@ -34,15 +34,15 @@ export interface Schema {
    *     - string password	A hint to UIs to obscure input.
    */
   format?:
-  | "int32"
-  | "int64"
-  | "float"
-  | "double"
-  | "byte"
-  | "binary"
-  | "date"
-  | "date"
-  | "password";
+    | "int32"
+    | "int64"
+    | "float"
+    | "double"
+    | "byte"
+    | "binary"
+    | "date"
+    | "date"
+    | "password";
   /**
    * A free-form object (arbitrary property/value pairs) is defined as:
    *

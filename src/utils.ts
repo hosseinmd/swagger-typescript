@@ -307,39 +307,45 @@ function assignToDescription({
   min?: number;
   max?: number;
 }) {
-  return `${title
-    ? `
+  return `${
+    title
+      ? `
   * ${title}
   *`
-    : ""
-    }${description
+      : ""
+  }${
+    description
       ? `
   * ${description}
   `
       : ""
-    }${format
+  }${
+    format
       ? `
   *    Format: ${format}`
       : ""
-    }${maxLength
+  }${
+    maxLength
       ? `
   *    maxLength: ${maxLength}`
       : ""
-    }${min
+  }${
+    min
       ? `
   *    min: ${min}`
       : ""
-    }${max
+  }${
+    max
       ? `
   *    max: ${max}`
       : ""
-    }${pattern
+  }${
+    pattern
       ? `
   *    pattern: ${pattern}`
       : ""
-    }`;
+  }`;
 }
-
 
 function getJsdoc({
   description,
@@ -347,8 +353,9 @@ function getJsdoc({
 }: JsdocAST) {
   return deprecated?.value || description || example
     ? `
-      /**${description
-      ? `
+      /**${
+        description
+          ? `
       * ${description}`
       : ""
     }${deprecated?.value
@@ -359,8 +366,8 @@ function getJsdoc({
       ? `
       * @example 
       *   ${example}`
-      : ""
-    }
+          : ""
+      }
       */
 `
     : "";
@@ -442,7 +449,6 @@ export {
   getJsdoc,
   isTypeAny,
   template,
-  toPascalCase,
   getNamingModel,
   getNamingPropertyModel,
   getNamingService,

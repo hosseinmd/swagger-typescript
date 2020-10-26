@@ -25,7 +25,7 @@ function getTypeDefinition(name: string, schema: Schema, description?: string) {
     const typeObject = getTsType(schema);
     return `
     export interface ${name} ${typeObject}
-    `;
+  `;
   }
 
   if (Enum) {
