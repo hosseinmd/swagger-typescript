@@ -12,11 +12,11 @@ function getSwaggerConfig() {
 
         let defaultConfig = {
             "language": "typescript",
-            "modelNaming": "snake-upper",
+            "modelNaming": "original",
             "modelPropertyNaming": "original",
             "enumPropertyNaming": "original",
             "serviceNaming": "original",
-            "tagNaming": "snake-upper",
+            "tagNaming": "original",
         }
 
         const config = Object.assign(defaultConfig, configJson);
