@@ -30,6 +30,9 @@ async function generate() {
   try {
     const input: SwaggerJson = await getSwaggerJson(url);
 
+    writeFileSync(`${dir}/oas.json`,JSON.stringify(input,null,"  "));
+    
+
     majorVersionsCheck("3.0.0", input.openapi);
 
     const code = generator(input);
@@ -96,8 +99,6 @@ function convertTsToJs(dir: string) {
     rmdirSync(`${dir}/httpRequest.ts`, { recursive: true });
   }
 }
-
-
 
 function getPrettierOptions(prettierPath: string) {
   let prettierOptions: any = {};

@@ -1,7 +1,11 @@
 {
-    "url": "https://generator3.swagger.io/openapi.json",
+    "url": "https://us-central1-dev-bondit.cloudfunctions.net/swaggerrider/api-docs",
     "dir": "./test",
     "language": "typescript",
+    "methodName":"{operationId}",
+    "modelNaming":"pascal",
+    "enumPropertyNaming":"snake-upper",
+    "tagNaming":"original",
     "ignore": {
         "headerParams": [
             "terminalId"
