@@ -145,7 +145,11 @@ function getTsType(schema: true | {} | Schema): string {
       Object.entries(properties).map(([pName, _schema]) => ({
         schema: {
           ..._schema,
-          nullable: !required?.find((name) => name === pName),
+          nullable:
+            //@ts-ignore
+            global.__unstable_is_legacy_properties
+              ? _schema.nullable
+              : !required?.find((name) => name === pName),
         },
         name: pName,
       })),

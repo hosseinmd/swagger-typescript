@@ -16,7 +16,16 @@ import { majorVersionsCheck } from "./utils";
 async function generate() {
   const config: SwaggerConfig = getSwaggerConfig();
 
-  const { url, dir, prettierPath, language } = config;
+  const {
+    url,
+    dir,
+    prettierPath,
+    language,
+    //@ts-ignore
+    __unstable_is_legacy_properties,
+  } = config;
+  //@ts-ignore
+  global.__unstable_is_legacy_properties = __unstable_is_legacy_properties;
 
   const isToJs = language === "javascript";
 
