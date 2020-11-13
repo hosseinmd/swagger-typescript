@@ -47,7 +47,13 @@ async function generate() {
     writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
 
     if (!existsSync(`${dir}/config.${isToJs ? "js" : "ts"}`)) {
-      writeFileSync(`${dir}/config.ts`, CONFIG);
+      writeFileSync(
+        `${dir}/config.ts`,
+        CONFIG.replace(
+          "${AUTO_REPLACE_BASE_URL}",
+          input.servers?.[0].url || "",
+        ),
+      );
     }
 
     if (isToJs) {

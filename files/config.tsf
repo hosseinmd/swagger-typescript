@@ -13,7 +13,7 @@ import Axios, {
 import qs from "qs";
 
 const baseConfig: AxiosRequestConfig = {
-  baseURL: "", // <--- Add your base url
+  baseURL: "${AUTO_REPLACE_BASE_URL}", // <--- Add your base url
   headers: {
     "Content-Encoding": "UTF-8",
     Accept: "application/json",
