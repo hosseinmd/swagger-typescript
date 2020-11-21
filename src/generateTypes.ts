@@ -29,7 +29,7 @@ function getTypeDefinition(name: string, schema: Schema, description?: string) {
   if (Enum) {
     return `
    ${getJsdoc({ description })}export enum ${name} {${Enum.map(
-      (e) => `${e}=${typeof e === "string" ? `"${e}"` : ""}`,
+      (e) => `${e}=${typeof e === "string" ? `"${e}"` : `${e}`}`,
     )}}
    `;
   }
