@@ -266,39 +266,38 @@ function assignToDescription({
   return `${
     title
       ? `
-  * ${title}
-  *`
+ ${title}
+`
       : ""
   }${
     description
       ? `
-  * ${description}
-  `
+${description}`
       : ""
   }${
     format
       ? `
-  *    Format: ${format}`
+       Format: ${format}`
       : ""
   }${
     maxLength
       ? `
-  *    maxLength: ${maxLength}`
+       maxLength: ${maxLength}`
       : ""
   }${
     min
       ? `
-  *    min: ${min}`
+        min: ${min}`
       : ""
   }${
     max
       ? `
-  *    max: ${max}`
+       max: ${max}`
       : ""
   }${
     pattern
       ? `
-  *    pattern: ${pattern}`
+                      pattern: ${pattern}`
       : ""
   }`;
 }
