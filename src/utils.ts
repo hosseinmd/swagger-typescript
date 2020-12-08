@@ -371,7 +371,7 @@ function isTypeAny(type: true | {} | Schema) {
     return true;
   }
 
-  if ((type as Schema).AnyValue) {
+  if (!type || (type as Schema).AnyValue) {
     return true;
   }
 
