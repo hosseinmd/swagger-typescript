@@ -1,4 +1,4 @@
-import { Schema, Parameter, SwaggerConfig } from "./types";
+import { Schema, Parameter, SwaggerConfig, JsdocAST } from "./types";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (
@@ -30,22 +30,46 @@ function getParams(
   };
 }
 
-function generateServiceName(endPoint: string): string {
+function toPascalCase(str: string): string {
+  return `${str.substring(0, 1).toUpperCase()}${str.substring(1)}`;
+}
+
+function generateServiceName(
+  endPoint: string,
+  method: string,
+  operationId: string | undefined,
+  config: SwaggerConfig,
+): string {
   function replaceWithUpper(str: string, sp: string) {
     let pointArray = str.split(sp);
-    pointArray = pointArray.map(
-      (point) => `${point.substring(0, 1).toUpperCase()}${point.substring(1)}`,
-    );
+    pointArray = pointArray.map((point) => toPascalCase(point));
 
     return pointArray.join("");
   }
 
-  const name = replaceWithUpper(
-    replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"),
-    "}",
+  const path = replaceWithUpper(
+    replaceWithUpper(
+      replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"),
+      "}",
+    ),
+    "-",
   );
 
-  return name;
+  const { methodName } = config;
+  const hasMethodNameOperationId = /(\{operationId\})/i.test(methodName);
+  let methodNameTemplate = hasMethodNameOperationId
+    ? operationId
+      ? methodName
+      : false
+    : methodName;
+  methodNameTemplate = methodNameTemplate || "{method}{path}";
+
+  const serviceName = template(methodNameTemplate, {
+    path,
+    method,
+    ...(operationId ? { operationId } : {}),
+  });
+  return serviceName;
 }
 
 const TYPES = {
@@ -61,32 +85,51 @@ function getDefineParam(
   name: string,
   required: boolean = false,
   schema: Schema,
+  description?: string,
 ): string {
-  return getParamString(name, required, getTsType(schema));
+  return getParamString(name, required, getTsType(schema), description);
 }
 function getParamString(
   name: string,
   required: boolean = false,
-  type: any,
+  type: string,
+  description?: string,
 ): string {
-  return `${name}${required ? "" : "?"}: ${type}`;
+  return `${getJsdoc({
+    description,
+  })}${name}${required ? "" : "?"}: ${type}`;
 }
 
-function getTsType({
-  type,
-  $ref,
-  enum: Enum,
-  items,
-  properties,
-  oneOf,
-}: Schema): string {
+function getTsType(schema: true | {} | Schema): string {
+  if (isTypeAny(schema)) {
+    return "any";
+  }
+
+  const {
+    type,
+    $ref,
+    enum: Enum,
+    items,
+    properties,
+    oneOf,
+    additionalProperties,
+    required,
+  } = schema as Schema;
   let tsType = TYPES[type as keyof typeof TYPES];
 
+  if (type === "object" && additionalProperties) {
+    tsType = `{[x: string]: ${getTsType(additionalProperties)}}`;
+  }
   if ($ref) {
-    tsType = getRefName($ref);
+    const refArray = $ref.split("/");
+    if (refArray[refArray.length - 2] === "requestBodies") {
+      tsType = `RequestBody${getRefName($ref)}`;
+    } else {
+      tsType = getRefName($ref);
+    }
   }
   if (Enum) {
-    tsType = JSON.stringify(Enum);
+    tsType = `${Enum.map((t) => `"${t}"`).join(" | ")}`;
   }
 
   if (items) {
@@ -99,16 +142,19 @@ function getTsType({
 
   if (properties) {
     tsType = getObjectType(
-      Object.entries(properties).map(([pName, schema]) => ({
-        schema,
+      Object.entries(properties).map(([pName, _schema]) => ({
+        schema: {
+          ..._schema,
+          nullable:
+            //@ts-ignore
+            global.__unstable_is_legacy_properties
+              ? _schema.nullable
+              : !required?.find((name) => name === pName),
+        },
         name: pName,
       })),
     );
   }
-
-  // if (nullable) {
-  //   tsType + "| null";
-  // }
 
   return tsType;
 }
@@ -129,17 +175,49 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
         return isAscending(name, _name);
       },
     )
-    .reduce((prev, { schema, name }) => {
-      return `${prev}${name}${schema.nullable ? "?" : ""}: ${getTsType(
-        schema,
-      )},`;
-    }, "");
+    .reduce(
+      (
+        prev,
+        {
+          schema: {
+            title,
+            description,
+            deprecated,
+            "x-deprecatedMessage": deprecatedMessage,
+            example,
+            nullable,
+          },
+          schema,
+          name,
+        },
+      ) => {
+        return `${prev}${getJsdoc({
+          description: assignToDescription({
+            description,
+            title,
+            format: schema.format,
+            maxLength: schema.maxLength,
+            min: schema.min,
+            max: schema.max,
+            pattern: schema.pattern,
+          }),
+          tags: {
+            deprecated: {
+              value: Boolean(deprecated),
+              description: deprecatedMessage,
+            },
+            example,
+          },
+        })}${name}${nullable ? "?" : ""}: ${getTsType(schema)};`;
+      },
+      "",
+    );
 
   return object ? `{${object}}` : "";
 }
 
 function getRefName($ref: string): string {
-  return $ref.replace("#/components/schemas/", "");
+  return $ref.replace(/(#\/components\/\w+\/)/g, "");
 }
 
 function isAscending(a: string, b: string) {
@@ -168,7 +246,154 @@ function getParametersInfo(
   };
 }
 
+function assignToDescription({
+  description,
+  title,
+  format,
+  maxLength,
+  max,
+  min,
+  pattern,
+}: {
+  title?: string;
+  description?: string;
+  format?: string;
+  pattern?: string;
+  maxLength?: number;
+  min?: number;
+  max?: number;
+}) {
+  return `${
+    title
+      ? `
+ ${title}
+`
+      : ""
+  }${
+    description
+      ? `
+${description}`
+      : ""
+  }${
+    format
+      ? `
+       Format: ${format}`
+      : ""
+  }${
+    maxLength
+      ? `
+       maxLength: ${maxLength}`
+      : ""
+  }${
+    min
+      ? `
+        min: ${min}`
+      : ""
+  }${
+    max
+      ? `
+       max: ${max}`
+      : ""
+  }${
+    pattern
+      ? `
+                      pattern: ${pattern}`
+      : ""
+  }`;
+}
+
+function getJsdoc({
+  description,
+  tags: { deprecated, example } = {},
+}: JsdocAST) {
+  return deprecated?.value || description || example
+    ? `
+      /**${
+        description
+          ? `
+      * ${description}`
+          : ""
+      }${
+        deprecated?.value
+          ? `
+      * @deprecated ${deprecated.description || ""}`
+          : ""
+      }${
+        example
+          ? `
+      * @example 
+      *   ${example}`
+          : ""
+      }
+      */
+`
+    : "";
+}
+
+function majorVersionsCheck(expectedV: string, inputV?: string) {
+  if (!inputV) {
+    throw new Error(
+      `Swagger-Typescript working with openApi v3, seem your json is not openApi v3`,
+    );
+  }
+
+  const expectedVMajor = expectedV.split(".")[0];
+  const inputVMajor = inputV.split(".")[0];
+  function isValidPart(x: string) {
+    return /^\d+$/.test(x);
+  }
+  if (!isValidPart(expectedVMajor) || !isValidPart(inputVMajor)) {
+    throw new Error(
+      `Swagger-Typescript working with openApi v3 your json openApi version is not valid "${inputV}"`,
+    );
+  }
+
+  const expectedMajorNumber = Number(expectedVMajor);
+  const inputMajorNumber = Number(inputVMajor);
+
+  if (expectedMajorNumber === inputMajorNumber) {
+    return;
+  } else if (expectedMajorNumber < inputMajorNumber) {
+    return;
+  }
+
+  throw new Error(
+    `Swagger-Typescript working with openApi v3 your json openApi version is ${inputV}`,
+  );
+}
+
+function isTypeAny(type: true | {} | Schema) {
+  if (type === true) {
+    return true;
+  }
+
+  if (typeof type === "object" && Object.keys(type).length <= 0) {
+    return true;
+  }
+
+  if ((type as Schema).AnyValue) {
+    return true;
+  }
+
+  return false;
+}
+
+/** Used to replace {name} in string with obj.name */
+function template(str: string, obj: { [x: string]: string } = {}) {
+  Object.entries(obj).forEach(([key, value]) => {
+    const re = new RegExp(`{${key}}`, "i");
+    str = str.replace(re, value);
+  });
+
+  const re = new RegExp("{*}", "g");
+  if (re.test(str)) {
+    throw new Error(`methodName: Some A key is missed "${str}"`);
+  }
+  return str;
+}
+
 export {
+  majorVersionsCheck,
   getPathParams,
   getHeaderParams,
   generateServiceName,
@@ -178,4 +403,8 @@ export {
   getDefineParam,
   getParamString,
   getParametersInfo,
+  getJsdoc,
+  isTypeAny,
+  template,
+  toPascalCase,
 };

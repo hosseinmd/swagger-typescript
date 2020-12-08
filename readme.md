@@ -2,13 +2,17 @@
 
 [![install size](https://packagephobia.now.sh/badge?p=swagger-typescript)](https://packagephobia.now.sh/result?p=swagger-typescript) [![dependencies](https://david-dm.org/hosseinmd/swagger-typescript.svg)](https://david-dm.org/hosseinmd/swagger-typescript.svg)
 
+:star::star::star: If you would like to contribute, please refer to [To do list](https://github.com/hosseinmd/swagger-typescript/projects/1) and a list of [open tasks](https://github.com/hosseinmd/swagger-typescript/issues?q=is%3Aopen).:star::star::star:
+
+[Migrate Swagger-Typescript v3 to Swagger-Typescript v4](https://github.com/hosseinmd/swagger-typescript/blob/master/migrateToV4.md)
+
 Support OpenApi v3
 
-An auto typescript code generator from swagger.
-Every endpoint create as function and full type base.
+An auto typescript/javascript code generator from swagger.
+Each endpoint will be constructed as a function, full type base.
 
 For Example:
-Get method of '/Account/{id}' path will be this code in services.ts
+Get method of '/Account' path will be this code in services.ts
 
 ```js
 import { getAccount } from "./services";
@@ -20,69 +24,77 @@ const response = await getAccount({ id: 1234 });
 
 `$ yarn add swagger-typescript`
 
+## get start
+
 Before running, add your config to swagger.config.json
 
+#### swagger.config.json
+
+```json
+{
+  "url": "http://example.com/api/swagger.json",
+  "dir": "./test"
+}
+```
+
+#### run
+
+```
+yarn swag-ts
+```
+
+#### config.ts
+
+This file automatically will be create after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
+
+baseConfig
+
+```ts
+const baseConfig: AxiosRequestConfig = {
+  baseURL: "", // <--- Add your base url
+  //other static configs
+};
+```
+
+Now you can use APIs, So for advanced config read below.
+
 ## swagger.config.json
+
+For Example:
 
 ```json
 {
   "url": "http://example.com/api/swagger.json",
   "dir": "./test",
   "prettierPath": ".prettierrc",
+  "language": "typescript",
   "ignore": {
-    //Will be ignore from services functions.
     "headerParams": ["terminalId"]
   }
 }
 ```
 
-## run
-
-```
-yarn swag-ts
-```
+| [`Key`]      | [`default`]      | Comment                                                                                |
+| ------------ | ---------------- | -------------------------------------------------------------------------------------- |
+| `url`        | Required         | Address of swagger.json                                                                |
+| `dir`        | Required         | Address of output                                                                      |
+| `language`   | `typescript`     | export to "javascript" or "typescript"                                                 |
+| `methodName` | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}' |
+| `ignore`     | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]} `   |
 
 ## config.ts
 
-This file automatically will be create after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
+This file automatically will be created after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
 
-### responseWrapper
+#### getAxiosInstance
 
-For create custom response change responseWrapper function in config. You could do something like this.
+getAxiosInstance used for create an instance of axios request you can customize that for what you needed
 
-```js
-export type SwaggerResponse<R> = R & { counter: number };
+#### baseConfig
 
-const counter = 0;
+baseConfig used for get static configs and headers. if you need some dynamic configs like add authentication to headers use `requestConfig.headers.authorization` into of `axiosInstance.interceptors.request.use` function.
 
-async function responseWrapper(
-  response: AxiosResponse<any>,
-): Promise<SwaggerResponse<any>> {
-  return { ...response.data, counter: counter + 1 };
-}
-```
+## Stories
 
-### getBaseConfig
+[why-you-should-use-swagger-typescript-for-generate-apis-code](https://medium.com/@hosseinm.developer/why-you-should-use-swagger-typescript-for-generate-apis-code-63eb8623fef8?source=friends_link&sk=2aa0e2d30b3be158d18c1feb4e12d4a6)
 
-```ts
-async function getBaseConfig(): Promise<AxiosRequestConfig> {
-  return {
-    baseURL: "http://your_base_url.com",
-    headers: {
-      // any headers you want to assign for all request
-      "Content-Encoding": "UTF-8",
-      Accept: "application/json",
-      "Content-Type": "application/json-patch+json",
-    },
-  };
-}
-```
-
-### errorCatch
-
-```ts
-function errorCatch(error: AxiosError): any {
-  // any things you want
-  throw error;
-}
-```

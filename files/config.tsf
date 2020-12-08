@@ -1,33 +1,93 @@
-// Please add your custom config
-import { AxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
+/**
+ * Please add your custom config
+ *
+ * @version 4
+ */
+import Axios, {
+  AxiosRequestConfig,
+  AxiosError,
+  AxiosResponse,
+  AxiosInstance,
+} from "axios";
+//@ts-ignore
+import qs from "qs";
 
-async function getBaseConfig(): Promise<AxiosRequestConfig> {
-  return {
-    baseURL: "",
-    headers: {
-      "Content-Encoding": "UTF-8",
-      Accept: "application/json",
-      "Content-Type": "application/json-patch+json",
+const baseConfig: AxiosRequestConfig = {
+  baseURL: "${AUTO_REPLACE_BASE_URL}", // <--- Add your base url
+  headers: {
+    "Content-Encoding": "UTF-8",
+    Accept: "application/json",
+    "Content-Type": "application/json-patch+json",
+  },
+  paramsSerializer: (param) => qs.stringify(param, { indices: false }),
+};
+
+let axiosInstance: AxiosInstance;
+
+function getAxiosInstance(security: Security): AxiosInstance {
+  if (!axiosInstance) {
+    axiosInstance = Axios.create(baseConfig);
+
+    // Response interceptor
+    axiosInstance.interceptors.response.use(
+      (async (response: AxiosResponse): Promise<SwaggerResponse<any>> => {
+        // Any status code that lie within the range of 2xx cause this function to trigger
+        // Do something with response data
+        /**
+         * Example on response manipulation
+         *
+         * @example
+         *   const swaggerResponse: SwaggerResponse = {
+         *     ...response,
+         *   };
+         *   return swaggerResponse;
+         */
+        return response;
+      }) as any,
+      (error: AxiosError) => {
+        // Any status codes that falls outside the range of 2xx cause this function to trigger
+        // Do something with response error
+
+        if (error.response) {
+          return Promise.reject(
+            new RequestError({
+              message: error.response.data,
+              status: error.response.status,
+              response: error.response,
+            }),
+          );
+        }
+
+        if (error.isAxiosError) {
+          return Promise.reject(
+            new RequestError({
+              message: "noInternetConnection",
+            }),
+          );
+        }
+        return Promise.reject(error);
+      },
+    );
+  }
+
+  // ًًRequest interceptor
+  axiosInstance.interceptors.request.use(
+    async (requestConfig) => {
+      // Do something before request is sent
+      /** Example on how to add authorization based on security */
+      if (security?.[0]) {
+        // requestConfig.headers.authorization = "";
+      }
+
+      return requestConfig;
     },
-  };
-}
+    (error) => {
+      // Do something with request error
+      return Promise.reject(error);
+    },
+  );
 
-function errorCatch(error: AxiosError): any {
-  if (error.response) {
-    throw new Exception({
-      message: error.response.data,
-      status: error.response.status,
-      response: error.response,
-    });
-  }
-
-  if (error.isAxiosError) {
-    throw new Exception({
-      message: "noInternetConnection",
-    });
-  }
-
-  throw error;
+  return axiosInstance;
 }
 
 interface ErrorParam {
@@ -36,7 +96,7 @@ interface ErrorParam {
   response?: AxiosResponse;
 }
 
-class Exception extends Error {
+class RequestError extends Error {
   message: string;
   status?: number;
   response?: AxiosResponse;
@@ -51,14 +111,13 @@ class Exception extends Error {
   isApiException = true;
 }
 
-// export type SwaggerResponse<R> = R;
+export type Security = any[] | undefined;
 
 export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 
-async function responseWrapper(
-  response: AxiosResponse<any>,
-): Promise<SwaggerResponse<any>> {
-  return response;
-}
-
-export { getBaseConfig, errorCatch, Exception, responseWrapper };
+export {
+  getAxiosInstance,
+  RequestError,
+  // as backward compatible v3
+  RequestError as Exception,
+};

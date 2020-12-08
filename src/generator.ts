@@ -3,40 +3,81 @@ import {
   generateServiceName,
   getHeaderParams,
   getParametersInfo,
+  getRefName,
+  toPascalCase,
 } from "./utils";
 import type {
-  SwaggerSchemas,
   SwaggerRequest,
   SwaggerJson,
   SwaggerResponse,
   SwaggerConfig,
   ApiAST,
   TypeAST,
+  Schema,
+  Parameter,
+  ConstantsAST,
 } from "./types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
+import { generateConstants } from "./generateConstants";
 
 function generator(input: SwaggerJson, config: SwaggerConfig): string {
   const apis: ApiAST[] = [];
   const types: TypeAST[] = [];
+  let constantsCounter = 0;
+  const constants: ConstantsAST[] = [];
+
+  function getConstantName(value: string) {
+    const constant = constants.find((_constant) => _constant.value === value);
+    if (constant) {
+      return constant.name;
+    }
+
+    const name = `_CONSTANT${constantsCounter++}`;
+
+    constants.push({
+      name,
+      value,
+    });
+
+    return name;
+  }
 
   try {
     Object.entries(input.paths).forEach(([endPoint, value]) => {
       Object.entries(value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
-          const serviceName = `${method}${generateServiceName(endPoint)}`;
+          const { operationId, security } = options;
+          const parameters = options.parameters?.map((parameter) => {
+            const { $ref } = parameter;
+            if ($ref) {
+              const name = $ref.replace("#/components/parameters/", "");
+              return {
+                ...input.components?.parameters?.[name],
+                $ref,
+                schema: { $ref } as Schema,
+              } as Parameter;
+            }
+            return parameter;
+          });
 
-          const pathParams = getPathParams(options.parameters);
+          const serviceName = generateServiceName(
+            endPoint,
+            method,
+            operationId,
+            config,
+          );
+
+          const pathParams = getPathParams(parameters);
 
           const {
             exist: queryParams,
             isNullable: isQueryParamsNullable,
             params: queryParameters,
-          } = getParametersInfo(options.parameters, "query");
-          let queryParamsTypeName: string | false = serviceName
-            .substring(0, 1)
-            .toUpperCase();
-          queryParamsTypeName += `${serviceName.substring(1)}QueryParams`;
+          } = getParametersInfo(parameters, "query");
+          let queryParamsTypeName: string | false = `${toPascalCase(
+            serviceName,
+          )}QueryParams`;
 
           queryParamsTypeName = queryParams && queryParamsTypeName;
 
@@ -47,10 +88,14 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
                 type: "object",
                 nullable: isQueryParamsNullable,
                 properties: queryParameters?.reduce(
-                  (prev, { name, schema }) => {
+                  (prev, { name, schema, $ref, required, description }) => {
                     return {
                       ...prev,
-                      [name]: schema,
+                      [name]: {
+                        ...($ref ? { $ref } : schema),
+                        nullable: !required,
+                        description,
+                      } as Schema,
                     };
                   },
                   {},
@@ -67,13 +112,17 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
           const requestBody = getBodyContent(options.requestBody);
 
           const contentType = Object.keys(
-            options.requestBody?.content || {
-              "application/json": null,
-            },
+            options.requestBody?.content ||
+              (options.requestBody?.$ref &&
+                input.components?.requestBodies?.[
+                  getRefName(options.requestBody.$ref as string)
+                ]?.content) || {
+                "application/json": null,
+              },
           )[0];
 
           const accept = Object.keys(
-            options.responses?.[200].content || {
+            options.responses?.[200]?.content || {
               "application/json": null,
             },
           )[0];
@@ -88,6 +137,24 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             ? `{${pathParamsRefString}}`
             : undefined;
 
+          const additionalAxiosConfig = headerParams
+            ? `{
+              headers:{
+                ...${getConstantName(`{
+                  "Content-Type": "${contentType}",
+                  Accept: "${accept}",
+
+                }`)},
+                ...headerParams,
+              },
+            }`
+            : getConstantName(`{
+              headers: {
+                "Content-Type": "${contentType}",
+                Accept: "${accept}",
+              },
+            }`);
+
           apis.push({
             summary: options.summary,
             deprecated: options.deprecated,
@@ -101,27 +168,46 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             responses,
             pathParamsRefString,
             endPoint,
-            contentType,
-            accept,
             method,
+            security: security
+              ? getConstantName(JSON.stringify(security))
+              : "undefined",
+            additionalAxiosConfig,
           });
         },
       );
     });
 
-    types.push(
-      ...Object.entries(
-        (input.components.schemas as unknown) as SwaggerSchemas,
-      ).map(([name, schema]) => {
-        return {
-          name,
-          schema,
-        };
-      }),
-    );
+    if (input?.components?.schemas) {
+      types.push(
+        ...Object.entries(input.components.schemas).map(([name, schema]) => {
+          return {
+            name,
+            schema,
+          };
+        }),
+      );
+    }
+
+    if (input?.components?.parameters) {
+      types.push(...Object.values(input.components.parameters));
+    }
+    if (input?.components?.requestBodies) {
+      types.push(
+        ...(Object.entries(input.components.requestBodies)
+          .map(([name, _requestBody]) => {
+            return {
+              name: `RequestBody${name}`,
+              schema: _requestBody.content?.["application/json"].schema,
+            };
+          })
+          .filter((v) => v.schema) as any),
+      );
+    }
 
     let code = generateApis(apis);
     code += generateTypes(types);
+    code += generateConstants(constants);
 
     return code;
   } catch (error) {
@@ -130,12 +216,18 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
   }
 }
 
-function getBodyContent(responses?: SwaggerResponse) {
+function getBodyContent(responses?: SwaggerResponse): Schema | undefined {
   if (!responses) {
     return responses;
   }
 
-  return Object.values(responses.content)[0].schema;
+  return responses.content
+    ? Object.values(responses.content)[0].schema
+    : responses.$ref
+    ? ({
+        $ref: responses.$ref,
+      } as Schema)
+    : undefined;
 }
 
 export { generator };
