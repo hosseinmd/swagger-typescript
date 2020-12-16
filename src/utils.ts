@@ -114,34 +114,35 @@ function getTsType(schema: true | {} | Schema): string {
     oneOf,
     additionalProperties,
     required,
+    allOf,
   } = schema as Schema;
-  let tsType = TYPES[type as keyof typeof TYPES];
 
   if (type === "object" && additionalProperties) {
-    tsType = `{[x: string]: ${getTsType(additionalProperties)}}`;
+    return `{[x: string]: ${getTsType(additionalProperties)}}`;
   }
+
   if ($ref) {
     const refArray = $ref.split("/");
     if (refArray[refArray.length - 2] === "requestBodies") {
-      tsType = `RequestBody${getRefName($ref)}`;
+      return `RequestBody${getRefName($ref)}`;
     } else {
-      tsType = getRefName($ref);
+      return getRefName($ref);
     }
   }
   if (Enum) {
-    tsType = `${Enum.map((t) => `"${t}"`).join(" | ")}`;
+    return `${Enum.map((t) => `"${t}"`).join(" | ")}`;
   }
 
   if (items) {
-    tsType = `${getTsType(items)}[]`;
+    return `${getTsType(items)}[]`;
   }
 
   if (oneOf) {
-    tsType = `${oneOf.map((t) => `(${getTsType(t)})`).join(" | ")}`;
+    return `${oneOf.map((t) => `(${getTsType(t)})`).join(" | ")}`;
   }
 
   if (properties) {
-    tsType = getObjectType(
+    return getObjectType(
       Object.entries(properties).map(([pName, _schema]) => ({
         schema: {
           ..._schema,
@@ -156,7 +157,11 @@ function getTsType(schema: true | {} | Schema): string {
     );
   }
 
-  return tsType;
+  if (allOf) {
+    return allOf.map((_schema) => getTsType(_schema)).join(" & ");
+  }
+
+  return TYPES[type as keyof typeof TYPES];
 }
 
 function getObjectType(parameter: { schema: Schema; name: string }[]) {

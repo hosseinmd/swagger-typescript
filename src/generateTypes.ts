@@ -36,10 +36,8 @@ function getTypeDefinition(name: string, schema: Schema, description?: string) {
 
   if (allOf) {
     return `
-  export interface ${name} extends ${allOf
-      .map((_schema) => getTsType(_schema))
-      .join(" ")}
-          `;
+  export type ${name} = ${getTsType({ allOf })}
+  `;
   }
   if (oneOf) {
     return `
