@@ -1,6 +1,6 @@
 {
   "name": "swagger-typescript",
-  "version": "4.0.10",
+  "version": "4.0.12",
   "description": "A auto generate typescript code from swagger",
   "main": "bin/index.js",
   "bin": {
@@ -13,8 +13,7 @@
     "lint": "eslint src/**/*.ts",
     "eslint-fix": "eslint src/**/*.ts --fix",
     "prettier-fix": "prettier --write \"**/*.{ts,tsx}\"",
-    "release": "auto shipit",
-    "release-canary": "auto canary"
+    "changeLog": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -34,16 +33,14 @@
   },
   "homepage": "https://github.com/hosseinmd/swagger-typescript#readme",
   "dependencies": {
+    "axios": "^0.19.2",
+    "qs": "^6.9.4"
+  },
+  "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/generator": "^7.11.6",
     "@babel/plugin-transform-typescript": "^7.11.0",
     "@babel/preset-typescript": "^7.10.4",
-    "axios": "^0.19.2",
-    "prettier": "^2.1.1",
-    "qs": "^6.9.4",
-    "tsc-prog": "^2.2.1"
-  },
-  "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/eslint-config": "^2.0.0",
     "@testing-library/react-hooks": "3.2.1",
@@ -60,8 +57,16 @@
     "husky": "^4.2.3",
     "jest": "26.0.1",
     "prettier-plugin-jsdoc": "^0.2.4",
+    "standard-version": "^9.0.0",
+    "tsc-prog": "^2.2.1",
     "ts-jest": "25.5.1",
     "typescript": "^4.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "yarn lint"
+    }
   },
   "files": [
     "lib",
