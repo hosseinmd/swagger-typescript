@@ -1,6 +1,7 @@
 {
     "url": "https://generator3.swagger.io/openapi.json",
     "dir": "./test",
+    "hub": "http://ef130ccdddce.ngrok.io/api/Hub/GetSignalrType",
     "language": "typescript",
     "ignore": {
         "headerParams": [

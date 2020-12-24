@@ -8,16 +8,18 @@ import {
 import { format } from "prettier";
 import { SwaggerJson, SwaggerConfig } from "./types";
 import { HTTP_REQUEST, CONFIG } from "./strings";
-import { getSwaggerJson } from "./getJson";
+import { getJson } from "./getJson";
 import { generator } from "./generator";
 import { build } from "tsc-prog";
 import { majorVersionsCheck } from "./utils";
+import { HubJson, signalRGenerator } from "./signalR/generator";
 
 async function generate() {
   const config: SwaggerConfig = getSwaggerConfig();
 
   const {
     url,
+    hub,
     dir,
     prettierPath,
     language,
@@ -36,7 +38,15 @@ async function generate() {
   const prettierOptions = getPrettierOptions(prettierPath);
 
   try {
-    const input: SwaggerJson = await getSwaggerJson(url);
+    const input: SwaggerJson = await getJson(url);
+
+    // signalR hub definition
+    let hubCode = null;
+    if (hub) {
+      const hubJson: HubJson = hub ? await getJson(hub) : null;
+
+      hubCode = signalRGenerator(hubJson);
+    }
 
     majorVersionsCheck("3.0.0", input.openapi);
 
@@ -56,15 +66,20 @@ async function generate() {
       );
     }
 
+    hubCode && writeFileSync(`${dir}/hub.ts`, hubCode);
+
     if (isToJs) {
       convertTsToJs(dir);
+      hubCode && formatFile(`${dir}/hub.js`, prettierOptions);
       formatFile(`${dir}/config.js`, prettierOptions);
       formatFile(`${dir}/httpRequest.js`, prettierOptions);
       formatFile(`${dir}/services.js`, prettierOptions);
       formatFile(`${dir}/config.d.ts`, prettierOptions);
       formatFile(`${dir}/httpRequest.d.ts`, prettierOptions);
       formatFile(`${dir}/services.d.ts`, prettierOptions);
+      hubCode && formatFile(`${dir}/hub.d.ts`, prettierOptions);
     } else {
+      hubCode && formatFile(`${dir}/hub.ts`, prettierOptions);
       formatFile(`${dir}/config.ts`, prettierOptions);
       formatFile(`${dir}/httpRequest.ts`, prettierOptions);
       formatFile(`${dir}/services.ts`, prettierOptions);
@@ -91,7 +106,7 @@ function convertTsToJs(dir: string) {
       target: "esnext",
       lib: ["esnext"],
     },
-    files: [`${dir}/services.ts`],
+    files: [`${dir}/services.ts`, `${dir}/hub.ts`],
   });
 
   if (existsSync(`${dir}/config.ts`)) {
@@ -104,6 +119,10 @@ function convertTsToJs(dir: string) {
 
   if (existsSync(`${dir}/httpRequest.ts`)) {
     rmdirSync(`${dir}/httpRequest.ts`, { recursive: true });
+  }
+
+  if (existsSync(`${dir}/hub.ts`)) {
+    rmdirSync(`${dir}/hub.ts`, { recursive: true });
   }
 }
 
@@ -125,7 +144,7 @@ function getSwaggerConfig() {
   }
 }
 
-function getPrettierOptions(prettierPath: string) {
+function getPrettierOptions(prettierPath?: string) {
   let prettierOptions: any = {};
   if (prettierPath && existsSync(prettierPath)) {
     prettierOptions = JSON.parse(readFileSync(prettierPath).toString());

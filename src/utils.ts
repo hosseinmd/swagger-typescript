@@ -56,13 +56,8 @@ function generateServiceName(
   );
 
   const { methodName } = config;
-  const hasMethodNameOperationId = /(\{operationId\})/i.test(methodName);
-  let methodNameTemplate = hasMethodNameOperationId
-    ? operationId
-      ? methodName
-      : false
-    : methodName;
-  methodNameTemplate = methodNameTemplate || "{method}{path}";
+
+  const methodNameTemplate = getTemplate(methodName, operationId);
 
   const serviceName = template(methodNameTemplate, {
     path,
@@ -70,6 +65,21 @@ function generateServiceName(
     ...(operationId ? { operationId } : {}),
   });
   return serviceName;
+}
+
+function getTemplate(methodName?: string, operationId?: string) {
+  const defaultTemplate = "{method}{path}";
+  if (!methodName) {
+    return defaultTemplate;
+  }
+
+  const hasMethodNameOperationId = /(\{operationId\})/i.test(methodName);
+
+  if (hasMethodNameOperationId) {
+    return operationId ? methodName : defaultTemplate;
+  }
+
+  return methodName;
 }
 
 const TYPES = {
@@ -222,7 +232,8 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
 }
 
 function getRefName($ref: string): string {
-  return $ref.replace(/(#\/components\/\w+\/)/g, "");
+  const parts = $ref.split("/");
+  return parts[parts.length - 1];
 }
 
 function isAscending(a: string, b: string) {
