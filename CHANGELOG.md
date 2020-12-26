@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.0.13...v4.1.0) (2020-12-26)
+
+
+### Features
+
+* support signalR json ([bcf78fc](https://github.com/hosseinmd/swagger-typescript/commit/bcf78fc3f99fede3fefc8a492a4687f4d59c2748))
+
 ### [4.0.13](https://github.com/hosseinmd/swagger-typescript/compare/v4.0.12...v4.0.13) (2020-12-22)
 
 
