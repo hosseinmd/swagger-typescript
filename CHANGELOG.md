@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/hosseinmd/swagger-typescript/compare/v4.1.0...v4.1.1) (2020-12-26)
+
+
+### Bug Fixes
+
+* set url to optional ([5273ff7](https://github.com/hosseinmd/swagger-typescript/commit/5273ff7aae0abe0dcf069a79b818e5d170302bba))
+
 ## [4.1.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.0.13...v4.1.0) (2020-12-26)
 
 
