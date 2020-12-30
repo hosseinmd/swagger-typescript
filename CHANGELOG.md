@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.1.1...v4.2.0) (2020-12-30)
+
+
+### Features
+
+* generate signalr hub interface ([9e58f32](https://github.com/hosseinmd/swagger-typescript/commit/9e58f32884324944df7ea38cb580477aab628a63))
+
 ### [4.1.1](https://github.com/hosseinmd/swagger-typescript/compare/v4.1.0...v4.1.1) (2020-12-26)
 
 
