@@ -84,18 +84,7 @@ function signalRGenerator(json: HubJson): string {
         ),
       );
     }
-    let code = `
-      export interface Hub<T extends string = string> {
-        callbacksName: T;
-        methodsName: string;
-        callbacks: {
-          [name in T]: <F extends (...args: any) => any>(
-            ...args: Parameters<F>
-          ) => void;
-        };
-        methods: <T extends (...args: any) => any>(...args: Parameters<T>) => void;
-      }
-    `;
+    let code = "";
     hubs.map(({ name: hubsName, operations, callbacks }) => {
       const operationEnumsName = `${hubsName}OperationsNames`;
       const operationEnums = operations
@@ -109,7 +98,7 @@ function signalRGenerator(json: HubJson): string {
             }\n`;
 
         code += `
-          export interface ${hubsName}Operations {
+          export type ${hubsName}Operations = {
             ${operations
               .map(
                 ({ name, parameters }) =>
@@ -125,7 +114,7 @@ function signalRGenerator(json: HubJson): string {
                   )}) => Promise<void>`,
               )
               .join(";\n")}
-            }\n`;
+            };\n`;
       }
 
       const callbackEnumsName = `${hubsName}CallbacksNames`;
@@ -140,7 +129,7 @@ function signalRGenerator(json: HubJson): string {
             }\n`;
 
         code += `
-          export interface ${hubsName}Callbacks {
+          export type ${hubsName}Callbacks = {
             ${callbacks
               .map(
                 ({ name, parameters }) =>
@@ -156,11 +145,11 @@ function signalRGenerator(json: HubJson): string {
                   )}) => void`,
               )
               .join(";\n")}
-            }\n`;
+            };\n`;
       }
 
       code += `
-      export interface ${hubsName} extends Hub {
+      export interface ${hubsName} {
         ${
           callbackEnums
             ? `
@@ -177,6 +166,7 @@ function signalRGenerator(json: HubJson): string {
         `
             : ""
         }
+      }
       `;
     });
     code += generateTypes(types);
