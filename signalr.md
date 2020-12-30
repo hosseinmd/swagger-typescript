@@ -11,5 +11,5 @@ Add hub to swagger.config.json
 
 ## CS implementation
 
-There is a fork repo we used to implement cs side
-https://github.com/majidbigdeli/SigSpec
+There is a repo we used to implement cs side
+https://github.com/majidbigdeli/SignalRTypes

@@ -84,7 +84,18 @@ function signalRGenerator(json: HubJson): string {
         ),
       );
     }
-    let code = "";
+    let code = `
+      export interface Hub<T extends string = string> {
+        callbacksName: T;
+        methodsName: string;
+        callbacks: {
+          [name in T]: <F extends (...args: any) => any>(
+            ...args: Parameters<F>
+          ) => void;
+        };
+        methods: <T extends (...args: any) => any>(...args: Parameters<T>) => void;
+      }
+    `;
     hubs.map(({ name: hubsName, operations, callbacks }) => {
       const operationEnumsName = `${hubsName}OperationsNames`;
       const operationEnums = operations
@@ -147,6 +158,26 @@ function signalRGenerator(json: HubJson): string {
               .join(";\n")}
             }\n`;
       }
+
+      code += `
+      export interface ${hubsName} extends Hub {
+        ${
+          callbackEnums
+            ? `
+          callbacksName: ${callbackEnumsName};
+          callbacks: ${hubsName}Callbacks;
+        `
+            : ""
+        }
+        ${
+          operationEnums
+            ? `
+          methodsName: ${operationEnumsName};
+          methods: ${hubsName}Operations;
+        `
+            : ""
+        }
+      `;
     });
     code += generateTypes(types);
 
