@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.1](https://github.com/hosseinmd/swagger-typescript/compare/v4.2.0...v4.2.1) (2020-12-30)
+
+
+### Bug Fixes
+
+* syntax error when generating signalr ([be9ac3f](https://github.com/hosseinmd/swagger-typescript/commit/be9ac3feffc83e088cd18574234f10c1029bd83a))
+
 ## [4.2.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.1.1...v4.2.0) (2020-12-30)
 
 
