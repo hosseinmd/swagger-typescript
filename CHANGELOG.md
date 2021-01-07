@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.3.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.2.1...v4.3.0) (2021-01-07)
+
+
+### Features
+
+* export generator ([8c3147c](https://github.com/hosseinmd/swagger-typescript/commit/8c3147c2ce986d68b4c9fd7c40f14a2644a79ee1))
+
 ### [4.2.1](https://github.com/hosseinmd/swagger-typescript/compare/v4.2.0...v4.2.1) (2020-12-30)
 
 
