@@ -2,7 +2,7 @@
   "name": "swagger-typescript",
   "version": "4.0.13",
   "description": "A auto generate typescript code from swagger",
-  "main": "bin/index.js",
+  "main": "lib/index.js",
   "bin": {
     "swag-ts": "bin/index.js"
   },

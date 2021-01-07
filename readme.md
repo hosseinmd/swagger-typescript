@@ -94,7 +94,16 @@ getAxiosInstance used for create an instance of axios request you can customize 
 
 baseConfig used for get static configs and headers. if you need some dynamic configs like add authentication to headers use `requestConfig.headers.authorization` into of `axiosInstance.interceptors.request.use` function.
 
+## run by node
+
+```js
+const { generate } = require("../lib");
+
+generate(config);
+// or
+generate(); // will be use ./swagger.config.json
+```
+
 ## Stories
 
 [why-you-should-use-swagger-typescript-for-generate-apis-code](https://medium.com/@hosseinm.developer/why-you-should-use-swagger-typescript-for-generate-apis-code-63eb8623fef8?source=friends_link&sk=2aa0e2d30b3be158d18c1feb4e12d4a6)
-

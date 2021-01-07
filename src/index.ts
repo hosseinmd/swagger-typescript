@@ -14,8 +14,9 @@ import { build } from "tsc-prog";
 import { majorVersionsCheck } from "./utils";
 import { HubJson, signalRGenerator } from "./signalR/generator";
 
-async function generate() {
-  const config: SwaggerConfig = getSwaggerConfig();
+/** @param config If isn't defined will be use swagger.config.json instead */
+async function generate(config?: SwaggerConfig) {
+  config = config ?? getSwaggerConfig();
 
   const {
     url,
@@ -126,7 +127,7 @@ function convertTsToJs(dir: string) {
   }
 }
 
-function getSwaggerConfig() {
+function getSwaggerConfig(): SwaggerConfig {
   try {
     const config = JSON.parse(readFileSync("swagger.config.json").toString());
 
@@ -162,7 +163,5 @@ function getPrettierOptions(prettierPath?: string) {
 
   return prettierOptions;
 }
-
-generate();
 
 export { generate };
