@@ -9,7 +9,7 @@
   "scripts": {
     "generate": "yarn test",
     "prepare": "rm -rf ./lib && tsc",
-    "test": "yarn prepare && node ./lib/index.js",
+    "test": "yarn prepare && node ./bin/index.js",
     "lint": "eslint src/**/*.ts",
     "eslint-fix": "eslint src/**/*.ts --fix",
     "prettier-fix": "prettier --write \"**/*.{ts,tsx}\"",
