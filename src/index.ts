@@ -39,7 +39,27 @@ async function generate(config?: SwaggerConfig) {
   const prettierOptions = getPrettierOptions(prettierPath);
 
   try {
-    const input: SwaggerJson = await getJson(url);
+    if (url) {
+      const input: SwaggerJson = await getJson(url);
+
+      majorVersionsCheck("3.0.0", input.openapi);
+
+      const code = generator(input, config);
+
+      writeFileSync(`${dir}/services.ts`, code);
+
+      writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
+
+      if (!existsSync(`${dir}/config.${isToJs ? "js" : "ts"}`)) {
+        writeFileSync(
+          `${dir}/config.ts`,
+          CONFIG.replace(
+            "${AUTO_REPLACE_BASE_URL}",
+            input.servers?.[0].url || "",
+          ),
+        );
+      }
+    }
 
     // signalR hub definition
     let hubCode = null;
@@ -49,41 +69,33 @@ async function generate(config?: SwaggerConfig) {
       hubCode = signalRGenerator(hubJson);
     }
 
-    majorVersionsCheck("3.0.0", input.openapi);
-
-    const code = generator(input, config);
-
-    writeFileSync(`${dir}/services.ts`, code);
-
-    writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
-
-    if (!existsSync(`${dir}/config.${isToJs ? "js" : "ts"}`)) {
-      writeFileSync(
-        `${dir}/config.ts`,
-        CONFIG.replace(
-          "${AUTO_REPLACE_BASE_URL}",
-          input.servers?.[0].url || "",
-        ),
-      );
-    }
-
     hubCode && writeFileSync(`${dir}/hub.ts`, hubCode);
 
     if (isToJs) {
       convertTsToJs(dir);
-      hubCode && formatFile(`${dir}/hub.js`, prettierOptions);
-      formatFile(`${dir}/config.js`, prettierOptions);
-      formatFile(`${dir}/httpRequest.js`, prettierOptions);
-      formatFile(`${dir}/services.js`, prettierOptions);
-      formatFile(`${dir}/config.d.ts`, prettierOptions);
-      formatFile(`${dir}/httpRequest.d.ts`, prettierOptions);
-      formatFile(`${dir}/services.d.ts`, prettierOptions);
-      hubCode && formatFile(`${dir}/hub.d.ts`, prettierOptions);
+      if (hubCode) {
+        formatFile(`${dir}/hub.js`, prettierOptions);
+        formatFile(`${dir}/hub.d.ts`, prettierOptions);
+      }
+
+      if (url) {
+        formatFile(`${dir}/config.js`, prettierOptions);
+        formatFile(`${dir}/httpRequest.js`, prettierOptions);
+        formatFile(`${dir}/services.js`, prettierOptions);
+        formatFile(`${dir}/config.d.ts`, prettierOptions);
+        formatFile(`${dir}/httpRequest.d.ts`, prettierOptions);
+        formatFile(`${dir}/services.d.ts`, prettierOptions);
+      }
     } else {
-      hubCode && formatFile(`${dir}/hub.ts`, prettierOptions);
-      formatFile(`${dir}/config.ts`, prettierOptions);
-      formatFile(`${dir}/httpRequest.ts`, prettierOptions);
-      formatFile(`${dir}/services.ts`, prettierOptions);
+      if (hubCode) {
+        formatFile(`${dir}/hub.ts`, prettierOptions);
+      }
+
+      if (url) {
+        formatFile(`${dir}/config.ts`, prettierOptions);
+        formatFile(`${dir}/httpRequest.ts`, prettierOptions);
+        formatFile(`${dir}/services.ts`, prettierOptions);
+      }
     }
   } catch (error) {
     console.error(error);

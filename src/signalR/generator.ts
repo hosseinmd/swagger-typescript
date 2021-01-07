@@ -98,7 +98,7 @@ function signalRGenerator(json: HubJson): string {
             }\n`;
 
         code += `
-          export interface ${hubsName}Operations {
+          export type ${hubsName}Operations = {
             ${operations
               .map(
                 ({ name, parameters }) =>
@@ -114,7 +114,7 @@ function signalRGenerator(json: HubJson): string {
                   )}) => Promise<void>`,
               )
               .join(";\n")}
-            }\n`;
+            };\n`;
       }
 
       const callbackEnumsName = `${hubsName}CallbacksNames`;
@@ -129,7 +129,7 @@ function signalRGenerator(json: HubJson): string {
             }\n`;
 
         code += `
-          export interface ${hubsName}Callbacks {
+          export type ${hubsName}Callbacks = {
             ${callbacks
               .map(
                 ({ name, parameters }) =>
@@ -145,8 +145,29 @@ function signalRGenerator(json: HubJson): string {
                   )}) => void`,
               )
               .join(";\n")}
-            }\n`;
+            };\n`;
       }
+
+      code += `
+      export interface ${hubsName} {
+        ${
+          callbackEnums
+            ? `
+          callbacksName: ${callbackEnumsName};
+          callbacks: ${hubsName}Callbacks;
+        `
+            : ""
+        }
+        ${
+          operationEnums
+            ? `
+          methodsName: ${operationEnumsName};
+          methods: ${hubsName}Operations;
+        `
+            : ""
+        }
+      }
+      `;
     });
     code += generateTypes(types);
 
