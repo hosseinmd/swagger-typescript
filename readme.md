@@ -97,7 +97,7 @@ baseConfig used for get static configs and headers. if you need some dynamic con
 ## run by node
 
 ```js
-const { generate } = require("../lib");
+const { generate } = require("swagger-typescript");
 
 generate(config);
 // or
