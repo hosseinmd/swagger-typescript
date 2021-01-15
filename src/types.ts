@@ -143,11 +143,12 @@ export type Parameter = {
 export interface SwaggerResponse {
   $ref?: string;
   description?: string;
-  content?: {
-    "application/json": {
+  content?: Record<
+    ApiAST["contentType"],
+    {
       schema: Schema;
-    };
-  };
+    }
+  >;
 }
 
 export interface SwaggerRequest {
@@ -194,6 +195,10 @@ export interface SwaggerConfig {
 }
 
 export type ApiAST = {
+  contentType:
+    | "application/json"
+    | "multipart/form-data"
+    | "application/octet-stream";
   summary: string | undefined;
   deprecated: boolean | undefined;
   serviceName: string;

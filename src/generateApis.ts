@@ -19,6 +19,7 @@ function generateApis(apis: ApiAST[]): string {
         (
           prev,
           {
+            contentType,
             summary,
             deprecated,
             serviceName,
@@ -90,7 +91,15 @@ ${getJsdoc({
     );
   }`
       : ""
-  }
+  }${
+              contentType === "multipart/form-data"
+                ? `const formData = new FormData();
+
+    Object.entries(requestBody).forEach(([key, value]) => {
+      formData.append(key, value);
+    });`
+                : ""
+            }
   return Http.${method}Request(
     ${
       pathParamsRefString
@@ -98,7 +107,13 @@ ${getJsdoc({
         : `"${endPoint}"`
     },
     ${queryParamsTypeName ? "queryParams" : "undefined"},
-    ${requestBody ? "requestBody" : "undefined"},
+    ${
+      requestBody
+        ? contentType === "multipart/form-data"
+          ? "formData"
+          : "requestBody"
+        : "undefined"
+    },
     ${security},
     overrideConfig(${additionalAxiosConfig},
       configOverride,
