@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.4.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.3.0...v4.4.0) (2021-01-15)
+
+
+### Features
+
+* reguestBody to formData multipart/form-data ([37a83c2](https://github.com/hosseinmd/swagger-typescript/commit/37a83c29ba6c3813b415a7f2536dbcb28189d43c))
+
 ## [4.3.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.2.1...v4.3.0) (2021-01-07)
 
 
