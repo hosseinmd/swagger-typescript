@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.5.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.4.2...v4.5.0) (2021-01-20)
+
+
+### Features
+
+* add methodParamsByTag ([ebc8b58](https://github.com/hosseinmd/swagger-typescript/commit/ebc8b58416f8fcf3c7fd8b05ce4e5938f6bc689d))
+
 ## [4.4.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.3.0...v4.4.0) (2021-01-15)
 
 
