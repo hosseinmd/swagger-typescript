@@ -189,6 +189,7 @@ export interface SwaggerConfig {
   prettierPath?: string;
   language?: "javascript" | "typescript";
   methodName?: string;
+  methodParamsByTag?: boolean;
   ignore?: {
     headerParams?: string[];
   };

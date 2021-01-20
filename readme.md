@@ -81,7 +81,7 @@ For Example:
 | `language`   | `typescript`     | export to "javascript" or "typescript"                                                 |
 | `methodName` | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}' |
 | `ignore`     | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]} `   |
-
+| `methodParamsByTag` | false | add add a tag insteadOf params name to generated method name (example: getUserP1P2 insteadOf getUserConnectionIdAccountId) 
 ## config.ts
 
 This file automatically will be created after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.

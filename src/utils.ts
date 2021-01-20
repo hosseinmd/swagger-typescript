@@ -40,22 +40,20 @@ function generateServiceName(
   operationId: string | undefined,
   config: SwaggerConfig,
 ): string {
-  function replaceWithUpper(str: string, sp: string) {
-    let pointArray = str.split(sp);
-    pointArray = pointArray.map((point) => toPascalCase(point));
+  const { methodName, methodParamsByTag } = config;
 
-    return pointArray.join("");
-  }
+  let endPointArr = endPoint.split("/");
+  let paramsCount = 0;
+  endPointArr = endPointArr.map((value) => {
+    if (value.includes("{")) {
+      return methodParamsByTag
+        ? `P${paramsCount++}`
+        : toPascalCase(value.replace("{", "").replace("}", ""));
+    }
 
-  const path = replaceWithUpper(
-    replaceWithUpper(
-      replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"),
-      "}",
-    ),
-    "-",
-  );
-
-  const { methodName } = config;
+    return toPascalCase(value);
+  });
+  const path = endPointArr.join("");
 
   const methodNameTemplate = getTemplate(methodName, operationId);
 
