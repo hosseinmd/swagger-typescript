@@ -91,15 +91,7 @@ ${getJsdoc({
     );
   }`
       : ""
-  }${
-              contentType === "multipart/form-data"
-                ? `const formData = new FormData();
-
-    Object.entries(requestBody).forEach(([key, value]) => {
-      formData.append(key, value);
-    });`
-                : ""
-            }
+  }
   return Http.${method}Request(
     ${
       pathParamsRefString
@@ -110,7 +102,7 @@ ${getJsdoc({
     ${
       requestBody
         ? contentType === "multipart/form-data"
-          ? "formData"
+          ? "objToForm(requestBody)"
           : "requestBody"
         : "undefined"
     },
