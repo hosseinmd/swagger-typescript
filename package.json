@@ -1,10 +1,10 @@
 {
   "name": "swagger-typescript",
-  "version": "4.4.1",
+  "version": "4.4.2",
   "description": "A auto generate typescript code from swagger",
   "main": "lib/index.js",
   "bin": {
-    "swag-ts": "bin/index.js"
+    "swag-ts": "./bin/index.js"
   },
   "scripts": {
     "generate": "yarn test",
@@ -70,6 +70,7 @@
   },
   "files": [
     "lib",
-    "files"
+    "files",
+    "bin"
   ]
 }
