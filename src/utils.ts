@@ -347,7 +347,7 @@ function getJsdoc({
 function majorVersionsCheck(expectedV: string, inputV?: string) {
   if (!inputV) {
     throw new Error(
-      `Swagger-Typescript working with openApi v3, seem your json is not openApi v3`,
+      `Swagger-Typescript working with openApi v3/ swagger v2, seem your json is not openApi openApi v3/ swagger v2`,
     );
   }
 
@@ -358,21 +358,19 @@ function majorVersionsCheck(expectedV: string, inputV?: string) {
   }
   if (!isValidPart(expectedVMajor) || !isValidPart(inputVMajor)) {
     throw new Error(
-      `Swagger-Typescript working with openApi v3 your json openApi version is not valid "${inputV}"`,
+      `Swagger-Typescript working with openApi v3/ swagger v2 your json openApi version is not valid "${inputV}"`,
     );
   }
 
   const expectedMajorNumber = Number(expectedVMajor);
   const inputMajorNumber = Number(inputVMajor);
 
-  if (expectedMajorNumber === inputMajorNumber) {
-    return;
-  } else if (expectedMajorNumber < inputMajorNumber) {
+  if (expectedMajorNumber <= inputMajorNumber) {
     return;
   }
 
   throw new Error(
-    `Swagger-Typescript working with openApi v3 your json openApi version is ${inputV}`,
+    `Swagger-Typescript working with openApi v3/ swagger v2 your json openApi version is ${inputV}`,
   );
 }
 

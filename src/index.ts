@@ -13,6 +13,7 @@ import { generator } from "./generator";
 import { build } from "tsc-prog";
 import { majorVersionsCheck } from "./utils";
 import { HubJson, signalRGenerator } from "./signalR/generator";
+import { swaggerToOpenApi } from "./utilities/swaggerToOpenApi";
 
 /** @param config If isn't defined will be use swagger.config.json instead */
 async function generate(config?: SwaggerConfig) {
@@ -40,9 +41,15 @@ async function generate(config?: SwaggerConfig) {
 
   try {
     if (url) {
-      const input: SwaggerJson = await getJson(url);
+      let input: SwaggerJson = await getJson(url);
 
-      majorVersionsCheck("3.0.0", input.openapi);
+      if (input.swagger) {
+        majorVersionsCheck("2.0.0", input.swagger);
+        // convert swagger v2 to openApi v3
+        input = await swaggerToOpenApi(input);
+      } else {
+        majorVersionsCheck("3.0.0", input.openapi);
+      }
 
       const code = generator(input, config);
 

@@ -168,6 +168,7 @@ export interface SwaggerSchemas {
 
 export interface SwaggerJson {
   openapi?: string;
+  swagger?: string;
   servers?: {
     url: string;
   }[];

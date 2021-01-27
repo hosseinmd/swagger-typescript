@@ -35,6 +35,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "qs": "^6.9.4",
+    "swagger2openapi": "^7.0.5",
     "tsc-prog": "^2.2.1"
   },
   "devDependencies": {
