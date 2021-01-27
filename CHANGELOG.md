@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.6.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.5.0...v4.6.0) (2021-01-27)
+
+
+### Features
+
+* support swagger v2 ([daae12a](https://github.com/hosseinmd/swagger-typescript/commit/daae12a8f2fa22553cf628f9ea680a64e66e0f9f))
+
+
+### Bug Fixes
+
+* formData typescript ([49caa25](https://github.com/hosseinmd/swagger-typescript/commit/49caa25a46bda0407740b3cc5ab493d78ec92ff3))
+
 ## [4.5.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.4.2...v4.5.0) (2021-01-20)
 
 
