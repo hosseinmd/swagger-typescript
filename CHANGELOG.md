@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.7.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.6.0...v4.7.0) (2021-01-28)
+
+
+### Features
+
+* add prefix to swagger.config ([bb99b35](https://github.com/hosseinmd/swagger-typescript/commit/bb99b354db3865f2d7eb11b2d8c20ad8ce5f9ed9))
+
+
+### Bug Fixes
+
+* resolve x-enumNames ([39ac424](https://github.com/hosseinmd/swagger-typescript/commit/39ac424c125014919c6e4d36e715fa636c7c5365))
+
 ## [4.6.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.5.0...v4.6.0) (2021-01-27)
 
 
