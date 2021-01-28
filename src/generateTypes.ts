@@ -17,7 +17,15 @@ function generateTypes(types: TypeAST[]): string {
 }
 
 function getTypeDefinition(name: string, schema: Schema, description?: string) {
-  const { type, enum: Enum, allOf, oneOf, items, $ref } = schema;
+  const {
+    type,
+    enum: Enum,
+    "x-enumNames": enumNames,
+    allOf,
+    oneOf,
+    items,
+    $ref,
+  } = schema;
   if (type === "object") {
     const typeObject = getTsType(schema);
 
@@ -29,7 +37,10 @@ function getTypeDefinition(name: string, schema: Schema, description?: string) {
   if (Enum) {
     return `
    ${getJsdoc({ description })}export enum ${name} {${Enum.map(
-      (e) => `${e}=${typeof e === "string" ? `"${e}"` : `${e}`}`,
+      (e, index) =>
+        `${enumNames ? enumNames[index] : e}=${
+          typeof e === "string" ? `"${e}"` : `${e}`
+        }`,
     )}}
    `;
   }
@@ -56,7 +67,8 @@ function getTypeDefinition(name: string, schema: Schema, description?: string) {
   export type ${name} = ${getRefName($ref)}`;
   }
 
-  return `export type ${name} = any`;
+  return `
+  export type ${name} = any`;
 }
 
 export { generateTypes };

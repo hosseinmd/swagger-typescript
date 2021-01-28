@@ -59,9 +59,9 @@ export interface Schema {
   required?: string[];
   description?: string;
   example?: string;
-  "x-enumNames"?: ["Rial"];
   deprecated?: boolean;
   "x-deprecatedMessage"?: string;
+  "x-enumNames"?: string[];
   enum?: string[];
   $ref?: string;
   allOf?: Schema[];
@@ -191,6 +191,7 @@ export interface SwaggerConfig {
   language?: "javascript" | "typescript";
   methodName?: string;
   methodParamsByTag?: boolean;
+  prefix?: string;
   ignore?: {
     headerParams?: string[];
   };
