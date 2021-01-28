@@ -65,23 +65,21 @@ For Example:
 ```json
 {
   "url": "http://example.com/api/swagger.json",
-  "dir": "./test",
+  "dir": "./services",
   "prettierPath": ".prettierrc",
-  "language": "typescript",
-  "ignore": {
-    "headerParams": ["terminalId"]
-  }
+  "language": "typescript"
 }
 ```
 
-| [`Key`]             | [`default`]      | Comment                                                                                                                    |
-| ------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `url`               | Required         | Address of swagger.json                                                                                                    |
-| `dir`               | Required         | Address of output                                                                                                          |
-| `language`          | `typescript`     | export to "javascript" or "typescript"                                                                                     |
-| `methodName`        | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}'                                     |
-| `ignore`            | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]}`                                        |
-| `methodParamsByTag` | false            | add add a tag insteadOf params name to generated method name (example: getUserP1P2 insteadOf getUserConnectionIdAccountId) |
+| [`Key`]             | [`default`]      | Comment                                                                                                                                                            |
+| ------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `url`               | Required         | Address of swagger.json                                                                                                                                            |
+| `dir`               | Required         | Address of output                                                                                                                                                  |
+| `language`          | `typescript`     | export to "javascript" or "typescript"                                                                                                                             |
+| `methodName`        | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}'                                                                             |
+| `prefix`            | Optional         | prefix value will be removed from method name For example your endpoints is like "/api/v2/users", If you don't want add "/api/v2" to method name, add it to prefix |
+| `ignore`            | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]}`                                                                                |
+| `methodParamsByTag` | false            | add add a tag insteadOf params name to generated method name (example: getUserP1P2 insteadOf getUserConnectionIdAccountId)                                         |
 
 ## config.ts
 
