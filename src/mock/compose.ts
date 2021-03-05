@@ -63,7 +63,10 @@ export const composeMockData = (
       }
     }
 
-    ret[pathKey] = response;
+    ret[pathKey] = {
+      ...res,
+      response,
+    };
   });
   return ret;
 };
