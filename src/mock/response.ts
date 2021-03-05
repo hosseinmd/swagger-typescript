@@ -13,7 +13,9 @@ export type ResponsesType = {
   [path: string]: {
     path: string;
     method: Method;
-    response: SwaggerResponse["content"];
+    response: {
+      [status: string]: SwaggerResponse["content"];
+    };
   };
 };
 
@@ -26,19 +28,18 @@ export const extractResponses = (
     Object.entries(value).forEach(
       ([method, options]: [string, SwaggerRequest]) => {
         const { operationId, responses } = options;
+        const response: { [x: string]: any } = {};
         Object.keys(responses).forEach((statusCode: string) => {
-          const response = responses[statusCode];
-          const { content } = response;
-          const key =
-            generateServiceName(path, method, operationId, config) +
-            `_${statusCode}`;
-
-          ret[key] = {
-            method: method as Method,
-            path,
-            response: content,
-          };
+          const { content } = responses[statusCode];
+          response[statusCode] = content;
         });
+        const key = generateServiceName(path, method, operationId, config);
+
+        ret[key] = {
+          method: method as Method,
+          path,
+          response,
+        };
       },
     );
   });
