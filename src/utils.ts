@@ -1,4 +1,10 @@
-import { Schema, Parameter, SwaggerConfig, JsdocAST } from "./types";
+import {
+  Schema,
+  Parameter,
+  SwaggerConfig,
+  JsdocAST,
+  AssignToDescriptionObj,
+} from "./types";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (
@@ -200,8 +206,6 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
         prev,
         {
           schema: {
-            title,
-            description,
             deprecated,
             "x-deprecatedMessage": deprecatedMessage,
             example,
@@ -212,15 +216,7 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
         },
       ) => {
         return `${prev}${getJsdoc({
-          description: assignToDescription({
-            description,
-            title,
-            format: schema.format,
-            maxLength: schema.maxLength,
-            min: schema.min,
-            max: schema.max,
-            pattern: schema.pattern,
-          }),
+          description: schema,
           tags: {
             deprecated: {
               value: Boolean(deprecated),
@@ -275,15 +271,7 @@ function assignToDescription({
   max,
   min,
   pattern,
-}: {
-  title?: string;
-  description?: string;
-  format?: string;
-  pattern?: string;
-  maxLength?: number;
-  min?: number;
-  max?: number;
-}) {
+}: AssignToDescriptionObj) {
   return `${
     title
       ? `
@@ -327,6 +315,11 @@ function getJsdoc({
   description,
   tags: { deprecated, example } = {},
 }: JsdocAST) {
+  description =
+    typeof description === "object"
+      ? assignToDescription(description)
+      : description;
+
   return deprecated?.value || description || example
     ? `
       /**${

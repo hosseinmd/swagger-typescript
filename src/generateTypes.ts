@@ -6,7 +6,22 @@ function generateTypes(types: TypeAST[]): string {
     return types
       .sort(({ name }, { name: _name }) => isAscending(name, _name))
       .reduce((prev, { name, schema, description }) => {
-        prev += getTypeDefinition(name, schema, description);
+        prev += `
+        ${getJsdoc({
+          description: {
+            ...schema,
+            description: description || schema.description,
+          },
+          tags: {
+            deprecated: {
+              value: Boolean(schema.deprecated),
+              description: schema["x-deprecatedMessage"],
+            },
+            example: schema.example,
+          },
+        })}
+        ${getTypeDefinition(name, schema)}
+        `;
 
         return prev;
       }, "");
@@ -16,7 +31,7 @@ function generateTypes(types: TypeAST[]): string {
   }
 }
 
-function getTypeDefinition(name: string, schema: Schema, description?: string) {
+function getTypeDefinition(name: string, schema: Schema) {
   const {
     type,
     enum: Enum,
@@ -29,46 +44,35 @@ function getTypeDefinition(name: string, schema: Schema, description?: string) {
   if (type === "object") {
     const typeObject = getTsType(schema);
 
-    return `
-    export interface ${name} ${typeObject}
-  `;
+    return `export interface ${name} ${typeObject}`;
   }
 
   if (Enum) {
-    return `
-   ${getJsdoc({ description })}export enum ${name} {${Enum.map(
+    return `export enum ${name} {${Enum.map(
       (e, index) =>
         `${enumNames ? enumNames[index] : e}=${
           typeof e === "string" ? `"${e}"` : `${e}`
         }`,
-    )}}
-   `;
+    )}}`;
   }
 
   if (allOf) {
-    return `
-  export type ${name} = ${getTsType({ allOf })}
-  `;
+    return `export type ${name} = ${getTsType({ allOf })}`;
   }
   if (oneOf) {
-    return `
-  export type ${name} = ${oneOf
+    return `export type ${name} = ${oneOf
       .map((_schema) => getTsType(_schema))
-      .join(" | ")}
-          `;
+      .join(" | ")}`;
   }
   if (type === "array" && items) {
-    return `
-  export type ${name} = ${getTsType(items)}[]`;
+    return `export type ${name} = ${getTsType(items)}[]`;
   }
 
   if ($ref) {
-    return `
-  export type ${name} = ${getRefName($ref)}`;
+    return `export type ${name} = ${getRefName($ref)}`;
   }
 
-  return `
-  export type ${name} = any`;
+  return `export type ${name} = any`;
 }
 
 export { generateTypes };

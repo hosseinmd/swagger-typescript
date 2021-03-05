@@ -225,8 +225,18 @@ export type TypeAST = {
   description?: string;
 };
 
-export type JsdocAST = {
+export type AssignToDescriptionObj = {
+  title?: string;
   description?: string;
+  format?: string;
+  pattern?: string;
+  maxLength?: number;
+  min?: number;
+  max?: number;
+};
+
+export type JsdocAST = {
+  description?: string | AssignToDescriptionObj;
   tags?: {
     deprecated?: {
       value: boolean;

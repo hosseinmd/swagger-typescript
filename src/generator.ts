@@ -199,7 +199,11 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
           .map(([name, _requestBody]) => {
             return {
               name: `RequestBody${name}`,
-              schema: _requestBody.content?.["application/json"].schema,
+              schema:
+                _requestBody.content?.["application/json"].schema ||
+                _requestBody.content?.["application/octet-stream"].schema ||
+                _requestBody.content?.["multipart/form-data"].schema,
+              description: _requestBody.description,
             };
           })
           .filter((v) => v.schema) as any),
