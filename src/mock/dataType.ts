@@ -1,5 +1,7 @@
 import { Schema } from "../types";
 
+let guid = 0;
+
 export enum DataType {
   string = "string",
   number = "number",
@@ -19,7 +21,7 @@ export namespace DataType {
         return getStringDefaultValue(schema);
       case DataType.number:
       case DataType.integer:
-        return 0;
+        return schema.minimum || schema.maximum || 0;
       case DataType.boolean:
         return true;
       case DataType.array:
@@ -44,6 +46,11 @@ export namespace DataType {
           return "U3dhZ2dlciByb2Nrcw==";
         case "binary":
           return "binary";
+        case "binary":
+          return "binary";
+        case "guid":
+        case "uuid":
+          return `3ba89b92-8c02-4e5a-9843-${guid++}`;
         default:
           return "";
       }

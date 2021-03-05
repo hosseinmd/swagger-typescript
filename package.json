@@ -37,7 +37,6 @@
   "dependencies": {
     "axios": "^0.19.2",
     "chalk": "^4.1.0",
-    "openapi3-ts": "^2.0.1",
     "qs": "^6.9.4",
     "swagger2openapi": "^7.0.5",
     "tsc-prog": "^2.2.1"

@@ -43,7 +43,11 @@ export interface Schema {
     | "date"
     | "date-time"
     | "date"
-    | "password";
+    | "password"
+    // C#
+    | "guid"
+    // Java
+    | "uuid";
   /**
    * A free-form object (arbitrary property/value pairs) is defined as:
    *
@@ -300,15 +304,19 @@ export type TypeAST = {
   description?: string;
 };
 
-export type AssignToDescriptionObj = {
-  title?: string;
-  description?: string;
-  format?: string;
-  pattern?: string;
-  maxLength?: number;
-  min?: number;
-  max?: number;
-};
+export type AssignToDescriptionObj = Pick<
+  Schema,
+  | "min"
+  | "max"
+  | "title"
+  | "description"
+  | "format"
+  | "minimum"
+  | "maximum"
+  | "pattern"
+  | "maxLength"
+  | "minLength"
+>;
 
 export type JsdocAST = {
   description?: string | AssignToDescriptionObj;

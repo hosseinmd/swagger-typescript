@@ -268,8 +268,11 @@ function assignToDescription({
   title,
   format,
   maxLength,
+  minLength,
   max,
   min,
+  minimum,
+  maximum,
   pattern,
 }: AssignToDescriptionObj) {
   return `${
@@ -294,6 +297,11 @@ ${description}`
        maxLength: ${maxLength}`
       : ""
   }${
+    minLength
+      ? `
+      minLength: ${minLength}`
+      : ""
+  }${
     min
       ? `
         min: ${min}`
@@ -302,6 +310,16 @@ ${description}`
     max
       ? `
        max: ${max}`
+      : ""
+  }${
+    minimum
+      ? `
+      minimum: ${minimum}`
+      : ""
+  }${
+    maximum
+      ? `
+       max: ${maximum}`
       : ""
   }${
     pattern
