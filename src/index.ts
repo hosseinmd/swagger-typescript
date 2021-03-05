@@ -14,6 +14,8 @@ import { build } from "tsc-prog";
 import { majorVersionsCheck } from "./utils";
 import { HubJson, signalRGenerator } from "./signalR/generator";
 import { swaggerToOpenApi } from "./utilities/swaggerToOpenApi";
+import { generateMock } from "./mock";
+import chalk from "chalk";
 
 /** @param config If isn't defined will be use swagger.config.json instead */
 async function generate(config?: SwaggerConfig) {
@@ -25,6 +27,7 @@ async function generate(config?: SwaggerConfig) {
     dir,
     prettierPath,
     language,
+    mock,
     //@ts-ignore
     __unstable_is_legacy_properties,
   } = config;
@@ -53,6 +56,10 @@ async function generate(config?: SwaggerConfig) {
 
       const code = generator(input, config);
 
+      if (mock) {
+        generateMock(input, dir);
+      }
+
       writeFileSync(`${dir}/services.ts`, code);
 
       writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
@@ -66,6 +73,7 @@ async function generate(config?: SwaggerConfig) {
           ),
         );
       }
+      console.log(chalk.yellowBright("services Completed"));
     }
 
     // signalR hub definition
@@ -74,9 +82,10 @@ async function generate(config?: SwaggerConfig) {
       const hubJson: HubJson = hub ? await getJson(hub) : null;
 
       hubCode = signalRGenerator(hubJson);
-    }
+      hubCode && writeFileSync(`${dir}/hub.ts`, hubCode);
 
-    hubCode && writeFileSync(`${dir}/hub.ts`, hubCode);
+      console.log(chalk.yellowBright("hub Completed"));
+    }
 
     if (isToJs) {
       convertTsToJs(dir);
@@ -104,8 +113,10 @@ async function generate(config?: SwaggerConfig) {
         formatFile(`${dir}/services.ts`, prettierOptions);
       }
     }
+    console.log(chalk.greenBright("All Completed"));
   } catch (error) {
-    console.error(error);
+    console.log(chalk.redBright(error));
+    console.log(chalk.redBright("failed"));
   }
 }
 

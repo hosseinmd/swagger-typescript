@@ -80,6 +80,7 @@ For Example:
 | `prefix`            | Optional         | prefix value will be removed from method name For example your endpoints is like "/api/v2/users", If you don't want add "/api/v2" to method name, add it to prefix |
 | `ignore`            | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]}`                                                                                |
 | `methodParamsByTag` | false            | add add a tag insteadOf params name to generated method name (example: getUserP1P2 insteadOf getUserConnectionIdAccountId)                                         |
+| `mock`              | false            | For generate response mocks                                                                                                                                        |
 
 ## config.ts
 
