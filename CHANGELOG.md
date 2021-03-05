@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.8.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.7.0...v4.8.0) (2021-03-05)
+
+
+### Features
+
+* generate response mocks ([5b2d148](https://github.com/hosseinmd/swagger-typescript/commit/5b2d148d9f911ac9c54fb7d446e314b855e726da))
+
+
+### Bug Fixes
+
+* **mock:** binary response and enum in object ([f6dfbcc](https://github.com/hosseinmd/swagger-typescript/commit/f6dfbcc964b0af207af2ae65b4ead6d981d0c19b))
+* description ([f3afab7](https://github.com/hosseinmd/swagger-typescript/commit/f3afab7876bd93e42f0ce9a9f5b6c6be9ba74138))
+
 ## [4.7.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.6.0...v4.7.0) (2021-01-28)
 
 
