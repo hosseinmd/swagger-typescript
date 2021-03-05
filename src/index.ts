@@ -57,7 +57,7 @@ async function generate(config?: SwaggerConfig) {
       const code = generator(input, config);
 
       if (mock) {
-        generateMock(input, dir);
+        generateMock(input, config);
       }
 
       writeFileSync(`${dir}/services.ts`, code);

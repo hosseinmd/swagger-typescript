@@ -1,27 +1,46 @@
-import { OpenAPIObject, PathItemObject } from "openapi3-ts";
+import {
+  Method,
+  SwaggerConfig,
+  SwaggerJson,
+  SwaggerRequest,
+  SwaggerResponse,
+} from "../types";
+import { generateServiceName } from "../utils";
 
 export const APPLICATION_JSON = "application/json";
 
 export type ResponsesType = {
   [path: string]: {
-    [APPLICATION_JSON]: { schema: any };
+    path: string;
+    method: Method;
+    response: SwaggerResponse["content"];
   };
 };
 
-export const extractResponses = (obj: OpenAPIObject): ResponsesType => {
-  const ret: any = {};
-  Object.keys(obj.paths).forEach((path) => {
-    const methods: PathItemObject = obj.paths[path];
-    Object.keys(methods).forEach((method: string) => {
-      const api = methods[method];
-      const { responses } = api;
-      Object.keys(responses).forEach((statusCode: string) => {
-        const response = responses[statusCode];
-        const { content } = response;
-        const key = `${path}_${method}_${statusCode}`;
-        ret[key] = content;
-      });
-    });
+export const extractResponses = (
+  input: SwaggerJson,
+  config: SwaggerConfig,
+): ResponsesType => {
+  const ret: ResponsesType = {};
+  Object.entries(input.paths).forEach(([path, value]) => {
+    Object.entries(value).forEach(
+      ([method, options]: [string, SwaggerRequest]) => {
+        const { operationId, responses } = options;
+        Object.keys(responses).forEach((statusCode: string) => {
+          const response = responses[statusCode];
+          const { content } = response;
+          const key =
+            generateServiceName(path, method, operationId, config) +
+            `_${statusCode}`;
+
+          ret[key] = {
+            method: method as Method,
+            path,
+            response: content,
+          };
+        });
+      },
+    );
   });
   return ret;
 };

@@ -16,6 +16,7 @@ import type {
   Schema,
   Parameter,
   ConstantsAST,
+  Method,
 } from "./types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
@@ -169,7 +170,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             responses,
             pathParamsRefString,
             endPoint,
-            method,
+            method: method as Method,
             security: security
               ? getConstantName(JSON.stringify(security))
               : "undefined",

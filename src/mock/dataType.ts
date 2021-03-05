@@ -1,4 +1,4 @@
-import { SchemaObject, ReferenceObject } from "openapi3-ts";
+import { Schema } from "../types";
 
 export enum DataType {
   string = "string",
@@ -10,7 +10,7 @@ export enum DataType {
 }
 
 export namespace DataType {
-  export function defaultValue(schema: SchemaObject): any {
+  export function defaultValue(schema: Schema): any {
     if (schema.example) {
       return schema.example;
     }
@@ -31,7 +31,7 @@ export namespace DataType {
     }
   }
 
-  export function getStringDefaultValue(schema: SchemaObject): string {
+  export function getStringDefaultValue(schema: Schema): string {
     if (schema.format) {
       switch (schema.format) {
         case "date":
@@ -54,37 +54,37 @@ export namespace DataType {
 }
 
 export const isArray = (
-  property: SchemaObject,
-): property is SchemaObject & { items: SchemaObject | ReferenceObject } => {
+  property: Schema,
+): property is Schema & { items: Schema } => {
   return property.type === DataType.array;
 };
 
 export const isObject = (
-  schema: SchemaObject,
-): schema is SchemaObject & { type: "object" } => {
+  schema: Schema,
+): schema is Schema & { type: "object" } => {
   return schema.type === DataType.object || schema.properties !== undefined;
 };
 
 export const isAllOf = (
-  schema: SchemaObject,
-): schema is SchemaObject & { allOf: (SchemaObject | ReferenceObject)[] } => {
+  schema: Schema,
+): schema is Schema & { allOf: Schema[] } => {
   return schema.allOf !== undefined;
 };
 
 export const isOneOf = (
-  schema: SchemaObject,
-): schema is SchemaObject & { oneOf: (SchemaObject | ReferenceObject)[] } => {
+  schema: Schema,
+): schema is Schema & { oneOf: Schema[] } => {
   return schema.oneOf !== undefined;
 };
 
 export const isAnyOf = (
-  schema: SchemaObject,
-): schema is SchemaObject & { anyOf: (SchemaObject | ReferenceObject)[] } => {
+  schema: Schema,
+): schema is Schema & { anyOf: Schema[] } => {
   return schema.anyOf !== undefined;
 };
 
 export const isReferenceObject = (
-  schema: SchemaObject | ReferenceObject,
-): schema is ReferenceObject => {
+  schema: Schema,
+): schema is Schema & { $ref: string } => {
   return "$ref" in schema;
 };

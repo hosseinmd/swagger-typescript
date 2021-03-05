@@ -1,4 +1,11 @@
 {
-    "url": "http://192.168.34.117/swagger/v2/swagger.json",
-    "dir": "./test"
+    "url": "http://94.182.181.229:8090/swagger/v1/swagger.json",
+    "dir": "./test",
+    "language": "typescript",
+    "mock": true,
+    "ignore": {
+        "headerParams": [
+            "terminalId"
+        ]
+    }
 }

@@ -1,4 +1,4 @@
-import { SchemaObject, ReferenceObject } from "openapi3-ts";
+import { Schema } from "../types";
 import {
   DataType,
   isObject,
@@ -12,13 +12,10 @@ import { getSchemaName } from "./util";
 
 export const REF = "$ref";
 type Schemas = {
-  [schema: string]: SchemaObject;
+  [schema: string]: Schema;
 };
 
-export const mergeAllOf = (
-  properties: (SchemaObject | ReferenceObject)[],
-  schemas: Schemas,
-): any => {
+export const mergeAllOf = (properties: Schema[], schemas: Schemas): any => {
   let ret: any = {};
   properties.forEach((property) => {
     if (isReferenceObject(property)) {
@@ -35,10 +32,7 @@ export const mergeAllOf = (
   return ret;
 };
 
-export const pickOneOf = (
-  properties: (SchemaObject | ReferenceObject)[],
-  schemas: Schemas,
-): any => {
+export const pickOneOf = (properties: Schema[], schemas: Schemas): any => {
   const property = properties[0];
   if (isReferenceObject(property)) {
     const schemaName = getSchemaName(property[REF]);
@@ -69,7 +63,7 @@ export const getSchemaData = (schemas: Schemas, name: string): Object => {
   return schema;
 };
 
-export const parseObject = (obj: SchemaObject, schemas: Schemas): any => {
+export const parseObject = (obj: Schema, schemas: Schemas): any => {
   if (obj.example) return obj.example;
   if (!obj.properties) {
     return {};
@@ -102,9 +96,9 @@ export const parseObject = (obj: SchemaObject, schemas: Schemas): any => {
 };
 
 export const parseArray = (
-  arr: SchemaObject & { items: SchemaObject | ReferenceObject },
+  arr: Schema & { items: Schema },
   schemas: Schemas,
-): Object[] => {
+): any => {
   if (isReferenceObject(arr.items)) {
     const schemaName = getSchemaName(arr.items[REF]);
     if (schemaName) {

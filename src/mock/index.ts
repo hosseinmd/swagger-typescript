@@ -6,11 +6,13 @@ import { writeFiles } from "./util";
 import { extractSchemas } from "./schema";
 import { composeMockData } from "./compose";
 import { existsSync, mkdirSync } from "fs";
+import { SwaggerConfig } from "../types";
 
-function generateMock(content: any, dir: string) {
+function generateMock(content: any, config: SwaggerConfig) {
+  const { dir } = config;
   try {
     const output = `${dir}/mocks`;
-    const responses = extractResponses(content);
+    const responses = extractResponses(content, config);
     const schemas = extractSchemas(content);
     const composed = composeMockData(responses, schemas);
 

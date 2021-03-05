@@ -1,6 +1,6 @@
-import { ResponsesType, APPLICATION_JSON } from "./response";
+import { ResponsesType } from "./response";
 import { Schemas } from "./schema";
-import { normalizeName, normalizePath, getSchemaName } from "./util";
+import { normalizePath, getSchemaName } from "./util";
 import { REF, parseObject, parseArray } from "./parse";
 import { isObject, isArray } from "./dataType";
 
@@ -15,43 +15,52 @@ export const composeMockData = (
 ): MockData => {
   const ret: any = {};
   Object.keys(responses).forEach((path) => {
-    const res: any = responses[path];
+    const res = responses[path];
     const pathKey = normalizePath(path);
-    if (res) {
-      const val = res[APPLICATION_JSON];
-      if (!val) {
-        return;
+    let response: any = "";
+    if (!res) {
+      return;
+    }
+    const val =
+      res["response"]?.["application/json"] ||
+      res["response"]?.["application/octet-stream"] ||
+      res["response"]?.["multipart/form-data"];
+
+    if (!val) {
+      return;
+    }
+
+    if (val.example) {
+      response = val.example;
+    } else if (val.examples) {
+      const examplesKey = Object.keys(val.examples);
+      if (examplesKey.length <= 1) {
+        response = val.examples;
+      } else {
+        // for (const [key, example] of Object.entries<any>(val.examples)) {
+        //   const extendedPathKey = pathKey + "_" + normalizeName(key);
+        //   response = example["value"];
+        // }
       }
-      if ("example" in val) {
-        ret[pathKey] = val.example;
-      } else if ("examples" in val) {
-        if (Object.keys(val.examples).length <= 1) {
-          ret[pathKey] = val.examples;
-        } else {
-          for (const [key, example] of Object.entries<any>(val.examples)) {
-            const extendedPathKey = pathKey + "_" + normalizeName(key);
-            ret[extendedPathKey] = example["value"];
-          }
+    } else if ("schema" in val) {
+      const { schema } = val;
+      const ref = schema[REF];
+      if (ref) {
+        const schemaName = getSchemaName(ref);
+        if (schemaName) {
+          response = schemas[schemaName];
         }
-      } else if ("schema" in val) {
-        const { schema } = val;
-        const ref = schema[REF];
-        if (ref) {
-          const schemaName = getSchemaName(ref);
-          if (schemaName) {
-            ret[pathKey] = schemas[schemaName];
-          }
+      } else {
+        if (isObject(schema)) {
+          response = parseObject(schema, schemas);
+        } else if (isArray(schema)) {
+          response = parseArray(schema, schemas);
         } else {
-          if (isObject(schema)) {
-            ret[pathKey] = parseObject(schema, schemas);
-          } else if (isArray(schema)) {
-            ret[pathKey] = parseArray(schema, schemas);
-          } else {
-            ret[pathKey] = val.schema.properties;
-          }
+          response = val.schema.properties;
         }
       }
     }
+    ret[pathKey] = response;
   });
   return ret;
 };
