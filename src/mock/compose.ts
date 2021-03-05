@@ -2,7 +2,7 @@ import { ResponsesType } from "./response";
 import { Schemas } from "./schema";
 import { normalizePath, getSchemaName } from "./util";
 import { REF, parseObject, parseArray } from "./parse";
-import { isObject, isArray } from "./dataType";
+import { isObject, isArray, DataType } from "./dataType";
 
 type MockData = {
   [path: string]: any;
@@ -55,11 +55,14 @@ export const composeMockData = (
           response = parseObject(schema, schemas);
         } else if (isArray(schema)) {
           response = parseArray(schema, schemas);
-        } else {
-          response = val.schema.properties;
+        } else if (schema.properties) {
+          response = schema.properties;
+        } else if (schema.type) {
+          response = DataType.defaultValue(schema);
         }
       }
     }
+
     ret[pathKey] = response;
   });
   return ret;

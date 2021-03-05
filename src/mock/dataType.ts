@@ -34,6 +34,10 @@ export namespace DataType {
   }
 
   export function getStringDefaultValue(schema: Schema): string {
+    if (schema.enum) {
+      return schema.enum[0];
+    }
+
     if (schema.format) {
       switch (schema.format) {
         case "date":

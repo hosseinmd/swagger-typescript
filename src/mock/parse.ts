@@ -38,7 +38,7 @@ export const pickOneOf = (properties: Schema[], schemas: Schemas): any => {
     const schemaName = getSchemaName(property[REF]);
     if (schemaName) {
       const schemaData = getSchemaData(schemas, schemaName);
-      return Object.assign({}, schemaData);
+      return schemaData;
     }
   }
   const parsed = parseObject(property, schemas);
@@ -48,6 +48,7 @@ export const pickOneOf = (properties: Schema[], schemas: Schemas): any => {
 // Retrieve mock data of schema.
 export const getSchemaData = (schemas: Schemas, name: string): Object => {
   const schema = schemas[name];
+
   if (isReferenceObject(schema)) {
     const schemaName = getSchemaName(schema[REF]);
     return schemaName ? getSchemaData(schemas, schemaName) : {};
@@ -59,7 +60,10 @@ export const getSchemaData = (schemas: Schemas, name: string): Object => {
     return parseArray(schema, schemas);
   } else if (isObject(schema)) {
     return parseObject(schema, schemas);
+  } else if (schema.type) {
+    return DataType.defaultValue(schema);
   }
+
   return schema;
 };
 
@@ -74,7 +78,7 @@ export const parseObject = (obj: Schema, schemas: Schemas): any => {
       const schemaName = getSchemaName(property[REF]);
       if (schemaName) {
         const schema = getSchemaData(schemas, schemaName);
-        acc[key] = Object.assign({}, schema);
+        acc[key] = schema;
       }
       return acc;
     }
