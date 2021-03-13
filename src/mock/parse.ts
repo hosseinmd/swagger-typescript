@@ -1,4 +1,5 @@
 import { Schema } from "../types";
+import { getRefName } from "../utils";
 import {
   DataType,
   isObject,
@@ -8,7 +9,6 @@ import {
   isAnyOf,
   isReferenceObject,
 } from "./dataType";
-import { getSchemaName } from "./util";
 
 export const REF = "$ref";
 type Schemas = {
@@ -19,7 +19,7 @@ export const mergeAllOf = (properties: Schema[], schemas: Schemas): any => {
   let ret: any = {};
   properties.forEach((property) => {
     if (isReferenceObject(property)) {
-      const schemaName = getSchemaName(property[REF]);
+      const schemaName = getRefName(property[REF]);
       if (schemaName) {
         const schemaData = getSchemaData(schemas, schemaName);
         ret = Object.assign({}, ret, schemaData);
@@ -35,7 +35,7 @@ export const mergeAllOf = (properties: Schema[], schemas: Schemas): any => {
 export const pickOneOf = (properties: Schema[], schemas: Schemas): any => {
   const property = properties[0];
   if (isReferenceObject(property)) {
-    const schemaName = getSchemaName(property[REF]);
+    const schemaName = getRefName(property[REF]);
     if (schemaName) {
       const schemaData = getSchemaData(schemas, schemaName);
       return schemaData;
@@ -50,7 +50,7 @@ export const getSchemaData = (schemas: Schemas, name: string): Object => {
   const schema = schemas[name];
 
   if (isReferenceObject(schema)) {
-    const schemaName = getSchemaName(schema[REF]);
+    const schemaName = getRefName(schema[REF]);
     return schemaName ? getSchemaData(schemas, schemaName) : {};
   }
 
@@ -75,7 +75,7 @@ export const parseObject = (obj: Schema, schemas: Schemas): any => {
   return Object.keys(obj.properties).reduce((acc: any, key: string) => {
     const property = obj.properties![key];
     if (isReferenceObject(property)) {
-      const schemaName = getSchemaName(property[REF]);
+      const schemaName = getRefName(property[REF]);
       if (schemaName) {
         const schema = getSchemaData(schemas, schemaName);
         acc[key] = schema;
@@ -104,7 +104,7 @@ export const parseArray = (
   schemas: Schemas,
 ): any => {
   if (isReferenceObject(arr.items)) {
-    const schemaName = getSchemaName(arr.items[REF]);
+    const schemaName = getRefName(arr.items[REF]);
     if (schemaName) {
       const schema = getSchemaData(schemas, schemaName);
       return [schema];

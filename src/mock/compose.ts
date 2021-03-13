@@ -1,8 +1,9 @@
 import { ResponsesType } from "./response";
 import { Schemas } from "./schema";
-import { normalizePath, getSchemaName } from "./util";
+import { normalizePath } from "./util";
 import { REF, parseObject, parseArray } from "./parse";
 import { isObject, isArray, DataType } from "./dataType";
+import { getRefName } from "../utils";
 
 type MockData = {
   [path: string]: any;
@@ -48,7 +49,7 @@ export const composeMockData = (
         const { schema } = val;
         const ref = schema[REF];
         if (ref) {
-          const schemaName = getSchemaName(ref);
+          const schemaName = getRefName(ref);
           if (schemaName) {
             response = schemas[schemaName];
           }

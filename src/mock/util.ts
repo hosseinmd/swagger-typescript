@@ -1,17 +1,6 @@
 import * as fs from "fs";
 import { join } from "path";
 
-// Extract schema name
-export const getSchemaName = (ref: string): string | null => {
-  const re = /#\/components\/schemas\/(.*)/;
-  const matches = ref.match(re);
-  const found = matches;
-  if (found) {
-    return found[1];
-  }
-  return null;
-};
-
 // Replace `{}, /` charactors with `_`
 export const normalizePath = (path: string): string => {
   const replaced = path.replace(/^\/|{|}/g, "");
