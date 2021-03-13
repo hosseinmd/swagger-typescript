@@ -612,6 +612,11 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
+binary-search-bounds@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/binary-search-bounds/-/binary-search-bounds-2.0.5.tgz#125e5bd399882f71e6660d4bf1186384e989fba7"
+  integrity sha512-H0ea4Fd3lS1+sTEB2TgcLoK21lLhwEJzlQv3IN47pJS976Gx4zoWe0ak3q+uYh60ppQxg9F16Ri4tS1sfD4+jA==
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -759,10 +764,10 @@ color-name@~1.1.4:
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
-comment-parser@^0.7.6:
-  version "0.7.6"
-  resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-0.7.6.tgz#0e743a53c8e646c899a1323db31f6cd337b10f12"
-  integrity sha512-GKNxVA7/iuTnAqGADlTWX4tkhzxZKXp5fLJqKTlQLHkE65XDUKutZ3BHaJC5IGcper2tT3QRD1xr4o3jNpgXXg==
+comment-parser@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-1.1.2.tgz#e5317d7a2ec22b470dcb54a29b25426c30bf39d8"
+  integrity sha512-AOdq0i8ghZudnYv8RUnHrhTgafUGs61Rdz9jemU5x2lnZwAWyOq7vySo626K59e1fVKH1xSRorJwPVRLSWOoAQ==
 
 commitlint@^8.3.5:
   version "8.3.5"
@@ -1984,10 +1989,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-linguist-languages@^7.11.1:
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/linguist-languages/-/linguist-languages-7.11.1.tgz#69938a526bb6090c2fc173d0e440693bb0667818"
-  integrity sha512-+cRUk+1WTbydcdzipXQER2iilX+wMrb1LPkbkGuDP/IcGPJRDmOZH6Olf1iH6sHlHwPnJYiNJH39YsFCVZxvUQ==
+linguist-languages@^7.12.2:
+  version "7.13.0"
+  resolved "https://registry.yarnpkg.com/linguist-languages/-/linguist-languages-7.13.0.tgz#9f533f3753861755c7414d57211e0df48bf6c113"
+  integrity sha512-n1X6l+YYbEDtXE9tDr8nYZAgeuKw+qBFvYGzIGltw3Z3oJwS+4vyVtFG5UFa71kvmPWMS3RT/yB95RWzD7MrVQ==
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -2407,13 +2412,6 @@ once@^1.3.0:
   dependencies:
     wrappy "1"
 
-openapi3-ts@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/openapi3-ts/-/openapi3-ts-2.0.1.tgz#b270aecea09e924f1886bc02a72608fca5a98d85"
-  integrity sha512-v6X3iwddhi276siej96jHGIqTx3wzVfMTmpGJEQDt7GPI7pI6sywItURLzpEci21SBRpPN/aOWSF5mVfFVNmcg==
-  dependencies:
-    yaml "^1.10.0"
-
 opencollective-postinstall@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.3.tgz#7a0fff978f6dbfa4d006238fbac98ed4198c3259"
@@ -2614,13 +2612,14 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier-plugin-jsdoc@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-jsdoc/-/prettier-plugin-jsdoc-0.2.4.tgz#ccc5fa607dbe773fde60ee92ebda790845f32df3"
-  integrity sha512-xOVH6pFZ5JKLilVWLwAd19IVuNyDTYGqgZ+0g6lmEMECOSFL4IqvQVuz/afcg42/JrRQB1Lr3zzLSm7p4B241A==
+prettier-plugin-jsdoc@^0.3.13:
+  version "0.3.13"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-jsdoc/-/prettier-plugin-jsdoc-0.3.13.tgz#02894b1b5acbf8a06b930d8e57d39a81eb047afc"
+  integrity sha512-muq5DMqpMMogRJIiA1eeyVFkjG8H9dU7miXIGQP4qXQgC2IS36wL+Y5WCHN92rowP8DHlQj6dR1eoA8SztnogA==
   dependencies:
-    comment-parser "^0.7.6"
-    linguist-languages "^7.11.1"
+    binary-search-bounds "^2.0.5"
+    comment-parser "^1.1.2"
+    linguist-languages "^7.12.2"
 
 prettier@^2.0.2:
   version "2.0.5"

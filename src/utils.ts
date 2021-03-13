@@ -344,24 +344,24 @@ function getJsdoc({
 
   return deprecated?.value || description || example
     ? `
-      /**${
+/**${
         description
           ? `
-      * ${description}`
+* ${description}`
           : ""
       }${
         deprecated?.value
           ? `
-      * @deprecated ${deprecated.description || ""}`
+* @deprecated ${deprecated.description || ""}`
           : ""
       }${
         example
           ? `
-      * @example 
-      *   ${example}`
+* @example 
+*   ${example}`
           : ""
       }
-      */
+*/
 `
     : "";
 }
