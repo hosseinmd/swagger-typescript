@@ -278,6 +278,7 @@ export type Method =
 
 export type ApiAST = {
   contentType:
+    | "*/*"
     | "application/json"
     | "multipart/form-data"
     | "application/octet-stream";

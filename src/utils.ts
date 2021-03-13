@@ -182,6 +182,10 @@ function getTsType(schema: true | {} | Schema): string {
     return allOf.map((_schema) => getTsType(_schema)).join(" & ");
   }
 
+  if (type === "object") {
+    return "{[x:string | number ]: any}";
+  }
+
   return TYPES[type as keyof typeof TYPES];
 }
 
@@ -224,7 +228,7 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
             },
             example,
           },
-        })}${name}${nullable ? "?" : ""}: ${getTsType(schema)};`;
+        })}"${name}"${nullable ? "?" : ""}: ${getTsType(schema)};`;
       },
       "",
     );
