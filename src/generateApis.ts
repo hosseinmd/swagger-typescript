@@ -48,7 +48,7 @@ ${getJsdoc({
       description: DEPRECATED_WARM_MESSAGE,
     },
   },
-})}export const ${serviceName} = async (
+})}export const ${serviceName} = (
     ${
       /** Path parameters */
       pathParams
