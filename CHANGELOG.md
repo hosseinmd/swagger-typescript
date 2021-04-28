@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.9.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.8.0...v4.9.0) (2021-04-28)
+
+
+### Features
+
+* support cancelToken ([87ac541](https://github.com/hosseinmd/swagger-typescript/commit/87ac541a1b3709cf1f84cc6fcb39fff02c6906c5))
+
+
+### Bug Fixes
+
+* bug ([c57cdde](https://github.com/hosseinmd/swagger-typescript/commit/c57cdde44e0180c5a537da3044143af48ce805ec))
+
 ## [4.8.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.7.0...v4.8.0) (2021-03-05)
 
 
