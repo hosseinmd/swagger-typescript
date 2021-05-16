@@ -4,7 +4,7 @@
  * @version 4
  */
 import axios, { AxiosRequestConfig, AxiosResponse, CancelToken } from "axios";
-import { getAxiosInstance, Security } from "./config";
+import { getAxiosInstance, Security, SwaggerResponse } from "./config";
 
 /**
  * Cancellation handled here, you can cancel request by call promise.cancel()
@@ -38,8 +38,8 @@ export const Http = {
     _requestBody: undefined,
     security: Security,
     configOverride?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<any>> {
-    return cancellation(cancelToken =>
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
       getAxiosInstance(security).get(url, {
         cancelToken,
         params: queryParams,
@@ -53,8 +53,8 @@ export const Http = {
     requestBody: any | undefined,
     security: Security,
     configOverride?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<any>> {
-    return cancellation(cancelToken =>
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
       getAxiosInstance(security).post(url, requestBody, {
         cancelToken,
         params: queryParams,
@@ -68,8 +68,8 @@ export const Http = {
     requestBody: any | undefined,
     security: Security,
     configOverride?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<any>> {
-    return cancellation(cancelToken =>
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
       getAxiosInstance(security).put(url, requestBody, {
         cancelToken,
         params: queryParams,
@@ -84,8 +84,8 @@ export const Http = {
     _requestBody: undefined,
     security: Security,
     configOverride?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<any>> {
-    return cancellation(cancelToken =>
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
       getAxiosInstance(security).delete(url, {
         cancelToken,
         params: queryParams,
