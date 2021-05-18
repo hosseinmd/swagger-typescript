@@ -138,8 +138,12 @@ function getTsType(schema: true | {} | Schema): string {
     allOf,
   } = schema as Schema;
 
-  if (type === "object" && additionalProperties) {
-    return `{[x: string]: ${getTsType(additionalProperties)}}`;
+  if (type === "object") {
+    if (additionalProperties) {
+      return `{[x: string]: ${getTsType(additionalProperties)}}`;
+    }
+
+    return "{[x in string | number ]: any}";
   }
 
   if ($ref) {
@@ -180,10 +184,6 @@ function getTsType(schema: true | {} | Schema): string {
 
   if (allOf) {
     return allOf.map((_schema) => getTsType(_schema)).join(" & ");
-  }
-
-  if (type === "object") {
-    return "{[x:string | number ]: any}";
   }
 
   return TYPES[type as keyof typeof TYPES];

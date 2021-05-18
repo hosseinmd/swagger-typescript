@@ -40,11 +40,16 @@ function getTypeDefinition(name: string, schema: Schema) {
     oneOf,
     items,
     $ref,
+    additionalProperties,
   } = schema;
   if (type === "object") {
     const typeObject = getTsType(schema);
 
-    return `export interface ${name} ${typeObject}`;
+    if (additionalProperties) {
+      return `export interface ${name} ${typeObject}`;
+    }
+
+    return `export type ${name} = ${typeObject}`;
   }
 
   if (Enum) {
