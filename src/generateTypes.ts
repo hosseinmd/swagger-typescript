@@ -41,11 +41,12 @@ function getTypeDefinition(name: string, schema: Schema) {
     items,
     $ref,
     additionalProperties,
+    properties,
   } = schema;
   if (type === "object") {
     const typeObject = getTsType(schema);
 
-    if (additionalProperties) {
+    if (additionalProperties || properties) {
       return `export interface ${name} ${typeObject}`;
     }
 

@@ -138,7 +138,7 @@ function getTsType(schema: true | {} | Schema): string {
     allOf,
   } = schema as Schema;
 
-  if (type === "object") {
+  if (type === "object" && !properties) {
     if (additionalProperties) {
       return `{[x: string]: ${getTsType(additionalProperties)}}`;
     }
