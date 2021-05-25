@@ -95,8 +95,8 @@ ${getJsdoc({
   return Http.${method}Request(
     ${
       pathParamsRefString
-        ? `template("${endPoint}",${pathParamsRefString})`
-        : `"${endPoint}"`
+        ? `template(${serviceName}.key,${pathParamsRefString})`
+        : `${serviceName}.key`
     },
     ${queryParamsTypeName ? "queryParams" : "undefined"},
     ${
@@ -112,6 +112,9 @@ ${getJsdoc({
     )
   )
 }
+
+/** Key is end point string without base url */
+${serviceName}.key = "${endPoint}";
 `
           );
         },
