@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.10.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.9.3...v4.10.0) (2021-05-25)
+
+
+### Features
+
+* add key to services function ([4e0820b](https://github.com/hosseinmd/swagger-typescript/commit/4e0820b7eaf91201a5e9cda3d786720d17b3d71c))
+
 ### [4.9.3](https://github.com/hosseinmd/swagger-typescript/compare/v4.9.2...v4.9.3) (2021-05-22)
 
 
