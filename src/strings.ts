@@ -37,7 +37,7 @@ function overrideConfig(
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function template(path: string, obj: { [x: string]: any } = {}) {
+export function template(path: string, obj: { [x: string]: any } = {}) {
     Object.keys(obj).forEach((key) => {
       const re = new RegExp(\`{\${key}}\`, "i");
       path = path.replace(re, obj[key]);

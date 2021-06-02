@@ -80,13 +80,13 @@ export const Http = {
   async deleteRequest(
     url: string,
     queryParams: any | undefined,
-    //@ts-ignore
-    _requestBody: undefined,
+    requestBody: any | undefined,
     security: Security,
     configOverride?: AxiosRequestConfig,
   ): Promise<SwaggerResponse<any>> {
     return cancellation((cancelToken) =>
       getAxiosInstance(security).delete(url, {
+        data: requestBody,
         cancelToken,
         params: queryParams,
         ...configOverride,
