@@ -215,9 +215,13 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
 
   return object ? `{${object}}` : "";
 }
+function getSchemaName(name: string): string {
+  return name.replace(/[^A-Za-z']/g, "");
+}
 
 function getRefName($ref: string): string {
-  return $ref.replace(/(#\/components\/\w+\/)/g, "");
+  const ref = $ref.replace(/(#\/components\/\w+\/)/g, "");
+  return getSchemaName(ref);
 }
 
 function isAscending(a: string, b: string) {
@@ -407,4 +411,5 @@ export {
   isTypeAny,
   template,
   toPascalCase,
+  getSchemaName,
 };

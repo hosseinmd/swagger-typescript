@@ -1,11 +1,18 @@
-import { getJsdoc, getRefName, getTsType, isAscending } from "./utils";
+import {
+  getJsdoc,
+  getRefName,
+  getSchemaName,
+  getTsType,
+  isAscending,
+} from "./utils";
 import type { Schema, TypeAST } from "./types";
 
 function generateTypes(types: TypeAST[]): string {
   try {
     return types
       .sort(({ name }, { name: _name }) => isAscending(name, _name))
-      .reduce((prev, { name, schema, description }) => {
+      .reduce((prev, { name: _name, schema, description }) => {
+        const name = getSchemaName(_name);
         prev += getTypeDefinition(name, schema, description);
 
         return prev;
