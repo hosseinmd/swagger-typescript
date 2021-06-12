@@ -16,6 +16,7 @@ import type {
   Schema,
   Parameter,
   ConstantsAST,
+  Method,
 } from "./types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
@@ -119,7 +120,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
                 ]?.content) || {
                 "application/json": null,
               },
-          )[0];
+          )[0] as ApiAST["contentType"];
 
           const accept = Object.keys(
             options.responses?.[200]?.content || {
@@ -156,6 +157,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             }`);
 
           apis.push({
+            contentType,
             summary: options.summary,
             deprecated: options.deprecated,
             serviceName,
@@ -168,7 +170,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             responses,
             pathParamsRefString,
             endPoint,
-            method,
+            method: method as Method,
             security: security
               ? getConstantName(JSON.stringify(security))
               : "undefined",
@@ -198,7 +200,8 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
           .map(([name, _requestBody]) => {
             return {
               name: `RequestBody${name}`,
-              schema: _requestBody.content?.["application/json"].schema,
+              schema: Object.values(_requestBody.content || {})[0]?.schema,
+              description: _requestBody.description,
             };
           })
           .filter((v) => v.schema) as any),

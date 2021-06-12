@@ -4,12 +4,12 @@
 
 :star::star::star: If you would like to contribute, please refer to [To do list](https://github.com/hosseinmd/swagger-typescript/projects/1) and a list of [open tasks](https://github.com/hosseinmd/swagger-typescript/issues?q=is%3Aopen).:star::star::star:
 
-[Migrate Swagger-Typescript v3 to Swagger-Typescript v4](https://github.com/hosseinmd/swagger-typescript/blob/master/migrateToV4.md)
+# Swagger-Typescript: Generate ts/js code from swagger/openApi JSON
 
-Support OpenApi v3
+Support OpenApi v3 and swagger v2
 
 An auto typescript/javascript code generator from swagger.
-Each endpoint will be constructed as a function, full type base.
+Each endpoint will be created as a function, full type base.
 
 For Example:
 Get method of '/Account' path will be this code in services.ts
@@ -65,22 +65,22 @@ For Example:
 ```json
 {
   "url": "http://example.com/api/swagger.json",
-  "dir": "./test",
+  "dir": "./services",
   "prettierPath": ".prettierrc",
-  "language": "typescript",
-  "ignore": {
-    "headerParams": ["terminalId"]
-  }
+  "language": "typescript"
 }
 ```
 
-| [`Key`]      | [`default`]      | Comment                                                                                |
-| ------------ | ---------------- | -------------------------------------------------------------------------------------- |
-| `url`        | Required         | Address of swagger.json                                                                |
-| `dir`        | Required         | Address of output                                                                      |
-| `language`   | `typescript`     | export to "javascript" or "typescript"                                                 |
-| `methodName` | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}' |
-| `ignore`     | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]} `   |
+| [`Key`]             | [`default`]      | Comment                                                                                                                                                            |
+| ------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `url`               | Required         | Address of swagger.json                                                                                                                                            |
+| `dir`               | Required         | Address of output                                                                                                                                                  |
+| `language`          | `typescript`     | export to "javascript" or "typescript"                                                                                                                             |
+| `methodName`        | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}'                                                                             |
+| `prefix`            | Optional         | prefix value will be removed from method name For example your endpoints is like "/api/v2/users", If you don't want add "/api/v2" to method name, add it to prefix |
+| `ignore`            | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]}`                                                                                |
+| `methodParamsByTag` | false            | add add a tag insteadOf params name to generated method name (example: getUserP1P2 insteadOf getUserConnectionIdAccountId)                                         |
+| `mock`              | false            | For generate response mocks                                                                                                                                        |
 
 ## config.ts
 
@@ -94,7 +94,16 @@ getAxiosInstance used for create an instance of axios request you can customize 
 
 baseConfig used for get static configs and headers. if you need some dynamic configs like add authentication to headers use `requestConfig.headers.authorization` into of `axiosInstance.interceptors.request.use` function.
 
+## run by node
+
+```js
+const { generate } = require("swagger-typescript");
+
+generate(config);
+// or
+generate(); // will be use ./swagger.config.json
+```
+
 ## Stories
 
 [why-you-should-use-swagger-typescript-for-generate-apis-code](https://medium.com/@hosseinm.developer/why-you-should-use-swagger-typescript-for-generate-apis-code-63eb8623fef8?source=friends_link&sk=2aa0e2d30b3be158d18c1feb4e12d4a6)
-

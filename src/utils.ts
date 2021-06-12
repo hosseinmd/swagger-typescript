@@ -1,4 +1,10 @@
-import { Schema, Parameter, SwaggerConfig, JsdocAST } from "./types";
+import {
+  Schema,
+  Parameter,
+  SwaggerConfig,
+  JsdocAST,
+  AssignToDescriptionObj,
+} from "./types";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (
@@ -46,23 +52,23 @@ function generateServiceName(
 
     return pointArray.join("");
   }
+  const { methodName, methodParamsByTag, prefix = "/api/v2" } = config;
 
-  const path = replaceWithUpper(
-    replaceWithUpper(
-      replaceWithUpper(replaceWithUpper(endPoint, "/"), "{"),
-      "}",
-    ),
-    "-",
-  );
+  const _endPoint = endPoint.replace(new RegExp(`^${prefix}`, "i"), "");
+  let endPointArr = _endPoint.split("/");
+  let paramsCount = 0;
+  endPointArr = endPointArr.map((value) => {
+    if (value.includes("{")) {
+      return methodParamsByTag
+        ? `P${paramsCount++}`
+        : toPascalCase(value.replace("{", "").replace("}", ""));
+    }
 
-  const { methodName } = config;
-  const hasMethodNameOperationId = /(\{operationId\})/i.test(methodName);
-  let methodNameTemplate = hasMethodNameOperationId
-    ? operationId
-      ? methodName
-      : false
-    : methodName;
-  methodNameTemplate = methodNameTemplate || "{method}{path}";
+    return replaceWithUpper(value, "-");
+  });
+  const path = endPointArr.join("");
+
+  const methodNameTemplate = getTemplate(methodName, operationId);
 
   const serviceName = template(methodNameTemplate, {
     path,
@@ -70,6 +76,21 @@ function generateServiceName(
     ...(operationId ? { operationId } : {}),
   });
   return serviceName;
+}
+
+function getTemplate(methodName?: string, operationId?: string) {
+  const defaultTemplate = "{method}{path}";
+  if (!methodName) {
+    return defaultTemplate;
+  }
+
+  const hasMethodNameOperationId = /(\{operationId\})/i.test(methodName);
+
+  if (hasMethodNameOperationId) {
+    return operationId ? methodName : defaultTemplate;
+  }
+
+  return methodName;
 }
 
 const TYPES = {
@@ -114,34 +135,39 @@ function getTsType(schema: true | {} | Schema): string {
     oneOf,
     additionalProperties,
     required,
+    allOf,
   } = schema as Schema;
-  let tsType = TYPES[type as keyof typeof TYPES];
 
-  if (type === "object" && additionalProperties) {
-    tsType = `{[x: string]: ${getTsType(additionalProperties)}}`;
+  if (type === "object" && !properties) {
+    if (additionalProperties) {
+      return `{[x: string]: ${getTsType(additionalProperties)}}`;
+    }
+
+    return "{[x in string | number ]: any}";
   }
+
   if ($ref) {
     const refArray = $ref.split("/");
     if (refArray[refArray.length - 2] === "requestBodies") {
-      tsType = `RequestBody${getRefName($ref)}`;
+      return `RequestBody${getRefName($ref)}`;
     } else {
-      tsType = getRefName($ref);
+      return getRefName($ref);
     }
   }
   if (Enum) {
-    tsType = `${Enum.map((t) => `"${t}"`).join(" | ")}`;
+    return `${Enum.map((t) => `"${t}"`).join(" | ")}`;
   }
 
   if (items) {
-    tsType = `${getTsType(items)}[]`;
+    return `${getTsType(items)}[]`;
   }
 
   if (oneOf) {
-    tsType = `${oneOf.map((t) => `(${getTsType(t)})`).join(" | ")}`;
+    return `${oneOf.map((t) => `(${getTsType(t)})`).join(" | ")}`;
   }
 
   if (properties) {
-    tsType = getObjectType(
+    return getObjectType(
       Object.entries(properties).map(([pName, _schema]) => ({
         schema: {
           ..._schema,
@@ -156,7 +182,11 @@ function getTsType(schema: true | {} | Schema): string {
     );
   }
 
-  return tsType;
+  if (allOf) {
+    return allOf.map((_schema) => getTsType(_schema)).join(" & ");
+  }
+
+  return TYPES[type as keyof typeof TYPES];
 }
 
 function getObjectType(parameter: { schema: Schema; name: string }[]) {
@@ -180,8 +210,6 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
         prev,
         {
           schema: {
-            title,
-            description,
             deprecated,
             "x-deprecatedMessage": deprecatedMessage,
             example,
@@ -192,15 +220,7 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
         },
       ) => {
         return `${prev}${getJsdoc({
-          description: assignToDescription({
-            description,
-            title,
-            format: schema.format,
-            maxLength: schema.maxLength,
-            min: schema.min,
-            max: schema.max,
-            pattern: schema.pattern,
-          }),
+          description: schema,
           tags: {
             deprecated: {
               value: Boolean(deprecated),
@@ -208,7 +228,7 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
             },
             example,
           },
-        })}${name}${nullable ? "?" : ""}: ${getTsType(schema)};`;
+        })}"${name}"${nullable ? "?" : ""}: ${getTsType(schema)};`;
       },
       "",
     );
@@ -220,8 +240,8 @@ function getSchemaName(name: string): string {
 }
 
 function getRefName($ref: string): string {
-  const ref = $ref.replace(/(#\/components\/\w+\/)/g, "");
-  return getSchemaName(ref);
+  const parts = $ref.split("/");
+  return getSchemaName(parts[parts.length - 1]);
 }
 
 function isAscending(a: string, b: string) {
@@ -255,18 +275,13 @@ function assignToDescription({
   title,
   format,
   maxLength,
+  minLength,
   max,
   min,
+  minimum,
+  maximum,
   pattern,
-}: {
-  title?: string;
-  description?: string;
-  format?: string;
-  pattern?: string;
-  maxLength?: number;
-  min?: number;
-  max?: number;
-}) {
+}: AssignToDescriptionObj) {
   return `${
     title
       ? `
@@ -289,6 +304,11 @@ ${description}`
        maxLength: ${maxLength}`
       : ""
   }${
+    minLength
+      ? `
+      minLength: ${minLength}`
+      : ""
+  }${
     min
       ? `
         min: ${min}`
@@ -297,6 +317,16 @@ ${description}`
     max
       ? `
        max: ${max}`
+      : ""
+  }${
+    minimum
+      ? `
+      minimum: ${minimum}`
+      : ""
+  }${
+    maximum
+      ? `
+       max: ${maximum}`
       : ""
   }${
     pattern
@@ -310,26 +340,31 @@ function getJsdoc({
   description,
   tags: { deprecated, example } = {},
 }: JsdocAST) {
+  description =
+    typeof description === "object"
+      ? assignToDescription(description)
+      : description;
+
   return deprecated?.value || description || example
     ? `
-      /**${
+/**${
         description
           ? `
-      * ${description}`
+* ${description}`
           : ""
       }${
         deprecated?.value
           ? `
-      * @deprecated ${deprecated.description || ""}`
+* @deprecated ${deprecated.description || ""}`
           : ""
       }${
         example
           ? `
-      * @example 
-      *   ${example}`
+* @example 
+*   ${example}`
           : ""
       }
-      */
+*/
 `
     : "";
 }
@@ -337,7 +372,7 @@ function getJsdoc({
 function majorVersionsCheck(expectedV: string, inputV?: string) {
   if (!inputV) {
     throw new Error(
-      `Swagger-Typescript working with openApi v3, seem your json is not openApi v3`,
+      `Swagger-Typescript working with openApi v3/ swagger v2, seem your json is not openApi openApi v3/ swagger v2`,
     );
   }
 
@@ -348,21 +383,19 @@ function majorVersionsCheck(expectedV: string, inputV?: string) {
   }
   if (!isValidPart(expectedVMajor) || !isValidPart(inputVMajor)) {
     throw new Error(
-      `Swagger-Typescript working with openApi v3 your json openApi version is not valid "${inputV}"`,
+      `Swagger-Typescript working with openApi v3/ swagger v2 your json openApi version is not valid "${inputV}"`,
     );
   }
 
   const expectedMajorNumber = Number(expectedVMajor);
   const inputMajorNumber = Number(inputVMajor);
 
-  if (expectedMajorNumber === inputMajorNumber) {
-    return;
-  } else if (expectedMajorNumber < inputMajorNumber) {
+  if (expectedMajorNumber <= inputMajorNumber) {
     return;
   }
 
   throw new Error(
-    `Swagger-Typescript working with openApi v3 your json openApi version is ${inputV}`,
+    `Swagger-Typescript working with openApi v3/ swagger v2 your json openApi version is ${inputV}`,
   );
 }
 
@@ -375,7 +408,7 @@ function isTypeAny(type: true | {} | Schema) {
     return true;
   }
 
-  if ((type as Schema).AnyValue) {
+  if (!type || (type as Schema).AnyValue) {
     return true;
   }
 

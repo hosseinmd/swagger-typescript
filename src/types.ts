@@ -13,8 +13,9 @@ export interface Schema {
   /**
    * An array of arbitrary types can be defined as:
    *
-   *     Type: array
-   *     items: {}
+   *     Type: array;
+   *     items: {
+   *     }
    */
   items?: Schema | {};
 
@@ -41,8 +42,13 @@ export interface Schema {
     | "byte"
     | "binary"
     | "date"
+    | "date-time"
     | "date"
-    | "password";
+    | "password"
+    // C#
+    | "guid"
+    // Java
+    | "uuid";
   /**
    * A free-form object (arbitrary property/value pairs) is defined as:
    *
@@ -59,9 +65,9 @@ export interface Schema {
   required?: string[];
   description?: string;
   example?: string;
-  "x-enumNames"?: ["Rial"];
   deprecated?: boolean;
   "x-deprecatedMessage"?: string;
+  "x-enumNames"?: string[];
   enum?: string[];
   $ref?: string;
   allOf?: Schema[];
@@ -69,21 +75,19 @@ export interface Schema {
   /** Is something link oneOf */
   anyOf?: Schema[];
   /**
-   * Use the minimum and maximum keywords to specify the range of possible
-   * values:
+   * Use the minimum and maximum keywords to specify the range of possible values:
    *
-   *     Type: integer
-   *     minimum: 1
-   *     maximum: 20
+   *     Type: integer;
+   *     minimum: 1;
+   *     maximum: 20;
    *
-   * By default, the minimum and maximum values are included in the range, that
-   * is:
+   * By default, the minimum and maximum values are included in the range, that is:
    *
    *     Minimum ≤ value ≤ maximum
    *
    * To exclude the boundary values, specify exclusiveMinimum: true and
-   * exclusiveMaximum: true. For example, you can define a floating-point
-   * number range as 0–50 and exclude the 0 value:
+   * exclusiveMaximum: true. For example, you can define a floating-point number
+   * range as 0–50 and exclude the 0 value:
    */
   minimum?: number;
   exclusiveMinimum?: boolean;
@@ -106,6 +110,36 @@ export interface Schema {
     nullable?: boolean;
     description?: string;
   };
+
+  discriminator?: {
+    propertyName: string;
+    mapping?: {
+      [key: string]: string;
+    };
+  };
+  readOnly?: boolean;
+  writeOnly?: boolean;
+  xml?: {
+    name?: string;
+    namespace?: string;
+    prefix?: string;
+    attribute?: boolean;
+    wrapped?: boolean;
+  };
+  externalDocs?: {
+    description?: string;
+    url: string;
+  };
+  examples?: { [x: string]: string };
+  not?: Schema;
+  default?: any;
+  multipleOf?: number;
+  minLength?: number;
+  maxItems?: number;
+  minItems?: number;
+  uniqueItems?: boolean;
+  maxProperties?: number;
+  minProperties?: number;
 }
 
 export type Parameter = {
@@ -123,8 +157,8 @@ export type Parameter = {
   in: "query" | "header" | "cookie" | "path";
   /**
    * Determines whether this parameter is mandatory. If the parameter location
-   * is "path", this property is REQUIRED and its value MUST be true.
-   * Otherwise, the property MAY be included and its default value is false.
+   * is "path", this property is REQUIRED and its value MUST be true. Otherwise,
+   * the property MAY be included and its default value is false.
    */
   required?: boolean; // true;
   /** The schema defining the type used for the parameter. */
@@ -145,15 +179,16 @@ export type Parameter = {
 export interface SwaggerResponse {
   $ref?: string;
   description?: string;
-  content?: {
-    "application/json": {
+  content?: Record<
+    ApiAST["contentType"],
+    Pick<Schema, "example" | "examples"> & {
       schema: Schema;
-    };
-  };
+    }
+  >;
 }
 
 export interface SwaggerRequest {
-  tags: string[]; // ["Account"];
+  tags?: string[]; // ["Account"];
   summary?: string; // "Get user account balance";
   operationId?: string; // "Account_GetBalance";
   parameters?: Parameter[];
@@ -161,6 +196,10 @@ export interface SwaggerRequest {
   responses: { [x: string]: SwaggerResponse };
   deprecated?: boolean;
   security?: any[];
+  description?: string;
+  externalDocs?: any;
+  callbacks?: any;
+  servers?: any[];
 }
 
 export interface SwaggerSchemas {
@@ -169,31 +208,81 @@ export interface SwaggerSchemas {
 
 export interface SwaggerJson {
   openapi?: string;
-  servers?: {
-    url: string;
-  }[];
+  swagger?: string;
   paths: {
-    [url: string]: SwaggerRequest;
+    [url: string]: PathItem;
   };
   components?: {
     schemas?: SwaggerSchemas;
     parameters?: { [x: string]: Parameter };
     requestBodies?: { [x: string]: SwaggerResponse };
   };
+  info: InfoObject;
+  servers?: any[];
+  security?: any[];
+  tags?: any[];
+  externalDocs?: any;
 }
 
+export interface PathItem {
+  $ref?: string;
+  summary?: string;
+  description?: string;
+  get?: SwaggerRequest;
+  put?: SwaggerRequest;
+  post?: SwaggerRequest;
+  delete?: SwaggerRequest;
+  options?: SwaggerRequest;
+  head?: SwaggerRequest;
+  patch?: SwaggerRequest;
+  trace?: SwaggerRequest;
+  servers?: any[];
+  parameters?: any[];
+}
+export interface InfoObject {
+  title: string;
+  version: string;
+  description?: string;
+  termsOfService?: string;
+  contact?: any;
+  license?: any;
+}
 export interface SwaggerConfig {
-  url: string;
+  url?: string;
   dir: string;
-  prettierPath: string;
-  language: "javascript" | "typescript";
-  methodName: string;
-  ignore: {
-    headerParams: string[];
+  /**
+   * SignalR json url generated by https://github.com/majidbigdeli/SigSpec
+   *
+   * @todo Repo need help
+   */
+  hub?: string;
+  mock?: string;
+  prettierPath?: string;
+  language?: "javascript" | "typescript";
+  methodName?: string;
+  methodParamsByTag?: boolean;
+  prefix?: string;
+  ignore?: {
+    headerParams?: string[];
   };
 }
 
+export type Method =
+  | "get"
+  | "put"
+  | "post"
+  | "delete"
+  | "options"
+  | "head"
+  | "patch"
+  | "trace";
+
 export type ApiAST = {
+  contentType:
+    | "*/*"
+    | "application/json"
+    | "multipart/form-data"
+    | "application/octet-stream";
   summary: string | undefined;
   deprecated: boolean | undefined;
   serviceName: string;
@@ -206,7 +295,7 @@ export type ApiAST = {
   responses: Schema | undefined;
   pathParamsRefString: string | undefined;
   endPoint: string;
-  method: string;
+  method: Method;
   security: string;
   additionalAxiosConfig: string;
 };
@@ -217,8 +306,22 @@ export type TypeAST = {
   description?: string;
 };
 
+export type AssignToDescriptionObj = Pick<
+  Schema,
+  | "min"
+  | "max"
+  | "title"
+  | "description"
+  | "format"
+  | "minimum"
+  | "maximum"
+  | "pattern"
+  | "maxLength"
+  | "minLength"
+>;
+
 export type JsdocAST = {
-  description?: string;
+  description?: string | AssignToDescriptionObj;
   tags?: {
     deprecated?: {
       value: boolean;

@@ -1,3 +1,5 @@
 #!/usr/bin/env node
 
-require("../lib");
+const { generate } = require("../lib");
+
+generate();

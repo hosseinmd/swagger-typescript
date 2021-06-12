@@ -19,6 +19,7 @@ function generateApis(apis: ApiAST[]): string {
         (
           prev,
           {
+            contentType,
             summary,
             deprecated,
             serviceName,
@@ -47,7 +48,7 @@ ${getJsdoc({
       description: DEPRECATED_WARM_MESSAGE,
     },
   },
-})}export const ${serviceName} = async (
+})}export const ${serviceName} = (
     ${
       /** Path parameters */
       pathParams
@@ -94,17 +95,26 @@ ${getJsdoc({
   return Http.${method}Request(
     ${
       pathParamsRefString
-        ? `template("${endPoint}",${pathParamsRefString})`
-        : `"${endPoint}"`
+        ? `template(${serviceName}.key,${pathParamsRefString})`
+        : `${serviceName}.key`
     },
     ${queryParamsTypeName ? "queryParams" : "undefined"},
-    ${requestBody ? "requestBody" : "undefined"},
+    ${
+      requestBody
+        ? contentType === "multipart/form-data"
+          ? "objToForm(requestBody)"
+          : "requestBody"
+        : "undefined"
+    },
     ${security},
     overrideConfig(${additionalAxiosConfig},
       configOverride,
     )
   )
 }
+
+/** Key is end point string without base url */
+${serviceName}.key = "${endPoint}";
 `
           );
         },

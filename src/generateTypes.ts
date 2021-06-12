@@ -13,7 +13,22 @@ function generateTypes(types: TypeAST[]): string {
       .sort(({ name }, { name: _name }) => isAscending(name, _name))
       .reduce((prev, { name: _name, schema, description }) => {
         const name = getSchemaName(_name);
-        prev += getTypeDefinition(name, schema, description);
+        prev += `
+        ${getJsdoc({
+          description: {
+            ...schema,
+            description: description || schema.description,
+          },
+          tags: {
+            deprecated: {
+              value: Boolean(schema.deprecated),
+              description: schema["x-deprecatedMessage"],
+            },
+            example: schema.example,
+          },
+        })}
+        ${getTypeDefinition(name, schema)}
+        `;
 
         return prev;
       }, "");
@@ -23,46 +38,51 @@ function generateTypes(types: TypeAST[]): string {
   }
 }
 
-function getTypeDefinition(name: string, schema: Schema, description?: string) {
-  const { type, enum: Enum, allOf, oneOf, items, $ref } = schema;
+function getTypeDefinition(name: string, schema: Schema) {
+  const {
+    type,
+    enum: Enum,
+    "x-enumNames": enumNames,
+    allOf,
+    oneOf,
+    items,
+    $ref,
+    additionalProperties,
+    properties,
+  } = schema;
   if (type === "object") {
     const typeObject = getTsType(schema);
 
-    return `
-    export interface ${name} ${typeObject}
-  `;
+    if (additionalProperties || properties) {
+      return `export interface ${name} ${typeObject}`;
+    }
+
+    return `export type ${name} = ${typeObject}`;
   }
 
   if (Enum) {
-    return `
-   ${getJsdoc({ description })}export enum ${name} {${Enum.map(
-      (e) => `${e}=${typeof e === "string" ? `"${e}"` : `${e}`}`,
-    )}}
-   `;
+    return `export enum ${name} {${Enum.map(
+      (e, index) =>
+        `${enumNames ? enumNames[index] : e}=${
+          typeof e === "string" ? `"${e}"` : `${e}`
+        }`,
+    )}}`;
   }
 
   if (allOf) {
-    return `
-  export interface ${name} extends ${allOf
-      .map((_schema) => getTsType(_schema))
-      .join(" ")}
-          `;
+    return `export type ${name} = ${getTsType({ allOf })}`;
   }
   if (oneOf) {
-    return `
-  export type ${name} = ${oneOf
+    return `export type ${name} = ${oneOf
       .map((_schema) => getTsType(_schema))
-      .join(" | ")}
-          `;
+      .join(" | ")}`;
   }
   if (type === "array" && items) {
-    return `
-  export type ${name} = ${getTsType(items)}[]`;
+    return `export type ${name} = ${getTsType(items)}[]`;
   }
 
   if ($ref) {
-    return `
-  export type ${name} = ${getRefName($ref)}`;
+    return `export type ${name} = ${getRefName($ref)}`;
   }
 
   return `export type ${name} = any`;
