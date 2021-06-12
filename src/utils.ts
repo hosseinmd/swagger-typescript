@@ -39,6 +39,12 @@ function getParams(
 function toPascalCase(str: string): string {
   return `${str.substring(0, 1).toUpperCase()}${str.substring(1)}`;
 }
+function replaceWithUpper(str: string, sp: string) {
+  let pointArray = str.split(sp);
+  pointArray = pointArray.map((point) => toPascalCase(point));
+
+  return pointArray.join("");
+}
 
 function generateServiceName(
   endPoint: string,
@@ -46,12 +52,6 @@ function generateServiceName(
   operationId: string | undefined,
   config: SwaggerConfig,
 ): string {
-  function replaceWithUpper(str: string, sp: string) {
-    let pointArray = str.split(sp);
-    pointArray = pointArray.map((point) => toPascalCase(point));
-
-    return pointArray.join("");
-  }
   const { methodName, methodParamsByTag, prefix = "/api/v2" } = config;
 
   const _endPoint = endPoint.replace(new RegExp(`^${prefix}`, "i"), "");
@@ -236,7 +236,11 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
   return object ? `{${object}}` : "";
 }
 function getSchemaName(name: string): string {
-  return name.replace(/[^A-Za-z']/g, "");
+  const removeDot = replaceWithUpper(name, ".");
+  const removeBackTick = replaceWithUpper(removeDot, "`");
+  const removeFirstBracket = replaceWithUpper(removeBackTick, "[");
+  const removeLastBracket = replaceWithUpper(removeFirstBracket, "]");
+  return removeLastBracket;
 }
 
 function getRefName($ref: string): string {
