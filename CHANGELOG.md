@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.10.2](https://github.com/hosseinmd/swagger-typescript/compare/v4.10.1...v4.10.2) (2021-06-12)
+
+
+### Bug Fixes
+
+* remove useless char from models name  ([e3ec1e1](https://github.com/hosseinmd/swagger-typescript/commit/e3ec1e16b7a7e0a7a936a34937a0beeffadbf915))
+
 ### [4.10.1](https://github.com/hosseinmd/swagger-typescript/compare/v4.10.0...v4.10.1) (2021-06-02)
 
 
