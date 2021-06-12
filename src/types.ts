@@ -13,8 +13,9 @@ export interface Schema {
   /**
    * An array of arbitrary types can be defined as:
    *
-   *     Type: array
-   *     items: {}
+   *     Type: array;
+   *     items: {
+   *     }
    */
   items?: Schema | {};
 
@@ -76,17 +77,17 @@ export interface Schema {
   /**
    * Use the minimum and maximum keywords to specify the range of possible values:
    *
-   *     Type: integer
-   *     minimum: 1
-   *     maximum: 20
+   *     Type: integer;
+   *     minimum: 1;
+   *     maximum: 20;
    *
    * By default, the minimum and maximum values are included in the range, that is:
    *
    *     Minimum ≤ value ≤ maximum
    *
    * To exclude the boundary values, specify exclusiveMinimum: true and
-   * exclusiveMaximum: true. For example, you can define a floating-point
-   * number range as 0–50 and exclude the 0 value:
+   * exclusiveMaximum: true. For example, you can define a floating-point number
+   * range as 0–50 and exclude the 0 value:
    */
   minimum?: number;
   exclusiveMinimum?: boolean;
@@ -156,8 +157,8 @@ export type Parameter = {
   in: "query" | "header" | "cookie" | "path";
   /**
    * Determines whether this parameter is mandatory. If the parameter location
-   * is "path", this property is REQUIRED and its value MUST be true.
-   * Otherwise, the property MAY be included and its default value is false.
+   * is "path", this property is REQUIRED and its value MUST be true. Otherwise,
+   * the property MAY be included and its default value is false.
    */
   required?: boolean; // true;
   /** The schema defining the type used for the parameter. */
