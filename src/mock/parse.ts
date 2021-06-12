@@ -83,7 +83,7 @@ export const parseObject = (obj: Schema, schemas: Schemas): any => {
       return acc;
     }
     if (isAllOf(property)) {
-      return mergeAllOf(schema["allOf"], schemas);
+      return mergeAllOf(property["allOf"], schemas);
     } else if (isOneOf(property)) {
       acc[key] = pickOneOf(property.oneOf, schemas);
     } else if (isAnyOf(property)) {
