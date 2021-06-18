@@ -16,10 +16,13 @@ import { HubJson, signalRGenerator } from "./signalR/generator";
 import { swaggerToOpenApi } from "./utilities/swaggerToOpenApi";
 import { generateMock } from "./mock";
 import chalk from "chalk";
+import { partialUpdateJson } from "./updateJson";
 
 /** @param config If isn't defined will be use swagger.config.json instead */
-async function generate(config?: SwaggerConfig) {
+async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
   config = config ?? getSwaggerConfig();
+
+  config = { ...config, ...cli };
 
   const {
     url,
@@ -28,8 +31,10 @@ async function generate(config?: SwaggerConfig) {
     prettierPath,
     language,
     mock,
+    tag,
     //@ts-ignore
     __unstable_is_legacy_properties,
+    keepJson,
   } = config;
   //@ts-ignore
   global.__unstable_is_legacy_properties = __unstable_is_legacy_properties;
@@ -52,6 +57,27 @@ async function generate(config?: SwaggerConfig) {
         input = await swaggerToOpenApi(input);
       } else {
         majorVersionsCheck("3.0.0", input.openapi);
+      }
+
+      if (keepJson) {
+        const swaggerJsonPath = `${dir}/swagger.json`;
+        if (!tag) {
+          writeFileSync(swaggerJsonPath, JSON.stringify(input));
+          formatFile(swaggerJsonPath, prettierOptions);
+        } else {
+          try {
+            const old = readFileSync(swaggerJsonPath).toString();
+            if (old) {
+              const oldJson = JSON.parse(old);
+
+              input = partialUpdateJson(oldJson, input, tag);
+            }
+          } catch {
+            chalk.red(
+              "swagger.json file not found. You should set keepJson true to save json then run swag-ts without tag to save that",
+            );
+          }
+        }
       }
 
       const code = generator(input, config);

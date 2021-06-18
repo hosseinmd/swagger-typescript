@@ -49,15 +49,15 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
       Object.entries(value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
           const { operationId, security } = options;
-          const parameters = options.parameters?.map((parameter) => {
+          const parameters = options.parameters?.map<Parameter>((parameter) => {
             const { $ref } = parameter;
             if ($ref) {
               const name = $ref.replace("#/components/parameters/", "");
               return {
-                ...input.components?.parameters?.[name],
+                ...input.components?.parameters?.[name]!,
                 $ref,
                 schema: { $ref } as Schema,
-              } as Parameter;
+              };
             }
             return parameter;
           });

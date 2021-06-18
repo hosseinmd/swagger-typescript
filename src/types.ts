@@ -9,7 +9,7 @@ export interface Schema {
   max?: number;
   min?: number;
   pattern?: string;
-  type: DataType;
+  type?: DataType;
   /**
    * An array of arbitrary types can be defined as:
    *
@@ -179,11 +179,13 @@ export type Parameter = {
 export interface SwaggerResponse {
   $ref?: string;
   description?: string;
-  content?: Record<
-    ApiAST["contentType"],
-    Pick<Schema, "example" | "examples"> & {
-      schema: Schema;
-    }
+  content?: Partial<
+    Record<
+      ApiAST["contentType"],
+      Pick<Schema, "example" | "examples"> & {
+        schema: Schema;
+      }
+    >
   >;
 }
 
@@ -202,8 +204,10 @@ export interface SwaggerRequest {
   servers?: any[];
 }
 
-export interface SwaggerSchemas {
-  [x: string]: Schema;
+export interface Components {
+  schemas?: Record<string, Schema>;
+  parameters?: Record<string, Parameter>;
+  requestBodies?: Record<string, SwaggerResponse>;
 }
 
 export interface SwaggerJson {
@@ -212,11 +216,7 @@ export interface SwaggerJson {
   paths: {
     [url: string]: PathItem;
   };
-  components?: {
-    schemas?: SwaggerSchemas;
-    parameters?: { [x: string]: Parameter };
-    requestBodies?: { [x: string]: SwaggerResponse };
-  };
+  components?: Components;
   info: InfoObject;
   servers?: any[];
   security?: any[];
@@ -256,6 +256,9 @@ export interface SwaggerConfig {
    * @todo Repo need help
    */
   hub?: string;
+  /** Default is false */
+  keepJson?: boolean;
+  tag?: string;
   mock?: string;
   prettierPath?: string;
   language?: "javascript" | "typescript";
@@ -280,9 +283,12 @@ export type Method =
 export type ApiAST = {
   contentType:
     | "*/*"
+    | "text/json"
     | "application/json"
     | "multipart/form-data"
-    | "application/octet-stream";
+    | "application/octet-stream"
+    | "application/json-patch+json"
+    | "application/*+json";
   summary: string | undefined;
   deprecated: boolean | undefined;
   serviceName: string;
