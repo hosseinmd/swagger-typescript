@@ -62,8 +62,12 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
       if (keepJson) {
         const swaggerJsonPath = `${dir}/swagger.json`;
         if (!tag) {
-          writeFileSync(swaggerJsonPath, JSON.stringify(input));
-          formatFile(swaggerJsonPath, prettierOptions);
+          try {
+            writeFileSync(swaggerJsonPath, JSON.stringify(input));
+            formatFile(swaggerJsonPath, prettierOptions);
+          } catch (error) {
+            chalk.red(error.message);
+          }
         } else {
           try {
             const old = readFileSync(swaggerJsonPath).toString();
