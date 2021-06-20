@@ -258,7 +258,7 @@ export interface SwaggerConfig {
   hub?: string;
   /** Default is false */
   keepJson?: boolean;
-  tag?: string;
+  tag?: string[];
   mock?: string;
   prettierPath?: string;
   language?: "javascript" | "typescript";

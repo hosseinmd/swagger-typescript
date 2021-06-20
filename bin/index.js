@@ -7,5 +7,5 @@ const { hideBin } = require("yargs/helpers");
 const argv = yargs(hideBin(process.argv)).argv;
 
 generate(undefined, {
-  tag: argv._?.[0],
+  tag: argv._,
 });
