@@ -61,7 +61,7 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
 
       if (keepJson) {
         const swaggerJsonPath = `${dir}/swagger.json`;
-        if (!tag) {
+        if (!tag?.length) {
           try {
             writeFileSync(swaggerJsonPath, JSON.stringify(input));
             formatFile(swaggerJsonPath, prettierOptions);
@@ -71,10 +71,13 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
         } else {
           try {
             const old = readFileSync(swaggerJsonPath).toString();
+
             if (old) {
               const oldJson = JSON.parse(old);
 
               input = partialUpdateJson(oldJson, input, tag);
+
+              writeFileSync(swaggerJsonPath, JSON.stringify(input));
             }
           } catch {
             chalk.red(

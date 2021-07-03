@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import type {
   SwaggerRequest,
   SwaggerJson,
@@ -16,13 +17,13 @@ function partialUpdateJson(
     Object.entries(input.paths).map(([name, value]) => [
       name,
       Object.fromEntries(
-        (Object.entries(value) as [
-          string,
-          SwaggerRequest,
-        ][]).filter(([_, { tags }]) => tag.some((t) => !tags?.includes(t))),
+        (Object.entries(value) as [string, SwaggerRequest][]).filter(
+          ([_, { tags }]) => !tags?.find((item) => tag.find((i) => i === item)),
+        ),
       ),
     ]),
   );
+
   const paths: SwaggerJson["paths"] = { ...filteredPaths };
   Object.entries(newJson.paths).forEach(([endPoint, value]) => {
     (Object.entries(value) as [keyof PathItem, SwaggerRequest][]).forEach(
@@ -33,9 +34,10 @@ function partialUpdateJson(
 
         if (tag.find((t) => options.tags?.includes(t))) {
           refs = refs.concat(findRefs(options));
+
           if (!paths[endPoint]) {
             paths[endPoint] = {
-              ...input.paths[endPoint],
+              ...newJson.paths[endPoint],
             };
           }
           paths[endPoint][method] = options as any;
@@ -56,22 +58,25 @@ function partialUpdateJson(
 }
 
 function findRelatedRef(newJson: SwaggerJson, refs: string[]): string[] {
-  (["schemas", "requestBodies", "parameters"] as const).map((key) => {
-    if (newJson?.components?.[key]) {
-      Object.entries(newJson.components[key]!).forEach(([name, schema]) => {
-        if (refs.includes(name)) {
-          const schemaRefs = findRefs(schema);
+  try {
+    (["schemas", "requestBodies", "parameters"] as const).map((key) => {
+      if (newJson?.components?.[key]) {
+        Object.entries(newJson.components[key]!).forEach(([name, schema]) => {
+          if (refs.includes(name)) {
+            const schemaRefs = findRefs(schema);
 
-          let newRefs = schemaRefs.filter((ref) => !refs.includes(ref));
+            const newRefs = schemaRefs.filter((ref) => !refs.includes(ref));
 
-          if (newRefs.length > 0) {
-            newRefs = findRelatedRef(newJson, newRefs);
-            refs = refs.concat(newRefs);
+            if (newRefs.length > 0) {
+              refs = findRelatedRef(newJson, [...refs, ...newRefs]);
+            }
           }
-        }
-      });
-    }
-  });
+        });
+      }
+    });
+  } catch (error) {
+    chalk.red(error);
+  }
 
   return refs;
 }

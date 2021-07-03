@@ -1,5 +1,5 @@
 {
-    "url": "http://192.168.34.188:8085/api/swagger/v2/swagger.json",
+    "url": "",
     "dir": "./test",
     "language": "typescript",
     "keepJson": true,
