@@ -285,10 +285,12 @@ export type ApiAST = {
     | "*/*"
     | "text/json"
     | "application/json"
-    | "multipart/form-data"
     | "application/octet-stream"
     | "application/json-patch+json"
-    | "application/*+json";
+    | "application/*+json"
+    | "multipart/form-data"
+    | "application/x-www-form-urlencoded";
+
   summary: string | undefined;
   deprecated: boolean | undefined;
   serviceName: string;

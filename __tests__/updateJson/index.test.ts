@@ -4,7 +4,7 @@ import oldJson from "./old.json";
 
 test("update json", () => {
   //@ts-ignore
-  const result = partialUpdateJson(oldJson, newJson, "Account");
+  const result = partialUpdateJson(oldJson, newJson, ["Account"]);
 
   expect(result).toHaveProperty([
     "components",
