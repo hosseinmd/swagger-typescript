@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.11.5](https://github.com/hosseinmd/swagger-typescript/compare/v4.11.4...v4.11.5) (2021-08-06)
+
+
+### Bug Fixes
+
+* handle application/x-www-form-urlencoded ([e5a46d8](https://github.com/hosseinmd/swagger-typescript/commit/e5a46d822f259b5e0fa8b6a3985d6eb886205431))
+* remove useless async ([dbb9cc4](https://github.com/hosseinmd/swagger-typescript/commit/dbb9cc40b25ea9d3e42a841ea03392f76e09ec01))
+
 ## [4.11.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.10.2...v4.11.0) (2021-06-19)
 
 
