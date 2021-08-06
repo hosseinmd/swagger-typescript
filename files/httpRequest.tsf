@@ -31,7 +31,7 @@ function cancellation<T>(
 }
 
 export const Http = {
-  async getRequest(
+  getRequest(
     url: string,
     queryParams: any | undefined,
     //@ts-ignore
@@ -47,7 +47,7 @@ export const Http = {
       }),
     );
   },
-  async postRequest(
+  postRequest(
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
@@ -62,7 +62,7 @@ export const Http = {
       }),
     );
   },
-  async putRequest(
+  putRequest(
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
@@ -77,7 +77,7 @@ export const Http = {
       }),
     );
   },
-  async deleteRequest(
+  deleteRequest(
     url: string,
     queryParams: any | undefined,
     requestBody: any | undefined,
