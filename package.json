@@ -7,7 +7,7 @@
     "swag-ts": "./bin/index.js"
   },
   "scripts": {
-    "prepare": "rm -rf ./lib && tsc",
+    "prepare": "tsc",
     "test": "yarn prepare && node ./bin/index.js",
     "lint": "eslint src/**/*.ts",
     "eslint-fix": "eslint src/**/*.ts --fix",
