@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.11.7](https://github.com/hosseinmd/swagger-typescript/compare/v4.11.6...v4.11.7) (2021-09-18)
+
+
+### Bug Fixes
+
+* support openapi 3 required and nullable ([09d6c1e](https://github.com/hosseinmd/swagger-typescript/commit/09d6c1e73889c3bdcafe119d1fe68571253fdd92))
+
 ### [4.11.6](https://github.com/hosseinmd/swagger-typescript/compare/v4.11.5...v4.11.6) (2021-09-15)
 
 
