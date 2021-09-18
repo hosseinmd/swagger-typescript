@@ -24,20 +24,7 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
 
   config = { ...config, ...cli };
 
-  const {
-    url,
-    hub,
-    dir,
-    prettierPath,
-    language,
-    mock,
-    tag,
-    //@ts-ignore
-    __unstable_is_legacy_properties,
-    keepJson,
-  } = config;
-  //@ts-ignore
-  global.__unstable_is_legacy_properties = __unstable_is_legacy_properties;
+  const { url, hub, dir, prettierPath, language, mock, tag, keepJson } = config;
 
   const isToJs = language === "javascript";
 

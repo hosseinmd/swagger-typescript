@@ -66,6 +66,7 @@
   "exclude": [
     "node_modules",
     "test/",
+    "test2/",
     "lib/",
     "__tests__"
   ]
