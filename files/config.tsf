@@ -50,19 +50,19 @@ function getAxiosInstance(security: Security): AxiosInstance {
 
         if (error.response) {
           return Promise.reject(
-            new RequestError({
-              message: error.response.data,
-              status: error.response.status,
-              response: error.response,
-            }),
+            new RequestError(
+              error.response.data,
+              error.response.status,
+              error.response,
+            ),
           );
         }
 
         if (error.isAxiosError) {
           return Promise.reject(
-            new RequestError({
-              message: "noInternetConnection",
-            }),
+            new RequestError(
+              "noInternetConnection",
+            ),
           );
         }
         return Promise.reject(error);
@@ -90,22 +90,13 @@ function getAxiosInstance(security: Security): AxiosInstance {
   return axiosInstance;
 }
 
-interface ErrorParam {
-  message: string;
-  status?: number;
-  response?: AxiosResponse;
-}
-
 class RequestError extends Error {
-  message: string;
-  status?: number;
-  response?: AxiosResponse;
-
-  constructor({ message, status, response }: ErrorParam) {
-    super();
-    this.message = message;
-    this.status = status;
-    this.response = response;
+  constructor(
+    public message: string,
+    public status?: number,
+    public response?: AxiosResponse,
+  ) {
+    super(message);
   }
 
   isApiException = true;
@@ -118,6 +109,4 @@ export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 export {
   getAxiosInstance,
   RequestError,
-  // as backward compatible v3
-  RequestError as Exception,
 };
