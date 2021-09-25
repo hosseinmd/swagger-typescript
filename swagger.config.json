@@ -1,8 +1,9 @@
 {
-    "url": "",
+    "url": "http://timeplus.1st.co.com:7080/swagger/v1/swagger.json",
     "dir": "./test",
     "language": "typescript",
     "keepJson": true,
+    "reactHooks": true,
     "ignore": {
         "headerParams": [
             "terminalId"

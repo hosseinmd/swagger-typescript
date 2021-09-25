@@ -24,7 +24,17 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
 
   config = { ...config, ...cli };
 
-  const { url, hub, dir, prettierPath, language, mock, tag, keepJson } = config;
+  const {
+    url,
+    hub,
+    dir,
+    prettierPath,
+    language,
+    mock,
+    tag,
+    keepJson,
+    reactHooks,
+  } = config;
 
   const isToJs = language === "javascript";
 
@@ -82,13 +92,15 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
         }
       }
 
-      const code = generator(input, config);
+      const { code, hooks } = generator(input, config);
 
       if (mock) {
         generateMock(input, config);
       }
 
       writeFileSync(`${dir}/services.ts`, code);
+
+      reactHooks && hooks && writeFileSync(`${dir}/hooks.ts`, hooks);
 
       writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
 
@@ -115,31 +127,24 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
       console.log(chalk.yellowBright("hub Completed"));
     }
 
+    const files = [
+      hubCode && "hub",
+      ...(url
+        ? [reactHooks && "hooks", "config", "httpRequest", "services"]
+        : []),
+    ].filter(Boolean) as string[];
+
     if (isToJs) {
-      convertTsToJs(dir);
-      if (hubCode) {
-        formatFile(`${dir}/hub.js`, prettierOptions);
-        formatFile(`${dir}/hub.d.ts`, prettierOptions);
-      }
+      convertTsToJs(dir, files);
 
-      if (url) {
-        formatFile(`${dir}/config.js`, prettierOptions);
-        formatFile(`${dir}/httpRequest.js`, prettierOptions);
-        formatFile(`${dir}/services.js`, prettierOptions);
-        formatFile(`${dir}/config.d.ts`, prettierOptions);
-        formatFile(`${dir}/httpRequest.d.ts`, prettierOptions);
-        formatFile(`${dir}/services.d.ts`, prettierOptions);
-      }
+      files.forEach((file) => {
+        formatFile(`${dir}/${file}.js`, prettierOptions);
+        formatFile(`${dir}/${file}.d.ts`, prettierOptions);
+      });
     } else {
-      if (hubCode) {
-        formatFile(`${dir}/hub.ts`, prettierOptions);
-      }
-
-      if (url) {
-        formatFile(`${dir}/config.ts`, prettierOptions);
-        formatFile(`${dir}/httpRequest.ts`, prettierOptions);
-        formatFile(`${dir}/services.ts`, prettierOptions);
-      }
+      files.forEach((file) => {
+        formatFile(`${dir}/${file}.ts`, prettierOptions);
+      });
     }
     console.log(chalk.greenBright("All Completed"));
   } catch (error) {
@@ -153,7 +158,7 @@ function formatFile(filePath: string, prettierOptions: any) {
   writeFileSync(filePath, format(code, prettierOptions));
 }
 
-function convertTsToJs(dir: string) {
+function convertTsToJs(dir: string, files: string[]) {
   build({
     basePath: ".", // always required, used for relative paths
     compilerOptions: {
@@ -165,24 +170,14 @@ function convertTsToJs(dir: string) {
       target: "esnext",
       lib: ["esnext"],
     },
-    files: [`${dir}/services.ts`, `${dir}/hub.ts`],
+    files: files.map((file) => `${dir}/${file}.ts`),
   });
 
-  if (existsSync(`${dir}/config.ts`)) {
-    rmdirSync(`${dir}/config.ts`, { recursive: true });
-  }
-
-  if (existsSync(`${dir}/services.ts`)) {
-    rmdirSync(`${dir}/services.ts`, { recursive: true });
-  }
-
-  if (existsSync(`${dir}/httpRequest.ts`)) {
-    rmdirSync(`${dir}/httpRequest.ts`, { recursive: true });
-  }
-
-  if (existsSync(`${dir}/hub.ts`)) {
-    rmdirSync(`${dir}/hub.ts`, { recursive: true });
-  }
+  files.forEach((file) => {
+    if (existsSync(`${dir}/${file}.ts`)) {
+      rmdirSync(`${dir}/${file}.ts`, { recursive: true });
+    }
+  });
 }
 
 function getSwaggerConfig(): SwaggerConfig {

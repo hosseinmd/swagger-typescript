@@ -58,7 +58,24 @@ function objToForm(requestBody: { [name: string]: string | Blob | undefined }) {
 }
 `;
 
+const HOOKS_BEGINNING = `
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 4
+ */
+import { AxiosRequestConfig } from "axios";
+import { UseQueryOptions, useQuery, useInfiniteQuery } from "react-query";
+import { RequestError } from "./config";
+`;
+
 const DEPRECATED_WARM_MESSAGE =
   "This endpoint deprecated and will be remove. Please use an alternative";
 
-export { HTTP_REQUEST, SERVICE_BEGINNING, CONFIG, DEPRECATED_WARM_MESSAGE };
+export {
+  HTTP_REQUEST,
+  SERVICE_BEGINNING,
+  HOOKS_BEGINNING,
+  CONFIG,
+  DEPRECATED_WARM_MESSAGE,
+};

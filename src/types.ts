@@ -258,6 +258,7 @@ export interface SwaggerConfig {
   hub?: string;
   /** Default is false */
   keepJson?: boolean;
+  reactHooks?: boolean;
   tag?: string[];
   mock?: string;
   prettierPath?: string;
@@ -306,6 +307,7 @@ export type ApiAST = {
   method: Method;
   security: string;
   additionalAxiosConfig: string;
+  queryParameters: Parameter[];
 };
 
 export type TypeAST = {

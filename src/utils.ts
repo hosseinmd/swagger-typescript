@@ -52,7 +52,7 @@ function generateServiceName(
   operationId: string | undefined,
   config: SwaggerConfig,
 ): string {
-  const { methodName, methodParamsByTag, prefix = "/api/v2" } = config;
+  const { methodName, methodParamsByTag, prefix = "" } = config;
 
   const _endPoint = endPoint.replace(new RegExp(`^${prefix}`, "i"), "");
   let endPointArr = _endPoint.split("/");
