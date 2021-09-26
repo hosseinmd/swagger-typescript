@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.12.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.11.7...v4.12.0) (2021-09-26)
+
+
+### Features
+
+* generate react hooks ([09fc634](https://github.com/hosseinmd/swagger-typescript/commit/09fc6341f0ce582964db6c9135de00b93bb4c3db))
+
+
+### Bug Fixes
+
+* nullable and required ([b9480c3](https://github.com/hosseinmd/swagger-typescript/commit/b9480c3d440aeae9528d74f16628dfb69b455d54))
+* requestError to new typescript mode ([675509c](https://github.com/hosseinmd/swagger-typescript/commit/675509cc3a9a239cb8aee599cae66ab2fe63de56))
+
 ### [4.11.7](https://github.com/hosseinmd/swagger-typescript/compare/v4.11.6...v4.11.7) (2021-09-18)
 
 
