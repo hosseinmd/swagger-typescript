@@ -81,6 +81,7 @@ For Example:
 | `ignore`            | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]}`                                                                                |
 | `methodParamsByTag` | false            | add add a tag insteadOf params name to generated method name (example: getUserP1P2 insteadOf getUserConnectionIdAccountId)                                         |
 | `mock`              | false            | For generate response mocks                                                                                                                                        |
+| `reactHooks`        | false            | For generate react hooks of all get apis                                                                                                                           |
 
 ## config.ts
 

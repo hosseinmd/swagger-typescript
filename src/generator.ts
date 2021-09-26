@@ -21,8 +21,12 @@ import type {
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
 import { generateConstants } from "./generateConstants";
+import { generateHook } from "./generateHook";
 
-function generator(input: SwaggerJson, config: SwaggerConfig): string {
+function generator(
+  input: SwaggerJson,
+  config: SwaggerConfig,
+): { code: string; hooks: string } {
   const apis: ApiAST[] = [];
   const types: TypeAST[] = [];
   let constantsCounter = 0;
@@ -105,10 +109,8 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
             });
           }
 
-          const {
-            params: headerParams,
-            hasNullable: hasNullableHeaderParams,
-          } = getHeaderParams(options.parameters, config);
+          const { params: headerParams, hasNullable: hasNullableHeaderParams } =
+            getHeaderParams(options.parameters, config);
 
           const requestBody = getBodyContent(options.requestBody);
 
@@ -175,6 +177,7 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
               ? getConstantName(JSON.stringify(security))
               : "undefined",
             additionalAxiosConfig,
+            queryParameters,
           });
         },
       );
@@ -211,11 +214,12 @@ function generator(input: SwaggerJson, config: SwaggerConfig): string {
     let code = generateApis(apis);
     code += generateTypes(types);
     code += generateConstants(constants);
+    const hooks = config.reactHooks ? generateHook(apis, types) : "";
 
-    return code;
+    return { code, hooks };
   } catch (error) {
     console.error({ error });
-    return "";
+    return { code: "", hooks: "" };
   }
 }
 
