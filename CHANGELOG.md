@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.12.1](https://github.com/hosseinmd/swagger-typescript/compare/v4.12.0...v4.12.1) (2021-09-26)
+
+
+### Bug Fixes
+
+* hooks swaggerResponse ([b3b6e9e](https://github.com/hosseinmd/swagger-typescript/commit/b3b6e9eec0e0c13445e503bf4db3811c926e4d83))
+
 ## [4.12.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.11.7...v4.12.0) (2021-09-26)
 
 
