@@ -10,6 +10,11 @@ Support OpenApi v3 and swagger v2
 
 An auto typescript/javascript code generator from swagger.
 Each endpoint will be created as a function, full type base.
+Supported
+
+- SignalR hub.
+- React hooks.
+- Generate mock data.
 
 For Example:
 Get method of '/Account' path will be this code in services.ts
