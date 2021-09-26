@@ -173,7 +173,9 @@ function getTsType(schema: true | {} | Schema): string {
           ..._schema,
           nullable: required?.find((name) => name === pName)
             ? false
-            : _schema.nullable,
+            : _schema.nullable !== undefined
+            ? _schema.nullable
+            : true,
         },
         name: pName,
       })),
