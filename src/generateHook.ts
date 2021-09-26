@@ -30,7 +30,6 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
       (
         prev,
         {
-          // contentType,
           summary,
           deprecated,
           serviceName,
@@ -42,10 +41,6 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
           isHeaderParamsNullable,
           responses,
           method,
-          // endPoint,
-          // pathParamsRefString,
-          // additionalAxiosConfig,
-          // security,
           queryParameters,
         },
       ) => {
@@ -72,7 +67,9 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
           }
           ${requestBody ? "requestBody," : ""}`;
 
-        const TQueryFnData = responses ? getTsType(responses) : "any";
+        const TQueryFnData = `SwaggerResponse<${
+          responses ? getTsType(responses) : "any"
+        }`;
         const TError = "RequestError | Error";
 
         const deps = `[${serviceName}.key,${paramsString}]`;

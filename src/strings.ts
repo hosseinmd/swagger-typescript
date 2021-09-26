@@ -66,7 +66,7 @@ const HOOKS_BEGINNING = `
  */
 import { AxiosRequestConfig } from "axios";
 import { UseQueryOptions, useQuery, useInfiniteQuery } from "react-query";
-import { RequestError } from "./config";
+import { RequestError, SwaggerResponse } from "./config";
 `;
 
 const DEPRECATED_WARM_MESSAGE =
