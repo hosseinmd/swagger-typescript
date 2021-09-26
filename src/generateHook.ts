@@ -69,7 +69,7 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
 
         const TQueryFnData = `SwaggerResponse<${
           responses ? getTsType(responses) : "any"
-        }`;
+        }>`;
         const TError = "RequestError | Error";
 
         const deps = `[${serviceName}.key,${paramsString}]`;
