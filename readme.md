@@ -38,7 +38,8 @@ Before running, add your config to swagger.config.json
 ```json
 {
   "url": "http://example.com/api/swagger.json",
-  "dir": "./test"
+  "dir": "./services",
+  "prefix": "/api"
 }
 ```
 

@@ -72,7 +72,11 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
         }>`;
         const TError = "RequestError | Error";
 
-        const deps = `[${serviceName}.key,${paramsString}]`;
+        const deps = `[${serviceName}.key,${
+          pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""
+        }
+            ${queryParamsTypeName ? "queryParams," : ""}
+            ${requestBody ? "requestBody," : ""}]`;
 
         return (
           prev +
@@ -130,15 +134,11 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
             ({ pageParam = 1 }) =>
               ${serviceName}(
                 ${paramsString}
-                {
-                Page: pageParam,
-                ...screenBody,
-              },
-              configOverride
+                configOverride
               ),
             {
               getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
-
+              ...options,
             },
           );
         
@@ -150,11 +150,11 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
           return {...rest, list}
           `
             : `return useQuery<${TQueryFnData}, ${TError}>(${deps},()=>${serviceName}(
-            ${paramsString}
-            configOverride,
-          ),
-          options
-        )`
+                  ${paramsString}
+                  configOverride,
+                ),
+                options
+               )`
         }  
       }
 `
