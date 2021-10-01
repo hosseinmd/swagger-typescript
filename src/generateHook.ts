@@ -184,7 +184,7 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
             return prev;
           }
           return prev + ` ${name},`;
-        }, "import {") + '}  from "./services"\n';
+        }, "import {") + '}  from "./types"\n';
 
     code += apisCode;
     return code;

@@ -4,14 +4,19 @@ import {
   getDefineParam,
   getParamString,
   getJsdoc,
+  getSchemaName,
 } from "./utils";
-import { ApiAST } from "./types";
-import { SERVICE_BEGINNING, DEPRECATED_WARM_MESSAGE } from "./strings";
+import { ApiAST, TypeAST } from "./types";
+import {
+  SERVICE_BEGINNING,
+  SERVICE_NEEDED_FUNCTIONS,
+  DEPRECATED_WARM_MESSAGE,
+} from "./strings";
 
-function generateApis(apis: ApiAST[]): string {
+function generateApis(apis: ApiAST[], types: TypeAST[]): string {
   let code = SERVICE_BEGINNING;
   try {
-    code += apis
+    const apisCode = apis
       .sort(({ serviceName }, { serviceName: _serviceName }) =>
         isAscending(serviceName, _serviceName),
       )
@@ -121,6 +126,20 @@ ${serviceName}.key = "${endPoint}";
         },
         "",
       );
+
+    code +=
+      types.reduce((prev, { name: _name }) => {
+        const name = getSchemaName(_name);
+
+        if (!apisCode.includes(name)) {
+          return prev;
+        }
+
+        return prev + ` ${name},`;
+      }, "import {") + '}  from "./types"\n';
+
+    code += SERVICE_NEEDED_FUNCTIONS;
+    code += apisCode;
     return code;
   } catch (error) {
     console.error(error);

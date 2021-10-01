@@ -55,7 +55,7 @@ export const getSchemaData = (schemas: Schemas, name: string): Object => {
   }
 
   if (isAllOf(schema)) {
-    return mergeAllOf(schema["allOf"], schemas);
+    return mergeAllOf(schema.allOf, schemas);
   } else if (isArray(schema)) {
     return parseArray(schema, schemas);
   } else if (isObject(schema)) {
@@ -83,7 +83,7 @@ export const parseObject = (obj: Schema, schemas: Schemas): any => {
       return acc;
     }
     if (isAllOf(property)) {
-      acc[key] = mergeAllOf(property["allOf"], schemas);
+      acc[key] = mergeAllOf(property.allOf, schemas);
     } else if (isOneOf(property)) {
       acc[key] = pickOneOf(property.oneOf, schemas);
     } else if (isAnyOf(property)) {

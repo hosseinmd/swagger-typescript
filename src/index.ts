@@ -92,13 +92,14 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
         }
       }
 
-      const { code, hooks } = generator(input, config);
+      const { code, hooks, type } = generator(input, config);
 
       if (mock) {
         generateMock(input, config);
       }
 
       writeFileSync(`${dir}/services.ts`, code);
+      writeFileSync(`${dir}/types.ts`, type);
 
       reactHooks && hooks && writeFileSync(`${dir}/hooks.ts`, hooks);
 
@@ -130,7 +131,7 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
     const files = [
       hubCode && "hub",
       ...(url
-        ? [reactHooks && "hooks", "config", "httpRequest", "services"]
+        ? [reactHooks && "hooks", "config", "httpRequest", "services", "types"]
         : []),
     ].filter(Boolean) as string[];
 

@@ -26,7 +26,7 @@ import { generateHook } from "./generateHook";
 function generator(
   input: SwaggerJson,
   config: SwaggerConfig,
-): { code: string; hooks: string } {
+): { code: string; hooks: string; type: string } {
   const apis: ApiAST[] = [];
   const types: TypeAST[] = [];
   let constantsCounter = 0;
@@ -109,8 +109,10 @@ function generator(
             });
           }
 
-          const { params: headerParams, hasNullable: hasNullableHeaderParams } =
-            getHeaderParams(options.parameters, config);
+          const {
+            params: headerParams,
+            hasNullable: hasNullableHeaderParams,
+          } = getHeaderParams(options.parameters, config);
 
           const requestBody = getBodyContent(options.requestBody);
 
@@ -211,15 +213,15 @@ function generator(
       );
     }
 
-    let code = generateApis(apis);
-    code += generateTypes(types);
+    let code = generateApis(apis, types);
     code += generateConstants(constants);
+    const type = generateTypes(types);
     const hooks = config.reactHooks ? generateHook(apis, types) : "";
 
-    return { code, hooks };
+    return { code, hooks, type };
   } catch (error) {
     console.error({ error });
-    return { code: "", hooks: "" };
+    return { code: "", hooks: "", type: "" };
   }
 }
 
