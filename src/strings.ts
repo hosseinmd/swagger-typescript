@@ -66,7 +66,12 @@ const HOOKS_BEGINNING = `
  */
 import { useMemo } from "react";
 import { AxiosRequestConfig } from "axios";
-import { UseQueryOptions, useQuery, useInfiniteQuery } from "react-query";
+import {
+  UseQueryOptions,
+  useQuery,
+  useMutation,
+  useInfiniteQuery,
+} from "react-query";
 import { RequestError, SwaggerResponse } from "./config";
 `;
 

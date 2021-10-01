@@ -18,11 +18,7 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
     );
 
     let apisCode =
-      apis.reduce((prev, { serviceName, method }) => {
-        if (method !== "get") {
-          return prev;
-        }
-
+      apis.reduce((prev, { serviceName }) => {
         return prev + ` ${serviceName},`;
       }, "import {") + '}  from "./services"\n';
 
@@ -44,10 +40,6 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
           queryParameters,
         },
       ) => {
-        if (method !== "get") {
-          return prev;
-        }
-
         const hasPaging = queryParameters.find(
           ({ name }) => name.toLowerCase() === "page",
         );
@@ -55,6 +47,7 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
         const paramsString = ` ${
           pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""
         }
+        ${requestBody ? "requestBody," : ""}
           ${
             queryParamsTypeName
               ? hasPaging
@@ -64,13 +57,44 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
             },`
                 : "queryParams,"
               : ""
-          }
-          ${requestBody ? "requestBody," : ""}`;
+          }`;
 
         const TQueryFnData = `SwaggerResponse<${
           responses ? getTsType(responses) : "any"
         }>`;
         const TError = "RequestError | Error";
+
+        const TVariables = `${
+          /** Path parameters */
+          pathParams
+            .map(({ name, required, schema, description }) =>
+              getDefineParam(name, required, schema, description),
+            )
+            .join(",")
+        }${pathParams.length > 0 ? "," : ""}${
+          /** Request Body */
+          requestBody
+            ? `${getDefineParam("requestBody", true, requestBody)},`
+            : ""
+        }${
+          /** Query parameters */
+          queryParamsTypeName
+            ? `${getParamString(
+                "queryParams",
+                !isQueryParamsNullable,
+                queryParamsTypeName,
+              )},`
+            : ""
+        }${
+          /** Header parameters */
+          headerParams
+            ? `${getParamString(
+                "headerParams",
+                !isHeaderParamsNullable,
+                headerParams,
+              )},`
+            : ""
+        }`;
 
         const deps = `[${serviceName}.key,${
           pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""
@@ -78,7 +102,7 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
             ${queryParamsTypeName ? "queryParams," : ""}
             ${requestBody ? "requestBody," : ""}]`;
 
-        return (
+        let result =
           prev +
           `
       ${getJsdoc({
@@ -89,44 +113,16 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
             description: DEPRECATED_WARM_MESSAGE,
           },
         },
-      })}export const use${toPascalCase(serviceName.slice(3))} = (
-          ${
-            /** Path parameters */
-            pathParams
-              .map(({ name, required, schema, description }) =>
-                getDefineParam(name, required, schema, description),
-              )
-              .join(",")
-          }${pathParams.length > 0 ? "," : ""}${
-            /** Request Body */
-            requestBody
-              ? `${getDefineParam("requestBody", true, requestBody)},`
-              : ""
-          }${
-            /** Query parameters */
-            queryParamsTypeName
-              ? `${getParamString(
-                  "queryParams",
-                  !isQueryParamsNullable,
-                  queryParamsTypeName,
-                )},`
-              : ""
-          }${
-            /** Header parameters */
-            headerParams
-              ? `${getParamString(
-                  "headerParams",
-                  !isHeaderParamsNullable,
-                  headerParams,
-                )},`
-              : ""
-          }
+      })}`;
+        result += `export const use${toPascalCase(serviceName)} =`;
+        result += ` (
+        ${method === "get" ? TVariables : ""}
                   options?:UseQueryOptions<${TQueryFnData}, ${TError}>,
                   configOverride?:AxiosRequestConfig
-      ) => {
-        ${
-          hasPaging
-            ? `const {
+      ) => {`;
+        if (method === "get") {
+          if (hasPaging) {
+            result += `const {
             data: { pages } = {},
             ...rest
           } = useInfiniteQuery(
@@ -148,17 +144,33 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
           );
           
           return {...rest, list}
-          `
-            : `return useQuery<${TQueryFnData}, ${TError}>(${deps},()=>${serviceName}(
+          `;
+          } else {
+            result += `return useQuery<${TQueryFnData}, ${TError}>(${deps},()=>${serviceName}(
                   ${paramsString}
                   configOverride,
                 ),
                 options
-               )`
-        }  
-      }
-`
-        );
+               )`;
+          }
+        } else {
+          result += `return useMutation<${TQueryFnData}, ${TError}, ${
+            TVariables === "" ? "void" : `{${TVariables}}`
+          }>((
+             ${TVariables === "" ? "" : `{${paramsString}}`}
+          )=>${serviceName}(
+            ${paramsString}
+            configOverride,
+          ),
+          options
+         )`;
+        }
+
+        result += `  
+          }
+        `;
+
+        return result;
       },
       "",
     );
