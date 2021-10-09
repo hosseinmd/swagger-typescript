@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.0.0...v5.1.0) (2021-10-09)
+
+
+### Features
+
+* add useQuery ([f9f7fbf](https://github.com/hosseinmd/swagger-typescript/commit/f9f7fbfe835b46ffc5cff02b08c02862dd2b5a97))
+
+
+### Bug Fixes
+
+* infinity query ([119b295](https://github.com/hosseinmd/swagger-typescript/commit/119b295add42d49e14fe10aaff47d11c831ac99c))
+* mutation options types ([23c2ae7](https://github.com/hosseinmd/swagger-typescript/commit/23c2ae7fdfd8c0e2fccdd5369aed1a580ca7dca6))
+
 ## [5.0.0](https://github.com/hosseinmd/swagger-typescript/compare/v4.12.2...v5.0.0) (2021-10-01)
 
 
