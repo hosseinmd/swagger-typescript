@@ -4,6 +4,9 @@
     "language": "typescript",
     "keepJson": true,
     "reactHooks": true,
+    "useQuery": [
+        "postV2BaseinfoGeneralpropertyPricelistinvoicetypeGetbyid"
+    ],
     "ignore": {
         "headerParams": [
             "terminalId"

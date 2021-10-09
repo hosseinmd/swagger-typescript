@@ -7,10 +7,14 @@ import {
   toPascalCase,
   getSchemaName,
 } from "./utils";
-import { ApiAST, TypeAST } from "./types";
+import { ApiAST, SwaggerConfig, TypeAST } from "./types";
 import { HOOKS_BEGINNING, DEPRECATED_WARM_MESSAGE } from "./strings";
 
-function generateHook(apis: ApiAST[], types: TypeAST[]): string {
+function generateHook(
+  apis: ApiAST[],
+  types: TypeAST[],
+  config: SwaggerConfig,
+): string {
   let code = HOOKS_BEGINNING;
   try {
     apis = apis.sort(({ serviceName }, { serviceName: _serviceName }) =>
@@ -43,6 +47,9 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
         const hasPaging = queryParameters.find(
           ({ name }) => name.toLowerCase() === "page",
         );
+
+        const isGet =
+          config.useQuery?.includes(serviceName) || method === "get";
 
         const paramsString = ` ${
           pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""
@@ -116,11 +123,11 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
       })}`;
         result += `export const use${toPascalCase(serviceName)} =`;
         result += ` (
-        ${method === "get" ? TVariables : ""}
+        ${isGet ? TVariables : ""}
                   options?:${
                     hasPaging
                       ? `UseInfiniteQueryOptions<${TQueryFnData}, ${TError}>`
-                      : method === "get"
+                      : isGet
                       ? `UseQueryOptions<${TQueryFnData}, ${TError}>`
                       : `UseMutationOptions<${TQueryFnData}, ${TError},${
                           TVariables === "" ? "void" : `{${TVariables}}`
@@ -128,7 +135,7 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
                   },
                   configOverride?:AxiosRequestConfig
       ) => {`;
-        if (method === "get") {
+        if (isGet) {
           if (hasPaging) {
             result += `const {
             data: { pages } = {},

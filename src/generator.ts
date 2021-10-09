@@ -216,7 +216,7 @@ function generator(
     let code = generateApis(apis, types);
     code += generateConstants(constants);
     const type = generateTypes(types);
-    const hooks = config.reactHooks ? generateHook(apis, types) : "";
+    const hooks = config.reactHooks ? generateHook(apis, types, config) : "";
 
     return { code, hooks, type };
   } catch (error) {

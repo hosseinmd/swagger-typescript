@@ -88,6 +88,7 @@ For Example:
 | `methodParamsByTag` | false            | add add a tag insteadOf params name to generated method name (example: getUserP1P2 insteadOf getUserConnectionIdAccountId)                                         |
 | `mock`              | false            | For generate response mocks                                                                                                                                        |
 | `reactHooks`        | false            | For generate react hooks of all get apis                                                                                                                           |
+| `useQuery`          | []               | List of apis which is get but developed with post methods (Is useful for rest apis) for Example: ["postTicketsGetall"] (Needed to enable `reactHooks`)             |
 
 ## config.ts
 
