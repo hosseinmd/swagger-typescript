@@ -23,7 +23,7 @@ export const composeMockData = (
       return;
     }
 
-    Object.entries(res["response"]).forEach(([status, content]) => {
+    Object.entries(res.response).forEach(([status, content]) => {
       const val =
         content?.["application/json"] ||
         content?.["application/octet-stream"] ||

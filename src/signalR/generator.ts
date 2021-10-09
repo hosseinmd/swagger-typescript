@@ -104,9 +104,9 @@ function signalRGenerator(json: HubJson): string {
                 ({ name, parameters }) =>
                   `[${operationEnumsName}.${name}]: (${Object.entries(
                     parameters,
-                  ).map(([name, schema]) =>
+                  ).map(([_name, schema]) =>
                     getDefineParam(
-                      name,
+                      _name,
                       schema.required,
                       (schema as unknown) as Schema,
                       schema.description,
