@@ -66,8 +66,8 @@ const HOOKS_BEGINNING = `
  */
 import { useMemo } from "react";
 import { AxiosRequestConfig } from "axios";
-import { UseQueryOptions, useQuery, useInfiniteQuery } from "react-query";
-import { RequestError, SwaggerResponse } from "./config";
+import { UseQueryOptions, UseInfiniteQueryOptions, useQuery, useInfiniteQuery } from "react-query";
+import { RequestError, SwaggerResponse, paginationFlattenData } from "./config";
 `;
 
 const DEPRECATED_WARM_MESSAGE =

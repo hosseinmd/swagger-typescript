@@ -121,7 +121,9 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
                 )},`
               : ""
           }
-                  options?:UseQueryOptions<${TQueryFnData}, ${TError}>,
+                  options?:${
+                    hasPaging ? "UseInfiniteQueryOptions" : "UseQueryOptions"
+                  }<${TQueryFnData}, ${TError}>,
                   configOverride?:AxiosRequestConfig
       ) => {
         ${
@@ -143,7 +145,7 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
           );
         
           const list = useMemo(
-            () => pages?.flatMap(({ data }) => data || []),
+            () => pages?.flatMap(paginationFlattenData),
             [pages],
           );
           
