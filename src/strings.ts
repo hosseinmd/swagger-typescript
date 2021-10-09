@@ -69,6 +69,7 @@ import {
   UseQueryOptions,
   useQuery,
   useMutation,
+  UseMutationOptions,
   useInfiniteQuery,
   UseInfiniteQueryOptions,
 } from "react-query";

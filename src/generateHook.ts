@@ -117,7 +117,15 @@ function generateHook(apis: ApiAST[], types: TypeAST[]): string {
         result += `export const use${toPascalCase(serviceName)} =`;
         result += ` (
         ${method === "get" ? TVariables : ""}
-                  options?:UseInfiniteQueryOptions<${TQueryFnData}, ${TError}>,
+                  options?:${
+                    hasPaging
+                      ? `UseInfiniteQueryOptions<${TQueryFnData}, ${TError}>`
+                      : method === "get"
+                      ? `UseQueryOptions<${TQueryFnData}, ${TError}>`
+                      : `UseMutationOptions<${TQueryFnData}, ${TError},${
+                          TVariables === "" ? "void" : `{${TVariables}}`
+                        }>`
+                  },
                   configOverride?:AxiosRequestConfig
       ) => {`;
         if (method === "get") {
