@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.1](https://github.com/hosseinmd/swagger-typescript/compare/v5.1.0...v5.1.1) (2021-10-10)
+
+
+### Bug Fixes
+
+* add paginationFlattenData ([5ca185c](https://github.com/hosseinmd/swagger-typescript/commit/5ca185c2960e5c4f825162cfc4f69554c41ed7f6))
+
 ## [5.1.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.0.0...v5.1.0) (2021-10-09)
 
 
