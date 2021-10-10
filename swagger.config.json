@@ -1,15 +1,11 @@
 {
-    "url": "http://192.168.34.101:8085/api/swagger/v2/swagger.json",
-    "dir": "./test",
-    "language": "typescript",
-    "keepJson": true,
-    "reactHooks": true,
-    "useQuery": [
-        "postV2BaseinfoGeneralpropertyPricelistinvoicetypeGetbyid"
-    ],
-    "ignore": {
-        "headerParams": [
-            "terminalId"
-        ]
-    }
+  "url": "http://192.168.34.101:8085/api/swagger/v2/swagger.json",
+  "dir": "./test",
+  "language": "typescript",
+  "keepJson": true,
+  "reactHooks": true,
+  "useQuery": ["postV2BaseinfoGeneralpropertyPricelistinvoicetypeGetbyid"],
+  "ignore": {
+    "headerParams": ["terminalId"]
+  }
 }
