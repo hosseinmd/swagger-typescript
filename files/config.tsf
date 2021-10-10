@@ -114,8 +114,8 @@ type GetDataType<
       [P in K]?: infer R1;
     }
     ? R1
-    : D extends Array<infer R2>
-    ? R2
+    : D extends Array<any>
+    ? D
     : never
   : never;
 
