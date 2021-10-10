@@ -151,7 +151,7 @@ function generateHook(
               ),
             {
               getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
-              ...options,
+              ...(options as any),
             },
           );
         
