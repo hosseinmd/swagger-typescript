@@ -1,7 +1,7 @@
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
  *
- * @version 4
+ * @version 5
  */
 import axios, { AxiosRequestConfig, CancelToken } from "axios";
 import { getAxiosInstance, Security, SwaggerResponse } from "./config";
