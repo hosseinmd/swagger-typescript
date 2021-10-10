@@ -139,6 +139,7 @@ function generateHook(
           if (hasPaging) {
             result += `const {
             data: { pages } = {},
+            data,
             ...rest
           } = useInfiniteQuery(
             ${deps},
@@ -153,12 +154,9 @@ function generateHook(
             },
           );
         
-          const list = useMemo(
-            () => pages?.flatMap(paginationFlattenData),
-            [pages],
-          );
+          const list = useMemo(() => paginationFlattenData(pages), [pages]);
           
-          return {...rest, list}
+          return {...rest, data, list}
           `;
           } else {
             result += `return useQuery<${TQueryFnData}, ${TError}>(${deps},()=>${serviceName}(
