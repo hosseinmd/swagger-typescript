@@ -5,6 +5,7 @@ import {
   getParamString,
   getJsdoc,
   getSchemaName,
+  isMatchWholeWord,
 } from "./utils";
 import { ApiAST, TypeAST } from "./types";
 import {
@@ -131,7 +132,7 @@ ${serviceName}.key = "${endPoint}";
       types.reduce((prev, { name: _name }) => {
         const name = getSchemaName(_name);
 
-        if (!apisCode.includes(name)) {
+        if (!isMatchWholeWord(apisCode, name)) {
           return prev;
         }
 

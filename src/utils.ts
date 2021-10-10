@@ -433,6 +433,10 @@ function template(str: string, obj: { [x: string]: string } = {}) {
   return str;
 }
 
+function isMatchWholeWord(stringToSearch: string, word: string) {
+  return new RegExp("\\b" + word + "\\b").test(stringToSearch);
+}
+
 export {
   majorVersionsCheck,
   getPathParams,
@@ -449,4 +453,5 @@ export {
   template,
   toPascalCase,
   getSchemaName,
+  isMatchWholeWord,
 };

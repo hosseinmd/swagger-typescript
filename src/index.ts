@@ -99,11 +99,18 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
       }
 
       writeFileSync(`${dir}/services.ts`, code);
-      writeFileSync(`${dir}/types.ts`, type);
+      console.log(chalk.yellowBright("services Completed"));
 
-      reactHooks && hooks && writeFileSync(`${dir}/hooks.ts`, hooks);
+      writeFileSync(`${dir}/types.ts`, type);
+      console.log(chalk.yellowBright("types Completed"));
+
+      if (reactHooks && hooks) {
+        writeFileSync(`${dir}/hooks.ts`, hooks);
+        console.log(chalk.yellowBright("hooks Completed"));
+      }
 
       writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
+      console.log(chalk.yellowBright("httpRequest Completed"));
 
       if (!existsSync(`${dir}/config.${isToJs ? "js" : "ts"}`)) {
         writeFileSync(
@@ -113,8 +120,8 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
             input.servers?.[0].url || "",
           ),
         );
+        console.log(chalk.yellowBright("config Completed"));
       }
-      console.log(chalk.yellowBright("services Completed"));
     }
 
     // signalR hub definition

@@ -6,6 +6,7 @@ import {
   getJsdoc,
   toPascalCase,
   getSchemaName,
+  isMatchWholeWord,
 } from "./utils";
 import { ApiAST, SwaggerConfig, TypeAST } from "./types";
 import { HOOKS_BEGINNING, DEPRECATED_WARM_MESSAGE } from "./strings";
@@ -193,7 +194,7 @@ function generateHook(
         .sort(({ name }, { name: _name }) => isAscending(name, _name))
         .reduce((prev, { name: _name }) => {
           const name = getSchemaName(_name);
-          if (!apisCode.includes(name)) {
+          if (!isMatchWholeWord(apisCode, name)) {
             return prev;
           }
           return prev + ` ${name},`;
