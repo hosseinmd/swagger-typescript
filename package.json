@@ -1,6 +1,6 @@
 {
   "name": "swagger-typescript",
-  "version": "5.3.1",
+  "version": "5.3.2",
   "description": "An auto ts/js code generate from swagger/openApi",
   "main": "lib/index.js",
   "bin": {
@@ -48,6 +48,7 @@
     "@types/node": "^14.14.22",
     "@types/prettier": "^2.1.6",
     "@types/qs": "^6.9.5",
+    "@types/react-query": "^1.2.9",
     "@typescript-eslint/eslint-plugin": "^3.8.0",
     "@typescript-eslint/parser": "^2.20.0",
     "commitlint": "^8.3.5",
@@ -55,7 +56,6 @@
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.3",
     "jest": "^27.0.4",
-    "@types/react-query": "^1.2.9",
     "prettier": "^2.2.1",
     "prettier-plugin-jsdoc": "^0.3.13",
     "standard-version": "^9.0.0",
