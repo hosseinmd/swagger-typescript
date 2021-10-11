@@ -133,8 +133,8 @@ const paginationFlattenData = <T extends Array<any>>(
   ) as any;
 
 
-  const getTotal = <T extends Array<any>>(pages?: T): number | undefined => {
-  return pages?.[0]?.total;
+const getTotal = <T extends Array<any>>(pages?: T): number | undefined => {
+  return pages?.[pages?.length - 1]?.total;
 };
 
 export {

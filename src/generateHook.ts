@@ -162,7 +162,7 @@ function generateHook(
               return false;
             }
             if (getTotal(pages) !== undefined) {
-              if (list && list.length < pages?.[pages.length - 1]?.total || 0) {
+              if (list && list.length < getTotal(pages) || 0) {
                 return true;
               }
               return false;
