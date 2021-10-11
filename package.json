@@ -55,6 +55,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.3",
     "jest": "^27.0.4",
+    "@types/react-query": "^1.2.9",
     "prettier": "^2.2.1",
     "prettier-plugin-jsdoc": "^0.3.13",
     "standard-version": "^9.0.0",
