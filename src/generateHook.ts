@@ -123,6 +123,9 @@ function generateHook(
         },
       })}`;
         result += `export const use${toPascalCase(serviceName)} =`;
+        if (!isGet) {
+          result += `<TExtra extends any>`;
+        }
         result += ` (
         ${isGet ? TVariables : ""}
                   options?:${
@@ -131,7 +134,9 @@ function generateHook(
                       : isGet
                       ? `UseQueryOptions<${TQueryFnData}, ${TError}>`
                       : `UseMutationOptions<${TQueryFnData}, ${TError},${
-                          TVariables === "" ? "void" : `{${TVariables}}`
+                          TVariables === ""
+                            ? "{_extraVariables?:TExtra} | undefined"
+                            : `{${TVariables} _extraVariables?:TExtra}`
                         }>`
                   },
                   configOverride?:AxiosRequestConfig
@@ -189,7 +194,9 @@ function generateHook(
           }
         } else {
           result += `return useMutation<${TQueryFnData}, ${TError}, ${
-            TVariables === "" ? "void" : `{${TVariables}}`
+            TVariables === ""
+              ? "{_extraVariables?:TExtra} | undefined"
+              : `{${TVariables} _extraVariables?: TExtra }`
           }>((
              ${TVariables === "" ? "" : `{${paramsString}}`}
           )=>${serviceName}(
