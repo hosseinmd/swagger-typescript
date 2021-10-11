@@ -166,26 +166,23 @@ function generateHook(
             if (!pages || (pages && pages.length < 1)) {
               return false;
             }
-            if(pages[0]?.total !== undefined) {
-              const total = pages?.[pages.length - 1]?.total || 0;
-              if (
-                list &&
-                list.length < total
-              ) {
+            if (getTotal(pages) !== undefined) {
+              if (list && list.length < getTotal(pages) || 0) {
                 return true;
               }
               return false;
             }
-             if((pages[pages.length - 1]?.length === (queryParams as any)?.pageSize ) || (pages[pages.length - 1]?.length === (queryParams as any)?.PageSize )) {
-              
-             return true;
+            if (
+              paginationFlattenData([pages[pages.length - 1]])?.length === (queryParams as any)?.pageSize ||
+              paginationFlattenData([pages[pages.length - 1]])?.length === (queryParams as any)?.PageSize
+            ) {
+              return true;
             }
-           
         
             return false;
-          }, [pages, list,queryParams]);
+          }, [pages, list, queryParams]);
           
-          return {...rest, data, list,hasMore}
+          return {...rest, data, list, hasMore}
           `;
           } else {
             result += `return useQuery<${TQueryFnData}, ${TError}>(${deps},()=>${serviceName}(

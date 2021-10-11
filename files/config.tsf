@@ -106,10 +106,11 @@ export type Security = any[] | undefined;
 
 export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 
+
 type GetDataType<
-  T extends any,
-  K extends string = "data" | "list",
-> = T extends Array<infer D>
+  T extends Array<SwaggerResponse<any>>,
+  K extends string = "data" | "list"
+> = T extends Array<SwaggerResponse<infer D>>
   ? D extends {
       [P in K]?: infer R1;
     }
@@ -119,21 +120,28 @@ type GetDataType<
     : never
   : never;
 
-const paginationFlattenData = <T extends Array<any>>(
+const paginationFlattenData = <T extends Array<SwaggerResponse<any>>>(
   pages?: T,
 ): GetDataType<T> | undefined =>
-  pages?.flatMap((page: any) =>
-    Array.isArray(page)
-      ? page
-      : Array.isArray(page.data)
+  pages?.flatMap((page) =>
+    Array.isArray(page.data)
       ? page.data
-      : Array.isArray(page.list)
-      ? page.list
+      : Array.isArray(page.data?.data)
+      ? page.data.data
+      : Array.isArray(page.data?.list)
+      ? page.data.list
       : [],
   ) as any;
+
+const getTotal = <T extends Array<SwaggerResponse<any>>>(
+  pages?: T,
+): number | undefined => {
+  return pages?.[pages?.length - 1]?.data?.total;
+};
 
 export {
   getAxiosInstance,
   paginationFlattenData,
+  getTotal,
   RequestError,
 };

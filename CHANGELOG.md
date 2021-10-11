@@ -11,17 +11,15 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [5.2.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.1.1...v5.2.0) (2021-10-11)
 
-
 ### Features
 
-* add hasmore to useinfinitequery ([#26](https://github.com/hosseinmd/swagger-typescript/issues/26)) ([4f516bf](https://github.com/hosseinmd/swagger-typescript/commit/4f516bfb3c9a7762a896d6bc6db12fb04e3d0954))
-
+- add hasmore to useinfinitequery ([#26](https://github.com/hosseinmd/swagger-typescript/issues/26)) ([4f516bf](https://github.com/hosseinmd/swagger-typescript/commit/4f516bfb3c9a7762a896d6bc6db12fb04e3d0954))
 
 ### Bug Fixes
 
-* config bugs ([65b3d79](https://github.com/hosseinmd/swagger-typescript/commit/65b3d79a7b2d341bf5baabfcc8c63f0fd5feeab1))
-* infinity flatten map type ([81a8f56](https://github.com/hosseinmd/swagger-typescript/commit/81a8f569b353721806d468aff759730f26b36c2d))
-* remove unused types ([05213fe](https://github.com/hosseinmd/swagger-typescript/commit/05213fea549d137b4a201ee0c60eb4818adca554))
+- config bugs ([65b3d79](https://github.com/hosseinmd/swagger-typescript/commit/65b3d79a7b2d341bf5baabfcc8c63f0fd5feeab1))
+- infinity flatten map type ([81a8f56](https://github.com/hosseinmd/swagger-typescript/commit/81a8f569b353721806d468aff759730f26b36c2d))
+- remove unused types ([05213fe](https://github.com/hosseinmd/swagger-typescript/commit/05213fea549d137b4a201ee0c60eb4818adca554))
 
 ### [5.1.1](https://github.com/hosseinmd/swagger-typescript/compare/v5.1.0...v5.1.1) (2021-10-10)
 
