@@ -166,8 +166,11 @@ function generateHook(
             if (!pages || (pages && pages.length < 1)) {
               return false;
             }
-            if (getTotal(pages) !== undefined) {
-              if (list && list.length < getTotal(pages) || 0) {
+
+            const total = getTotal(pages)
+
+            if (total !== undefined) {
+              if (list && list.length < total) {
                 return true;
               }
               return false;
