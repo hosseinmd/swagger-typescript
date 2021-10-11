@@ -156,8 +156,28 @@ function generateHook(
           );
         
           const list = useMemo(() => paginationFlattenData(pages), [pages]);
+
+          const hasMore = useMemo(() => {
+            if (!pages || (pages && pages.length < 1)) {
+              return false;
+            }
+            if (getTotal(pages) !== undefined) {
+              if (list && list.length < pages?.[pages.length - 1]?.total || 0) {
+                return true;
+              }
+              return false;
+            }
+            if (
+              paginationFlattenData([pages[pages.length - 1]])?.length === (queryParams as any)?.pageSize ||
+              paginationFlattenData([pages[pages.length - 1]])?.length === (queryParams as any)?.PageSize
+            ) {
+              return true;
+            }
+        
+            return false;
+          }, [pages, list, queryParams]);
           
-          return {...rest, data, list}
+          return {...rest, data, list, hasMore}
           `;
           } else {
             result += `return useQuery<${TQueryFnData}, ${TError}>(${deps},()=>${serviceName}(

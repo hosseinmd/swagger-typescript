@@ -73,7 +73,7 @@ import {
   useInfiniteQuery,
   UseInfiniteQueryOptions,
 } from "react-query";
-import { RequestError, SwaggerResponse, paginationFlattenData } from "./config";
+import { RequestError, SwaggerResponse, paginationFlattenData, getTotal } from "./config";
 `;
 
 const DEPRECATED_WARM_MESSAGE =
