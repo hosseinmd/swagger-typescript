@@ -97,13 +97,13 @@ For Example:
 
 This file automatically will be created after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
 
-#### getAxiosInstance
+- getAxiosInstance
+  
+  getAxiosInstance used for create an instance of axios request you can customize that for what you needed
 
-getAxiosInstance used for create an instance of axios request you can customize that for what you needed
+- baseConfig
 
-#### baseConfig
-
-baseConfig used for get static configs and headers. if you need some dynamic configs like add authentication to headers use `requestConfig.headers.authorization` into of `axiosInstance.interceptors.request.use` function.
+  baseConfig used for get static configs and headers. if you need some dynamic configs like add authentication to headers use `requestConfig.headers.authorization`   into of `axiosInstance.interceptors.request.use` function.
 
 ## run by node
 
@@ -114,6 +114,24 @@ generate(config);
 // or
 generate(); // will be use ./swagger.config.json
 ```
+
+## Confilict
+
+In some situation teams have paralell backend developement which cause confilict when updating swagger for solving this we have partially update, you can update your service just for a few tags and keep other old services codes.
+
+For Doing this you need to add this to your swagger.config.json
+
+```
+"keepJson": true,
+```
+This code will keep previous JSON for updating partially.
+
+Run `$ yarn swag-ts` with your base backend, for example develop branch
+
+Others need to pull this changes
+
+Now you can update Tag1 and Tag2 `$ yarn swag-ts Tag1 Tag2`.
+
 
 ## Stories
 
