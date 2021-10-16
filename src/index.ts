@@ -7,7 +7,7 @@ import {
 } from "fs";
 import { format } from "prettier";
 import { SwaggerJson, SwaggerConfig } from "./types";
-import { HTTP_REQUEST, CONFIG } from "./strings";
+import { HTTP_REQUEST, CONFIG, FILE_HOOKS_CONFIG } from "./strings";
 import { getJson } from "./getJson";
 import { generator } from "./generator";
 import { build } from "tsc-prog";
@@ -106,6 +106,9 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
 
       if (reactHooks && hooks) {
         writeFileSync(`${dir}/hooks.ts`, hooks);
+        if (!existsSync(`${dir}/hooksConfig.${isToJs ? "js" : "ts"}`)) {
+          writeFileSync(`${dir}/hooksConfig.ts`, FILE_HOOKS_CONFIG);
+        }
         console.log(chalk.yellowBright("hooks Completed"));
       }
 
@@ -138,7 +141,13 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
     const files = [
       hubCode && "hub",
       ...(url
-        ? [reactHooks && "hooks", "config", "httpRequest", "services", "types"]
+        ? [
+            ...(reactHooks ? ["hooks", "hooksConfig"] : []),
+            "config",
+            "httpRequest",
+            "services",
+            "types",
+          ]
         : []),
     ].filter(Boolean) as string[];
 
