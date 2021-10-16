@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.3](https://github.com/hosseinmd/swagger-typescript/compare/v5.3.1...v5.3.3) (2021-10-16)
+
+
+### Bug Fixes
+
+* add getPageSize function ([#29](https://github.com/hosseinmd/swagger-typescript/issues/29)) ([927714d](https://github.com/hosseinmd/swagger-typescript/commit/927714d0200e07e7a40451f2bfd04b03a7e3de71))
+* get total type error ([ba695bb](https://github.com/hosseinmd/swagger-typescript/commit/ba695bb1d128b2acb976fe80cc3bc95f6e733b31))
+* split hooksConfig from main config ([b77e622](https://github.com/hosseinmd/swagger-typescript/commit/b77e622c6805a6dc2e9c47b8718d13b69bd9abd5))
+
 ### [5.3.1](https://github.com/hosseinmd/swagger-typescript/compare/v5.3.0...v5.3.1) (2021-10-11)
 
 ### Bug Fixes
