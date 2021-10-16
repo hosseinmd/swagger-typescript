@@ -176,8 +176,7 @@ function generateHook(
               return false;
             }
             if (
-              paginationFlattenData([pages[pages.length - 1]])?.length === (queryParams as any)?.pageSize ||
-              paginationFlattenData([pages[pages.length - 1]])?.length === (queryParams as any)?.PageSize
+              paginationFlattenData([pages[pages.length - 1]])?.length === getPageSize(queryParams as any)
             ) {
               return true;
             }
