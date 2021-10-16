@@ -139,9 +139,25 @@ const getTotal = <T extends Array<SwaggerResponse<any>>>(
   return pages?.[pages?.length - 1]?.data?.total;
 };
 
+
+const getPageSize = (queryParams?: any): number | undefined => {
+  const pageSize = Object.entries(queryParams || {}).find(([key, _value]) => {
+    if (
+      key.toLowerCase() === "pagesize" ||
+      key.toLowerCase() === "pagenumber"
+    ) {
+      return true;
+    }
+    return false;
+  });
+
+  return (pageSize[1] || 10) as number;
+};
+
 export {
   getAxiosInstance,
   paginationFlattenData,
   getTotal,
+  getPageSize,
   RequestError,
 };

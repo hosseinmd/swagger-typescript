@@ -4,17 +4,15 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [5.3.1](https://github.com/hosseinmd/swagger-typescript/compare/v5.3.0...v5.3.1) (2021-10-11)
 
-
 ### Bug Fixes
 
-* has more types ([#28](https://github.com/hosseinmd/swagger-typescript/issues/28)) ([7f5d053](https://github.com/hosseinmd/swagger-typescript/commit/7f5d053ed746df747ed15599cdee493ba10bae0f))
+- has more types ([#28](https://github.com/hosseinmd/swagger-typescript/issues/28)) ([7f5d053](https://github.com/hosseinmd/swagger-typescript/commit/7f5d053ed746df747ed15599cdee493ba10bae0f))
 
 ## [5.3.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.2.0...v5.3.0) (2021-10-11)
 
-
 ### Features
 
-* add extra variables to mutation ([e8589e6](https://github.com/hosseinmd/swagger-typescript/commit/e8589e681e5032933c0476caaf6cfdb3b0a04476))
+- add extra variables to mutation ([e8589e6](https://github.com/hosseinmd/swagger-typescript/commit/e8589e681e5032933c0476caaf6cfdb3b0a04476))
 
 ## [5.2.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.1.1...v5.2.0) (2021-10-11)
 
