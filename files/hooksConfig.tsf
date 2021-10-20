@@ -35,7 +35,7 @@ const paginationFlattenData = <T extends Array<SwaggerResponse<any>>>(
 const getTotal = <T extends Array<SwaggerResponse<any>>>(
   pages?: T,
 ): number | undefined => {
-  return pages?.[pages?.length - 1]?.data?.total;
+  return pages && pages.[pages.length - 1]?.data?.total;
 };
 
 
@@ -50,7 +50,7 @@ const getPageSize = (queryParams?: any): number | undefined => {
     return false;
   });
 
-  return (pageSize[1] || 10) as number;
+  return (pageSize?.[1] || 10) as number;
 };
 
 export {
