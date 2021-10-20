@@ -162,27 +162,7 @@ function generateHook(
         
           const list = useMemo(() => paginationFlattenData(pages), [pages]);
 
-          const hasMore = useMemo(() => {
-            if (!pages || (pages && pages.length < 1)) {
-              return false;
-            }
-
-            const total = getTotal(pages)
-
-            if (total !== undefined) {
-              if (list && list.length < total) {
-                return true;
-              }
-              return false;
-            }
-            if (
-              paginationFlattenData([pages[pages.length - 1]])?.length === getPageSize(queryParams as any)
-            ) {
-              return true;
-            }
-        
-            return false;
-          }, [pages, list, queryParams]);
+          const hasMore = useHasMore(pages, list, queryParams);
           
           return {...rest, data, list, hasMore}
           `;

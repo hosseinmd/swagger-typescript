@@ -78,7 +78,37 @@ import {
   UseInfiniteQueryOptions,
 } from "react-query";
 import { RequestError, SwaggerResponse } from "./config";
-import { paginationFlattenData,getPageSize, getTotal } from "./hooksConfig";
+import { paginationFlattenData, getPageSize, getTotal } from "./hooksConfig";
+
+const useHasMore = (
+  pages: any,
+  list: any,
+  queryParams: any,
+) =>
+  useMemo(() => {
+    if (!pages || (pages && pages.length < 1)) {
+      return false;
+    }
+
+    const total = getTotal(pages);
+
+    if (total !== undefined) {
+      if (list && list.length < total) {
+        return true;
+      }
+      return false;
+    }
+    if (
+      paginationFlattenData([pages[pages.length - 1]])?.length ===
+        (queryParams as any)?.pageSize ||
+      paginationFlattenData([pages[pages.length - 1]])?.length ===
+        (queryParams as any)?.PageSize
+    ) {
+      return true;
+    }
+
+    return false;
+  }, [pages, list, queryParams]);
 
 `;
 
