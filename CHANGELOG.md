@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.3.3...v5.4.0) (2021-10-20)
+
+
+### Features
+
+* create useHasMore ([776156d](https://github.com/hosseinmd/swagger-typescript/commit/776156d5251f05c23b942a83c0cda84bf5819b99))
+
 ### [5.3.3](https://github.com/hosseinmd/swagger-typescript/compare/v5.3.1...v5.3.3) (2021-10-16)
 
 
