@@ -270,6 +270,8 @@ export interface SwaggerConfig {
   ignore?: {
     headerParams?: string[];
   };
+  /** Generate with local swagger.json */
+  local?: boolean;
 }
 
 export type Method =

@@ -34,6 +34,7 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
     tag,
     keepJson,
     reactHooks,
+    local,
   } = config;
 
   const isToJs = language === "javascript";
@@ -46,19 +47,26 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
 
   try {
     if (url) {
-      let input: SwaggerJson = await getJson(url);
+      const swaggerJsonPath = `${dir}/swagger.json`;
 
-      if (input.swagger) {
-        majorVersionsCheck("2.0.0", input.swagger);
-        // convert swagger v2 to openApi v3
-        input = await swaggerToOpenApi(input);
+      let input: SwaggerJson;
+
+      if (local) {
+        input = getLocalJson(dir);
       } else {
-        majorVersionsCheck("3.0.0", input.openapi);
+        input = await getJson(url);
+
+        if (input.swagger) {
+          majorVersionsCheck("2.0.0", input.swagger);
+          // convert swagger v2 to openApi v3
+          input = await swaggerToOpenApi(input);
+        } else {
+          majorVersionsCheck("3.0.0", input.openapi);
+        }
       }
 
       if (keepJson) {
         try {
-          const swaggerJsonPath = `${dir}/swagger.json`;
           if (!tag?.length) {
             writeFileSync(swaggerJsonPath, JSON.stringify(input));
             formatFile(swaggerJsonPath, {
@@ -66,25 +74,14 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
               parser: "json",
             });
           } else {
-            let old;
-            try {
-              old = readFileSync(swaggerJsonPath).toString();
-            } catch {
-              chalk.red(
-                "swagger.json file not found. You should set keepJson true to save json then run swag-ts without tag to save that",
-              );
-            }
+            const oldJson = getLocalJson(dir);
 
-            if (old) {
-              const oldJson = JSON.parse(old);
-
-              input = partialUpdateJson(oldJson, input, tag);
-              writeFileSync(swaggerJsonPath, JSON.stringify(input));
-              formatFile(swaggerJsonPath, {
-                ...prettierOptions,
-                parser: "json",
-              });
-            }
+            input = partialUpdateJson(oldJson, input, tag);
+            writeFileSync(swaggerJsonPath, JSON.stringify(input));
+            formatFile(swaggerJsonPath, {
+              ...prettierOptions,
+              parser: "json",
+            });
           }
         } catch (error) {
           chalk.red(error);
@@ -232,6 +229,20 @@ function getPrettierOptions(prettierPath?: string) {
   }
 
   return prettierOptions;
+}
+
+function getLocalJson(dir: string) {
+  const swaggerJsonPath = `${dir}/swagger.json`;
+
+  try {
+    const old = readFileSync(swaggerJsonPath).toString();
+    return JSON.parse(old);
+  } catch (error) {
+    chalk.red(
+      "swagger.json file not found. You should set keepJson true to save json then run swag-ts without tag to save that",
+    );
+    throw error;
+  }
 }
 
 export { generate };
