@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.6.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.5.0...v5.6.0) (2021-10-27)
+
+
+### Features
+
+* handle prefetch ([345c77e](https://github.com/hosseinmd/swagger-typescript/commit/345c77e2565ad7d117e8edc78540a881bbc64e06))
+
 ## [5.5.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.4.2...v5.5.0) (2021-10-20)
 
 
