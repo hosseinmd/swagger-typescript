@@ -76,12 +76,13 @@ import {
   UseMutationOptions,
   useInfiniteQuery,
   UseInfiniteQueryOptions,
+  QueryClient,
 } from "react-query";
 import { RequestError, SwaggerResponse } from "./config";
 import { paginationFlattenData, getPageSize, getTotal } from "./hooksConfig";
 
 const useHasMore = (
-  pages: any,
+  pages: Array<SwaggerResponse<any>> | undefined,
   list: any,
   queryParams: any,
 ) =>

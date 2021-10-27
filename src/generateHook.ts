@@ -52,17 +52,17 @@ function generateHook(
         const isGet =
           config.useQuery?.includes(serviceName) || method === "get";
 
-        const paramsString = ` ${
+        const getParamsString = (override?: boolean) => ` ${
           pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""
         }
-        ${requestBody ? "requestBody," : ""}
+          ${requestBody ? "requestBody," : ""}
           ${
             queryParamsTypeName
-              ? hasPaging
+              ? hasPaging && override
                 ? `{
-              ${hasPaging.name}:pageParam,
-              ...queryParams,
-            },`
+                  ..._param,
+                  ...queryParams,
+                },`
                 : "queryParams,"
               : ""
           }`;
@@ -71,6 +71,14 @@ function generateHook(
           responses ? getTsType(responses) : "any"
         }>`;
         const TError = "RequestError | Error";
+
+        const getQueryParamName = (
+          name: string,
+          nullable: boolean = isQueryParamsNullable,
+        ) =>
+          queryParamsTypeName
+            ? `${getParamString(name, !nullable, queryParamsTypeName)},`
+            : "";
 
         const TVariables = `${
           /** Path parameters */
@@ -86,13 +94,7 @@ function generateHook(
             : ""
         }${
           /** Query parameters */
-          queryParamsTypeName
-            ? `${getParamString(
-                "queryParams",
-                !isQueryParamsNullable,
-                queryParamsTypeName,
-              )},`
-            : ""
+          getQueryParamName("queryParams")
         }${
           /** Header parameters */
           headerParams
@@ -103,6 +105,8 @@ function generateHook(
               )},`
             : ""
         }`;
+
+        const hookName = `use${toPascalCase(serviceName)}`;
 
         const deps = `[${serviceName}.key,${
           pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""
@@ -122,38 +126,45 @@ function generateHook(
           },
         },
       })}`;
-        result += `export const use${toPascalCase(serviceName)} =`;
+        result += `export const ${hookName} =`;
         if (!isGet) {
           result += `<TExtra extends any>`;
         }
+
+        const params = [
+          `${isGet ? TVariables : ""}`,
+          `options?:${
+            hasPaging
+              ? `UseInfiniteQueryOptions<${TQueryFnData}, ${TError}>`
+              : isGet
+              ? `UseQueryOptions<${TQueryFnData}, ${TError}>`
+              : `UseMutationOptions<${TQueryFnData}, ${TError},${
+                  TVariables === ""
+                    ? "{_extraVariables?:TExtra} | undefined"
+                    : `{${TVariables} _extraVariables?:TExtra}`
+                }>`
+          },`,
+          `configOverride?:AxiosRequestConfig`,
+        ];
+
         result += ` (
-        ${isGet ? TVariables : ""}
-                  options?:${
-                    hasPaging
-                      ? `UseInfiniteQueryOptions<${TQueryFnData}, ${TError}>`
-                      : isGet
-                      ? `UseQueryOptions<${TQueryFnData}, ${TError}>`
-                      : `UseMutationOptions<${TQueryFnData}, ${TError},${
-                          TVariables === ""
-                            ? "{_extraVariables?:TExtra} | undefined"
-                            : `{${TVariables} _extraVariables?:TExtra}`
-                        }>`
-                  },
-                  configOverride?:AxiosRequestConfig
-      ) => {`;
+           ${params.join("")}
+           ) => {`;
         if (isGet) {
+          result += `
+          const { key, fun } = ${hookName}.info(${getParamsString()} options,configOverride);
+          `;
           if (hasPaging) {
             result += `const {
             data: { pages } = {},
             data,
             ...rest
           } = useInfiniteQuery(
-            ${deps},
+            key,
             ({ pageParam = 1 }) =>
-              ${serviceName}(
-                ${paramsString}
-                configOverride
-              ),
+              fun({
+                  ${hasPaging.name}:pageParam,
+              }),
             {
               getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
               ...(options as any),
@@ -167,10 +178,8 @@ function generateHook(
           return {...rest, data, list, hasMore}
           `;
           } else {
-            result += `return useQuery<${TQueryFnData}, ${TError}>(${deps},()=>${serviceName}(
-                  ${paramsString}
-                  configOverride,
-                ),
+            result += `return useQuery<${TQueryFnData}, ${TError}>(key,()=>
+                fun(),
                 options
                )`;
           }
@@ -180,9 +189,9 @@ function generateHook(
               ? "{_extraVariables?:TExtra} | undefined"
               : `{${TVariables} _extraVariables?: TExtra }`
           }>((
-             ${TVariables === "" ? "" : `{${paramsString}}`}
+             ${TVariables === "" ? "" : `{${getParamsString()}}`}
           )=>${serviceName}(
-            ${paramsString}
+            ${getParamsString()}
             configOverride,
           ),
           options
@@ -192,6 +201,31 @@ function generateHook(
         result += `  
           }
         `;
+
+        if (isGet) {
+          result += `${hookName}.info = (${params.join("")}) => {
+              return {
+                key: ${deps},
+                fun: (${getQueryParamName("_param", true)}) =>
+                ${serviceName}(
+                  ${getParamsString(true)}
+                  configOverride
+                ),
+              };
+            };`;
+
+          result += `${hookName}.prefetch = (
+            client: QueryClient,
+            ${params.join("")}) =>  client.getQueryData(${deps})
+              ? Promise.resolve()
+              : client.prefetchQuery(
+                  ${serviceName}(
+                    ${getParamsString(true)}
+                    configOverride
+                  ),
+                  options
+                );`;
+        }
 
         return result;
       },
