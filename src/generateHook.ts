@@ -216,15 +216,17 @@ function generateHook(
 
           result += `${hookName}.prefetch = (
             client: QueryClient,
-            ${params.join("")}) =>  client.getQueryData(${deps})
-              ? Promise.resolve()
-              : client.prefetchQuery(
-                  ${serviceName}(
-                    ${getParamsString(true)}
-                    configOverride
-                  ),
-                  options
-                );`;
+            ${params.join("")}) => {
+                const { key, fun } = ${hookName}.info(${getParamsString()} options,configOverride);
+
+                return client.getQueryData(${deps})
+                ? Promise.resolve()
+                : client.prefetchQuery(
+                    key,
+                    ()=>fun(),
+                    options
+                  );
+              }`;
         }
 
         return result;
