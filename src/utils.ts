@@ -289,53 +289,53 @@ function assignToDescription({
   return `${
     title
       ? `
- ${title}
-`
+        * ${title}
+      `
       : ""
   }${
     description
       ? `
-${description}`
+        * ${description}`
       : ""
   }${
     format
       ? `
-       Format: ${format}`
+        * Format: ${format}`
       : ""
   }${
     maxLength
       ? `
-       maxLength: ${maxLength}`
+        * maxLength: ${maxLength}`
       : ""
   }${
     minLength
       ? `
-      minLength: ${minLength}`
+        * minLength: ${minLength}`
       : ""
   }${
     min
       ? `
-        min: ${min}`
+        * min: ${min}`
       : ""
   }${
     max
       ? `
-       max: ${max}`
+        * max: ${max}`
       : ""
   }${
     minimum
       ? `
-      minimum: ${minimum}`
+        * minimum: ${minimum}`
       : ""
   }${
     maximum
       ? `
-       max: ${maximum}`
+        * max: ${maximum}`
       : ""
   }${
     pattern
       ? `
-                      pattern: ${pattern}`
+        * pattern: ${pattern}`
       : ""
   }`;
 }
