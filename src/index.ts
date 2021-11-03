@@ -117,7 +117,7 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
           `${dir}/config.ts`,
           CONFIG.replace(
             "${AUTO_REPLACE_BASE_URL}",
-            input.servers?.[0].url || "",
+            input.servers?.[0]?.url || "",
           ),
         );
         console.log(chalk.yellowBright("config Completed"));
