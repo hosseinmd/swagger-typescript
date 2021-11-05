@@ -13,7 +13,7 @@ Each endpoint will be created as a function, full type base.
 Supported
 
 - Generating a function for every apis
-- Generating all types, interfaces and enums whitch used in apis
+- Generating all types, interfaces and enums which used in apis
 - React hooks.
 - SignalR hub.
 - Generating mock data.
@@ -116,9 +116,9 @@ generate(config);
 generate(); // will be use ./swagger.config.json
 ```
 
-## Confilict
+## Conflict
 
-In some situation teams have paralell backend developement which cause confilict when updating swagger for solving this we have partially update, you can update your service just for a few tags and keep other old services codes.
+In some situation teams have parallel backend development which cause conflict when updating swagger for solving this we have partially update, you can update your service just for a few tags and keep other old services codes.
 
 For Doing this you need to add this to your swagger.config.json
 
