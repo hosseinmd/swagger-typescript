@@ -32,7 +32,7 @@ function getParams(
 
   return {
     params,
-    hasNullable: queryParamsArray.every(({ schema }) => schema.nullable),
+    hasNullable: queryParamsArray.every(({ schema = {} }) => schema.nullable),
   };
 }
 
@@ -105,7 +105,7 @@ const TYPES = {
 function getDefineParam(
   name: string,
   required: boolean = false,
-  schema: Schema,
+  schema: Schema | undefined,
   description?: string,
 ): string {
   return getParamString(name, required, getTsType(schema), description);
@@ -121,7 +121,7 @@ function getParamString(
   })}${name}${required ? "" : "?"}: ${type}`;
 }
 
-function getTsType(schema: true | {} | Schema): string {
+function getTsType(schema: undefined | true | {} | Schema): string {
   if (isTypeAny(schema)) {
     return "any";
   }
@@ -137,14 +137,6 @@ function getTsType(schema: true | {} | Schema): string {
     required,
     allOf,
   } = schema as Schema;
-
-  if (type === "object" && !properties) {
-    if (additionalProperties) {
-      return `{[x: string]: ${getTsType(additionalProperties)}}`;
-    }
-
-    return "{[x in string | number ]: any}";
-  }
 
   if ($ref) {
     const refArray = $ref.split("/");
@@ -162,12 +154,10 @@ function getTsType(schema: true | {} | Schema): string {
     return `${getTsType(items)}[]`;
   }
 
-  if (oneOf) {
-    return `${oneOf.map((t) => `(${getTsType(t)})`).join(" | ")}`;
-  }
+  let result = "";
 
   if (properties) {
-    return getObjectType(
+    result += getObjectType(
       Object.entries(properties).map(([pName, _schema]) => ({
         schema: {
           ..._schema,
@@ -182,19 +172,35 @@ function getTsType(schema: true | {} | Schema): string {
     );
   }
 
-  if (allOf) {
-    return allOf.map((_schema) => getTsType(_schema)).join(" & ");
+  if (oneOf) {
+    result = `${result} & (${oneOf
+      .map((t) => `(${getTsType(t)})`)
+      .join(" | ")})`;
   }
 
-  return TYPES[type as keyof typeof TYPES];
+  if (allOf) {
+    result = `${result} & (${allOf
+      .map((_schema) => getTsType(_schema))
+      .join(" & ")})`;
+  }
+
+  if (type === "object" && !result) {
+    if (additionalProperties) {
+      return `{[x: string]: ${getTsType(additionalProperties)}}`;
+    }
+
+    return "{[x in string | number ]: any}";
+  }
+
+  return result || TYPES[type as keyof typeof TYPES];
 }
 
-function getObjectType(parameter: { schema: Schema; name: string }[]) {
+function getObjectType(parameter: { schema?: Schema; name: string }[]) {
   const object = parameter
     .sort(
       (
-        { name, schema: { nullable } },
-        { name: _name, schema: { nullable: _nullable } },
+        { name, schema: { nullable } = {} },
+        { name: _name, schema: { nullable: _nullable } = {} },
       ) => {
         if (!nullable && _nullable) {
           return -1;
@@ -214,7 +220,7 @@ function getObjectType(parameter: { schema: Schema; name: string }[]) {
             "x-deprecatedMessage": deprecatedMessage,
             example,
             nullable,
-          },
+          } = {},
           schema,
           name,
         },
@@ -270,7 +276,7 @@ function getParametersInfo(
   return {
     params,
     exist: params.length > 0,
-    isNullable: params.every(({ schema }) => schema.nullable),
+    isNullable: params.every(({ schema }) => schema?.nullable),
   };
 }
 
@@ -403,7 +409,7 @@ function majorVersionsCheck(expectedV: string, inputV?: string) {
   );
 }
 
-function isTypeAny(type: true | {} | Schema) {
+function isTypeAny(type: true | undefined | {} | Schema) {
   if (type === true) {
     return true;
   }

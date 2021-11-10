@@ -1,10 +1,9 @@
 {
-  "url": "http://192.168.34.101:8085/api/swagger/v2/swagger.json",
+  "url": "https://five-backend-coreapp-jqjqpj52ma-uc.a.run.app/five-api-docs",
   "dir": "./test",
   "language": "typescript",
   "keepJson": true,
   "reactHooks": true,
-  "useQuery": ["postV2BaseinfoGeneralpropertyPricelistinvoicetypeGetbyid"],
   "ignore": {
     "headerParams": ["terminalId"]
   }
