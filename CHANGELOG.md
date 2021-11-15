@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.6.4](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.2...v5.6.4) (2021-11-15)
+
+
+### Bug Fixes
+
+* bug when servers is empty array ([8a37c22](https://github.com/hosseinmd/swagger-typescript/commit/8a37c229d51f0d8bb2e71ed862ae2360253c19d2))
+* change schema to nullable ([#31](https://github.com/hosseinmd/swagger-typescript/issues/31)) ([8693b05](https://github.com/hosseinmd/swagger-typescript/commit/8693b05be66175b43499c9f0ca1f140652ad0173))
+* readme ([0489b32](https://github.com/hosseinmd/swagger-typescript/commit/0489b32280b00c078b0d717ede2b26b8c0e9a396))
+
 ## [5.6.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.5.0...v5.6.0) (2021-10-27)
 
 
