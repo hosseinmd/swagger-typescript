@@ -19,14 +19,14 @@ function generateTypes(types: TypeAST[]): string {
         ${getJsdoc({
           description: {
             ...schema,
-            description: description || schema.description,
+            description: description || schema?.description,
           },
           tags: {
             deprecated: {
-              value: Boolean(schema.deprecated),
-              description: schema["x-deprecatedMessage"],
+              value: Boolean(schema?.deprecated),
+              description: schema?.["x-deprecatedMessage"],
             },
-            example: schema.example,
+            example: schema?.example,
           },
         })}
         ${getTypeDefinition(name, schema)}
@@ -42,7 +42,7 @@ function generateTypes(types: TypeAST[]): string {
   }
 }
 
-function getTypeDefinition(name: string, schema: Schema) {
+function getTypeDefinition(name: string, schema: Schema = {}) {
   const {
     type,
     enum: Enum,
@@ -54,15 +54,6 @@ function getTypeDefinition(name: string, schema: Schema) {
     additionalProperties,
     properties,
   } = schema;
-  if (type === "object") {
-    const typeObject = getTsType(schema);
-
-    if (additionalProperties || properties) {
-      return `export interface ${name} ${typeObject}`;
-    }
-
-    return `export type ${name} = ${typeObject}`;
-  }
 
   if (Enum) {
     return `export enum ${name} {${Enum.map(
@@ -73,20 +64,26 @@ function getTypeDefinition(name: string, schema: Schema) {
     )}}`;
   }
 
-  if (allOf) {
-    return `export type ${name} = ${getTsType({ allOf })}`;
+  if (allOf || oneOf) {
+    return `export type ${name} = ${getTsType(schema)}`;
   }
-  if (oneOf) {
-    return `export type ${name} = ${oneOf
-      .map((_schema) => getTsType(_schema))
-      .join(" | ")}`;
-  }
+
   if (type === "array" && items) {
     return `export type ${name} = ${getTsType(items)}[]`;
   }
 
   if ($ref) {
     return `export type ${name} = ${getRefName($ref)}`;
+  }
+
+  if (type === "object") {
+    const typeObject = getTsType(schema);
+
+    if ((additionalProperties || properties) && !oneOf) {
+      return `export interface ${name} ${typeObject}`;
+    }
+
+    return `export type ${name} = ${typeObject}`;
   }
 
   return `export type ${name} = any`;

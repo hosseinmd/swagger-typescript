@@ -162,7 +162,7 @@ export type Parameter = {
    */
   required?: boolean; // true;
   /** The schema defining the type used for the parameter. */
-  schema: Schema;
+  schema?: Schema;
   $ref?: string;
   /**
    * A brief description of the parameter. This could contain examples of use.
@@ -315,7 +315,7 @@ export type ApiAST = {
 
 export type TypeAST = {
   name: string;
-  schema: Schema;
+  schema?: Schema;
   description?: string;
 };
 
