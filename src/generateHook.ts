@@ -140,7 +140,7 @@ function generateHook(
               ? `UseQueryOptions<${TQueryFnData}, ${TError}>`
               : `UseMutationOptions<${TQueryFnData}, ${TError},${
                   TVariables === ""
-                    ? "{_extraVariables?:TExtra} | undefined"
+                    ? "{_extraVariables?:TExtra} | void"
                     : `{${TVariables} _extraVariables?:TExtra}`
                 }>`
           },`,
@@ -186,7 +186,7 @@ function generateHook(
         } else {
           result += `return useMutation<${TQueryFnData}, ${TError}, ${
             TVariables === ""
-              ? "{_extraVariables?:TExtra} | undefined"
+              ? "{_extraVariables?:TExtra} | void"
               : `{${TVariables} _extraVariables?: TExtra }`
           }>((
              ${TVariables === "" ? "" : `{${getParamsString()}}`}
