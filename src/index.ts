@@ -22,7 +22,11 @@ import { partialUpdateJson } from "./updateJson";
 async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
   config = config ?? getSwaggerConfig();
 
-  config = { ...config, ...cli };
+  config = {
+    ...config,
+    tag: cli?.tag ?? config.tag,
+    local: cli?.local ?? config.local,
+  };
 
   const {
     url,
@@ -46,82 +50,84 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
   const prettierOptions = getPrettierOptions(prettierPath);
 
   try {
-    if (url) {
-      const swaggerJsonPath = `${dir}/swagger.json`;
+    const swaggerJsonPath = `${dir}/swagger.json`;
 
-      let input: SwaggerJson;
+    let input: SwaggerJson;
 
-      if (local) {
-        input = getLocalJson(dir);
+    if (local) {
+      input = getLocalJson(dir);
+    } else {
+      if (!url) {
+        throw new Error("Add url in swagger.config.json ");
+      }
+
+      input = await getJson(url);
+
+      if (input.swagger) {
+        majorVersionsCheck("2.0.0", input.swagger);
+        // convert swagger v2 to openApi v3
+        input = await swaggerToOpenApi(input);
       } else {
-        input = await getJson(url);
+        majorVersionsCheck("3.0.0", input.openapi);
+      }
+    }
 
-        if (input.swagger) {
-          majorVersionsCheck("2.0.0", input.swagger);
-          // convert swagger v2 to openApi v3
-          input = await swaggerToOpenApi(input);
+    if (keepJson) {
+      try {
+        if (!tag?.length) {
+          writeFileSync(swaggerJsonPath, JSON.stringify(input));
+          formatFile(swaggerJsonPath, {
+            ...prettierOptions,
+            parser: "json",
+          });
         } else {
-          majorVersionsCheck("3.0.0", input.openapi);
+          const oldJson = getLocalJson(dir);
+
+          input = partialUpdateJson(oldJson, input, tag);
+          writeFileSync(swaggerJsonPath, JSON.stringify(input));
+          formatFile(swaggerJsonPath, {
+            ...prettierOptions,
+            parser: "json",
+          });
         }
+      } catch (error) {
+        chalk.red(error);
+        chalk.red("keepJson failed");
       }
+    }
 
-      if (keepJson) {
-        try {
-          if (!tag?.length) {
-            writeFileSync(swaggerJsonPath, JSON.stringify(input));
-            formatFile(swaggerJsonPath, {
-              ...prettierOptions,
-              parser: "json",
-            });
-          } else {
-            const oldJson = getLocalJson(dir);
+    const { code, hooks, type } = generator(input, config);
 
-            input = partialUpdateJson(oldJson, input, tag);
-            writeFileSync(swaggerJsonPath, JSON.stringify(input));
-            formatFile(swaggerJsonPath, {
-              ...prettierOptions,
-              parser: "json",
-            });
-          }
-        } catch (error) {
-          chalk.red(error);
-          chalk.red("keepJson failed");
-        }
+    if (mock) {
+      generateMock(input, config);
+    }
+
+    writeFileSync(`${dir}/services.ts`, code);
+    console.log(chalk.yellowBright("services Completed"));
+
+    writeFileSync(`${dir}/types.ts`, type);
+    console.log(chalk.yellowBright("types Completed"));
+
+    if (reactHooks && hooks) {
+      writeFileSync(`${dir}/hooks.ts`, hooks);
+      if (!existsSync(`${dir}/hooksConfig.${isToJs ? "js" : "ts"}`)) {
+        writeFileSync(`${dir}/hooksConfig.ts`, FILE_HOOKS_CONFIG);
       }
+      console.log(chalk.yellowBright("hooks Completed"));
+    }
 
-      const { code, hooks, type } = generator(input, config);
+    writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
+    console.log(chalk.yellowBright("httpRequest Completed"));
 
-      if (mock) {
-        generateMock(input, config);
-      }
-
-      writeFileSync(`${dir}/services.ts`, code);
-      console.log(chalk.yellowBright("services Completed"));
-
-      writeFileSync(`${dir}/types.ts`, type);
-      console.log(chalk.yellowBright("types Completed"));
-
-      if (reactHooks && hooks) {
-        writeFileSync(`${dir}/hooks.ts`, hooks);
-        if (!existsSync(`${dir}/hooksConfig.${isToJs ? "js" : "ts"}`)) {
-          writeFileSync(`${dir}/hooksConfig.ts`, FILE_HOOKS_CONFIG);
-        }
-        console.log(chalk.yellowBright("hooks Completed"));
-      }
-
-      writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
-      console.log(chalk.yellowBright("httpRequest Completed"));
-
-      if (!existsSync(`${dir}/config.${isToJs ? "js" : "ts"}`)) {
-        writeFileSync(
-          `${dir}/config.ts`,
-          CONFIG.replace(
-            "${AUTO_REPLACE_BASE_URL}",
-            input.servers?.[0]?.url || "",
-          ),
-        );
-        console.log(chalk.yellowBright("config Completed"));
-      }
+    if (!existsSync(`${dir}/config.${isToJs ? "js" : "ts"}`)) {
+      writeFileSync(
+        `${dir}/config.ts`,
+        CONFIG.replace(
+          "${AUTO_REPLACE_BASE_URL}",
+          input.servers?.[0]?.url || "",
+        ),
+      );
+      console.log(chalk.yellowBright("config Completed"));
     }
 
     // signalR hub definition
@@ -137,7 +143,7 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
 
     const files = [
       hubCode && "hub",
-      ...(url
+      ...(url || local
         ? [
             ...(reactHooks ? ["hooks", "hooksConfig"] : []),
             "config",
@@ -156,9 +162,9 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
         formatFile(`${dir}/${file}.d.ts`, prettierOptions);
       });
     } else {
-      files.forEach((file) => {
-        formatFile(`${dir}/${file}.ts`, prettierOptions);
-      });
+      // files.forEach((file) => {
+      //   formatFile(`${dir}/${file}.ts`, prettierOptions);
+      // });
     }
     console.log(chalk.greenBright("All Completed"));
   } catch (error) {

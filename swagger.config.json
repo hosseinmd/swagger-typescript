@@ -5,6 +5,8 @@
   "keepJson": true,
   "reactHooks": true,
   "ignore": {
-    "headerParams": ["terminalId"]
+    "headerParams": [
+      "terminalId"
+    ]
   }
 }
