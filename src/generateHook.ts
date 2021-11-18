@@ -128,7 +128,7 @@ function generateHook(
       })}`;
         result += `export const ${hookName} =`;
         if (!isGet) {
-          result += `<TExtra extends any>`;
+          result += `<TExtra>`;
         }
 
         const params = [
