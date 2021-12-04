@@ -77,6 +77,21 @@ export const Http = {
       }),
     );
   },
+  patchRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    security: Security,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
+      getAxiosInstance(security).patch(url, requestBody, {
+        cancelToken,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
+  },
   deleteRequest(
     url: string,
     queryParams: any | undefined,
