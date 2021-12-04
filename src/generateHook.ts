@@ -65,7 +65,8 @@ function generateHook(
                 },`
                 : "queryParams,"
               : ""
-          }`;
+          }
+          ${headerParams ? "headerParams," : ""}`;
 
         const TQueryFnData = `SwaggerResponse<${
           responses ? getTsType(responses) : "any"
@@ -111,8 +112,9 @@ function generateHook(
         const deps = `[${serviceName}.key,${
           pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""
         }
+            ${requestBody ? "requestBody," : ""}
             ${queryParamsTypeName ? "queryParams," : ""}
-            ${requestBody ? "requestBody," : ""}]`;
+            ${headerParams ? "headerParams," : ""}]`;
 
         let result =
           prev +
@@ -126,6 +128,7 @@ function generateHook(
           },
         },
       })}`;
+
         result += `export const ${hookName} =`;
         if (!isGet) {
           result += `<TExtra>`;

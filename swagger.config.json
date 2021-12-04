@@ -1,5 +1,5 @@
 {
-  "url": "https://five-backend-coreapp-jqjqpj52ma-uc.a.run.app/five-api-docs",
+  "url": "http://192.168.34.182:7012/swagger/v1/swagger.json",
   "dir": "./test",
   "language": "typescript",
   "keepJson": true,
