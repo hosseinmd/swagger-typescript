@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.6.6](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.5...v5.6.6) (2021-12-04)
+
+
+### Bug Fixes
+
+* add headerParam ([6b27890](https://github.com/hosseinmd/swagger-typescript/commit/6b278900b222124c85d71163103ada0a11adda43))
+* add patch to http request ([dd263e3](https://github.com/hosseinmd/swagger-typescript/commit/dd263e3d6792a539e85f899f8cba12f8f1e4a22c))
+
 ### [5.6.5](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.4...v5.6.5) (2021-11-16)
 
 
