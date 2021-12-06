@@ -1,0 +1,266 @@
+{
+  "openapi": "3.0.0",
+  "x-generator": "NSwag v13.14.8.0 (NJsonSchema v10.5.2.0 (Newtonsoft.Json v12.0.0.0))",
+  "info": {
+    "title": "API",
+    "description": "API",
+    "contact": {
+      "name": "hossein",
+      "email": "hosseinm.developer@gmail.com"
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/settlement/v1/private/settlement/get": {
+      "get": {
+        "tags": [
+          "Settlement"
+        ],
+        "operationId": "Settlement_Get",
+        "parameters": [
+          {
+            "name": "UserWalletId",
+            "in": "query",
+            "x-nullable": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "IsAuto",
+            "in": "query",
+            "x-nullable": true,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "StartDate",
+            "in": "query",
+            "x-nullable": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "EndDate",
+            "in": "query",
+            "x-nullable": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "MinimumAmount",
+            "in": "query",
+            "x-nullable": true,
+            "schema": {
+              "type": "number",
+              "format": "decimal"
+            }
+          },
+          {
+            "name": "Skip",
+            "in": "query",
+            "x-nullable": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "x-nullable": true,
+            "schema": {
+              "$ref": "#/components/schemas/SettlementRequestStatus"
+            }
+          },
+          {
+            "name": "States",
+            "in": "query",
+            "x-nullable": true,
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/SettlementRequestStatus"
+                  }
+                ],
+                "nullable": true
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SettlementRequestResultListResponseVM"
+                    }
+                  ],
+                  "nullable": true
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SettlementRequestResultListResponseVM"
+                    }
+                  ],
+                  "nullable": true
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SettlementRequestResultListResponseVM"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "oauth2",
+        "description": "Swagger Api",
+        "in": "header",
+        "flows": {
+          "password": {
+            "tokenUrl": "https://localhost:7600/connect/token",
+            "scopes": {}
+          }
+        }
+      }
+    },
+    "schemas": {
+      "SettlementRequestResultListResponseVM": {
+        "type": "object",
+        "required": [
+          "totalCount"
+        ],
+        "properties": {
+          "settlementRequests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SettlementRequestResultResponseVM"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "SettlementRequestResultResponseVM": {
+        "type": "object",
+        "required": [
+          "userWalletId",
+          "automaticSettlement",
+          "commissionAmount",
+          "createDateUtc",
+          "creatorUserId",
+          "domainId",
+          "id",
+          "requestAmount",
+          "status",
+          "targetUserBankId",
+          "userId",
+          "voucherId"
+        ],
+        "properties": {
+          "userWalletId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "accountNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "automaticSettlement": {
+            "type": "boolean"
+          },
+          "commissionAmount": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "createDateUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "creatorUserId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "domainId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SettlementRequestStatus"
+          }
+        }
+      },
+      "SettlementRequestStatus": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Pending",
+          "Paid"
+        ],
+        "enum": [
+          "Pending",
+          "Paid"
+        ]
+      },
+      "NotificationLevel": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Unknown",
+          "Default",
+          "Success",
+          "Info",
+          "Warning",
+          "Danger"
+        ],
+        "enum": [
+          "Unknown",
+          "Default",
+          "Success",
+          "Info",
+          "Warning",
+          "Danger"
+        ]
+      }
+    }
+  }
+}
