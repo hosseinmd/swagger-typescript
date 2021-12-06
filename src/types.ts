@@ -272,6 +272,7 @@ export interface SwaggerConfig {
   };
   /** Generate with local swagger.json */
   local?: boolean;
+  generateEnumAsType?: boolean;
 }
 
 export type Method =

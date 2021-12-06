@@ -169,7 +169,7 @@ function signalRGenerator(json: HubJson): string {
       }
       `;
     });
-    code += generateTypes(types);
+    code += generateTypes(types, {});
 
     return code;
   } catch (error) {
