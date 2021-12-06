@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.7.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.6...v5.7.0) (2021-12-06)
+
+
+### Features
+
+* add generateEnumAsType to generate type insstead of enum ([429385b](https://github.com/hosseinmd/swagger-typescript/commit/429385b3bd6421907c9a118d8e353b2d91d7a707))
+
 ### [5.6.6](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.5...v5.6.6) (2021-12-04)
 
 
