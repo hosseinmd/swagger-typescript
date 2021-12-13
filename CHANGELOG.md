@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.8.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.6...v5.8.0) (2021-12-13)
+
+
+### Features
+
+* add generateEnumAsType to generate type insstead of enum ([429385b](https://github.com/hosseinmd/swagger-typescript/commit/429385b3bd6421907c9a118d8e353b2d91d7a707))
+
+
+### Bug Fixes
+
+* ignore tls auth ([ad80ffa](https://github.com/hosseinmd/swagger-typescript/commit/ad80ffab2a2193aad6df81612a5b352e49db74ef))
+
 ## [5.7.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.6...v5.7.0) (2021-12-06)
 
 
