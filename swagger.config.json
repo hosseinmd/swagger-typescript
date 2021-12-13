@@ -1,5 +1,5 @@
 {
-  "url": "http://192.168.34.182:7012/swagger/v1/swagger.json",
+  "url": "https://stage.poolkhord.com/hapi/legacy/swagger/v1/swagger.json",
   "dir": "./test",
   "language": "typescript",
   "keepJson": true,
