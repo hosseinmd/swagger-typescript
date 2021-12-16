@@ -48,9 +48,14 @@ function generateHook(
         const hasPaging = queryParameters.find(
           ({ name }) => name.toLowerCase() === "page",
         );
+        const hookName = `use${toPascalCase(serviceName)}`;
 
         const isGet =
-          config.useQuery?.includes(serviceName) || method === "get";
+          config.useQuery?.find(
+            (name) =>
+              name.toLowerCase() === serviceName.toLowerCase() ||
+              name.toLowerCase() === hookName.toLowerCase(),
+          ) || method === "get";
 
         const getParamsString = (override?: boolean) => ` ${
           pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""
@@ -106,8 +111,6 @@ function generateHook(
               )},`
             : ""
         }`;
-
-        const hookName = `use${toPascalCase(serviceName)}`;
 
         const deps = `[${serviceName}.key,${
           pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""

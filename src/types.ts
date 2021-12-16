@@ -259,7 +259,7 @@ export interface SwaggerConfig {
   /** Default is false */
   keepJson?: boolean;
   reactHooks?: boolean;
-  useQuery?: string;
+  useQuery?: string[];
   tag?: string[];
   mock?: string;
   prettierPath?: string;
