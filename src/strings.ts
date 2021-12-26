@@ -55,7 +55,7 @@ export function template(path: string, obj: { [x: string]: any } = {}) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function objToForm(requestBody: { [name: string]: string | Blob | undefined }) {
+function objToForm(requestBody: object) {
   const formData = new FormData();
 
   Object.entries(requestBody).forEach(([key, value]) => {
