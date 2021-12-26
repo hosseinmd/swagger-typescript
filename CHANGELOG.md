@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.9.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.8.0...v5.9.0) (2021-12-26)
+
+
+### Features
+
+* add multi gate way ([7eda0a1](https://github.com/hosseinmd/swagger-typescript/commit/7eda0a1fc726bba4692fd6c7b13e0c2598731311))
+
+
+### Bug Fixes
+
+* compare use query list ([50c3d81](https://github.com/hosseinmd/swagger-typescript/commit/50c3d81e0685ade62eaf790c97fbd442c9032ece))
+
 ## [5.8.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.6...v5.8.0) (2021-12-13)
 
 
