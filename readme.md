@@ -139,6 +139,29 @@ Others need to pull this changes
 
 Now you can update Tag1 and Tag2 `$ yarn swag-ts Tag1 Tag2`.
 
+## Multiple-Gateway
+
+## swagger.config.json
+
+swagger.config.json
+
+```json
+[
+  {
+    "url": "http://example1.com/api/swagger.json",
+    "dir": "./service1",
+    "prettierPath": ".prettierrc",
+    "language": "typescript"
+  },
+  {
+    "url": "http://example2.com/api/swagger.json",
+    "dir": "./service2",
+    "prettierPath": ".prettierrc",
+    "language": "typescript"
+  }
+]
+```
+
 ## Stories
 
 [why-you-should-use-swagger-typescript-for-generate-apis-code](https://medium.com/@hosseinm.developer/why-you-should-use-swagger-typescript-for-generate-apis-code-63eb8623fef8?source=friends_link&sk=2aa0e2d30b3be158d18c1feb4e12d4a6)

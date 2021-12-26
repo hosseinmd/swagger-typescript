@@ -1,7 +1,7 @@
 import {
   Schema,
   Parameter,
-  SwaggerConfig,
+  Config,
   JsdocAST,
   AssignToDescriptionObj,
 } from "./types";
@@ -14,7 +14,7 @@ function getPathParams(parameters?: Parameter[]): Parameter[] {
   );
 }
 
-function getHeaderParams(parameters?: Parameter[], config?: SwaggerConfig) {
+function getHeaderParams(parameters?: Parameter[], config?: Config) {
   return getParams(parameters, "header", config?.ignore?.headerParams);
 }
 
@@ -50,7 +50,7 @@ function generateServiceName(
   endPoint: string,
   method: string,
   operationId: string | undefined,
-  config: SwaggerConfig,
+  config: Config,
 ): string {
   const { methodName, methodParamsByTag, prefix = "" } = config;
 

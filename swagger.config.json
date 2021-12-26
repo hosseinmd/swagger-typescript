@@ -1,12 +1,26 @@
-{
-  "url": "https://stage.poolkhord.com/hapi/legacy/swagger/v1/swagger.json",
-  "dir": "./test",
-  "language": "typescript",
-  "keepJson": true,
-  "reactHooks": true,
-  "ignore": {
-    "headerParams": [
-      "terminalId"
-    ]
+[
+  {
+    "url": "http://stage.poolkhord.com/hapi/legacy/swagger/v1/swagger.json",
+    "dir": "./test",
+    "language": "typescript",
+    "keepJson": true,
+    "reactHooks": true,
+    "ignore": {
+      "headerParams": [
+        "terminalId"
+      ]
+    }
+  },
+  {
+    "url": "http://stage.poolkhord.com/hapi/legacy/swagger/v1/swagger.json",
+    "dir": "./test/swagger2",
+    "language": "typescript",
+    "keepJson": true,
+    "reactHooks": true,
+    "ignore": {
+      "headerParams": [
+        "terminalId"
+      ]
+    }
   }
-}
+]

@@ -247,7 +247,8 @@ export interface InfoObject {
   contact?: any;
   license?: any;
 }
-export interface SwaggerConfig {
+
+export interface Config {
   url?: string;
   dir: string;
   /**
@@ -274,6 +275,8 @@ export interface SwaggerConfig {
   local?: boolean;
   generateEnumAsType?: boolean;
 }
+
+export type SwaggerConfig = Config | Config[];
 
 export type Method =
   | "get"

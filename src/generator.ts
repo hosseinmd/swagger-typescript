@@ -10,7 +10,7 @@ import type {
   SwaggerRequest,
   SwaggerJson,
   SwaggerResponse,
-  SwaggerConfig,
+  Config,
   ApiAST,
   TypeAST,
   Schema,
@@ -25,7 +25,7 @@ import { generateHook } from "./generateHook";
 
 function generator(
   input: SwaggerJson,
-  config: SwaggerConfig,
+  config: Config,
 ): { code: string; hooks: string; type: string } {
   const apis: ApiAST[] = [];
   const types: TypeAST[] = [];

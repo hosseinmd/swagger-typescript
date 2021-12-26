@@ -1,6 +1,6 @@
 import {
   Method,
-  SwaggerConfig,
+  Config,
   SwaggerJson,
   SwaggerRequest,
   SwaggerResponse,
@@ -21,7 +21,7 @@ export type ResponsesType = {
 
 export const extractResponses = (
   input: SwaggerJson,
-  config: SwaggerConfig,
+  config: Config,
 ): ResponsesType => {
   const ret: ResponsesType = {};
   Object.entries(input.paths).forEach(([path, value]) => {

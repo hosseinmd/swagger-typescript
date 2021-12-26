@@ -6,7 +6,7 @@ import {
   rmdirSync,
 } from "fs";
 import { format } from "prettier";
-import { SwaggerJson, SwaggerConfig } from "./types";
+import { SwaggerJson, SwaggerConfig, Config } from "./types";
 import { HTTP_REQUEST, CONFIG, FILE_HOOKS_CONFIG } from "./strings";
 import { getJson } from "./getJson";
 import { generator } from "./generator";
@@ -19,9 +19,15 @@ import chalk from "chalk";
 import { partialUpdateJson } from "./updateJson";
 
 /** @param config If isn't defined will be use swagger.config.json instead */
-async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
+async function generate(config?: SwaggerConfig, cli?: Partial<Config>) {
   config = config ?? getSwaggerConfig();
+  const configs = Array.isArray(config) ? config : [config];
+  configs.forEach((con) => {
+    generateService(con, cli);
+  });
+}
 
+const generateService = async (config: Config, cli?: Partial<Config>) => {
   config = {
     ...config,
     tag: cli?.tag ?? config.tag,
@@ -171,7 +177,7 @@ async function generate(config?: SwaggerConfig, cli?: Partial<SwaggerConfig>) {
     console.log(chalk.redBright(error));
     console.log(chalk.redBright("failed"));
   }
-}
+};
 
 function formatFile(filePath: string, prettierOptions: any) {
   const code = readFileSync(filePath).toString();

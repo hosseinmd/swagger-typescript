@@ -8,13 +8,13 @@ import {
   getSchemaName,
   isMatchWholeWord,
 } from "./utils";
-import { ApiAST, SwaggerConfig, TypeAST } from "./types";
+import { ApiAST, Config, TypeAST } from "./types";
 import { HOOKS_BEGINNING, DEPRECATED_WARM_MESSAGE } from "./strings";
 
 function generateHook(
   apis: ApiAST[],
   types: TypeAST[],
-  config: SwaggerConfig,
+  config: Config,
 ): string {
   let code = HOOKS_BEGINNING;
   try {
