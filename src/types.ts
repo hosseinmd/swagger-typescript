@@ -261,6 +261,7 @@ export interface Config {
   keepJson?: boolean;
   reactHooks?: boolean;
   useQuery?: string[];
+  useInfiniteQuery?: string[];
   tag?: string[];
   mock?: string;
   prettierPath?: string;

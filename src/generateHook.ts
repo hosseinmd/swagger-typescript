@@ -45,18 +45,21 @@ function generateHook(
           queryParameters,
         },
       ) => {
-        const hasPaging = queryParameters.find(
-          ({ name }) => name.toLowerCase() === "page",
+        const hasPaging = config.useInfiniteQuery?.find(
+          (name) =>
+            name.toLowerCase() === serviceName.toLowerCase() ||
+            name.toLowerCase() === hookName.toLowerCase(),
         );
         const hookName = `use${toPascalCase(serviceName)}`;
 
         const isGet =
+          hasPaging ||
+          method === "get" ||
           config.useQuery?.find(
             (name) =>
               name.toLowerCase() === serviceName.toLowerCase() ||
               name.toLowerCase() === hookName.toLowerCase(),
-          ) || method === "get";
-
+          );
         const getParamsString = (override?: boolean) => ` ${
           pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""
         }
@@ -169,7 +172,11 @@ function generateHook(
             key,
             ({ pageParam = 1 }) =>
               fun({
-                  ${hasPaging.name}:pageParam,
+                  ${
+                    queryParameters.find(
+                      ({ name }) => name.toLowerCase() === "page",
+                    )?.name
+                  }:pageParam,
               }),
             {
               getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
