@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.9.1](https://github.com/hosseinmd/swagger-typescript/compare/v5.9.0...v5.9.1) (2021-12-26)
+
+
+### Bug Fixes
+
+* objToForm type ([88c29d9](https://github.com/hosseinmd/swagger-typescript/commit/88c29d9c0c882cca7a3ba5b79da45bc1ce05dbe4))
+
 ## [5.9.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.8.0...v5.9.0) (2021-12-26)
 
 
