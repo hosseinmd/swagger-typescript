@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.0...v6.0.1) (2022-01-15)
+
+
+### Bug Fixes
+
+* format output files ([ecdcacc](https://github.com/hosseinmd/swagger-typescript/commit/ecdcaccfa2994ec59b8061f57ce0184c0d6875d7))
+* remove useless infinity code when infinty doesn't enabled ([f4575d3](https://github.com/hosseinmd/swagger-typescript/commit/f4575d375ab104970cecbd9873ded7c3d074da3b))
+
 ## [6.0.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.9.1...v6.0.0) (2021-12-26)
 
 
