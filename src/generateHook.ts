@@ -9,14 +9,20 @@ import {
   isMatchWholeWord,
 } from "./utils";
 import { ApiAST, Config, TypeAST } from "./types";
-import { HOOKS_BEGINNING, DEPRECATED_WARM_MESSAGE } from "./strings";
+import {
+  DEPRECATED_WARM_MESSAGE,
+  getHooksFunctions,
+  getHooksImports,
+} from "./strings";
 
 function generateHook(
   apis: ApiAST[],
   types: TypeAST[],
   config: Config,
 ): string {
-  let code = HOOKS_BEGINNING;
+  let code = getHooksImports({
+    hasInfinity: !!config.useInfiniteQuery?.length,
+  });
   try {
     apis = apis.sort(({ serviceName }, { serviceName: _serviceName }) =>
       isAscending(serviceName, _serviceName),
@@ -257,7 +263,9 @@ function generateHook(
           }
           return prev + ` ${name},`;
         }, "import {") + '}  from "./types"\n';
-
+    code += getHooksFunctions({
+      hasInfinity: !!config.useInfiniteQuery?.length,
+    });
     code += apisCode;
     return code;
   } catch (error) {
