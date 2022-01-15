@@ -17,6 +17,8 @@ import { swaggerToOpenApi } from "./utilities/swaggerToOpenApi";
 import { generateMock } from "./mock";
 import chalk from "chalk";
 import { partialUpdateJson } from "./updateJson";
+//@ts-ignore
+import recursive from "recursive-readdir";
 
 /** @param config If isn't defined will be use swagger.config.json instead */
 async function generate(config?: SwaggerConfig, cli?: Partial<Config>) {
@@ -82,19 +84,11 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
       try {
         if (!tag?.length) {
           writeFileSync(swaggerJsonPath, JSON.stringify(input));
-          formatFile(swaggerJsonPath, {
-            ...prettierOptions,
-            parser: "json",
-          });
         } else {
           const oldJson = getLocalJson(dir);
 
           input = partialUpdateJson(oldJson, input, tag);
           writeFileSync(swaggerJsonPath, JSON.stringify(input));
-          formatFile(swaggerJsonPath, {
-            ...prettierOptions,
-            parser: "json",
-          });
         }
       } catch (error) {
         chalk.red(error);
@@ -147,31 +141,36 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
       console.log(chalk.yellowBright("hub Completed"));
     }
 
-    const files = [
-      hubCode && "hub",
-      ...(url || local
-        ? [
-            ...(reactHooks ? ["hooks", "hooksConfig"] : []),
-            "config",
-            "httpRequest",
-            "services",
-            "types",
-          ]
-        : []),
-    ].filter(Boolean) as string[];
-
     if (isToJs) {
+      const files = [
+        hubCode && "hub",
+        ...(url || local
+          ? [
+              ...(reactHooks ? ["hooks", "hooksConfig"] : []),
+              "config",
+              "httpRequest",
+              "services",
+              "types",
+            ]
+          : []),
+      ].filter(Boolean) as string[];
       convertTsToJs(dir, files);
-
-      files.forEach((file) => {
-        formatFile(`${dir}/${file}.js`, prettierOptions);
-        formatFile(`${dir}/${file}.d.ts`, prettierOptions);
-      });
-    } else {
-      // files.forEach((file) => {
-      //   formatFile(`${dir}/${file}.ts`, prettierOptions);
-      // });
     }
+
+    recursive(dir, function (err: Error | null, files: any[]) {
+      if (err) {
+        console.log(chalk.redBright(Error));
+        return;
+      }
+      files.forEach((file) => {
+        if (file.endsWith(".ts") || file.endsWith(".js")) {
+          formatFile(file, prettierOptions);
+        }
+        if (file.endsWith(".json")) {
+          formatFile(file, { ...prettierOptions, parser: "json" });
+        }
+      });
+    });
     console.log(chalk.greenBright("All Completed"));
   } catch (error) {
     console.log(chalk.redBright(error));
