@@ -15,6 +15,8 @@ import {
   getHooksImports,
 } from "./strings";
 
+const allowedPageParametersNames = ["page", "pageno", "pagenumber"];
+
 function generateHook(
   apis: ApiAST[],
   types: TypeAST[],
@@ -51,12 +53,13 @@ function generateHook(
           queryParameters,
         },
       ) => {
+        const hookName = `use${toPascalCase(serviceName)}`;
+
         const hasPaging = config.useInfiniteQuery?.find(
           (name) =>
             name.toLowerCase() === serviceName.toLowerCase() ||
             name.toLowerCase() === hookName.toLowerCase(),
         );
-        const hookName = `use${toPascalCase(serviceName)}`;
 
         const isGet =
           hasPaging ||
@@ -179,8 +182,8 @@ function generateHook(
             ({ pageParam = 1 }) =>
               fun({
                   ${
-                    queryParameters.find(
-                      ({ name }) => name.toLowerCase() === "page",
+                    queryParameters.find(({ name }) =>
+                      allowedPageParametersNames.includes(name.toLowerCase()),
                     )?.name
                   }:pageParam,
               }),

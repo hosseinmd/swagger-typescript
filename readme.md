@@ -92,7 +92,7 @@ For Example:
 | `keepJson`           | false            | This code will keep previous JSON for updating partially. change it to true then generate service for creating your first json file then you can update a tag for example `$ yarn swag-ts User` will update your user APIs which have User tag |
 | `reactHooks`         | false            | For generate react hooks of all APIs (using react-query under the hood)                                                                                                                                                                        |
 | `useQuery`           | []               | List of apis which is get but developed with post methods (Is useful for rest apis) for Example: ["postTicketsGetall"] (Needed to enable `reactHooks`)                                                                                         |
-| `useInfiniteQuery`   | []               | List of apis which is get and could be handle infinity (Needed to enable `reactHooks`)                                                                                                                                                         |
+| `useInfiniteQuery`   | []               | List of apis which is get and could be handle infinity (Needed to enable `reactHooks`) parameter should be one of `page`, `pageNo` or `pageNumber`                                                                                             |
 | `local`              | false            | update swagger with local swagger.json located in your dir folder. add it to your config file or run it with cli `$ yarn swag-ts --local`                                                                                                      |
 | `generateEnumAsType` | false            |
 
