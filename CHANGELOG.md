@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.2](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.1...v6.0.2) (2022-01-31)
+
+
+### Bug Fixes
+
+* hooks useinfinityQuery ([9d38336](https://github.com/hosseinmd/swagger-typescript/commit/9d3833653164c4387212b713e457348a21e67046))
+
 ### [6.0.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.0...v6.0.1) (2022-01-15)
 
 
