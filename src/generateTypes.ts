@@ -12,17 +12,11 @@ function generateTypes(types: TypeAST[], config: Partial<Config>): string {
         const name = getSchemaName(_name);
         prev += `
         ${getJsdoc({
-          description: {
-            ...schema,
-            description: description || schema?.description,
-          },
-          tags: {
-            deprecated: {
-              value: Boolean(schema?.deprecated),
-              description: schema?.["x-deprecatedMessage"],
-            },
-            example: schema?.example,
-          },
+          ...schema,
+          description: description || schema?.description,
+          deprecated: schema?.deprecated
+            ? schema?.["x-deprecatedMessage"] || String(schema?.deprecated)
+            : undefined,
         })}
         ${getTypeDefinition(name, schema, config)}
         `;
@@ -86,6 +80,10 @@ function getTypeDefinition(
     }
 
     return `export type ${name} = ${typeObject}`;
+  }
+
+  if (type === "string") {
+    return `export type ${name} = ${type}`;
   }
 
   return `export type ${name} = any`;

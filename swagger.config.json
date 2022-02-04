@@ -1,6 +1,6 @@
 [
   {
-    "url": "http://stage.poolkhord.com/hapi/legacy/swagger/v1/swagger.json",
+    "url": "https://admin.us01.dx.commercecloud.salesforce.com/api/v1/swagger.yaml",
     "dir": "./test",
     "language": "typescript",
     "keepJson": true,
@@ -12,7 +12,7 @@
     }
   },
   {
-    "url": "http://stage.poolkhord.com/hapi/legacy/swagger/v1/swagger.json",
+    "url": "https://admin.us01.dx.commercecloud.salesforce.com/api/v1/swagger.yaml",
     "dir": "./test/swagger2",
     "language": "typescript",
     "keepJson": true,

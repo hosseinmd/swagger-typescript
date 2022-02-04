@@ -50,10 +50,21 @@ function generator(
 
   try {
     Object.entries(input.paths).forEach(([endPoint, value]) => {
+      const parametersExtended = value.parameters as Parameter[] | undefined;
       Object.entries(value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
+          if (method === "parameters") {
+            return;
+          }
+
           const { operationId, security } = options;
-          const parameters = options.parameters?.map<Parameter>((parameter) => {
+
+          const allParameters =
+            parametersExtended || options.parameters
+              ? [...(parametersExtended || []), ...(options.parameters || [])]
+              : undefined;
+
+          const parameters = allParameters?.map<Parameter>((parameter) => {
             const { $ref } = parameter;
             if ($ref) {
               const name = $ref.replace("#/components/parameters/", "");
@@ -112,7 +123,7 @@ function generator(
           const {
             params: headerParams,
             hasNullable: hasNullableHeaderParams,
-          } = getHeaderParams(options.parameters, config);
+          } = getHeaderParams(parameters, config);
 
           const requestBody = getBodyContent(options.requestBody);
 
@@ -197,8 +208,14 @@ function generator(
     }
 
     if (input?.components?.parameters) {
-      types.push(...Object.values(input.components.parameters));
+      types.push(
+        ...Object.entries(input.components.parameters).map(([key, value]) => ({
+          ...value,
+          name: key,
+        })),
+      );
     }
+
     if (input?.components?.requestBodies) {
       types.push(
         ...(Object.entries(input.components.requestBodies)

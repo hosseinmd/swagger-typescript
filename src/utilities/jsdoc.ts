@@ -1,17 +1,23 @@
-import { JsdocAST, AssignToDescriptionObj } from "../types";
+import { JsdocAST } from "../types";
 
-function assignToDescription({
-  description,
-  title,
-  format,
-  maxLength,
-  minLength,
-  max,
-  min,
-  minimum,
-  maximum,
-  pattern,
-}: AssignToDescriptionObj) {
+function assignToDescription(params: JsdocAST) {
+  if (Object.values(params).every((v) => !v)) {
+    return undefined;
+  }
+
+  const {
+    description,
+    title,
+    format,
+    maxLength,
+    minLength,
+    max,
+    min,
+    minimum,
+    maximum,
+    pattern,
+  } = params;
+
   return `${
     title
       ? `
@@ -66,32 +72,26 @@ function assignToDescription({
   }`;
 }
 
-function getJsdoc({
-  description,
-  tags: { deprecated, example } = {},
-}: JsdocAST) {
-  description =
-    typeof description === "object"
-      ? assignToDescription(description)
-      : description;
+function getJsdoc(doc: JsdocAST) {
+  const descriptionWithDetails = assignToDescription(doc);
 
-  return deprecated?.value || description || example
+  return doc.deprecated || descriptionWithDetails || doc.example
     ? `
 /**${
-        description
+        descriptionWithDetails
           ? `
- * ${normalizeDescription(description)}`
+ * ${normalizeDescription(descriptionWithDetails)}`
           : ""
       }${
-        deprecated?.value
+        doc.deprecated
           ? `
- * @deprecated ${normalizeDescription(deprecated.description) || ""}`
+ * @deprecated ${normalizeDescription(doc.deprecated) || ""}`
           : ""
       }${
-        example
+        doc.example
           ? `
  * @example 
- *   ${example}`
+ *   ${doc.example}`
           : ""
       }
  */

@@ -48,12 +48,7 @@ function generateApis(apis: ApiAST[], types: TypeAST[]): string {
             `
 ${getJsdoc({
   description: summary,
-  tags: {
-    deprecated: {
-      value: Boolean(deprecated),
-      description: DEPRECATED_WARM_MESSAGE,
-    },
-  },
+  deprecated: deprecated ? DEPRECATED_WARM_MESSAGE : undefined,
 })}export const ${serviceName} = (
     ${
       /** Path parameters */

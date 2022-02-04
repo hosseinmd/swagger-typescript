@@ -221,14 +221,10 @@ function getObjectType(parameter: { schema?: Schema; name: string }[]) {
         },
       ) => {
         return `${prev}${getJsdoc({
-          description: schema,
-          tags: {
-            deprecated: {
-              value: Boolean(deprecated),
-              description: deprecatedMessage,
-            },
-            example,
-          },
+          ...schema,
+          deprecated:
+            deprecated || deprecatedMessage ? deprecatedMessage : undefined,
+          example,
         })}"${name}"${nullable ? "?" : ""}: ${getTsType(schema)};`;
       },
       "",
@@ -245,8 +241,8 @@ function getSchemaName(name: string): string {
 }
 
 function getRefName($ref: string): string {
-  const parts = $ref.split("/");
-  return getSchemaName(parts[parts.length - 1]);
+  const parts = $ref.split("/").pop();
+  return getSchemaName(parts || "");
 }
 
 function isAscending(a: string, b: string) {

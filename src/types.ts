@@ -324,7 +324,7 @@ export type TypeAST = {
   description?: string;
 };
 
-export type AssignToDescriptionObj = Pick<
+export type JsdocAST = Pick<
   Schema,
   | "min"
   | "max"
@@ -336,17 +336,9 @@ export type AssignToDescriptionObj = Pick<
   | "pattern"
   | "maxLength"
   | "minLength"
->;
-
-export type JsdocAST = {
-  description?: string | AssignToDescriptionObj;
-  tags?: {
-    deprecated?: {
-      value: boolean;
-      description?: string;
-    };
-    example?: string;
-  };
+  | "example"
+> & {
+  deprecated?: string;
 };
 
 export type ConstantsAST = { value: string; name: string };
