@@ -53,7 +53,7 @@ yarn swag-ts
 
 #### config.ts
 
-This file automatically will be create after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
+[more](#config)
 
 baseConfig
 
@@ -100,9 +100,10 @@ For Example:
 - `type ReferralStatus="Successed" | "Error"; // generateEnumAsType = true `
   |
 
-## config.ts
+## Config
 
-This file automatically will be created after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
+
+The config.ts file automatically will be created after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
 
 - getAxiosInstance
 
