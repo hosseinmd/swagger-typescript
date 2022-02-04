@@ -1,10 +1,5 @@
-import {
-  Schema,
-  Parameter,
-  Config,
-  JsdocAST,
-  AssignToDescriptionObj,
-} from "./types";
+import { Schema, Parameter, Config } from "./types";
+import { getJsdoc } from "./utilities/jsdoc";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (
@@ -280,105 +275,6 @@ function getParametersInfo(
   };
 }
 
-function assignToDescription({
-  description,
-  title,
-  format,
-  maxLength,
-  minLength,
-  max,
-  min,
-  minimum,
-  maximum,
-  pattern,
-}: AssignToDescriptionObj) {
-  return `${
-    title
-      ? `
- * ${title}
- * `
-      : ""
-  }${
-    description
-      ? `
- * ${description}`
-      : ""
-  }${
-    format
-      ? `
- * - Format: ${format}`
-      : ""
-  }${
-    maxLength
-      ? `
- * - maxLength: ${maxLength}`
-      : ""
-  }${
-    minLength
-      ? `
- * - minLength: ${minLength}`
-      : ""
-  }${
-    min
-      ? `
- * - min: ${min}`
-      : ""
-  }${
-    max
-      ? `
- * - max: ${max}`
-      : ""
-  }${
-    minimum
-      ? `
- * - minimum: ${minimum}`
-      : ""
-  }${
-    maximum
-      ? `
- * - max: ${maximum}`
-      : ""
-  }${
-    pattern
-      ? `
- * - pattern: ${pattern}`
-      : ""
-  }`;
-}
-
-function getJsdoc({
-  description,
-  tags: { deprecated, example } = {},
-}: JsdocAST) {
-  description =
-    typeof description === "object"
-      ? assignToDescription(description)
-      : description;
-
-  return deprecated?.value || description || example
-    ? `
-/**${
-        description
-          ? `
- * ${description}`
-          : ""
-      }${
-        deprecated?.value
-          ? `
- * @deprecated ${deprecated.description || ""}`
-          : ""
-      }${
-        example
-          ? `
- * @example 
- *   ${example}`
-          : ""
-      }
- */
-`
-    : "";
-}
-
 function majorVersionsCheck(expectedV: string, inputV?: string) {
   if (!inputV) {
     throw new Error(
@@ -454,7 +350,6 @@ export {
   getDefineParam,
   getParamString,
   getParametersInfo,
-  getJsdoc,
   isTypeAny,
   template,
   toPascalCase,

@@ -3,7 +3,6 @@ import {
   isAscending,
   getDefineParam,
   getParamString,
-  getJsdoc,
   toPascalCase,
   getSchemaName,
   isMatchWholeWord,
@@ -14,6 +13,7 @@ import {
   getHooksFunctions,
   getHooksImports,
 } from "./strings";
+import { getJsdoc } from "./utilities/jsdoc";
 
 const allowedPageParametersNames = ["page", "pageno", "pagenumber"];
 

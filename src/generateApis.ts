@@ -3,7 +3,6 @@ import {
   isAscending,
   getDefineParam,
   getParamString,
-  getJsdoc,
   getSchemaName,
   isMatchWholeWord,
 } from "./utils";
@@ -13,6 +12,7 @@ import {
   SERVICE_NEEDED_FUNCTIONS,
   DEPRECATED_WARM_MESSAGE,
 } from "./strings";
+import { getJsdoc } from "./utilities/jsdoc";
 
 function generateApis(apis: ApiAST[], types: TypeAST[]): string {
   let code = SERVICE_BEGINNING;
