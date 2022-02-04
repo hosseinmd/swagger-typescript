@@ -7,7 +7,7 @@ async function getJson(url: string) {
   const { data } = await Axios.get(url);
 
   // if url is yaml file convert it to json
-  if (data.hasOwnProperty("swagger")) {
+  if (typeof data === "object") {
     return data;
   }
   return yaml.load(data);
