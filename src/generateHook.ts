@@ -153,11 +153,11 @@ function generateHook(
               ? `UseQueryOptions<${TQueryFnData}, ${TError}>`
               : `UseMutationOptions<${TQueryFnData}, ${TError},${
                   TVariables === ""
-                    ? "{_extraVariables?:TExtra} | void"
-                    : `{${TVariables} _extraVariables?:TExtra}`
+                    ? "{_extraVariables?:TExtra, configOverride?:AxiosRequestConfig} | void"
+                    : `{${TVariables} _extraVariables?:TExtra, configOverride?:AxiosRequestConfig}`
                 }>`
           },`,
-          `configOverride?:AxiosRequestConfig`,
+          `${isGet ? `configOverride?:AxiosRequestConfig` : ""}`,
         ];
 
         result += ` (
@@ -165,7 +165,7 @@ function generateHook(
            ) => {`;
         if (isGet) {
           result += `
-          const { key, fun } = ${hookName}.info(${getParamsString()} options,configOverride);
+          const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
           `;
           if (hasPaging) {
             result += `const {
@@ -195,21 +195,20 @@ function generateHook(
           return {...rest, data, list, hasMore}
           `;
           } else {
-            result += `return useQuery<${TQueryFnData}, ${TError}>(key,()=>
+            result += `return useQuery(key,()=>
                 fun(),
                 options
                )`;
           }
         } else {
-          result += `return useMutation<${TQueryFnData}, ${TError}, ${
-            TVariables === ""
-              ? "{_extraVariables?:TExtra} | void"
-              : `{${TVariables} _extraVariables?: TExtra }`
-          }>((
-             ${TVariables === "" ? "" : `{${getParamsString()}}`}
+          result += `return useMutation((
+             ${
+               TVariables === ""
+                 ? "{configOverride} = {}"
+                 : `{${getParamsString()} configOverride}`
+             }
           )=>${serviceName}(
-            ${getParamsString()}
-            configOverride,
+            ${getParamsString()} configOverride,
           ),
           options
          )`;
@@ -220,10 +219,12 @@ function generateHook(
         `;
 
         if (isGet) {
-          result += `${hookName}.info = (${params.join("")}) => {
+          result += `${hookName}.info = (${params
+            .filter((param) => !param.startsWith("options?:"))
+            .join("")}) => {
               return {
-                key: ${deps},
-                fun: (${getQueryParamName("_param", true)}) =>
+                key: ${deps} as QueryKey,
+                fun: (${hasPaging ? getQueryParamName("_param", true) : ""}) =>
                 ${serviceName}(
                   ${getParamsString(true)}
                   configOverride
@@ -234,9 +235,9 @@ function generateHook(
           result += `${hookName}.prefetch = (
             client: QueryClient,
             ${params.join("")}) => {
-                const { key, fun } = ${hookName}.info(${getParamsString()} options,configOverride);
+                const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
 
-                return client.getQueryData(${deps})
+                return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
                     key,

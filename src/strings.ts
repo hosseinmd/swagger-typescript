@@ -86,6 +86,7 @@ import {
       : ""
   }
   QueryClient,
+  QueryKey,
 } from "react-query";
 import { RequestError, SwaggerResponse } from "./config";
 ${
