@@ -2,8 +2,10 @@ import { generator } from "../../src/generator";
 import swaggerJson from "./swagger.json";
 
 describe("generate", () => {
-  //@ts-ignore
-  const { code, hooks, type } = generator(swaggerJson, {});
+  const { code, hooks, type } = generator(swaggerJson as any, {
+    dir: "",
+    reactHooks: true,
+  });
 
   it("generate Code", () => {
     expect(code).toMatchSnapshot();
