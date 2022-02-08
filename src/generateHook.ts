@@ -30,12 +30,7 @@ function generateHook(
       isAscending(serviceName, _serviceName),
     );
 
-    let apisCode =
-      apis.reduce((prev, { serviceName }) => {
-        return prev + ` ${serviceName},`;
-      }, "import {") + '}  from "./services"\n';
-
-    apisCode += apis.reduce(
+    const apisCode = apis.reduce(
       (
         prev,
         {
@@ -85,9 +80,8 @@ function generateHook(
           }
           ${headerParams ? "headerParams," : ""}`;
 
-        const TQueryFnData = `SwaggerResponse<${
-          responses ? getTsType(responses) : "any"
-        }>`;
+        const TData = `${responses ? getTsType(responses) : "any"}`;
+        const TQueryFnData = `SwaggerResponse<${TData}>`;
         const TError = "RequestError | Error";
 
         const getQueryParamName = (
@@ -150,12 +144,12 @@ function generateHook(
             hasPaging
               ? `UseInfiniteQueryOptions<${TQueryFnData}, ${TError}>`
               : isGet
-              ? `UseQueryOptions<${TQueryFnData}, ${TError}>`
-              : `UseMutationOptions<${TQueryFnData}, ${TError},${
-                  TVariables === ""
-                    ? "{_extraVariables?:TExtra, configOverride?:AxiosRequestConfig} | void"
-                    : `{${TVariables} _extraVariables?:TExtra, configOverride?:AxiosRequestConfig}`
-                }>`
+              ? `InternalUseQueryOptions<${TData}>`
+              : `${
+                  TVariables
+                    ? `InternalUseMutationOptions<${TData}, {${TVariables}}, TExtra>`
+                    : `InternalUseMutationOptionsVoid<${TData}, TExtra>`
+                }`
           },`,
           `${isGet ? `configOverride?:AxiosRequestConfig` : ""}`,
         ];
@@ -201,15 +195,13 @@ function generateHook(
                )`;
           }
         } else {
-          result += `return useMutation((
-             ${
-               TVariables === ""
-                 ? "{configOverride} = {} as {configOverride?:AxiosRequestConfig}"
-                 : `{${getParamsString()} configOverride}`
-             }
-          )=>${serviceName}(
-            ${getParamsString()} configOverride,
-          ),
+          result += `return useMutation((_o)=>{
+            const {${getParamsString()} configOverride } = _o || {};
+
+            return ${serviceName}(
+                ${getParamsString()} configOverride,
+              )
+          },
           options
          )`;
         }
@@ -265,7 +257,34 @@ function generateHook(
     code += getHooksFunctions({
       hasInfinity: !!config.useInfiniteQuery?.length,
     });
+
+    code +=
+      apis.reduce((prev, { serviceName }) => {
+        return prev + ` ${serviceName},`;
+      }, "import {") + '}  from "./services"\n';
+
+    code += `
+    type InternalMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
+    type InternalUseQueryOptions<TData> = UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>;
+
+    type InternalUseMutationOptions<TData, TRequest, TExtra> = UseMutationOptions<
+      SwaggerResponse<TData>,
+      RequestError | Error,
+      TRequest & InternalMutationDefaultParams<TExtra>
+    >;
+
+    type InternalUseMutationOptionsVoid<
+      TData,
+      TExtra
+    > = UseMutationOptions<
+      SwaggerResponse<TData>,
+      RequestError | Error,
+      InternalMutationDefaultParams<TExtra> | void
+    >;  
+    `;
+
     code += apisCode;
+
     return code;
   } catch (error) {
     console.error(error);
