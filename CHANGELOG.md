@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.4](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.3...v6.0.4) (2022-02-08)
+
+
+### Bug Fixes
+
+* configoverride default value ([9a9e38f](https://github.com/hosseinmd/swagger-typescript/commit/9a9e38fe2a2bfc1f9544d16c6a8caef3af6e4a91))
+
 ### [6.0.2](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.1...v6.0.2) (2022-01-31)
 
 
