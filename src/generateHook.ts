@@ -204,7 +204,7 @@ function generateHook(
           result += `return useMutation((
              ${
                TVariables === ""
-                 ? "{configOverride} = {}"
+                 ? "{configOverride} = {} as {configOverride?:AxiosRequestConfig}"
                  : `{${getParamsString()} configOverride}`
              }
           )=>${serviceName}(
