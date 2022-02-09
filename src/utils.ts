@@ -105,15 +105,17 @@ function getDefineParam(
 ): string {
   return getParamString(name, required, getTsType(schema), description);
 }
+
 function getParamString(
   name: string,
   required: boolean = false,
   type: string,
   description?: string,
+  isPartial?: boolean,
 ): string {
   return `${getJsdoc({
     description,
-  })}${name}${required ? "" : "?"}: ${type}`;
+  })}${name}${required ? "" : "?"}: ${isPartial ? `Partial<${type}>` : type}`;
 }
 
 function getTsType(schema: undefined | true | {} | Schema): string {

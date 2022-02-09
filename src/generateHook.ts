@@ -87,9 +87,16 @@ function generateHook(
         const getQueryParamName = (
           name: string,
           nullable: boolean = isQueryParamsNullable,
+          isPartial?: boolean,
         ) =>
           queryParamsTypeName
-            ? `${getParamString(name, !nullable, queryParamsTypeName)},`
+            ? `${getParamString(
+                name,
+                !nullable,
+                queryParamsTypeName,
+                undefined,
+                isPartial,
+              )},`
             : "";
 
         const TVariables = `${
@@ -216,7 +223,9 @@ function generateHook(
             .join("")}) => {
               return {
                 key: ${deps} as QueryKey,
-                fun: (${hasPaging ? getQueryParamName("_param", true) : ""}) =>
+                fun: (${
+                  hasPaging ? getQueryParamName("_param", true, true) : ""
+                }) =>
                 ${serviceName}(
                   ${getParamsString(true)}
                   configOverride
