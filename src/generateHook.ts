@@ -190,10 +190,11 @@ function generateHook(
           );
         
           const list = useMemo(() => paginationFlattenData(pages), [pages]);
+          const total = getTotal(pages);
 
           const hasMore = useHasMore(pages, list, queryParams);
           
-          return {...rest, data, list, hasMore}
+          return {...rest, data, list, hasMore, total}
           `;
           } else {
             result += `return useQuery(key,()=>

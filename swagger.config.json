@@ -5,6 +5,9 @@
     "language": "typescript",
     "keepJson": true,
     "reactHooks": true,
+    "useInfiniteQuery": [
+      "useGetRealmsRealm"
+    ],
     "ignore": {
       "headerParams": [
         "terminalId"
