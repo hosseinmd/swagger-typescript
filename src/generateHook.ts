@@ -80,7 +80,7 @@ function generateHook(
           }
           ${headerParams ? "headerParams," : ""}`;
 
-        const TData = `${responses ? getTsType(responses) : "any"}`;
+        const TData = `${responses ? getTsType(responses, config) : "any"}`;
         const TQueryFnData = `SwaggerResponse<${TData}>`;
         const TError = "RequestError | Error";
 
@@ -103,13 +103,13 @@ function generateHook(
           /** Path parameters */
           pathParams
             .map(({ name, required, schema, description }) =>
-              getDefineParam(name, required, schema, description),
+              getDefineParam(name, required, schema, config, description),
             )
             .join(",")
         }${pathParams.length > 0 ? "," : ""}${
           /** Request Body */
           requestBody
-            ? `${getDefineParam("requestBody", true, requestBody)},`
+            ? `${getDefineParam("requestBody", true, requestBody, config)},`
             : ""
         }${
           /** Query parameters */

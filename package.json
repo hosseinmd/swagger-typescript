@@ -39,7 +39,7 @@
     "js-yaml": "^4.1.0",
     "qs": "^6.9.4",
     "recursive-readdir": "^2.2.2",
-    "swagger2openapi": "^7.0.5",
+    "swagger2openapi": "^7.0.8",
     "tsc-prog": "^2.2.1",
     "yargs": "^17.0.1"
   },

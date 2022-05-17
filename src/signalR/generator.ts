@@ -1,4 +1,4 @@
-import type { TypeAST, Schema, Parameter } from "../types";
+import type { TypeAST, Schema, Parameter, Config } from "../types";
 import { generateTypes } from "../generateTypes";
 import { getDefineParam } from "../utils";
 
@@ -31,7 +31,7 @@ interface ParsedOperation {
   description?: string;
 }
 
-function signalRGenerator(json: HubJson): string {
+function signalRGenerator(json: HubJson, config: Config): string {
   const types: TypeAST[] = [];
   const hubs: {
     name: string;
@@ -109,6 +109,7 @@ function signalRGenerator(json: HubJson): string {
                       _name,
                       schema.required,
                       (schema as unknown) as Schema,
+                      config,
                       schema.description,
                     ),
                   )}) => Promise<void>`,
@@ -140,6 +141,7 @@ function signalRGenerator(json: HubJson): string {
                       _name,
                       schema.required,
                       (schema as unknown) as Schema,
+                      config,
                       schema.description,
                     ),
                   )}) => void`,
@@ -169,7 +171,7 @@ function signalRGenerator(json: HubJson): string {
       }
       `;
     });
-    code += generateTypes(types, {});
+    code += generateTypes(types, config);
 
     return code;
   } catch (error) {

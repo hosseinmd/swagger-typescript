@@ -275,6 +275,7 @@ export interface Config {
   /** Generate with local swagger.json */
   local?: boolean;
   generateEnumAsType?: boolean;
+  _isSwagger2?: boolean;
 }
 
 export type SwaggerConfig = Config | Config[];

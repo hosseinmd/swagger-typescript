@@ -6,7 +6,7 @@ import {
   getSchemaName,
   isMatchWholeWord,
 } from "./utils";
-import { ApiAST, TypeAST } from "./types";
+import { ApiAST, Config, TypeAST } from "./types";
 import {
   SERVICE_BEGINNING,
   SERVICE_NEEDED_FUNCTIONS,
@@ -14,7 +14,11 @@ import {
 } from "./strings";
 import { getJsdoc } from "./utilities/jsdoc";
 
-function generateApis(apis: ApiAST[], types: TypeAST[]): string {
+function generateApis(
+  apis: ApiAST[],
+  types: TypeAST[],
+  config: Config,
+): string {
   let code = SERVICE_BEGINNING;
   try {
     const apisCode = apis
@@ -54,13 +58,13 @@ ${getJsdoc({
       /** Path parameters */
       pathParams
         .map(({ name, required, schema, description }) =>
-          getDefineParam(name, required, schema, description),
+          getDefineParam(name, required, schema, config, description),
         )
         .join(",")
     }${pathParams.length > 0 ? "," : ""}${
               /** Request Body */
               requestBody
-                ? `${getDefineParam("requestBody", true, requestBody)},`
+                ? `${getDefineParam("requestBody", true, requestBody, config)},`
                 : ""
             }${
               /** Query parameters */
@@ -81,7 +85,9 @@ ${getJsdoc({
                   )},`
                 : ""
             }configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse<${responses ? getTsType(responses) : "any"}>> => {
+): Promise<SwaggerResponse<${
+              responses ? getTsType(responses, config) : "any"
+            }>> => {
   ${
     deprecated
       ? `

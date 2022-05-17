@@ -9,21 +9,21 @@ function getPathParams(parameters?: Parameter[]): Parameter[] {
   );
 }
 
-function getHeaderParams(parameters?: Parameter[], config?: Config) {
-  return getParams(parameters, "header", config?.ignore?.headerParams);
+function getHeaderParams(parameters: Parameter[] | undefined, config: Config) {
+  return getParams(parameters, "header", config!);
 }
 
 function getParams(
   parameters: Parameter[] | undefined,
   type: "query" | "header",
-  ignoreParams?: string[],
+  config: Config,
 ) {
   const queryParamsArray =
     parameters?.filter(({ in: In, name }) => {
-      return In === type && !ignoreParams?.includes(name);
+      return In === type && !config.ignore?.headerParams?.includes(name);
     }) || [];
 
-  const params = getObjectType(queryParamsArray);
+  const params = getObjectType(queryParamsArray, config);
 
   return {
     params,
@@ -101,9 +101,10 @@ function getDefineParam(
   name: string,
   required: boolean = false,
   schema: Schema | undefined,
+  config: Config,
   description?: string,
 ): string {
-  return getParamString(name, required, getTsType(schema), description);
+  return getParamString(name, required, getTsType(schema, config), description);
 }
 
 function getParamString(
@@ -118,7 +119,10 @@ function getParamString(
   })}${name}${required ? "" : "?"}: ${isPartial ? `Partial<${type}>` : type}`;
 }
 
-function getTsType(schema: undefined | true | {} | Schema): string {
+function getTsType(
+  schema: undefined | true | {} | Schema,
+  config: Config,
+): string {
   if (isTypeAny(schema)) {
     return "any";
   }
@@ -148,7 +152,7 @@ function getTsType(schema: undefined | true | {} | Schema): string {
   }
 
   if (items) {
-    return `${getTsType(items)}[]`;
+    return `${getTsType(items, config)}[]`;
   }
 
   let result = "";
@@ -158,32 +162,33 @@ function getTsType(schema: undefined | true | {} | Schema): string {
       Object.entries(properties).map(([pName, _schema]) => ({
         schema: {
           ..._schema,
-          nullable: required?.find((name) => name === pName)
-            ? false
-            : _schema.nullable !== undefined
-            ? _schema.nullable
-            : true,
+          nullable: config._isSwagger2
+            ? required
+              ? !required.includes(pName)
+              : true
+            : _schema.nullable,
         },
         name: pName,
       })),
+      config,
     );
   }
 
   if (oneOf) {
     result = `${result} & (${oneOf
-      .map((t) => `(${getTsType(t)})`)
+      .map((t) => `(${getTsType(t, config)})`)
       .join(" | ")})`;
   }
 
   if (allOf) {
     result = `${result} & (${allOf
-      .map((_schema) => getTsType(_schema))
+      .map((_schema) => getTsType(_schema, config))
       .join(" & ")})`;
   }
 
   if (type === "object" && !result) {
     if (additionalProperties) {
-      return `{[x: string]: ${getTsType(additionalProperties)}}`;
+      return `{[x: string]: ${getTsType(additionalProperties, config)}}`;
     }
 
     return "{[x in string | number ]: any}";
@@ -192,7 +197,10 @@ function getTsType(schema: undefined | true | {} | Schema): string {
   return result || TYPES[type as keyof typeof TYPES];
 }
 
-function getObjectType(parameter: { schema?: Schema; name: string }[]) {
+function getObjectType(
+  parameter: { schema?: Schema; name: string }[],
+  config: Config,
+) {
   const object = parameter
     .sort(
       (
@@ -227,7 +235,7 @@ function getObjectType(parameter: { schema?: Schema; name: string }[]) {
           deprecated:
             deprecated || deprecatedMessage ? deprecatedMessage : undefined,
           example,
-        })}"${name}"${nullable ? "?" : ""}: ${getTsType(schema)};`;
+        })}"${name}"${nullable ? "?" : ""}: ${getTsType(schema, config)};`;
       },
       "",
     );

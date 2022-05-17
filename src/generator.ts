@@ -230,7 +230,7 @@ function generator(
       );
     }
 
-    let code = generateApis(apis, types);
+    let code = generateApis(apis, types, config);
     code += generateConstants(constants);
     const type = generateTypes(types, config);
     const hooks = config.reactHooks ? generateHook(apis, types, config) : "";

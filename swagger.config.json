@@ -1,6 +1,6 @@
 [
   {
-    "url": "https://admin.us01.dx.commercecloud.salesforce.com/api/v1/swagger.yaml",
+    "url": "http://dev.hitobit.com/hapi/swagger/v1/swagger.json",
     "dir": "./test",
     "language": "typescript",
     "keepJson": true,
@@ -15,7 +15,7 @@
     }
   },
   {
-    "url": "https://admin.us01.dx.commercecloud.salesforce.com/api/v1/swagger.yaml",
+    "url": "http://stage.hitobit.com/hapi/swagger/v1/swagger.json",
     "dir": "./test/swagger2",
     "language": "typescript",
     "keepJson": true,

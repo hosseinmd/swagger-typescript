@@ -74,6 +74,7 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
       if (input.swagger) {
         majorVersionsCheck("2.0.0", input.swagger);
         // convert swagger v2 to openApi v3
+        config._isSwagger2 = true;
         input = await swaggerToOpenApi(input);
       } else {
         majorVersionsCheck("3.0.0", input.openapi);
@@ -135,7 +136,7 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
     if (hub) {
       const hubJson: HubJson = hub ? await getJson(hub) : null;
 
-      hubCode = signalRGenerator(hubJson);
+      hubCode = signalRGenerator(hubJson, config);
       hubCode && writeFileSync(`${dir}/hub.ts`, hubCode);
 
       console.log(chalk.yellowBright("hub Completed"));
