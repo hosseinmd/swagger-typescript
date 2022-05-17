@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.8](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.7...v6.0.8) (2022-05-17)
+
+
+### Bug Fixes
+
+* nullable properties of openApi 3 ([f77e155](https://github.com/hosseinmd/swagger-typescript/commit/f77e155a685abf15c7f8aab5b46f0b2abb73a257))
+
 ### [6.0.5](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.4...v6.0.5) (2022-02-08)
 
 
