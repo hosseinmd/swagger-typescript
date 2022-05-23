@@ -104,6 +104,7 @@ function generator(
               schema: {
                 type: "object",
                 nullable: isQueryParamsNullable,
+                required,
                 properties: queryParameters?.reduce(
                   (
                     prev,
