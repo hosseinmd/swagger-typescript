@@ -5,6 +5,7 @@ type DataType =
 export interface Schema {
   title?: string;
   nullable?: boolean;
+  ["x-nullable"]?: boolean;
   maxLength?: number;
   max?: number;
   min?: number;

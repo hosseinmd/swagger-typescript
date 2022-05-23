@@ -98,18 +98,25 @@ function generator(
           queryParamsTypeName = queryParams && queryParamsTypeName;
 
           if (queryParamsTypeName) {
+            const required = config._isSwagger2 ? ([] as string[]) : undefined;
             types.push({
               name: queryParamsTypeName,
               schema: {
                 type: "object",
                 nullable: isQueryParamsNullable,
                 properties: queryParameters?.reduce(
-                  (prev, { name, schema, $ref, required, description }) => {
+                  (
+                    prev,
+                    { name, schema, $ref, required: _required, description },
+                  ) => {
+                    if (_required) {
+                      required?.push(name);
+                    }
                     return {
                       ...prev,
                       [name]: {
                         ...($ref ? { $ref } : schema),
-                        nullable: !required,
+                        nullable: !_required,
                         description,
                       } as Schema,
                     };

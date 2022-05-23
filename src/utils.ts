@@ -277,7 +277,11 @@ function getParametersInfo(
   return {
     params,
     exist: params.length > 0,
-    isNullable: params.every(({ schema }) => schema?.nullable),
+    isNullable: params.every(({ schema }) =>
+      schema?.required === undefined
+        ? schema?.nullable || schema?.["x-nullable"]
+        : !schema?.required,
+    ),
   };
 }
 
