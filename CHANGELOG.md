@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.9](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.8...v6.0.9) (2022-05-23)
+
+
+### Bug Fixes
+
+* query params nullable ([e1c5484](https://github.com/hosseinmd/swagger-typescript/commit/e1c5484805c8d675ea7c5e55fa8b0e0d6a1db2d1))
+
 ### [6.0.8](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.7...v6.0.8) (2022-05-17)
 
 
