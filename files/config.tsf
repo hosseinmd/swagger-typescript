@@ -100,6 +100,10 @@ class RequestError extends Error {
   }
 
   isApiException = true;
+
+  static isRequestError(error: any): error is RequestError {
+    return error.isApiException;
+  }
 }
 
 export type Security = any[] | undefined;
