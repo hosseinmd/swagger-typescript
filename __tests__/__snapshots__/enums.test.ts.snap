@@ -53,7 +53,7 @@ function objToForm(requestBody: object) {
 }
 
 export const getSettlementV1PrivateSettlementGet = (
-    queryParams: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (SettlementRequestResultListResponseVM)>> => {
   
   return Http.getRequest(

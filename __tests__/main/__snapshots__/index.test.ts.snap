@@ -115,7 +115,7 @@ deleteBusinessUserConnectionConnectionIdPermissionUserWalletId.key = \\"/Busines
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const deleteBusinessUserConnectionInvitationIdRemove = (
-    invitationId: string,queryParams: DeleteBusinessUserConnectionInvitationIdRemoveQueryParams,configOverride?:AxiosRequestConfig
+    invitationId: string,queryParams?: DeleteBusinessUserConnectionInvitationIdRemoveQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (SubUserConnectionApiModel)>> => {
   
   if (__DEV__) {
@@ -302,7 +302,7 @@ getBusinessUserCategory.key = \\"/BusinessUser/category\\";
 [Feature just allowed for the business users]
  */
 export const getBusinessUserConnection = (
-    queryParams: GetBusinessUserConnectionQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetBusinessUserConnectionQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserConnectionApiModel[]>> => {
   
   return Http.getRequest(
@@ -326,7 +326,7 @@ getBusinessUserConnection.key = \\"/BusinessUser/connection\\";
 [Feature just allowed for the business users]
  */
 export const getBusinessUserConnectionActive = (
-    queryParams: GetBusinessUserConnectionActiveQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetBusinessUserConnectionActiveQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<SubUserConnectionApiModel[]>> => {
   
   return Http.getRequest(
@@ -404,7 +404,7 @@ connectionId: number,configOverride?:AxiosRequestConfig
 getBusinessUserConnectionConnectionIdActivity.key = \\"/BusinessUser/connection/{connectionId}/activity\\";
 
 export const getBusinessUserConnectionConnectionIdEpay = (
-    connectionId: number,queryParams: GetBusinessUserConnectionConnectionIdEpayQueryParams,configOverride?:AxiosRequestConfig
+    connectionId: number,queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<EpayRequestApiModel[]>> => {
   
   return Http.getRequest(
@@ -452,7 +452,7 @@ connectionId: number,configOverride?:AxiosRequestConfig
 getBusinessUserConnectionConnectionIdPermission.key = \\"/BusinessUser/connection/{connectionId}/permission\\";
 
 export const getEpayRequest = (
-    queryParams: GetEpayRequestQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetEpayRequestQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<EpayRequestApiModel[]>> => {
   
   return Http.getRequest(
@@ -488,7 +488,7 @@ export const getEpayRequestAudiencesRecent = (
 getEpayRequestAudiencesRecent.key = \\"/EpayRequest/audiences/recent\\";
 
 export const getEpayRequestCount = (
-    queryParams: GetEpayRequestCountQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetEpayRequestCountQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
   
   return Http.getRequest(
@@ -580,7 +580,7 @@ epayToken: string,configOverride?:AxiosRequestConfig
 getEpayRequestEpayTokenQrcode.key = \\"/EpayRequest/{epayToken}/qrcode\\";
 
 export const getEpayRequestExcel = (
-    queryParams: GetEpayRequestExcelQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetEpayRequestExcelQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> => {
   
   return Http.getRequest(
@@ -605,7 +605,7 @@ getEpayRequestExcel.key = \\"/EpayRequest/excel\\";
 [Needs secure login]
  */
 export const getEpayRequestForMe = (
-    queryParams: GetEpayRequestForMeQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetEpayRequestForMeQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<EpayRequestForUserQuery[]>> => {
   
   return Http.getRequest(
@@ -623,7 +623,7 @@ export const getEpayRequestForMe = (
 getEpayRequestForMe.key = \\"/EpayRequest/forMe\\";
 
 export const getEpayRequestForMeCount = (
-    queryParams: GetEpayRequestForMeCountQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetEpayRequestForMeCountQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
   
   return Http.getRequest(
@@ -641,7 +641,7 @@ export const getEpayRequestForMeCount = (
 getEpayRequestForMeCount.key = \\"/EpayRequest/forMe/count\\";
 
 export const getEpayRequestForMeReport = (
-    queryParams: GetEpayRequestForMeReportQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetEpayRequestForMeReportQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<ReportApiModel[]>> => {
   
   return Http.getRequest(
@@ -665,7 +665,7 @@ getEpayRequestForMeReport.key = \\"/EpayRequest/forMe/report\\";
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getEpayRequestPosQrAccountNumber = (
-    accountNumber: string,queryParams: GetEpayRequestPosQrAccountNumberQueryParams,configOverride?:AxiosRequestConfig
+    accountNumber: string,queryParams?: GetEpayRequestPosQrAccountNumberQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> => {
   
   if (__DEV__) {
@@ -689,7 +689,7 @@ export const getEpayRequestPosQrAccountNumber = (
 getEpayRequestPosQrAccountNumber.key = \\"/EpayRequest/pos/Qr/{accountNumber}\\";
 
 export const getEpayRequestReport = (
-    queryParams: GetEpayRequestReportQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetEpayRequestReportQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<ReportApiModel[]>> => {
   
   return Http.getRequest(
@@ -712,7 +712,7 @@ getEpayRequestReport.key = \\"/EpayRequest/report\\";
  * Get comission amount for epay request amount
  */
 export const getEpayRequestUserWalletIdCommission = (
-    userWalletId: number,queryParams: GetEpayRequestUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig
+    userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
   
   return Http.getRequest(
@@ -830,7 +830,7 @@ fileGuid: string,configOverride?:AxiosRequestConfig
 getFileFileGuid.key = \\"/File/{fileGuid}\\";
 
 export const getGroupTransferCommission = (
-    queryParams: GetGroupTransferCommissionQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetGroupTransferCommissionQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
   
   return Http.getRequest(
@@ -853,7 +853,7 @@ getGroupTransferCommission.key = \\"/GroupTransfer/commission\\";
  * Get detailed driver,taxi and fair amount information
  */
 export const getIntegration = (
-    queryParams: GetIntegrationQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetIntegrationQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (DriverInfoResult)>> => {
   
   return Http.getRequest(
@@ -871,7 +871,7 @@ export const getIntegration = (
 getIntegration.key = \\"/Integration\\";
 
 export const getKpi = (
-    queryParams: GetKpiQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetKpiQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<KpiResult[]>> => {
   
   return Http.getRequest(
@@ -889,7 +889,7 @@ export const getKpi = (
 getKpi.key = \\"/Kpi\\";
 
 export const getKpiCurrent = (
-    queryParams: GetKpiCurrentQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetKpiCurrentQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<KpiResult[]>> => {
   
   return Http.getRequest(
@@ -907,7 +907,7 @@ export const getKpiCurrent = (
 getKpiCurrent.key = \\"/Kpi/Current\\";
 
 export const getKpiLast = (
-    queryParams: GetKpiLastQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetKpiLastQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<KpiResult[]>> => {
   
   return Http.getRequest(
@@ -972,7 +972,7 @@ export const getNotificationNotif = (
 getNotificationNotif.key = \\"/Notification/notif\\";
 
 export const getNotificationUnread = (
-    queryParams: GetNotificationUnreadQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetNotificationUnreadQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<UnreadNotificationCountApiModel[]>> => {
   
   return Http.getRequest(
@@ -1018,7 +1018,7 @@ export const getPosAccountNumber = (
  * 
  * Account Number
  */
-accountNumber: string,queryParams: GetPosAccountNumberQueryParams,configOverride?:AxiosRequestConfig
+accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (PosLandingPageApiModel)>> => {
   
   return Http.getRequest(
@@ -1162,7 +1162,7 @@ getResellerUser.key = \\"/ResellerUser\\";
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getResellerUserDashboardCommissionReport = (
-    queryParams: GetResellerUserDashboardCommissionReportQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetResellerUserDashboardCommissionReportQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<DateReportApiModelOfDecimal[]>> => {
   
   if (__DEV__) {
@@ -1193,7 +1193,7 @@ getResellerUserDashboardCommissionReport.key = \\"/ResellerUser/dashboard/commis
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getResellerUserDashboardCommissionSum = (
-    queryParams: GetResellerUserDashboardCommissionSumQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetResellerUserDashboardCommissionSumQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
   
   if (__DEV__) {
@@ -1224,7 +1224,7 @@ getResellerUserDashboardCommissionSum.key = \\"/ResellerUser/dashboard/commissio
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getResellerUserDashboardIntroducedCount = (
-    queryParams: GetResellerUserDashboardIntroducedCountQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
   
   if (__DEV__) {
@@ -1255,7 +1255,7 @@ getResellerUserDashboardIntroducedCount.key = \\"/ResellerUser/dashboard/introdu
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getResellerUserDashboardIntroducedReport = (
-    queryParams: GetResellerUserDashboardIntroducedReportQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetResellerUserDashboardIntroducedReportQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<DateReportApiModelOfInteger[]>> => {
   
   if (__DEV__) {
@@ -1286,7 +1286,7 @@ getResellerUserDashboardIntroducedReport.key = \\"/ResellerUser/dashboard/introd
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getResellerUserDashboardLinksCount = (
-    queryParams: GetResellerUserDashboardLinksCountQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetResellerUserDashboardLinksCountQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
   
   if (__DEV__) {
@@ -1317,7 +1317,7 @@ getResellerUserDashboardLinksCount.key = \\"/ResellerUser/dashboard/links/count\
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getResellerUserDashboardLinksPaidCount = (
-    queryParams: GetResellerUserDashboardLinksPaidCountQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
   
   if (__DEV__) {
@@ -1348,7 +1348,7 @@ getResellerUserDashboardLinksPaidCount.key = \\"/ResellerUser/dashboard/links/pa
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getResellerUserDashboardLinksPaidReport = (
-    queryParams: GetResellerUserDashboardLinksPaidReportQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetResellerUserDashboardLinksPaidReportQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<DateReportApiModelOfInteger[]>> => {
   
   if (__DEV__) {
@@ -1379,7 +1379,7 @@ getResellerUserDashboardLinksPaidReport.key = \\"/ResellerUser/dashboard/links/p
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getResellerUserDashboardLinksReport = (
-    queryParams: GetResellerUserDashboardLinksReportQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetResellerUserDashboardLinksReportQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<DateReportApiModelOfInteger[]>> => {
   
   if (__DEV__) {
@@ -1410,7 +1410,7 @@ getResellerUserDashboardLinksReport.key = \\"/ResellerUser/dashboard/links/repor
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getResellerUserDashboardTransactionsCount = (
-    queryParams: GetResellerUserDashboardTransactionsCountQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
   
   if (__DEV__) {
@@ -1441,7 +1441,7 @@ getResellerUserDashboardTransactionsCount.key = \\"/ResellerUser/dashboard/trans
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getResellerUserDashboardTransactionsReport = (
-    queryParams: GetResellerUserDashboardTransactionsReportQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetResellerUserDashboardTransactionsReportQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<DateReportApiModelOfInteger[]>> => {
   
   if (__DEV__) {
@@ -1471,7 +1471,7 @@ getResellerUserDashboardTransactionsReport.key = \\"/ResellerUser/dashboard/tran
 [Feature just allowed for Resellers]
  */
 export const getResellerUserIntroduced = (
-    queryParams: GetResellerUserIntroducedQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetResellerUserIntroducedQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<ReselledUserApiModel[]>> => {
   
   return Http.getRequest(
@@ -1572,7 +1572,7 @@ export const getSubDomainSubDomainAddress = (
  * The SubDomain part of the url.
             
  */
-subDomainAddress: string,headerParams: {
+subDomainAddress: string,headerParams?: {
 /**
  * 
  * - Format: guid
@@ -1656,7 +1656,7 @@ export const getSubUserConnection = (
 getSubUserConnection.key = \\"/SubUser/connection\\";
 
 export const getTransaction = (
-    queryParams: GetTransactionQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetTransactionQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<TransactionApiModel[]>> => {
   
   return Http.getRequest(
@@ -1674,7 +1674,7 @@ export const getTransaction = (
 getTransaction.key = \\"/Transaction\\";
 
 export const getTransactionExcel = (
-    queryParams: GetTransactionExcelQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetTransactionExcelQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> => {
   
   return Http.getRequest(
@@ -1696,7 +1696,7 @@ getTransactionExcel.key = \\"/Transaction/excel\\";
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getTransactionReport = (
-    queryParams: GetTransactionReportQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetTransactionReportQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<ReportApiModel[]>> => {
   
   if (__DEV__) {
@@ -1724,7 +1724,7 @@ getTransactionReport.key = \\"/Transaction/report\\";
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getTransactionReportAll = (
-    queryParams: GetTransactionReportAllQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetTransactionReportAllQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (AllTransactionsReportApiModel)>> => {
   
   if (__DEV__) {
@@ -1777,7 +1777,7 @@ getTransactionTransactionId.key = \\"/Transaction/{transactionId}\\";
  * Get recent money transfers
  */
 export const getTransferRecent = (
-    queryParams: GetTransferRecentQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetTransferRecentQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<TransferMoneyApiModel[]>> => {
   
   return Http.getRequest(
@@ -1795,7 +1795,7 @@ export const getTransferRecent = (
 getTransferRecent.key = \\"/Transfer/recent\\";
 
 export const getTransferSearch = (
-    queryParams: GetTransferSearchQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetTransferSearchQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (AccountInfoApiModel)>> => {
   
   return Http.getRequest(
@@ -1818,7 +1818,7 @@ getTransferSearch.key = \\"/Transfer/search\\";
  * Get commission amount for transfer money amount
  */
 export const getTransferUserWalletIdCommission = (
-    userWalletId: number,queryParams: GetTransferUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig
+    userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
   
   return Http.getRequest(
@@ -2128,7 +2128,7 @@ export const getUserWallet = (
 getUserWallet.key = \\"/UserWallet\\";
 
 export const getUserWalletAccountNumberQrcode = (
-    accountNumber: string,queryParams: GetUserWalletAccountNumberQrcodeQueryParams,configOverride?:AxiosRequestConfig
+    accountNumber: string,queryParams?: GetUserWalletAccountNumberQrcodeQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<string>> => {
   
   return Http.getRequest(
@@ -2150,7 +2150,7 @@ getUserWalletAccountNumberQrcode.key = \\"/UserWallet/{accountNumber}/qrcode\\";
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getUserWalletSearch = (
-    queryParams: GetUserWalletSearchQueryParams,configOverride?:AxiosRequestConfig
+    queryParams?: GetUserWalletSearchQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (AccountInfoApiModel)>> => {
   
   if (__DEV__) {
@@ -2219,7 +2219,7 @@ getUserWalletUserWalletIdBalance.key = \\"/UserWallet/{userWalletId}/balance\\";
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getUserWalletUserWalletIdEpayRequestComission = (
-    userWalletId: number,queryParams: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,configOverride?:AxiosRequestConfig
+    userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
   
   if (__DEV__) {
@@ -2261,7 +2261,7 @@ export const getUserWalletUserWalletIdPermittedsubusers = (
 getUserWalletUserWalletIdPermittedsubusers.key = \\"/UserWallet/{userWalletId}/permittedsubusers\\";
 
 export const getUserWalletUserWalletIdSettlementRequestComission = (
-    userWalletId: number,queryParams: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,configOverride?:AxiosRequestConfig
+    userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
   
   return Http.getRequest(
@@ -2283,7 +2283,7 @@ getUserWalletUserWalletIdSettlementRequestComission.key = \\"/UserWallet/{userWa
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const getUserWalletUserWalletIdTransferMoneyCommission = (
-    userWalletId: number,queryParams: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,configOverride?:AxiosRequestConfig
+    userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
   
   if (__DEV__) {
@@ -2412,7 +2412,7 @@ export const postAuthLoginOtpGenerate = (
 postAuthLoginOtpGenerate.key = \\"/Auth/login/otp/generate\\";
 
 export const postAuthRegister = (
-    requestBody: RegisterApiModel,headerParams: {\\"platformType\\": \\"Unknown\\" | \\"Server\\" | \\"Android\\" | \\"iOS\\" | \\"Device\\" | \\"Browser\\" | \\"PWA\\" | \\"Web\\" | \\"Windows\\" | \\"Linux\\" | \\"macOS\\" | \\"Desktop\\";},configOverride?:AxiosRequestConfig
+    requestBody: RegisterApiModel,headerParams?: {\\"platformType\\": \\"Unknown\\" | \\"Server\\" | \\"Android\\" | \\"iOS\\" | \\"Device\\" | \\"Browser\\" | \\"PWA\\" | \\"Web\\" | \\"Windows\\" | \\"Linux\\" | \\"macOS\\" | \\"Desktop\\";},configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (RegisterNewUserQuery)>> => {
   
   return Http.postRequest(
@@ -2853,7 +2853,7 @@ export const postPosPayTargetAccountNumberOnline = (
  * 
  * Target account number
  */
-targetAccountNumber: string,requestBody: PosOnlinePayInput,headerParams: {
+targetAccountNumber: string,requestBody: PosOnlinePayInput,headerParams?: {
 /**
  * 
  * - Format: guid
@@ -2914,7 +2914,7 @@ postPosPayTargetAccountNumberWallet.key = \\"/Pos/pay/{targetAccountNumber}/wall
  * Cancel Amount of an Divided[EpayRequest]
  */
 export const postServiceCancelAmount = (
-    requestBody: DividedEpayRequestCancelInput,headerParams: {\\"apiKey\\": string;},configOverride?:AxiosRequestConfig
+    requestBody: DividedEpayRequestCancelInput,headerParams?: {\\"apiKey\\": string;},configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (DividedEpayRequestCancelResult)>> => {
   
   return Http.postRequest(
@@ -2942,7 +2942,7 @@ postServiceCancelAmount.key = \\"/Service/CancelAmount\\";
  * Set [EPayRequest] status to 'Cancel' and cancel the payment
  */
 export const postServiceCancelPayment = (
-    requestBody: string,headerParams: {\\"apiKey\\": string;},configOverride?:AxiosRequestConfig
+    requestBody: string,headerParams?: {\\"apiKey\\": string;},configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<boolean>> => {
   
   return Http.postRequest(
@@ -2970,7 +2970,7 @@ postServiceCancelPayment.key = \\"/Service/CancelPayment\\";
  * Check the [EpayRequest] based on token
  */
 export const postServiceCheckEpayRequest = (
-    requestBody: string,headerParams: {\\"apiKey\\": string;},configOverride?:AxiosRequestConfig
+    requestBody: string,headerParams?: {\\"apiKey\\": string;},configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (EpayRequestCheckStatusResult)>> => {
   
   return Http.postRequest(
@@ -2998,7 +2998,7 @@ postServiceCheckEpayRequest.key = \\"/Service/CheckEpayRequest\\";
  * Create a Divided [EpayRequest] for the given model.
  */
 export const postServiceNewDivideEpayRequest = (
-    requestBody: DivideEpayRequestServiceInput,headerParams: {\\"apiKey\\": string;
+    requestBody: DivideEpayRequestServiceInput,headerParams?: {\\"apiKey\\": string;
 /**
  * 
  * - Format: guid
@@ -3031,7 +3031,7 @@ postServiceNewDivideEpayRequest.key = \\"/Service/NewDivideEpayRequest\\";
  * Create an new [EpayRequest] with the given model.
  */
 export const postServiceNewEpayRequest = (
-    requestBody: EpayRequestServiceInput,headerParams: {\\"apiKey\\": string;
+    requestBody: EpayRequestServiceInput,headerParams?: {\\"apiKey\\": string;
 /**
  * 
  * - Format: guid
@@ -3064,7 +3064,7 @@ postServiceNewEpayRequest.key = \\"/Service/NewEpayRequest\\";
  * Unblock Amount of an Divided[EpayRequest]
  */
 export const postServiceUnblockAmount = (
-    requestBody: DividedEpayRequestUnblockInput,headerParams: {\\"apiKey\\": string;},configOverride?:AxiosRequestConfig
+    requestBody: DividedEpayRequestUnblockInput,headerParams?: {\\"apiKey\\": string;},configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse< & (DividedEpayRequestUnblockResult)>> => {
   
   return Http.postRequest(
@@ -3092,7 +3092,7 @@ postServiceUnblockAmount.key = \\"/Service/UnblockAmount\\";
  * Verify the ApiKey for authorizing the [User]
  */
 export const postServiceVerifyApiKey = (
-    headerParams: {\\"apiKey\\": string;},configOverride?:AxiosRequestConfig
+    headerParams?: {\\"apiKey\\": string;},configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<boolean>> => {
   
   return Http.postRequest(
@@ -3115,7 +3115,7 @@ export const postServiceVerifyApiKey = (
 postServiceVerifyApiKey.key = \\"/Service/VerifyApiKey\\";
 
 export const postSettingsInit = (
-    headerParams: {
+    headerParams?: {
 /**
  * 
  * - Format: guid
@@ -3197,7 +3197,7 @@ export const postSettingsLogSwitchSerilog = (
 postSettingsLogSwitchSerilog.key = \\"/Settings/log/switch/serilog\\";
 
 export const postSettingsTerminalVersion = (
-    requestBody: TerminalVersionApiModel,headerParams: {
+    requestBody: TerminalVersionApiModel,headerParams?: {
 /**
  * 
  * - Format: guid
@@ -4023,7 +4023,7 @@ userWalletId: number,}, TExtra>,
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useDeleteBusinessUserConnectionInvitationIdRemove =<TExtra> (
-           options?:InternalUseMutationOptions< & (SubUserConnectionApiModel), {invitationId: string,queryParams: DeleteBusinessUserConnectionInvitationIdRemoveQueryParams,}, TExtra>,
+           options?:InternalUseMutationOptions< & (SubUserConnectionApiModel), {invitationId: string,queryParams?: DeleteBusinessUserConnectionInvitationIdRemoveQueryParams,}, TExtra>,
            ) => {return useMutation((_o)=>{
             const { invitationId,
           
@@ -4277,7 +4277,7 @@ export const useGetBusinessUserCategory = (
 [Feature just allowed for the business users]
  */
 export const useGetBusinessUserConnection = (
-           queryParams: GetBusinessUserConnectionQueryParams,options?:InternalUseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetBusinessUserConnectionQueryParams,options?:InternalUseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetBusinessUserConnection.info( 
           
@@ -4288,7 +4288,7 @@ export const useGetBusinessUserConnection = (
                 options
                )  
           }
-        useGetBusinessUserConnection.info = (queryParams: GetBusinessUserConnectionQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetBusinessUserConnection.info = (queryParams?: GetBusinessUserConnectionQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getBusinessUserConnection.key,
             
@@ -4305,7 +4305,7 @@ export const useGetBusinessUserConnection = (
               };
             };useGetBusinessUserConnection.prefetch = (
             client: QueryClient,
-            queryParams: GetBusinessUserConnectionQueryParams,options?:InternalUseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetBusinessUserConnectionQueryParams,options?:InternalUseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetBusinessUserConnection.info( 
           
           queryParams,
@@ -4326,7 +4326,7 @@ export const useGetBusinessUserConnection = (
 [Feature just allowed for the business users]
  */
 export const useGetBusinessUserConnectionActive = (
-           queryParams: GetBusinessUserConnectionActiveQueryParams,options?:InternalUseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetBusinessUserConnectionActiveQueryParams,options?:InternalUseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetBusinessUserConnectionActive.info( 
           
@@ -4337,7 +4337,7 @@ export const useGetBusinessUserConnectionActive = (
                 options
                )  
           }
-        useGetBusinessUserConnectionActive.info = (queryParams: GetBusinessUserConnectionActiveQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetBusinessUserConnectionActive.info = (queryParams?: GetBusinessUserConnectionActiveQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getBusinessUserConnectionActive.key,
             
@@ -4354,7 +4354,7 @@ export const useGetBusinessUserConnectionActive = (
               };
             };useGetBusinessUserConnectionActive.prefetch = (
             client: QueryClient,
-            queryParams: GetBusinessUserConnectionActiveQueryParams,options?:InternalUseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetBusinessUserConnectionActiveQueryParams,options?:InternalUseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetBusinessUserConnectionActive.info( 
           
           queryParams,
@@ -4499,7 +4499,7 @@ connectionId: number,options?:InternalUseQueryOptions< & (SubUserActivityApiMode
                   );
               }
       export const useGetBusinessUserConnectionConnectionIdEpay = (
-           connectionId: number,queryParams: GetBusinessUserConnectionConnectionIdEpayQueryParams,options?:InternalUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig
+           connectionId: number,queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,options?:InternalUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetBusinessUserConnectionConnectionIdEpay.info( connectionId,
           
@@ -4510,7 +4510,7 @@ connectionId: number,options?:InternalUseQueryOptions< & (SubUserActivityApiMode
                 options
                )  
           }
-        useGetBusinessUserConnectionConnectionIdEpay.info = (connectionId: number,queryParams: GetBusinessUserConnectionConnectionIdEpayQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetBusinessUserConnectionConnectionIdEpay.info = (connectionId: number,queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getBusinessUserConnectionConnectionIdEpay.key,connectionId,
             
@@ -4527,7 +4527,7 @@ connectionId: number,options?:InternalUseQueryOptions< & (SubUserActivityApiMode
               };
             };useGetBusinessUserConnectionConnectionIdEpay.prefetch = (
             client: QueryClient,
-            connectionId: number,queryParams: GetBusinessUserConnectionConnectionIdEpayQueryParams,options?:InternalUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig) => {
+            connectionId: number,queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,options?:InternalUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetBusinessUserConnectionConnectionIdEpay.info( connectionId,
           
           queryParams,
@@ -4607,7 +4607,7 @@ connectionId: number,options?:InternalUseQueryOptions<SubUserPermissionApiModel[
                   );
               }
       export const useGetEpayRequest = (
-           queryParams: GetEpayRequestQueryParams,options?:InternalUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetEpayRequestQueryParams,options?:InternalUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequest.info( 
           
@@ -4618,7 +4618,7 @@ connectionId: number,options?:InternalUseQueryOptions<SubUserPermissionApiModel[
                 options
                )  
           }
-        useGetEpayRequest.info = (queryParams: GetEpayRequestQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetEpayRequest.info = (queryParams?: GetEpayRequestQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getEpayRequest.key,
             
@@ -4635,7 +4635,7 @@ connectionId: number,options?:InternalUseQueryOptions<SubUserPermissionApiModel[
               };
             };useGetEpayRequest.prefetch = (
             client: QueryClient,
-            queryParams: GetEpayRequestQueryParams,options?:InternalUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetEpayRequestQueryParams,options?:InternalUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequest.info( 
           
           queryParams,
@@ -4693,7 +4693,7 @@ connectionId: number,options?:InternalUseQueryOptions<SubUserPermissionApiModel[
                   );
               }
       export const useGetEpayRequestCount = (
-           queryParams: GetEpayRequestCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetEpayRequestCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestCount.info( 
           
@@ -4704,7 +4704,7 @@ connectionId: number,options?:InternalUseQueryOptions<SubUserPermissionApiModel[
                 options
                )  
           }
-        useGetEpayRequestCount.info = (queryParams: GetEpayRequestCountQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetEpayRequestCount.info = (queryParams?: GetEpayRequestCountQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getEpayRequestCount.key,
             
@@ -4721,7 +4721,7 @@ connectionId: number,options?:InternalUseQueryOptions<SubUserPermissionApiModel[
               };
             };useGetEpayRequestCount.prefetch = (
             client: QueryClient,
-            queryParams: GetEpayRequestCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetEpayRequestCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestCount.info( 
           
           queryParams,
@@ -4905,7 +4905,7 @@ epayToken: string,options?:InternalUseQueryOptions<string>,configOverride?:Axios
                   );
               }
       export const useGetEpayRequestExcel = (
-           queryParams: GetEpayRequestExcelQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig
+           queryParams?: GetEpayRequestExcelQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestExcel.info( 
           
@@ -4916,7 +4916,7 @@ epayToken: string,options?:InternalUseQueryOptions<string>,configOverride?:Axios
                 options
                )  
           }
-        useGetEpayRequestExcel.info = (queryParams: GetEpayRequestExcelQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetEpayRequestExcel.info = (queryParams?: GetEpayRequestExcelQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getEpayRequestExcel.key,
             
@@ -4933,7 +4933,7 @@ epayToken: string,options?:InternalUseQueryOptions<string>,configOverride?:Axios
               };
             };useGetEpayRequestExcel.prefetch = (
             client: QueryClient,
-            queryParams: GetEpayRequestExcelQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetEpayRequestExcelQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestExcel.info( 
           
           queryParams,
@@ -4955,7 +4955,7 @@ epayToken: string,options?:InternalUseQueryOptions<string>,configOverride?:Axios
 [Needs secure login]
  */
 export const useGetEpayRequestForMe = (
-           queryParams: GetEpayRequestForMeQueryParams,options?:InternalUseQueryOptions<EpayRequestForUserQuery[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetEpayRequestForMeQueryParams,options?:InternalUseQueryOptions<EpayRequestForUserQuery[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestForMe.info( 
           
@@ -4966,7 +4966,7 @@ export const useGetEpayRequestForMe = (
                 options
                )  
           }
-        useGetEpayRequestForMe.info = (queryParams: GetEpayRequestForMeQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetEpayRequestForMe.info = (queryParams?: GetEpayRequestForMeQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getEpayRequestForMe.key,
             
@@ -4983,7 +4983,7 @@ export const useGetEpayRequestForMe = (
               };
             };useGetEpayRequestForMe.prefetch = (
             client: QueryClient,
-            queryParams: GetEpayRequestForMeQueryParams,options?:InternalUseQueryOptions<EpayRequestForUserQuery[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetEpayRequestForMeQueryParams,options?:InternalUseQueryOptions<EpayRequestForUserQuery[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestForMe.info( 
           
           queryParams,
@@ -4998,7 +4998,7 @@ export const useGetEpayRequestForMe = (
                   );
               }
       export const useGetEpayRequestForMeCount = (
-           queryParams: GetEpayRequestForMeCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetEpayRequestForMeCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestForMeCount.info( 
           
@@ -5009,7 +5009,7 @@ export const useGetEpayRequestForMe = (
                 options
                )  
           }
-        useGetEpayRequestForMeCount.info = (queryParams: GetEpayRequestForMeCountQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetEpayRequestForMeCount.info = (queryParams?: GetEpayRequestForMeCountQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getEpayRequestForMeCount.key,
             
@@ -5026,7 +5026,7 @@ export const useGetEpayRequestForMe = (
               };
             };useGetEpayRequestForMeCount.prefetch = (
             client: QueryClient,
-            queryParams: GetEpayRequestForMeCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetEpayRequestForMeCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestForMeCount.info( 
           
           queryParams,
@@ -5041,7 +5041,7 @@ export const useGetEpayRequestForMe = (
                   );
               }
       export const useGetEpayRequestForMeReport = (
-           queryParams: GetEpayRequestForMeReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetEpayRequestForMeReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestForMeReport.info( 
           
@@ -5052,7 +5052,7 @@ export const useGetEpayRequestForMe = (
                 options
                )  
           }
-        useGetEpayRequestForMeReport.info = (queryParams: GetEpayRequestForMeReportQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetEpayRequestForMeReport.info = (queryParams?: GetEpayRequestForMeReportQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getEpayRequestForMeReport.key,
             
@@ -5069,7 +5069,7 @@ export const useGetEpayRequestForMe = (
               };
             };useGetEpayRequestForMeReport.prefetch = (
             client: QueryClient,
-            queryParams: GetEpayRequestForMeReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetEpayRequestForMeReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestForMeReport.info( 
           
           queryParams,
@@ -5090,7 +5090,7 @@ export const useGetEpayRequestForMe = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetEpayRequestPosQrAccountNumber = (
-           accountNumber: string,queryParams: GetEpayRequestPosQrAccountNumberQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig
+           accountNumber: string,queryParams?: GetEpayRequestPosQrAccountNumberQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestPosQrAccountNumber.info( accountNumber,
           
@@ -5101,7 +5101,7 @@ export const useGetEpayRequestPosQrAccountNumber = (
                 options
                )  
           }
-        useGetEpayRequestPosQrAccountNumber.info = (accountNumber: string,queryParams: GetEpayRequestPosQrAccountNumberQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetEpayRequestPosQrAccountNumber.info = (accountNumber: string,queryParams?: GetEpayRequestPosQrAccountNumberQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getEpayRequestPosQrAccountNumber.key,accountNumber,
             
@@ -5118,7 +5118,7 @@ export const useGetEpayRequestPosQrAccountNumber = (
               };
             };useGetEpayRequestPosQrAccountNumber.prefetch = (
             client: QueryClient,
-            accountNumber: string,queryParams: GetEpayRequestPosQrAccountNumberQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+            accountNumber: string,queryParams?: GetEpayRequestPosQrAccountNumberQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestPosQrAccountNumber.info( accountNumber,
           
           queryParams,
@@ -5133,7 +5133,7 @@ export const useGetEpayRequestPosQrAccountNumber = (
                   );
               }
       export const useGetEpayRequestReport = (
-           queryParams: GetEpayRequestReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetEpayRequestReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestReport.info( 
           
@@ -5144,7 +5144,7 @@ export const useGetEpayRequestPosQrAccountNumber = (
                 options
                )  
           }
-        useGetEpayRequestReport.info = (queryParams: GetEpayRequestReportQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetEpayRequestReport.info = (queryParams?: GetEpayRequestReportQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getEpayRequestReport.key,
             
@@ -5161,7 +5161,7 @@ export const useGetEpayRequestPosQrAccountNumber = (
               };
             };useGetEpayRequestReport.prefetch = (
             client: QueryClient,
-            queryParams: GetEpayRequestReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetEpayRequestReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestReport.info( 
           
           queryParams,
@@ -5181,7 +5181,7 @@ export const useGetEpayRequestPosQrAccountNumber = (
  * Get comission amount for epay request amount
  */
 export const useGetEpayRequestUserWalletIdCommission = (
-           userWalletId: number,queryParams: GetEpayRequestUserWalletIdCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestUserWalletIdCommission.info( userWalletId,
           
@@ -5192,7 +5192,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
                 options
                )  
           }
-        useGetEpayRequestUserWalletIdCommission.info = (userWalletId: number,queryParams: GetEpayRequestUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetEpayRequestUserWalletIdCommission.info = (userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getEpayRequestUserWalletIdCommission.key,userWalletId,
             
@@ -5209,7 +5209,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
               };
             };useGetEpayRequestUserWalletIdCommission.prefetch = (
             client: QueryClient,
-            userWalletId: number,queryParams: GetEpayRequestUserWalletIdCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestUserWalletIdCommission.info( userWalletId,
           
           queryParams,
@@ -5459,7 +5459,7 @@ fileGuid: string,options?:InternalUseQueryOptions<string>,configOverride?:AxiosR
                   );
               }
       export const useGetGroupTransferCommission = (
-           queryParams: GetGroupTransferCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetGroupTransferCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetGroupTransferCommission.info( 
           
@@ -5470,7 +5470,7 @@ fileGuid: string,options?:InternalUseQueryOptions<string>,configOverride?:AxiosR
                 options
                )  
           }
-        useGetGroupTransferCommission.info = (queryParams: GetGroupTransferCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetGroupTransferCommission.info = (queryParams?: GetGroupTransferCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getGroupTransferCommission.key,
             
@@ -5487,7 +5487,7 @@ fileGuid: string,options?:InternalUseQueryOptions<string>,configOverride?:AxiosR
               };
             };useGetGroupTransferCommission.prefetch = (
             client: QueryClient,
-            queryParams: GetGroupTransferCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetGroupTransferCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetGroupTransferCommission.info( 
           
           queryParams,
@@ -5507,7 +5507,7 @@ fileGuid: string,options?:InternalUseQueryOptions<string>,configOverride?:AxiosR
  * Get detailed driver,taxi and fair amount information
  */
 export const useGetIntegration = (
-           queryParams: GetIntegrationQueryParams,options?:InternalUseQueryOptions< & (DriverInfoResult)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetIntegrationQueryParams,options?:InternalUseQueryOptions< & (DriverInfoResult)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetIntegration.info( 
           
@@ -5518,7 +5518,7 @@ export const useGetIntegration = (
                 options
                )  
           }
-        useGetIntegration.info = (queryParams: GetIntegrationQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetIntegration.info = (queryParams?: GetIntegrationQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getIntegration.key,
             
@@ -5535,7 +5535,7 @@ export const useGetIntegration = (
               };
             };useGetIntegration.prefetch = (
             client: QueryClient,
-            queryParams: GetIntegrationQueryParams,options?:InternalUseQueryOptions< & (DriverInfoResult)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetIntegrationQueryParams,options?:InternalUseQueryOptions< & (DriverInfoResult)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetIntegration.info( 
           
           queryParams,
@@ -5550,7 +5550,7 @@ export const useGetIntegration = (
                   );
               }
       export const useGetKpi = (
-           queryParams: GetKpiQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetKpiQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetKpi.info( 
           
@@ -5561,7 +5561,7 @@ export const useGetIntegration = (
                 options
                )  
           }
-        useGetKpi.info = (queryParams: GetKpiQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetKpi.info = (queryParams?: GetKpiQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getKpi.key,
             
@@ -5578,7 +5578,7 @@ export const useGetIntegration = (
               };
             };useGetKpi.prefetch = (
             client: QueryClient,
-            queryParams: GetKpiQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetKpiQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetKpi.info( 
           
           queryParams,
@@ -5593,7 +5593,7 @@ export const useGetIntegration = (
                   );
               }
       export const useGetKpiCurrent = (
-           queryParams: GetKpiCurrentQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetKpiCurrentQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetKpiCurrent.info( 
           
@@ -5604,7 +5604,7 @@ export const useGetIntegration = (
                 options
                )  
           }
-        useGetKpiCurrent.info = (queryParams: GetKpiCurrentQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetKpiCurrent.info = (queryParams?: GetKpiCurrentQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getKpiCurrent.key,
             
@@ -5621,7 +5621,7 @@ export const useGetIntegration = (
               };
             };useGetKpiCurrent.prefetch = (
             client: QueryClient,
-            queryParams: GetKpiCurrentQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetKpiCurrentQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetKpiCurrent.info( 
           
           queryParams,
@@ -5636,7 +5636,7 @@ export const useGetIntegration = (
                   );
               }
       export const useGetKpiLast = (
-           queryParams: GetKpiLastQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetKpiLastQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetKpiLast.info( 
           
@@ -5647,7 +5647,7 @@ export const useGetIntegration = (
                 options
                )  
           }
-        useGetKpiLast.info = (queryParams: GetKpiLastQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetKpiLast.info = (queryParams?: GetKpiLastQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getKpiLast.key,
             
@@ -5664,7 +5664,7 @@ export const useGetIntegration = (
               };
             };useGetKpiLast.prefetch = (
             client: QueryClient,
-            queryParams: GetKpiLastQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetKpiLastQueryParams,options?:InternalUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetKpiLast.info( 
           
           queryParams,
@@ -5776,7 +5776,7 @@ export const useGetNotificationNotif = (
                   );
               }
       export const useGetNotificationUnread = (
-           queryParams: GetNotificationUnreadQueryParams,options?:InternalUseQueryOptions<UnreadNotificationCountApiModel[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetNotificationUnreadQueryParams,options?:InternalUseQueryOptions<UnreadNotificationCountApiModel[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetNotificationUnread.info( 
           
@@ -5787,7 +5787,7 @@ export const useGetNotificationNotif = (
                 options
                )  
           }
-        useGetNotificationUnread.info = (queryParams: GetNotificationUnreadQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetNotificationUnread.info = (queryParams?: GetNotificationUnreadQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getNotificationUnread.key,
             
@@ -5804,7 +5804,7 @@ export const useGetNotificationNotif = (
               };
             };useGetNotificationUnread.prefetch = (
             client: QueryClient,
-            queryParams: GetNotificationUnreadQueryParams,options?:InternalUseQueryOptions<UnreadNotificationCountApiModel[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetNotificationUnreadQueryParams,options?:InternalUseQueryOptions<UnreadNotificationCountApiModel[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetNotificationUnread.info( 
           
           queryParams,
@@ -5872,7 +5872,7 @@ export const useGetPosAccountNumber = (
  * 
  * Account Number
  */
-accountNumber: string,queryParams: GetPosAccountNumberQueryParams,options?:InternalUseQueryOptions< & (PosLandingPageApiModel)>,configOverride?:AxiosRequestConfig
+accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:InternalUseQueryOptions< & (PosLandingPageApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetPosAccountNumber.info( accountNumber,
           
@@ -5888,7 +5888,7 @@ accountNumber: string,queryParams: GetPosAccountNumberQueryParams,options?:Inter
  * 
  * Account Number
  */
-accountNumber: string,queryParams: GetPosAccountNumberQueryParams,configOverride?:AxiosRequestConfig) => {
+accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getPosAccountNumber.key,accountNumber,
             
@@ -5910,7 +5910,7 @@ accountNumber: string,queryParams: GetPosAccountNumberQueryParams,configOverride
  * 
  * Account Number
  */
-accountNumber: string,queryParams: GetPosAccountNumberQueryParams,options?:InternalUseQueryOptions< & (PosLandingPageApiModel)>,configOverride?:AxiosRequestConfig) => {
+accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:InternalUseQueryOptions< & (PosLandingPageApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetPosAccountNumber.info( accountNumber,
           
           queryParams,
@@ -6175,7 +6175,7 @@ export const useGetResellerUser = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardCommissionReport = (
-           queryParams: GetResellerUserDashboardCommissionReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfDecimal[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardCommissionReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfDecimal[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardCommissionReport.info( 
           
@@ -6186,7 +6186,7 @@ export const useGetResellerUserDashboardCommissionReport = (
                 options
                )  
           }
-        useGetResellerUserDashboardCommissionReport.info = (queryParams: GetResellerUserDashboardCommissionReportQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetResellerUserDashboardCommissionReport.info = (queryParams?: GetResellerUserDashboardCommissionReportQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getResellerUserDashboardCommissionReport.key,
             
@@ -6203,7 +6203,7 @@ export const useGetResellerUserDashboardCommissionReport = (
               };
             };useGetResellerUserDashboardCommissionReport.prefetch = (
             client: QueryClient,
-            queryParams: GetResellerUserDashboardCommissionReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfDecimal[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardCommissionReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfDecimal[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardCommissionReport.info( 
           
           queryParams,
@@ -6225,7 +6225,7 @@ export const useGetResellerUserDashboardCommissionReport = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardCommissionSum = (
-           queryParams: GetResellerUserDashboardCommissionSumQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardCommissionSumQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardCommissionSum.info( 
           
@@ -6236,7 +6236,7 @@ export const useGetResellerUserDashboardCommissionSum = (
                 options
                )  
           }
-        useGetResellerUserDashboardCommissionSum.info = (queryParams: GetResellerUserDashboardCommissionSumQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetResellerUserDashboardCommissionSum.info = (queryParams?: GetResellerUserDashboardCommissionSumQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getResellerUserDashboardCommissionSum.key,
             
@@ -6253,7 +6253,7 @@ export const useGetResellerUserDashboardCommissionSum = (
               };
             };useGetResellerUserDashboardCommissionSum.prefetch = (
             client: QueryClient,
-            queryParams: GetResellerUserDashboardCommissionSumQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardCommissionSumQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardCommissionSum.info( 
           
           queryParams,
@@ -6275,7 +6275,7 @@ export const useGetResellerUserDashboardCommissionSum = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardIntroducedCount = (
-           queryParams: GetResellerUserDashboardIntroducedCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardIntroducedCount.info( 
           
@@ -6286,7 +6286,7 @@ export const useGetResellerUserDashboardIntroducedCount = (
                 options
                )  
           }
-        useGetResellerUserDashboardIntroducedCount.info = (queryParams: GetResellerUserDashboardIntroducedCountQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetResellerUserDashboardIntroducedCount.info = (queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getResellerUserDashboardIntroducedCount.key,
             
@@ -6303,7 +6303,7 @@ export const useGetResellerUserDashboardIntroducedCount = (
               };
             };useGetResellerUserDashboardIntroducedCount.prefetch = (
             client: QueryClient,
-            queryParams: GetResellerUserDashboardIntroducedCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardIntroducedCount.info( 
           
           queryParams,
@@ -6325,7 +6325,7 @@ export const useGetResellerUserDashboardIntroducedCount = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardIntroducedReport = (
-           queryParams: GetResellerUserDashboardIntroducedReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardIntroducedReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardIntroducedReport.info( 
           
@@ -6336,7 +6336,7 @@ export const useGetResellerUserDashboardIntroducedReport = (
                 options
                )  
           }
-        useGetResellerUserDashboardIntroducedReport.info = (queryParams: GetResellerUserDashboardIntroducedReportQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetResellerUserDashboardIntroducedReport.info = (queryParams?: GetResellerUserDashboardIntroducedReportQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getResellerUserDashboardIntroducedReport.key,
             
@@ -6353,7 +6353,7 @@ export const useGetResellerUserDashboardIntroducedReport = (
               };
             };useGetResellerUserDashboardIntroducedReport.prefetch = (
             client: QueryClient,
-            queryParams: GetResellerUserDashboardIntroducedReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardIntroducedReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardIntroducedReport.info( 
           
           queryParams,
@@ -6375,7 +6375,7 @@ export const useGetResellerUserDashboardIntroducedReport = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardLinksCount = (
-           queryParams: GetResellerUserDashboardLinksCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardLinksCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardLinksCount.info( 
           
@@ -6386,7 +6386,7 @@ export const useGetResellerUserDashboardLinksCount = (
                 options
                )  
           }
-        useGetResellerUserDashboardLinksCount.info = (queryParams: GetResellerUserDashboardLinksCountQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetResellerUserDashboardLinksCount.info = (queryParams?: GetResellerUserDashboardLinksCountQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getResellerUserDashboardLinksCount.key,
             
@@ -6403,7 +6403,7 @@ export const useGetResellerUserDashboardLinksCount = (
               };
             };useGetResellerUserDashboardLinksCount.prefetch = (
             client: QueryClient,
-            queryParams: GetResellerUserDashboardLinksCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardLinksCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardLinksCount.info( 
           
           queryParams,
@@ -6425,7 +6425,7 @@ export const useGetResellerUserDashboardLinksCount = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardLinksPaidCount = (
-           queryParams: GetResellerUserDashboardLinksPaidCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardLinksPaidCount.info( 
           
@@ -6436,7 +6436,7 @@ export const useGetResellerUserDashboardLinksPaidCount = (
                 options
                )  
           }
-        useGetResellerUserDashboardLinksPaidCount.info = (queryParams: GetResellerUserDashboardLinksPaidCountQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetResellerUserDashboardLinksPaidCount.info = (queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getResellerUserDashboardLinksPaidCount.key,
             
@@ -6453,7 +6453,7 @@ export const useGetResellerUserDashboardLinksPaidCount = (
               };
             };useGetResellerUserDashboardLinksPaidCount.prefetch = (
             client: QueryClient,
-            queryParams: GetResellerUserDashboardLinksPaidCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardLinksPaidCount.info( 
           
           queryParams,
@@ -6475,7 +6475,7 @@ export const useGetResellerUserDashboardLinksPaidCount = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardLinksPaidReport = (
-           queryParams: GetResellerUserDashboardLinksPaidReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardLinksPaidReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardLinksPaidReport.info( 
           
@@ -6486,7 +6486,7 @@ export const useGetResellerUserDashboardLinksPaidReport = (
                 options
                )  
           }
-        useGetResellerUserDashboardLinksPaidReport.info = (queryParams: GetResellerUserDashboardLinksPaidReportQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetResellerUserDashboardLinksPaidReport.info = (queryParams?: GetResellerUserDashboardLinksPaidReportQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getResellerUserDashboardLinksPaidReport.key,
             
@@ -6503,7 +6503,7 @@ export const useGetResellerUserDashboardLinksPaidReport = (
               };
             };useGetResellerUserDashboardLinksPaidReport.prefetch = (
             client: QueryClient,
-            queryParams: GetResellerUserDashboardLinksPaidReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardLinksPaidReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardLinksPaidReport.info( 
           
           queryParams,
@@ -6525,7 +6525,7 @@ export const useGetResellerUserDashboardLinksPaidReport = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardLinksReport = (
-           queryParams: GetResellerUserDashboardLinksReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardLinksReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardLinksReport.info( 
           
@@ -6536,7 +6536,7 @@ export const useGetResellerUserDashboardLinksReport = (
                 options
                )  
           }
-        useGetResellerUserDashboardLinksReport.info = (queryParams: GetResellerUserDashboardLinksReportQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetResellerUserDashboardLinksReport.info = (queryParams?: GetResellerUserDashboardLinksReportQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getResellerUserDashboardLinksReport.key,
             
@@ -6553,7 +6553,7 @@ export const useGetResellerUserDashboardLinksReport = (
               };
             };useGetResellerUserDashboardLinksReport.prefetch = (
             client: QueryClient,
-            queryParams: GetResellerUserDashboardLinksReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardLinksReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardLinksReport.info( 
           
           queryParams,
@@ -6575,7 +6575,7 @@ export const useGetResellerUserDashboardLinksReport = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardTransactionsCount = (
-           queryParams: GetResellerUserDashboardTransactionsCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardTransactionsCount.info( 
           
@@ -6586,7 +6586,7 @@ export const useGetResellerUserDashboardTransactionsCount = (
                 options
                )  
           }
-        useGetResellerUserDashboardTransactionsCount.info = (queryParams: GetResellerUserDashboardTransactionsCountQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetResellerUserDashboardTransactionsCount.info = (queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getResellerUserDashboardTransactionsCount.key,
             
@@ -6603,7 +6603,7 @@ export const useGetResellerUserDashboardTransactionsCount = (
               };
             };useGetResellerUserDashboardTransactionsCount.prefetch = (
             client: QueryClient,
-            queryParams: GetResellerUserDashboardTransactionsCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,options?:InternalUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardTransactionsCount.info( 
           
           queryParams,
@@ -6625,7 +6625,7 @@ export const useGetResellerUserDashboardTransactionsCount = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardTransactionsReport = (
-           queryParams: GetResellerUserDashboardTransactionsReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardTransactionsReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardTransactionsReport.info( 
           
@@ -6636,7 +6636,7 @@ export const useGetResellerUserDashboardTransactionsReport = (
                 options
                )  
           }
-        useGetResellerUserDashboardTransactionsReport.info = (queryParams: GetResellerUserDashboardTransactionsReportQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetResellerUserDashboardTransactionsReport.info = (queryParams?: GetResellerUserDashboardTransactionsReportQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getResellerUserDashboardTransactionsReport.key,
             
@@ -6653,7 +6653,7 @@ export const useGetResellerUserDashboardTransactionsReport = (
               };
             };useGetResellerUserDashboardTransactionsReport.prefetch = (
             client: QueryClient,
-            queryParams: GetResellerUserDashboardTransactionsReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardTransactionsReportQueryParams,options?:InternalUseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardTransactionsReport.info( 
           
           queryParams,
@@ -6674,7 +6674,7 @@ export const useGetResellerUserDashboardTransactionsReport = (
 [Feature just allowed for Resellers]
  */
 export const useGetResellerUserIntroduced = (
-           queryParams: GetResellerUserIntroducedQueryParams,options?:InternalUseQueryOptions<ReselledUserApiModel[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserIntroducedQueryParams,options?:InternalUseQueryOptions<ReselledUserApiModel[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserIntroduced.info( 
           
@@ -6685,7 +6685,7 @@ export const useGetResellerUserIntroduced = (
                 options
                )  
           }
-        useGetResellerUserIntroduced.info = (queryParams: GetResellerUserIntroducedQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetResellerUserIntroduced.info = (queryParams?: GetResellerUserIntroducedQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getResellerUserIntroduced.key,
             
@@ -6702,7 +6702,7 @@ export const useGetResellerUserIntroduced = (
               };
             };useGetResellerUserIntroduced.prefetch = (
             client: QueryClient,
-            queryParams: GetResellerUserIntroducedQueryParams,options?:InternalUseQueryOptions<ReselledUserApiModel[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserIntroducedQueryParams,options?:InternalUseQueryOptions<ReselledUserApiModel[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserIntroduced.info( 
           
           queryParams,
@@ -6875,7 +6875,7 @@ export const useGetSubDomainSubDomainAddress = (
  * The SubDomain part of the url.
             
  */
-subDomainAddress: string,headerParams: {
+subDomainAddress: string,headerParams?: {
 /**
  * 
  * - Format: guid
@@ -6897,7 +6897,7 @@ subDomainAddress: string,headerParams: {
  * The SubDomain part of the url.
             
  */
-subDomainAddress: string,headerParams: {
+subDomainAddress: string,headerParams?: {
 /**
  * 
  * - Format: guid
@@ -6925,7 +6925,7 @@ subDomainAddress: string,headerParams: {
  * The SubDomain part of the url.
             
  */
-subDomainAddress: string,headerParams: {
+subDomainAddress: string,headerParams?: {
 /**
  * 
  * - Format: guid
@@ -7045,7 +7045,7 @@ export const useGetSubUserConnection = (
                   );
               }
       export const useGetTransaction = (
-           queryParams: GetTransactionQueryParams,options?:InternalUseQueryOptions<TransactionApiModel[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetTransactionQueryParams,options?:InternalUseQueryOptions<TransactionApiModel[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransaction.info( 
           
@@ -7056,7 +7056,7 @@ export const useGetSubUserConnection = (
                 options
                )  
           }
-        useGetTransaction.info = (queryParams: GetTransactionQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetTransaction.info = (queryParams?: GetTransactionQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getTransaction.key,
             
@@ -7073,7 +7073,7 @@ export const useGetSubUserConnection = (
               };
             };useGetTransaction.prefetch = (
             client: QueryClient,
-            queryParams: GetTransactionQueryParams,options?:InternalUseQueryOptions<TransactionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetTransactionQueryParams,options?:InternalUseQueryOptions<TransactionApiModel[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransaction.info( 
           
           queryParams,
@@ -7088,7 +7088,7 @@ export const useGetSubUserConnection = (
                   );
               }
       export const useGetTransactionExcel = (
-           queryParams: GetTransactionExcelQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig
+           queryParams?: GetTransactionExcelQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransactionExcel.info( 
           
@@ -7099,7 +7099,7 @@ export const useGetSubUserConnection = (
                 options
                )  
           }
-        useGetTransactionExcel.info = (queryParams: GetTransactionExcelQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetTransactionExcel.info = (queryParams?: GetTransactionExcelQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getTransactionExcel.key,
             
@@ -7116,7 +7116,7 @@ export const useGetSubUserConnection = (
               };
             };useGetTransactionExcel.prefetch = (
             client: QueryClient,
-            queryParams: GetTransactionExcelQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetTransactionExcelQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransactionExcel.info( 
           
           queryParams,
@@ -7135,7 +7135,7 @@ export const useGetSubUserConnection = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetTransactionReport = (
-           queryParams: GetTransactionReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetTransactionReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransactionReport.info( 
           
@@ -7146,7 +7146,7 @@ export const useGetTransactionReport = (
                 options
                )  
           }
-        useGetTransactionReport.info = (queryParams: GetTransactionReportQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetTransactionReport.info = (queryParams?: GetTransactionReportQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getTransactionReport.key,
             
@@ -7163,7 +7163,7 @@ export const useGetTransactionReport = (
               };
             };useGetTransactionReport.prefetch = (
             client: QueryClient,
-            queryParams: GetTransactionReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetTransactionReportQueryParams,options?:InternalUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransactionReport.info( 
           
           queryParams,
@@ -7182,7 +7182,7 @@ export const useGetTransactionReport = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetTransactionReportAll = (
-           queryParams: GetTransactionReportAllQueryParams,options?:InternalUseQueryOptions< & (AllTransactionsReportApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetTransactionReportAllQueryParams,options?:InternalUseQueryOptions< & (AllTransactionsReportApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransactionReportAll.info( 
           
@@ -7193,7 +7193,7 @@ export const useGetTransactionReportAll = (
                 options
                )  
           }
-        useGetTransactionReportAll.info = (queryParams: GetTransactionReportAllQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetTransactionReportAll.info = (queryParams?: GetTransactionReportAllQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getTransactionReportAll.key,
             
@@ -7210,7 +7210,7 @@ export const useGetTransactionReportAll = (
               };
             };useGetTransactionReportAll.prefetch = (
             client: QueryClient,
-            queryParams: GetTransactionReportAllQueryParams,options?:InternalUseQueryOptions< & (AllTransactionsReportApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetTransactionReportAllQueryParams,options?:InternalUseQueryOptions< & (AllTransactionsReportApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransactionReportAll.info( 
           
           queryParams,
@@ -7279,7 +7279,7 @@ export const useGetTransactionTransactionId = (
  * Get recent money transfers
  */
 export const useGetTransferRecent = (
-           queryParams: GetTransferRecentQueryParams,options?:InternalUseQueryOptions<TransferMoneyApiModel[]>,configOverride?:AxiosRequestConfig
+           queryParams?: GetTransferRecentQueryParams,options?:InternalUseQueryOptions<TransferMoneyApiModel[]>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransferRecent.info( 
           
@@ -7290,7 +7290,7 @@ export const useGetTransferRecent = (
                 options
                )  
           }
-        useGetTransferRecent.info = (queryParams: GetTransferRecentQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetTransferRecent.info = (queryParams?: GetTransferRecentQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getTransferRecent.key,
             
@@ -7307,7 +7307,7 @@ export const useGetTransferRecent = (
               };
             };useGetTransferRecent.prefetch = (
             client: QueryClient,
-            queryParams: GetTransferRecentQueryParams,options?:InternalUseQueryOptions<TransferMoneyApiModel[]>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetTransferRecentQueryParams,options?:InternalUseQueryOptions<TransferMoneyApiModel[]>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransferRecent.info( 
           
           queryParams,
@@ -7322,7 +7322,7 @@ export const useGetTransferRecent = (
                   );
               }
       export const useGetTransferSearch = (
-           queryParams: GetTransferSearchQueryParams,options?:InternalUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetTransferSearchQueryParams,options?:InternalUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransferSearch.info( 
           
@@ -7333,7 +7333,7 @@ export const useGetTransferRecent = (
                 options
                )  
           }
-        useGetTransferSearch.info = (queryParams: GetTransferSearchQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetTransferSearch.info = (queryParams?: GetTransferSearchQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getTransferSearch.key,
             
@@ -7350,7 +7350,7 @@ export const useGetTransferRecent = (
               };
             };useGetTransferSearch.prefetch = (
             client: QueryClient,
-            queryParams: GetTransferSearchQueryParams,options?:InternalUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetTransferSearchQueryParams,options?:InternalUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransferSearch.info( 
           
           queryParams,
@@ -7370,7 +7370,7 @@ export const useGetTransferRecent = (
  * Get commission amount for transfer money amount
  */
 export const useGetTransferUserWalletIdCommission = (
-           userWalletId: number,queryParams: GetTransferUserWalletIdCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransferUserWalletIdCommission.info( userWalletId,
           
@@ -7381,7 +7381,7 @@ export const useGetTransferUserWalletIdCommission = (
                 options
                )  
           }
-        useGetTransferUserWalletIdCommission.info = (userWalletId: number,queryParams: GetTransferUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetTransferUserWalletIdCommission.info = (userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getTransferUserWalletIdCommission.key,userWalletId,
             
@@ -7398,7 +7398,7 @@ export const useGetTransferUserWalletIdCommission = (
               };
             };useGetTransferUserWalletIdCommission.prefetch = (
             client: QueryClient,
-            userWalletId: number,queryParams: GetTransferUserWalletIdCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransferUserWalletIdCommission.info( userWalletId,
           
           queryParams,
@@ -8040,7 +8040,7 @@ export const useGetUserUpgradeToBusinessRequest = (
                   );
               }
       export const useGetUserWalletAccountNumberQrcode = (
-           accountNumber: string,queryParams: GetUserWalletAccountNumberQrcodeQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig
+           accountNumber: string,queryParams?: GetUserWalletAccountNumberQrcodeQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletAccountNumberQrcode.info( accountNumber,
           
@@ -8051,7 +8051,7 @@ export const useGetUserUpgradeToBusinessRequest = (
                 options
                )  
           }
-        useGetUserWalletAccountNumberQrcode.info = (accountNumber: string,queryParams: GetUserWalletAccountNumberQrcodeQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetUserWalletAccountNumberQrcode.info = (accountNumber: string,queryParams?: GetUserWalletAccountNumberQrcodeQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getUserWalletAccountNumberQrcode.key,accountNumber,
             
@@ -8068,7 +8068,7 @@ export const useGetUserUpgradeToBusinessRequest = (
               };
             };useGetUserWalletAccountNumberQrcode.prefetch = (
             client: QueryClient,
-            accountNumber: string,queryParams: GetUserWalletAccountNumberQrcodeQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+            accountNumber: string,queryParams?: GetUserWalletAccountNumberQrcodeQueryParams,options?:InternalUseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletAccountNumberQrcode.info( accountNumber,
           
           queryParams,
@@ -8087,7 +8087,7 @@ export const useGetUserUpgradeToBusinessRequest = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetUserWalletSearch = (
-           queryParams: GetUserWalletSearchQueryParams,options?:InternalUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetUserWalletSearchQueryParams,options?:InternalUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletSearch.info( 
           
@@ -8098,7 +8098,7 @@ export const useGetUserWalletSearch = (
                 options
                )  
           }
-        useGetUserWalletSearch.info = (queryParams: GetUserWalletSearchQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetUserWalletSearch.info = (queryParams?: GetUserWalletSearchQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getUserWalletSearch.key,
             
@@ -8115,7 +8115,7 @@ export const useGetUserWalletSearch = (
               };
             };useGetUserWalletSearch.prefetch = (
             client: QueryClient,
-            queryParams: GetUserWalletSearchQueryParams,options?:InternalUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetUserWalletSearchQueryParams,options?:InternalUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletSearch.info( 
           
           queryParams,
@@ -8225,7 +8225,7 @@ export const useGetUserWalletUserWalletIdBalance = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetUserWalletUserWalletIdEpayRequestComission = (
-           userWalletId: number,queryParams: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletUserWalletIdEpayRequestComission.info( userWalletId,
           
@@ -8236,7 +8236,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                 options
                )  
           }
-        useGetUserWalletUserWalletIdEpayRequestComission.info = (userWalletId: number,queryParams: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetUserWalletUserWalletIdEpayRequestComission.info = (userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getUserWalletUserWalletIdEpayRequestComission.key,userWalletId,
             
@@ -8253,7 +8253,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
               };
             };useGetUserWalletUserWalletIdEpayRequestComission.prefetch = (
             client: QueryClient,
-            userWalletId: number,queryParams: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletUserWalletIdEpayRequestComission.info( userWalletId,
           
           queryParams,
@@ -8311,7 +8311,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                   );
               }
       export const useGetUserWalletUserWalletIdSettlementRequestComission = (
-           userWalletId: number,queryParams: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletUserWalletIdSettlementRequestComission.info( userWalletId,
           
@@ -8322,7 +8322,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                 options
                )  
           }
-        useGetUserWalletUserWalletIdSettlementRequestComission.info = (userWalletId: number,queryParams: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetUserWalletUserWalletIdSettlementRequestComission.info = (userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getUserWalletUserWalletIdSettlementRequestComission.key,userWalletId,
             
@@ -8339,7 +8339,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
               };
             };useGetUserWalletUserWalletIdSettlementRequestComission.prefetch = (
             client: QueryClient,
-            userWalletId: number,queryParams: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletUserWalletIdSettlementRequestComission.info( userWalletId,
           
           queryParams,
@@ -8358,7 +8358,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
-           userWalletId: number,queryParams: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletUserWalletIdTransferMoneyCommission.info( userWalletId,
           
@@ -8369,7 +8369,7 @@ export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
                 options
                )  
           }
-        useGetUserWalletUserWalletIdTransferMoneyCommission.info = (userWalletId: number,queryParams: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
+        useGetUserWalletUserWalletIdTransferMoneyCommission.info = (userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
               return {
                 key: [getUserWalletUserWalletIdTransferMoneyCommission.key,userWalletId,
             
@@ -8386,7 +8386,7 @@ export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
               };
             };useGetUserWalletUserWalletIdTransferMoneyCommission.prefetch = (
             client: QueryClient,
-            userWalletId: number,queryParams: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,options?:InternalUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletUserWalletIdTransferMoneyCommission.info( userWalletId,
           
           queryParams,
@@ -8535,7 +8535,7 @@ export const usePostAuthForgetPasswordVerify =<TExtra> (
           }
         
       export const usePostAuthRegister =<TExtra> (
-           options?:InternalUseMutationOptions< & (RegisterNewUserQuery), {requestBody: RegisterApiModel,headerParams: {\\"platformType\\": \\"Unknown\\" | \\"Server\\" | \\"Android\\" | \\"iOS\\" | \\"Device\\" | \\"Browser\\" | \\"PWA\\" | \\"Web\\" | \\"Windows\\" | \\"Linux\\" | \\"macOS\\" | \\"Desktop\\";},}, TExtra>,
+           options?:InternalUseMutationOptions< & (RegisterNewUserQuery), {requestBody: RegisterApiModel,headerParams?: {\\"platformType\\": \\"Unknown\\" | \\"Server\\" | \\"Android\\" | \\"iOS\\" | \\"Device\\" | \\"Browser\\" | \\"PWA\\" | \\"Web\\" | \\"Windows\\" | \\"Linux\\" | \\"macOS\\" | \\"Desktop\\";},}, TExtra>,
            ) => {return useMutation((_o)=>{
             const { 
           requestBody,
@@ -8977,7 +8977,7 @@ export const usePostPosPayTargetAccountNumberOnline =<TExtra> (
  * 
  * Target account number
  */
-targetAccountNumber: string,requestBody: PosOnlinePayInput,headerParams: {
+targetAccountNumber: string,requestBody: PosOnlinePayInput,headerParams?: {
 /**
  * 
  * - Format: guid
@@ -9035,7 +9035,7 @@ targetAccountNumber: string,requestBody: PosWalletPayInput,}, TExtra>,
  * Cancel Amount of an Divided[EpayRequest]
  */
 export const usePostServiceCancelAmount =<TExtra> (
-           options?:InternalUseMutationOptions< & (DividedEpayRequestCancelResult), {requestBody: DividedEpayRequestCancelInput,headerParams: {\\"apiKey\\": string;},}, TExtra>,
+           options?:InternalUseMutationOptions< & (DividedEpayRequestCancelResult), {requestBody: DividedEpayRequestCancelInput,headerParams?: {\\"apiKey\\": string;},}, TExtra>,
            ) => {return useMutation((_o)=>{
             const { 
           requestBody,
@@ -9059,7 +9059,7 @@ export const usePostServiceCancelAmount =<TExtra> (
  * Set [EPayRequest] status to 'Cancel' and cancel the payment
  */
 export const usePostServiceCancelPayment =<TExtra> (
-           options?:InternalUseMutationOptions<boolean, {requestBody: string,headerParams: {\\"apiKey\\": string;},}, TExtra>,
+           options?:InternalUseMutationOptions<boolean, {requestBody: string,headerParams?: {\\"apiKey\\": string;},}, TExtra>,
            ) => {return useMutation((_o)=>{
             const { 
           requestBody,
@@ -9083,7 +9083,7 @@ export const usePostServiceCancelPayment =<TExtra> (
  * Check the [EpayRequest] based on token
  */
 export const usePostServiceCheckEpayRequest =<TExtra> (
-           options?:InternalUseMutationOptions< & (EpayRequestCheckStatusResult), {requestBody: string,headerParams: {\\"apiKey\\": string;},}, TExtra>,
+           options?:InternalUseMutationOptions< & (EpayRequestCheckStatusResult), {requestBody: string,headerParams?: {\\"apiKey\\": string;},}, TExtra>,
            ) => {return useMutation((_o)=>{
             const { 
           requestBody,
@@ -9107,7 +9107,7 @@ export const usePostServiceCheckEpayRequest =<TExtra> (
  * Create a Divided [EpayRequest] for the given model.
  */
 export const usePostServiceNewDivideEpayRequest =<TExtra> (
-           options?:InternalUseMutationOptions< & (EpayRequestWcfResult), {requestBody: DivideEpayRequestServiceInput,headerParams: {\\"apiKey\\": string;
+           options?:InternalUseMutationOptions< & (EpayRequestWcfResult), {requestBody: DivideEpayRequestServiceInput,headerParams?: {\\"apiKey\\": string;
 /**
  * 
  * - Format: guid
@@ -9136,7 +9136,7 @@ export const usePostServiceNewDivideEpayRequest =<TExtra> (
  * Create an new [EpayRequest] with the given model.
  */
 export const usePostServiceNewEpayRequest =<TExtra> (
-           options?:InternalUseMutationOptions< & (EpayRequestWcfResult), {requestBody: EpayRequestServiceInput,headerParams: {\\"apiKey\\": string;
+           options?:InternalUseMutationOptions< & (EpayRequestWcfResult), {requestBody: EpayRequestServiceInput,headerParams?: {\\"apiKey\\": string;
 /**
  * 
  * - Format: guid
@@ -9165,7 +9165,7 @@ export const usePostServiceNewEpayRequest =<TExtra> (
  * Unblock Amount of an Divided[EpayRequest]
  */
 export const usePostServiceUnblockAmount =<TExtra> (
-           options?:InternalUseMutationOptions< & (DividedEpayRequestUnblockResult), {requestBody: DividedEpayRequestUnblockInput,headerParams: {\\"apiKey\\": string;},}, TExtra>,
+           options?:InternalUseMutationOptions< & (DividedEpayRequestUnblockResult), {requestBody: DividedEpayRequestUnblockInput,headerParams?: {\\"apiKey\\": string;},}, TExtra>,
            ) => {return useMutation((_o)=>{
             const { 
           requestBody,
@@ -9189,7 +9189,7 @@ export const usePostServiceUnblockAmount =<TExtra> (
  * Verify the ApiKey for authorizing the [User]
  */
 export const usePostServiceVerifyApiKey =<TExtra> (
-           options?:InternalUseMutationOptions<boolean, {headerParams: {\\"apiKey\\": string;},}, TExtra>,
+           options?:InternalUseMutationOptions<boolean, {headerParams?: {\\"apiKey\\": string;},}, TExtra>,
            ) => {return useMutation((_o)=>{
             const { 
           
@@ -9208,7 +9208,7 @@ export const usePostServiceVerifyApiKey =<TExtra> (
           }
         
       export const usePostSettingsInit =<TExtra> (
-           options?:InternalUseMutationOptions< & (InitApiModel), {headerParams: {
+           options?:InternalUseMutationOptions< & (InitApiModel), {headerParams?: {
 /**
  * 
  * - Format: guid
@@ -9289,7 +9289,7 @@ export const usePostServiceVerifyApiKey =<TExtra> (
           }
         
       export const usePostSettingsTerminalVersion =<TExtra> (
-           options?:InternalUseMutationOptions<string, {requestBody: TerminalVersionApiModel,headerParams: {
+           options?:InternalUseMutationOptions<string, {requestBody: TerminalVersionApiModel,headerParams?: {
 /**
  * 
  * - Format: guid
@@ -12349,7 +12349,7 @@ exports[`generate generate type 1`] = `
  * 
  * - Format: binary
  */
-\\"file\\"?: string;}
+\\"file\\": string;}
         
         
         export type RequestBodyLogEventLevel = LogEventLevel
