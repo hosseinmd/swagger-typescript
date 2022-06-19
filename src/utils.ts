@@ -10,24 +10,16 @@ function getPathParams(parameters?: Parameter[]): Parameter[] {
 }
 
 function getHeaderParams(parameters: Parameter[] | undefined, config: Config) {
-  return getParams(parameters, "header", config!);
-}
-
-function getParams(
-  parameters: Parameter[] | undefined,
-  type: "query" | "header",
-  config: Config,
-) {
   const queryParamsArray =
     parameters?.filter(({ in: In, name }) => {
-      return In === type && !config.ignore?.headerParams?.includes(name);
+      return In === "header" && !config.ignore?.headerParams?.includes(name);
     }) || [];
 
   const params = getObjectType(queryParamsArray, config);
 
   return {
     params,
-    hasNullable: queryParamsArray.every(({ schema = {} }) => schema.nullable),
+    isNullable: queryParamsArray.every(({ schema = {} }) => !schema.required),
   };
 }
 
@@ -277,11 +269,7 @@ function getParametersInfo(
   return {
     params,
     exist: params.length > 0,
-    isNullable: params.every(({ schema }) =>
-      schema?.required === undefined
-        ? schema?.nullable || schema?.["x-nullable"]
-        : !schema?.required,
-    ),
+    isNullable: params.every(({ schema }) => !schema?.required),
   };
 }
 

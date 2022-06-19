@@ -130,7 +130,7 @@ function generator(
 
           const {
             params: headerParams,
-            hasNullable: hasNullableHeaderParams,
+            isNullable: hasNullableHeaderParams,
           } = getHeaderParams(parameters, config);
 
           const requestBody = getBodyContent(options.requestBody);
