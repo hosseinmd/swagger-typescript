@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.10...v6.1.0) (2022-06-19)
+
+
+### Features
+
+* add isRequestError to isRequestError ([3fa6222](https://github.com/hosseinmd/swagger-typescript/commit/3fa62222aa58bc2ff2f07a85890c6b9cc6fdba07))
+
+
+### Bug Fixes
+
+* nullable query params ([0ead519](https://github.com/hosseinmd/swagger-typescript/commit/0ead51999379d6e8a7bd6d763fbc9f307326e462))
+
 ### [6.0.9](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.8...v6.0.9) (2022-05-23)
 
 
