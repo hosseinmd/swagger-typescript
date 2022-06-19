@@ -12,7 +12,7 @@
     "lint": "eslint src/**/*.ts",
     "eslint-fix": "eslint src/**/*.ts --fix",
     "prettier-fix": "prettier --write \"**/*.{ts,tsx}\"",
-    "release": "yarn prepare && yarn jest && standard-version && npm publish && git push --tags && git push"
+    "release": "yarn prepare && yarn jest && standard-version && git push --follow-tags origin master && npm publish"
   },
   "repository": {
     "type": "git",
