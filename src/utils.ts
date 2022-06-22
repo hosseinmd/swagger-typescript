@@ -343,7 +343,14 @@ async function getCurrentUrl(urls: Exclude<Config["url"], string | undefined>) {
   const branchesTree = result
     .split("\n")
     .flatMap((item) => item.split(", "))
-    .map((branch) => branch.trim());
+    .map((branch) => {
+      branch = branch.trim();
+
+      branch = branch.replace("HEAD -> ", "");
+      branch = branch.trim();
+
+      return branch;
+    });
 
   const currentBranch = branchesTree.find((treeItem) =>
     urls.find((item) => treeItem === item.branch),
