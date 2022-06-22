@@ -81,7 +81,7 @@ For Example:
 
 | [`Key`]              | [`default`]      | Comment                                                                                                                                                                                                                                        |
 | -------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `url`                | Required         | Address of swagger.json                                                                                                                                                                                                                        |
+| `url`                | Required         | Address of swagger.json ([specific branch](#specific-branch))                                                                                                                                                                                  |
 | `dir`                | Required         | Address of output                                                                                                                                                                                                                              |
 | `language`           | `typescript`     | export to "javascript" or "typescript"                                                                                                                                                                                                         |
 | `methodName`         | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}'                                                                                                                                                         |
@@ -102,7 +102,6 @@ For Example:
 
 ## Config
 
-
 The config.ts file automatically will be created after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
 
 - getAxiosInstance
@@ -113,7 +112,7 @@ The config.ts file automatically will be created after first run. You could chan
 
   baseConfig used for get static configs and headers. if you need some dynamic configs like add authentication to headers use `requestConfig.headers.authorization` into of `axiosInstance.interceptors.request.use` function.
 
-## run by node
+## Run by node
 
 ```js
 const { generate } = require("swagger-typescript");
@@ -141,11 +140,9 @@ Others need to pull this changes
 
 Now you can update Tag1 and Tag2 `$ yarn swag-ts Tag1 Tag2`.
 
-## Multiple-Gateway
+## Multiple Gateway
 
-## swagger.config.json
-
-swagger.config.json
+if you have multiple gateway in your project you could handle it by add array of config in swagger.config.json
 
 ```json
 [
@@ -162,6 +159,27 @@ swagger.config.json
     "language": "typescript"
   }
 ]
+```
+
+## Specific branch
+
+if you are managing project by multiple branch like gitflow, you need to update swagger based on you working branch or parent branch (for example your parent is develop if you create a branch from develop).
+
+For Example:
+
+```json
+{
+  "url": [
+    {
+      "branch": "master",
+      "url": "http:/example.com/api/swagger.json"
+    },
+    {
+      "branch": "develop",
+      "url": "http://stage.example.com/api/swagger.json"
+    }
+  ]
+}
 ```
 
 ## Stories

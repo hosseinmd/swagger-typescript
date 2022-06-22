@@ -1,5 +1,6 @@
 import { Schema, Parameter, Config } from "./types";
 import { getJsdoc } from "./utilities/jsdoc";
+import { exec } from "child_process";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (
@@ -337,7 +338,39 @@ function isMatchWholeWord(stringToSearch: string, word: string) {
   return new RegExp("\\b" + word + "\\b").test(stringToSearch);
 }
 
+async function getCurrentUrl(urls: Exclude<Config["url"], string | undefined>) {
+  const result = await execAsync();
+  const branchesTree = result
+    .split("\n")
+    .flatMap((item) => item.split(", "))
+    .map((branch) => branch.trim());
+
+  const currentBranch = branchesTree.find((treeItem) =>
+    urls.find((item) => treeItem === item.branch),
+  );
+
+  const currentUrl =
+    urls.find((item) => currentBranch === item.branch)?.url || urls[0].url;
+
+  return currentUrl;
+}
+
+async function execAsync() {
+  return new Promise<string>((resolve, reject) => {
+    const child = exec('git log --format="%D"', (error, stdout) => {
+      child.kill();
+      if (error) {
+        reject(error);
+        return;
+      }
+
+      resolve(stdout);
+    });
+  });
+}
+
 export {
+  getCurrentUrl,
   majorVersionsCheck,
   getPathParams,
   getHeaderParams,

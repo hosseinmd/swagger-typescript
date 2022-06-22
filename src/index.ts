@@ -11,7 +11,7 @@ import { HTTP_REQUEST, CONFIG, FILE_HOOKS_CONFIG } from "./strings";
 import { getJson } from "./getJson";
 import { generator } from "./generator";
 import { build } from "tsc-prog";
-import { majorVersionsCheck } from "./utils";
+import { getCurrentUrl, majorVersionsCheck } from "./utils";
 import { HubJson, signalRGenerator } from "./signalR/generator";
 import { swaggerToOpenApi } from "./utilities/swaggerToOpenApi";
 import { generateMock } from "./mock";
@@ -69,7 +69,11 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
         throw new Error("Add url in swagger.config.json ");
       }
 
-      input = await getJson(url);
+      if (typeof url === "string") {
+        input = await getJson(url);
+      } else {
+        input = await getJson(await getCurrentUrl(url));
+      }
 
       if (input.swagger) {
         majorVersionsCheck("2.0.0", input.swagger);

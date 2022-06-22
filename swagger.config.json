@@ -1,6 +1,15 @@
 [
   {
-    "url": "http://dev.hitobit.com/hapi/swagger/v1/swagger.json",
+    "url": [
+      {
+        "branch": "master",
+        "url": "http://dev.hitobit.com/hapi/swagger/v1/swagger.json"
+      },
+      {
+        "branch": "develop",
+        "url": "http://dev.hitobit.com/hapi/swagger/v1/swagger.json"
+      }
+    ],
     "dir": "./test",
     "language": "typescript",
     "keepJson": true,
