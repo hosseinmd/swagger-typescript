@@ -182,6 +182,8 @@ For Example:
 }
 ```
 
+to generate swagger for develop run 'yarn swag-ts --branch=develop' or your branch should be 'develop' | 'develop/something'
+
 ## Stories
 
 [why-you-should-use-swagger-typescript-for-generate-apis-code](https://medium.com/@hosseinm.developer/why-you-should-use-swagger-typescript-for-generate-apis-code-63eb8623fef8?source=friends_link&sk=2aa0e2d30b3be158d18c1feb4e12d4a6)

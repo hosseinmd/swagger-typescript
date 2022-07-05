@@ -34,6 +34,7 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
     ...config,
     tag: cli?.tag ?? config.tag,
     local: cli?.local ?? config.local,
+    branch: cli?.branch ?? config.branch,
   };
 
   const {
@@ -72,7 +73,7 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
       if (typeof url === "string") {
         input = await getJson(url);
       } else {
-        input = await getJson(await getCurrentUrl(url));
+        input = await getJson(await getCurrentUrl(config));
       }
 
       if (input.swagger) {

@@ -275,6 +275,8 @@ export interface Config {
   };
   /** Generate with local swagger.json */
   local?: boolean;
+  /** Generate specific branch swagger */
+  branch?: string;
   generateEnumAsType?: boolean;
   _isSwagger2?: boolean;
 }

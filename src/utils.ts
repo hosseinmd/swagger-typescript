@@ -338,8 +338,29 @@ function isMatchWholeWord(stringToSearch: string, word: string) {
   return new RegExp("\\b" + word + "\\b").test(stringToSearch);
 }
 
-async function getCurrentUrl(urls: Exclude<Config["url"], string | undefined>) {
-  const result = await execAsync();
+async function getCurrentUrl({ url, branch: branchName }: Config) {
+  const urls = url as Exclude<Config["url"], undefined | string>;
+  if (!branchName) {
+    branchName = await execAsync("git branch --show-current");
+
+    branchName = branchName?.split("/")[0];
+
+    branchName = urls.find((item) => branchName === item.branch)?.branch;
+  }
+  if (!branchName) {
+    branchName = (await getSourceBranch()).find((treeItem) =>
+      urls.find((item) => treeItem === item.branch),
+    ) as string;
+  }
+
+  const currentUrl =
+    urls.find((item) => branchName === item.branch)?.url || urls[0].url;
+
+  return currentUrl;
+}
+
+async function getSourceBranch() {
+  const result = await execAsync('git log --format="%D"');
   const branchesTree = result
     .split("\n")
     .flatMap((item) => item.split(", "))
@@ -352,19 +373,12 @@ async function getCurrentUrl(urls: Exclude<Config["url"], string | undefined>) {
       return branch;
     });
 
-  const currentBranch = branchesTree.find((treeItem) =>
-    urls.find((item) => treeItem === item.branch),
-  );
-
-  const currentUrl =
-    urls.find((item) => currentBranch === item.branch)?.url || urls[0].url;
-
-  return currentUrl;
+  return branchesTree;
 }
 
-async function execAsync() {
+async function execAsync(command: string) {
   return new Promise<string>((resolve, reject) => {
-    const child = exec('git log --format="%D"', (error, stdout) => {
+    const child = exec(command, (error, stdout) => {
       child.kill();
       if (error) {
         reject(error);
