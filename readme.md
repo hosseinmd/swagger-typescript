@@ -182,7 +182,7 @@ For Example:
 }
 ```
 
-to generate swagger for develop run 'yarn swag-ts --branch=develop' or your branch should be 'develop' | 'develop/something'
+to generate swagger for develop run `yarn swag-ts --branch=develop` or your branch name should be `develop` or `develop/something`
 
 ## Stories
 
