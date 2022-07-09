@@ -24,7 +24,7 @@
     }
   },
   {
-    "url": "http://stage.hitobit.com/hapi/swagger/v1/swagger.json",
+    "url": "https://api.sensiblequery.com/swagger/doc.json",
     "dir": "./test/swagger2",
     "language": "typescript",
     "keepJson": true,

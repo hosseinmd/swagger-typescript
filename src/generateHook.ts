@@ -132,7 +132,7 @@ function generateHook(
             ${queryParamsTypeName ? "queryParams," : ""}
             ${headerParams ? "headerParams," : ""}]`;
 
-        let result =
+        let result: string =
           prev +
           `
       ${getJsdoc({
@@ -197,8 +197,9 @@ function generateHook(
           return {...rest, data, list, hasMore, total}
           `;
           } else {
-            result += `return useQuery(key,()=>
-                fun(),
+            result += `return useQuery(
+                key, 
+                fun,
                 options
                )`;
           }
