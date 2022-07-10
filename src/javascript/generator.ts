@@ -17,7 +17,7 @@ import type {
   Parameter,
   ConstantsAST,
   Method,
-} from "./types";
+} from "../types";
 import { generateApis } from "./generateApis";
 import { generateTypes } from "./generateTypes";
 import { generateConstants } from "./generateConstants";

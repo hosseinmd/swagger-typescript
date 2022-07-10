@@ -1,4 +1,4 @@
-import { Schema, SwaggerJson } from "../types";
+import { Schema, SwaggerJson } from "../../types";
 import { getSchemaData } from "./parse";
 
 export type Schemas = {

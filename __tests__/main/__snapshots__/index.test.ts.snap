@@ -4138,8 +4138,9 @@ connectionId: number,}, TExtra>,
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4186,8 +4187,9 @@ export const useGetBank = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4234,8 +4236,9 @@ export const useGetBusinessUserCategory = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4283,8 +4286,9 @@ export const useGetBusinessUserConnection = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4332,8 +4336,9 @@ export const useGetBusinessUserConnectionActive = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4387,8 +4392,9 @@ connectionId: number,options?:InternalUseQueryOptions< & (SubUserConnectionApiMo
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4452,8 +4458,9 @@ connectionId: number,options?:InternalUseQueryOptions< & (SubUserActivityApiMode
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4505,8 +4512,9 @@ connectionId: number,options?:InternalUseQueryOptions< & (SubUserActivityApiMode
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4560,8 +4568,9 @@ connectionId: number,options?:InternalUseQueryOptions<SubUserPermissionApiModel[
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4613,8 +4622,9 @@ connectionId: number,options?:InternalUseQueryOptions<SubUserPermissionApiModel[
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4656,8 +4666,9 @@ connectionId: number,options?:InternalUseQueryOptions<SubUserPermissionApiModel[
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4699,8 +4710,9 @@ connectionId: number,options?:InternalUseQueryOptions<SubUserPermissionApiModel[
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4752,8 +4764,9 @@ epayId: number,options?:InternalUseQueryOptions< & (EpayRequestDetailApiModel)>,
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4805,8 +4818,9 @@ epayId: number,options?:InternalUseQueryOptions< & (EpayRequestDetailApiModel)>,
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4858,8 +4872,9 @@ epayToken: string,options?:InternalUseQueryOptions<string>,configOverride?:Axios
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4911,8 +4926,9 @@ epayToken: string,options?:InternalUseQueryOptions<string>,configOverride?:Axios
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -4961,8 +4977,9 @@ export const useGetEpayRequestForMe = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5004,8 +5021,9 @@ export const useGetEpayRequestForMe = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5047,8 +5065,9 @@ export const useGetEpayRequestForMe = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5096,8 +5115,9 @@ export const useGetEpayRequestPosQrAccountNumber = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5139,8 +5159,9 @@ export const useGetEpayRequestPosQrAccountNumber = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5187,8 +5208,9 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5230,8 +5252,9 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5273,8 +5296,9 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5316,8 +5340,9 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5359,8 +5384,9 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5412,8 +5438,9 @@ fileGuid: string,options?:InternalUseQueryOptions<string>,configOverride?:AxiosR
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5465,8 +5492,9 @@ fileGuid: string,options?:InternalUseQueryOptions<string>,configOverride?:AxiosR
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5513,8 +5541,9 @@ export const useGetIntegration = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5556,8 +5585,9 @@ export const useGetIntegration = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5599,8 +5629,9 @@ export const useGetIntegration = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5642,8 +5673,9 @@ export const useGetIntegration = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5690,8 +5722,9 @@ export const useGetNotificationIa = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5739,8 +5772,9 @@ export const useGetNotificationNotif = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5782,8 +5816,9 @@ export const useGetNotificationNotif = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5825,8 +5860,9 @@ export const useGetNotificationNotif = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5878,8 +5914,9 @@ accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:Inte
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -5942,8 +5979,9 @@ epayTryId: string,options?:InternalUseQueryOptions< & (BankReceiptApiModel)>,con
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6008,8 +6046,9 @@ epayToken: string,options?:InternalUseQueryOptions< & (BankReceiptApiModel)>,con
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6072,8 +6111,9 @@ epayToken: string,options?:InternalUseQueryOptions< & (WalletReceiptApiModel)>,c
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6131,8 +6171,9 @@ export const useGetResellerUser = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6181,8 +6222,9 @@ export const useGetResellerUserDashboardCommissionReport = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6231,8 +6273,9 @@ export const useGetResellerUserDashboardCommissionSum = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6281,8 +6324,9 @@ export const useGetResellerUserDashboardIntroducedCount = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6331,8 +6375,9 @@ export const useGetResellerUserDashboardIntroducedReport = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6381,8 +6426,9 @@ export const useGetResellerUserDashboardLinksCount = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6431,8 +6477,9 @@ export const useGetResellerUserDashboardLinksPaidCount = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6481,8 +6528,9 @@ export const useGetResellerUserDashboardLinksPaidReport = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6531,8 +6579,9 @@ export const useGetResellerUserDashboardLinksReport = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6581,8 +6630,9 @@ export const useGetResellerUserDashboardTransactionsCount = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6631,8 +6681,9 @@ export const useGetResellerUserDashboardTransactionsReport = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6680,8 +6731,9 @@ export const useGetResellerUserIntroduced = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6729,8 +6781,9 @@ export const useGetResellerUserIntroducedFilterData = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6778,8 +6831,9 @@ export const useGetResellerUserIntroducedUserIdActivity = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6827,8 +6881,9 @@ export const useGetSubDomain = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6886,8 +6941,9 @@ subDomainAddress: string,headerParams?: {
           
           
           headerParams, configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -6957,8 +7013,9 @@ export const useGetSubUserAccountUserWalletId = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7008,8 +7065,9 @@ export const useGetSubUserConnection = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7051,8 +7109,9 @@ export const useGetSubUserConnection = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7094,8 +7153,9 @@ export const useGetSubUserConnection = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7141,8 +7201,9 @@ export const useGetTransactionReport = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7188,8 +7249,9 @@ export const useGetTransactionReportAll = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7237,8 +7299,9 @@ export const useGetTransactionTransactionId = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7285,8 +7348,9 @@ export const useGetTransferRecent = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7328,8 +7392,9 @@ export const useGetTransferRecent = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7376,8 +7441,9 @@ export const useGetTransferUserWalletIdCommission = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7424,8 +7490,9 @@ export const useGetUser = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7473,8 +7540,9 @@ export const useGetUserBank = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7522,8 +7590,9 @@ export const useGetUserBankReady = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7576,8 +7645,9 @@ userBankId: number,options?:InternalUseQueryOptions< & (UserBankDetailApiModel)>
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7634,8 +7704,9 @@ export const useGetUserConnection = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7677,8 +7748,9 @@ export const useGetUserConnection = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7725,8 +7797,9 @@ export const useGetUserIdentityRequest = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7773,8 +7846,9 @@ export const useGetUserInvitation = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7821,8 +7895,9 @@ export const useGetUserInvitationInvitationToken = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7869,8 +7944,9 @@ export const useGetUserMe = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7912,8 +7988,9 @@ export const useGetUserMe = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -7960,8 +8037,9 @@ export const useGetUserUpgradeToBusinessRequest = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -8003,8 +8081,9 @@ export const useGetUserUpgradeToBusinessRequest = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -8046,8 +8125,9 @@ export const useGetUserUpgradeToBusinessRequest = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -8093,8 +8173,9 @@ export const useGetUserWalletSearch = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -8136,8 +8217,9 @@ export const useGetUserWalletSearch = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -8184,8 +8266,9 @@ export const useGetUserWalletUserWalletIdBalance = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -8231,8 +8314,9 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -8274,8 +8358,9 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -8317,8 +8402,9 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -8364,8 +8450,9 @@ export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
           
           queryParams,
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }
@@ -8412,8 +8499,9 @@ export const useGetUserWorkspace = (
           
           
            configOverride);
-          return useQuery(key,()=>
-                fun(),
+          return useQuery(
+                key, 
+                fun,
                 options
                )  
           }

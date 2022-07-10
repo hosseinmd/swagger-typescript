@@ -1,5 +1,5 @@
 import { isAscending } from "./utils";
-import type { ConstantsAST } from "./types";
+import type { ConstantsAST } from "../types";
 
 function generateConstants(types: ConstantsAST[]): string {
   try {

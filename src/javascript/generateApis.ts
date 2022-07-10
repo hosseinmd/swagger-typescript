@@ -6,13 +6,13 @@ import {
   getSchemaName,
   isMatchWholeWord,
 } from "./utils";
-import { ApiAST, Config, TypeAST } from "./types";
+import { ApiAST, Config, TypeAST } from "../types";
 import {
   SERVICE_BEGINNING,
   SERVICE_NEEDED_FUNCTIONS,
   DEPRECATED_WARM_MESSAGE,
 } from "./strings";
-import { getJsdoc } from "./utilities/jsdoc";
+import { getJsdoc } from "../utilities/jsdoc";
 
 function generateApis(
   apis: ApiAST[],

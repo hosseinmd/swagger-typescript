@@ -1,4 +1,4 @@
-import { generator } from "../../src/generator";
+import { generator } from "../../src/javascript/generator";
 import swaggerJson from "./swagger.json";
 
 describe("generate", () => {

@@ -1,4 +1,4 @@
-import { Schema } from "../types";
+import { Schema } from "../../types";
 import { getRefName } from "../utils";
 import {
   DataType,
@@ -19,7 +19,7 @@ export const mergeAllOf = (properties: Schema[], schemas: Schemas): any => {
   let ret: any = {};
   properties.forEach((property) => {
     if (isReferenceObject(property)) {
-      const schemaName = getRefName(property[REF]);
+      const schemaName = getRefName(property.$ref);
       if (schemaName) {
         const schemaData = getSchemaData(schemas, schemaName);
         ret = Object.assign({}, ret, schemaData);
@@ -35,7 +35,7 @@ export const mergeAllOf = (properties: Schema[], schemas: Schemas): any => {
 export const pickOneOf = (properties: Schema[], schemas: Schemas): any => {
   const property = properties[0];
   if (isReferenceObject(property)) {
-    const schemaName = getRefName(property[REF]);
+    const schemaName = getRefName(property.$ref);
     if (schemaName) {
       const schemaData = getSchemaData(schemas, schemaName);
       return schemaData;
@@ -50,7 +50,7 @@ export const getSchemaData = (schemas: Schemas, name: string): Object => {
   const schema = schemas[name];
 
   if (isReferenceObject(schema)) {
-    const schemaName = getRefName(schema[REF]);
+    const schemaName = getRefName(schema.$ref);
     return schemaName ? getSchemaData(schemas, schemaName) : {};
   }
 

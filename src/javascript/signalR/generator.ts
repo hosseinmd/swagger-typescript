@@ -1,4 +1,4 @@
-import type { TypeAST, Schema, Parameter, Config } from "../types";
+import type { TypeAST, Schema, Parameter, Config } from "../../types";
 import { generateTypes } from "../generateTypes";
 import { getDefineParam } from "../utils";
 

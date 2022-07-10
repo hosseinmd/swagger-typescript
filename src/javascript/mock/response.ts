@@ -4,7 +4,7 @@ import {
   SwaggerJson,
   SwaggerRequest,
   SwaggerResponse,
-} from "../types";
+} from "../../types";
 import { generateServiceName } from "../utils";
 
 export const APPLICATION_JSON = "application/json";

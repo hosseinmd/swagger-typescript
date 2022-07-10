@@ -7,13 +7,13 @@ import {
   getSchemaName,
   isMatchWholeWord,
 } from "./utils";
-import { ApiAST, Config, TypeAST } from "./types";
+import { ApiAST, Config, TypeAST } from "../types";
 import {
   DEPRECATED_WARM_MESSAGE,
   getHooksFunctions,
   getHooksImports,
 } from "./strings";
-import { getJsdoc } from "./utilities/jsdoc";
+import { getJsdoc } from "../utilities/jsdoc";
 
 const allowedPageParametersNames = ["page", "pageno", "pagenumber"];
 
