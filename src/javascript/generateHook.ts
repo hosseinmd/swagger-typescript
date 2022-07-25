@@ -1,11 +1,9 @@
 import {
   getTsType,
-  isAscending,
   getDefineParam,
   getParamString,
   toPascalCase,
   getSchemaName,
-  isMatchWholeWord,
 } from "./utils";
 import { ApiAST, Config, TypeAST } from "../types";
 import {
@@ -14,6 +12,7 @@ import {
   getHooksImports,
 } from "./strings";
 import { getJsdoc } from "../utilities/jsdoc";
+import { isAscending, isMatchWholeWord } from "../utils";
 
 const allowedPageParametersNames = ["page", "pageno", "pagenumber"];
 

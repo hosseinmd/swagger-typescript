@@ -268,7 +268,6 @@ export interface Config {
   prettierPath?: string;
   language?: "javascript" | "typescript";
   methodName?: string;
-  methodParamsByTag?: boolean;
   prefix?: string;
   ignore?: {
     headerParams?: string[];

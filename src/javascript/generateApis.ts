@@ -1,10 +1,8 @@
 import {
   getTsType,
-  isAscending,
   getDefineParam,
   getParamString,
   getSchemaName,
-  isMatchWholeWord,
 } from "./utils";
 import { ApiAST, Config, TypeAST } from "../types";
 import {
@@ -13,6 +11,7 @@ import {
   DEPRECATED_WARM_MESSAGE,
 } from "./strings";
 import { getJsdoc } from "../utilities/jsdoc";
+import { isAscending, isMatchWholeWord } from "../utils";
 
 function generateApis(
   apis: ApiAST[],
