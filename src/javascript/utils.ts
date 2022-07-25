@@ -249,7 +249,13 @@ function getParametersInfo(
   return {
     params,
     exist: params.length > 0,
-    isNullable: params.every(({ schema }) => !schema?.required),
+    isNullable: !params.some(
+      ({ schema, required }) =>
+        //swagger 2
+        required ||
+        // openapi 3
+        schema?.required,
+    ),
   };
 }
 

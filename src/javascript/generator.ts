@@ -87,15 +87,13 @@ function generator(
           const pathParams = getPathParams(parameters);
 
           const {
-            exist: queryParams,
+            exist: isQueryParamsExist,
             isNullable: isQueryParamsNullable,
             params: queryParameters,
           } = getParametersInfo(parameters, "query");
-          let queryParamsTypeName: string | false = `${toPascalCase(
-            serviceName,
-          )}QueryParams`;
-
-          queryParamsTypeName = queryParams && queryParamsTypeName;
+          const queryParamsTypeName: string | false = isQueryParamsExist
+            ? `${toPascalCase(serviceName)}QueryParams`
+            : false;
 
           if (queryParamsTypeName) {
             const required = config._isSwagger2 ? ([] as string[]) : undefined;
@@ -128,10 +126,8 @@ function generator(
             });
           }
 
-          const {
-            params: headerParams,
-            isNullable: hasNullableHeaderParams,
-          } = getHeaderParams(parameters, config);
+          const { params: headerParams, isNullable: hasNullableHeaderParams } =
+            getHeaderParams(parameters, config);
 
           const requestBody = getBodyContent(options.requestBody);
 
