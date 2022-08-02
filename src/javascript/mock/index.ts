@@ -6,9 +6,9 @@ import { writeFiles } from "./util";
 import { extractSchemas } from "./schema";
 import { composeMockData } from "./compose";
 import { existsSync, mkdirSync } from "fs";
-import { Config } from "../../types";
+import { Config, SwaggerJson } from "../../types";
 
-function generateMock(content: any, config: Config) {
+function generateMock(content: SwaggerJson, config: Config) {
   const { dir } = config;
   try {
     const output = `${dir}/mocks`;

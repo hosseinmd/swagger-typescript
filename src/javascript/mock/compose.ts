@@ -33,19 +33,7 @@ export const composeMockData = (
         return;
       }
 
-      if (val.example) {
-        response = val.example;
-      } else if (val.examples) {
-        const examplesKey = Object.keys(val.examples);
-        if (examplesKey.length <= 1) {
-          response = val.examples;
-        } else {
-          // for (const [key, example] of Object.entries<any>(val.examples)) {
-          //   const extendedPathKey = pathKey + "_" + normalizeName(key);
-          //   response = example["value"];
-          // }
-        }
-      } else if ("schema" in val) {
+      if (val?.schema) {
         const { schema } = val;
         const ref = schema[REF];
         if (ref) {
@@ -63,6 +51,18 @@ export const composeMockData = (
           } else if (schema.type) {
             response = DataType.defaultValue(schema);
           }
+        }
+      } else if (val.example) {
+        response = val.example;
+      } else if (val.examples) {
+        const examplesKey = Object.keys(val.examples);
+        if (examplesKey.length <= 1) {
+          response = val.examples;
+        } else {
+          // for (const [key, example] of Object.entries<any>(val.examples)) {
+          //   const extendedPathKey = pathKey + "_" + normalizeName(key);
+          //   response = example["value"];
+          // }
         }
       }
 

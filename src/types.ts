@@ -184,7 +184,7 @@ export interface SwaggerResponse {
     Record<
       ApiAST["contentType"],
       Pick<Schema, "example" | "examples"> & {
-        schema: Schema;
+        schema?: Schema;
       }
     >
   >;

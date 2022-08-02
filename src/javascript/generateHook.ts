@@ -264,14 +264,15 @@ function generateHook(
           }
           return prev + ` ${name},`;
         }, "import {") + '}  from "./types"\n';
-    code += getHooksFunctions({
-      hasInfinity: !!config.useInfiniteQuery?.length,
-    });
 
     code +=
       apis.reduce((prev, { serviceName }) => {
         return prev + ` ${serviceName},`;
       }, "import {") + '}  from "./services"\n';
+
+    code += getHooksFunctions({
+      hasInfinity: !!config.useInfiniteQuery?.length,
+    });
 
     code += `
     export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
