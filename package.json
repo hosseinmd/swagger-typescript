@@ -1,6 +1,6 @@
 {
   "name": "swagger-typescript",
-  "version": "6.2.5",
+  "version": "6.2.6",
   "description": "An auto ts/js code generate from swagger/openApi",
   "main": "lib/index.js",
   "bin": {
@@ -65,8 +65,8 @@
     "typescript": "^4.7.4"
   },
   "peerDependencies": {
-    "prettier": ">=2.2",
-    "axios": ">=0.27"
+    "axios": ">=0.27",
+    "prettier": ">=2.2"
   },
   "jest": {
     "preset": "ts-jest"
