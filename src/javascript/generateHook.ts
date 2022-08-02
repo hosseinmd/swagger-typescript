@@ -274,22 +274,22 @@ function generateHook(
       }, "import {") + '}  from "./services"\n';
 
     code += `
-    type InternalMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
-    type InternalUseQueryOptions<TData> = UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>;
+    export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
+    type SwaggerTypescriptUseQueryOptions<TData> = UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>;
 
-    type InternalUseMutationOptions<TData, TRequest, TExtra> = UseMutationOptions<
+    type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> = UseMutationOptions<
       SwaggerResponse<TData>,
       RequestError | Error,
-      TRequest & InternalMutationDefaultParams<TExtra>
+      TRequest & SwaggerTypescriptMutationDefaultParams<TExtra>
     >;
 
-    type InternalUseMutationOptionsVoid<
+    type SwaggerTypescriptUseMutationOptionsVoid<
       TData,
       TExtra
     > = UseMutationOptions<
       SwaggerResponse<TData>,
       RequestError | Error,
-      InternalMutationDefaultParams<TExtra> | void
+      SwaggerTypescriptMutationDefaultParams<TExtra> | void
     >;  
     `;
 
