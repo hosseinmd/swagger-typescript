@@ -150,11 +150,11 @@ function generateHook(
             hasPaging
               ? `UseInfiniteQueryOptions<${TQueryFnData}, ${TError}>`
               : isGet
-              ? `InternalUseQueryOptions<${TData}>`
+              ? `SwaggerTypescriptUseQueryOptions<${TData}>`
               : `${
                   TVariables
-                    ? `InternalUseMutationOptions<${TData}, {${TVariables}}, TExtra>`
-                    : `InternalUseMutationOptionsVoid<${TData}, TExtra>`
+                    ? `SwaggerTypescriptUseMutationOptions<${TData}, {${TVariables}}, TExtra>`
+                    : `SwaggerTypescriptUseMutationOptionsVoid<${TData}, TExtra>`
                 }`
           },`,
           `${isGet ? `configOverride?:AxiosRequestConfig` : ""}`,
