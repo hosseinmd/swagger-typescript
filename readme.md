@@ -6,9 +6,9 @@
 
 # Swagger-Typescript: Generate ts/js code from swagger/openApi JSON
 
-Support OpenApi v3 and swagger v2
+Support OpenApi v3, swagger v2 and postman collection
 
-An auto typescript/javascript code generator from swagger.
+An auto typescript/javascript code generator from APIs doc.
 Each endpoint will be created as a function, full type base.
 Supported
 
@@ -81,7 +81,7 @@ For Example:
 
 | [`Key`]              | [`default`]      | Comment                                                                                                                                                                                                                                        |
 | -------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `url`                | Required         | Address of swagger.json ([specific branch](#specific-branch))                                                                                                                                                                                  |
+| `url`                | Required         | swagger or postman collection Address. can be online or local (json/yaml) ([specific branch](#specific-branch))                                                                                                                                |
 | `dir`                | Required         | Address of output                                                                                                                                                                                                                              |
 | `language`           | `typescript`     | export to "javascript" or "typescript"                                                                                                                                                                                                         |
 | `methodName`         | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}'                                                                                                                                                         |

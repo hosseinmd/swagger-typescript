@@ -37,6 +37,7 @@
     "axios": ">=0.27",
     "chalk": "^4.1.2",
     "js-yaml": "^4.1.0",
+    "postman-to-openapi": "^2.4.1",
     "qs": "^6.11.0",
     "recursive-readdir": "^2.2.2",
     "swagger2openapi": "^7.0.8",

@@ -6,6 +6,8 @@ import { getCurrentUrl, majorVersionsCheck } from "./utils";
 import { swaggerToOpenApi } from "./utilities/swaggerToOpenApi";
 import chalk from "chalk";
 import { partialUpdateJson } from "./updateJson";
+import postmanToOpenApi from "postman-to-openapi";
+import yaml from "js-yaml";
 
 /** @param config If isn't defined will be use swagger.config.json instead */
 async function generate(config?: SwaggerConfig, cli?: Partial<Config>) {
@@ -53,8 +55,12 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
         // convert swagger v2 to openApi v3
         config._isSwagger2 = true;
         input = await swaggerToOpenApi(input);
-      } else {
+      } else if (input.openapi) {
         majorVersionsCheck("3.0.0", input.openapi);
+      } else {
+        input = yaml.load(
+          await postmanToOpenApi(JSON.stringify(input), undefined),
+        ) as SwaggerJson;
       }
     }
 
@@ -111,14 +117,18 @@ function getLocalJson(dir: string) {
   const swaggerJsonPath = `${dir}/swagger.json`;
 
   try {
-    const old = readFileSync(swaggerJsonPath).toString();
-    return JSON.parse(old);
+    return readJson(swaggerJsonPath);
   } catch (error) {
     chalk.red(
       "swagger.json file not found. You should set keepJson true to save json then run swag-ts without tag to save that",
     );
     throw error;
   }
+}
+
+function readJson(path: string) {
+  const old = readFileSync(path).toString();
+  return JSON.parse(old);
 }
 
 export { generate };

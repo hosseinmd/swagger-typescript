@@ -34,5 +34,17 @@
         "terminalId"
       ]
     }
+  },
+  {
+    "url": "./testFiles/Wms.postman_collection.json",
+    "dir": "./test/postman",
+    "language": "typescript",
+    "ignore": {
+      "headerParams": [
+        "Accept",
+        "Content-Encoding",
+        "Content-Type"
+      ]
+    }
   }
 ]
