@@ -11,9 +11,9 @@ import { partialUpdateJson } from "./updateJson";
 async function generate(config?: SwaggerConfig, cli?: Partial<Config>) {
   config = config ?? getSwaggerConfig();
   const configs = Array.isArray(config) ? config : [config];
-  configs.forEach((con) => {
-    generateService(con, cli);
-  });
+  for(const con of configs){
+    await generateService(con, cli);
+  }
 }
 
 const generateService = async (config: Config, cli?: Partial<Config>) => {
