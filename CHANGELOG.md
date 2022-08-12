@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.3.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.2.7...v6.3.0) (2022-08-12)
+
+
+### Features
+
+* add postman support ([14067a2](https://github.com/hosseinmd/swagger-typescript/commit/14067a2ab99d2943c415afba8c518e27356ecdbc))
+
+
+### Bug Fixes
+
+* await generateService in main function generate ([#34](https://github.com/hosseinmd/swagger-typescript/issues/34)) ([75ec836](https://github.com/hosseinmd/swagger-typescript/commit/75ec8369202685dff792bb080203e4614fc43204))
+
 ### [6.2.7](https://github.com/hosseinmd/swagger-typescript/compare/v6.2.6...v6.2.7) (2022-08-02)
 
 
