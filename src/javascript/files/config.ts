@@ -1,7 +1,7 @@
-/**
+const getConfigFile = ({ baseUrl }: { baseUrl: string }) => `/**
  * You can modify this file
  *
- * @version 5
+ * @version ${require("../../../package.json").version.split(".")[0]}
  */
 import Axios, {
   AxiosRequestConfig,
@@ -13,7 +13,7 @@ import Axios, {
 import qs from "qs";
 
 const baseConfig: AxiosRequestConfig = {
-  baseURL: "${AUTO_REPLACE_BASE_URL}", // <--- Add your base url
+  baseURL: "${baseUrl}", // <--- Add your base url
   headers: {
     "Content-Encoding": "UTF-8",
     Accept: "application/json",
@@ -113,4 +113,6 @@ export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 export {
   getAxiosInstance,
   RequestError,
-};
+};`;
+
+export default getConfigFile;

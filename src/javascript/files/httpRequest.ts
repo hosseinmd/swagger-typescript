@@ -1,7 +1,7 @@
-/**
+const getHttpRequestFile = () => `/**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
  *
- * @version 5
+ * @version ${require("../../../package.json").version.split(".")[0]}
  */
 import axios, { AxiosRequestConfig, CancelToken } from "axios";
 import { getAxiosInstance, Security, SwaggerResponse } from "./config";
@@ -108,4 +108,6 @@ export const Http = {
       }),
     );
   },
-};
+};`;
+
+export default getHttpRequestFile;

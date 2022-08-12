@@ -1,7 +1,6 @@
 import { writeFileSync, existsSync, readFileSync, rmdirSync } from "fs";
 import { format } from "prettier";
 import { SwaggerJson, Config } from "../types";
-import { HTTP_REQUEST, CONFIG, FILE_HOOKS_CONFIG } from "./strings";
 import { generator } from "./generator";
 import { build } from "tsc-prog";
 import { HubJson, signalRGenerator } from "./signalR/generator";
@@ -10,21 +9,16 @@ import chalk from "chalk";
 //@ts-ignore
 import recursive from "recursive-readdir";
 import { getJson } from "../getJson";
+import getConfigFile from "./files/config";
+import getHttpRequestFile from "./files/httpRequest";
+import getHooksConfigFile from "./files/hooksConfig";
 
 const generateJavascriptService = async (
   config: Config,
   input: SwaggerJson,
 ) => {
-  const {
-    url,
-    hub,
-    dir,
-    prettierPath,
-    language,
-    mock,
-    reactHooks,
-    local,
-  } = config;
+  const { url, hub, dir, prettierPath, language, mock, reactHooks, local } =
+    config;
 
   const isToJs = language === "javascript";
 
@@ -46,21 +40,18 @@ const generateJavascriptService = async (
     if (reactHooks && hooks) {
       writeFileSync(`${dir}/hooks.ts`, hooks);
       if (!existsSync(`${dir}/hooksConfig.${isToJs ? "js" : "ts"}`)) {
-        writeFileSync(`${dir}/hooksConfig.ts`, FILE_HOOKS_CONFIG);
+        writeFileSync(`${dir}/hooksConfig.ts`, getHooksConfigFile());
       }
       console.log(chalk.yellowBright("hooks Completed"));
     }
 
-    writeFileSync(`${dir}/httpRequest.ts`, HTTP_REQUEST);
+    writeFileSync(`${dir}/httpRequest.ts`, getHttpRequestFile());
     console.log(chalk.yellowBright("httpRequest Completed"));
 
     if (!existsSync(`${dir}/config.${isToJs ? "js" : "ts"}`)) {
       writeFileSync(
         `${dir}/config.ts`,
-        CONFIG.replace(
-          "${AUTO_REPLACE_BASE_URL}",
-          input.servers?.[0]?.url || "",
-        ),
+        getConfigFile({ baseUrl: input.servers?.[0]?.url || "" }),
       );
       console.log(chalk.yellowBright("config Completed"));
     }

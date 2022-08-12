@@ -1,7 +1,7 @@
-/**
+const getHooksConfigFile = () => `/**
  * You can modify this file
  *
- * @version 5
+ * @version ${require("../../../package.json").version.split(".")[0]}
  */
 import {SwaggerResponse} from "./config";
 
@@ -57,4 +57,6 @@ export {
   paginationFlattenData,
   getTotal,
   getPageSize,
-};
+};`;
+
+export default getHooksConfigFile;

@@ -5,7 +5,7 @@ exports[`generate generate Code 1`] = `
 /**
 * AUTO_GENERATED Do not change this file directly, use config.ts file instead
 *
-* @version 5
+* @version 6
 */
 
 import { AxiosRequestConfig } from \\"axios\\";
@@ -3921,7 +3921,7 @@ exports[`generate generate hooks 1`] = `
 /**
 * AUTO_GENERATED Do not change this file directly, use config.ts file instead
 *
-* @version 5
+* @version 6
 */
 
 
@@ -10048,7 +10048,7 @@ exports[`generate generate type 1`] = `
 /**
 * AUTO_GENERATED Do not change this file directly, use config.ts file instead
 *
-* @version 5
+* @version 6
 */
 
         
