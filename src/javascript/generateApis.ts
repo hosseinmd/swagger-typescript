@@ -107,9 +107,10 @@ ${getJsdoc({
     ${queryParamsTypeName ? "queryParams" : "undefined"},
     ${
       requestBody
-        ? contentType === "multipart/form-data" ||
-          contentType === "application/x-www-form-urlencoded"
+        ? contentType === "multipart/form-data"
           ? "objToForm(requestBody)"
+          : contentType === "application/x-www-form-urlencoded"
+          ? "objToUrlencoded(requestBody)"
           : "requestBody"
         : "undefined"
     },
