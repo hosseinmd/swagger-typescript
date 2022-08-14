@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.0...v6.3.1) (2022-08-14)
+
+
+### Bug Fixes
+
+* application/x-www-form-urlencoded ([16f3c2b](https://github.com/hosseinmd/swagger-typescript/commit/16f3c2be49dffae29dd8cded4ce380eacb77c8cc))
+
 ## [6.3.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.2.7...v6.3.0) (2022-08-12)
 
 
