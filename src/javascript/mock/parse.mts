@@ -1,5 +1,5 @@
-import { Schema } from "../../types";
-import { getRefName } from "../utils";
+import { Schema } from "../../types.mjs";
+import { getRefName } from "../utils.mjs";
 import {
   DataType,
   isObject,
@@ -8,7 +8,7 @@ import {
   isOneOf,
   isAnyOf,
   isReferenceObject,
-} from "./dataType";
+} from "./dataType.mjs";
 
 export const REF = "$ref";
 type Schemas = {

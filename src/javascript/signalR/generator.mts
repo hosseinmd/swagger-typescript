@@ -1,6 +1,6 @@
-import type { TypeAST, Schema, Parameter, Config } from "../../types";
-import { generateTypes } from "../generateTypes";
-import { getDefineParam } from "../utils";
+import type { TypeAST, Schema, Parameter, Config } from "../../types.mjs";
+import { generateTypes } from "../generateTypes.mjs";
+import { getDefineParam } from "../utils.mjs";
 
 export interface HubJson {
   SignalrType: string;
@@ -108,7 +108,7 @@ function signalRGenerator(json: HubJson, config: Config): string {
                     getDefineParam(
                       _name,
                       schema.required,
-                      (schema as unknown) as Schema,
+                      schema as unknown as Schema,
                       config,
                       schema.description,
                     ),
@@ -140,7 +140,7 @@ function signalRGenerator(json: HubJson, config: Config): string {
                     getDefineParam(
                       _name,
                       schema.required,
-                      (schema as unknown) as Schema,
+                      schema as unknown as Schema,
                       config,
                       schema.description,
                     ),

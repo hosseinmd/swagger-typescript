@@ -1,6 +1,6 @@
-import { Schema, Parameter, Config } from "../types";
-import { getJsdoc } from "../utilities/jsdoc";
-import { isAscending } from "../utils";
+import { Schema, Parameter, Config } from "../types.mjs";
+import { getJsdoc } from "../utilities/jsdoc.mjs";
+import { isAscending } from "../utils.mjs";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (

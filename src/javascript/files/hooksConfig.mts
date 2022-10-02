@@ -1,7 +1,8 @@
 const getHooksConfigFile = () => `/**
  * You can modify this file
  *
- * @version ${require("../../../package.json").version.split(".")[0]}
+ * @version ${6}
+ * 
  */
 import {SwaggerResponse} from "./config";
 

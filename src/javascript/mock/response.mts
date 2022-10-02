@@ -4,8 +4,8 @@ import {
   SwaggerJson,
   SwaggerRequest,
   SwaggerResponse,
-} from "../../types";
-import { generateServiceName } from "../utils";
+} from "../../types.mjs";
+import { generateServiceName } from "../utils.mjs";
 
 export const APPLICATION_JSON = "application/json";
 

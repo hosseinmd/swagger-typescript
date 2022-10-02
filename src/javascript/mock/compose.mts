@@ -1,9 +1,9 @@
-import { ResponsesType } from "./response";
-import { Schemas } from "./schema";
-import { normalizePath } from "./util";
-import { REF, parseObject, parseArray } from "./parse";
-import { isObject, isArray, DataType } from "./dataType";
-import { getRefName } from "../utils";
+import { ResponsesType } from "./response.mjs";
+import { Schemas } from "./schema.mjs";
+import { normalizePath } from "./util.mjs";
+import { REF, parseObject, parseArray } from "./parse.mjs";
+import { isObject, isArray, DataType } from "./dataType.mjs";
+import { getRefName } from "../utils.mjs";
 
 type MockData = {
   [path: string]: any;

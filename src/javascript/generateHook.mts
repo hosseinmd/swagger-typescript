@@ -4,15 +4,15 @@ import {
   getParamString,
   toPascalCase,
   getSchemaName,
-} from "./utils";
-import { ApiAST, Config, TypeAST } from "../types";
+} from "./utils.mjs";
+import { ApiAST, Config, TypeAST } from "../types.mjs";
 import {
   DEPRECATED_WARM_MESSAGE,
   getHooksFunctions,
   getHooksImports,
-} from "./strings";
-import { getJsdoc } from "../utilities/jsdoc";
-import { isAscending, isMatchWholeWord } from "../utils";
+} from "./strings.mjs";
+import { getJsdoc } from "../utilities/jsdoc.mjs";
+import { isAscending, isMatchWholeWord } from "../utils.mjs";
 
 const allowedPageParametersNames = ["page", "pageno", "pagenumber"];
 

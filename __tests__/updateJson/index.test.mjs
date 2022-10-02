@@ -1,4 +1,4 @@
-import { partialUpdateJson } from "../../src/updateJson";
+import { partialUpdateJson } from "../../lib/updateJson.mjs";
 import newJson from "./new.json";
 import oldJson from "./old.json";
 

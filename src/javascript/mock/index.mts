@@ -1,12 +1,12 @@
 /** Is A fork from https://github.com/yayoc/swagger-to-mock */
 
 import chalk from "chalk";
-import { extractResponses } from "./response";
-import { writeFiles } from "./util";
-import { extractSchemas } from "./schema";
-import { composeMockData } from "./compose";
+import { extractResponses } from "./response.mjs";
+import { writeFiles } from "./util.mjs";
+import { extractSchemas } from "./schema.mjs";
+import { composeMockData } from "./compose.mjs";
 import { existsSync, mkdirSync } from "fs";
-import { Config, SwaggerJson } from "../../types";
+import { Config, SwaggerJson } from "../../types.mjs";
 
 function generateMock(content: SwaggerJson, config: Config) {
   const { dir } = config;

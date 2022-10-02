@@ -1,19 +1,19 @@
 import { writeFileSync, existsSync, mkdirSync, readFileSync } from "fs";
-import { SwaggerJson, SwaggerConfig, Config } from "./types";
-import { getJson } from "./getJson";
-import { generateJavascriptService } from "./javascript";
-import { getCurrentUrl, majorVersionsCheck } from "./utils";
-import { swaggerToOpenApi } from "./utilities/swaggerToOpenApi";
+import { SwaggerJson, SwaggerConfig, Config } from "./types.mjs";
+import { getJson } from "./getJson.mjs";
+import { generateJavascriptService } from "./javascript/index.mjs";
+import { getCurrentUrl, majorVersionsCheck } from "./utils.mjs";
+import { swaggerToOpenApi } from "./utilities/swaggerToOpenApi.mjs";
 import chalk from "chalk";
-import { partialUpdateJson } from "./updateJson";
-import postmanToOpenApi from "postman-to-openapi";
+import { partialUpdateJson } from "./updateJson.mjs";
+import { default as postmanToOpenApi } from "postman-to-openapi";
 import yaml from "js-yaml";
 
 /** @param config If isn't defined will be use swagger.config.json instead */
 async function generate(config?: SwaggerConfig, cli?: Partial<Config>) {
   config = config ?? getSwaggerConfig();
   const configs = Array.isArray(config) ? config : [config];
-  for(const con of configs){
+  for (const con of configs) {
     await generateService(con, cli);
   }
 }

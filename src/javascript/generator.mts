@@ -5,7 +5,7 @@ import {
   getParametersInfo,
   getRefName,
   toPascalCase,
-} from "./utils";
+} from "./utils.mjs";
 import type {
   SwaggerRequest,
   SwaggerJson,
@@ -17,11 +17,11 @@ import type {
   Parameter,
   ConstantsAST,
   Method,
-} from "../types";
-import { generateApis } from "./generateApis";
-import { generateTypes } from "./generateTypes";
-import { generateConstants } from "./generateConstants";
-import { generateHook } from "./generateHook";
+} from "../types.mjs";
+import { generateApis } from "./generateApis.mjs";
+import { generateTypes } from "./generateTypes.mjs";
+import { generateConstants } from "./generateConstants.mjs";
+import { generateHook } from "./generateHook.mjs";
 
 function generator(
   input: SwaggerJson,

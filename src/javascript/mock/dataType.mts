@@ -1,4 +1,4 @@
-import { Schema } from "../../types";
+import { Schema } from "../../types.mjs";
 
 let guid = 0;
 

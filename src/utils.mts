@@ -1,4 +1,4 @@
-import { Config } from "./types";
+import { Config } from "./types.mjs";
 import { exec } from "child_process";
 
 function isAscending(a: string, b: string) {

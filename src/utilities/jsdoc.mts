@@ -1,4 +1,4 @@
-import { JsdocAST } from "../types";
+import { JsdocAST } from "../types.mjs";
 
 function assignToDescription(params: JsdocAST) {
   if (Object.values(params).every((v) => !v)) {

@@ -3,15 +3,15 @@ import {
   getDefineParam,
   getParamString,
   getSchemaName,
-} from "./utils";
-import { ApiAST, Config, TypeAST } from "../types";
+} from "./utils.mjs";
+import { ApiAST, Config, TypeAST } from "../types.mjs";
 import {
   SERVICE_BEGINNING,
   SERVICE_NEEDED_FUNCTIONS,
   DEPRECATED_WARM_MESSAGE,
-} from "./strings";
-import { getJsdoc } from "../utilities/jsdoc";
-import { isAscending, isMatchWholeWord } from "../utils";
+} from "./strings.mjs";
+import { getJsdoc } from "../utilities/jsdoc.mjs";
+import { isAscending, isMatchWholeWord } from "../utils.mjs";
 
 function generateApis(
   apis: ApiAST[],

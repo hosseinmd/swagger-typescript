@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-const { generate } = require("../lib");
+import { generate } from "../lib/index.mjs";
 
-const yargs = require("yargs/yargs");
-const { hideBin } = require("yargs/helpers");
+import yargs from "yargs/yargs";
+import { hideBin } from "yargs/helpers";
 
 const argv = yargs(hideBin(process.argv)).option("local").option("branch").argv;
 

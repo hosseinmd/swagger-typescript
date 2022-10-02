@@ -1,4 +1,4 @@
-import { SwaggerJson } from "../types";
+import { SwaggerJson } from "../types.mjs";
 //@ts-ignore
 import converter from "swagger2openapi";
 

@@ -1,17 +1,17 @@
 import { writeFileSync, existsSync, readFileSync, rmdirSync } from "fs";
 import { format } from "prettier";
-import { SwaggerJson, Config } from "../types";
-import { generator } from "./generator";
+import { SwaggerJson, Config } from "../types.mjs";
+import { generator } from "./generator.mjs";
 import { build } from "tsc-prog";
-import { HubJson, signalRGenerator } from "./signalR/generator";
-import { generateMock } from "./mock";
+import { HubJson, signalRGenerator } from "./signalR/generator.mjs";
+import { generateMock } from "./mock/index.mjs";
 import chalk from "chalk";
 //@ts-ignore
 import recursive from "recursive-readdir";
-import { getJson } from "../getJson";
-import getConfigFile from "./files/config";
-import getHttpRequestFile from "./files/httpRequest";
-import getHooksConfigFile from "./files/hooksConfig";
+import { getJson } from "../getJson.mjs";
+import getConfigFile from "./files/config.mjs";
+import getHttpRequestFile from "./files/httpRequest.mjs";
+import getHooksConfigFile from "./files/hooksConfig.mjs";
 
 const generateJavascriptService = async (
   config: Config,

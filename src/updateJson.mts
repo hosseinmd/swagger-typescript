@@ -1,10 +1,10 @@
-import chalk from "chalk";
+import { default as chalk } from "chalk";
 import type {
   SwaggerRequest,
   SwaggerJson,
   PathItem,
   Components,
-} from "./types";
+} from "./types.mjs";
 
 function partialUpdateJson(
   input: SwaggerJson,

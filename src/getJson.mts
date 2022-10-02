@@ -1,4 +1,4 @@
-import Axios from "axios";
+import { default as Axios } from "axios";
 import { readFileSync } from "fs";
 import yaml from "js-yaml";
 

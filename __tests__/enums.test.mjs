@@ -1,10 +1,10 @@
-import { generator } from "../../src/javascript/generator";
+import { generator } from "../lib/javascript/generator.mjs";
 import swaggerJson from "./swagger.json";
 
 describe("generate", () => {
-  const { code, hooks, type } = generator(swaggerJson as any, {
-    dir: "",
-    reactHooks: true,
+  //@ts-ignore
+  const { code, hooks, type } = generator(swaggerJson, {
+    generateEnumAsType: true,
   });
 
   it("generate Code", () => {
