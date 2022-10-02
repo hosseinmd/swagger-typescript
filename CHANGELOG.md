@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.2](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.1...v6.3.2) (2022-10-02)
+
+
+### Bug Fixes
+
+* move to esModule ([8bd66f2](https://github.com/hosseinmd/swagger-typescript/commit/8bd66f201097baca27f0c2a038cd0f0d6b52eb41))
+
 ### [6.3.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.0...v6.3.1) (2022-08-14)
 
 
