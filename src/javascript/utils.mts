@@ -100,6 +100,23 @@ function getParamString(
     description,
   })}${name}${required ? "" : "?"}: ${isPartial ? `Partial<${type}>` : type}`;
 }
+//x-nullable
+function normalizeObjectPropertyNullable(
+  propertyName: string,
+  schema: Schema,
+  required?: string[],
+) {
+  if (schema.nullable !== undefined) {
+    return schema.nullable;
+  }
+  if (schema["x-nullable"] !== undefined) {
+    return schema["x-nullable"];
+  }
+  if (required) {
+    return !required.includes(propertyName);
+  }
+  return true;
+}
 
 function getTsType(
   schema: undefined | true | {} | Schema,
@@ -144,11 +161,7 @@ function getTsType(
       Object.entries(properties).map(([pName, _schema]) => ({
         schema: {
           ..._schema,
-          nullable: config._isSwagger2
-            ? required
-              ? !required.includes(pName)
-              : true
-            : _schema.nullable,
+          nullable: normalizeObjectPropertyNullable(pName, _schema, required),
         },
         name: pName,
       })),

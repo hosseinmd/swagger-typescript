@@ -12444,7 +12444,7 @@ exports[`generate generate type 1`] = `
  * 
  * - Format: binary
  */
-\\"file\\": string;}
+\\"file\\"?: string;}
         
         
         export type RequestBodyLogEventLevel = LogEventLevel

@@ -76,13 +76,15 @@ export interface Schema {
   /** Is something link oneOf */
   anyOf?: Schema[];
   /**
-   * Use the minimum and maximum keywords to specify the range of possible values:
+   * Use the minimum and maximum keywords to specify the range of possible
+   * values:
    *
    *     Type: integer;
    *     minimum: 1;
    *     maximum: 20;
    *
-   * By default, the minimum and maximum values are included in the range, that is:
+   * By default, the minimum and maximum values are included in the range, that
+   * is:
    *
    *     Minimum ≤ value ≤ maximum
    *
@@ -277,7 +279,6 @@ export interface Config {
   /** Generate specific branch swagger */
   branch?: string;
   generateEnumAsType?: boolean;
-  _isSwagger2?: boolean;
 }
 
 export type SwaggerConfig = Config | Config[];
