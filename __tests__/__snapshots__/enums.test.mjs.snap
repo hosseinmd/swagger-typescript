@@ -2,14 +2,15 @@
 
 exports[`generate generate Code 1`] = `
 "
+//@ts-nocheck
 /**
 * AUTO_GENERATED Do not change this file directly, use config.ts file instead
 *
 * @version 6
 */
 
-import { AxiosRequestConfig } from \\"axios\\";
-import { SwaggerResponse } from \\"./config\\";
+import type { AxiosRequestConfig } from \\"axios\\";
+import type { SwaggerResponse } from \\"./config\\";
 import { Http } from \\"./httpRequest\\";
 //@ts-ignore
 import qs from \\"qs\\";
@@ -88,6 +89,7 @@ exports[`generate generate hooks 1`] = `""`;
 
 exports[`generate generate type 1`] = `
 "
+//@ts-nocheck
 /**
 * AUTO_GENERATED Do not change this file directly, use config.ts file instead
 *
