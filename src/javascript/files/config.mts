@@ -43,7 +43,7 @@ function getAxiosInstance(security: Security): AxiosInstance {
          *   };
          *   return swaggerResponse;
          */
-        return response;
+        return response.data;
       }) as any,
       (error: AxiosError) => {
         // Any status codes that falls outside the range of 2xx cause this function to trigger
@@ -109,7 +109,8 @@ class RequestError extends Error {
 
 export type Security = any[] | undefined;
 
-export interface SwaggerResponse<R> extends AxiosResponse<R> {}
+// export interface SwaggerResponse<R> extends AxiosResponse<R> {}
+export type SwaggerResponse<R> = R
 
 export {
   getAxiosInstance,
