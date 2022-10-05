@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.4](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.3...v6.3.4) (2022-10-05)
+
+
+### Bug Fixes
+
+* add ts-nocheck to auto generated files ([38973b0](https://github.com/hosseinmd/swagger-typescript/commit/38973b089ebfb439bcb23701e87d37595a593c68))
+
 ### [6.3.3](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.2...v6.3.3) (2022-10-05)
 
 
