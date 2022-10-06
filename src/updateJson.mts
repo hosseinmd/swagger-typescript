@@ -75,7 +75,7 @@ function findRelatedRef(newJson: SwaggerJson, refs: string[]): string[] {
       }
     });
   } catch (error) {
-    chalk.red(error);
+    console.log(chalk.red(error));
   }
 
   return refs;

@@ -8,6 +8,7 @@ import chalk from "chalk";
 import { partialUpdateJson } from "./updateJson.mjs";
 import { default as postmanToOpenApi } from "postman-to-openapi";
 import yaml from "js-yaml";
+import path from "path";
 
 /** @param config If isn't defined will be use swagger.config.json instead */
 async function generate(config?: SwaggerConfig, cli?: Partial<Config>) {
@@ -74,8 +75,8 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
           writeFileSync(swaggerJsonPath, JSON.stringify(input));
         }
       } catch (error) {
-        chalk.red(error);
-        chalk.red("keepJson failed");
+        console.log(chalk.red(error));
+        console.log(chalk.red("keepJson failed"));
       }
     }
     switch (config.language) {
@@ -96,7 +97,11 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
 
 function getSwaggerConfig(): SwaggerConfig {
   try {
-    const config = JSON.parse(readFileSync("swagger.config.json").toString());
+    const configPath = path.join(process.cwd(), "swagger.config.json");
+
+    console.log(chalk.grey(`Your config path: ${configPath}`));
+
+    const config = JSON.parse(readFileSync(configPath).toString());
 
     if (!config) {
       throw "";
@@ -104,11 +109,7 @@ function getSwaggerConfig(): SwaggerConfig {
 
     return config;
   } catch (error) {
-    try {
-      return JSON.parse(readFileSync("./swaggerConfig.json").toString()); // backward compatible for  v1
-    } catch {
-      throw new Error("Please define swagger.config.json");
-    }
+    throw new Error("Please define swagger.config.json");
   }
 }
 
@@ -118,8 +119,10 @@ function getLocalJson(dir: string) {
   try {
     return readJson(swaggerJsonPath);
   } catch (error) {
-    chalk.red(
-      "swagger.json file not found. You should set keepJson true to save json then run swag-ts without tag to save that",
+    console.log(
+      chalk.red(
+        "swagger.json file not found. You should set keepJson true to save json then run swag-ts without tag to save that",
+      ),
     );
     throw error;
   }
