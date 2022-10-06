@@ -29,7 +29,7 @@ const response = await getAccount({ id: 1234 });
 
 ## install
 
-`$ yarn add swagger-typescript`
+`$ yarn add swagger-typescript axios`
 
 ## get start
 
