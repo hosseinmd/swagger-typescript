@@ -8,7 +8,7 @@
 
 Support OpenApi v3, swagger v2 and postman collection
 
-An auto typescript/javascript code generator from APIs doc.
+An auto typescript/javascript/kotlin code generator from APIs doc.
 Each endpoint will be created as a function, full type base.
 Supported
 
@@ -79,21 +79,22 @@ For Example:
 }
 ```
 
-| [`Key`]              | [`default`]      | Comment                                                                                                                                                                                                                                        |
-| -------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `url`                | Required         | swagger or postman collection Address. can be online or local (json/yaml) ([specific branch](#specific-branch))                                                                                                                                |
-| `dir`                | Required         | Address of output                                                                                                                                                                                                                              |
-| `language`           | `typescript`     | export to "javascript" or "typescript"                                                                                                                                                                                                         |
-| `methodName`         | `{method}{path}` | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}'                                                                                                                                                         |
-| `prefix`             | Optional         | prefix value will be removed from method name For example your endpoints is like "/api/v2/users", If you don't want add "/api/v2" to method name, add it to prefix                                                                             |
-| `ignore`             | Optional         | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]}`                                                                                                                                                            |
-| `mock`               | false            | For generate response mocks                                                                                                                                                                                                                    |
-| `keepJson`           | false            | This code will keep previous JSON for updating partially. change it to true then generate service for creating your first json file then you can update a tag for example `$ yarn swag-ts User` will update your user APIs which have User tag |
-| `reactHooks`         | false            | For generate react hooks of all APIs (using react-query under the hood)                                                                                                                                                                        |
-| `useQuery`           | []               | List of apis which is get but developed with post methods (Is useful for rest apis) for Example: ["postTicketsGetall"] (Needed to enable `reactHooks`)                                                                                         |
-| `useInfiniteQuery`   | []               | List of apis which is get and could be handle infinity (Needed to enable `reactHooks`) parameter should be one of `page`, `pageNo` or `pageNumber`                                                                                             |
-| `local`              | false            | update swagger with local swagger.json located in your dir folder. add it to your config file or run it with cli `$ yarn swag-ts --local`                                                                                                      |
-| `generateEnumAsType` | false            |
+| [`Key`]              | [`default`]            | Comment                                                                                                                                                                                                                                        |
+| -------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `url`                | Required               | swagger or postman collection Address. can be online or local (json/yaml) ([specific branch](#specific-branch))                                                                                                                                |
+| `dir`                | Required               | Address of output                                                                                                                                                                                                                              |
+| `language`           | `typescript`           | export to "javascript", "typescript" or "kotlin"                                                                                                                                                                                               |
+| `methodName`         | `{method}{path}`       | Supported mixed of "{method}{path}{operationId}". for Example: 'service{method}{path}'                                                                                                                                                         |
+| `prefix`             | Optional               | prefix value will be removed from method name For example your endpoints is like "/api/v2/users", If you don't want add "/api/v2" to method name, add it to prefix                                                                             |
+| `ignore`             | Optional               | Ignore headers from type for Example: `"ignore": { "headerParams": ["terminalId"]}`                                                                                                                                                            |
+| `mock`               | false                  | For generate response mocks                                                                                                                                                                                                                    |
+| `keepJson`           | false                  | This code will keep previous JSON for updating partially. change it to true then generate service for creating your first json file then you can update a tag for example `$ yarn swag-ts User` will update your user APIs which have User tag |
+| `reactHooks`         | false                  | For generate react hooks of all APIs (using react-query under the hood)                                                                                                                                                                        |
+| `useQuery`           | []                     | List of apis which is get but developed with post methods (Is useful for rest apis) for Example: ["postTicketsGetall"] (Needed to enable `reactHooks`)                                                                                         |
+| `useInfiniteQuery`   | []                     | List of apis which is get and could be handle infinity (Needed to enable `reactHooks`) parameter should be one of `page`, `pageNo` or `pageNumber`                                                                                             |
+| `local`              | false                  | update swagger with local swagger.json located in your dir folder. add it to your config file or run it with cli `$ yarn swag-ts --local`                                                                                                      |
+| `kotlinPackage`      | Required (Only kotlin) | package name of source dir                                                                                                                                                                                                                     |
+| `generateEnumAsType` | false                  |
 
 - `enum ReferralStatus {Successed="Successed","Error"="Error"} `
 - `type ReferralStatus="Successed" | "Error"; // generateEnumAsType = true `

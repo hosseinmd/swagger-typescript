@@ -268,7 +268,7 @@ export interface Config {
   tag?: string[];
   mock?: string;
   prettierPath?: string;
-  language?: "javascript" | "typescript";
+  language?: "javascript" | "typescript" | "kotlin";
   methodName?: string;
   prefix?: string;
   ignore?: {
@@ -279,6 +279,9 @@ export interface Config {
   /** Generate specific branch swagger */
   branch?: string;
   generateEnumAsType?: boolean;
+
+  //kotlin
+  kotlinPackage?: string;
 }
 
 export type SwaggerConfig = Config | Config[];
@@ -310,7 +313,7 @@ export type ApiAST = {
   pathParams: Parameter[];
   requestBody: Schema | undefined;
   queryParamsTypeName: string | false;
-  headerParams: string;
+  headerParams: string | Parameter[];
   isQueryParamsNullable: boolean;
   isHeaderParamsNullable: boolean;
   responses: Schema | undefined;

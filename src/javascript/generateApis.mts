@@ -77,12 +77,12 @@ ${getJsdoc({
             }${
               /** Header parameters */
               headerParams
-                ? `${getParamString(
-                    "headerParams",
-                    !isHeaderParamsNullable,
-                    headerParams,
-                  )},`
-                : ""
+              ? `${getParamString(
+                  "headerParams",
+                  !isHeaderParamsNullable,
+                  headerParams as string,
+                )},`
+              : ""
             }configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<${
               responses ? getTsType(responses, config) : "any"

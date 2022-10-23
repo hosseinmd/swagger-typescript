@@ -9,6 +9,7 @@ import { partialUpdateJson } from "./updateJson.mjs";
 import { default as postmanToOpenApi } from "postman-to-openapi";
 import yaml from "js-yaml";
 import path from "path";
+import { generateKotlinService } from "./kotlin/index.mjs";
 
 /** @param config If isn't defined will be use swagger.config.json instead */
 async function generate(config?: SwaggerConfig, cli?: Partial<Config>) {
@@ -80,11 +81,11 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
       }
     }
     switch (config.language) {
-      // case "CSharp": {
-      //   await generateCSharpService(config, input);
+      case "kotlin": {
+        await generateKotlinService(config, input);
 
-      //   break;
-      // }
+        break;
+      }
       default:
         await generateJavascriptService(config, input);
         break;

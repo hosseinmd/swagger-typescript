@@ -119,7 +119,7 @@ function generateHook(
             ? `${getParamString(
                 "headerParams",
                 !isHeaderParamsNullable,
-                headerParams,
+                headerParams as string,
               )},`
             : ""
         }`;

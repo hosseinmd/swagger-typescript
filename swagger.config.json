@@ -24,21 +24,10 @@
     }
   },
   {
-    "url": "http://192.168.34.101:80/swagger/v2/swagger.json",
-    "dir": "./test/swagger2",
-    "language": "typescript",
-    "keepJson": true,
-    "reactHooks": true,
-    "ignore": {
-      "headerParams": [
-        "terminalId"
-      ]
-    }
-  },
-  {
-    "url": "./testFiles/Wms.postman_collection.json",
+    "url": "https://bitfinity.postman.co/workspace/Bitfinity~0878e325-dcc5-4adf-b37e-ac68386085f4/collection/4699480-5297d2ce-9573-4bca-a65b-5451c9809055?action=share&creator=4699480",
     "dir": "./test/postman",
-    "language": "typescript",
+    "language": "kotlin",
+    "kotlinPackage":"com.wms.wms.data.api",
     "ignore": {
       "headerParams": [
         "Accept",
