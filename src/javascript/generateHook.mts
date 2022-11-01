@@ -14,7 +14,7 @@ import {
 import { getJsdoc } from "../utilities/jsdoc.mjs";
 import { isAscending, isMatchWholeWord } from "../utils.mjs";
 
-const allowedPageParametersNames = ["page", "pageno", "pagenumber"];
+const allowedPageParametersNames = ["page", "pageno", "pagenumber", "offset"];
 
 function generateHook(
   apis: ApiAST[],
