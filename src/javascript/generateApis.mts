@@ -77,12 +77,12 @@ ${getJsdoc({
             }${
               /** Header parameters */
               headerParams
-              ? `${getParamString(
-                  "headerParams",
-                  !isHeaderParamsNullable,
-                  headerParams as string,
-                )},`
-              : ""
+                ? `${getParamString(
+                    "headerParams",
+                    !isHeaderParamsNullable,
+                    headerParams as string,
+                  )},`
+                : ""
             }configOverride?:AxiosRequestConfig
 ): Promise<SwaggerResponse<${
               responses ? getTsType(responses, config) : "any"
@@ -138,7 +138,7 @@ ${serviceName}.key = "${endPoint}";
         }
 
         return prev + ` ${name},`;
-      }, "import {") + '}  from "./types"\n';
+      }, "import type {") + '}  from "./types"\n';
 
     code += SERVICE_NEEDED_FUNCTIONS;
     code += apisCode;

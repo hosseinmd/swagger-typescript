@@ -263,7 +263,7 @@ function generateHook(
             return prev;
           }
           return prev + ` ${name},`;
-        }, "import {") + '}  from "./types"\n';
+        }, "import type {") + '}  from "./types"\n';
 
     code +=
       apis.reduce((prev, { serviceName }) => {
