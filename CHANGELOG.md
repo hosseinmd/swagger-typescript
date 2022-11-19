@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.4.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.5...v6.4.0) (2022-11-19)
+
+
+### Features
+
+* support kotlin ([f6d853f](https://github.com/hosseinmd/swagger-typescript/commit/f6d853f9d9a2d7053e10014ebe3d6c9631f1af54))
+
+
+### Bug Fixes
+
+* export type ([ba2dbe0](https://github.com/hosseinmd/swagger-typescript/commit/ba2dbe0998a5d21401fd003dbf3e925656a9c4c3))
+* node 18 support ([549d1ba](https://github.com/hosseinmd/swagger-typescript/commit/549d1ba572f1db8da17b13d67e9ab6d9a23a3d8f))
+
 ### [6.3.5](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.4...v6.3.5) (2022-10-06)
 
 
