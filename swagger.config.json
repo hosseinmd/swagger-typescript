@@ -1,5 +1,6 @@
 [
   {
+    "$schema": "./schema/v6.json",
     "url": [
       {
         "branch": "master",
@@ -14,26 +15,19 @@
     "language": "typescript",
     "keepJson": true,
     "reactHooks": true,
-    "useInfiniteQuery": [
-      "useGetRealmsRealm"
-    ],
+    "useInfiniteQuery": ["useGetRealmsRealm"],
     "ignore": {
-      "headerParams": [
-        "terminalId"
-      ]
+      "headerParams": ["terminalId"]
     }
   },
   {
+    "$schema": "./schema/v6.json",
     "url": "https://bitfinity.postman.co/workspace/Bitfinity~0878e325-dcc5-4adf-b37e-ac68386085f4/collection/4699480-5297d2ce-9573-4bca-a65b-5451c9809055?action=share&creator=4699480",
     "dir": "./test/postman",
     "language": "kotlin",
-    "kotlinPackage":"com.wms.wms.data.api",
+    "kotlinPackage": "com.wms.wms.data.api",
     "ignore": {
-      "headerParams": [
-        "Accept",
-        "Content-Encoding",
-        "Content-Type"
-      ]
+      "headerParams": ["Accept", "Content-Encoding", "Content-Type"]
     }
   }
 ]

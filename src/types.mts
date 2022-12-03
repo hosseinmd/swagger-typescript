@@ -265,7 +265,6 @@ export interface Config {
   reactHooks?: boolean;
   useQuery?: string[];
   useInfiniteQuery?: string[];
-  tag?: string[];
   mock?: string;
   prettierPath?: string;
   language?: "javascript" | "typescript" | "kotlin";
@@ -274,14 +273,17 @@ export interface Config {
   ignore?: {
     headerParams?: string[];
   };
-  /** Generate with local swagger.json */
-  local?: boolean;
-  /** Generate specific branch swagger */
-  branch?: string;
   generateEnumAsType?: boolean;
 
   //kotlin
   kotlinPackage?: string;
+
+  // CLI
+  tag?: string[];
+  /** Generate with local swagger.json */
+  local?: boolean;
+  /** Generate specific branch swagger */
+  branch?: string;
 }
 
 export type SwaggerConfig = Config | Config[];

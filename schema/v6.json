@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "url": {
+      "description": "Path of openApi, could be file or internet address",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "branch": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": ["branch", "url"]
+          }
+        }
+      ]
+    },
+    "dir": {
+      "type": "string",
+      "filePathExists": true,
+      "description": "Destination folder which generated file will be there. Start from root of project"
+    },
+    "keepJson": {
+      "type": "boolean",
+      "default": false,
+      "description": "Useful when you want to keep a json version in your local"
+    },
+    "reactHooks": {
+      "type": "boolean",
+      "default": false,
+      "description": "Generate react hooks for every api"
+    },
+    "useQuery": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "If an api is post but you want to generate it as get Api add name of it hook to this array"
+    },
+    "useInfiniteQuery": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "To infinity load functionality for your api hook add hook name to this array"
+    },
+    "language": {
+      "type": "string",
+      "enum": ["javascript", "typescript", "kotlin"],
+      "description": "Target language"
+    },
+    "prettierPath": {
+      "type": "string",
+      "description": "Path of prettier config file"
+    },
+    "methodName": {
+      "type": "string",
+      "description": "For customizing method name"
+    },
+    "prefix": {
+      "type": "string",
+      "description": "Prefix of Apis which you want to remove for example: `/api`"
+    },
+    "ignore": {
+      "type": "object",
+      "properties": {
+        "headerParams": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "For ignore property from all of api to not generating"
+    },
+    "generateEnumAsType": {
+      "type": "boolean"
+    },
+    "kotlinPackage": {
+      "description": "Package name of distance",
+      "type": "string"
+    }
+  },
+  "required": ["url", "dir"]
+}
