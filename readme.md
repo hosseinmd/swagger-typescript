@@ -72,6 +72,7 @@ For Example:
 
 ```json
 {
+  "$schema": "https://raw.githubusercontent.com/hosseinmd/swagger-typescript/master/schema/v6.json",
   "url": "http://example.com/api/swagger.json",
   "dir": "./services",
   "prettierPath": ".prettierrc",
@@ -147,12 +148,14 @@ if you have multiple gateway in your project you could handle it by add array of
 ```json
 [
   {
+    "$schema": "https://raw.githubusercontent.com/hosseinmd/swagger-typescript/master/schema/v6.json",
     "url": "http://example1.com/api/swagger.json",
     "dir": "./service1",
     "prettierPath": ".prettierrc",
     "language": "typescript"
   },
   {
+    "$schema": "https://raw.githubusercontent.com/hosseinmd/swagger-typescript/master/schema/v6.json",
     "url": "http://example2.com/api/swagger.json",
     "dir": "./service2",
     "prettierPath": ".prettierrc",
