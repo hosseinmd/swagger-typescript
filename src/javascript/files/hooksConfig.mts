@@ -27,6 +27,8 @@ const paginationFlattenData = <T extends Array<SwaggerResponse<any>>>(
       ? page.data.data
       : Array.isArray(page.data?.list)
       ? page.data.list
+      : Array.isArray(page?.list)
+      ? page.list
       : [],
   ) as any;
 
