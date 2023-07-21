@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.5.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.4.0...v6.5.0) (2023-07-21)
+
+
+### Features
+
+* json schema ([6686560](https://github.com/hosseinmd/swagger-typescript/commit/668656078e9462bf4ac0a68888896547b16f537c))
+
+
+### Bug Fixes
+
+* prettier v3 support ([eac7842](https://github.com/hosseinmd/swagger-typescript/commit/eac7842e731f62960b92b888aff221b63b4a4cbd))
+
 ## [6.4.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.5...v6.4.0) (2022-11-19)
 
 
