@@ -88,14 +88,14 @@ const generateJavascriptService = async (
         console.log(chalk.redBright(Error));
         return;
       }
-      files.forEach((file) => {
+      for (const file of files) {
         if (file.endsWith(".ts") || file.endsWith(".js")) {
           formatFile(file, prettierOptions);
         }
         if (file.endsWith(".json")) {
           formatFile(file, { ...prettierOptions, parser: "json" });
         }
-      });
+      }
     });
     console.log(chalk.greenBright("All Completed"));
   } catch (error) {
@@ -104,9 +104,9 @@ const generateJavascriptService = async (
   }
 };
 
-function formatFile(filePath: string, prettierOptions: any) {
+async function formatFile(filePath: string, prettierOptions: any) {
   const code = readFileSync(filePath).toString();
-  writeFileSync(filePath, format(code, prettierOptions));
+  writeFileSync(filePath, await format(code, prettierOptions));
 }
 
 function convertTsToJs(dir: string, files: string[]) {

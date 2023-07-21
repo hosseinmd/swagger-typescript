@@ -4,11 +4,11 @@
     "url": [
       {
         "branch": "master",
-        "url": "http://dev.hitobit.com/hapi/swagger/v1/swagger.json"
+        "url": "https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2.json"
       },
       {
         "branch": "develop",
-        "url": "http://dev.hitobit.com/hapi/swagger/v1/swagger.json"
+        "url": "https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2.json"
       }
     ],
     "dir": "./test",
