@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.5.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.5.0...v6.5.1) (2023-09-08)
+
+
+### Bug Fixes
+
+* enum names ([461d31a](https://github.com/hosseinmd/swagger-typescript/commit/461d31a0059990ecf5c93350e6ccfbf81d838f5f))
+* number enums ([be581c7](https://github.com/hosseinmd/swagger-typescript/commit/be581c75799e501a3a8b0f73842f6994b0f2cb68))
+
 ## [6.5.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.4.0...v6.5.0) (2023-07-21)
 
 
