@@ -97,6 +97,9 @@ exports[`generate generate type 1`] = `
 */
 
         
+        export type EnumWithoutName =0 | 1 | 2 | 10 | 30;
+        
+        
         export interface GetSettlementV1PrivateSettlementGetQueryParams {\\"EndDate\\"?: string;\\"IsAuto\\"?: boolean;
 /**
  * 
