@@ -262,9 +262,16 @@
         ]
       },
       "EnumWithoutName": {
-        "type": "string",
         "description": "",
         "enum": [0, 1, 2, 10, 30]
+      },
+      "Type": {
+        "enum": [
+          "0",
+          "-1"
+        ],
+        "type": "integer",
+        "format": "int32"
       }
     }
   }

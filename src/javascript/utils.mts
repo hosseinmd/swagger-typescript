@@ -147,9 +147,7 @@ function getTsType(
     }
   }
   if (Enum) {
-    return `${Enum.map((e) => (typeof e === "string" ? `"${e}"` : `${e}`)).join(
-      " | ",
-    )}`;
+    return `${Enum.map((e) => JSON.stringify(e)).join(" | ")}`;
   }
 
   if (items) {

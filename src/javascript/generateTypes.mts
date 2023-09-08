@@ -47,15 +47,15 @@ function getTypeDefinition(name: string, schema: Schema = {}, config: Config) {
 
   if (Enum) {
     if (config.generateEnumAsType) {
-      return `export type ${name} =${Enum.map((e) =>
-        typeof e === "string" ? `"${e}"` : `${e}`,
-      ).join(" | ")};`;
+      return `export type ${name} =${Enum.map((e) => JSON.stringify(e)).join(
+        " | ",
+      )};`;
     }
     return `export enum ${name} {${Enum.map(
       (e, index) =>
-        `${enumNames ? enumNames[index] : e}=${
-          typeof e === "string" ? `"${e}"` : `${e}`
-        }`,
+        `${enumNames ? enumNames[index] : JSON.stringify(e)}=${JSON.stringify(
+          e,
+        )}`,
     )}}`;
   }
 
