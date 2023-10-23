@@ -172,9 +172,9 @@ function generateHook(
             data: { pages } = {},
             data,
             ...rest
-          } = useInfiniteQuery(
-            key,
-            ({ pageParam = 1 }) =>
+          } = useInfiniteQuery({
+            queryKey:key,
+            queryFn:({ pageParam }) =>
               fun({
                   ${
                     queryParameters.find(({ name }) =>
@@ -182,11 +182,10 @@ function generateHook(
                     )?.name
                   }:pageParam,
               }),
-            {
+              initialPageParam: 1,
               getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
               ...(options as any),
-            },
-          );
+          });
         
           const list = useMemo(() => paginationFlattenData(pages), [pages]);
           const total = getTotal(pages);
@@ -197,20 +196,23 @@ function generateHook(
           `;
           } else {
             result += `return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )`;
           }
         } else {
-          result += `return useMutation((_o)=>{
+          result += `return useMutation({mutationFn:(_o)=>{
             const {${getParamsString()} configOverride } = _o || {};
 
             return ${serviceName}(
                 ${getParamsString()} configOverride,
               )
           },
-          options
+          ...options
+        }
          )`;
         }
 
@@ -242,9 +244,11 @@ function generateHook(
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }`;
         }
