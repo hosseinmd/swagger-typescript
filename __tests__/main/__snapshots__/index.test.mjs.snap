@@ -3950,7 +3950,7 @@ import type { AccountBalanceApiModel, AccountInfoApiModel, AccountPermittedSubUs
 import { deleteBusinessUserConnectionConnectionId, deleteBusinessUserConnectionConnectionIdPermissionUserWalletId, deleteBusinessUserConnectionInvitationIdRemove, deleteBusinessUserInviteInvitationIdRemove, deleteSubUserConnectionConnectionId, deleteUserConnectionConnectionId, getAccessUserWalletIdLogicalAction, getBank, getBusinessUserCategory, getBusinessUserConnection, getBusinessUserConnectionActive, getBusinessUserConnectionConnectionId, getBusinessUserConnectionConnectionIdActivity, getBusinessUserConnectionConnectionIdEpay, getBusinessUserConnectionConnectionIdPermission, getEpayRequest, getEpayRequestAudiencesRecent, getEpayRequestCount, getEpayRequestEpayId, getEpayRequestEpayTokenDetail, getEpayRequestEpayTokenQrcode, getEpayRequestExcel, getEpayRequestForMe, getEpayRequestForMeCount, getEpayRequestForMeReport, getEpayRequestPosQrAccountNumber, getEpayRequestReport, getEpayRequestUserWalletIdCommission, getEpayRequestUserWalletIdCreators, getError, getErrorLocal, getErrorStatusCode, getFileFileGuid, getGroupTransferCommission, getIntegration, getKpi, getKpiCurrent, getKpiLast, getNotificationIa, getNotificationNotif, getNotificationUnread, getPluginPluginId, getPosAccountNumber, getReceiptBankEpayTryId, getReceiptEpayToken, getReceiptWalletEpayToken, getResellerUser, getResellerUserDashboardCommissionReport, getResellerUserDashboardCommissionSum, getResellerUserDashboardIntroducedCount, getResellerUserDashboardIntroducedReport, getResellerUserDashboardLinksCount, getResellerUserDashboardLinksPaidCount, getResellerUserDashboardLinksPaidReport, getResellerUserDashboardLinksReport, getResellerUserDashboardTransactionsCount, getResellerUserDashboardTransactionsReport, getResellerUserIntroduced, getResellerUserIntroducedFilterData, getResellerUserIntroducedUserIdActivity, getSubDomain, getSubDomainSubDomainAddress, getSubUserAccountUserWalletId, getSubUserConnection, getTransaction, getTransactionExcel, getTransactionReport, getTransactionReportAll, getTransactionTransactionId, getTransferRecent, getTransferSearch, getTransferUserWalletIdCommission, getUser, getUserBank, getUserBankReady, getUserBankUserBankId, getUserConnection, getUserContactInput, getUserIdentityRequest, getUserInvitation, getUserInvitationInvitationToken, getUserMe, getUserPlugin, getUserUpgradeToBusinessRequest, getUserWallet, getUserWalletAccountNumberQrcode, getUserWalletSearch, getUserWalletUserWalletId, getUserWalletUserWalletIdBalance, getUserWalletUserWalletIdEpayRequestComission, getUserWalletUserWalletIdPermittedsubusers, getUserWalletUserWalletIdSettlementRequestComission, getUserWalletUserWalletIdTransferMoneyCommission, getUserWorkspace, postApiCspReportLog, postAuthForgetPassword, postAuthForgetPasswordVerify, postAuthLoginOtpGenerate, postAuthRegister, postAuthRegisterBasic, postAuthRegisterVerify, postBusinessUserConnectionConnectionIdPermission, postBusinessUserInvite, postBusinessUserInviteInvitationIdResend, postBusinessUserResendInvitationId, postEpayRequestEpayIdCancel, postEpayRequestEpayIdResend, postEpayRequestEpayIdTask, postEpayRequestEpayTokenPayUserWalletId, postEpayRequestUserWalletId, postFile, postGroupTransferExport, postGroupTransferImport, postGroupTransferTransfer, postIntegrationTaxiPayment, postMachineRegisterUser, postPosPayTargetAccountNumberOnline, postPosPayTargetAccountNumberWallet, postServiceCancelAmount, postServiceCancelPayment, postServiceCheckEpayRequest, postServiceNewDivideEpayRequest, postServiceNewEpayRequest, postServiceUnblockAmount, postServiceVerifyApiKey, postSettingsInit, postSettingsLogSwitch, postSettingsLogSwitchSeptapay, postSettingsLogSwitchSerilog, postSettingsTerminalVersion, postSubUserAccountUserWalletIdNotification, postSubUserNotificationUserWalletId, postTransferUserWalletId, postUserBank, postUserChangePassword, postUserIdentityRequest, postUserInvitationInvitationIdTask, postUserInvitationInvitationTokenAccept, postUserInvitationInvitationTokenReject, postUserUpgradeToBusinessRequest, postUserWallet, postUserWalletUserWalletIdCharge, postUserWalletUserWalletIdEpayRequest, postUserWalletUserWalletIdTransferMoney, putBusinessUserConnectionConnectionId, putBusinessUserConnectionConnectionIdPermissionUserWalletId, putGroupTransferAdd, putNotificationIaNotifIdDismiss, putSubDomain, putUser, putUserBankUserBankId, putUserBankUserBankIdChangeVisibility, putUserChangeAvatar, putUserPluginUserPluginIdChangeStatus, putUserWalletUserWalletId, putUserWalletUserWalletIdNotification,}  from \\"./services\\"
 
     export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
-    type SwaggerTypescriptUseQueryOptions<TData> = UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>;
+    type SwaggerTypescriptUseQueryOptions<TData> = Omit<UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,\\"queryKey\\">;
 
     type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> = UseMutationOptions<
       SwaggerResponse<TData>,
@@ -3981,7 +3981,7 @@ export const useDeleteBusinessUserConnectionConnectionId =<TExtra> (
  * Connection Id
  */
 connectionId: number,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { connectionId,
           
           
@@ -3994,7 +3994,8 @@ connectionId: number,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -4005,7 +4006,7 @@ connectionId: number,}, TExtra>,
  * Id of Account to delete it's permissios
  */
 userWalletId: number,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { connectionId,userWalletId,
           
           
@@ -4018,7 +4019,8 @@ userWalletId: number,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -4033,7 +4035,7 @@ userWalletId: number,}, TExtra>,
  */
 export const useDeleteBusinessUserConnectionInvitationIdRemove =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (SubUserConnectionApiModel), {invitationId: string,queryParams?: DeleteBusinessUserConnectionInvitationIdRemoveQueryParams,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { invitationId,
           
           queryParams,
@@ -4046,7 +4048,8 @@ export const useDeleteBusinessUserConnectionInvitationIdRemove =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -4059,7 +4062,7 @@ export const useDeleteBusinessUserConnectionInvitationIdRemove =<TExtra> (
  */
 export const useDeleteBusinessUserInviteInvitationIdRemove =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (SubUserConnectionApiModel), {invitationId: number,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { invitationId,
           
           
@@ -4072,7 +4075,8 @@ export const useDeleteBusinessUserInviteInvitationIdRemove =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -4092,7 +4096,7 @@ export const useDeleteSubUserConnectionConnectionId =<TExtra> (
  * connection id
  */
 connectionId: number,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { connectionId,
           
           
@@ -4105,7 +4109,8 @@ connectionId: number,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -4123,7 +4128,7 @@ export const useDeleteUserConnectionConnectionId =<TExtra> (
  * connection id
  */
 connectionId: number,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { connectionId,
           
           
@@ -4136,7 +4141,8 @@ connectionId: number,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -4148,9 +4154,11 @@ connectionId: number,}, TExtra>,
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetAccessUserWalletIdLogicalAction.info = (userWalletId: number,logicalAction: \\"EpayRequest\\" | \\"TransferMoney\\" | \\"AccountChargeRequest\\" | \\"ServiceBill\\" | \\"ServiceMobileCharge\\" | \\"POS\\" | \\"ShareAndBlockRequest\\" | \\"ShareRequest\\" | \\"Settlement\\" | \\"GroupTransferMoney\\" | \\"ShareAndUnblock\\" | \\"Refund\\" | \\"PayCommand\\" | \\"Gift\\" | \\"TaxiFairPayment\\" | \\"HitoBitFee\\",configOverride?:AxiosRequestConfig) => {
@@ -4179,9 +4187,11 @@ connectionId: number,}, TExtra>,
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -4197,9 +4207,11 @@ export const useGetBank = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetBank.info = (configOverride?:AxiosRequestConfig) => {
@@ -4228,9 +4240,11 @@ export const useGetBank = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -4246,9 +4260,11 @@ export const useGetBusinessUserCategory = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetBusinessUserCategory.info = (configOverride?:AxiosRequestConfig) => {
@@ -4277,9 +4293,11 @@ export const useGetBusinessUserCategory = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -4296,9 +4314,11 @@ export const useGetBusinessUserConnection = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetBusinessUserConnection.info = (queryParams?: GetBusinessUserConnectionQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -4327,9 +4347,11 @@ export const useGetBusinessUserConnection = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -4346,9 +4368,11 @@ export const useGetBusinessUserConnectionActive = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetBusinessUserConnectionActive.info = (queryParams?: GetBusinessUserConnectionActiveQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -4377,9 +4401,11 @@ export const useGetBusinessUserConnectionActive = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -4402,9 +4428,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserConnec
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetBusinessUserConnectionConnectionId.info = (
@@ -4443,9 +4471,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserConnec
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -4468,9 +4498,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetBusinessUserConnectionConnectionIdActivity.info = (
@@ -4509,9 +4541,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetBusinessUserConnectionConnectionIdEpay = (
@@ -4522,9 +4556,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetBusinessUserConnectionConnectionIdEpay.info = (connectionId: number,queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -4553,9 +4589,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -4578,9 +4616,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetBusinessUserConnectionConnectionIdPermission.info = (
@@ -4619,9 +4659,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetEpayRequest = (
@@ -4632,9 +4674,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequest.info = (queryParams?: GetEpayRequestQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -4663,9 +4707,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetEpayRequestAudiencesRecent = (
@@ -4676,9 +4722,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestAudiencesRecent.info = (configOverride?:AxiosRequestConfig) => {
@@ -4707,9 +4755,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetEpayRequestCount = (
@@ -4720,9 +4770,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestCount.info = (queryParams?: GetEpayRequestCountQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -4751,9 +4803,11 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -4774,9 +4828,11 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestEpayId.info = (
@@ -4815,9 +4871,11 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetEpayRequestEpayTokenDetail = (
@@ -4828,9 +4886,11 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestEpayTokenDetail.info = (epayToken: string,configOverride?:AxiosRequestConfig) => {
@@ -4859,9 +4919,11 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -4882,9 +4944,11 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestEpayTokenQrcode.info = (
@@ -4923,9 +4987,11 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetEpayRequestExcel = (
@@ -4936,9 +5002,11 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestExcel.info = (queryParams?: GetEpayRequestExcelQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -4967,9 +5035,11 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -4987,9 +5057,11 @@ export const useGetEpayRequestForMe = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestForMe.info = (queryParams?: GetEpayRequestForMeQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5018,9 +5090,11 @@ export const useGetEpayRequestForMe = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetEpayRequestForMeCount = (
@@ -5031,9 +5105,11 @@ export const useGetEpayRequestForMe = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestForMeCount.info = (queryParams?: GetEpayRequestForMeCountQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5062,9 +5138,11 @@ export const useGetEpayRequestForMe = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetEpayRequestForMeReport = (
@@ -5075,9 +5153,11 @@ export const useGetEpayRequestForMe = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestForMeReport.info = (queryParams?: GetEpayRequestForMeReportQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5106,9 +5186,11 @@ export const useGetEpayRequestForMe = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -5125,9 +5207,11 @@ export const useGetEpayRequestPosQrAccountNumber = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestPosQrAccountNumber.info = (accountNumber: string,queryParams?: GetEpayRequestPosQrAccountNumberQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5156,9 +5240,11 @@ export const useGetEpayRequestPosQrAccountNumber = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetEpayRequestReport = (
@@ -5169,9 +5255,11 @@ export const useGetEpayRequestPosQrAccountNumber = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestReport.info = (queryParams?: GetEpayRequestReportQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5200,9 +5288,11 @@ export const useGetEpayRequestPosQrAccountNumber = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -5218,9 +5308,11 @@ export const useGetEpayRequestUserWalletIdCommission = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestUserWalletIdCommission.info = (userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5249,9 +5341,11 @@ export const useGetEpayRequestUserWalletIdCommission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetEpayRequestUserWalletIdCreators = (
@@ -5262,9 +5356,11 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetEpayRequestUserWalletIdCreators.info = (userWalletId: number,configOverride?:AxiosRequestConfig) => {
@@ -5293,9 +5389,11 @@ export const useGetEpayRequestUserWalletIdCommission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetError = (
@@ -5306,9 +5404,11 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetError.info = (configOverride?:AxiosRequestConfig) => {
@@ -5337,9 +5437,11 @@ export const useGetEpayRequestUserWalletIdCommission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetErrorLocal = (
@@ -5350,9 +5452,11 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetErrorLocal.info = (configOverride?:AxiosRequestConfig) => {
@@ -5381,9 +5485,11 @@ export const useGetEpayRequestUserWalletIdCommission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetErrorStatusCode = (
@@ -5394,9 +5500,11 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetErrorStatusCode.info = (code: number,configOverride?:AxiosRequestConfig) => {
@@ -5425,9 +5533,11 @@ export const useGetEpayRequestUserWalletIdCommission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -5448,9 +5558,11 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetFileFileGuid.info = (
@@ -5489,9 +5601,11 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetGroupTransferCommission = (
@@ -5502,9 +5616,11 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetGroupTransferCommission.info = (queryParams?: GetGroupTransferCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5533,9 +5649,11 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -5551,9 +5669,11 @@ export const useGetIntegration = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetIntegration.info = (queryParams?: GetIntegrationQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5582,9 +5702,11 @@ export const useGetIntegration = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetKpi = (
@@ -5595,9 +5717,11 @@ export const useGetIntegration = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetKpi.info = (queryParams?: GetKpiQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5626,9 +5750,11 @@ export const useGetIntegration = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetKpiCurrent = (
@@ -5639,9 +5765,11 @@ export const useGetIntegration = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetKpiCurrent.info = (queryParams?: GetKpiCurrentQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5670,9 +5798,11 @@ export const useGetIntegration = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetKpiLast = (
@@ -5683,9 +5813,11 @@ export const useGetIntegration = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetKpiLast.info = (queryParams?: GetKpiLastQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5714,9 +5846,11 @@ export const useGetIntegration = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -5732,9 +5866,11 @@ export const useGetNotificationIa = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetNotificationIa.info = (configOverride?:AxiosRequestConfig) => {
@@ -5763,9 +5899,11 @@ export const useGetNotificationIa = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -5782,9 +5920,11 @@ export const useGetNotificationNotif = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetNotificationNotif.info = (configOverride?:AxiosRequestConfig) => {
@@ -5813,9 +5953,11 @@ export const useGetNotificationNotif = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetNotificationUnread = (
@@ -5826,9 +5968,11 @@ export const useGetNotificationNotif = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetNotificationUnread.info = (queryParams?: GetNotificationUnreadQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -5857,9 +6001,11 @@ export const useGetNotificationNotif = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetPluginPluginId = (
@@ -5870,9 +6016,11 @@ export const useGetNotificationNotif = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetPluginPluginId.info = (pluginId: number,configOverride?:AxiosRequestConfig) => {
@@ -5901,9 +6049,11 @@ export const useGetNotificationNotif = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -5924,9 +6074,11 @@ accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:Swag
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetPosAccountNumber.info = (
@@ -5965,9 +6117,11 @@ accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:Swag
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -5989,9 +6143,11 @@ epayTryId: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetReceiptBankEpayTryId.info = (
@@ -6030,9 +6186,11 @@ epayTryId: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6056,9 +6214,11 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetReceiptEpayToken.info = (
@@ -6097,9 +6257,11 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6121,9 +6283,11 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (WalletReceiptApi
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetReceiptWalletEpayToken.info = (
@@ -6162,9 +6326,11 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (WalletReceiptApi
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6181,9 +6347,11 @@ export const useGetResellerUser = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUser.info = (configOverride?:AxiosRequestConfig) => {
@@ -6212,9 +6380,11 @@ export const useGetResellerUser = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6232,9 +6402,11 @@ export const useGetResellerUserDashboardCommissionReport = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserDashboardCommissionReport.info = (queryParams?: GetResellerUserDashboardCommissionReportQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -6263,9 +6435,11 @@ export const useGetResellerUserDashboardCommissionReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6283,9 +6457,11 @@ export const useGetResellerUserDashboardCommissionSum = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserDashboardCommissionSum.info = (queryParams?: GetResellerUserDashboardCommissionSumQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -6314,9 +6490,11 @@ export const useGetResellerUserDashboardCommissionSum = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6334,9 +6512,11 @@ export const useGetResellerUserDashboardIntroducedCount = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserDashboardIntroducedCount.info = (queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -6365,9 +6545,11 @@ export const useGetResellerUserDashboardIntroducedCount = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6385,9 +6567,11 @@ export const useGetResellerUserDashboardIntroducedReport = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserDashboardIntroducedReport.info = (queryParams?: GetResellerUserDashboardIntroducedReportQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -6416,9 +6600,11 @@ export const useGetResellerUserDashboardIntroducedReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6436,9 +6622,11 @@ export const useGetResellerUserDashboardLinksCount = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserDashboardLinksCount.info = (queryParams?: GetResellerUserDashboardLinksCountQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -6467,9 +6655,11 @@ export const useGetResellerUserDashboardLinksCount = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6487,9 +6677,11 @@ export const useGetResellerUserDashboardLinksPaidCount = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserDashboardLinksPaidCount.info = (queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -6518,9 +6710,11 @@ export const useGetResellerUserDashboardLinksPaidCount = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6538,9 +6732,11 @@ export const useGetResellerUserDashboardLinksPaidReport = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserDashboardLinksPaidReport.info = (queryParams?: GetResellerUserDashboardLinksPaidReportQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -6569,9 +6765,11 @@ export const useGetResellerUserDashboardLinksPaidReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6589,9 +6787,11 @@ export const useGetResellerUserDashboardLinksReport = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserDashboardLinksReport.info = (queryParams?: GetResellerUserDashboardLinksReportQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -6620,9 +6820,11 @@ export const useGetResellerUserDashboardLinksReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6640,9 +6842,11 @@ export const useGetResellerUserDashboardTransactionsCount = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserDashboardTransactionsCount.info = (queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -6671,9 +6875,11 @@ export const useGetResellerUserDashboardTransactionsCount = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6691,9 +6897,11 @@ export const useGetResellerUserDashboardTransactionsReport = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserDashboardTransactionsReport.info = (queryParams?: GetResellerUserDashboardTransactionsReportQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -6722,9 +6930,11 @@ export const useGetResellerUserDashboardTransactionsReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6741,9 +6951,11 @@ export const useGetResellerUserIntroduced = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserIntroduced.info = (queryParams?: GetResellerUserIntroducedQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -6772,9 +6984,11 @@ export const useGetResellerUserIntroduced = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6791,9 +7005,11 @@ export const useGetResellerUserIntroducedFilterData = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserIntroducedFilterData.info = (configOverride?:AxiosRequestConfig) => {
@@ -6822,9 +7038,11 @@ export const useGetResellerUserIntroducedFilterData = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6841,9 +7059,11 @@ export const useGetResellerUserIntroducedUserIdActivity = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetResellerUserIntroducedUserIdActivity.info = (userId: string,configOverride?:AxiosRequestConfig) => {
@@ -6872,9 +7092,11 @@ export const useGetResellerUserIntroducedUserIdActivity = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6891,9 +7113,11 @@ export const useGetSubDomain = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetSubDomain.info = (configOverride?:AxiosRequestConfig) => {
@@ -6922,9 +7146,11 @@ export const useGetSubDomain = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -6951,9 +7177,11 @@ subDomainAddress: string,headerParams?: {
           
           headerParams, configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetSubDomainSubDomainAddress.info = (
@@ -7004,9 +7232,11 @@ subDomainAddress: string,headerParams?: {
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7023,9 +7253,11 @@ export const useGetSubUserAccountUserWalletId = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetSubUserAccountUserWalletId.info = (userWalletId: number,configOverride?:AxiosRequestConfig) => {
@@ -7054,9 +7286,11 @@ export const useGetSubUserAccountUserWalletId = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7075,9 +7309,11 @@ export const useGetSubUserConnection = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetSubUserConnection.info = (configOverride?:AxiosRequestConfig) => {
@@ -7106,9 +7342,11 @@ export const useGetSubUserConnection = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetTransaction = (
@@ -7119,9 +7357,11 @@ export const useGetSubUserConnection = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetTransaction.info = (queryParams?: GetTransactionQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -7150,9 +7390,11 @@ export const useGetSubUserConnection = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetTransactionExcel = (
@@ -7163,9 +7405,11 @@ export const useGetSubUserConnection = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetTransactionExcel.info = (queryParams?: GetTransactionExcelQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -7194,9 +7438,11 @@ export const useGetSubUserConnection = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7211,9 +7457,11 @@ export const useGetTransactionReport = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetTransactionReport.info = (queryParams?: GetTransactionReportQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -7242,9 +7490,11 @@ export const useGetTransactionReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7259,9 +7509,11 @@ export const useGetTransactionReportAll = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetTransactionReportAll.info = (queryParams?: GetTransactionReportAllQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -7290,9 +7542,11 @@ export const useGetTransactionReportAll = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7309,9 +7563,11 @@ export const useGetTransactionTransactionId = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetTransactionTransactionId.info = (transactionId: number,configOverride?:AxiosRequestConfig) => {
@@ -7340,9 +7596,11 @@ export const useGetTransactionTransactionId = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7358,9 +7616,11 @@ export const useGetTransferRecent = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetTransferRecent.info = (queryParams?: GetTransferRecentQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -7389,9 +7649,11 @@ export const useGetTransferRecent = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetTransferSearch = (
@@ -7402,9 +7664,11 @@ export const useGetTransferRecent = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetTransferSearch.info = (queryParams?: GetTransferSearchQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -7433,9 +7697,11 @@ export const useGetTransferRecent = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7451,9 +7717,11 @@ export const useGetTransferUserWalletIdCommission = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetTransferUserWalletIdCommission.info = (userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -7482,9 +7750,11 @@ export const useGetTransferUserWalletIdCommission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7500,9 +7770,11 @@ export const useGetUser = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUser.info = (configOverride?:AxiosRequestConfig) => {
@@ -7531,9 +7803,11 @@ export const useGetUser = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7550,9 +7824,11 @@ export const useGetUserBank = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserBank.info = (configOverride?:AxiosRequestConfig) => {
@@ -7581,9 +7857,11 @@ export const useGetUserBank = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7600,9 +7878,11 @@ export const useGetUserBankReady = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserBankReady.info = (configOverride?:AxiosRequestConfig) => {
@@ -7631,9 +7911,11 @@ export const useGetUserBankReady = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7655,9 +7937,11 @@ userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailA
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserBankUserBankId.info = (
@@ -7696,9 +7980,11 @@ userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailA
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7714,9 +8000,11 @@ export const useGetUserConnection = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserConnection.info = (configOverride?:AxiosRequestConfig) => {
@@ -7745,9 +8033,11 @@ export const useGetUserConnection = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetUserContactInput = (
@@ -7758,9 +8048,11 @@ export const useGetUserConnection = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserContactInput.info = (input: string,configOverride?:AxiosRequestConfig) => {
@@ -7789,9 +8081,11 @@ export const useGetUserConnection = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7807,9 +8101,11 @@ export const useGetUserIdentityRequest = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserIdentityRequest.info = (configOverride?:AxiosRequestConfig) => {
@@ -7838,9 +8134,11 @@ export const useGetUserIdentityRequest = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7856,9 +8154,11 @@ export const useGetUserInvitation = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserInvitation.info = (configOverride?:AxiosRequestConfig) => {
@@ -7887,9 +8187,11 @@ export const useGetUserInvitation = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7905,9 +8207,11 @@ export const useGetUserInvitationInvitationToken = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserInvitationInvitationToken.info = (invitationToken: string,configOverride?:AxiosRequestConfig) => {
@@ -7936,9 +8240,11 @@ export const useGetUserInvitationInvitationToken = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -7954,9 +8260,11 @@ export const useGetUserMe = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserMe.info = (configOverride?:AxiosRequestConfig) => {
@@ -7985,9 +8293,11 @@ export const useGetUserMe = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetUserPlugin = (
@@ -7998,9 +8308,11 @@ export const useGetUserMe = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserPlugin.info = (configOverride?:AxiosRequestConfig) => {
@@ -8029,9 +8341,11 @@ export const useGetUserMe = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -8047,9 +8361,11 @@ export const useGetUserUpgradeToBusinessRequest = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserUpgradeToBusinessRequest.info = (configOverride?:AxiosRequestConfig) => {
@@ -8078,9 +8394,11 @@ export const useGetUserUpgradeToBusinessRequest = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetUserWallet = (
@@ -8091,9 +8409,11 @@ export const useGetUserUpgradeToBusinessRequest = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserWallet.info = (configOverride?:AxiosRequestConfig) => {
@@ -8122,9 +8442,11 @@ export const useGetUserUpgradeToBusinessRequest = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetUserWalletAccountNumberQrcode = (
@@ -8135,9 +8457,11 @@ export const useGetUserUpgradeToBusinessRequest = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserWalletAccountNumberQrcode.info = (accountNumber: string,queryParams?: GetUserWalletAccountNumberQrcodeQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -8166,9 +8490,11 @@ export const useGetUserUpgradeToBusinessRequest = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -8183,9 +8509,11 @@ export const useGetUserWalletSearch = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserWalletSearch.info = (queryParams?: GetUserWalletSearchQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -8214,9 +8542,11 @@ export const useGetUserWalletSearch = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetUserWalletUserWalletId = (
@@ -8227,9 +8557,11 @@ export const useGetUserWalletSearch = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserWalletUserWalletId.info = (userWalletId: number,configOverride?:AxiosRequestConfig) => {
@@ -8258,9 +8590,11 @@ export const useGetUserWalletSearch = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -8276,9 +8610,11 @@ export const useGetUserWalletUserWalletIdBalance = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserWalletUserWalletIdBalance.info = (userWalletId: number,configOverride?:AxiosRequestConfig) => {
@@ -8307,9 +8643,11 @@ export const useGetUserWalletUserWalletIdBalance = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -8324,9 +8662,11 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserWalletUserWalletIdEpayRequestComission.info = (userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -8355,9 +8695,11 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetUserWalletUserWalletIdPermittedsubusers = (
@@ -8368,9 +8710,11 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserWalletUserWalletIdPermittedsubusers.info = (userWalletId: number,configOverride?:AxiosRequestConfig) => {
@@ -8399,9 +8743,11 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const useGetUserWalletUserWalletIdSettlementRequestComission = (
@@ -8412,9 +8758,11 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserWalletUserWalletIdSettlementRequestComission.info = (userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -8443,9 +8791,11 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -8460,9 +8810,11 @@ export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
           queryParams,
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserWalletUserWalletIdTransferMoneyCommission.info = (userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,configOverride?:AxiosRequestConfig) => {
@@ -8491,9 +8843,11 @@ export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       
@@ -8509,9 +8863,11 @@ export const useGetUserWorkspace = (
           
            configOverride);
           return useQuery(
-                key, 
-                fun,
-                options
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
                )  
           }
         useGetUserWorkspace.info = (configOverride?:AxiosRequestConfig) => {
@@ -8540,14 +8896,16 @@ export const useGetUserWorkspace = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
-                    key,
-                    ()=>fun(),
-                    options
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
                   );
               }
       export const usePostApiCspReportLog =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptionsVoid<string, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           
           
@@ -8560,7 +8918,8 @@ export const useGetUserWorkspace = (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8571,7 +8930,7 @@ export const useGetUserWorkspace = (
  */
 export const usePostAuthForgetPassword =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (ForgetPasswordQuery), {requestBody: UserForgetPasswordInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -8584,7 +8943,8 @@ export const usePostAuthForgetPassword =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8595,7 +8955,7 @@ export const usePostAuthForgetPassword =<TExtra> (
  */
 export const usePostAuthForgetPasswordVerify =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {requestBody: UserVerifyForgetPasswordInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -8608,13 +8968,14 @@ export const usePostAuthForgetPasswordVerify =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePostAuthLoginOtpGenerate =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (TotpLoginResult), {requestBody: RequestTotpInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -8627,13 +8988,14 @@ export const usePostAuthForgetPasswordVerify =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePostAuthRegister =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (RegisterNewUserQuery), {requestBody: RegisterApiModel,headerParams?: {\\"platformType\\": \\"Unknown\\" | \\"Server\\" | \\"Android\\" | \\"iOS\\" | \\"Device\\" | \\"Browser\\" | \\"PWA\\" | \\"Web\\" | \\"Windows\\" | \\"Linux\\" | \\"macOS\\" | \\"Desktop\\";},}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -8646,7 +9008,8 @@ export const usePostAuthForgetPasswordVerify =<TExtra> (
           headerParams, configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8657,7 +9020,7 @@ export const usePostAuthForgetPasswordVerify =<TExtra> (
  */
 export const usePostAuthRegisterBasic =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {requestBody: SetUserBasicInfoInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -8670,7 +9033,8 @@ export const usePostAuthRegisterBasic =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8681,7 +9045,7 @@ export const usePostAuthRegisterBasic =<TExtra> (
  */
 export const usePostAuthRegisterVerify =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {requestBody: VerifyPhoneNumberInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -8694,7 +9058,8 @@ export const usePostAuthRegisterVerify =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8712,7 +9077,7 @@ export const usePostBusinessUserConnectionConnectionIdPermission =<TExtra> (
  * Connection Id
  */
 connectionId: number,requestBody: SetAccountAccessForSubUserInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { connectionId,
           requestBody,
           
@@ -8725,7 +9090,8 @@ connectionId: number,requestBody: SetAccountAccessForSubUserInput,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8737,7 +9103,7 @@ connectionId: number,requestBody: SetAccountAccessForSubUserInput,}, TExtra>,
  */
 export const usePostBusinessUserInvite =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (SubUserConnectionApiModel), {requestBody: SendConnectionRequestInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -8750,7 +9116,8 @@ export const usePostBusinessUserInvite =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8767,7 +9134,7 @@ export const usePostBusinessUserInviteInvitationIdResend =<TExtra> (
  * Invitation Id
  */
 invitationId: number,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { invitationId,
           
           
@@ -8780,7 +9147,8 @@ invitationId: number,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8799,7 +9167,7 @@ export const usePostBusinessUserResendInvitationId =<TExtra> (
  * Invitation Id
  */
 invitationId: number,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { invitationId,
           
           
@@ -8812,13 +9180,14 @@ invitationId: number,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePostEpayRequestEpayIdCancel =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {epayId: number,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { epayId,
           
           
@@ -8831,13 +9200,14 @@ invitationId: number,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePostEpayRequestEpayIdResend =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {epayId: number,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { epayId,
           
           
@@ -8850,7 +9220,8 @@ invitationId: number,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8863,7 +9234,7 @@ invitationId: number,}, TExtra>,
  */
 export const usePostEpayRequestEpayIdTask =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {epayId: number,requestBody: EpayRequestTaskInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { epayId,
           requestBody,
           
@@ -8876,13 +9247,14 @@ export const usePostEpayRequestEpayIdTask =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePostEpayRequestEpayTokenPayUserWalletId =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (WalletReceiptApiModel), {epayToken: string,userWalletId: number,requestBody: EpayRequestPayInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { epayToken,userWalletId,
           requestBody,
           
@@ -8895,7 +9267,8 @@ export const usePostEpayRequestEpayIdTask =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8906,7 +9279,7 @@ export const usePostEpayRequestEpayIdTask =<TExtra> (
  * User Wallet id
  */
 userWalletId: number,requestBody: RequestBodyNewEpayRequestInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userWalletId,
           requestBody,
           
@@ -8919,7 +9292,8 @@ userWalletId: number,requestBody: RequestBodyNewEpayRequestInput,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8931,7 +9305,7 @@ userWalletId: number,requestBody: RequestBodyNewEpayRequestInput,}, TExtra>,
  */
 export const usePostFile =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (FileApiModel), {requestBody: RequestBodyFile_Upload,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -8944,7 +9318,8 @@ export const usePostFile =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8955,7 +9330,7 @@ export const usePostFile =<TExtra> (
  */
 export const usePostGroupTransferExport =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {requestBody: GroupTransferTargetValidationQuery[],}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -8968,7 +9343,8 @@ export const usePostGroupTransferExport =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -8979,7 +9355,7 @@ export const usePostGroupTransferExport =<TExtra> (
  */
 export const usePostGroupTransferImport =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<GroupTransferTargetValidationQuery[], {requestBody: RequestBodyFile_Upload,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -8992,7 +9368,8 @@ export const usePostGroupTransferImport =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9003,7 +9380,7 @@ export const usePostGroupTransferImport =<TExtra> (
  */
 export const usePostGroupTransferTransfer =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (GroupTransferQuery), {requestBody: GroupTransferInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9016,7 +9393,8 @@ export const usePostGroupTransferTransfer =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9027,7 +9405,7 @@ export const usePostGroupTransferTransfer =<TExtra> (
  */
 export const usePostIntegrationTaxiPayment =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (TaxiRecieptApiDto), {requestBody: ClientPurchaseInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9040,13 +9418,14 @@ export const usePostIntegrationTaxiPayment =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePostMachineRegisterUser =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (MachineSignUp), {requestBody: FullRegisterApiModel,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9059,7 +9438,8 @@ export const usePostIntegrationTaxiPayment =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9080,7 +9460,7 @@ targetAccountNumber: string,requestBody: PosOnlinePayInput,headerParams?: {
  * - Format: guid
  */
 \\"clientId\\": string;},}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { targetAccountNumber,
           requestBody,
           
@@ -9093,7 +9473,8 @@ targetAccountNumber: string,requestBody: PosOnlinePayInput,headerParams?: {
           headerParams, configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9109,7 +9490,7 @@ export const usePostPosPayTargetAccountNumberWallet =<TExtra> (
  * Target account number
  */
 targetAccountNumber: string,requestBody: PosWalletPayInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { targetAccountNumber,
           requestBody,
           
@@ -9122,7 +9503,8 @@ targetAccountNumber: string,requestBody: PosWalletPayInput,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9133,7 +9515,7 @@ targetAccountNumber: string,requestBody: PosWalletPayInput,}, TExtra>,
  */
 export const usePostServiceCancelAmount =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (DividedEpayRequestCancelResult), {requestBody: DividedEpayRequestCancelInput,headerParams?: {\\"apiKey\\": string;},}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9146,7 +9528,8 @@ export const usePostServiceCancelAmount =<TExtra> (
           headerParams, configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9157,7 +9540,7 @@ export const usePostServiceCancelAmount =<TExtra> (
  */
 export const usePostServiceCancelPayment =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<boolean, {requestBody: string,headerParams?: {\\"apiKey\\": string;},}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9170,7 +9553,8 @@ export const usePostServiceCancelPayment =<TExtra> (
           headerParams, configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9181,7 +9565,7 @@ export const usePostServiceCancelPayment =<TExtra> (
  */
 export const usePostServiceCheckEpayRequest =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (EpayRequestCheckStatusResult), {requestBody: string,headerParams?: {\\"apiKey\\": string;},}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9194,7 +9578,8 @@ export const usePostServiceCheckEpayRequest =<TExtra> (
           headerParams, configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9210,7 +9595,7 @@ export const usePostServiceNewDivideEpayRequest =<TExtra> (
  * - Format: guid
  */
 \\"clientId\\": string;},}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9223,7 +9608,8 @@ export const usePostServiceNewDivideEpayRequest =<TExtra> (
           headerParams, configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9239,7 +9625,7 @@ export const usePostServiceNewEpayRequest =<TExtra> (
  * - Format: guid
  */
 \\"clientId\\": string;},}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9252,7 +9638,8 @@ export const usePostServiceNewEpayRequest =<TExtra> (
           headerParams, configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9263,7 +9650,7 @@ export const usePostServiceNewEpayRequest =<TExtra> (
  */
 export const usePostServiceUnblockAmount =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (DividedEpayRequestUnblockResult), {requestBody: DividedEpayRequestUnblockInput,headerParams?: {\\"apiKey\\": string;},}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9276,7 +9663,8 @@ export const usePostServiceUnblockAmount =<TExtra> (
           headerParams, configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9287,7 +9675,7 @@ export const usePostServiceUnblockAmount =<TExtra> (
  */
 export const usePostServiceVerifyApiKey =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<boolean, {headerParams?: {\\"apiKey\\": string;},}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           
           
@@ -9300,7 +9688,8 @@ export const usePostServiceVerifyApiKey =<TExtra> (
           headerParams, configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9311,7 +9700,7 @@ export const usePostServiceVerifyApiKey =<TExtra> (
  * - Format: guid
  */
 \\"terminalId\\": string;\\"terminalVersion\\": string;},}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           
           
@@ -9324,13 +9713,14 @@ export const usePostServiceVerifyApiKey =<TExtra> (
           headerParams, configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePostSettingsLogSwitch =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (SettingApiModel), {requestBody: RequestBodyLogEventLevel,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9343,13 +9733,14 @@ export const usePostServiceVerifyApiKey =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePostSettingsLogSwitchSeptapay =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (SettingApiModel), {requestBody: RequestBodyLogEventLevel,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9362,13 +9753,14 @@ export const usePostServiceVerifyApiKey =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePostSettingsLogSwitchSerilog =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (SettingApiModel), {requestBody: RequestBodyLogEventLevel,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9381,7 +9773,8 @@ export const usePostServiceVerifyApiKey =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9392,7 +9785,7 @@ export const usePostServiceVerifyApiKey =<TExtra> (
  * - Format: guid
  */
 \\"clientId\\": string;},}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9405,7 +9798,8 @@ export const usePostServiceVerifyApiKey =<TExtra> (
           headerParams, configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9416,7 +9810,7 @@ export const usePostServiceVerifyApiKey =<TExtra> (
  * UserWallet's Id
  */
 userWalletId: number,requestBody: RequestBodySubUserNotificationStatusInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userWalletId,
           requestBody,
           
@@ -9429,7 +9823,8 @@ userWalletId: number,requestBody: RequestBodySubUserNotificationStatusInput,}, T
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9444,7 +9839,7 @@ export const usePostSubUserNotificationUserWalletId =<TExtra> (
  * UserWallet's Id
  */
 userWalletId: number,requestBody: RequestBodySubUserNotificationStatusInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userWalletId,
           requestBody,
           
@@ -9457,7 +9852,8 @@ userWalletId: number,requestBody: RequestBodySubUserNotificationStatusInput,}, T
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9468,7 +9864,7 @@ userWalletId: number,requestBody: RequestBodySubUserNotificationStatusInput,}, T
  */
 export const usePostTransferUserWalletId =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (TransferMoneyApiModel), {userWalletId: number,requestBody: RequestBodyTransferMoneyInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userWalletId,
           requestBody,
           
@@ -9481,7 +9877,8 @@ export const usePostTransferUserWalletId =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9494,7 +9891,7 @@ export const usePostTransferUserWalletId =<TExtra> (
  */
 export const usePostUserBank =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (UserBankApiModel), {requestBody: RequestBodyUserBankInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9507,7 +9904,8 @@ export const usePostUserBank =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9518,7 +9916,7 @@ export const usePostUserBank =<TExtra> (
  */
 export const usePostUserChangePassword =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {requestBody: UserChangePasswordInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9531,7 +9929,8 @@ export const usePostUserChangePassword =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9542,7 +9941,7 @@ export const usePostUserChangePassword =<TExtra> (
  */
 export const usePostUserIdentityRequest =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (UserDetailQuery), {requestBody: NewUserIdentityRequestInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9555,7 +9954,8 @@ export const usePostUserIdentityRequest =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9574,7 +9974,7 @@ export const usePostUserInvitationInvitationIdTask =<TExtra> (
  * invitation id
  */
 invitationId: number,requestBody: SubuserInvitationTaskInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { invitationId,
           requestBody,
           
@@ -9587,7 +9987,8 @@ invitationId: number,requestBody: SubuserInvitationTaskInput,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9604,7 +10005,7 @@ export const usePostUserInvitationInvitationTokenAccept =<TExtra> (
  * invitation token
  */
 invitationToken: string,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { invitationToken,
           
           
@@ -9617,7 +10018,8 @@ invitationToken: string,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9634,7 +10036,7 @@ export const usePostUserInvitationInvitationTokenReject =<TExtra> (
  * invitation token
  */
 invitationToken: string,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { invitationToken,
           
           
@@ -9647,7 +10049,8 @@ invitationToken: string,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9658,7 +10061,7 @@ invitationToken: string,}, TExtra>,
  */
 export const usePostUserUpgradeToBusinessRequest =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (UpgradeToBusinessApiModel), {requestBody: UpgradeToBusinessUserInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9671,13 +10074,14 @@ export const usePostUserUpgradeToBusinessRequest =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePostUserWallet =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<number, {requestBody: RequestBodyAccountCreationApiModel,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9690,13 +10094,14 @@ export const usePostUserUpgradeToBusinessRequest =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePostUserWalletUserWalletIdCharge =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (NewChargeRequestResultQuery), {userWalletId: number,requestBody: NewChargeRequestInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userWalletId,
           requestBody,
           
@@ -9709,7 +10114,8 @@ export const usePostUserUpgradeToBusinessRequest =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9719,7 +10125,7 @@ export const usePostUserUpgradeToBusinessRequest =<TExtra> (
  */
 export const usePostUserWalletUserWalletIdEpayRequest =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (EpayRequestDetailApiModel), {userWalletId: number,requestBody: RequestBodyNewEpayRequestInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userWalletId,
           requestBody,
           
@@ -9732,7 +10138,8 @@ export const usePostUserWalletUserWalletIdEpayRequest =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9742,7 +10149,7 @@ export const usePostUserWalletUserWalletIdEpayRequest =<TExtra> (
  */
 export const usePostUserWalletUserWalletIdTransferMoney =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (TransferMoneyApiModel), {userWalletId: number,requestBody: RequestBodyTransferMoneyInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userWalletId,
           requestBody,
           
@@ -9755,7 +10162,8 @@ export const usePostUserWalletUserWalletIdTransferMoney =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9773,7 +10181,7 @@ export const usePutBusinessUserConnectionConnectionId =<TExtra> (
  * Connection Id
  */
 connectionId: number,requestBody: EditConnectionInfoInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { connectionId,
           requestBody,
           
@@ -9786,7 +10194,8 @@ connectionId: number,requestBody: EditConnectionInfoInput,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9797,7 +10206,7 @@ connectionId: number,requestBody: EditConnectionInfoInput,}, TExtra>,
  * Id of Account to edit it's permissios
  */
 userWalletId: number,requestBody: EditSubUserPermissionInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { connectionId,userWalletId,
           requestBody,
           
@@ -9810,7 +10219,8 @@ userWalletId: number,requestBody: EditSubUserPermissionInput,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9821,7 +10231,7 @@ userWalletId: number,requestBody: EditSubUserPermissionInput,}, TExtra>,
  */
 export const usePutGroupTransferAdd =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (GroupTransferTargetValidationQuery), {requestBody: GroupTransferTargetValidationInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9834,7 +10244,8 @@ export const usePutGroupTransferAdd =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9845,7 +10256,7 @@ export const usePutGroupTransferAdd =<TExtra> (
  */
 export const usePutNotificationIaNotifIdDismiss =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {notifId: number,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { notifId,
           
           
@@ -9858,7 +10269,8 @@ export const usePutNotificationIaNotifIdDismiss =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9870,7 +10282,7 @@ export const usePutNotificationIaNotifIdDismiss =<TExtra> (
  */
 export const usePutSubDomain =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (SubDomainApiModel), {requestBody: SubDomainUpdateApiModel,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9883,7 +10295,8 @@ export const usePutSubDomain =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9896,7 +10309,7 @@ export const usePutSubDomain =<TExtra> (
  */
 export const usePutUser =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (UserDetailQuery), {requestBody: UserProfileInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9909,7 +10322,8 @@ export const usePutUser =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9926,7 +10340,7 @@ export const usePutUserBankUserBankId =<TExtra> (
  * User bank id
  */
 userBankId: number,requestBody: RequestBodyUserBankInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userBankId,
           requestBody,
           
@@ -9939,7 +10353,8 @@ userBankId: number,requestBody: RequestBodyUserBankInput,}, TExtra>,
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9951,7 +10366,7 @@ userBankId: number,requestBody: RequestBodyUserBankInput,}, TExtra>,
  */
 export const usePutUserBankUserBankIdChangeVisibility =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {userBankId: number,requestBody: UserBankChangeVisibilityInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userBankId,
           requestBody,
           
@@ -9964,7 +10379,8 @@ export const usePutUserBankUserBankIdChangeVisibility =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
@@ -9976,7 +10392,7 @@ export const usePutUserBankUserBankIdChangeVisibility =<TExtra> (
  */
 export const usePutUserChangeAvatar =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {requestBody: UserProfileAvatarInput,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { 
           requestBody,
           
@@ -9989,13 +10405,14 @@ export const usePutUserChangeAvatar =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePutUserPluginUserPluginIdChangeStatus =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (UserPluginApiModel), {userPluginId: number,requestBody: UserPluginTogggleApiModel,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userPluginId,
           requestBody,
           
@@ -10008,13 +10425,14 @@ export const usePutUserChangeAvatar =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePutUserWalletUserWalletId =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions< & (WalletDisplayApiModel), {userWalletId: number,requestBody: RequestBodyAccountCreationApiModel,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userWalletId,
           requestBody,
           
@@ -10027,13 +10445,14 @@ export const usePutUserChangeAvatar =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         
       export const usePutUserWalletUserWalletIdNotification =<TExtra> (
            options?:SwaggerTypescriptUseMutationOptions<string, {userWalletId: number,requestBody: AccountSettingNotificationStatusApiModel,}, TExtra>,
-           ) => {return useMutation((_o)=>{
+           ) => {return useMutation({mutationFn:(_o)=>{
             const { userWalletId,
           requestBody,
           
@@ -10046,7 +10465,8 @@ export const usePutUserChangeAvatar =<TExtra> (
            configOverride,
               )
           },
-          options
+          ...options
+        }
          )  
           }
         "
