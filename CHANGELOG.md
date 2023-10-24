@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.6.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.5.1...v6.6.0) (2023-10-24)
+
+
+### Features
+
+* migration to react-query v5 ([#51](https://github.com/hosseinmd/swagger-typescript/issues/51)) ([d2a64e5](https://github.com/hosseinmd/swagger-typescript/commit/d2a64e5fe9b4a3031dd535b27743cee6396d771e))
+
 ### [6.5.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.5.0...v6.5.1) (2023-09-08)
 
 
