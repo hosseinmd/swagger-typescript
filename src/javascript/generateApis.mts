@@ -130,9 +130,9 @@ ${getJsdoc({
             )
           ).then((result:SwaggerResponse<${
             responses ? getTsType(responses, config) : "any"
-          }>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          }>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    `
       : `
   return Http.${method}Request(

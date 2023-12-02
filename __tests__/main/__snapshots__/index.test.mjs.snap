@@ -289,9 +289,9 @@ export const getAccessUserWalletIdLogicalAction =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<boolean>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<boolean>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -319,9 +319,9 @@ export const getBank =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<BankApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<BankApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -349,9 +349,9 @@ export const getBusinessUserCategory =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<BusinessCategoryApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<BusinessCategoryApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -380,9 +380,9 @@ export const getBusinessUserConnection =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<SubUserConnectionApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<SubUserConnectionApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -411,9 +411,9 @@ export const getBusinessUserConnectionActive =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<SubUserConnectionApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<SubUserConnectionApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -448,9 +448,9 @@ connectionId: number,configOverride?:AxiosRequestConfig,
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (SubUserConnectionApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (SubUserConnectionApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -485,9 +485,9 @@ connectionId: number,configOverride?:AxiosRequestConfig,
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (SubUserActivityApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (SubUserActivityApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -510,9 +510,9 @@ export const getBusinessUserConnectionConnectionIdEpay =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<EpayRequestApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<EpayRequestApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -547,9 +547,9 @@ connectionId: number,configOverride?:AxiosRequestConfig,
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<SubUserPermissionApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<SubUserPermissionApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -572,9 +572,9 @@ export const getEpayRequest =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<EpayRequestApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<EpayRequestApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -597,9 +597,9 @@ export const getEpayRequestAudiencesRecent =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<ContactApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<ContactApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -622,9 +622,9 @@ export const getEpayRequestCount =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -657,9 +657,9 @@ epayId: number,configOverride?:AxiosRequestConfig,
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (EpayRequestDetailApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (EpayRequestDetailApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -682,9 +682,9 @@ export const getEpayRequestEpayTokenDetail =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (EpayRequestPublicInfoApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (EpayRequestPublicInfoApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -717,9 +717,9 @@ epayToken: string,configOverride?:AxiosRequestConfig,
             overrideConfig(_CONSTANT6,
               configOverride,
             )
-          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -742,9 +742,9 @@ export const getEpayRequestExcel =async (
             overrideConfig(_CONSTANT6,
               configOverride,
             )
-          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -774,9 +774,9 @@ export const getEpayRequestForMe =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<EpayRequestForUserQuery[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<EpayRequestForUserQuery[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -799,9 +799,9 @@ export const getEpayRequestForMeCount =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -824,9 +824,9 @@ export const getEpayRequestForMeReport =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<ReportApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<ReportApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -861,9 +861,9 @@ export const getEpayRequestPosQrAccountNumber =async (
             overrideConfig(_CONSTANT6,
               configOverride,
             )
-          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -886,9 +886,9 @@ export const getEpayRequestReport =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<ReportApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<ReportApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -916,9 +916,9 @@ export const getEpayRequestUserWalletIdCommission =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -941,9 +941,9 @@ export const getEpayRequestUserWalletIdCreators =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<UserMinimalDto[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<UserMinimalDto[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -966,9 +966,9 @@ export const getError =async (
             overrideConfig(_CONSTANT6,
               configOverride,
             )
-          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -991,9 +991,9 @@ export const getErrorLocal =async (
             overrideConfig(_CONSTANT6,
               configOverride,
             )
-          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1016,9 +1016,9 @@ export const getErrorStatusCode =async (
             overrideConfig(_CONSTANT6,
               configOverride,
             )
-          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1051,9 +1051,9 @@ fileGuid: string,configOverride?:AxiosRequestConfig,
             overrideConfig(_CONSTANT6,
               configOverride,
             )
-          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1076,9 +1076,9 @@ export const getGroupTransferCommission =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1106,9 +1106,9 @@ export const getIntegration =async (
             overrideConfig(_CONSTANT8,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (DriverInfoResult)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (DriverInfoResult)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1131,9 +1131,9 @@ export const getKpi =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<KpiResult[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<KpiResult[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1156,9 +1156,9 @@ export const getKpiCurrent =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<KpiResult[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<KpiResult[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1181,9 +1181,9 @@ export const getKpiLast =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<KpiResult[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<KpiResult[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1211,9 +1211,9 @@ export const getNotificationIa =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<ImportantActionApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<ImportantActionApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1242,9 +1242,9 @@ export const getNotificationNotif =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<NotificationApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<NotificationApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1267,9 +1267,9 @@ export const getNotificationUnread =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<UnreadNotificationCountApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<UnreadNotificationCountApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1292,9 +1292,9 @@ export const getPluginPluginId =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (PluginApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (PluginApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1327,9 +1327,9 @@ accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,configOverrid
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (PosLandingPageApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (PosLandingPageApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1363,9 +1363,9 @@ epayTryId: string,configOverride?:AxiosRequestConfig,
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (BankReceiptApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (BankReceiptApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1407,9 +1407,9 @@ epayToken: string,configOverride?:AxiosRequestConfig,
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (BankReceiptApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (BankReceiptApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1443,9 +1443,9 @@ epayToken: string,configOverride?:AxiosRequestConfig,
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (WalletReceiptApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (WalletReceiptApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1474,9 +1474,9 @@ export const getResellerUser =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (ResellerApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (ResellerApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1512,9 +1512,9 @@ export const getResellerUserDashboardCommissionReport =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<DateReportApiModelOfDecimal[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<DateReportApiModelOfDecimal[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1550,9 +1550,9 @@ export const getResellerUserDashboardCommissionSum =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1588,9 +1588,9 @@ export const getResellerUserDashboardIntroducedCount =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1626,9 +1626,9 @@ export const getResellerUserDashboardIntroducedReport =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<DateReportApiModelOfInteger[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<DateReportApiModelOfInteger[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1664,9 +1664,9 @@ export const getResellerUserDashboardLinksCount =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1702,9 +1702,9 @@ export const getResellerUserDashboardLinksPaidCount =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1740,9 +1740,9 @@ export const getResellerUserDashboardLinksPaidReport =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<DateReportApiModelOfInteger[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<DateReportApiModelOfInteger[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1778,9 +1778,9 @@ export const getResellerUserDashboardLinksReport =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<DateReportApiModelOfInteger[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<DateReportApiModelOfInteger[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1816,9 +1816,9 @@ export const getResellerUserDashboardTransactionsCount =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (AggregationApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1854,9 +1854,9 @@ export const getResellerUserDashboardTransactionsReport =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<DateReportApiModelOfInteger[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<DateReportApiModelOfInteger[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1885,9 +1885,9 @@ export const getResellerUserIntroduced =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<ReselledUserApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<ReselledUserApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1916,9 +1916,9 @@ export const getResellerUserIntroducedFilterData =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (ReselledUserFilterData)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (ReselledUserFilterData)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1947,9 +1947,9 @@ export const getResellerUserIntroducedUserIdActivity =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (ReselledUserActivityApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (ReselledUserActivityApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -1978,9 +1978,9 @@ export const getSubDomain =async (
             overrideConfig(_CONSTANT8,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (SubDomainApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (SubDomainApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2024,9 +2024,9 @@ subDomainAddress: string,headerParams?: {
             },
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (SubDomainApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (SubDomainApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2055,9 +2055,9 @@ export const getSubUserAccountUserWalletId =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (SubUserAccountDetailQuery)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (SubUserAccountDetailQuery)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2094,9 +2094,9 @@ export const getSubUserConnection =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<BusinessUserConnectionApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<BusinessUserConnectionApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2119,9 +2119,9 @@ export const getTransaction =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<TransactionApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<TransactionApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2144,9 +2144,9 @@ export const getTransactionExcel =async (
             overrideConfig(_CONSTANT6,
               configOverride,
             )
-          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2179,9 +2179,9 @@ export const getTransactionReport =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<ReportApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<ReportApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2214,9 +2214,9 @@ export const getTransactionReportAll =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (AllTransactionsReportApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (AllTransactionsReportApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2245,9 +2245,9 @@ export const getTransactionTransactionId =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (TransactionApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (TransactionApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2275,9 +2275,9 @@ export const getTransferRecent =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<TransferMoneyApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<TransferMoneyApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2300,9 +2300,9 @@ export const getTransferSearch =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (AccountInfoApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (AccountInfoApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2330,9 +2330,9 @@ export const getTransferUserWalletIdCommission =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2360,9 +2360,9 @@ export const getUser =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (UserDetailQuery)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (UserDetailQuery)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2391,9 +2391,9 @@ export const getUserBank =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<UserBankApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<UserBankApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2422,9 +2422,9 @@ export const getUserBankReady =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<UserBankApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<UserBankApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2458,9 +2458,9 @@ userBankId: number,configOverride?:AxiosRequestConfig,
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (UserBankDetailApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (UserBankDetailApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2488,9 +2488,9 @@ export const getUserConnection =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<BusinessUserConnectionApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<BusinessUserConnectionApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2513,9 +2513,9 @@ export const getUserContactInput =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (ContactApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (ContactApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2543,9 +2543,9 @@ export const getUserIdentityRequest =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (UserIdentityRequestQuery)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (UserIdentityRequestQuery)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2573,9 +2573,9 @@ export const getUserInvitation =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<SubUserInvitationApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<SubUserInvitationApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2603,9 +2603,9 @@ export const getUserInvitationInvitationToken =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (SubUserInvitationApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (SubUserInvitationApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2633,9 +2633,9 @@ export const getUserMe =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (UserMeQuery)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (UserMeQuery)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2658,9 +2658,9 @@ export const getUserPlugin =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<UserPluginDetailApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<UserPluginDetailApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2688,9 +2688,9 @@ export const getUserUpgradeToBusinessRequest =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (UpgradeToBusinessApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (UpgradeToBusinessApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2713,9 +2713,9 @@ export const getUserWallet =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<WalletDisplayApiModel[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<WalletDisplayApiModel[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2738,9 +2738,9 @@ export const getUserWalletAccountNumberQrcode =async (
             overrideConfig(_CONSTANT6,
               configOverride,
             )
-          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<string>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2773,9 +2773,9 @@ export const getUserWalletSearch =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (AccountInfoApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (AccountInfoApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2798,9 +2798,9 @@ export const getUserWalletUserWalletId =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (WalletDetailApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (WalletDetailApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2828,9 +2828,9 @@ export const getUserWalletUserWalletIdBalance =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (AccountBalanceApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (AccountBalanceApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2863,9 +2863,9 @@ export const getUserWalletUserWalletIdEpayRequestComission =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2888,9 +2888,9 @@ export const getUserWalletUserWalletIdPermittedsubusers =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<AccountPermittedSubUserQuery[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<AccountPermittedSubUserQuery[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2913,9 +2913,9 @@ export const getUserWalletUserWalletIdSettlementRequestComission =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2948,9 +2948,9 @@ export const getUserWalletUserWalletIdTransferMoneyCommission =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse< & (CommissionAmountApiModel)>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
@@ -2978,9 +2978,9 @@ export const getUserWorkspace =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse<UserWorkspaceQuery[]>) => callbacks?.onSuccess(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
-          .finally(() => callbacks?.onSettled());
+          ).then((result:SwaggerResponse<UserWorkspaceQuery[]>) => callbacks?.onSuccess?.(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          .finally(() => callbacks?.onSettled?.());
    
  
   
