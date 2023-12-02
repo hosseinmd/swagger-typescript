@@ -116,7 +116,7 @@ export type SwaggerResponse<R> = R
  interface UseQueryCallbacks<T> {
   onSuccess?: (data: SwaggerResponse<T>) => void;
   onError?: (error: RequestError | Error | null) => void;
-  onSettledd?: () => void;
+  onSettled?: () => void;
 }
 
 

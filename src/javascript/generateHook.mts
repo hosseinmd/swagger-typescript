@@ -169,7 +169,7 @@ function generateHook(
 
           const { key, fun } = ${hookName}.info(${getParamsString()} configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           `;
@@ -247,7 +247,7 @@ function generateHook(
 
               const { key, fun } = ${hookName}.info(${getParamsString()} configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 

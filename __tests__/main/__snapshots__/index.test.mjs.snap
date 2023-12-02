@@ -5180,7 +5180,7 @@ connectionId: number,}, TExtra>,
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5216,7 +5216,7 @@ connectionId: number,}, TExtra>,
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5245,7 +5245,7 @@ export const useGetBank = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5281,7 +5281,7 @@ export const useGetBank = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5310,7 +5310,7 @@ export const useGetBusinessUserCategory = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5346,7 +5346,7 @@ export const useGetBusinessUserCategory = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5376,7 +5376,7 @@ export const useGetBusinessUserConnection = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5412,7 +5412,7 @@ export const useGetBusinessUserConnection = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5442,7 +5442,7 @@ export const useGetBusinessUserConnectionActive = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5478,7 +5478,7 @@ export const useGetBusinessUserConnectionActive = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5514,7 +5514,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserConnec
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5560,7 +5560,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserConnec
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5596,7 +5596,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5642,7 +5642,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5666,7 +5666,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5702,7 +5702,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5738,7 +5738,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5784,7 +5784,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5808,7 +5808,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5844,7 +5844,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5868,7 +5868,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5904,7 +5904,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5928,7 +5928,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -5964,7 +5964,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -5998,7 +5998,7 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6044,7 +6044,7 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6068,7 +6068,7 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6104,7 +6104,7 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6138,7 +6138,7 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6184,7 +6184,7 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6208,7 +6208,7 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6244,7 +6244,7 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6275,7 +6275,7 @@ export const useGetEpayRequestForMe = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6311,7 +6311,7 @@ export const useGetEpayRequestForMe = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6335,7 +6335,7 @@ export const useGetEpayRequestForMe = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6371,7 +6371,7 @@ export const useGetEpayRequestForMe = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6395,7 +6395,7 @@ export const useGetEpayRequestForMe = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6431,7 +6431,7 @@ export const useGetEpayRequestForMe = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6461,7 +6461,7 @@ export const useGetEpayRequestPosQrAccountNumber = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6497,7 +6497,7 @@ export const useGetEpayRequestPosQrAccountNumber = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6521,7 +6521,7 @@ export const useGetEpayRequestPosQrAccountNumber = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6557,7 +6557,7 @@ export const useGetEpayRequestPosQrAccountNumber = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6586,7 +6586,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6622,7 +6622,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6646,7 +6646,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6682,7 +6682,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6706,7 +6706,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6742,7 +6742,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6766,7 +6766,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6802,7 +6802,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6826,7 +6826,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6862,7 +6862,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6896,7 +6896,7 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -6942,7 +6942,7 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -6966,7 +6966,7 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7002,7 +7002,7 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7031,7 +7031,7 @@ export const useGetIntegration = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7067,7 +7067,7 @@ export const useGetIntegration = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7091,7 +7091,7 @@ export const useGetIntegration = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7127,7 +7127,7 @@ export const useGetIntegration = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7151,7 +7151,7 @@ export const useGetIntegration = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7187,7 +7187,7 @@ export const useGetIntegration = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7211,7 +7211,7 @@ export const useGetIntegration = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7247,7 +7247,7 @@ export const useGetIntegration = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7276,7 +7276,7 @@ export const useGetNotificationIa = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7312,7 +7312,7 @@ export const useGetNotificationIa = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7342,7 +7342,7 @@ export const useGetNotificationNotif = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7378,7 +7378,7 @@ export const useGetNotificationNotif = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7402,7 +7402,7 @@ export const useGetNotificationNotif = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7438,7 +7438,7 @@ export const useGetNotificationNotif = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7462,7 +7462,7 @@ export const useGetNotificationNotif = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7498,7 +7498,7 @@ export const useGetNotificationNotif = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7532,7 +7532,7 @@ accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:Swag
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7578,7 +7578,7 @@ accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:Swag
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7613,7 +7613,7 @@ epayTryId: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7659,7 +7659,7 @@ epayTryId: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7696,7 +7696,7 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7742,7 +7742,7 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7777,7 +7777,7 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (WalletReceiptApi
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7823,7 +7823,7 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (WalletReceiptApi
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7853,7 +7853,7 @@ export const useGetResellerUser = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7889,7 +7889,7 @@ export const useGetResellerUser = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7920,7 +7920,7 @@ export const useGetResellerUserDashboardCommissionReport = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -7956,7 +7956,7 @@ export const useGetResellerUserDashboardCommissionReport = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -7987,7 +7987,7 @@ export const useGetResellerUserDashboardCommissionSum = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8023,7 +8023,7 @@ export const useGetResellerUserDashboardCommissionSum = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8054,7 +8054,7 @@ export const useGetResellerUserDashboardIntroducedCount = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8090,7 +8090,7 @@ export const useGetResellerUserDashboardIntroducedCount = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8121,7 +8121,7 @@ export const useGetResellerUserDashboardIntroducedReport = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8157,7 +8157,7 @@ export const useGetResellerUserDashboardIntroducedReport = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8188,7 +8188,7 @@ export const useGetResellerUserDashboardLinksCount = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8224,7 +8224,7 @@ export const useGetResellerUserDashboardLinksCount = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8255,7 +8255,7 @@ export const useGetResellerUserDashboardLinksPaidCount = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8291,7 +8291,7 @@ export const useGetResellerUserDashboardLinksPaidCount = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8322,7 +8322,7 @@ export const useGetResellerUserDashboardLinksPaidReport = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8358,7 +8358,7 @@ export const useGetResellerUserDashboardLinksPaidReport = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8389,7 +8389,7 @@ export const useGetResellerUserDashboardLinksReport = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8425,7 +8425,7 @@ export const useGetResellerUserDashboardLinksReport = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8456,7 +8456,7 @@ export const useGetResellerUserDashboardTransactionsCount = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8492,7 +8492,7 @@ export const useGetResellerUserDashboardTransactionsCount = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8523,7 +8523,7 @@ export const useGetResellerUserDashboardTransactionsReport = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8559,7 +8559,7 @@ export const useGetResellerUserDashboardTransactionsReport = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8589,7 +8589,7 @@ export const useGetResellerUserIntroduced = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8625,7 +8625,7 @@ export const useGetResellerUserIntroduced = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8655,7 +8655,7 @@ export const useGetResellerUserIntroducedFilterData = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8691,7 +8691,7 @@ export const useGetResellerUserIntroducedFilterData = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8721,7 +8721,7 @@ export const useGetResellerUserIntroducedUserIdActivity = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8757,7 +8757,7 @@ export const useGetResellerUserIntroducedUserIdActivity = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8787,7 +8787,7 @@ export const useGetSubDomain = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8823,7 +8823,7 @@ export const useGetSubDomain = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8863,7 +8863,7 @@ subDomainAddress: string,headerParams?: {
           
           headerParams, configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8921,7 +8921,7 @@ subDomainAddress: string,headerParams?: {
           
           headerParams, configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -8951,7 +8951,7 @@ export const useGetSubUserAccountUserWalletId = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -8987,7 +8987,7 @@ export const useGetSubUserAccountUserWalletId = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9019,7 +9019,7 @@ export const useGetSubUserConnection = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9055,7 +9055,7 @@ export const useGetSubUserConnection = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9079,7 +9079,7 @@ export const useGetSubUserConnection = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9115,7 +9115,7 @@ export const useGetSubUserConnection = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9139,7 +9139,7 @@ export const useGetSubUserConnection = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9175,7 +9175,7 @@ export const useGetSubUserConnection = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9203,7 +9203,7 @@ export const useGetTransactionReport = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9239,7 +9239,7 @@ export const useGetTransactionReport = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9267,7 +9267,7 @@ export const useGetTransactionReportAll = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9303,7 +9303,7 @@ export const useGetTransactionReportAll = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9333,7 +9333,7 @@ export const useGetTransactionTransactionId = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9369,7 +9369,7 @@ export const useGetTransactionTransactionId = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9398,7 +9398,7 @@ export const useGetTransferRecent = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9434,7 +9434,7 @@ export const useGetTransferRecent = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9458,7 +9458,7 @@ export const useGetTransferRecent = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9494,7 +9494,7 @@ export const useGetTransferRecent = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9523,7 +9523,7 @@ export const useGetTransferUserWalletIdCommission = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9559,7 +9559,7 @@ export const useGetTransferUserWalletIdCommission = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9588,7 +9588,7 @@ export const useGetUser = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9624,7 +9624,7 @@ export const useGetUser = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9654,7 +9654,7 @@ export const useGetUserBank = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9690,7 +9690,7 @@ export const useGetUserBank = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9720,7 +9720,7 @@ export const useGetUserBankReady = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9756,7 +9756,7 @@ export const useGetUserBankReady = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9791,7 +9791,7 @@ userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailA
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9837,7 +9837,7 @@ userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailA
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9866,7 +9866,7 @@ export const useGetUserConnection = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9902,7 +9902,7 @@ export const useGetUserConnection = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9926,7 +9926,7 @@ export const useGetUserConnection = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -9962,7 +9962,7 @@ export const useGetUserConnection = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -9991,7 +9991,7 @@ export const useGetUserIdentityRequest = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10027,7 +10027,7 @@ export const useGetUserIdentityRequest = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10056,7 +10056,7 @@ export const useGetUserInvitation = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10092,7 +10092,7 @@ export const useGetUserInvitation = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10121,7 +10121,7 @@ export const useGetUserInvitationInvitationToken = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10157,7 +10157,7 @@ export const useGetUserInvitationInvitationToken = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10186,7 +10186,7 @@ export const useGetUserMe = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10222,7 +10222,7 @@ export const useGetUserMe = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10246,7 +10246,7 @@ export const useGetUserMe = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10282,7 +10282,7 @@ export const useGetUserMe = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10311,7 +10311,7 @@ export const useGetUserUpgradeToBusinessRequest = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10347,7 +10347,7 @@ export const useGetUserUpgradeToBusinessRequest = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10371,7 +10371,7 @@ export const useGetUserUpgradeToBusinessRequest = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10407,7 +10407,7 @@ export const useGetUserUpgradeToBusinessRequest = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10431,7 +10431,7 @@ export const useGetUserUpgradeToBusinessRequest = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10467,7 +10467,7 @@ export const useGetUserUpgradeToBusinessRequest = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10495,7 +10495,7 @@ export const useGetUserWalletSearch = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10531,7 +10531,7 @@ export const useGetUserWalletSearch = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10555,7 +10555,7 @@ export const useGetUserWalletSearch = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10591,7 +10591,7 @@ export const useGetUserWalletSearch = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10620,7 +10620,7 @@ export const useGetUserWalletUserWalletIdBalance = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10656,7 +10656,7 @@ export const useGetUserWalletUserWalletIdBalance = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10684,7 +10684,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10720,7 +10720,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10744,7 +10744,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10780,7 +10780,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10804,7 +10804,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10840,7 +10840,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10868,7 +10868,7 @@ export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
           queryParams,
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10904,7 +10904,7 @@ export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
           queryParams,
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
@@ -10933,7 +10933,7 @@ export const useGetUserWorkspace = (
           
            configOverride,{
             onError,
-            onSettledd,
+            onSettled,
             onSuccess,
           });
           return useQuery(
@@ -10969,7 +10969,7 @@ export const useGetUserWorkspace = (
           
            configOverride,{
                 onError,
-                onSettledd,
+                onSettled,
                 onSuccess,
               });
 
