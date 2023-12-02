@@ -165,11 +165,11 @@ function generateHook(
            ) => {`;
         if (isGet) {
           result += `
-          const { onSuccess, onSettle, onError, ...restOptions } = options ?? {};
+          const { onSuccess, onSettled, onError, ...restOptions } = options ?? {};
 
           const { key, fun } = ${hookName}.info(${getParamsString()} configOverride,{
             onError,
-            onSettled,
+            onSettledd,
             onSuccess,
           });
           `;
@@ -243,11 +243,11 @@ function generateHook(
           result += `${hookName}.prefetch = (
             client: QueryClient,
             ${params.join("")}) => {
-              const { onSuccess, onSettle, onError, ...restOptions } = options ?? {};
+              const { onSuccess, onSettled, onError, ...restOptions } = options ?? {};
 
               const { key, fun } = ${hookName}.info(${getParamsString()} configOverride,{
                 onError,
-                onSettled,
+                onSettledd,
                 onSuccess,
               });
 

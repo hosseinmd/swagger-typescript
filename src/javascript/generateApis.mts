@@ -52,7 +52,7 @@ function generateApis(
 ${getJsdoc({
   description: summary,
   deprecated: deprecated ? DEPRECATED_WARM_MESSAGE : undefined,
-})}export const ${serviceName} = (
+})}export const ${serviceName} =async (
     ${
       /** Path parameters */
       pathParams
@@ -108,8 +108,7 @@ ${getJsdoc({
   }
   ${
     method === "get"
-      ? ` try {
-    const result= await Http.${method}Request(
+      ? `return Http.${method}Request(
             ${
               pathParamsRefString
                 ? `template(${serviceName}.key,${pathParamsRefString})`
@@ -129,14 +128,12 @@ ${getJsdoc({
             overrideConfig(${additionalAxiosConfig},
               configOverride,
             )
-          ) ;
-    callbacks?.onSuccess(result);
-  } catch (error) {
-    callbacks?.onError(error);
-  } finally {
-    callbacks?.onSettle();
-    return result
-  }`
+          ).then((result:SwaggerResponse<${
+            responses ? getTsType(responses, config) : "any"
+          }>) => callbacks?.onSuccess(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
+          .finally(() => callbacks?.onSettled());
+   `
       : `
   return Http.${method}Request(
             ${

@@ -60,14 +60,13 @@ function objToUrlencoded(requestBody: object) {
   return qs.stringify(requestBody)
 }
 
-export const getSettlementV1PrivateSettlementGet = (
+export const getSettlementV1PrivateSettlementGet =async (
     queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig,
      callbacks?:UseQueryCallbacks< & (SettlementRequestResultListResponseVM)>
    
 ): Promise<SwaggerResponse< & (SettlementRequestResultListResponseVM)>> => {
   
-   try {
-    const result= await Http.getRequest(
+  return Http.getRequest(
             getSettlementV1PrivateSettlementGet.key,
             queryParams,
             undefined,
@@ -75,14 +74,10 @@ export const getSettlementV1PrivateSettlementGet = (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ) ;
-    callbacks?.onSuccess(result);
-  } catch (error) {
-    callbacks?.onError(error);
-  } finally {
-    callbacks?.onSettle();
-    return result
-  }
+          ).then((result:SwaggerResponse< & (SettlementRequestResultListResponseVM)>) => callbacks?.onSuccess(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
+          .finally(() => callbacks?.onSettled());
+   
  
   
 };
@@ -251,14 +246,13 @@ function objToUrlencoded(requestBody: object) {
   return qs.stringify(requestBody)
 }
 
-export const getSettlementV1PrivateSettlementGet = (
+export const getSettlementV1PrivateSettlementGet =async (
     queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig,
      callbacks?:UseQueryCallbacks< & (SettlementRequestResultListResponseVM)>
    
 ): Promise<SwaggerResponse< & (SettlementRequestResultListResponseVM)>> => {
   
-   try {
-    const result= await Http.getRequest(
+  return Http.getRequest(
             getSettlementV1PrivateSettlementGet.key,
             queryParams,
             undefined,
@@ -266,14 +260,10 @@ export const getSettlementV1PrivateSettlementGet = (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ) ;
-    callbacks?.onSuccess(result);
-  } catch (error) {
-    callbacks?.onError(error);
-  } finally {
-    callbacks?.onSettle();
-    return result
-  }
+          ).then((result:SwaggerResponse< & (SettlementRequestResultListResponseVM)>) => callbacks?.onSuccess(result))
+          .catch((err:RequestError|Error|null) => callbacks?.onError(err))
+          .finally(() => callbacks?.onSettled());
+   
  
   
 };
