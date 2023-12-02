@@ -74,8 +74,14 @@ export const getSettlementV1PrivateSettlementGet =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (SettlementRequestResultListResponseVM)>) => callbacks?.onSuccess?.(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          ).then((result:SwaggerResponse< & (SettlementRequestResultListResponseVM)>) => {
+            callbacks?.onSuccess?.(result);
+            return result;
+          })
+          .catch((err: RequestError | Error | null) => {
+            callbacks?.onError?.(err);
+            return err;
+          })
           .finally(() => callbacks?.onSettled?.());
    
  
@@ -260,8 +266,14 @@ export const getSettlementV1PrivateSettlementGet =async (
             overrideConfig(_CONSTANT0,
               configOverride,
             )
-          ).then((result:SwaggerResponse< & (SettlementRequestResultListResponseVM)>) => callbacks?.onSuccess?.(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          ).then((result:SwaggerResponse< & (SettlementRequestResultListResponseVM)>) => {
+            callbacks?.onSuccess?.(result);
+            return result;
+          })
+          .catch((err: RequestError | Error | null) => {
+            callbacks?.onError?.(err);
+            return err;
+          })
           .finally(() => callbacks?.onSettled?.());
    
  

@@ -130,8 +130,14 @@ ${getJsdoc({
             )
           ).then((result:SwaggerResponse<${
             responses ? getTsType(responses, config) : "any"
-          }>) => callbacks?.onSuccess?.(result))
-          .catch((err:RequestError|Error|null) => callbacks?.onError?.(err))
+          }>) => {
+            callbacks?.onSuccess?.(result);
+            return result;
+          })
+          .catch((err: RequestError | Error | null) => {
+            callbacks?.onError?.(err);
+            return err;
+          })
           .finally(() => callbacks?.onSettled?.());
    `
       : `

@@ -3,5 +3,6 @@
   "dir": "./test",
   "language": "typescript",
   "keepJson": true,
-  "reactHooks": true
+  "reactHooks": true,
+  "useInfiniteQuery":["useGetSettlementV1PrivateSettlementGet"]
 }

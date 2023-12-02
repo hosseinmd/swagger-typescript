@@ -148,7 +148,7 @@ function generateHook(
           `${isGet ? TVariables : ""}`,
           `options?:${
             hasPaging
-              ? `UseInfiniteQueryOptions<${TQueryFnData}, ${TError}>`
+              ? `SwaggerTypescriptUseInfiniteQueryOptions<${TQueryFnData}>`
               : isGet
               ? `SwaggerTypescriptUseQueryOptions<${TData}>`
               : `${
@@ -291,6 +291,7 @@ function generateHook(
     code += `
     export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
     type SwaggerTypescriptUseQueryOptions<TData> = Omit<UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,"queryKey"> & UseQueryCallbacks<TData>;
+    type SwaggerTypescriptUseInfiniteQueryOptions<TData> = Omit<UseInfiniteQueryOptions<SwaggerResponse<TData>,RequestError | Error>,"queryKey"> & UseQueryCallbacks<TData>;
 
     type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> = UseMutationOptions<
       SwaggerResponse<TData>,
