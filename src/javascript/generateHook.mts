@@ -177,7 +177,7 @@ function generateHook(
             result += `const {
             data: { pages } = {},
             data,
-            ...restOptions
+            ...rest
           } = useInfiniteQuery({
             queryKey:key,
             queryFn:({ pageParam }) =>
