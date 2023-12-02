@@ -2,6 +2,271 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.6.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.5.1...v6.6.0) (2023-10-24)
+
+
+### Features
+
+* migration to react-query v5 ([#51](https://github.com/hosseinmd/swagger-typescript/issues/51)) ([d2a64e5](https://github.com/hosseinmd/swagger-typescript/commit/d2a64e5fe9b4a3031dd535b27743cee6396d771e))
+
+### [6.5.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.5.0...v6.5.1) (2023-09-08)
+
+
+### Bug Fixes
+
+* enum names ([461d31a](https://github.com/hosseinmd/swagger-typescript/commit/461d31a0059990ecf5c93350e6ccfbf81d838f5f))
+* number enums ([be581c7](https://github.com/hosseinmd/swagger-typescript/commit/be581c75799e501a3a8b0f73842f6994b0f2cb68))
+
+## [6.5.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.4.0...v6.5.0) (2023-07-21)
+
+
+### Features
+
+* json schema ([6686560](https://github.com/hosseinmd/swagger-typescript/commit/668656078e9462bf4ac0a68888896547b16f537c))
+
+
+### Bug Fixes
+
+* prettier v3 support ([eac7842](https://github.com/hosseinmd/swagger-typescript/commit/eac7842e731f62960b92b888aff221b63b4a4cbd))
+
+## [6.4.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.5...v6.4.0) (2022-11-19)
+
+
+### Features
+
+* support kotlin ([f6d853f](https://github.com/hosseinmd/swagger-typescript/commit/f6d853f9d9a2d7053e10014ebe3d6c9631f1af54))
+
+
+### Bug Fixes
+
+* export type ([ba2dbe0](https://github.com/hosseinmd/swagger-typescript/commit/ba2dbe0998a5d21401fd003dbf3e925656a9c4c3))
+* node 18 support ([549d1ba](https://github.com/hosseinmd/swagger-typescript/commit/549d1ba572f1db8da17b13d67e9ab6d9a23a3d8f))
+
+### [6.3.5](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.4...v6.3.5) (2022-10-06)
+
+
+### Bug Fixes
+
+* add config path log ([2bd39e0](https://github.com/hosseinmd/swagger-typescript/commit/2bd39e0f7417bd4fb8da173652d20db9162dea25))
+
+### [6.3.4](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.3...v6.3.4) (2022-10-05)
+
+
+### Bug Fixes
+
+* add ts-nocheck to auto generated files ([38973b0](https://github.com/hosseinmd/swagger-typescript/commit/38973b089ebfb439bcb23701e87d37595a593c68))
+
+### [6.3.3](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.2...v6.3.3) (2022-10-05)
+
+
+### Bug Fixes
+
+* change default response ([d258005](https://github.com/hosseinmd/swagger-typescript/commit/d258005d930c109f9691b47669197a2d1d595e61))
+* nullable and required together ([20a311a](https://github.com/hosseinmd/swagger-typescript/commit/20a311a20dd0033f347b555cffe260066ef9329c))
+
+### [6.3.2](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.1...v6.3.2) (2022-10-02)
+
+
+### Bug Fixes
+
+* move to esModule ([8bd66f2](https://github.com/hosseinmd/swagger-typescript/commit/8bd66f201097baca27f0c2a038cd0f0d6b52eb41))
+
+### [6.3.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.3.0...v6.3.1) (2022-08-14)
+
+
+### Bug Fixes
+
+* application/x-www-form-urlencoded ([16f3c2b](https://github.com/hosseinmd/swagger-typescript/commit/16f3c2be49dffae29dd8cded4ce380eacb77c8cc))
+
+## [6.3.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.2.7...v6.3.0) (2022-08-12)
+
+
+### Features
+
+* add postman support ([14067a2](https://github.com/hosseinmd/swagger-typescript/commit/14067a2ab99d2943c415afba8c518e27356ecdbc))
+
+
+### Bug Fixes
+
+* await generateService in main function generate ([#34](https://github.com/hosseinmd/swagger-typescript/issues/34)) ([75ec836](https://github.com/hosseinmd/swagger-typescript/commit/75ec8369202685dff792bb080203e4614fc43204))
+
+### [6.2.7](https://github.com/hosseinmd/swagger-typescript/compare/v6.2.6...v6.2.7) (2022-08-02)
+
+
+### Bug Fixes
+
+* move import to top ([b3f6e90](https://github.com/hosseinmd/swagger-typescript/commit/b3f6e900e14fa17d75b2aeedc82aa612f398b191))
+
+### [6.2.5](https://github.com/hosseinmd/swagger-typescript/compare/v6.2.4...v6.2.5) (2022-08-02)
+
+
+### Bug Fixes
+
+* export SwaggerTypescriptMutationDefaultParams ([ec3277c](https://github.com/hosseinmd/swagger-typescript/commit/ec3277c1c439b754fd5eba96d277f915905a1814))
+
+### [6.2.4](https://github.com/hosseinmd/swagger-typescript/compare/v6.2.3...v6.2.4) (2022-07-25)
+
+
+### Bug Fixes
+
+* nullable query param swagger 2 ([f0128a2](https://github.com/hosseinmd/swagger-typescript/commit/f0128a265b9ff0629500aaadfeece599c0846306))
+
+### [6.2.3](https://github.com/hosseinmd/swagger-typescript/compare/v6.2.2...v6.2.3) (2022-07-25)
+
+
+### Bug Fixes
+
+* method name ([a7d183c](https://github.com/hosseinmd/swagger-typescript/commit/a7d183c38ddf6ed7f69c6a54b8411417ddcb26d0))
+
+### [6.2.2](https://github.com/hosseinmd/swagger-typescript/compare/v6.2.1...v6.2.2) (2022-07-05)
+
+
+### Bug Fixes
+
+* branch detaction ([aee09bc](https://github.com/hosseinmd/swagger-typescript/commit/aee09bc4a3ed2fa1dd843bd1a296590ae28fadaf))
+
+### [6.2.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.2.0...v6.2.1) (2022-06-22)
+
+
+### Bug Fixes
+
+* head branch recognize ([b216161](https://github.com/hosseinmd/swagger-typescript/commit/b216161ea9add2d4593117718f456eaedd41e5b1))
+
+## [6.2.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.1.0...v6.2.0) (2022-06-22)
+
+
+### Features
+
+* handle specifiic url for branchs ([0fdffa5](https://github.com/hosseinmd/swagger-typescript/commit/0fdffa55062ac18f5eca864a219c26d9e5e945dc))
+
+## [6.1.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.10...v6.1.0) (2022-06-19)
+
+
+### Features
+
+* add isRequestError to isRequestError ([3fa6222](https://github.com/hosseinmd/swagger-typescript/commit/3fa62222aa58bc2ff2f07a85890c6b9cc6fdba07))
+
+
+### Bug Fixes
+
+* nullable query params ([0ead519](https://github.com/hosseinmd/swagger-typescript/commit/0ead51999379d6e8a7bd6d763fbc9f307326e462))
+
+### [6.0.9](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.8...v6.0.9) (2022-05-23)
+
+
+### Bug Fixes
+
+* query params nullable ([e1c5484](https://github.com/hosseinmd/swagger-typescript/commit/e1c5484805c8d675ea7c5e55fa8b0e0d6a1db2d1))
+
+### [6.0.8](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.7...v6.0.8) (2022-05-17)
+
+
+### Bug Fixes
+
+* nullable properties of openApi 3 ([f77e155](https://github.com/hosseinmd/swagger-typescript/commit/f77e155a685abf15c7f8aab5b46f0b2abb73a257))
+
+### [6.0.5](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.4...v6.0.5) (2022-02-08)
+
+
+### Bug Fixes
+
+* void type ([ac12fa5](https://github.com/hosseinmd/swagger-typescript/commit/ac12fa5f05c484327b7b17f95c68b669e234fbf8))
+
+### [6.0.4](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.3...v6.0.4) (2022-02-08)
+
+
+### Bug Fixes
+
+* configoverride default value ([9a9e38f](https://github.com/hosseinmd/swagger-typescript/commit/9a9e38fe2a2bfc1f9544d16c6a8caef3af6e4a91))
+
+### [6.0.2](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.1...v6.0.2) (2022-01-31)
+
+
+### Bug Fixes
+
+* hooks useinfinityQuery ([9d38336](https://github.com/hosseinmd/swagger-typescript/commit/9d3833653164c4387212b713e457348a21e67046))
+
+### [6.0.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.0.0...v6.0.1) (2022-01-15)
+
+
+### Bug Fixes
+
+* format output files ([ecdcacc](https://github.com/hosseinmd/swagger-typescript/commit/ecdcaccfa2994ec59b8061f57ce0184c0d6875d7))
+* remove useless infinity code when infinty doesn't enabled ([f4575d3](https://github.com/hosseinmd/swagger-typescript/commit/f4575d375ab104970cecbd9873ded7c3d074da3b))
+
+## [6.0.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.9.1...v6.0.0) (2021-12-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* desable generate auto useInfiniteQuery
+
+### Features
+
+* config to useInfiniteQuery ([d6ed3c4](https://github.com/hosseinmd/swagger-typescript/commit/d6ed3c4ac3384d79ee2932e40fb8971bce8c262e))
+
+### [5.9.1](https://github.com/hosseinmd/swagger-typescript/compare/v5.9.0...v5.9.1) (2021-12-26)
+
+
+### Bug Fixes
+
+* objToForm type ([88c29d9](https://github.com/hosseinmd/swagger-typescript/commit/88c29d9c0c882cca7a3ba5b79da45bc1ce05dbe4))
+
+## [5.9.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.8.0...v5.9.0) (2021-12-26)
+
+
+### Features
+
+* add multi gate way ([7eda0a1](https://github.com/hosseinmd/swagger-typescript/commit/7eda0a1fc726bba4692fd6c7b13e0c2598731311))
+
+
+### Bug Fixes
+
+* compare use query list ([50c3d81](https://github.com/hosseinmd/swagger-typescript/commit/50c3d81e0685ade62eaf790c97fbd442c9032ece))
+
+## [5.8.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.6...v5.8.0) (2021-12-13)
+
+
+### Features
+
+* add generateEnumAsType to generate type insstead of enum ([429385b](https://github.com/hosseinmd/swagger-typescript/commit/429385b3bd6421907c9a118d8e353b2d91d7a707))
+
+
+### Bug Fixes
+
+* ignore tls auth ([ad80ffa](https://github.com/hosseinmd/swagger-typescript/commit/ad80ffab2a2193aad6df81612a5b352e49db74ef))
+
+## [5.7.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.6...v5.7.0) (2021-12-06)
+
+
+### Features
+
+* add generateEnumAsType to generate type insstead of enum ([429385b](https://github.com/hosseinmd/swagger-typescript/commit/429385b3bd6421907c9a118d8e353b2d91d7a707))
+
+### [5.6.6](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.5...v5.6.6) (2021-12-04)
+
+
+### Bug Fixes
+
+* add headerParam ([6b27890](https://github.com/hosseinmd/swagger-typescript/commit/6b278900b222124c85d71163103ada0a11adda43))
+* add patch to http request ([dd263e3](https://github.com/hosseinmd/swagger-typescript/commit/dd263e3d6792a539e85f899f8cba12f8f1e4a22c))
+
+### [5.6.5](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.4...v5.6.5) (2021-11-16)
+
+
+### Bug Fixes
+
+* optional _extraVariables ([cf04c84](https://github.com/hosseinmd/swagger-typescript/commit/cf04c8440e08c71e344d122c90c0ade2e1d16378))
+
+### [5.6.4](https://github.com/hosseinmd/swagger-typescript/compare/v5.6.2...v5.6.4) (2021-11-15)
+
+
+### Bug Fixes
+
+* bug when servers is empty array ([8a37c22](https://github.com/hosseinmd/swagger-typescript/commit/8a37c229d51f0d8bb2e71ed862ae2360253c19d2))
+* change schema to nullable ([#31](https://github.com/hosseinmd/swagger-typescript/issues/31)) ([8693b05](https://github.com/hosseinmd/swagger-typescript/commit/8693b05be66175b43499c9f0ca1f140652ad0173))
+* readme ([0489b32](https://github.com/hosseinmd/swagger-typescript/commit/0489b32280b00c078b0d717ede2b26b8c0e9a396))
+
 ## [5.6.0](https://github.com/hosseinmd/swagger-typescript/compare/v5.5.0...v5.6.0) (2021-10-27)
 
 

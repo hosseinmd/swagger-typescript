@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "35b60b5f-ed03-413b-8880-608947635cb5",
+		"name": "Wms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4699480"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Encoding",
+								"value": "UTF-8",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "UserName",
+									"value": "f.mehranfar",
+									"type": "text"
+								},
+								{
+									"key": "Password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:42732/mobile/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42732",
+							"path": [
+								"mobile",
+								"login"
+							]
+						},
+						"description": "سرویس لاگین"
+					},
+					"response": []
+				},
+				{
+					"name": "ReceivingWorkerTaskGetItems",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Encoding",
+								"value": "UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:42732/mobile/ReceivingWorkerTaskGetItems",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42732",
+							"path": [
+								"mobile",
+								"ReceivingWorkerTaskGetItems"
+							]
+						},
+						"description": "تسک دریافت"
+					},
+					"response": []
+				},
+				{
+					"name": "ReceivingWorkerTaskGetCount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Encoding",
+								"type": "text",
+								"value": "UTF-8"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:42732/mobile/ReceivingWorkerTaskGetCount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "42732",
+							"path": [
+								"mobile",
+								"ReceivingWorkerTaskGetCount"
+							]
+						},
+						"description": "تعداد تسک دریافت"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Server",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Encoding",
+								"value": "UTF-8",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "UserName",
+									"value": "f.mehranfar",
+									"type": "text"
+								},
+								{
+									"key": "Password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://192.168.1.6:1020/mobile/login",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"6"
+							],
+							"port": "1020",
+							"path": [
+								"mobile",
+								"login"
+							]
+						},
+						"description": "سرویس لاگین"
+					},
+					"response": []
+				},
+				{
+					"name": "ReceivingWorkerTaskGetItems",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Encoding",
+								"value": "UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://192.168.1.6:1020/mobile/ReceivingWorkerTaskGetItems",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"6"
+							],
+							"port": "1020",
+							"path": [
+								"mobile",
+								"ReceivingWorkerTaskGetItems"
+							]
+						},
+						"description": "تسک دریافت"
+					},
+					"response": []
+				},
+				{
+					"name": "ReceivingWorkerTaskGetCount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Encoding",
+								"type": "text",
+								"value": "UTF-8"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://192.168.1.6:1020/mobile/ReceivingWorkerTaskGetCount",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"6"
+							],
+							"port": "1020",
+							"path": [
+								"mobile",
+								"ReceivingWorkerTaskGetCount"
+							]
+						},
+						"description": "تعداد تسک دریافت"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
