@@ -6,7 +6,6 @@ describe("generate", () => {
     dir: "",
     reactHooks: true,
   });
-
   it("generate Code", () => {
     expect(code).toMatchSnapshot();
   });

@@ -165,26 +165,30 @@ function generateHook(
            ) => {`;
         if (isGet) {
           result += `
-          const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
+          const { onSuccess, onSettle, onError, ...restOptions } = options ?? {};
+
+          const { key, fun } = ${hookName}.info(${getParamsString()} configOverride,{
+            onError,
+            onSettled,
+            onSuccess,
+          });
           `;
           if (hasPaging) {
             result += `const {
             data: { pages } = {},
             data,
-            ...rest
+            ...restOptions
           } = useInfiniteQuery({
             queryKey:key,
             queryFn:({ pageParam }) =>
               fun({
-                  ${
-                    queryParameters.find(({ name }) =>
-                      allowedPageParametersNames.includes(name.toLowerCase()),
-                    )?.name
-                  }:pageParam,
+                  ${queryParameters.find(({ name }) =>
+                    allowedPageParametersNames.includes(name.toLowerCase()),
+                  )?.name}:pageParam,
               }),
               initialPageParam: 1,
               getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
-              ...(options as any),
+              ...(restOptions as any),
           });
         
           const list = useMemo(() => paginationFlattenData(pages), [pages]);
@@ -199,7 +203,7 @@ function generateHook(
                {
                 queryKey: key, 
                 queryFn:fun,
-                ...options
+                ...restOptions
               }
                )`;
           }
@@ -223,7 +227,7 @@ function generateHook(
         if (isGet) {
           result += `${hookName}.info = (${params
             .filter((param) => !param.startsWith("options?:"))
-            .join("")}) => {
+            .join("")}, callbacks: UseQueryCallbacks<${TData}>,) => {
               return {
                 key: ${deps} as QueryKey,
                 fun: (${
@@ -231,7 +235,7 @@ function generateHook(
                 }) =>
                 ${serviceName}(
                   ${getParamsString(true)}
-                  configOverride
+                  configOverride,callbacks
                 ),
               };
             };`;
@@ -239,7 +243,13 @@ function generateHook(
           result += `${hookName}.prefetch = (
             client: QueryClient,
             ${params.join("")}) => {
-                const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
+              const { onSuccess, onSettle, onError, ...restOptions } = options ?? {};
+
+              const { key, fun } = ${hookName}.info(${getParamsString()} configOverride,{
+                onError,
+                onSettled,
+                onSuccess,
+              });
 
                 return client.getQueryData(key)
                 ? Promise.resolve()
@@ -247,7 +257,7 @@ function generateHook(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
-                  ...options
+                  ...restOptions
                 }
                   );
               }`;
@@ -280,7 +290,7 @@ function generateHook(
 
     code += `
     export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
-    type SwaggerTypescriptUseQueryOptions<TData> = Omit<UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,"queryKey">;
+    type SwaggerTypescriptUseQueryOptions<TData> = Omit<UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,"queryKey"> & UseQueryCallbacks<TData>;
 
     type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> = UseMutationOptions<
       SwaggerResponse<TData>,

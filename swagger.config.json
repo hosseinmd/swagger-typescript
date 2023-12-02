@@ -1,5 +1,5 @@
 {
-  "url": "http://testcompany.dev.abrplus.com/legacy/papi/swagger/v1/swagger.json",
+  "url": "./__tests__/swagger.json",
   "dir": "./test",
   "language": "typescript",
   "keepJson": true,
