@@ -10,7 +10,7 @@ exports[`generate enum as type generate Code 1`] = `
 */
 
 import type { AxiosRequestConfig } from \\"axios\\";
-import type { SwaggerResponse } from \\"./config\\";
+import type { SwaggerResponse , UseQueryCallbacks} from \\"./config\\";
 import { Http } from \\"./httpRequest\\";
 //@ts-ignore
 import qs from \\"qs\\";
@@ -73,20 +73,33 @@ function objToUrlencoded(requestBody: object) {
   return qs.stringify(requestBody)
 }
 
-export const getSettlementV1PrivateSettlementGet = (
-    queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig
+export const getSettlementV1PrivateSettlementGet =async (
+    queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig,
+     callbacks?:UseQueryCallbacks< & (SettlementRequestResultListResponseVM)>
+   
 ): Promise<SwaggerResponse< & (SettlementRequestResultListResponseVM)>> => {
   
   return Http.getRequest(
-    getSettlementV1PrivateSettlementGet.key,
-    queryParams,
-    undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0,
-      configOverride,
-    )
-  )
-}
+            getSettlementV1PrivateSettlementGet.key,
+            queryParams,
+            undefined,
+            _CONSTANT1,
+            overrideConfig(_CONSTANT0,
+              configOverride,
+            )
+          ).then((result:SwaggerResponse< & (SettlementRequestResultListResponseVM)>) => {
+            callbacks?.onSuccess?.(result);
+            return result;
+          })
+          .catch((err: RequestError | Error | null) => {
+            callbacks?.onError?.(err);
+            return err;
+          })
+          .finally(() => callbacks?.onSettled?.());
+   
+ 
+  
+};
 
 /** Key is end point string without base url */
 getSettlementV1PrivateSettlementGet.key = \\"/settlement/v1/private/settlement/get\\";
@@ -202,7 +215,7 @@ exports[`generate enum generate Code 1`] = `
 */
 
 import type { AxiosRequestConfig } from \\"axios\\";
-import type { SwaggerResponse } from \\"./config\\";
+import type { SwaggerResponse , UseQueryCallbacks} from \\"./config\\";
 import { Http } from \\"./httpRequest\\";
 //@ts-ignore
 import qs from \\"qs\\";
@@ -265,20 +278,33 @@ function objToUrlencoded(requestBody: object) {
   return qs.stringify(requestBody)
 }
 
-export const getSettlementV1PrivateSettlementGet = (
-    queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig
+export const getSettlementV1PrivateSettlementGet =async (
+    queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig,
+     callbacks?:UseQueryCallbacks< & (SettlementRequestResultListResponseVM)>
+   
 ): Promise<SwaggerResponse< & (SettlementRequestResultListResponseVM)>> => {
   
   return Http.getRequest(
-    getSettlementV1PrivateSettlementGet.key,
-    queryParams,
-    undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0,
-      configOverride,
-    )
-  )
-}
+            getSettlementV1PrivateSettlementGet.key,
+            queryParams,
+            undefined,
+            _CONSTANT1,
+            overrideConfig(_CONSTANT0,
+              configOverride,
+            )
+          ).then((result:SwaggerResponse< & (SettlementRequestResultListResponseVM)>) => {
+            callbacks?.onSuccess?.(result);
+            return result;
+          })
+          .catch((err: RequestError | Error | null) => {
+            callbacks?.onError?.(err);
+            return err;
+          })
+          .finally(() => callbacks?.onSettled?.());
+   
+ 
+  
+};
 
 /** Key is end point string without base url */
 getSettlementV1PrivateSettlementGet.key = \\"/settlement/v1/private/settlement/get\\";

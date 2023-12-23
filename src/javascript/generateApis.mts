@@ -52,7 +52,7 @@ function generateApis(
 ${getJsdoc({
   description: summary,
   deprecated: deprecated ? DEPRECATED_WARM_MESSAGE : undefined,
-})}export const ${serviceName} = (
+})}export const ${serviceName} =async (
     ${
       /** Path parameters */
       pathParams
@@ -61,29 +61,37 @@ ${getJsdoc({
         )
         .join(",")
     }${pathParams.length > 0 ? "," : ""}${
-              /** Request Body */
-              requestBody
-                ? `${getDefineParam("requestBody", true, requestBody, config)},`
-                : ""
-            }${
-              /** Query parameters */
-              queryParamsTypeName
-                ? `${getParamString(
-                    "queryParams",
-                    !isQueryParamsNullable,
-                    queryParamsTypeName,
-                  )},`
-                : ""
-            }${
-              /** Header parameters */
-              headerParams
-                ? `${getParamString(
-                    "headerParams",
-                    !isHeaderParamsNullable,
-                    headerParams as string,
-                  )},`
-                : ""
-            }configOverride?:AxiosRequestConfig
+      /** Request Body */
+      requestBody
+        ? `${getDefineParam("requestBody", true, requestBody, config)},`
+        : ""
+    }${
+      /** Query parameters */
+      queryParamsTypeName
+        ? `${getParamString(
+            "queryParams",
+            !isQueryParamsNullable,
+            queryParamsTypeName,
+          )},`
+        : ""
+    }${
+      /** Header parameters */
+      headerParams
+        ? `${getParamString(
+            "headerParams",
+            !isHeaderParamsNullable,
+            headerParams as string,
+          )},`
+        : ""
+    }configOverride?:AxiosRequestConfig,
+    ${
+      method === "get"
+        ? ` callbacks?:UseQueryCallbacks<${
+            responses ? getTsType(responses, config) : "any"
+          }>`
+        : ""
+    }
+   
 ): Promise<SwaggerResponse<${
               responses ? getTsType(responses, config) : "any"
             }>> => {
@@ -98,28 +106,67 @@ ${getJsdoc({
   }`
       : ""
   }
+  ${
+    method === "get"
+      ? `return Http.${method}Request(
+            ${
+              pathParamsRefString
+                ? `template(${serviceName}.key,${pathParamsRefString})`
+                : `${serviceName}.key`
+            },
+            ${queryParamsTypeName ? "queryParams" : "undefined"},
+            ${
+              requestBody
+                ? contentType === "multipart/form-data"
+                  ? "objToForm(requestBody)"
+                  : contentType === "application/x-www-form-urlencoded"
+                  ? "objToUrlencoded(requestBody)"
+                  : "requestBody"
+                : "undefined"
+            },
+            ${security},
+            overrideConfig(${additionalAxiosConfig},
+              configOverride,
+            )
+          ).then((result:SwaggerResponse<${
+            responses ? getTsType(responses, config) : "any"
+          }>) => {
+            callbacks?.onSuccess?.(result);
+            return result;
+          })
+          .catch((err: RequestError | Error | null) => {
+            callbacks?.onError?.(err);
+            return err;
+          })
+          .finally(() => callbacks?.onSettled?.());
+   `
+      : `
   return Http.${method}Request(
-    ${
-      pathParamsRefString
-        ? `template(${serviceName}.key,${pathParamsRefString})`
-        : `${serviceName}.key`
-    },
-    ${queryParamsTypeName ? "queryParams" : "undefined"},
-    ${
-      requestBody
-        ? contentType === "multipart/form-data"
-          ? "objToForm(requestBody)"
-          : contentType === "application/x-www-form-urlencoded"
-          ? "objToUrlencoded(requestBody)"
-          : "requestBody"
-        : "undefined"
-    },
-    ${security},
-    overrideConfig(${additionalAxiosConfig},
-      configOverride,
-    )
-  )
-}
+            ${
+              pathParamsRefString
+                ? `template(${serviceName}.key,${pathParamsRefString})`
+                : `${serviceName}.key`
+            },
+            ${queryParamsTypeName ? "queryParams" : "undefined"},
+            ${
+              requestBody
+                ? contentType === "multipart/form-data"
+                  ? "objToForm(requestBody)"
+                  : contentType === "application/x-www-form-urlencoded"
+                  ? "objToUrlencoded(requestBody)"
+                  : "requestBody"
+                : "undefined"
+            },
+            ${security},
+            overrideConfig(${additionalAxiosConfig},
+              configOverride,
+            )
+          ) ;
+  `
+  }
+ 
+  
+};
 
 /** Key is end point string without base url */
 ${serviceName}.key = "${endPoint}";

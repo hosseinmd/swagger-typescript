@@ -112,9 +112,20 @@ export type Security = any[] | undefined;
 // export interface SwaggerResponse<R> extends AxiosResponse<R> {}
 export type SwaggerResponse<R> = R
 
+
+ interface UseQueryCallbacks<T> {
+  onSuccess?: (data: SwaggerResponse<T>) => void;
+  onError?: (error: RequestError | Error | null) => void;
+  onSettled?: () => void;
+}
+
+
 export {
   getAxiosInstance,
   RequestError,
-};`;
+};
+
+export type {UseQueryCallbacks}
+`;
 
 export default getConfigFile;

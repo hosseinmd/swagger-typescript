@@ -5,7 +5,6 @@ describe("generate enum as type", () => {
   const { code, hooks, type } = generator(swaggerJson, {
     generateEnumAsType: true,
   });
-
   it("generate Code", () => {
     expect(code).toMatchSnapshot();
   });
