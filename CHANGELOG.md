@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.6.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.6.0...v6.6.1) (2023-12-23)
+
+
+### Bug Fixes
+
+* able to put custom formdata as body to support nodejs ([fd6e2c1](https://github.com/hosseinmd/swagger-typescript/commit/fd6e2c1cf0d1cfd5b17538bfa272f132fdac2d3f))
+
 ## [6.6.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.5.1...v6.6.0) (2023-10-24)
 
 
