@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.8.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.7.0...v6.8.0) (2024-05-24)
+
+
+### Features
+
+* add --config to cli options ([e16cf46](https://github.com/hosseinmd/swagger-typescript/commit/e16cf46aac8413056a3620129d04cc49cc33a978))
+
 ## [6.7.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.6.1...v6.7.0) (2024-03-06)
 
 
