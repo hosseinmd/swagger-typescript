@@ -251,7 +251,7 @@ export interface InfoObject {
   license?: any;
 }
 
-export interface Config {
+export interface FileConfig {
   url?: string | { branch: string; url: string }[];
   dir: string;
   /**
@@ -286,7 +286,20 @@ export interface Config {
   branch?: string;
 }
 
-export type SwaggerConfig = Config | Config[];
+export interface CLIConfig {
+  tag?: string[];
+  /** Generate with local swagger.json */
+  local?: boolean;
+  /** Generate specific branch swagger */
+  branch?: string;
+
+  /** _ swagger.config.json file path */
+  config?: string;
+}
+
+export interface Config extends FileConfig, CLIConfig {}
+
+export type SwaggerConfig = FileConfig | FileConfig[];
 
 export type Method =
   | "get"

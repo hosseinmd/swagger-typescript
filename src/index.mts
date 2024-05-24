@@ -1,5 +1,11 @@
 import { writeFileSync, existsSync, mkdirSync, readFileSync } from "fs";
-import { SwaggerJson, SwaggerConfig, Config } from "./types.mjs";
+import {
+  SwaggerJson,
+  SwaggerConfig,
+  Config,
+  CLIConfig,
+  FileConfig,
+} from "./types.mjs";
 import { getJson } from "./getJson.mjs";
 import { generateJavascriptService } from "./javascript/index.mjs";
 import { getCurrentUrl, majorVersionsCheck } from "./utils.mjs";
@@ -12,20 +18,24 @@ import path from "path";
 import { generateKotlinService } from "./kotlin/index.mjs";
 
 /** @param config If isn't defined will be use swagger.config.json instead */
-async function generate(config?: SwaggerConfig, cli?: Partial<Config>) {
-  config = config ?? getSwaggerConfig();
+async function generate(config?: SwaggerConfig, cli?: Partial<CLIConfig>) {
+  config = config ?? getSwaggerConfig(cli);
   const configs = Array.isArray(config) ? config : [config];
   for (const con of configs) {
     await generateService(con, cli);
   }
 }
 
-const generateService = async (config: Config, cli?: Partial<Config>) => {
-  config = {
-    ...config,
-    tag: cli?.tag ?? config.tag,
-    local: cli?.local ?? config.local,
-    branch: cli?.branch ?? config.branch,
+const generateService = async (
+  _config: FileConfig,
+  cli?: Partial<CLIConfig>,
+) => {
+  const config: Config = {
+    ..._config,
+    tag: cli?.tag ?? _config.tag,
+    local: cli?.local ?? _config.local,
+    branch: cli?.branch ?? _config.branch,
+    config: cli?.config,
   };
 
   const { url, dir, tag, keepJson, local } = config;
@@ -96,9 +106,16 @@ const generateService = async (config: Config, cli?: Partial<Config>) => {
   }
 };
 
-function getSwaggerConfig(): SwaggerConfig {
+function getSwaggerConfig(cli?: CLIConfig): SwaggerConfig {
   try {
-    const configPath = path.join(process.cwd(), "swagger.config.json");
+    const isAbsolutePath = cli?.config?.startsWith("/");
+
+    let rawPath = cli?.config || "";
+    rawPath = rawPath.endsWith(".json")
+      ? rawPath
+      : path.join(rawPath, "swagger.config.json");
+
+    const configPath = path.join(isAbsolutePath ? "" : process.cwd(), rawPath);
 
     console.log(chalk.grey(`Your config path: ${configPath}`));
 
