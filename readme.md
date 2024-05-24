@@ -101,6 +101,19 @@ For Example:
 - `type ReferralStatus="Successed" | "Error"; // generateEnumAsType = true `
   |
 
+# CLI Options
+
+| [`Key`]  | [`default`]             | Comment                                                                                                                                            |
+| -------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `local`  | false                   | update swagger with local swagger.json located in your dir folder. add it to your config file or run it with cli `$ yarn swag-ts --local`          |
+| `branch` | Current Branch          | to generate swagger for develop run `yarn swag-ts --branch=develop` or your branch name should be `develop` or a branch which created from develop |
+| `config` | "./swagger.config.json" | A path for config file location                                                                                                                    |
+
+- `yarn swag-ts --config=./config` path is related for "swagger.config.json" file in config folder
+- `yarn swag-ts --config=./config/myswagger.json` you could change config file name
+- `yarn swag-ts --config=/user/hosseinmd/desktop/config/swagger.config.json` you could add absolute path
+  |
+
 ## Config
 
 The config.ts file automatically will be created after first run. You could change this file for customization. Don't change other files, if you want another config create Issue or PR.
@@ -185,7 +198,7 @@ For Example:
 }
 ```
 
-to generate swagger for develop run `yarn swag-ts --branch=develop` or your branch name should be `develop` or `develop/something`
+to generate swagger for develop run `yarn swag-ts --branch=develop` or your branch name should be `develop` or a branch which created from develop
 
 ## Stories
 
