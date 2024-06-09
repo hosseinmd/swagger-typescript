@@ -263,6 +263,8 @@ export interface FileConfig {
   /** Default is false */
   keepJson?: boolean;
   reactHooks?: boolean;
+  includes?: string[];
+  excludes?: string[];
   useQuery?: string[];
   useInfiniteQuery?: string[];
   mock?: string;
