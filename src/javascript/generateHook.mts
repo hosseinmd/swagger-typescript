@@ -291,6 +291,7 @@ function generateHook(
     });
 
     code += `
+    /* eslint-disable react-hooks/rules-of-hooks */
     export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
     type SwaggerTypescriptUseQueryOptions<TData> = Omit<UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,"queryKey">;
     type SwaggerTypescriptUseSuspenseQueryOptions<TData> = Omit<UseSuspenseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,"queryKey">;
