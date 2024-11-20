@@ -250,6 +250,18 @@ function generateHook(
                   ...options
                 }
                   );
+              };`;
+          result += `${hookName}.suspense = (
+            ${params.join("")}) => {
+                const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
+
+                return useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }`;
         }
 
