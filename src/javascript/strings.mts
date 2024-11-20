@@ -88,6 +88,8 @@ import {
   useQuery,
   useMutation,
   UseMutationOptions,
+  useSuspenseQuery,
+  UseSuspenseQueryOptions,
   ${
     hasInfinity
       ? `  useInfiniteQuery,
