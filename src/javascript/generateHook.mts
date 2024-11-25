@@ -251,7 +251,8 @@ function generateHook(
                 }
                   );
               };`;
-          result += `${hookName}.suspense = (
+          result += `export const useSuspense${toPascalCase(serviceName)} = (
+
             ${params.join("").replace("SwaggerTypescriptUseQueryOptions","SwaggerTypescriptUseSuspenseQueryOptions")}) => {
                 const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
 
