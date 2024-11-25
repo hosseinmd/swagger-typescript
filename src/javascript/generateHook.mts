@@ -252,7 +252,7 @@ function generateHook(
                   );
               };`;
           result += `${hookName}.suspense = (
-            ${params.join("")}) => {
+            ${params.join("").replace("SwaggerTypescriptUseQueryOptions","SwaggerTypescriptUseSuspenseQueryOptions")}) => {
                 const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
 
                 return useSuspenseQuery(
