@@ -56,7 +56,7 @@ function generator(
     (pattern) => new RegExp(pattern),
   );
 
-  function getModifiedPathValue(endPoint: string, value: PathItem) {
+  function getFilteredMethods(endPoint: string, value: PathItem) {
     return Object.entries(value).filter(
       ([method, options]: [string, SwaggerRequest]) => {
         const { operationId } = options;
@@ -83,7 +83,7 @@ function generator(
   try {
     Object.entries(input.paths).forEach(([endPoint, value]) => {
       const parametersExtended = value.parameters as Parameter[] | undefined;
-      getModifiedPathValue(endPoint, value).forEach(
+      getFilteredMethods(endPoint, value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
           if (method === "parameters") {
             return;
