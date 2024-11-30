@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.9.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.7.0...v6.9.0) (2024-11-30)
+
+
+### Features
+
+* add --config to cli options ([b95fd80](https://github.com/hosseinmd/swagger-typescript/commit/b95fd80483bc32d0d12d076348a1be1c3eefca81))
+* add includes and excludes config options ([#59](https://github.com/hosseinmd/swagger-typescript/issues/59)) ([7842bcd](https://github.com/hosseinmd/swagger-typescript/commit/7842bcdca1169204544b743a5dfb38e10b55731f))
+
+
+### Bug Fixes
+
+* replace postman-ke-openapi instead of postman-to-openapi ([52a90e9](https://github.com/hosseinmd/swagger-typescript/commit/52a90e9a36fe3f17d32c6a257b99d59ae3fbb96f))
+
 ## [6.8.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.7.0...v6.8.0) (2024-05-24)
 
 
