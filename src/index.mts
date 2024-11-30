@@ -12,7 +12,7 @@ import { getCurrentUrl, majorVersionsCheck } from "./utils.mjs";
 import { swaggerToOpenApi } from "./utilities/swaggerToOpenApi.mjs";
 import chalk from "chalk";
 import { partialUpdateJson } from "./updateJson.mjs";
-import { default as postmanToOpenApi } from "postman-to-openapi";
+import { default as postmanToOpenApi } from "postman-ke-openapi";
 import yaml from "js-yaml";
 import path from "path";
 import { generateKotlinService } from "./kotlin/index.mjs";
