@@ -252,20 +252,52 @@ function generateHook(
                   );
               };`;
           result += `export const useSuspense${toPascalCase(serviceName)} = (
-
-            ${params.join("")
+          ${params.join("")
             .replace("SwaggerTypescriptUseQueryOptions","SwaggerTypescriptUseSuspenseQueryOptions")
-            .replace("UseInfiniteQueryOptions","UseSuspenseInfiniteQueryOptions")}) => {
-                const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
+            .replace("UseInfiniteQueryOptions","UseSuspenseInfiniteQueryOptions")}) => {`
+          result += `
+          const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
+          `;
+          if (hasPaging) {
+            result += `const {
+            data: { pages } = {},
+            data,
+            ...rest
+          } = useSuspenseInfiniteQuery({
+            queryKey:key,
+            queryFn:({ pageParam }) =>
+              fun({
+                  ${
+                    queryParameters.find(({ name }) =>
+                      allowedPageParametersNames.includes(name.toLowerCase()),
+                    )?.name
+                  }:pageParam,
+              }),
+              initialPageParam: 1,
+              getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
+              ...(options as any),
+          });
+        
+          const list = useMemo(() => paginationFlattenData(pages), [pages]);
+          const total = getTotal(pages);
 
-                return  ${hasPaging ? "useSuspenseInfiniteQuery":"useSuspenseQuery"}(
-                {
-                  queryKey:key,
-                  queryFn:()=>fun(),
-                  ...options
-                }
-                  );
-              }`;
+          const hasMore = useHasMore(pages, list, queryParams);
+          
+          return {...rest, data, list, hasMore, total}
+          `;
+          } else {
+            result += `return useSuspenseQuery(
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
+               )`;
+          }
+          result += `};`
+
+
+
         }
 
         return result;
