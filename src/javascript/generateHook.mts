@@ -253,10 +253,12 @@ function generateHook(
               };`;
           result += `export const useSuspense${toPascalCase(serviceName)} = (
 
-            ${params.join("").replace("SwaggerTypescriptUseQueryOptions","SwaggerTypescriptUseSuspenseQueryOptions")}) => {
+            ${params.join("")
+            .replace("SwaggerTypescriptUseQueryOptions","SwaggerTypescriptUseSuspenseQueryOptions")
+            .replace("UseInfiniteQueryOptions","UseSuspenseInfiniteQueryOptions")}) => {
                 const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
 
-                return useSuspenseQuery(
+                return  ${hasPaging ? "useSuspenseInfiniteQuery":"useSuspenseQuery"}(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -292,7 +294,6 @@ function generateHook(
     });
 
     code += `
-    /* eslint-disable react-hooks/rules-of-hooks */
     export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
     type SwaggerTypescriptUseQueryOptions<TData> = Omit<UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,"queryKey">;
     type SwaggerTypescriptUseSuspenseQueryOptions<TData> = Omit<UseSuspenseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,"queryKey">;

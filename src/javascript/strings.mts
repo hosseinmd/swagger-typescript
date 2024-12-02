@@ -92,8 +92,8 @@ import {
   UseSuspenseQueryOptions,
   ${
     hasInfinity
-      ? `  useInfiniteQuery,
-  UseInfiniteQueryOptions,`
+      ? `  useInfiniteQuery, useSuspenseInfiniteQuery,
+  UseInfiniteQueryOptions, UseSuspenseInfiniteQueryOptions,`
       : ""
   }
   QueryClient,
