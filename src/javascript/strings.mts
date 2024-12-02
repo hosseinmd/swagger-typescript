@@ -88,10 +88,12 @@ import {
   useQuery,
   useMutation,
   UseMutationOptions,
+  useSuspenseQuery,
+  UseSuspenseQueryOptions,
   ${
     hasInfinity
-      ? `  useInfiniteQuery,
-  UseInfiniteQueryOptions,`
+      ? `  useInfiniteQuery, useSuspenseInfiniteQuery,
+  UseInfiniteQueryOptions, UseSuspenseInfiniteQueryOptions,`
       : ""
   }
   QueryClient,

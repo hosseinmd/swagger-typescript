@@ -250,7 +250,54 @@ function generateHook(
                   ...options
                 }
                   );
-              }`;
+              };`;
+          result += `export const useSuspense${toPascalCase(serviceName)} = (
+          ${params.join("")
+            .replace("SwaggerTypescriptUseQueryOptions","SwaggerTypescriptUseSuspenseQueryOptions")
+            .replace("UseInfiniteQueryOptions","UseSuspenseInfiniteQueryOptions")}) => {`
+          result += `
+          const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
+          `;
+          if (hasPaging) {
+            result += `const {
+            data: { pages } = {},
+            data,
+            ...rest
+          } = useSuspenseInfiniteQuery({
+            queryKey:key,
+            queryFn:({ pageParam }) =>
+              fun({
+                  ${
+                    queryParameters.find(({ name }) =>
+                      allowedPageParametersNames.includes(name.toLowerCase()),
+                    )?.name
+                  }:pageParam,
+              }),
+              initialPageParam: 1,
+              getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
+              ...(options as any),
+          });
+        
+          const list = useMemo(() => paginationFlattenData(pages), [pages]);
+          const total = getTotal(pages);
+
+          const hasMore = useHasMore(pages, list, queryParams);
+          
+          return {...rest, data, list, hasMore, total}
+          `;
+          } else {
+            result += `return useSuspenseQuery(
+               {
+                queryKey: key, 
+                queryFn:fun,
+                ...options
+              }
+               )`;
+          }
+          result += `};`
+
+
+
         }
 
         return result;
@@ -281,6 +328,7 @@ function generateHook(
     code += `
     export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
     type SwaggerTypescriptUseQueryOptions<TData> = Omit<UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,"queryKey">;
+    type SwaggerTypescriptUseSuspenseQueryOptions<TData> = Omit<UseSuspenseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,"queryKey">;
 
     type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> = UseMutationOptions<
       SwaggerResponse<TData>,
