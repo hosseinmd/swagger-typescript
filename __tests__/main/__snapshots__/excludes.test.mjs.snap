@@ -2681,6 +2681,8 @@ import {
   useQuery,
   useMutation,
   UseMutationOptions,
+  useSuspenseQuery,
+  UseSuspenseQueryOptions,
   
   QueryClient,
   QueryKey,
@@ -2692,6 +2694,7 @@ import { deleteBusinessUserConnectionConnectionId, deleteBusinessUserConnectionC
 
     export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
     type SwaggerTypescriptUseQueryOptions<TData> = Omit<UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,\\"queryKey\\">;
+    type SwaggerTypescriptUseSuspenseQueryOptions<TData> = Omit<UseSuspenseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,\\"queryKey\\">;
 
     type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> = UseMutationOptions<
       SwaggerResponse<TData>,
@@ -2934,6 +2937,21 @@ connectionId: number,}, TExtra>,
                   ...options
                 }
                   );
+              };export const useSuspenseGetAccessUserWalletIdLogicalAction = (
+
+            userWalletId: number,logicalAction: \\"EpayRequest\\" | \\"TransferMoney\\" | \\"AccountChargeRequest\\" | \\"ServiceBill\\" | \\"ServiceMobileCharge\\" | \\"POS\\" | \\"ShareAndBlockRequest\\" | \\"ShareRequest\\" | \\"Settlement\\" | \\"GroupTransferMoney\\" | \\"ShareAndUnblock\\" | \\"Refund\\" | \\"PayCommand\\" | \\"Gift\\" | \\"TaxiFairPayment\\" | \\"HitoBitFee\\",options?:SwaggerTypescriptUseSuspenseQueryOptions<boolean>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetAccessUserWalletIdLogicalAction.info( userWalletId,logicalAction,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -2987,6 +3005,21 @@ export const useGetBank = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetBank = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<BankApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBank.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -3034,6 +3067,21 @@ export const useGetBusinessUserCategory = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetBusinessUserCategory = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<BusinessCategoryApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserCategory.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -3094,6 +3142,21 @@ export const useGetBusinessUserConnection = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetBusinessUserConnection = (
+
+            queryParams?: GetBusinessUserConnectionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserConnection.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -3142,6 +3205,21 @@ export const useGetBusinessUserConnectionActive = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetBusinessUserConnectionActive = (
+
+            queryParams?: GetBusinessUserConnectionActiveQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserConnectionActive.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -3218,6 +3296,26 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserConnec
                   ...options
                 }
                   );
+              };export const useSuspenseGetBusinessUserConnectionConnectionId = (
+
+            
+/**
+ * 
+ * Connection Id
+ */
+connectionId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (SubUserConnectionApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserConnectionConnectionId.info( connectionId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -3288,6 +3386,26 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
                   ...options
                 }
                   );
+              };export const useSuspenseGetBusinessUserConnectionConnectionIdActivity = (
+
+            
+/**
+ * 
+ * Connection Id
+ */
+connectionId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (SubUserActivityApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserConnectionConnectionIdActivity.info( connectionId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetBusinessUserConnectionConnectionIdEpay = (
            connectionId: number,queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,options?:SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig
@@ -3330,6 +3448,21 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetBusinessUserConnectionConnectionIdEpay = (
+
+            connectionId: number,queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserConnectionConnectionIdEpay.info( connectionId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -3406,6 +3539,26 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                   ...options
                 }
                   );
+              };export const useSuspenseGetBusinessUserConnectionConnectionIdPermission = (
+
+            
+/**
+ * 
+ * Connection Id
+ */
+connectionId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions<SubUserPermissionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserConnectionConnectionIdPermission.info( connectionId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequest = (
            queryParams?: GetEpayRequestQueryParams,options?:SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig
@@ -3448,6 +3601,21 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequest = (
+
+            queryParams?: GetEpayRequestQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequest.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -3502,6 +3670,21 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestAudiencesRecent = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<ContactApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestAudiencesRecent.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestCount = (
            queryParams?: GetEpayRequestCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
@@ -3544,6 +3727,21 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequestCount = (
+
+            queryParams?: GetEpayRequestCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -3618,6 +3816,26 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestEpayId = (
+
+            
+/**
+ * 
+ * EpayRequest's Id
+ */
+epayId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (EpayRequestDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestEpayId.info( epayId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestEpayTokenDetail = (
            epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestPublicInfoApiModel)>,configOverride?:AxiosRequestConfig
@@ -3660,6 +3878,21 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequestEpayTokenDetail = (
+
+            epayToken: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (EpayRequestPublicInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestEpayTokenDetail.info( epayToken,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -3734,6 +3967,26 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestEpayTokenQrcode = (
+
+            
+/**
+ * 
+ * epay request token
+ */
+epayToken: string,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestEpayTokenQrcode.info( epayToken,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestExcel = (
            queryParams?: GetEpayRequestExcelQueryParams,options?:SwaggerTypescriptUseQueryOptions<string>,configOverride?:AxiosRequestConfig
@@ -3776,6 +4029,21 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequestExcel = (
+
+            queryParams?: GetEpayRequestExcelQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestExcel.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -3837,6 +4105,21 @@ export const useGetEpayRequestForMe = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestForMe = (
+
+            queryParams?: GetEpayRequestForMeQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<EpayRequestForUserQuery[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestForMe.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestForMeCount = (
            queryParams?: GetEpayRequestForMeCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
@@ -3885,6 +4168,21 @@ export const useGetEpayRequestForMe = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestForMeCount = (
+
+            queryParams?: GetEpayRequestForMeCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestForMeCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestForMeReport = (
            queryParams?: GetEpayRequestForMeReportQueryParams,options?:SwaggerTypescriptUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig
@@ -3927,6 +4225,21 @@ export const useGetEpayRequestForMe = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequestForMeReport = (
+
+            queryParams?: GetEpayRequestForMeReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestForMeReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -3987,6 +4300,21 @@ export const useGetEpayRequestPosQrAccountNumber = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestPosQrAccountNumber = (
+
+            accountNumber: string,queryParams?: GetEpayRequestPosQrAccountNumberQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestPosQrAccountNumber.info( accountNumber,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestReport = (
            queryParams?: GetEpayRequestReportQueryParams,options?:SwaggerTypescriptUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig
@@ -4029,6 +4357,21 @@ export const useGetEpayRequestPosQrAccountNumber = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequestReport = (
+
+            queryParams?: GetEpayRequestReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -4088,6 +4431,21 @@ export const useGetEpayRequestUserWalletIdCommission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestUserWalletIdCommission = (
+
+            userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestUserWalletIdCommission.info( userWalletId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestUserWalletIdCreators = (
            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<UserMinimalDto[]>,configOverride?:AxiosRequestConfig
@@ -4130,6 +4488,21 @@ export const useGetEpayRequestUserWalletIdCommission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequestUserWalletIdCreators = (
+
+            userWalletId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions<UserMinimalDto[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestUserWalletIdCreators.info( userWalletId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -4184,6 +4557,21 @@ export const useGetEpayRequestUserWalletIdCommission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetError = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetError.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetErrorLocal = (
            options?:SwaggerTypescriptUseQueryOptions<string>,configOverride?:AxiosRequestConfig
@@ -4232,6 +4620,21 @@ export const useGetEpayRequestUserWalletIdCommission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetErrorLocal = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetErrorLocal.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetErrorStatusCode = (
            code: number,options?:SwaggerTypescriptUseQueryOptions<string>,configOverride?:AxiosRequestConfig
@@ -4274,6 +4677,21 @@ export const useGetEpayRequestUserWalletIdCommission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetErrorStatusCode = (
+
+            code: number,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetErrorStatusCode.info( code,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -4348,6 +4766,26 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
                   ...options
                 }
                   );
+              };export const useSuspenseGetFileFileGuid = (
+
+            
+/**
+ * 
+ * file unique id
+ */
+fileGuid: string,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetFileFileGuid.info( fileGuid,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetGroupTransferCommission = (
            queryParams?: GetGroupTransferCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
@@ -4390,6 +4828,21 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetGroupTransferCommission = (
+
+            queryParams?: GetGroupTransferCommissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetGroupTransferCommission.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -4449,6 +4902,21 @@ export const useGetIntegration = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetIntegration = (
+
+            queryParams?: GetIntegrationQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (DriverInfoResult)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetIntegration.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetKpi = (
            queryParams?: GetKpiQueryParams,options?:SwaggerTypescriptUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig
@@ -4491,6 +4959,21 @@ export const useGetIntegration = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetKpi = (
+
+            queryParams?: GetKpiQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetKpi.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -4545,6 +5028,21 @@ export const useGetIntegration = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetKpiCurrent = (
+
+            queryParams?: GetKpiCurrentQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetKpiCurrent.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetKpiLast = (
            queryParams?: GetKpiLastQueryParams,options?:SwaggerTypescriptUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig
@@ -4587,6 +5085,21 @@ export const useGetIntegration = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetKpiLast = (
+
+            queryParams?: GetKpiLastQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetKpiLast.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -4640,6 +5153,21 @@ export const useGetNotificationIa = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetNotificationIa = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<ImportantActionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetNotificationIa.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -4700,6 +5228,21 @@ export const useGetNotificationNotif = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetNotificationNotif = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<NotificationApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetNotificationNotif.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetNotificationUnread = (
            queryParams?: GetNotificationUnreadQueryParams,options?:SwaggerTypescriptUseQueryOptions<UnreadNotificationCountApiModel[]>,configOverride?:AxiosRequestConfig
@@ -4748,6 +5291,21 @@ export const useGetNotificationNotif = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetNotificationUnread = (
+
+            queryParams?: GetNotificationUnreadQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<UnreadNotificationCountApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetNotificationUnread.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetPluginPluginId = (
            pluginId: number,options?:SwaggerTypescriptUseQueryOptions< & (PluginApiModel)>,configOverride?:AxiosRequestConfig
@@ -4790,6 +5348,21 @@ export const useGetNotificationNotif = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetPluginPluginId = (
+
+            pluginId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (PluginApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetPluginPluginId.info( pluginId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -4864,6 +5437,26 @@ accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:Swag
                   ...options
                 }
                   );
+              };export const useSuspenseGetPosAccountNumber = (
+
+            
+/**
+ * 
+ * Account Number
+ */
+accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (PosLandingPageApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetPosAccountNumber.info( accountNumber,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -4927,6 +5520,26 @@ epayTryId: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetReceiptBankEpayTryId = (
+
+            
+/**
+ * 
+ * EpayTry's id to get receipt for
+ */
+epayTryId: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (BankReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetReceiptBankEpayTryId.info( epayTryId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -5004,6 +5617,26 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
                   ...options
                 }
                   );
+              };export const useSuspenseGetReceiptEpayToken = (
+
+            
+/**
+ * 
+ * EpayRequest's token to get receipt for
+ */
+epayToken: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (BankReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetReceiptEpayToken.info( epayToken,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -5073,6 +5706,26 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (WalletReceiptApi
                   ...options
                 }
                   );
+              };export const useSuspenseGetReceiptWalletEpayToken = (
+
+            
+/**
+ * 
+ * EpayRequest's token to get receipt for
+ */
+epayToken: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (WalletReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetReceiptWalletEpayToken.info( epayToken,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -5121,6 +5774,21 @@ export const useGetResellerUser = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUser = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (ResellerApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUser.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -5182,6 +5850,21 @@ export const useGetResellerUserDashboardCommissionReport = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserDashboardCommissionReport = (
+
+            queryParams?: GetResellerUserDashboardCommissionReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<DateReportApiModelOfDecimal[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardCommissionReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -5231,6 +5914,21 @@ export const useGetResellerUserDashboardCommissionSum = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserDashboardCommissionSum = (
+
+            queryParams?: GetResellerUserDashboardCommissionSumQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardCommissionSum.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -5292,6 +5990,21 @@ export const useGetResellerUserDashboardIntroducedCount = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserDashboardIntroducedCount = (
+
+            queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardIntroducedCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -5341,6 +6054,21 @@ export const useGetResellerUserDashboardIntroducedReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserDashboardIntroducedReport = (
+
+            queryParams?: GetResellerUserDashboardIntroducedReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardIntroducedReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -5402,6 +6130,21 @@ export const useGetResellerUserDashboardLinksCount = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserDashboardLinksCount = (
+
+            queryParams?: GetResellerUserDashboardLinksCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardLinksCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -5451,6 +6194,21 @@ export const useGetResellerUserDashboardLinksPaidCount = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserDashboardLinksPaidCount = (
+
+            queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardLinksPaidCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -5512,6 +6270,21 @@ export const useGetResellerUserDashboardLinksPaidReport = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserDashboardLinksPaidReport = (
+
+            queryParams?: GetResellerUserDashboardLinksPaidReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardLinksPaidReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -5561,6 +6334,21 @@ export const useGetResellerUserDashboardLinksReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserDashboardLinksReport = (
+
+            queryParams?: GetResellerUserDashboardLinksReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardLinksReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -5622,6 +6410,21 @@ export const useGetResellerUserDashboardTransactionsCount = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserDashboardTransactionsCount = (
+
+            queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardTransactionsCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -5671,6 +6474,21 @@ export const useGetResellerUserDashboardTransactionsReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserDashboardTransactionsReport = (
+
+            queryParams?: GetResellerUserDashboardTransactionsReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardTransactionsReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -5731,6 +6549,21 @@ export const useGetResellerUserIntroduced = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserIntroduced = (
+
+            queryParams?: GetResellerUserIntroducedQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<ReselledUserApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserIntroduced.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -5779,6 +6612,21 @@ export const useGetResellerUserIntroducedFilterData = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserIntroducedFilterData = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (ReselledUserFilterData)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserIntroducedFilterData.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -5839,6 +6687,21 @@ export const useGetResellerUserIntroducedUserIdActivity = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserIntroducedUserIdActivity = (
+
+            userId: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (ReselledUserActivityApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserIntroducedUserIdActivity.info( userId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -5887,6 +6750,21 @@ export const useGetSubDomain = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetSubDomain = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (SubDomainApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetSubDomain.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -5979,6 +6857,32 @@ subDomainAddress: string,headerParams?: {
                   ...options
                 }
                   );
+              };export const useSuspenseGetSubDomainSubDomainAddress = (
+
+            
+/**
+ * 
+ * The SubDomain part of the url.
+            
+ */
+subDomainAddress: string,headerParams?: {
+/**
+ * 
+ * - Format: guid
+ */
+\\"clientId\\": string;},options?:SwaggerTypescriptUseSuspenseQueryOptions< & (SubDomainApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetSubDomainSubDomainAddress.info( subDomainAddress,
+          
+          
+          headerParams, configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -6027,6 +6931,21 @@ export const useGetSubUserAccountUserWalletId = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetSubUserAccountUserWalletId = (
+
+            userWalletId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (SubUserAccountDetailQuery)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetSubUserAccountUserWalletId.info( userWalletId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -6089,6 +7008,21 @@ export const useGetSubUserConnection = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetSubUserConnection = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<BusinessUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetSubUserConnection.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetTransaction = (
            queryParams?: GetTransactionQueryParams,options?:SwaggerTypescriptUseQueryOptions<TransactionApiModel[]>,configOverride?:AxiosRequestConfig
@@ -6137,6 +7071,21 @@ export const useGetSubUserConnection = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetTransaction = (
+
+            queryParams?: GetTransactionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<TransactionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransaction.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetTransactionExcel = (
            queryParams?: GetTransactionExcelQueryParams,options?:SwaggerTypescriptUseQueryOptions<string>,configOverride?:AxiosRequestConfig
@@ -6179,6 +7128,21 @@ export const useGetSubUserConnection = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetTransactionExcel = (
+
+            queryParams?: GetTransactionExcelQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransactionExcel.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -6237,6 +7201,21 @@ export const useGetTransactionReport = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetTransactionReport = (
+
+            queryParams?: GetTransactionReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransactionReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -6283,6 +7262,21 @@ export const useGetTransactionReportAll = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetTransactionReportAll = (
+
+            queryParams?: GetTransactionReportAllQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AllTransactionsReportApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransactionReportAll.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -6343,6 +7337,21 @@ export const useGetTransactionTransactionId = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetTransactionTransactionId = (
+
+            transactionId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (TransactionApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransactionTransactionId.info( transactionId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -6396,6 +7405,21 @@ export const useGetTransferRecent = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetTransferRecent = (
+
+            queryParams?: GetTransferRecentQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<TransferMoneyApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransferRecent.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetTransferSearch = (
            queryParams?: GetTransferSearchQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig
@@ -6438,6 +7462,21 @@ export const useGetTransferRecent = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetTransferSearch = (
+
+            queryParams?: GetTransferSearchQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransferSearch.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -6497,6 +7536,21 @@ export const useGetTransferUserWalletIdCommission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetTransferUserWalletIdCommission = (
+
+            userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransferUserWalletIdCommission.info( userWalletId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -6544,6 +7598,21 @@ export const useGetUser = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUser = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (UserDetailQuery)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUser.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -6604,6 +7673,21 @@ export const useGetUserBank = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserBank = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<UserBankApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserBank.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -6652,6 +7736,21 @@ export const useGetUserBankReady = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserBankReady = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<UserBankApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserBankReady.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -6727,6 +7826,26 @@ userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailA
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserBankUserBankId = (
+
+            
+/**
+ * 
+ * User bank id
+ */
+userBankId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (UserBankDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserBankUserBankId.info( userBankId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -6780,6 +7899,21 @@ export const useGetUserConnection = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserConnection = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<BusinessUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserConnection.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetUserContactInput = (
            input: string,options?:SwaggerTypescriptUseQueryOptions< & (ContactApiModel)>,configOverride?:AxiosRequestConfig
@@ -6822,6 +7956,21 @@ export const useGetUserConnection = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserContactInput = (
+
+            input: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (ContactApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserContactInput.info( input,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -6881,6 +8030,21 @@ export const useGetUserIdentityRequest = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserIdentityRequest = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (UserIdentityRequestQuery)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserIdentityRequest.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -6928,6 +8092,21 @@ export const useGetUserInvitation = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserInvitation = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<SubUserInvitationApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserInvitation.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -6987,6 +8166,21 @@ export const useGetUserInvitationInvitationToken = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserInvitationInvitationToken = (
+
+            invitationToken: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (SubUserInvitationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserInvitationInvitationToken.info( invitationToken,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -7040,6 +8234,21 @@ export const useGetUserMe = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserMe = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (UserMeQuery)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserMe.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetUserPlugin = (
            options?:SwaggerTypescriptUseQueryOptions<UserPluginDetailApiModel[]>,configOverride?:AxiosRequestConfig
@@ -7082,6 +8291,21 @@ export const useGetUserMe = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserPlugin = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<UserPluginDetailApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserPlugin.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -7141,6 +8365,21 @@ export const useGetUserUpgradeToBusinessRequest = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserUpgradeToBusinessRequest = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (UpgradeToBusinessApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserUpgradeToBusinessRequest.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetUserWallet = (
            options?:SwaggerTypescriptUseQueryOptions<WalletDisplayApiModel[]>,configOverride?:AxiosRequestConfig
@@ -7189,6 +8428,21 @@ export const useGetUserUpgradeToBusinessRequest = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserWallet = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<WalletDisplayApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWallet.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetUserWalletAccountNumberQrcode = (
            accountNumber: string,queryParams?: GetUserWalletAccountNumberQrcodeQueryParams,options?:SwaggerTypescriptUseQueryOptions<string>,configOverride?:AxiosRequestConfig
@@ -7231,6 +8485,21 @@ export const useGetUserUpgradeToBusinessRequest = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserWalletAccountNumberQrcode = (
+
+            accountNumber: string,queryParams?: GetUserWalletAccountNumberQrcodeQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletAccountNumberQrcode.info( accountNumber,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -7289,6 +8558,21 @@ export const useGetUserWalletSearch = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserWalletSearch = (
+
+            queryParams?: GetUserWalletSearchQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletSearch.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetUserWalletUserWalletId = (
            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions< & (WalletDetailApiModel)>,configOverride?:AxiosRequestConfig
@@ -7331,6 +8615,21 @@ export const useGetUserWalletSearch = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserWalletUserWalletId = (
+
+            userWalletId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (WalletDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletUserWalletId.info( userWalletId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -7390,6 +8689,21 @@ export const useGetUserWalletUserWalletIdBalance = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserWalletUserWalletIdBalance = (
+
+            userWalletId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AccountBalanceApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletUserWalletIdBalance.info( userWalletId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -7436,6 +8750,21 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserWalletUserWalletIdEpayRequestComission = (
+
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletUserWalletIdEpayRequestComission.info( userWalletId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -7490,6 +8819,21 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserWalletUserWalletIdPermittedsubusers = (
+
+            userWalletId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions<AccountPermittedSubUserQuery[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletUserWalletIdPermittedsubusers.info( userWalletId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetUserWalletUserWalletIdSettlementRequestComission = (
            userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
@@ -7532,6 +8876,21 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserWalletUserWalletIdSettlementRequestComission = (
+
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletUserWalletIdSettlementRequestComission.info( userWalletId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -7590,6 +8949,21 @@ export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserWalletUserWalletIdTransferMoneyCommission = (
+
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletUserWalletIdTransferMoneyCommission.info( userWalletId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -7637,6 +9011,21 @@ export const useGetUserWorkspace = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserWorkspace = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<UserWorkspaceQuery[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWorkspace.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -13143,6 +14532,8 @@ import {
   useQuery,
   useMutation,
   UseMutationOptions,
+  useSuspenseQuery,
+  UseSuspenseQueryOptions,
   
   QueryClient,
   QueryKey,
@@ -13154,6 +14545,7 @@ import { getAccessUserWalletIdLogicalAction, getBank, getBusinessUserCategory, g
 
     export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
     type SwaggerTypescriptUseQueryOptions<TData> = Omit<UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,\\"queryKey\\">;
+    type SwaggerTypescriptUseSuspenseQueryOptions<TData> = Omit<UseSuspenseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,\\"queryKey\\">;
 
     type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> = UseMutationOptions<
       SwaggerResponse<TData>,
@@ -13217,6 +14609,21 @@ import { getAccessUserWalletIdLogicalAction, getBank, getBusinessUserCategory, g
                   ...options
                 }
                   );
+              };export const useSuspenseGetAccessUserWalletIdLogicalAction = (
+
+            userWalletId: number,logicalAction: \\"EpayRequest\\" | \\"TransferMoney\\" | \\"AccountChargeRequest\\" | \\"ServiceBill\\" | \\"ServiceMobileCharge\\" | \\"POS\\" | \\"ShareAndBlockRequest\\" | \\"ShareRequest\\" | \\"Settlement\\" | \\"GroupTransferMoney\\" | \\"ShareAndUnblock\\" | \\"Refund\\" | \\"PayCommand\\" | \\"Gift\\" | \\"TaxiFairPayment\\" | \\"HitoBitFee\\",options?:SwaggerTypescriptUseSuspenseQueryOptions<boolean>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetAccessUserWalletIdLogicalAction.info( userWalletId,logicalAction,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -13270,6 +14677,21 @@ export const useGetBank = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetBank = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<BankApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBank.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -13317,6 +14739,21 @@ export const useGetBusinessUserCategory = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetBusinessUserCategory = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<BusinessCategoryApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserCategory.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -13377,6 +14814,21 @@ export const useGetBusinessUserConnection = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetBusinessUserConnection = (
+
+            queryParams?: GetBusinessUserConnectionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserConnection.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -13425,6 +14877,21 @@ export const useGetBusinessUserConnectionActive = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetBusinessUserConnectionActive = (
+
+            queryParams?: GetBusinessUserConnectionActiveQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<SubUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserConnectionActive.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -13501,6 +14968,26 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
                   ...options
                 }
                   );
+              };export const useSuspenseGetBusinessUserConnectionConnectionIdActivity = (
+
+            
+/**
+ * 
+ * Connection Id
+ */
+connectionId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (SubUserActivityApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserConnectionConnectionIdActivity.info( connectionId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetBusinessUserConnectionConnectionIdEpay = (
            connectionId: number,queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,options?:SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig
@@ -13543,6 +15030,21 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivi
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetBusinessUserConnectionConnectionIdEpay = (
+
+            connectionId: number,queryParams?: GetBusinessUserConnectionConnectionIdEpayQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserConnectionConnectionIdEpay.info( connectionId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -13619,6 +15121,26 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                   ...options
                 }
                   );
+              };export const useSuspenseGetBusinessUserConnectionConnectionIdPermission = (
+
+            
+/**
+ * 
+ * Connection Id
+ */
+connectionId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions<SubUserPermissionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetBusinessUserConnectionConnectionIdPermission.info( connectionId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequest = (
            queryParams?: GetEpayRequestQueryParams,options?:SwaggerTypescriptUseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig
@@ -13661,6 +15183,21 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequest = (
+
+            queryParams?: GetEpayRequestQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<EpayRequestApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequest.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -13715,6 +15252,21 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestAudiencesRecent = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<ContactApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestAudiencesRecent.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestCount = (
            queryParams?: GetEpayRequestCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
@@ -13763,6 +15315,21 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestCount = (
+
+            queryParams?: GetEpayRequestCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestEpayTokenDetail = (
            epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestPublicInfoApiModel)>,configOverride?:AxiosRequestConfig
@@ -13805,6 +15372,21 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequestEpayTokenDetail = (
+
+            epayToken: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (EpayRequestPublicInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestEpayTokenDetail.info( epayToken,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -13879,6 +15461,26 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestEpayTokenQrcode = (
+
+            
+/**
+ * 
+ * epay request token
+ */
+epayToken: string,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestEpayTokenQrcode.info( epayToken,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestExcel = (
            queryParams?: GetEpayRequestExcelQueryParams,options?:SwaggerTypescriptUseQueryOptions<string>,configOverride?:AxiosRequestConfig
@@ -13921,6 +15523,21 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverri
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequestExcel = (
+
+            queryParams?: GetEpayRequestExcelQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestExcel.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -13982,6 +15599,21 @@ export const useGetEpayRequestForMe = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestForMe = (
+
+            queryParams?: GetEpayRequestForMeQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<EpayRequestForUserQuery[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestForMe.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestForMeCount = (
            queryParams?: GetEpayRequestForMeCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
@@ -14030,6 +15662,21 @@ export const useGetEpayRequestForMe = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestForMeCount = (
+
+            queryParams?: GetEpayRequestForMeCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestForMeCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestForMeReport = (
            queryParams?: GetEpayRequestForMeReportQueryParams,options?:SwaggerTypescriptUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig
@@ -14072,6 +15719,21 @@ export const useGetEpayRequestForMe = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequestForMeReport = (
+
+            queryParams?: GetEpayRequestForMeReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestForMeReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -14132,6 +15794,21 @@ export const useGetEpayRequestPosQrAccountNumber = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestPosQrAccountNumber = (
+
+            accountNumber: string,queryParams?: GetEpayRequestPosQrAccountNumberQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestPosQrAccountNumber.info( accountNumber,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestReport = (
            queryParams?: GetEpayRequestReportQueryParams,options?:SwaggerTypescriptUseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig
@@ -14174,6 +15851,21 @@ export const useGetEpayRequestPosQrAccountNumber = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequestReport = (
+
+            queryParams?: GetEpayRequestReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -14233,6 +15925,21 @@ export const useGetEpayRequestUserWalletIdCommission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetEpayRequestUserWalletIdCommission = (
+
+            userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestUserWalletIdCommission.info( userWalletId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetEpayRequestUserWalletIdCreators = (
            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<UserMinimalDto[]>,configOverride?:AxiosRequestConfig
@@ -14275,6 +15982,21 @@ export const useGetEpayRequestUserWalletIdCommission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetEpayRequestUserWalletIdCreators = (
+
+            userWalletId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions<UserMinimalDto[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetEpayRequestUserWalletIdCreators.info( userWalletId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -14329,6 +16051,21 @@ export const useGetEpayRequestUserWalletIdCommission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetError = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetError.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetErrorLocal = (
            options?:SwaggerTypescriptUseQueryOptions<string>,configOverride?:AxiosRequestConfig
@@ -14377,6 +16114,21 @@ export const useGetEpayRequestUserWalletIdCommission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetErrorLocal = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetErrorLocal.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetErrorStatusCode = (
            code: number,options?:SwaggerTypescriptUseQueryOptions<string>,configOverride?:AxiosRequestConfig
@@ -14419,6 +16171,21 @@ export const useGetEpayRequestUserWalletIdCommission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetErrorStatusCode = (
+
+            code: number,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetErrorStatusCode.info( code,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -14493,6 +16260,26 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
                   ...options
                 }
                   );
+              };export const useSuspenseGetFileFileGuid = (
+
+            
+/**
+ * 
+ * file unique id
+ */
+fileGuid: string,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetFileFileGuid.info( fileGuid,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetGroupTransferCommission = (
            queryParams?: GetGroupTransferCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
@@ -14535,6 +16322,21 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetGroupTransferCommission = (
+
+            queryParams?: GetGroupTransferCommissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetGroupTransferCommission.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -14594,6 +16396,21 @@ export const useGetIntegration = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetIntegration = (
+
+            queryParams?: GetIntegrationQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (DriverInfoResult)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetIntegration.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetKpi = (
            queryParams?: GetKpiQueryParams,options?:SwaggerTypescriptUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig
@@ -14636,6 +16453,21 @@ export const useGetIntegration = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetKpi = (
+
+            queryParams?: GetKpiQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetKpi.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -14690,6 +16522,21 @@ export const useGetIntegration = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetKpiCurrent = (
+
+            queryParams?: GetKpiCurrentQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetKpiCurrent.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetKpiLast = (
            queryParams?: GetKpiLastQueryParams,options?:SwaggerTypescriptUseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig
@@ -14732,6 +16579,21 @@ export const useGetIntegration = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetKpiLast = (
+
+            queryParams?: GetKpiLastQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<KpiResult[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetKpiLast.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -14785,6 +16647,21 @@ export const useGetNotificationIa = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetNotificationIa = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<ImportantActionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetNotificationIa.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -14845,6 +16722,21 @@ export const useGetNotificationNotif = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetNotificationNotif = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<NotificationApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetNotificationNotif.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetNotificationUnread = (
            queryParams?: GetNotificationUnreadQueryParams,options?:SwaggerTypescriptUseQueryOptions<UnreadNotificationCountApiModel[]>,configOverride?:AxiosRequestConfig
@@ -14887,6 +16779,21 @@ export const useGetNotificationNotif = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetNotificationUnread = (
+
+            queryParams?: GetNotificationUnreadQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<UnreadNotificationCountApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetNotificationUnread.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -14955,6 +16862,26 @@ accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:Swag
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetPosAccountNumber = (
+
+            
+/**
+ * 
+ * Account Number
+ */
+accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (PosLandingPageApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetPosAccountNumber.info( accountNumber,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -15032,6 +16959,26 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
                   ...options
                 }
                   );
+              };export const useSuspenseGetReceiptEpayToken = (
+
+            
+/**
+ * 
+ * EpayRequest's token to get receipt for
+ */
+epayToken: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (BankReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetReceiptEpayToken.info( epayToken,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -15101,6 +17048,26 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (WalletReceiptApi
                   ...options
                 }
                   );
+              };export const useSuspenseGetReceiptWalletEpayToken = (
+
+            
+/**
+ * 
+ * EpayRequest's token to get receipt for
+ */
+epayToken: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (WalletReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetReceiptWalletEpayToken.info( epayToken,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -15149,6 +17116,21 @@ export const useGetResellerUser = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUser = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (ResellerApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUser.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -15210,6 +17192,21 @@ export const useGetResellerUserDashboardCommissionReport = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserDashboardCommissionReport = (
+
+            queryParams?: GetResellerUserDashboardCommissionReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<DateReportApiModelOfDecimal[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardCommissionReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -15259,6 +17256,21 @@ export const useGetResellerUserDashboardCommissionSum = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserDashboardCommissionSum = (
+
+            queryParams?: GetResellerUserDashboardCommissionSumQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardCommissionSum.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -15320,6 +17332,21 @@ export const useGetResellerUserDashboardIntroducedCount = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserDashboardIntroducedCount = (
+
+            queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardIntroducedCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -15369,6 +17396,21 @@ export const useGetResellerUserDashboardIntroducedReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserDashboardIntroducedReport = (
+
+            queryParams?: GetResellerUserDashboardIntroducedReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardIntroducedReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -15430,6 +17472,21 @@ export const useGetResellerUserDashboardLinksCount = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserDashboardLinksCount = (
+
+            queryParams?: GetResellerUserDashboardLinksCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardLinksCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -15479,6 +17536,21 @@ export const useGetResellerUserDashboardLinksPaidCount = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserDashboardLinksPaidCount = (
+
+            queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardLinksPaidCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -15540,6 +17612,21 @@ export const useGetResellerUserDashboardLinksPaidReport = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserDashboardLinksPaidReport = (
+
+            queryParams?: GetResellerUserDashboardLinksPaidReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardLinksPaidReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -15589,6 +17676,21 @@ export const useGetResellerUserDashboardLinksReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserDashboardLinksReport = (
+
+            queryParams?: GetResellerUserDashboardLinksReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardLinksReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -15650,6 +17752,21 @@ export const useGetResellerUserDashboardTransactionsCount = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserDashboardTransactionsCount = (
+
+            queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardTransactionsCount.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -15699,6 +17816,21 @@ export const useGetResellerUserDashboardTransactionsReport = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserDashboardTransactionsReport = (
+
+            queryParams?: GetResellerUserDashboardTransactionsReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<DateReportApiModelOfInteger[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserDashboardTransactionsReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -15759,6 +17891,21 @@ export const useGetResellerUserIntroduced = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserIntroduced = (
+
+            queryParams?: GetResellerUserIntroducedQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<ReselledUserApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserIntroduced.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -15807,6 +17954,21 @@ export const useGetResellerUserIntroducedFilterData = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetResellerUserIntroducedFilterData = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (ReselledUserFilterData)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserIntroducedFilterData.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -15867,6 +18029,21 @@ export const useGetResellerUserIntroducedUserIdActivity = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetResellerUserIntroducedUserIdActivity = (
+
+            userId: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (ReselledUserActivityApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetResellerUserIntroducedUserIdActivity.info( userId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -15915,6 +18092,21 @@ export const useGetSubDomain = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetSubDomain = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (SubDomainApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetSubDomain.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -16007,6 +18199,32 @@ subDomainAddress: string,headerParams?: {
                   ...options
                 }
                   );
+              };export const useSuspenseGetSubDomainSubDomainAddress = (
+
+            
+/**
+ * 
+ * The SubDomain part of the url.
+            
+ */
+subDomainAddress: string,headerParams?: {
+/**
+ * 
+ * - Format: guid
+ */
+\\"clientId\\": string;},options?:SwaggerTypescriptUseSuspenseQueryOptions< & (SubDomainApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetSubDomainSubDomainAddress.info( subDomainAddress,
+          
+          
+          headerParams, configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -16063,6 +18281,21 @@ export const useGetSubUserConnection = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetSubUserConnection = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<BusinessUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetSubUserConnection.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetTransaction = (
            queryParams?: GetTransactionQueryParams,options?:SwaggerTypescriptUseQueryOptions<TransactionApiModel[]>,configOverride?:AxiosRequestConfig
@@ -16111,6 +18344,21 @@ export const useGetSubUserConnection = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetTransaction = (
+
+            queryParams?: GetTransactionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<TransactionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransaction.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetTransactionExcel = (
            queryParams?: GetTransactionExcelQueryParams,options?:SwaggerTypescriptUseQueryOptions<string>,configOverride?:AxiosRequestConfig
@@ -16153,6 +18401,21 @@ export const useGetSubUserConnection = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetTransactionExcel = (
+
+            queryParams?: GetTransactionExcelQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransactionExcel.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -16211,6 +18474,21 @@ export const useGetTransactionReport = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetTransactionReport = (
+
+            queryParams?: GetTransactionReportQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<ReportApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransactionReport.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -16257,6 +18535,21 @@ export const useGetTransactionReportAll = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetTransactionReportAll = (
+
+            queryParams?: GetTransactionReportAllQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AllTransactionsReportApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransactionReportAll.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -16316,6 +18609,21 @@ export const useGetTransferRecent = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetTransferRecent = (
+
+            queryParams?: GetTransferRecentQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<TransferMoneyApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransferRecent.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetTransferSearch = (
            queryParams?: GetTransferSearchQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig
@@ -16358,6 +18666,21 @@ export const useGetTransferRecent = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetTransferSearch = (
+
+            queryParams?: GetTransferSearchQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransferSearch.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -16417,6 +18740,21 @@ export const useGetTransferUserWalletIdCommission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetTransferUserWalletIdCommission = (
+
+            userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetTransferUserWalletIdCommission.info( userWalletId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -16464,6 +18802,21 @@ export const useGetUser = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUser = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (UserDetailQuery)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUser.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -16524,6 +18877,21 @@ export const useGetUserBank = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserBank = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<UserBankApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserBank.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -16572,6 +18940,21 @@ export const useGetUserBankReady = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserBankReady = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<UserBankApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserBankReady.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -16631,6 +19014,21 @@ export const useGetUserConnection = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserConnection = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<BusinessUserConnectionApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserConnection.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetUserContactInput = (
            input: string,options?:SwaggerTypescriptUseQueryOptions< & (ContactApiModel)>,configOverride?:AxiosRequestConfig
@@ -16673,6 +19071,21 @@ export const useGetUserConnection = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserContactInput = (
+
+            input: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (ContactApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserContactInput.info( input,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -16732,6 +19145,21 @@ export const useGetUserIdentityRequest = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserIdentityRequest = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (UserIdentityRequestQuery)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserIdentityRequest.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -16779,6 +19207,21 @@ export const useGetUserInvitation = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserInvitation = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<SubUserInvitationApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserInvitation.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -16838,6 +19281,21 @@ export const useGetUserInvitationInvitationToken = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserInvitationInvitationToken = (
+
+            invitationToken: string,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (SubUserInvitationApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserInvitationInvitationToken.info( invitationToken,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -16891,6 +19349,21 @@ export const useGetUserMe = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserMe = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (UserMeQuery)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserMe.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetUserPlugin = (
            options?:SwaggerTypescriptUseQueryOptions<UserPluginDetailApiModel[]>,configOverride?:AxiosRequestConfig
@@ -16933,6 +19406,21 @@ export const useGetUserMe = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserPlugin = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<UserPluginDetailApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserPlugin.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -16992,6 +19480,21 @@ export const useGetUserUpgradeToBusinessRequest = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserUpgradeToBusinessRequest = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions< & (UpgradeToBusinessApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserUpgradeToBusinessRequest.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetUserWallet = (
            options?:SwaggerTypescriptUseQueryOptions<WalletDisplayApiModel[]>,configOverride?:AxiosRequestConfig
@@ -17034,6 +19537,21 @@ export const useGetUserUpgradeToBusinessRequest = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserWallet = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<WalletDisplayApiModel[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWallet.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -17088,6 +19606,21 @@ export const useGetUserUpgradeToBusinessRequest = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserWalletAccountNumberQrcode = (
+
+            accountNumber: string,queryParams?: GetUserWalletAccountNumberQrcodeQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions<string>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletAccountNumberQrcode.info( accountNumber,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -17134,6 +19667,21 @@ export const useGetUserWalletSearch = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserWalletSearch = (
+
+            queryParams?: GetUserWalletSearchQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletSearch.info( 
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -17193,6 +19741,21 @@ export const useGetUserWalletUserWalletIdBalance = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserWalletUserWalletIdBalance = (
+
+            userWalletId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (AccountBalanceApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletUserWalletIdBalance.info( userWalletId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -17239,6 +19802,21 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserWalletUserWalletIdEpayRequestComission = (
+
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletUserWalletIdEpayRequestComission.info( userWalletId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -17293,6 +19871,21 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserWalletUserWalletIdPermittedsubusers = (
+
+            userWalletId: number,options?:SwaggerTypescriptUseSuspenseQueryOptions<AccountPermittedSubUserQuery[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletUserWalletIdPermittedsubusers.info( userWalletId,
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       export const useGetUserWalletUserWalletIdSettlementRequestComission = (
            userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
@@ -17335,6 +19928,21 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserWalletUserWalletIdSettlementRequestComission = (
+
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletUserWalletIdSettlementRequestComission.info( userWalletId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
@@ -17393,6 +20001,21 @@ export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
                   ...options
                 }
                   );
+              };export const useSuspenseGetUserWalletUserWalletIdTransferMoneyCommission = (
+
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,options?:SwaggerTypescriptUseSuspenseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWalletUserWalletIdTransferMoneyCommission.info( userWalletId,
+          
+          queryParams,
+           configOverride);
+
+                return  useSuspenseQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
               }
       
 /**
@@ -17440,6 +20063,21 @@ export const useGetUserWorkspace = (
                 return client.getQueryData(key)
                 ? Promise.resolve()
                 : client.prefetchQuery(
+                {
+                  queryKey:key,
+                  queryFn:()=>fun(),
+                  ...options
+                }
+                  );
+              };export const useSuspenseGetUserWorkspace = (
+
+            options?:SwaggerTypescriptUseSuspenseQueryOptions<UserWorkspaceQuery[]>,configOverride?:AxiosRequestConfig) => {
+                const { key, fun } = useGetUserWorkspace.info( 
+          
+          
+           configOverride);
+
+                return  useSuspenseQuery(
                 {
                   queryKey:key,
                   queryFn:()=>fun(),
