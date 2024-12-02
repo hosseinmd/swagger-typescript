@@ -96,19 +96,20 @@ For Example:
 | `local`              | false                  | update swagger with local swagger.json located in your dir folder. add it to your config file or run it with cli `$ yarn swag-ts --local`                                                                                                      |
 | `kotlinPackage`      | Required (Only kotlin) | package name of source dir                                                                                                                                                                                                                     |
 | `generateEnumAsType` | false                  |
+| `includes`           | []                     | A list of regex patterns that specify which APIs to include based on matching method names                                                                                                                                                     |
+| `excludes`           | []                     | A list of regex patterns that specify which APIs to exclude based on matching method names                                                                                                                                                     |
 
 - `enum ReferralStatus {Successed="Successed","Error"="Error"} `
 - `type ReferralStatus="Successed" | "Error"; // generateEnumAsType = true `
-  |
 
 # CLI Options
 
-| [`Key`]  | [`default`]             | Comment                                                                                                                                            |
-| -------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `local`  | false                   | update swagger with local swagger.json located in your dir folder. add it to your config file or run it with cli `$ yarn swag-ts --local`          |
-| `branch` | Current Branch          | to generate swagger for develop run `yarn swag-ts --branch=develop` or your branch name should be `develop` or a branch which created from develop |
-| `config` | "./swagger.config.json" | A path for config file location <br> - `yarn swag-ts --config=./config` path is related for "swagger.config.json" file in config folder <br> - `yarn swag-ts --config=./config/myswagger.json` you could change config file name <br> - `yarn swag-ts --config=/user/hosseinmd/desktop/config/swagger.config.json` you could add absolute path
-  |
+| [`Key`]  | [`default`]             | Comment                                                                                                                                                                                                                                                                                                                                        |
+| -------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `local`  | false                   | update swagger with local swagger.json located in your dir folder. add it to your config file or run it with cli `$ yarn swag-ts --local`                                                                                                                                                                                                      |
+| `branch` | Current Branch          | to generate swagger for develop run `yarn swag-ts --branch=develop` or your branch name should be `develop` or a branch which created from develop                                                                                                                                                                                             |
+| `config` | "./swagger.config.json" | A path for config file location <br> - `yarn swag-ts --config=./config` path is related for "swagger.config.json" file in config folder <br> - `yarn swag-ts --config=./config/myswagger.json` you could change config file name <br> - `yarn swag-ts --config=/user/hosseinmd/desktop/config/swagger.config.json` you could add absolute path |
+|          |
 
 ## Config
 

@@ -4009,10 +4009,10 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-postman-to-openapi@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/postman-to-openapi/-/postman-to-openapi-3.0.1.tgz#3287e756f4d36489e3c43e99ef799618246e2aed"
-  integrity sha512-OUenC7fi5moe41nhO0yUj8jqVj6tchLCjPxG2d28Ai//Oujt3lL7tiFCL2P6pKUV1a7p5X/BJh7op65jjbrs3Q==
+postman-ke-openapi@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/postman-ke-openapi/-/postman-ke-openapi-1.0.1.tgz#019a1f81426eea4ac0785547b10500d250de70b5"
+  integrity sha512-YyVBwKDMrmWfIF6XtwkFR94qXyzWLFnDWdQpI9mcrCf5n6ds0iMYjJrz54ESGe0r9A8MC0goq2MCV8yTvws9zQ==
   dependencies:
     commander "^8.3.0"
     js-yaml "^4.1.0"

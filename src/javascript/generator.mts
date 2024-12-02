@@ -17,6 +17,7 @@ import type {
   Parameter,
   ConstantsAST,
   Method,
+  PathItem,
 } from "../types.mjs";
 import { generateApis } from "./generateApis.mjs";
 import { generateTypes } from "./generateTypes.mjs";
@@ -48,10 +49,41 @@ function generator(
     return name;
   }
 
+  const includes = (config.includes || []).map(
+    (pattern) => new RegExp(pattern),
+  );
+  const excludes = (config.excludes || []).map(
+    (pattern) => new RegExp(pattern),
+  );
+
+  function getFilteredMethods(endPoint: string, value: PathItem) {
+    return Object.entries(value).filter(
+      ([method, options]: [string, SwaggerRequest]) => {
+        const { operationId } = options;
+
+        const serviceName = generateServiceName(
+          endPoint,
+          method,
+          operationId,
+          config,
+        );
+
+        const matchesInclude =
+          !includes.length || includes.some((regex) => regex.test(serviceName));
+
+        const matchesExclude = excludes.some((regex) =>
+          regex.test(serviceName),
+        );
+
+        return matchesInclude && !matchesExclude;
+      },
+    );
+  }
+
   try {
     Object.entries(input.paths).forEach(([endPoint, value]) => {
       const parametersExtended = value.parameters as Parameter[] | undefined;
-      Object.entries(value).forEach(
+      getFilteredMethods(endPoint, value).forEach(
         ([method, options]: [string, SwaggerRequest]) => {
           if (method === "parameters") {
             return;

@@ -1,6 +1,6 @@
 {
   "name": "swagger-typescript",
-  "version": "6.8.0",
+  "version": "6.9.0",
   "description": "An auto ts/js code generate from swagger/openApi",
   "main": "lib/index.mjs",
   "bin": {
@@ -39,7 +39,7 @@
     "chalk": "^5.0.1",
     "form-data": "^4.0.0",
     "js-yaml": "^4.1.0",
-    "postman-to-openapi": "^3.0.1",
+    "postman-ke-openapi": "^1.0.1",
     "qs": "^6.11.0",
     "recursive-readdir": "^2.2.3",
     "swagger2openapi": "^7.0.8",
@@ -79,5 +79,6 @@
     "lib",
     "files",
     "bin"
-  ]
+  ],
+  "packageManager": "yarn@1.22.22"
 }
