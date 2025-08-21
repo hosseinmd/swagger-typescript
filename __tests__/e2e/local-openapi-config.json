@@ -1,0 +1,9 @@
+{
+  "$schema": "../../schema/v6.json",
+  "url": "./__tests__/e2e/openapi.json",
+  "dir": "./__tests__/e2e/local-output",
+  "language": "typescript",
+  "keepJson": true,
+  "reactHooks": true,
+  "generateEnumAsType": true
+}

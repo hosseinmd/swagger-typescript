@@ -1,0 +1,3629 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`swag-ts CLI E2E Tests Local OpenAPI Tests E2E-LOCAL-001: Django Allauth API Generation: local-openapi-generated-files 1`] = `
+Object {
+  "config.ts": "/**
+ * You can modify this file
+ *
+ * @version 6
+ */
+import Axios, {
+  AxiosRequestConfig,
+  AxiosError,
+  AxiosResponse,
+  AxiosInstance,
+} from \\"axios\\";
+//@ts-ignore
+import qs from \\"qs\\";
+
+const baseConfig: AxiosRequestConfig = {
+  baseURL: \\"\\", // <--- Add your base url
+  headers: {
+    \\"Content-Encoding\\": \\"UTF-8\\",
+    Accept: \\"application/json\\",
+    \\"Content-Type\\": \\"application/json-patch+json\\",
+  },
+  paramsSerializer: (param) => qs.stringify(param, { indices: false }),
+};
+
+let axiosInstance: AxiosInstance;
+
+function getAxiosInstance(security: Security): AxiosInstance {
+  if (!axiosInstance) {
+    axiosInstance = Axios.create(baseConfig);
+
+    // Response interceptor
+    axiosInstance.interceptors.response.use(
+      (async (response: AxiosResponse): Promise<SwaggerResponse<any>> => {
+        // Any status code that lie within the range of 2xx cause this function to trigger
+        // Do something with response data
+        /**
+         * Example on response manipulation
+         *
+         * @example
+         *   const swaggerResponse: SwaggerResponse = {
+         *     ...response,
+         *   };
+         *   return swaggerResponse;
+         */
+        return response.data;
+      }) as any,
+      (error: AxiosError) => {
+        // Any status codes that falls outside the range of 2xx cause this function to trigger
+        // Do something with response error
+
+        if (error.response) {
+          return Promise.reject(
+            new RequestError(
+              error.response.data,
+              error.response.status,
+              error.response,
+            ),
+          );
+        }
+
+        if (error.isAxiosError) {
+          return Promise.reject(new RequestError(\\"noInternetConnection\\"));
+        }
+        return Promise.reject(error);
+      },
+    );
+  }
+
+  // ًًRequest interceptor
+  axiosInstance.interceptors.request.use(
+    async (requestConfig) => {
+      // Do something before request is sent
+      /** Example on how to add authorization based on security */
+      if (security?.[0]) {
+        // requestConfig.headers.authorization = \\"\\";
+      }
+
+      return requestConfig;
+    },
+    (error) => {
+      // Do something with request error
+      return Promise.reject(error);
+    },
+  );
+
+  return axiosInstance;
+}
+
+class RequestError extends Error {
+  constructor(
+    public message: string,
+    public status?: number,
+    public response?: AxiosResponse,
+  ) {
+    super(message);
+  }
+
+  isApiException = true;
+
+  static isRequestError(error: any): error is RequestError {
+    return error.isApiException;
+  }
+}
+
+export type Security = any[] | undefined;
+
+// export interface SwaggerResponse<R> extends AxiosResponse<R> {}
+export type SwaggerResponse<R> = R;
+
+export { getAxiosInstance, RequestError };
+",
+  "hooks.ts": "//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+import { AxiosRequestConfig } from \\"axios\\";
+import {
+  UseQueryOptions,
+  useQuery,
+  useMutation,
+  UseMutationOptions,
+  QueryClient,
+  QueryKey,
+} from \\"@tanstack/react-query\\";
+import { RequestError, SwaggerResponse } from \\"./config\\";
+
+import type {
+  Authenticated,
+  Email,
+  EmailVerificationInfo,
+  EmailVerificationKey,
+  Login,
+  Password,
+  PasswordResetKey,
+  Provider,
+  ProviderSignup,
+  Reauthenticate,
+  RequestBodyChangePassword,
+  RequestBodyConfirmLoginCode,
+  RequestBodyEmail,
+  RequestBodyEndSessions,
+  RequestBodyLogin,
+  RequestBodyMFAAuthenticate,
+  RequestBodyMarkPrimaryEmail,
+  RequestBodyPhone,
+  RequestBodyProviderAccount,
+  RequestBodyProviderRedirect,
+  RequestBodyProviderSignup,
+  RequestBodyProviderToken,
+  RequestBodyReauthenticate,
+  RequestBodyRequestLoginCode,
+  RequestBodyRequestPassword,
+  RequestBodyResetPassword,
+  RequestBodySetupTOTP,
+  RequestBodySignup,
+  RequestBodyVerifyEmail,
+  RequestBodyVerifyPhone,
+  Session,
+  SessionToken,
+  Signup,
+  StatusOK,
+  TOTPAuthenticator,
+} from \\"./types\\";
+import {
+  delete_allauthBrowserV1AccountAuthenticatorsTotp,
+  delete_allauthBrowserV1AccountEmail,
+  delete_allauthBrowserV1AccountProviders,
+  delete_allauthBrowserV1AuthSession,
+  delete_allauthBrowserV1AuthSessions,
+  get_allauthBrowserV1AccountAuthenticators,
+  get_allauthBrowserV1AccountAuthenticatorsRecoveryCodes,
+  get_allauthBrowserV1AccountAuthenticatorsTotp,
+  get_allauthBrowserV1AccountEmail,
+  get_allauthBrowserV1AccountPhone,
+  get_allauthBrowserV1AccountProviders,
+  get_allauthBrowserV1AuthEmailVerify,
+  get_allauthBrowserV1AuthPasswordReset,
+  get_allauthBrowserV1AuthProviderSignup,
+  get_allauthBrowserV1AuthSession,
+  get_allauthBrowserV1AuthSessions,
+  get_allauthBrowserV1Config,
+  patch_allauthBrowserV1AccountEmail,
+  post_allauthBrowserV1AccountAuthenticatorsRecoveryCodes,
+  post_allauthBrowserV1AccountAuthenticatorsTotp,
+  post_allauthBrowserV1AccountEmail,
+  post_allauthBrowserV1AccountPasswordChange,
+  post_allauthBrowserV1AccountPhone,
+  post_allauthBrowserV1Auth2faAuthenticate,
+  post_allauthBrowserV1Auth2faReauthenticate,
+  post_allauthBrowserV1AuthCodeConfirm,
+  post_allauthBrowserV1AuthCodeRequest,
+  post_allauthBrowserV1AuthEmailVerify,
+  post_allauthBrowserV1AuthEmailVerifyResend,
+  post_allauthBrowserV1AuthLogin,
+  post_allauthBrowserV1AuthPasswordRequest,
+  post_allauthBrowserV1AuthPasswordReset,
+  post_allauthBrowserV1AuthPhoneVerify,
+  post_allauthBrowserV1AuthPhoneVerifyResend,
+  post_allauthBrowserV1AuthProviderRedirect,
+  post_allauthBrowserV1AuthProviderSignup,
+  post_allauthBrowserV1AuthProviderToken,
+  post_allauthBrowserV1AuthReauthenticate,
+  post_allauthBrowserV1AuthSignup,
+  put_allauthBrowserV1AccountEmail,
+} from \\"./services\\";
+
+export type SwaggerTypescriptMutationDefaultParams<TExtra> = {
+  _extraVariables?: TExtra;
+  configOverride?: AxiosRequestConfig;
+};
+type SwaggerTypescriptUseQueryOptions<TData> = Omit<
+  UseQueryOptions<SwaggerResponse<TData>, RequestError | Error>,
+  \\"queryKey\\"
+>;
+
+type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> =
+  UseMutationOptions<
+    SwaggerResponse<TData>,
+    RequestError | Error,
+    TRequest & SwaggerTypescriptMutationDefaultParams<TExtra>
+  >;
+
+type SwaggerTypescriptUseMutationOptionsVoid<TData, TExtra> =
+  UseMutationOptions<
+    SwaggerResponse<TData>,
+    RequestError | Error,
+    SwaggerTypescriptMutationDefaultParams<TExtra> | void
+  >;
+
+/** Deactivate TOTP */
+export const useDelete_allauthBrowserV1AccountAuthenticatorsTotp = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    StatusOK,
+    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { headerParams, configOverride } = _o || {};
+
+      return delete_allauthBrowserV1AccountAuthenticatorsTotp(
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Remove an email address */
+export const useDelete_allauthBrowserV1AccountEmail = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    EmailAddresses,
+    {
+      requestBody: RequestBodyEmail;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return delete_allauthBrowserV1AccountEmail(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Disconnect a third-party provider account */
+export const useDelete_allauthBrowserV1AccountProviders = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    ProviderAccounts,
+    {
+      requestBody: RequestBodyProviderAccount;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return delete_allauthBrowserV1AccountProviders(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Logout */
+export const useDelete_allauthBrowserV1AuthSession = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { headerParams, configOverride } = _o || {};
+
+      return delete_allauthBrowserV1AuthSession(headerParams, configOverride);
+    },
+    ...options,
+  });
+};
+
+/** End one or more sessions */
+export const useDelete_allauthBrowserV1AuthSessions = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    Sessions,
+    {
+      requestBody: RequestBodyEndSessions;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return delete_allauthBrowserV1AuthSessions(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** List authenticators */
+export const useGet_allauthBrowserV1AccountAuthenticators = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<Authenticators>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AccountAuthenticators.info(
+    headerParams,
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1AccountAuthenticators.info = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [
+      get_allauthBrowserV1AccountAuthenticators.key,
+
+      headerParams,
+    ] as QueryKey,
+    fun: () =>
+      get_allauthBrowserV1AccountAuthenticators(headerParams, configOverride),
+  };
+};
+useGet_allauthBrowserV1AccountAuthenticators.prefetch = (
+  client: QueryClient,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<Authenticators>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AccountAuthenticators.info(
+    headerParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** List recovery codes */
+export const useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<RecoveryCodes>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.info(
+      headerParams,
+      configOverride,
+    );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.info = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [
+      get_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.key,
+
+      headerParams,
+    ] as QueryKey,
+    fun: () =>
+      get_allauthBrowserV1AccountAuthenticatorsRecoveryCodes(
+        headerParams,
+        configOverride,
+      ),
+  };
+};
+useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.prefetch = (
+  client: QueryClient,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<RecoveryCodes>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.info(
+      headerParams,
+      configOverride,
+    );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** TOTP authenticator status */
+export const useGet_allauthBrowserV1AccountAuthenticatorsTotp = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<TOTPAuthenticator>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AccountAuthenticatorsTotp.info(
+    headerParams,
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1AccountAuthenticatorsTotp.info = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [
+      get_allauthBrowserV1AccountAuthenticatorsTotp.key,
+
+      headerParams,
+    ] as QueryKey,
+    fun: () =>
+      get_allauthBrowserV1AccountAuthenticatorsTotp(
+        headerParams,
+        configOverride,
+      ),
+  };
+};
+useGet_allauthBrowserV1AccountAuthenticatorsTotp.prefetch = (
+  client: QueryClient,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<TOTPAuthenticator>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AccountAuthenticatorsTotp.info(
+    headerParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** List email addresses */
+export const useGet_allauthBrowserV1AccountEmail = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<EmailAddresses>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AccountEmail.info(
+    headerParams,
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1AccountEmail.info = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [get_allauthBrowserV1AccountEmail.key, headerParams] as QueryKey,
+    fun: () => get_allauthBrowserV1AccountEmail(headerParams, configOverride),
+  };
+};
+useGet_allauthBrowserV1AccountEmail.prefetch = (
+  client: QueryClient,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<EmailAddresses>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AccountEmail.info(
+    headerParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Get the phone number */
+export const useGet_allauthBrowserV1AccountPhone = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<PhoneNumbers>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AccountPhone.info(
+    headerParams,
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1AccountPhone.info = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [get_allauthBrowserV1AccountPhone.key, headerParams] as QueryKey,
+    fun: () => get_allauthBrowserV1AccountPhone(headerParams, configOverride),
+  };
+};
+useGet_allauthBrowserV1AccountPhone.prefetch = (
+  client: QueryClient,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<PhoneNumbers>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AccountPhone.info(
+    headerParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** List the connected third-party provider accounts */
+export const useGet_allauthBrowserV1AccountProviders = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<ProviderAccounts>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AccountProviders.info(
+    headerParams,
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1AccountProviders.info = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [get_allauthBrowserV1AccountProviders.key, headerParams] as QueryKey,
+    fun: () =>
+      get_allauthBrowserV1AccountProviders(headerParams, configOverride),
+  };
+};
+useGet_allauthBrowserV1AccountProviders.prefetch = (
+  client: QueryClient,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<ProviderAccounts>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AccountProviders.info(
+    headerParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Get email verification information */
+export const useGet_allauthBrowserV1AuthEmailVerify = (
+  headerParams?: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
+  options?: SwaggerTypescriptUseQueryOptions<EmailVerificationInfo>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AuthEmailVerify.info(
+    headerParams,
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1AuthEmailVerify.info = (
+  headerParams?: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [get_allauthBrowserV1AuthEmailVerify.key, headerParams] as QueryKey,
+    fun: () =>
+      get_allauthBrowserV1AuthEmailVerify(headerParams, configOverride),
+  };
+};
+useGet_allauthBrowserV1AuthEmailVerify.prefetch = (
+  client: QueryClient,
+  headerParams?: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
+  options?: SwaggerTypescriptUseQueryOptions<EmailVerificationInfo>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AuthEmailVerify.info(
+    headerParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Get password reset information */
+export const useGet_allauthBrowserV1AuthPasswordReset = (
+  headerParams?: { \\"X-Password-Reset-Key\\": PasswordResetKey },
+  options?: SwaggerTypescriptUseQueryOptions<PasswordResetInfo>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AuthPasswordReset.info(
+    headerParams,
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1AuthPasswordReset.info = (
+  headerParams?: { \\"X-Password-Reset-Key\\": PasswordResetKey },
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [get_allauthBrowserV1AuthPasswordReset.key, headerParams] as QueryKey,
+    fun: () =>
+      get_allauthBrowserV1AuthPasswordReset(headerParams, configOverride),
+  };
+};
+useGet_allauthBrowserV1AuthPasswordReset.prefetch = (
+  client: QueryClient,
+  headerParams?: { \\"X-Password-Reset-Key\\": PasswordResetKey },
+  options?: SwaggerTypescriptUseQueryOptions<PasswordResetInfo>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AuthPasswordReset.info(
+    headerParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Provider signup information */
+export const useGet_allauthBrowserV1AuthProviderSignup = (
+  options?: SwaggerTypescriptUseQueryOptions<ProviderSignup>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGet_allauthBrowserV1AuthProviderSignup.info(configOverride);
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1AuthProviderSignup.info = (
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [get_allauthBrowserV1AuthProviderSignup.key] as QueryKey,
+    fun: () => get_allauthBrowserV1AuthProviderSignup(configOverride),
+  };
+};
+useGet_allauthBrowserV1AuthProviderSignup.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<ProviderSignup>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } =
+    useGet_allauthBrowserV1AuthProviderSignup.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Get authentication status */
+export const useGet_allauthBrowserV1AuthSession = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<Authenticated>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AuthSession.info(
+    headerParams,
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1AuthSession.info = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [get_allauthBrowserV1AuthSession.key, headerParams] as QueryKey,
+    fun: () => get_allauthBrowserV1AuthSession(headerParams, configOverride),
+  };
+};
+useGet_allauthBrowserV1AuthSession.prefetch = (
+  client: QueryClient,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<Authenticated>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AuthSession.info(
+    headerParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** List sessions */
+export const useGet_allauthBrowserV1AuthSessions = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<Sessions>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AuthSessions.info(
+    headerParams,
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1AuthSessions.info = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [get_allauthBrowserV1AuthSessions.key, headerParams] as QueryKey,
+    fun: () => get_allauthBrowserV1AuthSessions(headerParams, configOverride),
+  };
+};
+useGet_allauthBrowserV1AuthSessions.prefetch = (
+  client: QueryClient,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  options?: SwaggerTypescriptUseQueryOptions<Sessions>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1AuthSessions.info(
+    headerParams,
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Get configuration */
+export const useGet_allauthBrowserV1Config = (
+  options?: SwaggerTypescriptUseQueryOptions<Configuration>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1Config.info(configOverride);
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGet_allauthBrowserV1Config.info = (configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [get_allauthBrowserV1Config.key] as QueryKey,
+    fun: () => get_allauthBrowserV1Config(configOverride),
+  };
+};
+useGet_allauthBrowserV1Config.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<Configuration>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGet_allauthBrowserV1Config.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Change primary email address */
+export const usePatch_allauthBrowserV1AccountEmail = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    EmailAddresses,
+    {
+      requestBody: RequestBodyMarkPrimaryEmail;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return patch_allauthBrowserV1AccountEmail(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Regenerate recovery codes */
+export const usePost_allauthBrowserV1AccountAuthenticatorsRecoveryCodes = <
+  TExtra,
+>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { headerParams, configOverride } = _o || {};
+
+      return post_allauthBrowserV1AccountAuthenticatorsRecoveryCodes(
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Activate TOTP */
+export const usePost_allauthBrowserV1AccountAuthenticatorsTotp = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    TOTPAuthenticator,
+    {
+      requestBody: RequestBodySetupTOTP;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AccountAuthenticatorsTotp(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Add/Change email address */
+export const usePost_allauthBrowserV1AccountEmail = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    EmailAddresses,
+    {
+      requestBody: RequestBodyEmail;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AccountEmail(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Change password */
+export const usePost_allauthBrowserV1AccountPasswordChange = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    {
+      requestBody: RequestBodyChangePassword;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AccountPasswordChange(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Change the phone number */
+export const usePost_allauthBrowserV1AccountPhone = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    {
+      requestBody: RequestBodyPhone;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AccountPhone(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Two-factor authentication */
+export const usePost_allauthBrowserV1Auth2faAuthenticate = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    AuthenticatedByPasswordAnd2FA,
+    {
+      requestBody: RequestBodyMFAAuthenticate;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1Auth2faAuthenticate(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Reauthenticate using 2FA */
+export const usePost_allauthBrowserV1Auth2faReauthenticate = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    AuthenticatedByPasswordAnd2FA,
+    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { headerParams, configOverride } = _o || {};
+
+      return post_allauthBrowserV1Auth2faReauthenticate(
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Confirm login code */
+export const usePost_allauthBrowserV1AuthCodeConfirm = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    AuthenticatedByCode,
+    { requestBody: RequestBodyConfirmLoginCode },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthCodeConfirm(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Request login code */
+export const usePost_allauthBrowserV1AuthCodeRequest = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: RequestBodyRequestLoginCode },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthCodeRequest(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Verify an email */
+export const usePost_allauthBrowserV1AuthEmailVerify = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    Authenticated,
+    {
+      requestBody: RequestBodyVerifyEmail;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthEmailVerify(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Resend email verification code */
+export const usePost_allauthBrowserV1AuthEmailVerifyResend = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    StatusOK,
+    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { headerParams, configOverride } = _o || {};
+
+      return post_allauthBrowserV1AuthEmailVerifyResend(
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Login */
+export const usePost_allauthBrowserV1AuthLogin = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    AuthenticatedByPassword,
+    { requestBody: RequestBodyLogin },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthLogin(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Request password */
+export const usePost_allauthBrowserV1AuthPasswordRequest = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    StatusOK,
+    { requestBody: RequestBodyRequestPassword },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthPasswordRequest(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Reset password */
+export const usePost_allauthBrowserV1AuthPasswordReset = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    AuthenticatedByPassword,
+    { requestBody: RequestBodyResetPassword },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthPasswordReset(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Verify a phone number */
+export const usePost_allauthBrowserV1AuthPhoneVerify = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    Authenticated,
+    {
+      requestBody: RequestBodyVerifyPhone;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthPhoneVerify(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Resend phone number verification code */
+export const usePost_allauthBrowserV1AuthPhoneVerifyResend = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    StatusOK,
+    { headerParams?: { \\"X-Session-Token\\": SessionToken } },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { headerParams, configOverride } = _o || {};
+
+      return post_allauthBrowserV1AuthPhoneVerifyResend(
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Provider redirect */
+export const usePost_allauthBrowserV1AuthProviderRedirect = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    { requestBody: RequestBodyProviderRedirect },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthProviderRedirect(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Provider signup */
+export const usePost_allauthBrowserV1AuthProviderSignup = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    Authenticated,
+    { requestBody: RequestBodyProviderSignup },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthProviderSignup(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Provider token */
+export const usePost_allauthBrowserV1AuthProviderToken = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    Authenticated,
+    {
+      requestBody: RequestBodyProviderToken;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthProviderToken(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Reauthenticate */
+export const usePost_allauthBrowserV1AuthReauthenticate = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    AuthenticatedByPassword,
+    {
+      requestBody: RequestBodyReauthenticate;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthReauthenticate(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Signup */
+export const usePost_allauthBrowserV1AuthSignup = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    AuthenticatedByPassword,
+    { requestBody: RequestBodySignup },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return post_allauthBrowserV1AuthSignup(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Request email verification */
+export const usePut_allauthBrowserV1AccountEmail = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    StatusOK,
+    {
+      requestBody: RequestBodyEmail;
+      headerParams?: { \\"X-Session-Token\\": SessionToken };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return put_allauthBrowserV1AccountEmail(
+        requestBody,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+",
+  "hooksConfig.ts": "//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+import type { SwaggerResponse } from \\"./config\\";
+
+type GetDataType<
+  T extends Array<SwaggerResponse<any>>,
+  K extends string = \\"data\\" | \\"list\\",
+> = T extends Array<SwaggerResponse<infer D>>
+  ? D extends {
+      [P in K]?: infer R1;
+    }
+    ? R1
+    : D extends Array<any>
+    ? D
+    : never
+  : never;
+
+const paginationFlattenData = <T extends Array<SwaggerResponse<any>>>(
+  pages?: T,
+): GetDataType<T> | undefined =>
+  pages?.flatMap((page) =>
+    Array.isArray(page.data)
+      ? page.data
+      : Array.isArray(page.data?.data)
+      ? page.data.data
+      : Array.isArray(page.data?.list)
+      ? page.data.list
+      : [],
+  ) as any;
+
+const getTotal = <T extends Array<SwaggerResponse<any>>>(
+  pages?: T,
+): number | undefined => {
+  return pages && pages[pages.length - 1]?.data?.total;
+};
+
+const getPageSize = (queryParams?: any): number | undefined => {
+  const pageSize = Object.entries(queryParams || {}).find(([key, _value]) => {
+    if (
+      key.toLowerCase() === \\"pagesize\\" ||
+      key.toLowerCase() === \\"pagenumber\\"
+    ) {
+      return true;
+    }
+    return false;
+  });
+
+  return (pageSize?.[1] || 10) as number;
+};
+
+export { paginationFlattenData, getTotal, getPageSize };
+",
+  "httpRequest.ts": "//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+import axios, { AxiosRequestConfig, CancelToken } from \\"axios\\";
+import { getAxiosInstance } from \\"./config\\";
+import type { Security, SwaggerResponse } from \\"./config\\";
+
+/**
+ * Cancellation handled here, you can cancel request by call promise.cancel()
+ *
+ * @example
+ *   const promise = getUsers();
+ *   setTimeout(() => promise.cancel(), 30000);
+ *   const { data } = await promise;
+ *
+ * @param getPromise
+ * @returns
+ */
+function cancellation<T>(
+  getPromise: (cancelToken: CancelToken) => Promise<T>,
+): Promise<T> {
+  const source = axios.CancelToken.source();
+  const promise = getPromise(source.token);
+  //@ts-ignore
+  promise.cancel = () => {
+    source.cancel(\\"request canceled\\");
+  };
+
+  return promise;
+}
+
+export const Http = {
+  getRequest(
+    url: string,
+    queryParams: any | undefined,
+    //@ts-ignore
+    _requestBody: undefined,
+    security: Security,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
+      getAxiosInstance(security).get(url, {
+        cancelToken,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
+  },
+  postRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    security: Security,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
+      getAxiosInstance(security).post(url, requestBody, {
+        cancelToken,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
+  },
+  putRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    security: Security,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
+      getAxiosInstance(security).put(url, requestBody, {
+        cancelToken,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
+  },
+  patchRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    security: Security,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
+      getAxiosInstance(security).patch(url, requestBody, {
+        cancelToken,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
+  },
+  deleteRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    security: Security,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
+      getAxiosInstance(security).delete(url, {
+        data: requestBody,
+        cancelToken,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
+  },
+};
+",
+  "services.ts": "//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+import type { AxiosRequestConfig } from \\"axios\\";
+import type { SwaggerResponse } from \\"./config\\";
+import { Http } from \\"./httpRequest\\";
+//@ts-ignore
+import qs from \\"qs\\";
+import type {
+  Session,
+  Authenticated,
+  Reauthenticate,
+  ProviderSignup,
+  Signup,
+  Email,
+  Login,
+  StatusOK,
+  Password,
+  TOTPAuthenticator,
+  Provider,
+  EmailVerificationInfo,
+  EmailVerificationKey,
+  PasswordResetKey,
+  SessionToken,
+  RequestBodyLogin,
+  RequestBodyMFAAuthenticate,
+  RequestBodyConfirmLoginCode,
+  RequestBodyEndSessions,
+  RequestBodyProviderAccount,
+  RequestBodyProviderRedirect,
+  RequestBodyProviderSignup,
+  RequestBodyProviderToken,
+  RequestBodyReauthenticate,
+  RequestBodyRequestPassword,
+  RequestBodyRequestLoginCode,
+  RequestBodySetupTOTP,
+  RequestBodySignup,
+  RequestBodyChangePassword,
+  RequestBodyEmail,
+  RequestBodyMarkPrimaryEmail,
+  RequestBodyPhone,
+  RequestBodyResetPassword,
+  RequestBodyVerifyEmail,
+  RequestBodyVerifyPhone,
+} from \\"./types\\";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const __DEV__ = process.env.NODE_ENV !== \\"production\\";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function overrideConfig(
+  config?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig,
+): AxiosRequestConfig {
+  return {
+    ...config,
+    ...configOverride,
+    headers: {
+      ...config?.headers,
+      ...configOverride?.headers,
+    },
+  };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function template(path: string, obj: { [x: string]: any } = {}) {
+  Object.keys(obj).forEach((key) => {
+    const re = new RegExp(\`{\${key}}\`, \\"i\\");
+    path = path.replace(re, obj[key]);
+  });
+
+  return path;
+}
+
+function isFormData(obj: any) {
+  // This checks for the append method which should exist on FormData instances
+  return (
+    (typeof obj === \\"object\\" &&
+      typeof obj.append === \\"function\\" &&
+      obj[Symbol.toStringTag] === undefined) ||
+    obj[Symbol.toStringTag] === \\"FormData\\"
+  );
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function objToForm(requestBody: object) {
+  if (isFormData(requestBody)) {
+    return requestBody;
+  }
+  const formData = new FormData();
+
+  Object.entries(requestBody).forEach(([key, value]) => {
+    value && formData.append(key, value);
+  });
+
+  return formData;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function objToUrlencoded(requestBody: object) {
+  return qs.stringify(requestBody);
+}
+
+/** Deactivate TOTP */
+export const delete_allauthBrowserV1AccountAuthenticatorsTotp = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<StatusOK>> => {
+  return Http.deleteRequest(
+    delete_allauthBrowserV1AccountAuthenticatorsTotp.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+delete_allauthBrowserV1AccountAuthenticatorsTotp.key =
+  \\"/_allauth/browser/v1/account/authenticators/totp\\";
+
+/** Remove an email address */
+export const delete_allauthBrowserV1AccountEmail = (
+  requestBody: RequestBodyEmail,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<EmailAddresses>> => {
+  return Http.deleteRequest(
+    delete_allauthBrowserV1AccountEmail.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+delete_allauthBrowserV1AccountEmail.key = \\"/_allauth/browser/v1/account/email\\";
+
+/** Disconnect a third-party provider account */
+export const delete_allauthBrowserV1AccountProviders = (
+  requestBody: RequestBodyProviderAccount,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<ProviderAccounts>> => {
+  return Http.deleteRequest(
+    delete_allauthBrowserV1AccountProviders.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+delete_allauthBrowserV1AccountProviders.key =
+  \\"/_allauth/browser/v1/account/providers\\";
+
+/** Logout */
+export const delete_allauthBrowserV1AuthSession = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.deleteRequest(
+    delete_allauthBrowserV1AuthSession.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+delete_allauthBrowserV1AuthSession.key = \\"/_allauth/browser/v1/auth/session\\";
+
+/** End one or more sessions */
+export const delete_allauthBrowserV1AuthSessions = (
+  requestBody: RequestBodyEndSessions,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Sessions>> => {
+  return Http.deleteRequest(
+    delete_allauthBrowserV1AuthSessions.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+delete_allauthBrowserV1AuthSessions.key = \\"/_allauth/browser/v1/auth/sessions\\";
+
+/** List authenticators */
+export const get_allauthBrowserV1AccountAuthenticators = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Authenticators>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1AccountAuthenticators.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1AccountAuthenticators.key =
+  \\"/_allauth/browser/v1/account/authenticators\\";
+
+/** List recovery codes */
+export const get_allauthBrowserV1AccountAuthenticatorsRecoveryCodes = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<RecoveryCodes>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.key =
+  \\"/_allauth/browser/v1/account/authenticators/recovery-codes\\";
+
+/** TOTP authenticator status */
+export const get_allauthBrowserV1AccountAuthenticatorsTotp = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TOTPAuthenticator>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1AccountAuthenticatorsTotp.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1AccountAuthenticatorsTotp.key =
+  \\"/_allauth/browser/v1/account/authenticators/totp\\";
+
+/** List email addresses */
+export const get_allauthBrowserV1AccountEmail = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<EmailAddresses>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1AccountEmail.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1AccountEmail.key = \\"/_allauth/browser/v1/account/email\\";
+
+/** Get the phone number */
+export const get_allauthBrowserV1AccountPhone = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<PhoneNumbers>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1AccountPhone.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1AccountPhone.key = \\"/_allauth/browser/v1/account/phone\\";
+
+/** List the connected third-party provider accounts */
+export const get_allauthBrowserV1AccountProviders = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<ProviderAccounts>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1AccountProviders.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1AccountProviders.key =
+  \\"/_allauth/browser/v1/account/providers\\";
+
+/** Get email verification information */
+export const get_allauthBrowserV1AuthEmailVerify = (
+  headerParams?: { \\"X-Email-Verification-Key\\": EmailVerificationKey },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<EmailVerificationInfo>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1AuthEmailVerify.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1AuthEmailVerify.key =
+  \\"/_allauth/browser/v1/auth/email/verify\\";
+
+/** Get password reset information */
+export const get_allauthBrowserV1AuthPasswordReset = (
+  headerParams?: { \\"X-Password-Reset-Key\\": PasswordResetKey },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<PasswordResetInfo>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1AuthPasswordReset.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1AuthPasswordReset.key =
+  \\"/_allauth/browser/v1/auth/password/reset\\";
+
+/** Provider signup information */
+export const get_allauthBrowserV1AuthProviderSignup = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<ProviderSignup>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1AuthProviderSignup.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1AuthProviderSignup.key =
+  \\"/_allauth/browser/v1/auth/provider/signup\\";
+
+/** Get authentication status */
+export const get_allauthBrowserV1AuthSession = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Authenticated>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1AuthSession.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1AuthSession.key = \\"/_allauth/browser/v1/auth/session\\";
+
+/** List sessions */
+export const get_allauthBrowserV1AuthSessions = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Sessions>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1AuthSessions.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1AuthSessions.key = \\"/_allauth/browser/v1/auth/sessions\\";
+
+/** Get configuration */
+export const get_allauthBrowserV1Config = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Configuration>> => {
+  return Http.getRequest(
+    get_allauthBrowserV1Config.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+get_allauthBrowserV1Config.key = \\"/_allauth/browser/v1/config\\";
+
+/** Change primary email address */
+export const patch_allauthBrowserV1AccountEmail = (
+  requestBody: RequestBodyMarkPrimaryEmail,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<EmailAddresses>> => {
+  return Http.patchRequest(
+    patch_allauthBrowserV1AccountEmail.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+patch_allauthBrowserV1AccountEmail.key = \\"/_allauth/browser/v1/account/email\\";
+
+/** Regenerate recovery codes */
+export const post_allauthBrowserV1AccountAuthenticatorsRecoveryCodes = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.key =
+  \\"/_allauth/browser/v1/account/authenticators/recovery-codes\\";
+
+/** Activate TOTP */
+export const post_allauthBrowserV1AccountAuthenticatorsTotp = (
+  requestBody: RequestBodySetupTOTP,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TOTPAuthenticator>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AccountAuthenticatorsTotp.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AccountAuthenticatorsTotp.key =
+  \\"/_allauth/browser/v1/account/authenticators/totp\\";
+
+/** Add/Change email address */
+export const post_allauthBrowserV1AccountEmail = (
+  requestBody: RequestBodyEmail,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<EmailAddresses>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AccountEmail.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AccountEmail.key = \\"/_allauth/browser/v1/account/email\\";
+
+/** Change password */
+export const post_allauthBrowserV1AccountPasswordChange = (
+  requestBody: RequestBodyChangePassword,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AccountPasswordChange.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AccountPasswordChange.key =
+  \\"/_allauth/browser/v1/account/password/change\\";
+
+/** Change the phone number */
+export const post_allauthBrowserV1AccountPhone = (
+  requestBody: RequestBodyPhone,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AccountPhone.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AccountPhone.key = \\"/_allauth/browser/v1/account/phone\\";
+
+/** Two-factor authentication */
+export const post_allauthBrowserV1Auth2faAuthenticate = (
+  requestBody: RequestBodyMFAAuthenticate,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<AuthenticatedByPasswordAnd2FA>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1Auth2faAuthenticate.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1Auth2faAuthenticate.key =
+  \\"/_allauth/browser/v1/auth/2fa/authenticate\\";
+
+/** Reauthenticate using 2FA */
+export const post_allauthBrowserV1Auth2faReauthenticate = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<AuthenticatedByPasswordAnd2FA>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1Auth2faReauthenticate.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1Auth2faReauthenticate.key =
+  \\"/_allauth/browser/v1/auth/2fa/reauthenticate\\";
+
+/** Confirm login code */
+export const post_allauthBrowserV1AuthCodeConfirm = (
+  requestBody: RequestBodyConfirmLoginCode,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<AuthenticatedByCode>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthCodeConfirm.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthCodeConfirm.key =
+  \\"/_allauth/browser/v1/auth/code/confirm\\";
+
+/** Request login code */
+export const post_allauthBrowserV1AuthCodeRequest = (
+  requestBody: RequestBodyRequestLoginCode,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthCodeRequest.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthCodeRequest.key =
+  \\"/_allauth/browser/v1/auth/code/request\\";
+
+/** Verify an email */
+export const post_allauthBrowserV1AuthEmailVerify = (
+  requestBody: RequestBodyVerifyEmail,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Authenticated>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthEmailVerify.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthEmailVerify.key =
+  \\"/_allauth/browser/v1/auth/email/verify\\";
+
+/** Resend email verification code */
+export const post_allauthBrowserV1AuthEmailVerifyResend = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<StatusOK>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthEmailVerifyResend.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthEmailVerifyResend.key =
+  \\"/_allauth/browser/v1/auth/email/verify/resend\\";
+
+/** Login */
+export const post_allauthBrowserV1AuthLogin = (
+  requestBody: RequestBodyLogin,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<AuthenticatedByPassword>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthLogin.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthLogin.key = \\"/_allauth/browser/v1/auth/login\\";
+
+/** Request password */
+export const post_allauthBrowserV1AuthPasswordRequest = (
+  requestBody: RequestBodyRequestPassword,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<StatusOK>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthPasswordRequest.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthPasswordRequest.key =
+  \\"/_allauth/browser/v1/auth/password/request\\";
+
+/** Reset password */
+export const post_allauthBrowserV1AuthPasswordReset = (
+  requestBody: RequestBodyResetPassword,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<AuthenticatedByPassword>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthPasswordReset.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthPasswordReset.key =
+  \\"/_allauth/browser/v1/auth/password/reset\\";
+
+/** Verify a phone number */
+export const post_allauthBrowserV1AuthPhoneVerify = (
+  requestBody: RequestBodyVerifyPhone,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Authenticated>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthPhoneVerify.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthPhoneVerify.key =
+  \\"/_allauth/browser/v1/auth/phone/verify\\";
+
+/** Resend phone number verification code */
+export const post_allauthBrowserV1AuthPhoneVerifyResend = (
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<StatusOK>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthPhoneVerifyResend.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthPhoneVerifyResend.key =
+  \\"/_allauth/browser/v1/auth/phone/verify/resend\\";
+
+/** Provider redirect */
+export const post_allauthBrowserV1AuthProviderRedirect = (
+  requestBody: RequestBodyProviderRedirect,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthProviderRedirect.key,
+    undefined,
+    objToUrlencoded(requestBody),
+    undefined,
+    overrideConfig(_CONSTANT2, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthProviderRedirect.key =
+  \\"/_allauth/browser/v1/auth/provider/redirect\\";
+
+/** Provider signup */
+export const post_allauthBrowserV1AuthProviderSignup = (
+  requestBody: RequestBodyProviderSignup,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Authenticated>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthProviderSignup.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthProviderSignup.key =
+  \\"/_allauth/browser/v1/auth/provider/signup\\";
+
+/** Provider token */
+export const post_allauthBrowserV1AuthProviderToken = (
+  requestBody: RequestBodyProviderToken,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Authenticated>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthProviderToken.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthProviderToken.key =
+  \\"/_allauth/browser/v1/auth/provider/token\\";
+
+/** Reauthenticate */
+export const post_allauthBrowserV1AuthReauthenticate = (
+  requestBody: RequestBodyReauthenticate,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<AuthenticatedByPassword>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthReauthenticate.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthReauthenticate.key =
+  \\"/_allauth/browser/v1/auth/reauthenticate\\";
+
+/** Signup */
+export const post_allauthBrowserV1AuthSignup = (
+  requestBody: RequestBodySignup,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<AuthenticatedByPassword>> => {
+  return Http.postRequest(
+    post_allauthBrowserV1AuthSignup.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+post_allauthBrowserV1AuthSignup.key = \\"/_allauth/browser/v1/auth/signup\\";
+
+/** Request email verification */
+export const put_allauthBrowserV1AccountEmail = (
+  requestBody: RequestBodyEmail,
+  headerParams?: { \\"X-Session-Token\\": SessionToken },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<StatusOK>> => {
+  return Http.putRequest(
+    put_allauthBrowserV1AccountEmail.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT1,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+put_allauthBrowserV1AccountEmail.key = \\"/_allauth/browser/v1/account/email\\";
+export const _CONSTANT0 = {
+  headers: {
+    \\"Content-Type\\": \\"application/json\\",
+    Accept: \\"application/json\\",
+  },
+};
+export const _CONSTANT1 = {
+  \\"Content-Type\\": \\"application/json\\",
+  Accept: \\"application/json\\",
+};
+export const _CONSTANT2 = {
+  headers: {
+    \\"Content-Type\\": \\"application/x-www-form-urlencoded\\",
+    Accept: \\"application/json\\",
+  },
+};
+",
+  "types.ts": "//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+/** Configuration of the Django \`allauth.account\` app. */
+
+export interface AccountConfiguration {
+  email_verification_by_code_enabled: boolean;
+  is_open_for_signup: boolean;
+  login_by_code_enabled: boolean;
+  login_methods?: \\"email\\" | \\"username\\"[];
+  password_reset_by_code_enabled?: boolean;
+}
+
+export interface Authenticated {
+  /** A list of methods used to authenticate. */
+  methods: AuthenticationMethod[];
+  user: User;
+}
+
+export type AuthenticatedMeta = BaseAuthenticationMeta & {
+  is_authenticated: true;
+};
+
+export interface AuthenticatedResponse {
+  data: Authenticated;
+  meta: AuthenticationMeta;
+  status: StatusOK;
+}
+
+export type AuthenticationMeta = BaseAuthenticationMeta & {
+  is_authenticated: boolean;
+};
+
+export type AuthenticationMethod =
+  | { at: Timestamp; method: \\"password\\"; email?: Email; username?: Username }
+  | { at: Timestamp; email: Email; method: \\"password_reset\\" }
+  | { at: Timestamp; email: Email; method: \\"code\\" }
+  | { at: Timestamp; method: \\"code\\"; phone: Phone }
+  | { at: Timestamp; method: \\"password\\"; reauthenticated: true }
+  | {
+      at: Timestamp;
+      method: \\"socialaccount\\";
+      provider: ProviderID;
+      uid: ProviderAccountID;
+    }
+  | {
+      at: Timestamp;
+      method: \\"mfa\\";
+      type: AuthenticatorType;
+      reauthenticated?: boolean;
+    };
+
+/** An authentication related response. */
+
+export interface AuthenticationResponse {
+  data: { flows: Flow[] };
+  meta: AuthenticationMeta;
+  status: 401;
+}
+
+/**
+ * An authenticator code.
+ *
+ * @example
+ *   314159;
+ */
+
+export type AuthenticatorCode = string;
+
+/**
+ * Authenticator ID.
+ *
+ * @example
+ *   123;
+ */
+
+export type AuthenticatorID = any;
+
+export type AuthenticatorList = (
+  | TOTPAuthenticator
+  | RecoveryCodesAuthenticator
+  | WebAuthnAuthenticator
+)[];
+
+/** The type of authenticator. */
+
+export type AuthenticatorType = \\"recovery_codes\\" | \\"totp\\";
+
+export interface BaseAuthenticationMeta {
+  /**
+   * The access token (\`app\` clients only).
+   *
+   * @example
+   *   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdW;
+   */
+  access_token?: string;
+  /**
+   * The session token (\`app\` clients only).
+   *
+   * @example
+   *   ufwcig0zen9skyd545jc0fkq813ghar2;
+   */
+  session_token?: string;
+}
+
+export interface BaseAuthenticator {
+  created_at: Timestamp;
+  last_used_at: OptionalTimestamp;
+}
+
+export interface BaseSignup {
+  email: Email;
+}
+
+/**
+ * The client ID (in case of OAuth2 or OpenID Connect based providers)
+ *
+ * @example
+ *   123.apps.googleusercontent.com
+ */
+
+export type ClientID = string;
+
+/**
+ * An one-time code.
+ *
+ * @example
+ *   NQ3TM5;
+ */
+
+export type Code = string;
+
+/**
+ * @example
+ *   [object Object]
+ */
+
+export interface ConfigurationResponse {
+  data: {
+    account: AccountConfiguration;
+    mfa?: MFAConfiguration;
+    socialaccount?: SocialAccountConfiguration;
+    usersessions?: UserSessionsConfiguration;
+  };
+  status: StatusOK;
+}
+
+export interface ConfirmLoginCode {
+  code: Code;
+}
+
+export interface ConflictResponse {
+  status: 409;
+}
+
+/**
+ * The email address.
+ *
+ * @example
+ *   email@domain.org
+ */
+
+export type Email = string;
+
+export interface EmailAddress {
+  email: Email;
+  /**
+   * @example
+   *   true;
+   */
+  primary: boolean;
+  verified: boolean;
+}
+
+export interface EmailVerificationInfo {
+  data: { email: Email; user: User };
+  meta: { is_authenticating: boolean };
+  status: StatusOK;
+}
+
+/** The email verification key */
+
+export type EmailVerificationKey = string;
+
+export interface EndSessions {
+  /** The IDs of the sessions that are to be ended. */
+  sessions: number[];
+}
+
+export interface ErrorResponse {
+  errors?: {
+    /**
+     * An error code.
+     *
+     * @example
+     *   invalid;
+     */
+    code: string;
+    /**
+     * A human readable error message.
+     *
+     * @example
+     *   Enter a valid email address.
+     */
+    message: string;
+    /**
+     * The name of the input parameter that was incorrect.
+     *
+     * @example
+     *   email;
+     */
+    param?: string;
+  }[];
+  /**
+   * @example
+   *   400;
+   */
+  status?: 400;
+}
+
+export interface Flow {
+  id:
+    | \\"login\\"
+    | \\"mfa_authenticate\\"
+    | \\"mfa_reauthenticate\\"
+    | \\"provider_redirect\\"
+    | \\"provider_signup\\"
+    | \\"provider_token\\"
+    | \\"reauthenticate\\"
+    | \\"signup\\"
+    | \\"verify_email\\"
+    | \\"verify_phone\\";
+  is_pending?: true;
+  provider?: Provider;
+}
+
+export interface ForbiddenResponse {
+  status: 403;
+}
+
+export type Login = { password: Password } & (
+  | { username: Username }
+  | { email: Email }
+  | { phone: Phone }
+);
+
+export interface MFAAuthenticate {
+  code: AuthenticatorCode;
+}
+
+/** Configuration of the Django \`allauth.mfa\` app. */
+
+export interface MFAConfiguration {
+  /** Matches \`settings.MFA_SUPPORTED_TYPES\`. */
+  supported_types: AuthenticatorType[];
+}
+
+export interface MFATrust {
+  trust: boolean;
+}
+
+export type OptionalTimestamp = Timestamp;
+
+export type PasskeySignup = BaseSignup;
+
+/**
+ * The password.
+ *
+ * @example
+ *   Alohomora!;
+ */
+
+export type Password = string;
+
+/** The password reset key */
+
+export type PasswordResetKey = string;
+
+/**
+ * The phone number.
+ *
+ * @example
+ *   +314159265359;
+ */
+
+export type Phone = string;
+
+/** A phone number. */
+
+export interface PhoneNumber {
+  /**
+   * @example
+   *   +314159265359;
+   */
+  phone: string;
+  verified: boolean;
+}
+
+/**
+ * @example
+ *   [object Object]
+ */
+
+export interface PhoneNumberChangeResponse {
+  data: PhoneNumber[];
+  status: StatusAccepted;
+}
+
+export interface PhoneNumbersResponse {
+  data: PhoneNumber[];
+  status: StatusOK;
+}
+
+/**
+ * The process to be executed when the user successfully authenticates. When set
+ * to \`login\`, the user will be logged into the account to which the provider
+ * account is connected, or if no such account exists, a signup will occur. If
+ * set to \`connect\`, the provider account will be connected to the list of
+ * provider accounts for the currently authenticated user.
+ *
+ * @example
+ *   login;
+ */
+
+export type Process = \\"login\\" | \\"connect\\";
+
+export interface Provider {
+  /** The authentication flows the provider integration supports. */
+  flows: \\"provider_redirect\\" | \\"provider_token\\"[];
+  /**
+   * The provider ID.
+   *
+   * @example
+   *   google;
+   */
+  id: string;
+  /**
+   * The name of the provider.
+   *
+   * @example
+   *   Google;
+   */
+  name: string;
+  /**
+   * The client ID (in case of OAuth2 or OpenID Connect based providers)
+   *
+   * @example
+   *   123.apps.googleusercontent.com
+   */
+  client_id?: string;
+  /**
+   * The OIDC discovery or well-known URL (in case of OAuth2 or OpenID Connect
+   * based providers)
+   *
+   * @example
+   *   https://accounts.google.com/.well-known/openid-configuration
+   */
+  openid_configuration_url?: string;
+}
+
+export interface ProviderAccount {
+  /**
+   * A name derived from the third-party provider account data.
+   *
+   * @example
+   *   Wizzkid;
+   */
+  display: string;
+  provider: Provider;
+  uid: ProviderAccountID;
+}
+
+/**
+ * The provider specific account ID.
+ *
+ * @example
+ *   goo12345;
+ */
+
+export type ProviderAccountID = string;
+
+/**
+ * The provider ID.
+ *
+ * @example
+ *   google;
+ */
+
+export type ProviderID = string;
+
+export type ProviderList = Provider[];
+
+export interface ProviderRedirect {
+  /**
+   * The URL to return to after the redirect flow is complete.
+   *
+   * Note that this is not to be mistaken with the callback URL that you configure
+   * over at the OAuth provider during the OAuth app/client setup. The flow is as
+   * follows:
+   *
+   * 1. Your frontend redirects to the headless provider redirect endpoint in a
+   *    synchronous (non-XHR) manner, informing allauth (by means of
+   *    \`callback_url\`) where to redirect to after the provider handshake is
+   *    completed.
+   * 2. Headless will redirect to the (OAuth) identity provider to initiate the
+   *    handshake, passing along a different callback URL to the provider: one
+   *    that points to an allauth backend URL. This is the URL that you need to
+   *    have setup at your OAuth app/client configuration. Note that this must be
+   *    a backend URL as providers can use POST requests to perform their
+   *    callbacks, which is something a frontend would not be able to handle.
+   * 3. After the authorization at the provider is completed, the provider redirects
+   *    to the _backend_ allauth callback URL, which will then redirect back to
+   *    the _frontend_ callback URL.
+   * 4. Your frontend is now expected to fetch the current session to determine what
+   *    the next course of action is. The user could be authenticated at this
+   *    point, or another flow is pending (e.g. email verification, or, provider
+   *    signup). In case of errors a \`?error=\` is passed to the frontend callback
+   *    URL.
+   *
+   * @example
+   *   https://app.project.org/account/provider/callback
+   */
+  callback_url: string;
+  process: Process;
+  provider: ProviderID;
+}
+
+export type ProviderSignup = BaseSignup;
+
+export interface ProviderToken {
+  process: Process;
+  provider: ProviderID;
+  /** The token. */
+  token: {
+    client_id: ClientID;
+    /**
+     * The access token.
+     *
+     * @example
+     *   36POk6yJV_adQs
+     */
+    access_token?: string;
+    /**
+     * The ID token.
+     *
+     * @example
+     *   eyJhbGciOiJI;
+     */
+    id_token?: string;
+  };
+}
+
+export interface Reauthenticate {
+  password: Password;
+}
+
+/** A response indicating reauthentication is required. */
+
+export interface ReauthenticationResponse {
+  data: Authenticated;
+  meta: AuthenticatedMeta;
+  status: 401;
+}
+
+export type RecoveryCodesAuthenticator = BaseAuthenticator & {
+  /**
+   * The total number of recovery codes that initially were available.
+   *
+   * @example
+   *   10;
+   */
+  total_code_count: number;
+  /** The authenticator type. */
+  type: \\"recovery_codes\\";
+  /**
+   * The number of recovery codes that are unused.
+   *
+   * @example
+   *   7;
+   */
+  unused_code_count: number;
+};
+
+export interface RequestBodyAddWebAuthnAuthenticator {
+  credential: WebAuthnCredential;
+  /**
+   * @example
+   *   Master key
+   */
+  name?: string;
+}
+
+/** Authenticate using WebAuthn. */
+
+export interface RequestBodyAuthenticateWebAuthn {
+  credential: WebAuthnCredential;
+}
+
+export interface RequestBodyChangePassword {
+  /**
+   * The current password.
+   *
+   * @example
+   *   Aberto!;
+   */
+  new_password: string;
+  current_password?: Password;
+}
+
+export type RequestBodyConfirmLoginCode = ConfirmLoginCode;
+
+export interface RequestBodyDeleteWebAuthn {
+  /** The IDs of the authenticator that are to be deleted. */
+  authenticators: AuthenticatorID[];
+}
+
+export interface RequestBodyEmail {
+  /**
+   * An email address.
+   *
+   * @example
+   *   email@domain.org
+   */
+  email: string;
+}
+
+export type RequestBodyEndSessions = EndSessions;
+
+/** Login. */
+
+export type RequestBodyLogin = Login;
+
+/** Login using WebAuthn. */
+
+export interface RequestBodyLoginWebAuthn {
+  credential: WebAuthnCredential;
+}
+
+export type RequestBodyMFAAuthenticate = MFAAuthenticate;
+
+export type RequestBodyMFATrust = MFATrust;
+
+export interface RequestBodyMarkPrimaryEmail {
+  /**
+   * An email address.
+   *
+   * @example
+   *   email@domain.org
+   */
+  email: string;
+  /** Primary flag. */
+  primary: true;
+}
+
+/** Signup using a passkey */
+
+export type RequestBodyPasskeySignup = PasskeySignup;
+
+export interface RequestBodyPhone {
+  /**
+   * @example
+   *   +314159265359;
+   */
+  phone: string;
+}
+
+export interface RequestBodyProviderAccount {
+  account: ProviderAccountID;
+  provider: ProviderID;
+}
+
+/** Initiate the provider redirect flow. */
+
+export type RequestBodyProviderRedirect = ProviderRedirect;
+
+/** Provider signup. */
+
+export type RequestBodyProviderSignup = ProviderSignup;
+
+export type RequestBodyProviderToken = ProviderToken;
+
+/** Reauthenticate. */
+
+export type RequestBodyReauthenticate = Reauthenticate;
+
+/** Reauthenticate using WebAuthn. */
+
+export interface RequestBodyReauthenticateWebAuthn {
+  credential: WebAuthnCredential;
+}
+
+/** Request a login code. */
+
+export type RequestBodyRequestLoginCode = RequestLoginCode;
+
+/** Request password. */
+
+export type RequestBodyRequestPassword = RequestPassword;
+
+export type RequestBodyResetPassword = ResetPassword;
+
+export interface RequestBodySetupTOTP {
+  code: AuthenticatorCode;
+}
+
+/** Signup */
+
+export type RequestBodySignup = Signup;
+
+export interface RequestBodyUpdateWebAuthn {
+  id?: AuthenticatorID;
+  /**
+   * @example
+   *   Master key
+   */
+  name?: string;
+}
+
+export type RequestBodyVerifyEmail = VerifyEmail;
+
+export type RequestBodyVerifyPhone = VerifyPhone;
+
+export type RequestLoginCode = { phone: Phone } | { email: Email };
+
+export interface RequestPassword {
+  email: Email;
+}
+
+export interface ResetPassword {
+  /**
+   * The password reset key
+   *
+   * @example
+   *   2f-c4nqd4-e07d9bc694f9f28cd4fe92569d495333
+   */
+  key: string;
+  password: Password;
+}
+
+export type SensitiveRecoveryCodesAuthenticator = RecoveryCodesAuthenticator & {
+  /** The list of unused codes. */
+  unused_codes: AuthenticatorCode[];
+};
+
+export interface Session {
+  created_at: Timestamp;
+  /**
+   * @example
+   *   123;
+   */
+  id: number;
+  /**
+   * @example
+   *   127.2.3.192
+   */
+  ip: string;
+  is_current: boolean;
+  /**
+   * @example
+   *   Mozilla Firefox
+   */
+  user_agent: string;
+  last_seen_at?: Timestamp;
+}
+
+/** The session is expired or invalid. */
+
+export interface SessionGoneResponse {
+  data: { [x in string | number]: any };
+  meta: AuthenticationMeta;
+  status: 410;
+}
+
+/** Session token. Only needed when \`client\` is equal to \`app\`. */
+
+export type SessionToken = string;
+
+export type Signup = BaseSignup & { password: Password };
+
+/** Configuration of the Django \`allauth.socialaccount\` app. */
+
+export interface SocialAccountConfiguration {
+  providers: ProviderList;
+}
+
+export type StatusAccepted = 202;
+
+export type StatusOK = 200;
+
+export type TOTPAuthenticator = BaseAuthenticator & { type: \\"totp\\" };
+
+/**
+ * An epoch based timestamp (trivial to parse using: \`new Date(value)*1000\`)
+ *
+ * @example
+ *   1711555057.065702;
+ */
+
+export type Timestamp = any;
+
+export interface User {
+  /**
+   * URL to the user's avatar image
+   *
+   * @example
+   *   https://example.com/avatars/user123.jpg
+   */
+  avatar?: string;
+  /**
+   * Display name for the user (full name or username)
+   *
+   * @example
+   *   John Doe
+   */
+  display?: string;
+  /**
+   * Email address of the user
+   *
+   * @example
+   *   user@example.com
+   */
+  email?: string;
+  /**
+   * Whether the user has a usable password set
+   *
+   * @example
+   *   true;
+   */
+  has_usable_password?: boolean;
+  /**
+   * Unique identifier for the user
+   *
+   * @example
+   *   123;
+   */
+  id?: string;
+  /**
+   * Username for the user account
+   *
+   * @example
+   *   johndoe;
+   */
+  username?: string;
+}
+
+/** Configuration of the Django \`allauth.usersessions\` app. */
+
+export interface UserSessionsConfiguration {
+  /** Matches \`settings.USERSESSIONS_TRACK_ACTIVITY\`. */
+  track_activity: boolean;
+}
+
+/**
+ * The username.
+ *
+ * @example
+ *   wizard;
+ */
+
+export type Username = string;
+
+export interface VerifyEmail {
+  /**
+   * The email verification key
+   *
+   * @example
+   *   2f-c4nqd4-e07d9bc694f9f28cd4fe92569d495333
+   */
+  key: string;
+}
+
+export interface VerifyPhone {
+  /**
+   * The phone verification code
+   *
+   * @example
+   *   4S3H82
+   */
+  code: string;
+}
+
+export type WebAuthnAuthenticator = BaseAuthenticator & {
+  id: AuthenticatorID;
+  /**
+   * @example
+   *   Master key
+   */
+  name: string;
+  type: \\"webauthn\\";
+  /**
+   * Whether or not this authenticator represents a passkey. Absent if it is not
+   * specified.
+   */
+  is_passwordless?: boolean;
+};
+
+/**
+ * @example
+ *   [object Object]
+ */
+
+export type WebAuthnCredential = { [x in string | number]: any };
+
+export interface WebAuthnCredentialCreationOptions {
+  /**
+   * @example
+   *   [object Object]
+   */
+  creation_options: { [x in string | number]: any };
+}
+
+export interface WebAuthnCredentialRequestOptions {
+  /**
+   * @example
+   *   [object Object]
+   */
+  request_options: { [x in string | number]: any };
+}
+",
+}
+`;

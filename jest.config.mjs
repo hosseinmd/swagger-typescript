@@ -1,10 +1,7 @@
 import { defaults } from "jest-config";
 const config = {
   moduleFileExtensions: [...defaults.moduleFileExtensions, "mts"],
-  testMatch: [
-    "**/__tests__/**/*.m[jt]s?(x)",
-    "**/?(*.)+(spec|test).m[tj]s?(x)",
-  ],
+  testMatch: ["**/__tests__/**/?(*.)+(spec|test).m[tj]s?(x)"],
   moduleNameMapper: {
     ...defaults.moduleNameMapper,
     "#(.*)": "<rootDir>/node_modules/$1",

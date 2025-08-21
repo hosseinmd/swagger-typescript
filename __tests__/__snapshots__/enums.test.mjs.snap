@@ -75,7 +75,7 @@ function objToUrlencoded(requestBody: object) {
 
 export const getSettlementV1PrivateSettlementGet = (
     queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SettlementRequestResultListResponseVM)>> => {
+): Promise<SwaggerResponse<(SettlementRequestResultListResponseVM)>> => {
   
   return Http.getRequest(
     getSettlementV1PrivateSettlementGet.key,
@@ -128,7 +128,7 @@ exports[`generate enum as type generate type 1`] = `
  * 
  * - Format: date-time
  */
-\\"StartDate\\"?: string;\\"States\\"?:  & (SettlementRequestStatus)[];
+\\"StartDate\\"?: string;\\"States\\"?: (SettlementRequestStatus)[];
 /**
  * 
  * - Format: int64
@@ -267,7 +267,7 @@ function objToUrlencoded(requestBody: object) {
 
 export const getSettlementV1PrivateSettlementGet = (
     queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SettlementRequestResultListResponseVM)>> => {
+): Promise<SwaggerResponse<(SettlementRequestResultListResponseVM)>> => {
   
   return Http.getRequest(
     getSettlementV1PrivateSettlementGet.key,
@@ -320,7 +320,7 @@ exports[`generate enum generate type 1`] = `
  * 
  * - Format: date-time
  */
-\\"StartDate\\"?: string;\\"States\\"?:  & (SettlementRequestStatus)[];
+\\"StartDate\\"?: string;\\"States\\"?: (SettlementRequestStatus)[];
 /**
  * 
  * - Format: int64

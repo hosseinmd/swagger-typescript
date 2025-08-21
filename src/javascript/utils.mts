@@ -136,6 +136,7 @@ function getTsType(
     additionalProperties,
     required,
     allOf,
+    anyOf,
   } = schema as Schema;
 
   if ($ref) {
@@ -176,9 +177,15 @@ function getTsType(
   }
 
   if (allOf) {
-    result = `${result} & (${allOf
+    result = `${result ? `${result} &` : ""}(${allOf
       .map((_schema) => getTsType(_schema, config))
       .join(" & ")})`;
+  }
+
+  if (anyOf) {
+    result = `${result ? `${result} |` : ""}(${anyOf
+      .map((_schema) => getTsType(_schema, config))
+      .join(" | ")})`;
   }
 
   if (type === "object" && !result) {

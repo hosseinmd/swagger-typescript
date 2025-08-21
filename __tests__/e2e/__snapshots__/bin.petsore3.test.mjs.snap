@@ -1,0 +1,1670 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`swag-ts CLI E2E Tests Configuration Tests E2E-VALIDATION-002: Generated Files Snapshots: e2e-generated-files 1`] = `
+Object {
+  "config.ts": "/**
+ * You can modify this file
+ *
+ * @version 6
+ */
+import Axios, {
+  AxiosRequestConfig,
+  AxiosError,
+  AxiosResponse,
+  AxiosInstance,
+} from \\"axios\\";
+//@ts-ignore
+import qs from \\"qs\\";
+
+const baseConfig: AxiosRequestConfig = {
+  baseURL: \\"/api/v3\\", // <--- Add your base url
+  headers: {
+    \\"Content-Encoding\\": \\"UTF-8\\",
+    Accept: \\"application/json\\",
+    \\"Content-Type\\": \\"application/json-patch+json\\",
+  },
+  paramsSerializer: (param) => qs.stringify(param, { indices: false }),
+};
+
+let axiosInstance: AxiosInstance;
+
+function getAxiosInstance(security: Security): AxiosInstance {
+  if (!axiosInstance) {
+    axiosInstance = Axios.create(baseConfig);
+
+    // Response interceptor
+    axiosInstance.interceptors.response.use(
+      (async (response: AxiosResponse): Promise<SwaggerResponse<any>> => {
+        // Any status code that lie within the range of 2xx cause this function to trigger
+        // Do something with response data
+        /**
+         * Example on response manipulation
+         *
+         * @example
+         *   const swaggerResponse: SwaggerResponse = {
+         *     ...response,
+         *   };
+         *   return swaggerResponse;
+         */
+        return response.data;
+      }) as any,
+      (error: AxiosError) => {
+        // Any status codes that falls outside the range of 2xx cause this function to trigger
+        // Do something with response error
+
+        if (error.response) {
+          return Promise.reject(
+            new RequestError(
+              error.response.data,
+              error.response.status,
+              error.response,
+            ),
+          );
+        }
+
+        if (error.isAxiosError) {
+          return Promise.reject(new RequestError(\\"noInternetConnection\\"));
+        }
+        return Promise.reject(error);
+      },
+    );
+  }
+
+  // ًًRequest interceptor
+  axiosInstance.interceptors.request.use(
+    async (requestConfig) => {
+      // Do something before request is sent
+      /** Example on how to add authorization based on security */
+      if (security?.[0]) {
+        // requestConfig.headers.authorization = \\"\\";
+      }
+
+      return requestConfig;
+    },
+    (error) => {
+      // Do something with request error
+      return Promise.reject(error);
+    },
+  );
+
+  return axiosInstance;
+}
+
+class RequestError extends Error {
+  constructor(
+    public message: string,
+    public status?: number,
+    public response?: AxiosResponse,
+  ) {
+    super(message);
+  }
+
+  isApiException = true;
+
+  static isRequestError(error: any): error is RequestError {
+    return error.isApiException;
+  }
+}
+
+export type Security = any[] | undefined;
+
+// export interface SwaggerResponse<R> extends AxiosResponse<R> {}
+export type SwaggerResponse<R> = R;
+
+export { getAxiosInstance, RequestError };
+",
+  "hooks.ts": "//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+import { AxiosRequestConfig } from \\"axios\\";
+import {
+  UseQueryOptions,
+  useQuery,
+  useMutation,
+  UseMutationOptions,
+  QueryClient,
+  QueryKey,
+} from \\"@tanstack/react-query\\";
+import { RequestError, SwaggerResponse } from \\"./config\\";
+
+import type {
+  ApiResponse,
+  GetPetFindByStatusQueryParams,
+  GetPetFindByTagsQueryParams,
+  GetUserLoginQueryParams,
+  Order,
+  Pet,
+  PostPetPetIdQueryParams,
+  PostPetPetIdUploadImageQueryParams,
+  User,
+} from \\"./types\\";
+import {
+  deletePetPetId,
+  deleteStoreOrderOrderId,
+  deleteUserUsername,
+  getPetFindByStatus,
+  getPetFindByTags,
+  getPetPetId,
+  getStoreInventory,
+  getStoreOrderOrderId,
+  getUserLogin,
+  getUserLogout,
+  getUserUsername,
+  postPet,
+  postPetPetId,
+  postPetPetIdUploadImage,
+  postStoreOrder,
+  postUser,
+  postUserCreateWithList,
+  putPet,
+  putUserUsername,
+} from \\"./services\\";
+
+export type SwaggerTypescriptMutationDefaultParams<TExtra> = {
+  _extraVariables?: TExtra;
+  configOverride?: AxiosRequestConfig;
+};
+type SwaggerTypescriptUseQueryOptions<TData> = Omit<
+  UseQueryOptions<SwaggerResponse<TData>, RequestError | Error>,
+  \\"queryKey\\"
+>;
+
+type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> =
+  UseMutationOptions<
+    SwaggerResponse<TData>,
+    RequestError | Error,
+    TRequest & SwaggerTypescriptMutationDefaultParams<TExtra>
+  >;
+
+type SwaggerTypescriptUseMutationOptionsVoid<TData, TExtra> =
+  UseMutationOptions<
+    SwaggerResponse<TData>,
+    RequestError | Error,
+    SwaggerTypescriptMutationDefaultParams<TExtra> | void
+  >;
+
+/** Deletes a pet. */
+export const useDeletePetPetId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    {
+      /** Pet id to delete */
+      petId: number;
+      headerParams?: { api_key: string };
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        petId,
+
+        headerParams,
+        configOverride,
+      } = _o || {};
+
+      return deletePetPetId(
+        petId,
+
+        headerParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Delete purchase order by identifier. */
+export const useDeleteStoreOrderOrderId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    {
+      /** ID of the order that needs to be deleted */
+      orderId: number;
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        orderId,
+
+        configOverride,
+      } = _o || {};
+
+      return deleteStoreOrderOrderId(
+        orderId,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Delete user resource. */
+export const useDeleteUserUsername = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    {
+      /** The name that needs to be deleted */
+      username: string;
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        username,
+
+        configOverride,
+      } = _o || {};
+
+      return deleteUserUsername(
+        username,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Finds Pets by status. */
+export const useGetPetFindByStatus = (
+  queryParams: GetPetFindByStatusQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<Pet[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetPetFindByStatus.info(queryParams, configOverride);
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetPetFindByStatus.info = (
+  queryParams: GetPetFindByStatusQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getPetFindByStatus.key, queryParams] as QueryKey,
+    fun: () =>
+      getPetFindByStatus(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetPetFindByStatus.prefetch = (
+  client: QueryClient,
+  queryParams: GetPetFindByStatusQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<Pet[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetPetFindByStatus.info(queryParams, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Finds Pets by tags. */
+export const useGetPetFindByTags = (
+  queryParams: GetPetFindByTagsQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<Pet[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetPetFindByTags.info(queryParams, configOverride);
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetPetFindByTags.info = (
+  queryParams: GetPetFindByTagsQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getPetFindByTags.key, queryParams] as QueryKey,
+    fun: () =>
+      getPetFindByTags(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetPetFindByTags.prefetch = (
+  client: QueryClient,
+  queryParams: GetPetFindByTagsQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<Pet[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetPetFindByTags.info(queryParams, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Find pet by ID. */
+export const useGetPetPetId = (
+  /** ID of pet to return */
+  petId: number,
+  options?: SwaggerTypescriptUseQueryOptions<Pet>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetPetPetId.info(
+    petId,
+
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetPetPetId.info = (
+  /** ID of pet to return */
+  petId: number,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getPetPetId.key, petId] as QueryKey,
+    fun: () =>
+      getPetPetId(
+        petId,
+
+        configOverride,
+      ),
+  };
+};
+useGetPetPetId.prefetch = (
+  client: QueryClient,
+
+  /** ID of pet to return */
+  petId: number,
+  options?: SwaggerTypescriptUseQueryOptions<Pet>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetPetPetId.info(
+    petId,
+
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Returns pet inventories by status. */
+export const useGetStoreInventory = (
+  options?: SwaggerTypescriptUseQueryOptions<{ [x: string]: number }>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetStoreInventory.info(configOverride);
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetStoreInventory.info = (configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getStoreInventory.key] as QueryKey,
+    fun: () => getStoreInventory(configOverride),
+  };
+};
+useGetStoreInventory.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<{ [x: string]: number }>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetStoreInventory.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Find purchase order by ID. */
+export const useGetStoreOrderOrderId = (
+  /** ID of order that needs to be fetched */
+  orderId: number,
+  options?: SwaggerTypescriptUseQueryOptions<Order>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetStoreOrderOrderId.info(
+    orderId,
+
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetStoreOrderOrderId.info = (
+  /** ID of order that needs to be fetched */
+  orderId: number,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getStoreOrderOrderId.key, orderId] as QueryKey,
+    fun: () =>
+      getStoreOrderOrderId(
+        orderId,
+
+        configOverride,
+      ),
+  };
+};
+useGetStoreOrderOrderId.prefetch = (
+  client: QueryClient,
+
+  /** ID of order that needs to be fetched */
+  orderId: number,
+  options?: SwaggerTypescriptUseQueryOptions<Order>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetStoreOrderOrderId.info(
+    orderId,
+
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Logs user into the system. */
+export const useGetUserLogin = (
+  queryParams?: GetUserLoginQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<string>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetUserLogin.info(queryParams, configOverride);
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetUserLogin.info = (
+  queryParams?: GetUserLoginQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getUserLogin.key, queryParams] as QueryKey,
+    fun: () =>
+      getUserLogin(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetUserLogin.prefetch = (
+  client: QueryClient,
+  queryParams?: GetUserLoginQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<string>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetUserLogin.info(queryParams, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Logs out current logged in user session. */
+export const useGetUserLogout = (
+  options?: SwaggerTypescriptUseQueryOptions<any>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetUserLogout.info(configOverride);
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetUserLogout.info = (configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getUserLogout.key] as QueryKey,
+    fun: () => getUserLogout(configOverride),
+  };
+};
+useGetUserLogout.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<any>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetUserLogout.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Get user by user name. */
+export const useGetUserUsername = (
+  /** The name that needs to be fetched. Use user1 for testing */
+  username: string,
+  options?: SwaggerTypescriptUseQueryOptions<User>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetUserUsername.info(
+    username,
+
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetUserUsername.info = (
+  /** The name that needs to be fetched. Use user1 for testing */
+  username: string,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getUserUsername.key, username] as QueryKey,
+    fun: () =>
+      getUserUsername(
+        username,
+
+        configOverride,
+      ),
+  };
+};
+useGetUserUsername.prefetch = (
+  client: QueryClient,
+
+  /** The name that needs to be fetched. Use user1 for testing */
+  username: string,
+  options?: SwaggerTypescriptUseQueryOptions<User>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetUserUsername.info(
+    username,
+
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+
+/** Add a new pet to the store. */
+export const usePostPet = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    Pet,
+    { requestBody: Pet },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postPet(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Updates a pet in the store with form data. */
+export const usePostPetPetId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    Pet,
+    {
+      /** ID of pet that needs to be updated */
+      petId: number;
+      queryParams?: PostPetPetIdQueryParams;
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        petId,
+
+        queryParams,
+        configOverride,
+      } = _o || {};
+
+      return postPetPetId(
+        petId,
+
+        queryParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Uploads an image. */
+export const usePostPetPetIdUploadImage = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    ApiResponse,
+    {
+      /** ID of pet to update */
+      petId: number;
+      requestBody: string;
+      queryParams?: PostPetPetIdUploadImageQueryParams;
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { petId, requestBody, queryParams, configOverride } = _o || {};
+
+      return postPetPetIdUploadImage(
+        petId,
+        requestBody,
+        queryParams,
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Place an order for a pet. */
+export const usePostStoreOrder = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    Order,
+    { requestBody: Order },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postStoreOrder(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Create user. */
+export const usePostUser = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    User,
+    { requestBody: User },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postUser(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Creates list of users with given input array. */
+export const usePostUserCreateWithList = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    User,
+    { requestBody: User[] },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postUserCreateWithList(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Update an existing pet. */
+export const usePutPet = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    Pet,
+    { requestBody: Pet },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return putPet(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+/** Update user resource. */
+export const usePutUserUsername = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    any,
+    {
+      /** Name that need to be deleted */
+      username: string;
+      requestBody: User;
+    },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        username,
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return putUserUsername(
+        username,
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+",
+  "hooksConfig.ts": "//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+import type { SwaggerResponse } from \\"./config\\";
+
+type GetDataType<
+  T extends Array<SwaggerResponse<any>>,
+  K extends string = \\"data\\" | \\"list\\",
+> = T extends Array<SwaggerResponse<infer D>>
+  ? D extends {
+      [P in K]?: infer R1;
+    }
+    ? R1
+    : D extends Array<any>
+    ? D
+    : never
+  : never;
+
+const paginationFlattenData = <T extends Array<SwaggerResponse<any>>>(
+  pages?: T,
+): GetDataType<T> | undefined =>
+  pages?.flatMap((page) =>
+    Array.isArray(page.data)
+      ? page.data
+      : Array.isArray(page.data?.data)
+      ? page.data.data
+      : Array.isArray(page.data?.list)
+      ? page.data.list
+      : [],
+  ) as any;
+
+const getTotal = <T extends Array<SwaggerResponse<any>>>(
+  pages?: T,
+): number | undefined => {
+  return pages && pages[pages.length - 1]?.data?.total;
+};
+
+const getPageSize = (queryParams?: any): number | undefined => {
+  const pageSize = Object.entries(queryParams || {}).find(([key, _value]) => {
+    if (
+      key.toLowerCase() === \\"pagesize\\" ||
+      key.toLowerCase() === \\"pagenumber\\"
+    ) {
+      return true;
+    }
+    return false;
+  });
+
+  return (pageSize?.[1] || 10) as number;
+};
+
+export { paginationFlattenData, getTotal, getPageSize };
+",
+  "httpRequest.ts": "//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+import axios, { AxiosRequestConfig, CancelToken } from \\"axios\\";
+import { getAxiosInstance } from \\"./config\\";
+import type { Security, SwaggerResponse } from \\"./config\\";
+
+/**
+ * Cancellation handled here, you can cancel request by call promise.cancel()
+ *
+ * @example
+ *   const promise = getUsers();
+ *   setTimeout(() => promise.cancel(), 30000);
+ *   const { data } = await promise;
+ *
+ * @param getPromise
+ * @returns
+ */
+function cancellation<T>(
+  getPromise: (cancelToken: CancelToken) => Promise<T>,
+): Promise<T> {
+  const source = axios.CancelToken.source();
+  const promise = getPromise(source.token);
+  //@ts-ignore
+  promise.cancel = () => {
+    source.cancel(\\"request canceled\\");
+  };
+
+  return promise;
+}
+
+export const Http = {
+  getRequest(
+    url: string,
+    queryParams: any | undefined,
+    //@ts-ignore
+    _requestBody: undefined,
+    security: Security,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
+      getAxiosInstance(security).get(url, {
+        cancelToken,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
+  },
+  postRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    security: Security,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
+      getAxiosInstance(security).post(url, requestBody, {
+        cancelToken,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
+  },
+  putRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    security: Security,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
+      getAxiosInstance(security).put(url, requestBody, {
+        cancelToken,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
+  },
+  patchRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    security: Security,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
+      getAxiosInstance(security).patch(url, requestBody, {
+        cancelToken,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
+  },
+  deleteRequest(
+    url: string,
+    queryParams: any | undefined,
+    requestBody: any | undefined,
+    security: Security,
+    configOverride?: AxiosRequestConfig,
+  ): Promise<SwaggerResponse<any>> {
+    return cancellation((cancelToken) =>
+      getAxiosInstance(security).delete(url, {
+        data: requestBody,
+        cancelToken,
+        params: queryParams,
+        ...configOverride,
+      }),
+    );
+  },
+};
+",
+  "services.ts": "//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+import type { AxiosRequestConfig } from \\"axios\\";
+import type { SwaggerResponse } from \\"./config\\";
+import { Http } from \\"./httpRequest\\";
+//@ts-ignore
+import qs from \\"qs\\";
+import type {
+  GetPetFindByStatusQueryParams,
+  GetPetFindByTagsQueryParams,
+  PostPetPetIdQueryParams,
+  PostPetPetIdUploadImageQueryParams,
+  GetUserLoginQueryParams,
+  Order,
+  User,
+  Pet,
+  ApiResponse,
+} from \\"./types\\";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const __DEV__ = process.env.NODE_ENV !== \\"production\\";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function overrideConfig(
+  config?: AxiosRequestConfig,
+  configOverride?: AxiosRequestConfig,
+): AxiosRequestConfig {
+  return {
+    ...config,
+    ...configOverride,
+    headers: {
+      ...config?.headers,
+      ...configOverride?.headers,
+    },
+  };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function template(path: string, obj: { [x: string]: any } = {}) {
+  Object.keys(obj).forEach((key) => {
+    const re = new RegExp(\`{\${key}}\`, \\"i\\");
+    path = path.replace(re, obj[key]);
+  });
+
+  return path;
+}
+
+function isFormData(obj: any) {
+  // This checks for the append method which should exist on FormData instances
+  return (
+    (typeof obj === \\"object\\" &&
+      typeof obj.append === \\"function\\" &&
+      obj[Symbol.toStringTag] === undefined) ||
+    obj[Symbol.toStringTag] === \\"FormData\\"
+  );
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function objToForm(requestBody: object) {
+  if (isFormData(requestBody)) {
+    return requestBody;
+  }
+  const formData = new FormData();
+
+  Object.entries(requestBody).forEach(([key, value]) => {
+    value && formData.append(key, value);
+  });
+
+  return formData;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function objToUrlencoded(requestBody: object) {
+  return qs.stringify(requestBody);
+}
+
+/** Deletes a pet. */
+export const deletePetPetId = (
+  /** Pet id to delete */
+  petId: number,
+  headerParams?: { api_key: string },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.deleteRequest(
+    template(deletePetPetId.key, { petId }),
+    undefined,
+    undefined,
+    _CONSTANT1,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT3,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+deletePetPetId.key = \\"/pet/{petId}\\";
+
+/** Delete purchase order by identifier. */
+export const deleteStoreOrderOrderId = (
+  /** ID of the order that needs to be deleted */
+  orderId: number,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.deleteRequest(
+    template(deleteStoreOrderOrderId.key, { orderId }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteStoreOrderOrderId.key = \\"/store/order/{orderId}\\";
+
+/** Delete user resource. */
+export const deleteUserUsername = (
+  /** The name that needs to be deleted */
+  username: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.deleteRequest(
+    template(deleteUserUsername.key, { username }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteUserUsername.key = \\"/user/{username}\\";
+
+/** Finds Pets by status. */
+export const getPetFindByStatus = (
+  queryParams: GetPetFindByStatusQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Pet[]>> => {
+  return Http.getRequest(
+    getPetFindByStatus.key,
+    queryParams,
+    undefined,
+    _CONSTANT1,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getPetFindByStatus.key = \\"/pet/findByStatus\\";
+
+/** Finds Pets by tags. */
+export const getPetFindByTags = (
+  queryParams: GetPetFindByTagsQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Pet[]>> => {
+  return Http.getRequest(
+    getPetFindByTags.key,
+    queryParams,
+    undefined,
+    _CONSTANT1,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getPetFindByTags.key = \\"/pet/findByTags\\";
+
+/** Find pet by ID. */
+export const getPetPetId = (
+  /** ID of pet to return */
+  petId: number,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Pet>> => {
+  return Http.getRequest(
+    template(getPetPetId.key, { petId }),
+    undefined,
+    undefined,
+    _CONSTANT2,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getPetPetId.key = \\"/pet/{petId}\\";
+
+/** Returns pet inventories by status. */
+export const getStoreInventory = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<{ [x: string]: number }>> => {
+  return Http.getRequest(
+    getStoreInventory.key,
+    undefined,
+    undefined,
+    _CONSTANT5,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getStoreInventory.key = \\"/store/inventory\\";
+
+/** Find purchase order by ID. */
+export const getStoreOrderOrderId = (
+  /** ID of order that needs to be fetched */
+  orderId: number,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Order>> => {
+  return Http.getRequest(
+    template(getStoreOrderOrderId.key, { orderId }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getStoreOrderOrderId.key = \\"/store/order/{orderId}\\";
+
+/** Logs user into the system. */
+export const getUserLogin = (
+  queryParams?: GetUserLoginQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<string>> => {
+  return Http.getRequest(
+    getUserLogin.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT6, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getUserLogin.key = \\"/user/login\\";
+
+/** Logs out current logged in user session. */
+export const getUserLogout = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.getRequest(
+    getUserLogout.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getUserLogout.key = \\"/user/logout\\";
+
+/** Get user by user name. */
+export const getUserUsername = (
+  /** The name that needs to be fetched. Use user1 for testing */
+  username: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<User>> => {
+  return Http.getRequest(
+    template(getUserUsername.key, { username }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getUserUsername.key = \\"/user/{username}\\";
+
+/** Add a new pet to the store. */
+export const postPet = (
+  requestBody: Pet,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Pet>> => {
+  return Http.postRequest(
+    postPet.key,
+    undefined,
+    requestBody,
+    _CONSTANT1,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postPet.key = \\"/pet\\";
+
+/** Updates a pet in the store with form data. */
+export const postPetPetId = (
+  /** ID of pet that needs to be updated */
+  petId: number,
+  queryParams?: PostPetPetIdQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Pet>> => {
+  return Http.postRequest(
+    template(postPetPetId.key, { petId }),
+    queryParams,
+    undefined,
+    _CONSTANT1,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postPetPetId.key = \\"/pet/{petId}\\";
+
+/** Uploads an image. */
+export const postPetPetIdUploadImage = (
+  /** ID of pet to update */
+  petId: number,
+  requestBody: string,
+  queryParams?: PostPetPetIdUploadImageQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<ApiResponse>> => {
+  return Http.postRequest(
+    template(postPetPetIdUploadImage.key, { petId }),
+    queryParams,
+    requestBody,
+    _CONSTANT1,
+    overrideConfig(_CONSTANT4, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postPetPetIdUploadImage.key = \\"/pet/{petId}/uploadImage\\";
+
+/** Place an order for a pet. */
+export const postStoreOrder = (
+  requestBody: Order,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Order>> => {
+  return Http.postRequest(
+    postStoreOrder.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postStoreOrder.key = \\"/store/order\\";
+
+/** Create user. */
+export const postUser = (
+  requestBody: User,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<User>> => {
+  return Http.postRequest(
+    postUser.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postUser.key = \\"/user\\";
+
+/** Creates list of users with given input array. */
+export const postUserCreateWithList = (
+  requestBody: User[],
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<User>> => {
+  return Http.postRequest(
+    postUserCreateWithList.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postUserCreateWithList.key = \\"/user/createWithList\\";
+
+/** Update an existing pet. */
+export const putPet = (
+  requestBody: Pet,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<Pet>> => {
+  return Http.putRequest(
+    putPet.key,
+    undefined,
+    requestBody,
+    _CONSTANT1,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putPet.key = \\"/pet\\";
+
+/** Update user resource. */
+export const putUserUsername = (
+  /** Name that need to be deleted */
+  username: string,
+  requestBody: User,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
+  return Http.putRequest(
+    template(putUserUsername.key, { username }),
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putUserUsername.key = \\"/user/{username}\\";
+export const _CONSTANT0 = {
+  headers: {
+    \\"Content-Type\\": \\"application/json\\",
+    Accept: \\"application/json\\",
+  },
+};
+export const _CONSTANT1 = [{ petstore_auth: [\\"write:pets\\", \\"read:pets\\"] }];
+export const _CONSTANT2 = [
+  { api_key: [] },
+  { petstore_auth: [\\"write:pets\\", \\"read:pets\\"] },
+];
+export const _CONSTANT3 = {
+  \\"Content-Type\\": \\"application/json\\",
+  Accept: \\"application/json\\",
+};
+export const _CONSTANT4 = {
+  headers: {
+    \\"Content-Type\\": \\"application/octet-stream\\",
+    Accept: \\"application/json\\",
+  },
+};
+export const _CONSTANT5 = [{ api_key: [] }];
+export const _CONSTANT6 = {
+  headers: {
+    \\"Content-Type\\": \\"application/json\\",
+    Accept: \\"application/xml\\",
+  },
+};
+",
+  "types.ts": "//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+export interface ApiResponse {
+  /** - Format: int32 */
+  code?: number;
+  message?: string;
+  type?: string;
+}
+
+export interface Category {
+  /**
+   * - Format: int64
+   *
+   * @example
+   *   1;
+   */
+  id?: number;
+  /**
+   * @example
+   *   Dogs;
+   */
+  name?: string;
+}
+
+export interface GetPetFindByStatusQueryParams {
+  /** Status values that need to be considered for filter */
+  status: \\"available\\" | \\"pending\\" | \\"sold\\";
+}
+
+export interface GetPetFindByTagsQueryParams {
+  /** Tags to filter by */
+  tags: string[];
+}
+
+export interface GetUserLoginQueryParams {
+  /** The password for login in clear text */
+  password?: string;
+  /** The user name for login */
+  username?: string;
+}
+
+export interface Order {
+  complete?: boolean;
+  /**
+   * - Format: int64
+   *
+   * @example
+   *   10;
+   */
+  id?: number;
+  /**
+   * - Format: int64
+   *
+   * @example
+   *   198772;
+   */
+  petId?: number;
+  /**
+   * - Format: int32
+   *
+   * @example
+   *   7;
+   */
+  quantity?: number;
+  /** - Format: date-time */
+  shipDate?: string;
+  /**
+   * Order Status
+   *
+   * @example
+   *   approved;
+   */
+  status?: \\"placed\\" | \\"approved\\" | \\"delivered\\";
+}
+
+export interface Pet {
+  /**
+   * @example
+   *   doggie;
+   */
+  name: string;
+  photoUrls: string[];
+  category?: Category;
+  /**
+   * - Format: int64
+   *
+   * @example
+   *   10;
+   */
+  id?: number;
+  /** Pet status in the store */
+  status?: \\"available\\" | \\"pending\\" | \\"sold\\";
+  tags?: Tag[];
+}
+
+export interface PostPetPetIdQueryParams {
+  /** Name of pet that needs to be updated */
+  name?: string;
+  /** Status of pet that needs to be updated */
+  status?: string;
+}
+
+export interface PostPetPetIdUploadImageQueryParams {
+  /** Additional Metadata */
+  additionalMetadata?: string;
+}
+
+/** Pet object that needs to be added to the store */
+
+export type RequestBodyPet = Pet;
+
+/** List of user object */
+
+export type RequestBodyUserArray = User[];
+
+export interface Tag {
+  /** - Format: int64 */
+  id?: number;
+  name?: string;
+}
+
+export interface User {
+  /**
+   * @example
+   *   john@email.com
+   */
+  email?: string;
+  /**
+   * @example
+   *   John;
+   */
+  firstName?: string;
+  /**
+   * - Format: int64
+   *
+   * @example
+   *   10;
+   */
+  id?: number;
+  /**
+   * @example
+   *   James;
+   */
+  lastName?: string;
+  /**
+   * @example
+   *   12345;
+   */
+  password?: string;
+  /**
+   * @example
+   *   12345;
+   */
+  phone?: string;
+  /**
+   * User Status
+   *
+   * - Format: int32
+   *
+   * @example
+   *   1;
+   */
+  userStatus?: number;
+  /**
+   * @example
+   *   theUser;
+   */
+  username?: string;
+}
+",
+}
+`;

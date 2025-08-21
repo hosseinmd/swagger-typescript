@@ -199,7 +199,7 @@ export const getBusinessUserConnectionConnectionId = (
  * Connection Id
  */
 connectionId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SubUserConnectionApiModel)>> => {
+): Promise<SwaggerResponse<(SubUserConnectionApiModel)>> => {
   
   return Http.getRequest(
     template(getBusinessUserConnectionConnectionId.key,{connectionId,}),
@@ -229,7 +229,7 @@ export const getBusinessUserConnectionConnectionIdActivity = (
  * Connection Id
  */
 connectionId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SubUserActivityApiModel)>> => {
+): Promise<SwaggerResponse<(SubUserActivityApiModel)>> => {
   
   return Http.getRequest(
     template(getBusinessUserConnectionConnectionIdActivity.key,{connectionId,}),
@@ -331,7 +331,7 @@ getEpayRequestAudiencesRecent.key = \\"/EpayRequest/audiences/recent\\";
 
 export const getEpayRequestCount = (
     queryParams?: GetEpayRequestCountQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
+): Promise<SwaggerResponse<(AggregationApiModel)>> => {
   
   return Http.getRequest(
     getEpayRequestCount.key,
@@ -359,7 +359,7 @@ export const getEpayRequestEpayId = (
  * EpayRequest's Id
  */
 epayId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (EpayRequestDetailApiModel)>> => {
+): Promise<SwaggerResponse<(EpayRequestDetailApiModel)>> => {
   
   return Http.getRequest(
     template(getEpayRequestEpayId.key,{epayId,}),
@@ -377,7 +377,7 @@ getEpayRequestEpayId.key = \\"/EpayRequest/{epayId}\\";
 
 export const getEpayRequestEpayTokenDetail = (
     epayToken: string,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (EpayRequestPublicInfoApiModel)>> => {
+): Promise<SwaggerResponse<(EpayRequestPublicInfoApiModel)>> => {
   
   return Http.getRequest(
     template(getEpayRequestEpayTokenDetail.key,{epayToken,}),
@@ -466,7 +466,7 @@ getEpayRequestForMe.key = \\"/EpayRequest/forMe\\";
 
 export const getEpayRequestForMeCount = (
     queryParams?: GetEpayRequestForMeCountQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
+): Promise<SwaggerResponse<(AggregationApiModel)>> => {
   
   return Http.getRequest(
     getEpayRequestForMeCount.key,
@@ -555,7 +555,7 @@ getEpayRequestReport.key = \\"/EpayRequest/report\\";
  */
 export const getEpayRequestUserWalletIdCommission = (
     userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
+): Promise<SwaggerResponse<(CommissionAmountApiModel)>> => {
   
   return Http.getRequest(
     template(getEpayRequestUserWalletIdCommission.key,{userWalletId,}),
@@ -673,7 +673,7 @@ getFileFileGuid.key = \\"/File/{fileGuid}\\";
 
 export const getGroupTransferCommission = (
     queryParams?: GetGroupTransferCommissionQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
+): Promise<SwaggerResponse<(CommissionAmountApiModel)>> => {
   
   return Http.getRequest(
     getGroupTransferCommission.key,
@@ -696,7 +696,7 @@ getGroupTransferCommission.key = \\"/GroupTransfer/commission\\";
  */
 export const getIntegration = (
     queryParams?: GetIntegrationQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (DriverInfoResult)>> => {
+): Promise<SwaggerResponse<(DriverInfoResult)>> => {
   
   return Http.getRequest(
     getIntegration.key,
@@ -833,7 +833,7 @@ getNotificationUnread.key = \\"/Notification/unread\\";
 
 export const getPluginPluginId = (
     pluginId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (PluginApiModel)>> => {
+): Promise<SwaggerResponse<(PluginApiModel)>> => {
   
   return Http.getRequest(
     template(getPluginPluginId.key,{pluginId,}),
@@ -861,7 +861,7 @@ export const getPosAccountNumber = (
  * Account Number
  */
 accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (PosLandingPageApiModel)>> => {
+): Promise<SwaggerResponse<(PosLandingPageApiModel)>> => {
   
   return Http.getRequest(
     template(getPosAccountNumber.key,{accountNumber,}),
@@ -890,7 +890,7 @@ export const getReceiptBankEpayTryId = (
  * EpayTry's id to get receipt for
  */
 epayTryId: string,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (BankReceiptApiModel)>> => {
+): Promise<SwaggerResponse<(BankReceiptApiModel)>> => {
   
   return Http.getRequest(
     template(getReceiptBankEpayTryId.key,{epayTryId,}),
@@ -921,7 +921,7 @@ export const getReceiptEpayToken = (
  * EpayRequest's token to get receipt for
  */
 epayToken: string,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (BankReceiptApiModel)>> => {
+): Promise<SwaggerResponse<(BankReceiptApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -956,7 +956,7 @@ export const getReceiptWalletEpayToken = (
  * EpayRequest's token to get receipt for
  */
 epayToken: string,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (WalletReceiptApiModel)>> => {
+): Promise<SwaggerResponse<(WalletReceiptApiModel)>> => {
   
   return Http.getRequest(
     template(getReceiptWalletEpayToken.key,{epayToken,}),
@@ -980,7 +980,7 @@ getReceiptWalletEpayToken.key = \\"/Receipt/wallet/{epayToken}\\";
  */
 export const getResellerUser = (
     configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (ResellerApiModel)>> => {
+): Promise<SwaggerResponse<(ResellerApiModel)>> => {
   
   return Http.getRequest(
     getResellerUser.key,
@@ -1036,7 +1036,7 @@ getResellerUserDashboardCommissionReport.key = \\"/ResellerUser/dashboard/commis
  */
 export const getResellerUserDashboardCommissionSum = (
     queryParams?: GetResellerUserDashboardCommissionSumQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
+): Promise<SwaggerResponse<(AggregationApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -1067,7 +1067,7 @@ getResellerUserDashboardCommissionSum.key = \\"/ResellerUser/dashboard/commissio
  */
 export const getResellerUserDashboardIntroducedCount = (
     queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
+): Promise<SwaggerResponse<(AggregationApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -1129,7 +1129,7 @@ getResellerUserDashboardIntroducedReport.key = \\"/ResellerUser/dashboard/introd
  */
 export const getResellerUserDashboardLinksCount = (
     queryParams?: GetResellerUserDashboardLinksCountQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
+): Promise<SwaggerResponse<(AggregationApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -1160,7 +1160,7 @@ getResellerUserDashboardLinksCount.key = \\"/ResellerUser/dashboard/links/count\
  */
 export const getResellerUserDashboardLinksPaidCount = (
     queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
+): Promise<SwaggerResponse<(AggregationApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -1253,7 +1253,7 @@ getResellerUserDashboardLinksReport.key = \\"/ResellerUser/dashboard/links/repor
  */
 export const getResellerUserDashboardTransactionsCount = (
     queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (AggregationApiModel)>> => {
+): Promise<SwaggerResponse<(AggregationApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -1338,7 +1338,7 @@ getResellerUserIntroduced.key = \\"/ResellerUser/introduced\\";
  */
 export const getResellerUserIntroducedFilterData = (
     configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (ReselledUserFilterData)>> => {
+): Promise<SwaggerResponse<(ReselledUserFilterData)>> => {
   
   return Http.getRequest(
     getResellerUserIntroducedFilterData.key,
@@ -1362,7 +1362,7 @@ getResellerUserIntroducedFilterData.key = \\"/ResellerUser/introduced/filterData
  */
 export const getResellerUserIntroducedUserIdActivity = (
     userId: string,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (ReselledUserActivityApiModel)>> => {
+): Promise<SwaggerResponse<(ReselledUserActivityApiModel)>> => {
   
   return Http.getRequest(
     template(getResellerUserIntroducedUserIdActivity.key,{userId,}),
@@ -1386,7 +1386,7 @@ getResellerUserIntroducedUserIdActivity.key = \\"/ResellerUser/introduced/{userI
  */
 export const getSubDomain = (
     configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SubDomainApiModel)>> => {
+): Promise<SwaggerResponse<(SubDomainApiModel)>> => {
   
   return Http.getRequest(
     getSubDomain.key,
@@ -1420,7 +1420,7 @@ subDomainAddress: string,headerParams?: {
  * - Format: guid
  */
 \\"clientId\\": string;},configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SubDomainApiModel)>> => {
+): Promise<SwaggerResponse<(SubDomainApiModel)>> => {
   
   return Http.getRequest(
     template(getSubDomainSubDomainAddress.key,{subDomainAddress,}),
@@ -1449,7 +1449,7 @@ getSubDomainSubDomainAddress.key = \\"/SubDomain/{subDomainAddress}\\";
  */
 export const getSubUserAccountUserWalletId = (
     userWalletId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SubUserAccountDetailQuery)>> => {
+): Promise<SwaggerResponse<(SubUserAccountDetailQuery)>> => {
   
   return Http.getRequest(
     template(getSubUserAccountUserWalletId.key,{userWalletId,}),
@@ -1567,7 +1567,7 @@ getTransactionReport.key = \\"/Transaction/report\\";
  */
 export const getTransactionReportAll = (
     queryParams?: GetTransactionReportAllQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (AllTransactionsReportApiModel)>> => {
+): Promise<SwaggerResponse<(AllTransactionsReportApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -1597,7 +1597,7 @@ getTransactionReportAll.key = \\"/Transaction/report/all\\";
  */
 export const getTransactionTransactionId = (
     transactionId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (TransactionApiModel)>> => {
+): Promise<SwaggerResponse<(TransactionApiModel)>> => {
   
   return Http.getRequest(
     template(getTransactionTransactionId.key,{transactionId,}),
@@ -1638,7 +1638,7 @@ getTransferRecent.key = \\"/Transfer/recent\\";
 
 export const getTransferSearch = (
     queryParams?: GetTransferSearchQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (AccountInfoApiModel)>> => {
+): Promise<SwaggerResponse<(AccountInfoApiModel)>> => {
   
   return Http.getRequest(
     getTransferSearch.key,
@@ -1661,7 +1661,7 @@ getTransferSearch.key = \\"/Transfer/search\\";
  */
 export const getTransferUserWalletIdCommission = (
     userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
+): Promise<SwaggerResponse<(CommissionAmountApiModel)>> => {
   
   return Http.getRequest(
     template(getTransferUserWalletIdCommission.key,{userWalletId,}),
@@ -1684,7 +1684,7 @@ getTransferUserWalletIdCommission.key = \\"/Transfer/{userWalletId}/commission\\
  */
 export const getUser = (
     configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (UserDetailQuery)>> => {
+): Promise<SwaggerResponse<(UserDetailQuery)>> => {
   
   return Http.getRequest(
     getUser.key,
@@ -1761,7 +1761,7 @@ export const getUserBankUserBankId = (
  * User bank id
  */
 userBankId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (UserBankDetailApiModel)>> => {
+): Promise<SwaggerResponse<(UserBankDetailApiModel)>> => {
   
   return Http.getRequest(
     template(getUserBankUserBankId.key,{userBankId,}),
@@ -1802,7 +1802,7 @@ getUserConnection.key = \\"/User/connection\\";
 
 export const getUserContactInput = (
     input: string,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (ContactApiModel)>> => {
+): Promise<SwaggerResponse<(ContactApiModel)>> => {
   
   return Http.getRequest(
     template(getUserContactInput.key,{input,}),
@@ -1825,7 +1825,7 @@ getUserContactInput.key = \\"/User/contact/{input}\\";
  */
 export const getUserIdentityRequest = (
     configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (UserIdentityRequestQuery)>> => {
+): Promise<SwaggerResponse<(UserIdentityRequestQuery)>> => {
   
   return Http.getRequest(
     getUserIdentityRequest.key,
@@ -1871,7 +1871,7 @@ getUserInvitation.key = \\"/User/invitation\\";
  */
 export const getUserInvitationInvitationToken = (
     invitationToken: string,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SubUserInvitationApiModel)>> => {
+): Promise<SwaggerResponse<(SubUserInvitationApiModel)>> => {
   
   return Http.getRequest(
     template(getUserInvitationInvitationToken.key,{invitationToken,}),
@@ -1894,7 +1894,7 @@ getUserInvitationInvitationToken.key = \\"/User/invitation/{invitationToken}\\";
  */
 export const getUserMe = (
     configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (UserMeQuery)>> => {
+): Promise<SwaggerResponse<(UserMeQuery)>> => {
   
   return Http.getRequest(
     getUserMe.key,
@@ -1935,7 +1935,7 @@ getUserPlugin.key = \\"/UserPlugin\\";
  */
 export const getUserUpgradeToBusinessRequest = (
     configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (UpgradeToBusinessApiModel)>> => {
+): Promise<SwaggerResponse<(UpgradeToBusinessApiModel)>> => {
   
   return Http.getRequest(
     getUserUpgradeToBusinessRequest.key,
@@ -1993,7 +1993,7 @@ getUserWalletAccountNumberQrcode.key = \\"/UserWallet/{accountNumber}/qrcode\\";
  */
 export const getUserWalletSearch = (
     queryParams?: GetUserWalletSearchQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (AccountInfoApiModel)>> => {
+): Promise<SwaggerResponse<(AccountInfoApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -2017,7 +2017,7 @@ getUserWalletSearch.key = \\"/UserWallet/search\\";
 
 export const getUserWalletUserWalletId = (
     userWalletId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (WalletDetailApiModel)>> => {
+): Promise<SwaggerResponse<(WalletDetailApiModel)>> => {
   
   return Http.getRequest(
     template(getUserWalletUserWalletId.key,{userWalletId,}),
@@ -2040,7 +2040,7 @@ getUserWalletUserWalletId.key = \\"/UserWallet/{userWalletId}\\";
  */
 export const getUserWalletUserWalletIdBalance = (
     userWalletId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (AccountBalanceApiModel)>> => {
+): Promise<SwaggerResponse<(AccountBalanceApiModel)>> => {
   
   return Http.getRequest(
     template(getUserWalletUserWalletIdBalance.key,{userWalletId,}),
@@ -2062,7 +2062,7 @@ getUserWalletUserWalletIdBalance.key = \\"/UserWallet/{userWalletId}/balance\\";
  */
 export const getUserWalletUserWalletIdEpayRequestComission = (
     userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
+): Promise<SwaggerResponse<(CommissionAmountApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -2104,7 +2104,7 @@ getUserWalletUserWalletIdPermittedsubusers.key = \\"/UserWallet/{userWalletId}/p
 
 export const getUserWalletUserWalletIdSettlementRequestComission = (
     userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
+): Promise<SwaggerResponse<(CommissionAmountApiModel)>> => {
   
   return Http.getRequest(
     template(getUserWalletUserWalletIdSettlementRequestComission.key,{userWalletId,}),
@@ -2126,7 +2126,7 @@ getUserWalletUserWalletIdSettlementRequestComission.key = \\"/UserWallet/{userWa
  */
 export const getUserWalletUserWalletIdTransferMoneyCommission = (
     userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (CommissionAmountApiModel)>> => {
+): Promise<SwaggerResponse<(CommissionAmountApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -2510,7 +2510,7 @@ export const useGetBusinessUserConnectionConnectionId = (
  * 
  * Connection Id
  */
-connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserConnectionApiModel)>,configOverride?:AxiosRequestConfig
+connectionId: number,options?:SwaggerTypescriptUseQueryOptions<(SubUserConnectionApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetBusinessUserConnectionConnectionId.info( connectionId,
           
@@ -2551,7 +2551,7 @@ connectionId: number,configOverride?:AxiosRequestConfig) => {
  * 
  * Connection Id
  */
-connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserConnectionApiModel)>,configOverride?:AxiosRequestConfig) => {
+connectionId: number,options?:SwaggerTypescriptUseQueryOptions<(SubUserConnectionApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetBusinessUserConnectionConnectionId.info( connectionId,
           
           
@@ -2580,7 +2580,7 @@ export const useGetBusinessUserConnectionConnectionIdActivity = (
  * 
  * Connection Id
  */
-connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivityApiModel)>,configOverride?:AxiosRequestConfig
+connectionId: number,options?:SwaggerTypescriptUseQueryOptions<(SubUserActivityApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetBusinessUserConnectionConnectionIdActivity.info( connectionId,
           
@@ -2621,7 +2621,7 @@ connectionId: number,configOverride?:AxiosRequestConfig) => {
  * 
  * Connection Id
  */
-connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserActivityApiModel)>,configOverride?:AxiosRequestConfig) => {
+connectionId: number,options?:SwaggerTypescriptUseQueryOptions<(SubUserActivityApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetBusinessUserConnectionConnectionIdActivity.info( connectionId,
           
           
@@ -2852,7 +2852,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
                   );
               }
       export const useGetEpayRequestCount = (
-           queryParams?: GetEpayRequestCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetEpayRequestCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestCount.info( 
           
@@ -2883,7 +2883,7 @@ connectionId: number,options?:SwaggerTypescriptUseQueryOptions<SubUserPermission
               };
             };useGetEpayRequestCount.prefetch = (
             client: QueryClient,
-            queryParams?: GetEpayRequestCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetEpayRequestCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestCount.info( 
           
           queryParams,
@@ -2910,7 +2910,7 @@ export const useGetEpayRequestEpayId = (
  * 
  * EpayRequest's Id
  */
-epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailApiModel)>,configOverride?:AxiosRequestConfig
+epayId: number,options?:SwaggerTypescriptUseQueryOptions<(EpayRequestDetailApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestEpayId.info( epayId,
           
@@ -2951,7 +2951,7 @@ epayId: number,configOverride?:AxiosRequestConfig) => {
  * 
  * EpayRequest's Id
  */
-epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
+epayId: number,options?:SwaggerTypescriptUseQueryOptions<(EpayRequestDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestEpayId.info( epayId,
           
           
@@ -2968,7 +2968,7 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
                   );
               }
       export const useGetEpayRequestEpayTokenDetail = (
-           epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestPublicInfoApiModel)>,configOverride?:AxiosRequestConfig
+           epayToken: string,options?:SwaggerTypescriptUseQueryOptions<(EpayRequestPublicInfoApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestEpayTokenDetail.info( epayToken,
           
@@ -2999,7 +2999,7 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
               };
             };useGetEpayRequestEpayTokenDetail.prefetch = (
             client: QueryClient,
-            epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestPublicInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
+            epayToken: string,options?:SwaggerTypescriptUseQueryOptions<(EpayRequestPublicInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestEpayTokenDetail.info( epayToken,
           
           
@@ -3187,7 +3187,7 @@ export const useGetEpayRequestForMe = (
                   );
               }
       export const useGetEpayRequestForMeCount = (
-           queryParams?: GetEpayRequestForMeCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetEpayRequestForMeCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestForMeCount.info( 
           
@@ -3218,7 +3218,7 @@ export const useGetEpayRequestForMe = (
               };
             };useGetEpayRequestForMeCount.prefetch = (
             client: QueryClient,
-            queryParams?: GetEpayRequestForMeCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetEpayRequestForMeCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestForMeCount.info( 
           
           queryParams,
@@ -3390,7 +3390,7 @@ export const useGetEpayRequestPosQrAccountNumber = (
  * Get comission amount for epay request amount
  */
 export const useGetEpayRequestUserWalletIdCommission = (
-           userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestUserWalletIdCommission.info( userWalletId,
           
@@ -3421,7 +3421,7 @@ export const useGetEpayRequestUserWalletIdCommission = (
               };
             };useGetEpayRequestUserWalletIdCommission.prefetch = (
             client: QueryClient,
-            userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,queryParams?: GetEpayRequestUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestUserWalletIdCommission.info( userWalletId,
           
           queryParams,
@@ -3698,7 +3698,7 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
                   );
               }
       export const useGetGroupTransferCommission = (
-           queryParams?: GetGroupTransferCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetGroupTransferCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetGroupTransferCommission.info( 
           
@@ -3729,7 +3729,7 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
               };
             };useGetGroupTransferCommission.prefetch = (
             client: QueryClient,
-            queryParams?: GetGroupTransferCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetGroupTransferCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetGroupTransferCommission.info( 
           
           queryParams,
@@ -3751,7 +3751,7 @@ fileGuid: string,options?:SwaggerTypescriptUseQueryOptions<string>,configOverrid
  * Get detailed driver,taxi and fair amount information
  */
 export const useGetIntegration = (
-           queryParams?: GetIntegrationQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (DriverInfoResult)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetIntegrationQueryParams,options?:SwaggerTypescriptUseQueryOptions<(DriverInfoResult)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetIntegration.info( 
           
@@ -3782,7 +3782,7 @@ export const useGetIntegration = (
               };
             };useGetIntegration.prefetch = (
             client: QueryClient,
-            queryParams?: GetIntegrationQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (DriverInfoResult)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetIntegrationQueryParams,options?:SwaggerTypescriptUseQueryOptions<(DriverInfoResult)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetIntegration.info( 
           
           queryParams,
@@ -4098,7 +4098,7 @@ export const useGetNotificationNotif = (
                   );
               }
       export const useGetPluginPluginId = (
-           pluginId: number,options?:SwaggerTypescriptUseQueryOptions< & (PluginApiModel)>,configOverride?:AxiosRequestConfig
+           pluginId: number,options?:SwaggerTypescriptUseQueryOptions<(PluginApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetPluginPluginId.info( pluginId,
           
@@ -4129,7 +4129,7 @@ export const useGetNotificationNotif = (
               };
             };useGetPluginPluginId.prefetch = (
             client: QueryClient,
-            pluginId: number,options?:SwaggerTypescriptUseQueryOptions< & (PluginApiModel)>,configOverride?:AxiosRequestConfig) => {
+            pluginId: number,options?:SwaggerTypescriptUseQueryOptions<(PluginApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetPluginPluginId.info( pluginId,
           
           
@@ -4156,7 +4156,7 @@ export const useGetPosAccountNumber = (
  * 
  * Account Number
  */
-accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (PosLandingPageApiModel)>,configOverride?:AxiosRequestConfig
+accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:SwaggerTypescriptUseQueryOptions<(PosLandingPageApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetPosAccountNumber.info( accountNumber,
           
@@ -4197,7 +4197,7 @@ accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,configOverrid
  * 
  * Account Number
  */
-accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (PosLandingPageApiModel)>,configOverride?:AxiosRequestConfig) => {
+accountNumber: string,queryParams?: GetPosAccountNumberQueryParams,options?:SwaggerTypescriptUseQueryOptions<(PosLandingPageApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetPosAccountNumber.info( accountNumber,
           
           queryParams,
@@ -4225,7 +4225,7 @@ export const useGetReceiptBankEpayTryId = (
  * 
  * EpayTry's id to get receipt for
  */
-epayTryId: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiModel)>,configOverride?:AxiosRequestConfig
+epayTryId: string,options?:SwaggerTypescriptUseQueryOptions<(BankReceiptApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetReceiptBankEpayTryId.info( epayTryId,
           
@@ -4266,7 +4266,7 @@ epayTryId: string,configOverride?:AxiosRequestConfig) => {
  * 
  * EpayTry's id to get receipt for
  */
-epayTryId: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
+epayTryId: string,options?:SwaggerTypescriptUseQueryOptions<(BankReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetReceiptBankEpayTryId.info( epayTryId,
           
           
@@ -4296,7 +4296,7 @@ export const useGetReceiptEpayToken = (
  * 
  * EpayRequest's token to get receipt for
  */
-epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiModel)>,configOverride?:AxiosRequestConfig
+epayToken: string,options?:SwaggerTypescriptUseQueryOptions<(BankReceiptApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetReceiptEpayToken.info( epayToken,
           
@@ -4337,7 +4337,7 @@ epayToken: string,configOverride?:AxiosRequestConfig) => {
  * 
  * EpayRequest's token to get receipt for
  */
-epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
+epayToken: string,options?:SwaggerTypescriptUseQueryOptions<(BankReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetReceiptEpayToken.info( epayToken,
           
           
@@ -4365,7 +4365,7 @@ export const useGetReceiptWalletEpayToken = (
  * 
  * EpayRequest's token to get receipt for
  */
-epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (WalletReceiptApiModel)>,configOverride?:AxiosRequestConfig
+epayToken: string,options?:SwaggerTypescriptUseQueryOptions<(WalletReceiptApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetReceiptWalletEpayToken.info( epayToken,
           
@@ -4406,7 +4406,7 @@ epayToken: string,configOverride?:AxiosRequestConfig) => {
  * 
  * EpayRequest's token to get receipt for
  */
-epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (WalletReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
+epayToken: string,options?:SwaggerTypescriptUseQueryOptions<(WalletReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetReceiptWalletEpayToken.info( epayToken,
           
           
@@ -4429,7 +4429,7 @@ epayToken: string,options?:SwaggerTypescriptUseQueryOptions< & (WalletReceiptApi
 [Feature just allowed for Resellers]
  */
 export const useGetResellerUser = (
-           options?:SwaggerTypescriptUseQueryOptions< & (ResellerApiModel)>,configOverride?:AxiosRequestConfig
+           options?:SwaggerTypescriptUseQueryOptions<(ResellerApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUser.info( 
           
@@ -4460,7 +4460,7 @@ export const useGetResellerUser = (
               };
             };useGetResellerUser.prefetch = (
             client: QueryClient,
-            options?:SwaggerTypescriptUseQueryOptions< & (ResellerApiModel)>,configOverride?:AxiosRequestConfig) => {
+            options?:SwaggerTypescriptUseQueryOptions<(ResellerApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUser.info( 
           
           
@@ -4539,7 +4539,7 @@ export const useGetResellerUserDashboardCommissionReport = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardCommissionSum = (
-           queryParams?: GetResellerUserDashboardCommissionSumQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardCommissionSumQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardCommissionSum.info( 
           
@@ -4570,7 +4570,7 @@ export const useGetResellerUserDashboardCommissionSum = (
               };
             };useGetResellerUserDashboardCommissionSum.prefetch = (
             client: QueryClient,
-            queryParams?: GetResellerUserDashboardCommissionSumQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardCommissionSumQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardCommissionSum.info( 
           
           queryParams,
@@ -4594,7 +4594,7 @@ export const useGetResellerUserDashboardCommissionSum = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardIntroducedCount = (
-           queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardIntroducedCount.info( 
           
@@ -4625,7 +4625,7 @@ export const useGetResellerUserDashboardIntroducedCount = (
               };
             };useGetResellerUserDashboardIntroducedCount.prefetch = (
             client: QueryClient,
-            queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardIntroducedCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardIntroducedCount.info( 
           
           queryParams,
@@ -4704,7 +4704,7 @@ export const useGetResellerUserDashboardIntroducedReport = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardLinksCount = (
-           queryParams?: GetResellerUserDashboardLinksCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardLinksCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardLinksCount.info( 
           
@@ -4735,7 +4735,7 @@ export const useGetResellerUserDashboardLinksCount = (
               };
             };useGetResellerUserDashboardLinksCount.prefetch = (
             client: QueryClient,
-            queryParams?: GetResellerUserDashboardLinksCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardLinksCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardLinksCount.info( 
           
           queryParams,
@@ -4759,7 +4759,7 @@ export const useGetResellerUserDashboardLinksCount = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardLinksPaidCount = (
-           queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardLinksPaidCount.info( 
           
@@ -4790,7 +4790,7 @@ export const useGetResellerUserDashboardLinksPaidCount = (
               };
             };useGetResellerUserDashboardLinksPaidCount.prefetch = (
             client: QueryClient,
-            queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardLinksPaidCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardLinksPaidCount.info( 
           
           queryParams,
@@ -4924,7 +4924,7 @@ export const useGetResellerUserDashboardLinksReport = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetResellerUserDashboardTransactionsCount = (
-           queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserDashboardTransactionsCount.info( 
           
@@ -4955,7 +4955,7 @@ export const useGetResellerUserDashboardTransactionsCount = (
               };
             };useGetResellerUserDashboardTransactionsCount.prefetch = (
             client: QueryClient,
-            queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetResellerUserDashboardTransactionsCountQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AggregationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserDashboardTransactionsCount.info( 
           
           queryParams,
@@ -5087,7 +5087,7 @@ export const useGetResellerUserIntroduced = (
 [Feature just allowed for Resellers]
  */
 export const useGetResellerUserIntroducedFilterData = (
-           options?:SwaggerTypescriptUseQueryOptions< & (ReselledUserFilterData)>,configOverride?:AxiosRequestConfig
+           options?:SwaggerTypescriptUseQueryOptions<(ReselledUserFilterData)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserIntroducedFilterData.info( 
           
@@ -5118,7 +5118,7 @@ export const useGetResellerUserIntroducedFilterData = (
               };
             };useGetResellerUserIntroducedFilterData.prefetch = (
             client: QueryClient,
-            options?:SwaggerTypescriptUseQueryOptions< & (ReselledUserFilterData)>,configOverride?:AxiosRequestConfig) => {
+            options?:SwaggerTypescriptUseQueryOptions<(ReselledUserFilterData)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserIntroducedFilterData.info( 
           
           
@@ -5141,7 +5141,7 @@ export const useGetResellerUserIntroducedFilterData = (
 [Feature just allowed for Resellers]
  */
 export const useGetResellerUserIntroducedUserIdActivity = (
-           userId: string,options?:SwaggerTypescriptUseQueryOptions< & (ReselledUserActivityApiModel)>,configOverride?:AxiosRequestConfig
+           userId: string,options?:SwaggerTypescriptUseQueryOptions<(ReselledUserActivityApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetResellerUserIntroducedUserIdActivity.info( userId,
           
@@ -5172,7 +5172,7 @@ export const useGetResellerUserIntroducedUserIdActivity = (
               };
             };useGetResellerUserIntroducedUserIdActivity.prefetch = (
             client: QueryClient,
-            userId: string,options?:SwaggerTypescriptUseQueryOptions< & (ReselledUserActivityApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userId: string,options?:SwaggerTypescriptUseQueryOptions<(ReselledUserActivityApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetResellerUserIntroducedUserIdActivity.info( userId,
           
           
@@ -5195,7 +5195,7 @@ export const useGetResellerUserIntroducedUserIdActivity = (
 [Feature just allowed for Resellers]
  */
 export const useGetSubDomain = (
-           options?:SwaggerTypescriptUseQueryOptions< & (SubDomainApiModel)>,configOverride?:AxiosRequestConfig
+           options?:SwaggerTypescriptUseQueryOptions<(SubDomainApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetSubDomain.info( 
           
@@ -5226,7 +5226,7 @@ export const useGetSubDomain = (
               };
             };useGetSubDomain.prefetch = (
             client: QueryClient,
-            options?:SwaggerTypescriptUseQueryOptions< & (SubDomainApiModel)>,configOverride?:AxiosRequestConfig) => {
+            options?:SwaggerTypescriptUseQueryOptions<(SubDomainApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetSubDomain.info( 
           
           
@@ -5259,7 +5259,7 @@ subDomainAddress: string,headerParams?: {
  * 
  * - Format: guid
  */
-\\"clientId\\": string;},options?:SwaggerTypescriptUseQueryOptions< & (SubDomainApiModel)>,configOverride?:AxiosRequestConfig
+\\"clientId\\": string;},options?:SwaggerTypescriptUseQueryOptions<(SubDomainApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetSubDomainSubDomainAddress.info( subDomainAddress,
           
@@ -5312,7 +5312,7 @@ subDomainAddress: string,headerParams?: {
  * 
  * - Format: guid
  */
-\\"clientId\\": string;},options?:SwaggerTypescriptUseQueryOptions< & (SubDomainApiModel)>,configOverride?:AxiosRequestConfig) => {
+\\"clientId\\": string;},options?:SwaggerTypescriptUseQueryOptions<(SubDomainApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetSubDomainSubDomainAddress.info( subDomainAddress,
           
           
@@ -5335,7 +5335,7 @@ subDomainAddress: string,headerParams?: {
 [Feature just allowed for SubUsers]
  */
 export const useGetSubUserAccountUserWalletId = (
-           userWalletId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserAccountDetailQuery)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<(SubUserAccountDetailQuery)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetSubUserAccountUserWalletId.info( userWalletId,
           
@@ -5366,7 +5366,7 @@ export const useGetSubUserAccountUserWalletId = (
               };
             };useGetSubUserAccountUserWalletId.prefetch = (
             client: QueryClient,
-            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserAccountDetailQuery)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<(SubUserAccountDetailQuery)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetSubUserAccountUserWalletId.info( userWalletId,
           
           
@@ -5591,7 +5591,7 @@ export const useGetTransactionReport = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetTransactionReportAll = (
-           queryParams?: GetTransactionReportAllQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AllTransactionsReportApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetTransactionReportAllQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AllTransactionsReportApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransactionReportAll.info( 
           
@@ -5622,7 +5622,7 @@ export const useGetTransactionReportAll = (
               };
             };useGetTransactionReportAll.prefetch = (
             client: QueryClient,
-            queryParams?: GetTransactionReportAllQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AllTransactionsReportApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetTransactionReportAllQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AllTransactionsReportApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransactionReportAll.info( 
           
           queryParams,
@@ -5645,7 +5645,7 @@ export const useGetTransactionReportAll = (
 [Needs secure login]
  */
 export const useGetTransactionTransactionId = (
-           transactionId: number,options?:SwaggerTypescriptUseQueryOptions< & (TransactionApiModel)>,configOverride?:AxiosRequestConfig
+           transactionId: number,options?:SwaggerTypescriptUseQueryOptions<(TransactionApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransactionTransactionId.info( transactionId,
           
@@ -5676,7 +5676,7 @@ export const useGetTransactionTransactionId = (
               };
             };useGetTransactionTransactionId.prefetch = (
             client: QueryClient,
-            transactionId: number,options?:SwaggerTypescriptUseQueryOptions< & (TransactionApiModel)>,configOverride?:AxiosRequestConfig) => {
+            transactionId: number,options?:SwaggerTypescriptUseQueryOptions<(TransactionApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransactionTransactionId.info( transactionId,
           
           
@@ -5746,7 +5746,7 @@ export const useGetTransferRecent = (
                   );
               }
       export const useGetTransferSearch = (
-           queryParams?: GetTransferSearchQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetTransferSearchQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AccountInfoApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransferSearch.info( 
           
@@ -5777,7 +5777,7 @@ export const useGetTransferRecent = (
               };
             };useGetTransferSearch.prefetch = (
             client: QueryClient,
-            queryParams?: GetTransferSearchQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetTransferSearchQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransferSearch.info( 
           
           queryParams,
@@ -5799,7 +5799,7 @@ export const useGetTransferRecent = (
  * Get commission amount for transfer money amount
  */
 export const useGetTransferUserWalletIdCommission = (
-           userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransferUserWalletIdCommission.info( userWalletId,
           
@@ -5830,7 +5830,7 @@ export const useGetTransferUserWalletIdCommission = (
               };
             };useGetTransferUserWalletIdCommission.prefetch = (
             client: QueryClient,
-            userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,queryParams?: GetTransferUserWalletIdCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransferUserWalletIdCommission.info( userWalletId,
           
           queryParams,
@@ -5852,7 +5852,7 @@ export const useGetTransferUserWalletIdCommission = (
  * Get [normal/sub/business] user profile detail
  */
 export const useGetUser = (
-           options?:SwaggerTypescriptUseQueryOptions< & (UserDetailQuery)>,configOverride?:AxiosRequestConfig
+           options?:SwaggerTypescriptUseQueryOptions<(UserDetailQuery)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUser.info( 
           
@@ -5883,7 +5883,7 @@ export const useGetUser = (
               };
             };useGetUser.prefetch = (
             client: QueryClient,
-            options?:SwaggerTypescriptUseQueryOptions< & (UserDetailQuery)>,configOverride?:AxiosRequestConfig) => {
+            options?:SwaggerTypescriptUseQueryOptions<(UserDetailQuery)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUser.info( 
           
           
@@ -6019,7 +6019,7 @@ export const useGetUserBankUserBankId = (
  * 
  * User bank id
  */
-userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailApiModel)>,configOverride?:AxiosRequestConfig
+userBankId: number,options?:SwaggerTypescriptUseQueryOptions<(UserBankDetailApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserBankUserBankId.info( userBankId,
           
@@ -6060,7 +6060,7 @@ userBankId: number,configOverride?:AxiosRequestConfig) => {
  * 
  * User bank id
  */
-userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
+userBankId: number,options?:SwaggerTypescriptUseQueryOptions<(UserBankDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserBankUserBankId.info( userBankId,
           
           
@@ -6130,7 +6130,7 @@ export const useGetUserConnection = (
                   );
               }
       export const useGetUserContactInput = (
-           input: string,options?:SwaggerTypescriptUseQueryOptions< & (ContactApiModel)>,configOverride?:AxiosRequestConfig
+           input: string,options?:SwaggerTypescriptUseQueryOptions<(ContactApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserContactInput.info( input,
           
@@ -6161,7 +6161,7 @@ export const useGetUserConnection = (
               };
             };useGetUserContactInput.prefetch = (
             client: QueryClient,
-            input: string,options?:SwaggerTypescriptUseQueryOptions< & (ContactApiModel)>,configOverride?:AxiosRequestConfig) => {
+            input: string,options?:SwaggerTypescriptUseQueryOptions<(ContactApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserContactInput.info( input,
           
           
@@ -6183,7 +6183,7 @@ export const useGetUserConnection = (
  * Get last national id verification request [Feature is not allowed for sub users]
  */
 export const useGetUserIdentityRequest = (
-           options?:SwaggerTypescriptUseQueryOptions< & (UserIdentityRequestQuery)>,configOverride?:AxiosRequestConfig
+           options?:SwaggerTypescriptUseQueryOptions<(UserIdentityRequestQuery)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserIdentityRequest.info( 
           
@@ -6214,7 +6214,7 @@ export const useGetUserIdentityRequest = (
               };
             };useGetUserIdentityRequest.prefetch = (
             client: QueryClient,
-            options?:SwaggerTypescriptUseQueryOptions< & (UserIdentityRequestQuery)>,configOverride?:AxiosRequestConfig) => {
+            options?:SwaggerTypescriptUseQueryOptions<(UserIdentityRequestQuery)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserIdentityRequest.info( 
           
           
@@ -6289,7 +6289,7 @@ export const useGetUserInvitation = (
  * Get business user invitations for me [Feature is not allowed for sub users]
  */
 export const useGetUserInvitationInvitationToken = (
-           invitationToken: string,options?:SwaggerTypescriptUseQueryOptions< & (SubUserInvitationApiModel)>,configOverride?:AxiosRequestConfig
+           invitationToken: string,options?:SwaggerTypescriptUseQueryOptions<(SubUserInvitationApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserInvitationInvitationToken.info( invitationToken,
           
@@ -6320,7 +6320,7 @@ export const useGetUserInvitationInvitationToken = (
               };
             };useGetUserInvitationInvitationToken.prefetch = (
             client: QueryClient,
-            invitationToken: string,options?:SwaggerTypescriptUseQueryOptions< & (SubUserInvitationApiModel)>,configOverride?:AxiosRequestConfig) => {
+            invitationToken: string,options?:SwaggerTypescriptUseQueryOptions<(SubUserInvitationApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserInvitationInvitationToken.info( invitationToken,
           
           
@@ -6342,7 +6342,7 @@ export const useGetUserInvitationInvitationToken = (
  * Get user profile summary
  */
 export const useGetUserMe = (
-           options?:SwaggerTypescriptUseQueryOptions< & (UserMeQuery)>,configOverride?:AxiosRequestConfig
+           options?:SwaggerTypescriptUseQueryOptions<(UserMeQuery)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserMe.info( 
           
@@ -6373,7 +6373,7 @@ export const useGetUserMe = (
               };
             };useGetUserMe.prefetch = (
             client: QueryClient,
-            options?:SwaggerTypescriptUseQueryOptions< & (UserMeQuery)>,configOverride?:AxiosRequestConfig) => {
+            options?:SwaggerTypescriptUseQueryOptions<(UserMeQuery)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserMe.info( 
           
           
@@ -6443,7 +6443,7 @@ export const useGetUserMe = (
  * Get Last Request for upgrade account to the business [Feature is allowed for normal users only]
  */
 export const useGetUserUpgradeToBusinessRequest = (
-           options?:SwaggerTypescriptUseQueryOptions< & (UpgradeToBusinessApiModel)>,configOverride?:AxiosRequestConfig
+           options?:SwaggerTypescriptUseQueryOptions<(UpgradeToBusinessApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserUpgradeToBusinessRequest.info( 
           
@@ -6474,7 +6474,7 @@ export const useGetUserUpgradeToBusinessRequest = (
               };
             };useGetUserUpgradeToBusinessRequest.prefetch = (
             client: QueryClient,
-            options?:SwaggerTypescriptUseQueryOptions< & (UpgradeToBusinessApiModel)>,configOverride?:AxiosRequestConfig) => {
+            options?:SwaggerTypescriptUseQueryOptions<(UpgradeToBusinessApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserUpgradeToBusinessRequest.info( 
           
           
@@ -6591,7 +6591,7 @@ export const useGetUserUpgradeToBusinessRequest = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetUserWalletSearch = (
-           queryParams?: GetUserWalletSearchQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig
+           queryParams?: GetUserWalletSearchQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AccountInfoApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletSearch.info( 
           
@@ -6622,7 +6622,7 @@ export const useGetUserWalletSearch = (
               };
             };useGetUserWalletSearch.prefetch = (
             client: QueryClient,
-            queryParams?: GetUserWalletSearchQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
+            queryParams?: GetUserWalletSearchQueryParams,options?:SwaggerTypescriptUseQueryOptions<(AccountInfoApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletSearch.info( 
           
           queryParams,
@@ -6639,7 +6639,7 @@ export const useGetUserWalletSearch = (
                   );
               }
       export const useGetUserWalletUserWalletId = (
-           userWalletId: number,options?:SwaggerTypescriptUseQueryOptions< & (WalletDetailApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<(WalletDetailApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletUserWalletId.info( userWalletId,
           
@@ -6670,7 +6670,7 @@ export const useGetUserWalletSearch = (
               };
             };useGetUserWalletUserWalletId.prefetch = (
             client: QueryClient,
-            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions< & (WalletDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<(WalletDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletUserWalletId.info( userWalletId,
           
           
@@ -6692,7 +6692,7 @@ export const useGetUserWalletSearch = (
  * Get user account balance
  */
 export const useGetUserWalletUserWalletIdBalance = (
-           userWalletId: number,options?:SwaggerTypescriptUseQueryOptions< & (AccountBalanceApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<(AccountBalanceApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletUserWalletIdBalance.info( userWalletId,
           
@@ -6723,7 +6723,7 @@ export const useGetUserWalletUserWalletIdBalance = (
               };
             };useGetUserWalletUserWalletIdBalance.prefetch = (
             client: QueryClient,
-            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions< & (AccountBalanceApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<(AccountBalanceApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletUserWalletIdBalance.info( userWalletId,
           
           
@@ -6744,7 +6744,7 @@ export const useGetUserWalletUserWalletIdBalance = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetUserWalletUserWalletIdEpayRequestComission = (
-           userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletUserWalletIdEpayRequestComission.info( userWalletId,
           
@@ -6775,7 +6775,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
               };
             };useGetUserWalletUserWalletIdEpayRequestComission.prefetch = (
             client: QueryClient,
-            userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdEpayRequestComissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletUserWalletIdEpayRequestComission.info( userWalletId,
           
           queryParams,
@@ -6840,7 +6840,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
                   );
               }
       export const useGetUserWalletUserWalletIdSettlementRequestComission = (
-           userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletUserWalletIdSettlementRequestComission.info( userWalletId,
           
@@ -6871,7 +6871,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
               };
             };useGetUserWalletUserWalletIdSettlementRequestComission.prefetch = (
             client: QueryClient,
-            userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletUserWalletIdSettlementRequestComission.info( userWalletId,
           
           queryParams,
@@ -6892,7 +6892,7 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
-           userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletUserWalletIdTransferMoneyCommission.info( userWalletId,
           
@@ -6923,7 +6923,7 @@ export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
               };
             };useGetUserWalletUserWalletIdTransferMoneyCommission.prefetch = (
             client: QueryClient,
-            userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions< & (CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,queryParams?: GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,options?:SwaggerTypescriptUseQueryOptions<(CommissionAmountApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletUserWalletIdTransferMoneyCommission.info( userWalletId,
           
           queryParams,
@@ -7044,7 +7044,7 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'ConnectionStatus' instead]
  * @deprecated Use 'ConnectionStatus' instead.
  */
-\\"subUserConnectionStatus\\":  & (SubUserConnectionStatus);
+\\"subUserConnectionStatus\\": (SubUserConnectionStatus);
 /**
  * 
  * - Format: guid
@@ -7135,7 +7135,7 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"subUserConnectionStatus\\":  & (SubUserConnectionStatus);\\"businessAvatarUrl\\"?: string;\\"businessName\\"?: string;\\"connectDate\\"?: string;
+\\"subUserConnectionStatus\\": (SubUserConnectionStatus);\\"businessAvatarUrl\\"?: string;\\"businessName\\"?: string;\\"connectDate\\"?: string;
 /**
  * 
  * - Format: date-time
@@ -7374,7 +7374,7 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'ContentType' instead]
  * @deprecated Use 'ContentType' instead.
  */
-\\"documentContentType\\":  & (DocumentContentType);
+\\"documentContentType\\": (DocumentContentType);
 /**
  * 
  * - Format: int64
@@ -7385,7 +7385,7 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'FileType' instead]
  * @deprecated Use 'FileType' instead.
  */
-\\"fileTypes\\":  & (FileTypes);
+\\"fileTypes\\": (FileTypes);
 /**
  * 
  * - Format: guid
@@ -7404,7 +7404,7 @@ exports[`only includes get methods generate type 1`] = `
 \\"fileUniqueId\\": string;}
         
         
-        export interface DriverInfoResult {\\"barcodType\\": number;\\"barcodTypeDescription\\"?: string;\\"customData\\"?:  & (TaxiInfoOutput);\\"firstName\\"?: string;
+        export interface DriverInfoResult {\\"barcodType\\": number;\\"barcodTypeDescription\\"?: string;\\"customData\\"?: (TaxiInfoOutput);\\"firstName\\"?: string;
 /**
  * 
  * - Format: int64
@@ -7445,7 +7445,7 @@ exports[`only includes get methods generate type 1`] = `
         export interface EditConnectionInfoInput {\\"position\\"?: string;}
         
         
-        export interface EditSubUserPermissionInput {\\"isEnabled\\"?: boolean;\\"subUserPermissionType\\"?:  & (SubUserPermissionType);}
+        export interface EditSubUserPermissionInput {\\"isEnabled\\"?: boolean;\\"subUserPermissionType\\"?: (SubUserPermissionType);}
         
         
         export enum EpayRequestActualState {Initiated=\\"Initiated\\",Paid=\\"Paid\\",Cancelled=\\"Cancelled\\",Expired=\\"Expired\\"}
@@ -7467,7 +7467,7 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"epayRequestStatus\\":  & (EpayRequestStatus);
+\\"epayRequestStatus\\": (EpayRequestStatus);
 /**
  * 
  * - Format: date-time
@@ -7537,7 +7537,7 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"epayRequestStatus\\":  & (EpayRequestStatus);
+\\"epayRequestStatus\\": (EpayRequestStatus);
 /**
  * 
  * - Format: date-time
@@ -7610,7 +7610,7 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"epayRequestStatus\\":  & (EpayRequestStatus);
+\\"epayRequestStatus\\": (EpayRequestStatus);
 /**
  * 
  * - Format: date-time
@@ -7793,7 +7793,7 @@ exports[`only includes get methods generate type 1`] = `
  * defaults to 0
  * - Format: int32
  */
-\\"skip\\"?: number;\\"states\\"?:  & (SubUserConnectionStatus)[];\\"subUserConnectionStatus\\"?: \\"Pending\\" | \\"Rejected\\" | \\"Connected\\" | \\"Disconnected\\" | \\"Deleted\\";
+\\"skip\\"?: number;\\"states\\"?: (SubUserConnectionStatus)[];\\"subUserConnectionStatus\\"?: \\"Pending\\" | \\"Rejected\\" | \\"Connected\\" | \\"Disconnected\\" | \\"Deleted\\";
 /**
  * 
  * defaults to 10
@@ -7871,7 +7871,7 @@ exports[`only includes get methods generate type 1`] = `
  * 
  * - Format: date-time
  */
-\\"startDate\\"?: string;\\"states\\"?:  & (EpayRequestActualState)[];
+\\"startDate\\"?: string;\\"states\\"?: (EpayRequestActualState)[];
 /**
  * 
  * - Format: int64
@@ -7938,7 +7938,7 @@ exports[`only includes get methods generate type 1`] = `
  * defaults to 0
  * - Format: int32
  */
-\\"skip\\"?: number;\\"startDate\\"?: string;\\"states\\"?:  & (EpayRequestActualState)[];
+\\"skip\\"?: number;\\"startDate\\"?: string;\\"states\\"?: (EpayRequestActualState)[];
 /**
  * 
  * defaults to 10
@@ -8029,7 +8029,7 @@ exports[`only includes get methods generate type 1`] = `
  * 
  * - Format: date-time
  */
-\\"startDate\\"?: string;\\"states\\"?:  & (EpayRequestActualState)[];
+\\"startDate\\"?: string;\\"states\\"?: (EpayRequestActualState)[];
 /**
  * 
  * defaults to 10
@@ -8694,7 +8694,7 @@ exports[`only includes get methods generate type 1`] = `
  * 
  * - Format: date-time
  */
-\\"endDate\\"?: string;\\"logicalActions\\"?:  & (LogicalActionType)[];\\"operationType\\"?: \\"Unknown\\" | \\"Normal\\" | \\"System\\" | \\"DomainCommission\\" | \\"ResellerCommission\\" | \\"Block\\" | \\"Unblock\\" | \\"Refund\\" | \\"NoCommissionRemainGift\\" | \\"RemainGift\\" | \\"DomainBankBatchTransfer\\" | \\"SettlementBatchTransferItem\\" | \\"Synchronization\\" | \\"BlockchainWithdrawInternalTransfer\\" | \\"BlockchainWithdrawUserWallet\\" | \\"BlockchainIncomingTransaction\\" | \\"BlockchainWithdrawUserWalletOffchain\\" | \\"BlockchainFee\\";\\"operationTypes\\"?:  & (TransactionOperationType)[];
+\\"endDate\\"?: string;\\"logicalActions\\"?: (LogicalActionType)[];\\"operationType\\"?: \\"Unknown\\" | \\"Normal\\" | \\"System\\" | \\"DomainCommission\\" | \\"ResellerCommission\\" | \\"Block\\" | \\"Unblock\\" | \\"Refund\\" | \\"NoCommissionRemainGift\\" | \\"RemainGift\\" | \\"DomainBankBatchTransfer\\" | \\"SettlementBatchTransferItem\\" | \\"Synchronization\\" | \\"BlockchainWithdrawInternalTransfer\\" | \\"BlockchainWithdrawUserWallet\\" | \\"BlockchainIncomingTransaction\\" | \\"BlockchainWithdrawUserWalletOffchain\\" | \\"BlockchainFee\\";\\"operationTypes\\"?: (TransactionOperationType)[];
 /**
  * 
  * - Format: int32
@@ -8710,12 +8710,12 @@ exports[`only includes get methods generate type 1`] = `
  * defaults to 10
  * - Format: int32
  */
-\\"take\\"?: number;\\"transactionType\\"?: \\"Debt\\" | \\"Credit\\";\\"transactionTypes\\"?:  & (TransactionType)[];
+\\"take\\"?: number;\\"transactionType\\"?: \\"Debt\\" | \\"Credit\\";\\"transactionTypes\\"?: (TransactionType)[];
 /**
  * 
  * - Format: int64
  */
-\\"userWalletId\\"?: number;\\"voucherTypes\\"?:  & (VoucherOperationType)[];}
+\\"userWalletId\\"?: number;\\"voucherTypes\\"?: (VoucherOperationType)[];}
         
         
         export interface GetTransactionQueryParams {
@@ -8739,7 +8739,7 @@ exports[`only includes get methods generate type 1`] = `
  * deprecated. use 'take' instead.
  * - Format: int32
  */
-\\"limit\\"?: number;\\"logicalActions\\"?:  & (LogicalActionType)[];\\"operationType\\"?: \\"Unknown\\" | \\"Normal\\" | \\"System\\" | \\"DomainCommission\\" | \\"ResellerCommission\\" | \\"Block\\" | \\"Unblock\\" | \\"Refund\\" | \\"NoCommissionRemainGift\\" | \\"RemainGift\\" | \\"DomainBankBatchTransfer\\" | \\"SettlementBatchTransferItem\\" | \\"Synchronization\\" | \\"BlockchainWithdrawInternalTransfer\\" | \\"BlockchainWithdrawUserWallet\\" | \\"BlockchainIncomingTransaction\\" | \\"BlockchainWithdrawUserWalletOffchain\\" | \\"BlockchainFee\\";\\"operationTypes\\"?:  & (TransactionOperationType)[];
+\\"limit\\"?: number;\\"logicalActions\\"?: (LogicalActionType)[];\\"operationType\\"?: \\"Unknown\\" | \\"Normal\\" | \\"System\\" | \\"DomainCommission\\" | \\"ResellerCommission\\" | \\"Block\\" | \\"Unblock\\" | \\"Refund\\" | \\"NoCommissionRemainGift\\" | \\"RemainGift\\" | \\"DomainBankBatchTransfer\\" | \\"SettlementBatchTransferItem\\" | \\"Synchronization\\" | \\"BlockchainWithdrawInternalTransfer\\" | \\"BlockchainWithdrawUserWallet\\" | \\"BlockchainIncomingTransaction\\" | \\"BlockchainWithdrawUserWalletOffchain\\" | \\"BlockchainFee\\";\\"operationTypes\\"?: (TransactionOperationType)[];
 /**
  * 
  * - Format: int32
@@ -8755,12 +8755,12 @@ exports[`only includes get methods generate type 1`] = `
  * defaults to 10
  * - Format: int32
  */
-\\"take\\"?: number;\\"transactionType\\"?: \\"Debt\\" | \\"Credit\\";\\"transactionTypes\\"?:  & (TransactionType)[];
+\\"take\\"?: number;\\"transactionType\\"?: \\"Debt\\" | \\"Credit\\";\\"transactionTypes\\"?: (TransactionType)[];
 /**
  * 
  * - Format: int64
  */
-\\"userWalletId\\"?: number;\\"voucherTypes\\"?:  & (VoucherOperationType)[];}
+\\"userWalletId\\"?: number;\\"voucherTypes\\"?: (VoucherOperationType)[];}
         
         
         export interface GetTransactionReportAllQueryParams {
@@ -9088,7 +9088,7 @@ exports[`only includes get methods generate type 1`] = `
  * 
  * - Format: date-time
  */
-\\"start\\": string;\\"datePart\\"?:  & (DatePart);\\"kpiName\\"?: string;\\"targetIds\\"?: string[];\\"values\\"?: KpiResultValue[];}
+\\"start\\": string;\\"datePart\\"?: (DatePart);\\"kpiName\\"?: string;\\"targetIds\\"?: string[];\\"values\\"?: KpiResultValue[];}
         
         
         export interface KpiResultValue {
@@ -9159,7 +9159,7 @@ exports[`only includes get methods generate type 1`] = `
  * 
  * نوع ارجاع در هنگام ایجاد درخواست
  */
-\\"callbackType\\":  & (CallbackType);
+\\"callbackType\\": (CallbackType);
 /**
  * 
  * تاریخ انتقضا لینک ایجاد شده
@@ -9298,7 +9298,7 @@ exports[`only includes get methods generate type 1`] = `
  * 
  * - Format: decimal
  */
-\\"amount\\": number;\\"callBackUrl\\"?: string;\\"callbackType\\"?:  & (CallbackType);\\"description\\"?: string;
+\\"amount\\": number;\\"callBackUrl\\"?: string;\\"callbackType\\"?: (CallbackType);\\"description\\"?: string;
 /**
  * 
  * - Format: guid
@@ -9433,7 +9433,7 @@ exports[`only includes get methods generate type 1`] = `
 \\"userId\\": string;\\"userStatus\\": UserStatus;\\"displayName\\"?: string;\\"identityStatusDisplay\\"?: string;\\"imageUrl\\"?: string;\\"ipgStatusDisplay\\"?: string;\\"lastActivityDate\\"?: string;\\"phoneNumber\\"?: string;\\"registerDate\\"?: string;}
         
         
-        export interface ReselledUserFilterData {\\"identityStatuses\\"?:  & (DropDownResultOfIdentityStatus);}
+        export interface ReselledUserFilterData {\\"identityStatuses\\"?: (DropDownResultOfIdentityStatus);}
         
         
         export interface ResellerApiModel {
@@ -9496,7 +9496,7 @@ exports[`only includes get methods generate type 1`] = `
 \\"introducerCode\\"?: number;\\"lastName\\"?: string;\\"password\\"?: string;}
         
         
-        export interface SettingApiModel {\\"logSetting\\"?:  & (LogSetting);}
+        export interface SettingApiModel {\\"logSetting\\"?: (LogSetting);}
         
         
         export interface SubDomainApiModel {
@@ -9592,7 +9592,7 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead,
  */
-\\"subUserConnectionStatus\\":  & (SubUserConnectionStatus);\\"connectDate\\"?: string;
+\\"subUserConnectionStatus\\": (SubUserConnectionStatus);\\"connectDate\\"?: string;
 /**
  * 
  * - Format: date-time
@@ -9737,12 +9737,12 @@ exports[`only includes get methods generate type 1`] = `
  * 
  * - Format: int64
  */
-\\"voucherId\\": number;\\"accountNumber\\"?: string;\\"accountTitle\\"?: string;\\"createDate\\"?: string;\\"description\\"?: string;\\"followupId\\"?: string;\\"logicalAction\\"?:  & (LogicalActionType);\\"logicalActionDisplay\\"?: string;
+\\"voucherId\\": number;\\"accountNumber\\"?: string;\\"accountTitle\\"?: string;\\"createDate\\"?: string;\\"description\\"?: string;\\"followupId\\"?: string;\\"logicalAction\\"?: (LogicalActionType);\\"logicalActionDisplay\\"?: string;
 /**
  * 
  * - Format: int32
  */
-\\"targetBusinessCategoryId\\"?: number;\\"targetBusinessCategoryName\\"?: string;\\"transactionOperationTypeDisplay\\"?: string;\\"transactionTypeDisplay\\"?: string;\\"voucherType\\"?:  & (VoucherOperationType);\\"voucherTypeDisplay\\"?: string;}
+\\"targetBusinessCategoryId\\"?: number;\\"targetBusinessCategoryName\\"?: string;\\"transactionOperationTypeDisplay\\"?: string;\\"transactionTypeDisplay\\"?: string;\\"voucherType\\"?: (VoucherOperationType);\\"voucherTypeDisplay\\"?: string;}
         
         
         export enum TransactionOperationType {Unknown=\\"Unknown\\",Normal=\\"Normal\\",System=\\"System\\",DomainCommission=\\"DomainCommission\\",ResellerCommission=\\"ResellerCommission\\",Block=\\"Block\\",Unblock=\\"Unblock\\",Refund=\\"Refund\\",NoCommissionRemainGift=\\"NoCommissionRemainGift\\",RemainGift=\\"RemainGift\\",DomainBankBatchTransfer=\\"DomainBankBatchTransfer\\",SettlementBatchTransferItem=\\"SettlementBatchTransferItem\\",Synchronization=\\"Synchronization\\",BlockchainWithdrawInternalTransfer=\\"BlockchainWithdrawInternalTransfer\\",BlockchainWithdrawUserWallet=\\"BlockchainWithdrawUserWallet\\",BlockchainIncomingTransaction=\\"BlockchainIncomingTransaction\\",BlockchainWithdrawUserWalletOffchain=\\"BlockchainWithdrawUserWalletOffchain\\",BlockchainFee=\\"BlockchainFee\\"}
@@ -9848,18 +9848,18 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"upgradeToBusinessRequestStatus\\":  & (IdentityStatus);
+\\"upgradeToBusinessRequestStatus\\": (IdentityStatus);
 /**
  * 
  * [Deprecated, use 'BusinessShareType' instead]
  * @deprecated Use 'BusinessShareType' instead.
  */
-\\"userIdentityType\\":  & (BusinessShareType);\\"address\\"?: string;\\"businessLogoImageLink\\"?: string;
+\\"userIdentityType\\": (BusinessShareType);\\"address\\"?: string;\\"businessLogoImageLink\\"?: string;
 /**
  * 
  * - Format: guid
  */
-\\"businessLogoImageUniqueId\\"?: string;\\"businessName\\"?: string;\\"businessShareTypeDisplay\\"?: string;\\"businessTypeDisplay\\"?: string;\\"city\\"?: string;\\"description\\"?: string;\\"documents\\"?: DocumentApiModel[];\\"email\\"?: string;\\"faxNumber\\"?: string;\\"managerName\\"?: string;\\"managerPhoneNumber\\"?: string;\\"organizationName\\"?: string;\\"organizationNationalCode\\"?: string;\\"personNationalCode\\"?: string;\\"phoneNumber\\"?: string;\\"rejectCause\\"?:  & (UpgradeToBusinessRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"state\\"?: string;\\"statusDisplay\\"?: string;
+\\"businessLogoImageUniqueId\\"?: string;\\"businessName\\"?: string;\\"businessShareTypeDisplay\\"?: string;\\"businessTypeDisplay\\"?: string;\\"city\\"?: string;\\"description\\"?: string;\\"documents\\"?: DocumentApiModel[];\\"email\\"?: string;\\"faxNumber\\"?: string;\\"managerName\\"?: string;\\"managerPhoneNumber\\"?: string;\\"organizationName\\"?: string;\\"organizationNationalCode\\"?: string;\\"personNationalCode\\"?: string;\\"phoneNumber\\"?: string;\\"rejectCause\\"?: (UpgradeToBusinessRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"state\\"?: string;\\"statusDisplay\\"?: string;
 /**
  * 
  * [Deprecated, use 'RejectCauseDescription' instead]
@@ -9871,7 +9871,7 @@ exports[`only includes get methods generate type 1`] = `
         export enum UpgradeToBusinessRejectCause {DocumentsLack=\\"DocumentsLack\\",DocumentsMismatch=\\"DocumentsMismatch\\",Other=\\"Other\\"}
         
         
-        export interface UpgradeToBusinessUserInput {\\"address\\"?: string;\\"businessName\\"?: string;\\"businessShareType\\"?:  & (BusinessShareType);\\"businessType\\"?:  & (BusinessType);\\"city\\"?: string;\\"documents\\"?: DocumentInput[];\\"email\\"?: string;\\"faxNumber\\"?: string;
+        export interface UpgradeToBusinessUserInput {\\"address\\"?: string;\\"businessName\\"?: string;\\"businessShareType\\"?: (BusinessShareType);\\"businessType\\"?: (BusinessType);\\"city\\"?: string;\\"documents\\"?: DocumentInput[];\\"email\\"?: string;\\"faxNumber\\"?: string;
 /**
  * 
  * - Format: guid
@@ -9882,7 +9882,7 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'BusinessShareType' instead]
  * @deprecated Use 'BusinessShareType' instead.
  */
-\\"userIdentityType\\"?:  & (BusinessShareType);\\"webSiteUrl\\"?: string;}
+\\"userIdentityType\\"?: (BusinessShareType);\\"webSiteUrl\\"?: string;}
         
         
         export interface UserBankApiModel {
@@ -9901,7 +9901,7 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'BusinessShareType' instead]
  * @deprecated Use 'BusinessShareType' instead.
  */
-\\"identityType\\":  & (BusinessShareType);\\"isVisible\\": boolean;\\"status\\": IdentityStatus;\\"accountNumber\\"?: string;\\"bankLogo\\"?: string;\\"bankName\\"?: string;\\"businessShareTypeDisplay\\"?: string;\\"firstName\\"?: string;\\"lastName\\"?: string;\\"name\\"?: string;\\"rejectCause\\"?:  & (UserBankRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"shebaNo\\"?: string;
+\\"identityType\\": (BusinessShareType);\\"isVisible\\": boolean;\\"status\\": IdentityStatus;\\"accountNumber\\"?: string;\\"bankLogo\\"?: string;\\"bankName\\"?: string;\\"businessShareTypeDisplay\\"?: string;\\"firstName\\"?: string;\\"lastName\\"?: string;\\"name\\"?: string;\\"rejectCause\\"?: (UserBankRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"shebaNo\\"?: string;
 /**
  * 
  * [Deprecated, use 'RejectCauseDescription' instead]
@@ -9913,7 +9913,7 @@ exports[`only includes get methods generate type 1`] = `
         export interface UserBankChangeVisibilityInput {\\"isVisible\\"?: boolean;}
         
         
-        export type UserBankDetailApiModel =  & (UserBankApiModel & {\\"documents\\"?: DocumentApiModel[];\\"nationalCode\\"?: string;})
+        export type UserBankDetailApiModel = (UserBankApiModel & {\\"documents\\"?: DocumentApiModel[];\\"nationalCode\\"?: string;})
         
         
         export interface UserBankInput {\\"accountNumber\\"?: string;
@@ -9921,13 +9921,13 @@ exports[`only includes get methods generate type 1`] = `
  * 
  * - Format: int32
  */
-\\"bankId\\"?: number;\\"businessShareType\\"?:  & (BusinessShareType);\\"documents\\"?: DocumentInput[];\\"firstName\\"?: string;
+\\"bankId\\"?: number;\\"businessShareType\\"?: (BusinessShareType);\\"documents\\"?: DocumentInput[];\\"firstName\\"?: string;
 /**
  * 
  * [Deprecated, use 'BusinessShareType' instead]
  * @deprecated Use 'BusinessShareType' instead.
  */
-\\"identityType\\"?:  & (BusinessShareType);\\"isVisible\\"?: boolean;\\"lastName\\"?: string;\\"name\\"?: string;\\"nationalCode\\"?: string;\\"shebaNo\\"?: string;}
+\\"identityType\\"?: (BusinessShareType);\\"isVisible\\"?: boolean;\\"lastName\\"?: string;\\"name\\"?: string;\\"nationalCode\\"?: string;\\"shebaNo\\"?: string;}
         
         
         export enum UserBankRejectCause {DocumentsLack=\\"DocumentsLack\\",DocumentsMismatch=\\"DocumentsMismatch\\",Etc=\\"Etc\\"}
@@ -9936,7 +9936,7 @@ exports[`only includes get methods generate type 1`] = `
         export interface UserChangePasswordInput {\\"currentPassword\\"?: string;\\"newPassword\\"?: string;}
         
         
-        export type UserDetailQuery =  & (UserMeQuery & {\\"address\\"?: string;\\"city\\"?: string;\\"email\\"?: string;\\"introducedBySubDomain\\"?: string;\\"nationalCode\\"?: string;\\"phoneNumber\\"?: string;\\"state\\"?: string;})
+        export type UserDetailQuery = (UserMeQuery & {\\"address\\"?: string;\\"city\\"?: string;\\"email\\"?: string;\\"introducedBySubDomain\\"?: string;\\"nationalCode\\"?: string;\\"phoneNumber\\"?: string;\\"state\\"?: string;})
         
         
         export interface UserForgetPasswordInput {\\"phoneNumber\\"?: string;}
@@ -9954,7 +9954,7 @@ exports[`only includes get methods generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"userIdentityRequestStatus\\":  & (IdentityStatus);\\"documents\\"?: DocumentApiModel[];\\"firstName\\"?: string;\\"lastName\\"?: string;\\"nationalCode\\"?: string;\\"rejectCause\\"?:  & (UserIdentityRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"statusDisplay\\"?: string;
+\\"userIdentityRequestStatus\\": (IdentityStatus);\\"documents\\"?: DocumentApiModel[];\\"firstName\\"?: string;\\"lastName\\"?: string;\\"nationalCode\\"?: string;\\"rejectCause\\"?: (UserIdentityRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"statusDisplay\\"?: string;
 /**
  * 
  * [Deprecated, use 'RejectCauseDescription' instead]
@@ -9983,7 +9983,7 @@ exports[`only includes get methods generate type 1`] = `
  * 
  * - Format: guid
  */
-\\"businessUserId\\"?: string;\\"gender\\"?:  & (Gender);\\"genderDisplay\\"?: string;\\"identityStatusDisplay\\"?: string;\\"profileImageLink\\"?: string;\\"referredBy\\"?: string;\\"title\\"?: string;}
+\\"businessUserId\\"?: string;\\"gender\\"?: (Gender);\\"genderDisplay\\"?: string;\\"identityStatusDisplay\\"?: string;\\"profileImageLink\\"?: string;\\"referredBy\\"?: string;\\"title\\"?: string;}
         
         
         export interface UserMinimalDto {
@@ -10046,7 +10046,7 @@ exports[`only includes get methods generate type 1`] = `
  * 
  * - Format: date-time
  */
-\\"birthDate\\"?: string;\\"city\\"?: string;\\"email\\"?: string;\\"gender\\"?:  & (Gender);\\"state\\"?: string;}
+\\"birthDate\\"?: string;\\"city\\"?: string;\\"email\\"?: string;\\"gender\\"?: (Gender);\\"state\\"?: string;}
         
         
         export enum UserStatus {None=\\"None\\",NotVerified=\\"NotVerified\\",VerifiedButNotCompleted=\\"VerifiedButNotCompleted\\",Active=\\"Active\\",TemporaryBlocked=\\"TemporaryBlocked\\",AutoPasswordGenerated=\\"AutoPasswordGenerated\\"}
@@ -10079,7 +10079,7 @@ exports[`only includes get methods generate type 1`] = `
         export enum VoucherOperationType {Unknown=\\"Unknown\\",EPayViaBankWithCommissionByPayer=\\"EPayViaBankWithCommissionByPayer\\",EPayViaBankWithCommissionByUser=\\"EPayViaBankWithCommissionByUser\\",EPayViaPSPWithCommissionByPayer=\\"EPayViaPSPWithCommissionByPayer\\",EPayViaPSPWithCommissionByUser=\\"EPayViaPSPWithCommissionByUser\\",EPayViaWalletWithCommissionByPayer=\\"EPayViaWalletWithCommissionByPayer\\",EPayViaWalletWithCommissionByUser=\\"EPayViaWalletWithCommissionByUser\\",TransferMoney=\\"TransferMoney\\",ChargeWallet=\\"ChargeWallet\\",ServiceBill=\\"ServiceBill\\",ServiceMobileCharge=\\"ServiceMobileCharge\\",POSViaBank=\\"POSViaBank\\",POSViaWallet=\\"POSViaWallet\\",ShareAndBlockRequest=\\"ShareAndBlockRequest\\",ShareRequest=\\"ShareRequest\\",SettlementAuto=\\"SettlementAuto\\",SettlementManual=\\"SettlementManual\\",SettlementSuspected=\\"SettlementSuspected\\",GroupTransferMoney=\\"GroupTransferMoney\\",ShareAndUnblock=\\"ShareAndUnblock\\",RefundWithSystemPayer=\\"RefundWithSystemPayer\\",RefundWithAnonymousPayer=\\"RefundWithAnonymousPayer\\",PayCommand=\\"PayCommand\\",GiftForReferrer=\\"GiftForReferrer\\",GiftForNoCommissionRemain=\\"GiftForNoCommissionRemain\\",Sepid=\\"Sepid\\",BatchTransferItem=\\"BatchTransferItem\\",AbstractProviderSynchronization=\\"AbstractProviderSynchronization\\",BlockchainWithdrawInternalTransfer=\\"BlockchainWithdrawInternalTransfer\\",BlockchainWithdrawUserWallet=\\"BlockchainWithdrawUserWallet\\",BlockchainIncomingTransaction=\\"BlockchainIncomingTransaction\\",BlockchainWithdrawUserWalletOnChain=\\"BlockchainWithdrawUserWalletOnChain\\"}
         
         
-        export type WalletDetailApiModel =  & (WalletDisplayApiModel & {\\"notificationEnabled\\": boolean;
+        export type WalletDetailApiModel = (WalletDisplayApiModel & {\\"notificationEnabled\\": boolean;
 /**
  * 
  * - Format: int32
@@ -10259,7 +10259,7 @@ export const deleteBusinessUserConnectionConnectionId = (
  * Connection Id
  */
 connectionId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SubUserConnectionApiModel)>> => {
+): Promise<SwaggerResponse<(SubUserConnectionApiModel)>> => {
   
   return Http.deleteRequest(
     template(deleteBusinessUserConnectionConnectionId.key,{connectionId,}),
@@ -10314,7 +10314,7 @@ export const deleteSubUserConnectionConnectionId = (
  * connection id
  */
 connectionId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (BusinessUserConnectionApiModel)>> => {
+): Promise<SwaggerResponse<(BusinessUserConnectionApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -10350,7 +10350,7 @@ export const deleteUserConnectionConnectionId = (
  * connection id
  */
 connectionId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (BusinessUserConnectionApiModel)>> => {
+): Promise<SwaggerResponse<(BusinessUserConnectionApiModel)>> => {
   
   return Http.deleteRequest(
     template(deleteUserConnectionConnectionId.key,{connectionId,}),
@@ -10380,7 +10380,7 @@ export const getBusinessUserConnectionConnectionId = (
  * Connection Id
  */
 connectionId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SubUserConnectionApiModel)>> => {
+): Promise<SwaggerResponse<(SubUserConnectionApiModel)>> => {
   
   return Http.getRequest(
     template(getBusinessUserConnectionConnectionId.key,{connectionId,}),
@@ -10408,7 +10408,7 @@ export const getEpayRequestEpayId = (
  * EpayRequest's Id
  */
 epayId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (EpayRequestDetailApiModel)>> => {
+): Promise<SwaggerResponse<(EpayRequestDetailApiModel)>> => {
   
   return Http.getRequest(
     template(getEpayRequestEpayId.key,{epayId,}),
@@ -10426,7 +10426,7 @@ getEpayRequestEpayId.key = \\"/EpayRequest/{epayId}\\";
 
 export const getPluginPluginId = (
     pluginId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (PluginApiModel)>> => {
+): Promise<SwaggerResponse<(PluginApiModel)>> => {
   
   return Http.getRequest(
     template(getPluginPluginId.key,{pluginId,}),
@@ -10455,7 +10455,7 @@ export const getReceiptBankEpayTryId = (
  * EpayTry's id to get receipt for
  */
 epayTryId: string,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (BankReceiptApiModel)>> => {
+): Promise<SwaggerResponse<(BankReceiptApiModel)>> => {
   
   return Http.getRequest(
     template(getReceiptBankEpayTryId.key,{epayTryId,}),
@@ -10479,7 +10479,7 @@ getReceiptBankEpayTryId.key = \\"/Receipt/bank/{epayTryId}\\";
  */
 export const getSubUserAccountUserWalletId = (
     userWalletId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SubUserAccountDetailQuery)>> => {
+): Promise<SwaggerResponse<(SubUserAccountDetailQuery)>> => {
   
   return Http.getRequest(
     template(getSubUserAccountUserWalletId.key,{userWalletId,}),
@@ -10503,7 +10503,7 @@ getSubUserAccountUserWalletId.key = \\"/SubUser/account/{userWalletId}\\";
  */
 export const getTransactionTransactionId = (
     transactionId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (TransactionApiModel)>> => {
+): Promise<SwaggerResponse<(TransactionApiModel)>> => {
   
   return Http.getRequest(
     template(getTransactionTransactionId.key,{transactionId,}),
@@ -10532,7 +10532,7 @@ export const getUserBankUserBankId = (
  * User bank id
  */
 userBankId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (UserBankDetailApiModel)>> => {
+): Promise<SwaggerResponse<(UserBankDetailApiModel)>> => {
   
   return Http.getRequest(
     template(getUserBankUserBankId.key,{userBankId,}),
@@ -10550,7 +10550,7 @@ getUserBankUserBankId.key = \\"/UserBank/{userBankId}\\";
 
 export const getUserWalletUserWalletId = (
     userWalletId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (WalletDetailApiModel)>> => {
+): Promise<SwaggerResponse<(WalletDetailApiModel)>> => {
   
   return Http.getRequest(
     template(getUserWalletUserWalletId.key,{userWalletId,}),
@@ -10581,7 +10581,7 @@ export const postBusinessUserResendInvitationId = (
  * Invitation Id
  */
 invitationId: number,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SubUserConnectionApiModel)>> => {
+): Promise<SwaggerResponse<(SubUserConnectionApiModel)>> => {
   
   if (__DEV__) {
     console.warn(
@@ -10605,7 +10605,7 @@ postBusinessUserResendInvitationId.key = \\"/BusinessUser/resend/{invitationId}\
 
 export const postEpayRequestEpayTokenPayUserWalletId = (
     epayToken: string,userWalletId: number,requestBody: EpayRequestPayInput,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (WalletReceiptApiModel)>> => {
+): Promise<SwaggerResponse<(WalletReceiptApiModel)>> => {
   
   return Http.postRequest(
     template(postEpayRequestEpayTokenPayUserWalletId.key,{epayToken,userWalletId,}),
@@ -10628,7 +10628,7 @@ export const postEpayRequestUserWalletId = (
  * User Wallet id
  */
 userWalletId: number,requestBody: RequestBodyNewEpayRequestInput,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (EpayRequestDetailApiModel)>> => {
+): Promise<SwaggerResponse<(EpayRequestDetailApiModel)>> => {
   
   return Http.postRequest(
     template(postEpayRequestUserWalletId.key,{userWalletId,}),
@@ -10684,7 +10684,7 @@ postSubUserNotificationUserWalletId.key = \\"/SubUser/notification/{userWalletId
  */
 export const postTransferUserWalletId = (
     userWalletId: number,requestBody: RequestBodyTransferMoneyInput,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (TransferMoneyApiModel)>> => {
+): Promise<SwaggerResponse<(TransferMoneyApiModel)>> => {
   
   return Http.postRequest(
     template(postTransferUserWalletId.key,{userWalletId,}),
@@ -10714,7 +10714,7 @@ export const putBusinessUserConnectionConnectionId = (
  * Connection Id
  */
 connectionId: number,requestBody: EditConnectionInfoInput,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (SubUserConnectionApiModel)>> => {
+): Promise<SwaggerResponse<(SubUserConnectionApiModel)>> => {
   
   return Http.putRequest(
     template(putBusinessUserConnectionConnectionId.key,{connectionId,}),
@@ -10766,7 +10766,7 @@ export const putUserBankUserBankId = (
  * User bank id
  */
 userBankId: number,requestBody: RequestBodyUserBankInput,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (UserBankApiModel)>> => {
+): Promise<SwaggerResponse<(UserBankApiModel)>> => {
   
   return Http.putRequest(
     template(putUserBankUserBankId.key,{userBankId,}),
@@ -10784,7 +10784,7 @@ putUserBankUserBankId.key = \\"/UserBank/{userBankId}\\";
 
 export const putUserWalletUserWalletId = (
     userWalletId: number,requestBody: RequestBodyAccountCreationApiModel,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse< & (WalletDisplayApiModel)>> => {
+): Promise<SwaggerResponse<(WalletDisplayApiModel)>> => {
   
   return Http.putRequest(
     template(putUserWalletUserWalletId.key,{userWalletId,}),
@@ -10873,7 +10873,7 @@ import { deleteBusinessUserConnectionConnectionId, deleteBusinessUserConnectionC
 [Needs secure login]
  */
 export const useDeleteBusinessUserConnectionConnectionId =<TExtra> (
-           options?:SwaggerTypescriptUseMutationOptions< & (SubUserConnectionApiModel), {
+           options?:SwaggerTypescriptUseMutationOptions<(SubUserConnectionApiModel), {
 /**
  * 
  * Connection Id
@@ -10932,7 +10932,7 @@ userWalletId: number,}, TExtra>,
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const useDeleteSubUserConnectionConnectionId =<TExtra> (
-           options?:SwaggerTypescriptUseMutationOptions< & (BusinessUserConnectionApiModel), {
+           options?:SwaggerTypescriptUseMutationOptions<(BusinessUserConnectionApiModel), {
 /**
  * 
  * connection id
@@ -10964,7 +10964,7 @@ connectionId: number,}, TExtra>,
 [Needs secure login]
  */
 export const useDeleteUserConnectionConnectionId =<TExtra> (
-           options?:SwaggerTypescriptUseMutationOptions< & (BusinessUserConnectionApiModel), {
+           options?:SwaggerTypescriptUseMutationOptions<(BusinessUserConnectionApiModel), {
 /**
  * 
  * connection id
@@ -11001,7 +11001,7 @@ export const useGetBusinessUserConnectionConnectionId = (
  * 
  * Connection Id
  */
-connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserConnectionApiModel)>,configOverride?:AxiosRequestConfig
+connectionId: number,options?:SwaggerTypescriptUseQueryOptions<(SubUserConnectionApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetBusinessUserConnectionConnectionId.info( connectionId,
           
@@ -11042,7 +11042,7 @@ connectionId: number,configOverride?:AxiosRequestConfig) => {
  * 
  * Connection Id
  */
-connectionId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserConnectionApiModel)>,configOverride?:AxiosRequestConfig) => {
+connectionId: number,options?:SwaggerTypescriptUseQueryOptions<(SubUserConnectionApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetBusinessUserConnectionConnectionId.info( connectionId,
           
           
@@ -11069,7 +11069,7 @@ export const useGetEpayRequestEpayId = (
  * 
  * EpayRequest's Id
  */
-epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailApiModel)>,configOverride?:AxiosRequestConfig
+epayId: number,options?:SwaggerTypescriptUseQueryOptions<(EpayRequestDetailApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetEpayRequestEpayId.info( epayId,
           
@@ -11110,7 +11110,7 @@ epayId: number,configOverride?:AxiosRequestConfig) => {
  * 
  * EpayRequest's Id
  */
-epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
+epayId: number,options?:SwaggerTypescriptUseQueryOptions<(EpayRequestDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetEpayRequestEpayId.info( epayId,
           
           
@@ -11127,7 +11127,7 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
                   );
               }
       export const useGetPluginPluginId = (
-           pluginId: number,options?:SwaggerTypescriptUseQueryOptions< & (PluginApiModel)>,configOverride?:AxiosRequestConfig
+           pluginId: number,options?:SwaggerTypescriptUseQueryOptions<(PluginApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetPluginPluginId.info( pluginId,
           
@@ -11158,7 +11158,7 @@ epayId: number,options?:SwaggerTypescriptUseQueryOptions< & (EpayRequestDetailAp
               };
             };useGetPluginPluginId.prefetch = (
             client: QueryClient,
-            pluginId: number,options?:SwaggerTypescriptUseQueryOptions< & (PluginApiModel)>,configOverride?:AxiosRequestConfig) => {
+            pluginId: number,options?:SwaggerTypescriptUseQueryOptions<(PluginApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetPluginPluginId.info( pluginId,
           
           
@@ -11186,7 +11186,7 @@ export const useGetReceiptBankEpayTryId = (
  * 
  * EpayTry's id to get receipt for
  */
-epayTryId: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiModel)>,configOverride?:AxiosRequestConfig
+epayTryId: string,options?:SwaggerTypescriptUseQueryOptions<(BankReceiptApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetReceiptBankEpayTryId.info( epayTryId,
           
@@ -11227,7 +11227,7 @@ epayTryId: string,configOverride?:AxiosRequestConfig) => {
  * 
  * EpayTry's id to get receipt for
  */
-epayTryId: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
+epayTryId: string,options?:SwaggerTypescriptUseQueryOptions<(BankReceiptApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetReceiptBankEpayTryId.info( epayTryId,
           
           
@@ -11250,7 +11250,7 @@ epayTryId: string,options?:SwaggerTypescriptUseQueryOptions< & (BankReceiptApiMo
 [Feature just allowed for SubUsers]
  */
 export const useGetSubUserAccountUserWalletId = (
-           userWalletId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserAccountDetailQuery)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<(SubUserAccountDetailQuery)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetSubUserAccountUserWalletId.info( userWalletId,
           
@@ -11281,7 +11281,7 @@ export const useGetSubUserAccountUserWalletId = (
               };
             };useGetSubUserAccountUserWalletId.prefetch = (
             client: QueryClient,
-            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions< & (SubUserAccountDetailQuery)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<(SubUserAccountDetailQuery)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetSubUserAccountUserWalletId.info( userWalletId,
           
           
@@ -11304,7 +11304,7 @@ export const useGetSubUserAccountUserWalletId = (
 [Needs secure login]
  */
 export const useGetTransactionTransactionId = (
-           transactionId: number,options?:SwaggerTypescriptUseQueryOptions< & (TransactionApiModel)>,configOverride?:AxiosRequestConfig
+           transactionId: number,options?:SwaggerTypescriptUseQueryOptions<(TransactionApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetTransactionTransactionId.info( transactionId,
           
@@ -11335,7 +11335,7 @@ export const useGetTransactionTransactionId = (
               };
             };useGetTransactionTransactionId.prefetch = (
             client: QueryClient,
-            transactionId: number,options?:SwaggerTypescriptUseQueryOptions< & (TransactionApiModel)>,configOverride?:AxiosRequestConfig) => {
+            transactionId: number,options?:SwaggerTypescriptUseQueryOptions<(TransactionApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetTransactionTransactionId.info( transactionId,
           
           
@@ -11363,7 +11363,7 @@ export const useGetUserBankUserBankId = (
  * 
  * User bank id
  */
-userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailApiModel)>,configOverride?:AxiosRequestConfig
+userBankId: number,options?:SwaggerTypescriptUseQueryOptions<(UserBankDetailApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserBankUserBankId.info( userBankId,
           
@@ -11404,7 +11404,7 @@ userBankId: number,configOverride?:AxiosRequestConfig) => {
  * 
  * User bank id
  */
-userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
+userBankId: number,options?:SwaggerTypescriptUseQueryOptions<(UserBankDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserBankUserBankId.info( userBankId,
           
           
@@ -11421,7 +11421,7 @@ userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailA
                   );
               }
       export const useGetUserWalletUserWalletId = (
-           userWalletId: number,options?:SwaggerTypescriptUseQueryOptions< & (WalletDetailApiModel)>,configOverride?:AxiosRequestConfig
+           userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<(WalletDetailApiModel)>,configOverride?:AxiosRequestConfig
            ) => {
           const { key, fun } = useGetUserWalletUserWalletId.info( userWalletId,
           
@@ -11452,7 +11452,7 @@ userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailA
               };
             };useGetUserWalletUserWalletId.prefetch = (
             client: QueryClient,
-            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions< & (WalletDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
+            userWalletId: number,options?:SwaggerTypescriptUseQueryOptions<(WalletDetailApiModel)>,configOverride?:AxiosRequestConfig) => {
                 const { key, fun } = useGetUserWalletUserWalletId.info( userWalletId,
           
           
@@ -11477,7 +11477,7 @@ userBankId: number,options?:SwaggerTypescriptUseQueryOptions< & (UserBankDetailA
  * @deprecated This endpoint deprecated and will be remove. Please use an alternative
  */
 export const usePostBusinessUserResendInvitationId =<TExtra> (
-           options?:SwaggerTypescriptUseMutationOptions< & (SubUserConnectionApiModel), {
+           options?:SwaggerTypescriptUseMutationOptions<(SubUserConnectionApiModel), {
 /**
  * 
  * Invitation Id
@@ -11502,7 +11502,7 @@ invitationId: number,}, TExtra>,
           }
         
       export const usePostEpayRequestEpayTokenPayUserWalletId =<TExtra> (
-           options?:SwaggerTypescriptUseMutationOptions< & (WalletReceiptApiModel), {epayToken: string,userWalletId: number,requestBody: EpayRequestPayInput,}, TExtra>,
+           options?:SwaggerTypescriptUseMutationOptions<(WalletReceiptApiModel), {epayToken: string,userWalletId: number,requestBody: EpayRequestPayInput,}, TExtra>,
            ) => {return useMutation({mutationFn:(_o)=>{
             const { epayToken,userWalletId,
           requestBody,
@@ -11522,7 +11522,7 @@ invitationId: number,}, TExtra>,
           }
         
       export const usePostEpayRequestUserWalletId =<TExtra> (
-           options?:SwaggerTypescriptUseMutationOptions< & (EpayRequestDetailApiModel), {
+           options?:SwaggerTypescriptUseMutationOptions<(EpayRequestDetailApiModel), {
 /**
  * 
  * User Wallet id
@@ -11581,7 +11581,7 @@ userWalletId: number,requestBody: RequestBodySubUserNotificationStatusInput,}, T
  * Transfer money
  */
 export const usePostTransferUserWalletId =<TExtra> (
-           options?:SwaggerTypescriptUseMutationOptions< & (TransferMoneyApiModel), {userWalletId: number,requestBody: RequestBodyTransferMoneyInput,}, TExtra>,
+           options?:SwaggerTypescriptUseMutationOptions<(TransferMoneyApiModel), {userWalletId: number,requestBody: RequestBodyTransferMoneyInput,}, TExtra>,
            ) => {return useMutation({mutationFn:(_o)=>{
             const { userWalletId,
           requestBody,
@@ -11608,7 +11608,7 @@ export const usePostTransferUserWalletId =<TExtra> (
 [Needs secure login]
  */
 export const usePutBusinessUserConnectionConnectionId =<TExtra> (
-           options?:SwaggerTypescriptUseMutationOptions< & (SubUserConnectionApiModel), {
+           options?:SwaggerTypescriptUseMutationOptions<(SubUserConnectionApiModel), {
 /**
  * 
  * Connection Id
@@ -11664,7 +11664,7 @@ userWalletId: number,requestBody: EditSubUserPermissionInput,}, TExtra>,
 [Needs secure login]
  */
 export const usePutUserBankUserBankId =<TExtra> (
-           options?:SwaggerTypescriptUseMutationOptions< & (UserBankApiModel), {
+           options?:SwaggerTypescriptUseMutationOptions<(UserBankApiModel), {
 /**
  * 
  * User bank id
@@ -11689,7 +11689,7 @@ userBankId: number,requestBody: RequestBodyUserBankInput,}, TExtra>,
           }
         
       export const usePutUserWalletUserWalletId =<TExtra> (
-           options?:SwaggerTypescriptUseMutationOptions< & (WalletDisplayApiModel), {userWalletId: number,requestBody: RequestBodyAccountCreationApiModel,}, TExtra>,
+           options?:SwaggerTypescriptUseMutationOptions<(WalletDisplayApiModel), {userWalletId: number,requestBody: RequestBodyAccountCreationApiModel,}, TExtra>,
            ) => {return useMutation({mutationFn:(_o)=>{
             const { userWalletId,
           requestBody,
@@ -11760,7 +11760,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'ConnectionStatus' instead]
  * @deprecated Use 'ConnectionStatus' instead.
  */
-\\"subUserConnectionStatus\\":  & (SubUserConnectionStatus);
+\\"subUserConnectionStatus\\": (SubUserConnectionStatus);
 /**
  * 
  * - Format: guid
@@ -11851,7 +11851,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"subUserConnectionStatus\\":  & (SubUserConnectionStatus);\\"businessAvatarUrl\\"?: string;\\"businessName\\"?: string;\\"connectDate\\"?: string;
+\\"subUserConnectionStatus\\": (SubUserConnectionStatus);\\"businessAvatarUrl\\"?: string;\\"businessName\\"?: string;\\"connectDate\\"?: string;
 /**
  * 
  * - Format: date-time
@@ -12090,7 +12090,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'ContentType' instead]
  * @deprecated Use 'ContentType' instead.
  */
-\\"documentContentType\\":  & (DocumentContentType);
+\\"documentContentType\\": (DocumentContentType);
 /**
  * 
  * - Format: int64
@@ -12101,7 +12101,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'FileType' instead]
  * @deprecated Use 'FileType' instead.
  */
-\\"fileTypes\\":  & (FileTypes);
+\\"fileTypes\\": (FileTypes);
 /**
  * 
  * - Format: guid
@@ -12120,7 +12120,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
 \\"fileUniqueId\\": string;}
         
         
-        export interface DriverInfoResult {\\"barcodType\\": number;\\"barcodTypeDescription\\"?: string;\\"customData\\"?:  & (TaxiInfoOutput);\\"firstName\\"?: string;
+        export interface DriverInfoResult {\\"barcodType\\": number;\\"barcodTypeDescription\\"?: string;\\"customData\\"?: (TaxiInfoOutput);\\"firstName\\"?: string;
 /**
  * 
  * - Format: int64
@@ -12161,7 +12161,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
         export interface EditConnectionInfoInput {\\"position\\"?: string;}
         
         
-        export interface EditSubUserPermissionInput {\\"isEnabled\\"?: boolean;\\"subUserPermissionType\\"?:  & (SubUserPermissionType);}
+        export interface EditSubUserPermissionInput {\\"isEnabled\\"?: boolean;\\"subUserPermissionType\\"?: (SubUserPermissionType);}
         
         
         export enum EpayRequestActualState {Initiated=\\"Initiated\\",Paid=\\"Paid\\",Cancelled=\\"Cancelled\\",Expired=\\"Expired\\"}
@@ -12183,7 +12183,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"epayRequestStatus\\":  & (EpayRequestStatus);
+\\"epayRequestStatus\\": (EpayRequestStatus);
 /**
  * 
  * - Format: date-time
@@ -12253,7 +12253,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"epayRequestStatus\\":  & (EpayRequestStatus);
+\\"epayRequestStatus\\": (EpayRequestStatus);
 /**
  * 
  * - Format: date-time
@@ -12326,7 +12326,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"epayRequestStatus\\":  & (EpayRequestStatus);
+\\"epayRequestStatus\\": (EpayRequestStatus);
 /**
  * 
  * - Format: date-time
@@ -12567,7 +12567,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * 
  * - Format: date-time
  */
-\\"start\\": string;\\"datePart\\"?:  & (DatePart);\\"kpiName\\"?: string;\\"targetIds\\"?: string[];\\"values\\"?: KpiResultValue[];}
+\\"start\\": string;\\"datePart\\"?: (DatePart);\\"kpiName\\"?: string;\\"targetIds\\"?: string[];\\"values\\"?: KpiResultValue[];}
         
         
         export interface KpiResultValue {
@@ -12638,7 +12638,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * 
  * نوع ارجاع در هنگام ایجاد درخواست
  */
-\\"callbackType\\":  & (CallbackType);
+\\"callbackType\\": (CallbackType);
 /**
  * 
  * تاریخ انتقضا لینک ایجاد شده
@@ -12777,7 +12777,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * 
  * - Format: decimal
  */
-\\"amount\\": number;\\"callBackUrl\\"?: string;\\"callbackType\\"?:  & (CallbackType);\\"description\\"?: string;
+\\"amount\\": number;\\"callBackUrl\\"?: string;\\"callbackType\\"?: (CallbackType);\\"description\\"?: string;
 /**
  * 
  * - Format: guid
@@ -12912,7 +12912,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
 \\"userId\\": string;\\"userStatus\\": UserStatus;\\"displayName\\"?: string;\\"identityStatusDisplay\\"?: string;\\"imageUrl\\"?: string;\\"ipgStatusDisplay\\"?: string;\\"lastActivityDate\\"?: string;\\"phoneNumber\\"?: string;\\"registerDate\\"?: string;}
         
         
-        export interface ReselledUserFilterData {\\"identityStatuses\\"?:  & (DropDownResultOfIdentityStatus);}
+        export interface ReselledUserFilterData {\\"identityStatuses\\"?: (DropDownResultOfIdentityStatus);}
         
         
         export interface ResellerApiModel {
@@ -12975,7 +12975,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
 \\"introducerCode\\"?: number;\\"lastName\\"?: string;\\"password\\"?: string;}
         
         
-        export interface SettingApiModel {\\"logSetting\\"?:  & (LogSetting);}
+        export interface SettingApiModel {\\"logSetting\\"?: (LogSetting);}
         
         
         export interface SubDomainApiModel {
@@ -13071,7 +13071,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead,
  */
-\\"subUserConnectionStatus\\":  & (SubUserConnectionStatus);\\"connectDate\\"?: string;
+\\"subUserConnectionStatus\\": (SubUserConnectionStatus);\\"connectDate\\"?: string;
 /**
  * 
  * - Format: date-time
@@ -13216,12 +13216,12 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * 
  * - Format: int64
  */
-\\"voucherId\\": number;\\"accountNumber\\"?: string;\\"accountTitle\\"?: string;\\"createDate\\"?: string;\\"description\\"?: string;\\"followupId\\"?: string;\\"logicalAction\\"?:  & (LogicalActionType);\\"logicalActionDisplay\\"?: string;
+\\"voucherId\\": number;\\"accountNumber\\"?: string;\\"accountTitle\\"?: string;\\"createDate\\"?: string;\\"description\\"?: string;\\"followupId\\"?: string;\\"logicalAction\\"?: (LogicalActionType);\\"logicalActionDisplay\\"?: string;
 /**
  * 
  * - Format: int32
  */
-\\"targetBusinessCategoryId\\"?: number;\\"targetBusinessCategoryName\\"?: string;\\"transactionOperationTypeDisplay\\"?: string;\\"transactionTypeDisplay\\"?: string;\\"voucherType\\"?:  & (VoucherOperationType);\\"voucherTypeDisplay\\"?: string;}
+\\"targetBusinessCategoryId\\"?: number;\\"targetBusinessCategoryName\\"?: string;\\"transactionOperationTypeDisplay\\"?: string;\\"transactionTypeDisplay\\"?: string;\\"voucherType\\"?: (VoucherOperationType);\\"voucherTypeDisplay\\"?: string;}
         
         
         export enum TransactionOperationType {Unknown=\\"Unknown\\",Normal=\\"Normal\\",System=\\"System\\",DomainCommission=\\"DomainCommission\\",ResellerCommission=\\"ResellerCommission\\",Block=\\"Block\\",Unblock=\\"Unblock\\",Refund=\\"Refund\\",NoCommissionRemainGift=\\"NoCommissionRemainGift\\",RemainGift=\\"RemainGift\\",DomainBankBatchTransfer=\\"DomainBankBatchTransfer\\",SettlementBatchTransferItem=\\"SettlementBatchTransferItem\\",Synchronization=\\"Synchronization\\",BlockchainWithdrawInternalTransfer=\\"BlockchainWithdrawInternalTransfer\\",BlockchainWithdrawUserWallet=\\"BlockchainWithdrawUserWallet\\",BlockchainIncomingTransaction=\\"BlockchainIncomingTransaction\\",BlockchainWithdrawUserWalletOffchain=\\"BlockchainWithdrawUserWalletOffchain\\",BlockchainFee=\\"BlockchainFee\\"}
@@ -13327,18 +13327,18 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"upgradeToBusinessRequestStatus\\":  & (IdentityStatus);
+\\"upgradeToBusinessRequestStatus\\": (IdentityStatus);
 /**
  * 
  * [Deprecated, use 'BusinessShareType' instead]
  * @deprecated Use 'BusinessShareType' instead.
  */
-\\"userIdentityType\\":  & (BusinessShareType);\\"address\\"?: string;\\"businessLogoImageLink\\"?: string;
+\\"userIdentityType\\": (BusinessShareType);\\"address\\"?: string;\\"businessLogoImageLink\\"?: string;
 /**
  * 
  * - Format: guid
  */
-\\"businessLogoImageUniqueId\\"?: string;\\"businessName\\"?: string;\\"businessShareTypeDisplay\\"?: string;\\"businessTypeDisplay\\"?: string;\\"city\\"?: string;\\"description\\"?: string;\\"documents\\"?: DocumentApiModel[];\\"email\\"?: string;\\"faxNumber\\"?: string;\\"managerName\\"?: string;\\"managerPhoneNumber\\"?: string;\\"organizationName\\"?: string;\\"organizationNationalCode\\"?: string;\\"personNationalCode\\"?: string;\\"phoneNumber\\"?: string;\\"rejectCause\\"?:  & (UpgradeToBusinessRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"state\\"?: string;\\"statusDisplay\\"?: string;
+\\"businessLogoImageUniqueId\\"?: string;\\"businessName\\"?: string;\\"businessShareTypeDisplay\\"?: string;\\"businessTypeDisplay\\"?: string;\\"city\\"?: string;\\"description\\"?: string;\\"documents\\"?: DocumentApiModel[];\\"email\\"?: string;\\"faxNumber\\"?: string;\\"managerName\\"?: string;\\"managerPhoneNumber\\"?: string;\\"organizationName\\"?: string;\\"organizationNationalCode\\"?: string;\\"personNationalCode\\"?: string;\\"phoneNumber\\"?: string;\\"rejectCause\\"?: (UpgradeToBusinessRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"state\\"?: string;\\"statusDisplay\\"?: string;
 /**
  * 
  * [Deprecated, use 'RejectCauseDescription' instead]
@@ -13350,7 +13350,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
         export enum UpgradeToBusinessRejectCause {DocumentsLack=\\"DocumentsLack\\",DocumentsMismatch=\\"DocumentsMismatch\\",Other=\\"Other\\"}
         
         
-        export interface UpgradeToBusinessUserInput {\\"address\\"?: string;\\"businessName\\"?: string;\\"businessShareType\\"?:  & (BusinessShareType);\\"businessType\\"?:  & (BusinessType);\\"city\\"?: string;\\"documents\\"?: DocumentInput[];\\"email\\"?: string;\\"faxNumber\\"?: string;
+        export interface UpgradeToBusinessUserInput {\\"address\\"?: string;\\"businessName\\"?: string;\\"businessShareType\\"?: (BusinessShareType);\\"businessType\\"?: (BusinessType);\\"city\\"?: string;\\"documents\\"?: DocumentInput[];\\"email\\"?: string;\\"faxNumber\\"?: string;
 /**
  * 
  * - Format: guid
@@ -13361,7 +13361,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'BusinessShareType' instead]
  * @deprecated Use 'BusinessShareType' instead.
  */
-\\"userIdentityType\\"?:  & (BusinessShareType);\\"webSiteUrl\\"?: string;}
+\\"userIdentityType\\"?: (BusinessShareType);\\"webSiteUrl\\"?: string;}
         
         
         export interface UserBankApiModel {
@@ -13380,7 +13380,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'BusinessShareType' instead]
  * @deprecated Use 'BusinessShareType' instead.
  */
-\\"identityType\\":  & (BusinessShareType);\\"isVisible\\": boolean;\\"status\\": IdentityStatus;\\"accountNumber\\"?: string;\\"bankLogo\\"?: string;\\"bankName\\"?: string;\\"businessShareTypeDisplay\\"?: string;\\"firstName\\"?: string;\\"lastName\\"?: string;\\"name\\"?: string;\\"rejectCause\\"?:  & (UserBankRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"shebaNo\\"?: string;
+\\"identityType\\": (BusinessShareType);\\"isVisible\\": boolean;\\"status\\": IdentityStatus;\\"accountNumber\\"?: string;\\"bankLogo\\"?: string;\\"bankName\\"?: string;\\"businessShareTypeDisplay\\"?: string;\\"firstName\\"?: string;\\"lastName\\"?: string;\\"name\\"?: string;\\"rejectCause\\"?: (UserBankRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"shebaNo\\"?: string;
 /**
  * 
  * [Deprecated, use 'RejectCauseDescription' instead]
@@ -13392,7 +13392,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
         export interface UserBankChangeVisibilityInput {\\"isVisible\\"?: boolean;}
         
         
-        export type UserBankDetailApiModel =  & (UserBankApiModel & {\\"documents\\"?: DocumentApiModel[];\\"nationalCode\\"?: string;})
+        export type UserBankDetailApiModel = (UserBankApiModel & {\\"documents\\"?: DocumentApiModel[];\\"nationalCode\\"?: string;})
         
         
         export interface UserBankInput {\\"accountNumber\\"?: string;
@@ -13400,13 +13400,13 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * 
  * - Format: int32
  */
-\\"bankId\\"?: number;\\"businessShareType\\"?:  & (BusinessShareType);\\"documents\\"?: DocumentInput[];\\"firstName\\"?: string;
+\\"bankId\\"?: number;\\"businessShareType\\"?: (BusinessShareType);\\"documents\\"?: DocumentInput[];\\"firstName\\"?: string;
 /**
  * 
  * [Deprecated, use 'BusinessShareType' instead]
  * @deprecated Use 'BusinessShareType' instead.
  */
-\\"identityType\\"?:  & (BusinessShareType);\\"isVisible\\"?: boolean;\\"lastName\\"?: string;\\"name\\"?: string;\\"nationalCode\\"?: string;\\"shebaNo\\"?: string;}
+\\"identityType\\"?: (BusinessShareType);\\"isVisible\\"?: boolean;\\"lastName\\"?: string;\\"name\\"?: string;\\"nationalCode\\"?: string;\\"shebaNo\\"?: string;}
         
         
         export enum UserBankRejectCause {DocumentsLack=\\"DocumentsLack\\",DocumentsMismatch=\\"DocumentsMismatch\\",Etc=\\"Etc\\"}
@@ -13415,7 +13415,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
         export interface UserChangePasswordInput {\\"currentPassword\\"?: string;\\"newPassword\\"?: string;}
         
         
-        export type UserDetailQuery =  & (UserMeQuery & {\\"address\\"?: string;\\"city\\"?: string;\\"email\\"?: string;\\"introducedBySubDomain\\"?: string;\\"nationalCode\\"?: string;\\"phoneNumber\\"?: string;\\"state\\"?: string;})
+        export type UserDetailQuery = (UserMeQuery & {\\"address\\"?: string;\\"city\\"?: string;\\"email\\"?: string;\\"introducedBySubDomain\\"?: string;\\"nationalCode\\"?: string;\\"phoneNumber\\"?: string;\\"state\\"?: string;})
         
         
         export interface UserForgetPasswordInput {\\"phoneNumber\\"?: string;}
@@ -13433,7 +13433,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * [Deprecated, use 'Status' instead]
  * @deprecated Use 'Status' instead.
  */
-\\"userIdentityRequestStatus\\":  & (IdentityStatus);\\"documents\\"?: DocumentApiModel[];\\"firstName\\"?: string;\\"lastName\\"?: string;\\"nationalCode\\"?: string;\\"rejectCause\\"?:  & (UserIdentityRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"statusDisplay\\"?: string;
+\\"userIdentityRequestStatus\\": (IdentityStatus);\\"documents\\"?: DocumentApiModel[];\\"firstName\\"?: string;\\"lastName\\"?: string;\\"nationalCode\\"?: string;\\"rejectCause\\"?: (UserIdentityRejectCause);\\"rejectCauseDescription\\"?: string;\\"rejectCauseDisplay\\"?: string;\\"statusDisplay\\"?: string;
 /**
  * 
  * [Deprecated, use 'RejectCauseDescription' instead]
@@ -13462,7 +13462,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * 
  * - Format: guid
  */
-\\"businessUserId\\"?: string;\\"gender\\"?:  & (Gender);\\"genderDisplay\\"?: string;\\"identityStatusDisplay\\"?: string;\\"profileImageLink\\"?: string;\\"referredBy\\"?: string;\\"title\\"?: string;}
+\\"businessUserId\\"?: string;\\"gender\\"?: (Gender);\\"genderDisplay\\"?: string;\\"identityStatusDisplay\\"?: string;\\"profileImageLink\\"?: string;\\"referredBy\\"?: string;\\"title\\"?: string;}
         
         
         export interface UserMinimalDto {
@@ -13525,7 +13525,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
  * 
  * - Format: date-time
  */
-\\"birthDate\\"?: string;\\"city\\"?: string;\\"email\\"?: string;\\"gender\\"?:  & (Gender);\\"state\\"?: string;}
+\\"birthDate\\"?: string;\\"city\\"?: string;\\"email\\"?: string;\\"gender\\"?: (Gender);\\"state\\"?: string;}
         
         
         export enum UserStatus {None=\\"None\\",NotVerified=\\"NotVerified\\",VerifiedButNotCompleted=\\"VerifiedButNotCompleted\\",Active=\\"Active\\",TemporaryBlocked=\\"TemporaryBlocked\\",AutoPasswordGenerated=\\"AutoPasswordGenerated\\"}
@@ -13558,7 +13558,7 @@ exports[`only includes methods ends with Id generate type 1`] = `
         export enum VoucherOperationType {Unknown=\\"Unknown\\",EPayViaBankWithCommissionByPayer=\\"EPayViaBankWithCommissionByPayer\\",EPayViaBankWithCommissionByUser=\\"EPayViaBankWithCommissionByUser\\",EPayViaPSPWithCommissionByPayer=\\"EPayViaPSPWithCommissionByPayer\\",EPayViaPSPWithCommissionByUser=\\"EPayViaPSPWithCommissionByUser\\",EPayViaWalletWithCommissionByPayer=\\"EPayViaWalletWithCommissionByPayer\\",EPayViaWalletWithCommissionByUser=\\"EPayViaWalletWithCommissionByUser\\",TransferMoney=\\"TransferMoney\\",ChargeWallet=\\"ChargeWallet\\",ServiceBill=\\"ServiceBill\\",ServiceMobileCharge=\\"ServiceMobileCharge\\",POSViaBank=\\"POSViaBank\\",POSViaWallet=\\"POSViaWallet\\",ShareAndBlockRequest=\\"ShareAndBlockRequest\\",ShareRequest=\\"ShareRequest\\",SettlementAuto=\\"SettlementAuto\\",SettlementManual=\\"SettlementManual\\",SettlementSuspected=\\"SettlementSuspected\\",GroupTransferMoney=\\"GroupTransferMoney\\",ShareAndUnblock=\\"ShareAndUnblock\\",RefundWithSystemPayer=\\"RefundWithSystemPayer\\",RefundWithAnonymousPayer=\\"RefundWithAnonymousPayer\\",PayCommand=\\"PayCommand\\",GiftForReferrer=\\"GiftForReferrer\\",GiftForNoCommissionRemain=\\"GiftForNoCommissionRemain\\",Sepid=\\"Sepid\\",BatchTransferItem=\\"BatchTransferItem\\",AbstractProviderSynchronization=\\"AbstractProviderSynchronization\\",BlockchainWithdrawInternalTransfer=\\"BlockchainWithdrawInternalTransfer\\",BlockchainWithdrawUserWallet=\\"BlockchainWithdrawUserWallet\\",BlockchainIncomingTransaction=\\"BlockchainIncomingTransaction\\",BlockchainWithdrawUserWalletOnChain=\\"BlockchainWithdrawUserWalletOnChain\\"}
         
         
-        export type WalletDetailApiModel =  & (WalletDisplayApiModel & {\\"notificationEnabled\\": boolean;
+        export type WalletDetailApiModel = (WalletDisplayApiModel & {\\"notificationEnabled\\": boolean;
 /**
  * 
  * - Format: int32
