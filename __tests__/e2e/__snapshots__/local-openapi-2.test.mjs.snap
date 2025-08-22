@@ -37692,115 +37692,123 @@ export interface CompanyRequest {
 
 export interface ConsolidatedPermissions {
   auth?: {
-    group?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    permission?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    user?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
+    group?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    permission?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    user?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
   };
-  authentication?: { group?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[] };
-  budget?: { budget?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[] };
+  authentication?: { group?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[] };
+  budget?: {
+    budget?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+  };
   codes?: {
-    accountingcode?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    activity?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    resource?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    wbs?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
+    accountingcode?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    activity?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    resource?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    wbs?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
   };
   finance?: {
-    account?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    bankaccount?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    bondplannedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    bondplannedrevenue?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    bondrealizedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    bondrealizedrevenue?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    cashaccount?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    chequeplannedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    chequeplannedrevenue?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    chequerealizedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    chequerealizedrevenue?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    expense?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    financialinstrumentlist?:
+    account?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    bankaccount?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    bondplannedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    bondplannedrevenue?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    bondrealizedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    bondrealizedrevenue?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    cashaccount?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    chequeplannedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    chequeplannedrevenue?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    chequerealizedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    chequerealizedrevenue?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    expense?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    financialinstrumentlist?: (
       | \\"add\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
-      | \\"view\\"[];
-    incomeinvoice?:
+      | \\"view\\"
+    )[];
+    incomeinvoice?: (
       | \\"add\\"
       | \\"approve\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
-      | \\"view\\"[];
-    incomeinvoicecategory?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    incomeinvoiceitem?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    incomeinvoiceplannedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    incomeinvoicerealizedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    incomeinvoiceserial?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    instrumentstatechange?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    paymentbond?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    paymentcheque?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    paymentdetail?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    paymentplan?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    revenuebond?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    revenuecheque?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    revenuedetail?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    revenueplan?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    slip?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    supplieraccount?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    transaction?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
+      | \\"view\\"
+    )[];
+    incomeinvoicecategory?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    incomeinvoiceitem?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    incomeinvoiceplannedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    incomeinvoicerealizedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    incomeinvoiceserial?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    instrumentstatechange?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    paymentbond?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    paymentcheque?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    paymentdetail?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    paymentplan?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    revenuebond?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    revenuecheque?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    revenuedetail?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    revenueplan?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    slip?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    supplieraccount?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    transaction?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
   };
   hr?: {
-    crew?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    location?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    maindepartment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    mainposition?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    person?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    profession?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    projectsalarypermission?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    quitreason?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    quitrecord?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    salary?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    subdepartment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    subposition?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
+    crew?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    location?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    maindepartment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    mainposition?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    person?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    profession?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    projectsalarypermission?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    quitreason?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    quitrecord?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    salary?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    subdepartment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    subposition?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
   };
   procurement?: {
-    invoice?:
+    invoice?: (
       | \\"add\\"
       | \\"approve\\"
       | \\"canapprove\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
-      | \\"view\\"[];
-    invoiceitem?:
+      | \\"view\\"
+    )[];
+    invoiceitem?: (
       | \\"add\\"
       | \\"cancel\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
       | \\"uncancel\\"
-      | \\"view\\"[];
-    invoiceplannedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    invoicerealizedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    order?:
+      | \\"view\\"
+    )[];
+    invoiceplannedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    invoicerealizedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    order?: (
       | \\"add\\"
       | \\"approve\\"
       | \\"canapprove\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
-      | \\"view\\"[];
-    orderadvancepayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    orderadvancerealizedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    orderitem?:
+      | \\"view\\"
+    )[];
+    orderadvancepayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    orderadvancerealizedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    orderitem?: (
       | \\"add\\"
       | \\"cancel\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
       | \\"uncancel\\"
-      | \\"view\\"[];
-    orderplannedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    procurementrequest?:
+      | \\"view\\"
+    )[];
+    orderplannedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    procurementrequest?: (
       | \\"add\\"
       | \\"add\\"
       | \\"approve\\"
@@ -37813,55 +37821,65 @@ export interface ConsolidatedPermissions {
       | \\"superreader\\"
       | \\"superreader\\"
       | \\"view\\"
-      | \\"view\\"[];
-    requestitem?:
+      | \\"view\\"
+    )[];
+    requestitem?: (
       | \\"add\\"
       | \\"cancel\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
       | \\"uncancel\\"
-      | \\"view\\"[];
-    requesttypeparam?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    specialinvoice?:
+      | \\"view\\"
+    )[];
+    requesttypeparam?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    specialinvoice?: (
       | \\"add\\"
       | \\"approve\\"
       | \\"canapprove\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
-      | \\"view\\"[];
-    specialinvoiceitem?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    specialinvoiceplannedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    specialinvoicerealizedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    specialinvoicetype?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    tax?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
+      | \\"view\\"
+    )[];
+    specialinvoiceitem?: (
+      | \\"add\\"
+      | \\"change\\"
+      | \\"delete\\"
+      | \\"superreader\\"
+      | \\"view\\"
+    )[];
+    specialinvoiceplannedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    specialinvoicerealizedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    specialinvoicetype?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    tax?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
   };
   projects?: {
-    accountingtypeparam?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    company?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    project?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    projecttypeparam?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    responsible?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    responsibletypeparam?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
+    accountingtypeparam?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    company?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    project?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    projecttypeparam?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    responsible?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    responsibletypeparam?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
   };
   reporting?: {
-    cashreports?: \\"superreader\\" | \\"view\\"[];
-    costreports?: \\"superreader\\" | \\"view\\"[];
-    incomereports?: \\"superreader\\" | \\"view\\"[];
+    cashreports?: (\\"superreader\\" | \\"view\\")[];
+    costreports?: (\\"superreader\\" | \\"view\\")[];
+    incomereports?: (\\"superreader\\" | \\"view\\")[];
   };
   subcontracts?: {
-    contract?:
+    contract?: (
       | \\"add\\"
       | \\"approve\\"
       | \\"canapprove\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
-      | \\"view\\"[];
-    contractadvancepayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    contractadvancerealizedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    contractcategory?:
+      | \\"view\\"
+    )[];
+    contractadvancepayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    contractadvancerealizedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    contractcategory?: (
       | \\"add\\"
       | \\"add\\"
       | \\"change\\"
@@ -37869,78 +37887,90 @@ export interface ConsolidatedPermissions {
       | \\"delete\\"
       | \\"delete\\"
       | \\"view\\"
-      | \\"view\\"[];
-    contractcollateral?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    contractcollateralreason?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    contractcollateralstatus?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    contractcollateraltype?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    contractdeduction?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    contractitem?:
+      | \\"view\\"
+    )[];
+    contractcollateral?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    contractcollateralreason?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    contractcollateralstatus?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    contractcollateraltype?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    contractdeduction?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    contractitem?: (
       | \\"add\\"
       | \\"cancel\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
       | \\"uncancel\\"
-      | \\"view\\"[];
-    contractitembase?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    contractplannedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    deductionreturn?:
+      | \\"view\\"
+    )[];
+    contractitembase?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    contractplannedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    deductionreturn?: (
       | \\"add\\"
       | \\"approve\\"
       | \\"canapprove\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
-      | \\"view\\"[];
-    deductionreturnplannedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    deductionreturnrealizedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    progress?:
+      | \\"view\\"
+    )[];
+    deductionreturnplannedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    deductionreturnrealizedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    progress?: (
       | \\"add\\"
       | \\"approve\\"
       | \\"canapprove\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
-      | \\"view\\"[];
-    progressaddition?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    progressadditiontype?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    progressdeduction?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    progressdeductiontype?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    progressitem?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    progressplannedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    progressrealizedpayment?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    revision?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
+      | \\"view\\"
+    )[];
+    progressaddition?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    progressadditiontype?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    progressdeduction?: (
+      | \\"add\\"
+      | \\"change\\"
+      | \\"delete\\"
+      | \\"superreader\\"
+      | \\"view\\"
+    )[];
+    progressdeductiontype?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    progressitem?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    progressplannedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    progressrealizedpayment?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    revision?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
   };
   suppliers?: {
-    answer?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    review?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    reviewquestion?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    reviewtemplate?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    supplier?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    supplieraccountingcode?:
+    answer?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    review?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    reviewquestion?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    reviewtemplate?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    supplier?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    supplieraccountingcode?: (
       | \\"add\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
-      | \\"view\\"[];
-    supplieractivitytype?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    supplierbankaccount?:
+      | \\"view\\"
+    )[];
+    supplieractivitytype?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    supplierbankaccount?: (
       | \\"add\\"
       | \\"change\\"
       | \\"delete\\"
       | \\"superreader\\"
-      | \\"view\\"[];
-    supplierbranch?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    suppliercontact?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    suppliertype?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
+      | \\"view\\"
+    )[];
+    supplierbranch?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    suppliercontact?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    suppliertype?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
   };
   warehouse?: {
-    product?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    slip?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    slipparent?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\"[];
-    warehouse?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
-    warehousetransaction?:
+    product?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    slip?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    slipparent?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"view\\")[];
+    warehouse?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
+    warehousetransaction?: (
       | \\"add\\"
       | \\"add\\"
       | \\"change\\"
@@ -37949,8 +37979,9 @@ export interface ConsolidatedPermissions {
       | \\"delete\\"
       | \\"superreader\\"
       | \\"view\\"
-      | \\"view\\"[];
-    waybill?: \\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\"[];
+      | \\"view\\"
+    )[];
+    waybill?: (\\"add\\" | \\"change\\" | \\"delete\\" | \\"superreader\\" | \\"view\\")[];
   };
 }
 
@@ -39278,7 +39309,7 @@ export interface GetFinanceAccountsQueryParams {
    * - Subcontractor \`CUSTOMER\` - Customer \`EMPLOYEE\` - Employee \`OTHER\` - Other
    * \`CHEQUE\` - Cheque \`BOND\` - Bond
    */
-  type?:
+  type?: (
     | \\"BANK\\"
     | \\"BOND\\"
     | \\"CASH\\"
@@ -39287,7 +39318,8 @@ export interface GetFinanceAccountsQueryParams {
     | \\"EMPLOYEE\\"
     | \\"OTHER\\"
     | \\"SUBCONTRACTOR\\"
-    | \\"VENDOR\\"[];
+    | \\"VENDOR\\"
+  )[];
 }
 
 export interface GetFinanceBankAccountsQueryParams {
@@ -39328,7 +39360,7 @@ export interface GetFinanceBankAccountsQueryParams {
    * - Subcontractor \`CUSTOMER\` - Customer \`EMPLOYEE\` - Employee \`OTHER\` - Other
    * \`CHEQUE\` - Cheque \`BOND\` - Bond
    */
-  type?:
+  type?: (
     | \\"BANK\\"
     | \\"BOND\\"
     | \\"CASH\\"
@@ -39337,7 +39369,8 @@ export interface GetFinanceBankAccountsQueryParams {
     | \\"EMPLOYEE\\"
     | \\"OTHER\\"
     | \\"SUBCONTRACTOR\\"
-    | \\"VENDOR\\"[];
+    | \\"VENDOR\\"
+  )[];
 }
 
 export interface GetFinanceCashAccountsQueryParams {
@@ -39368,7 +39401,7 @@ export interface GetFinanceCashAccountsQueryParams {
    * - Subcontractor \`CUSTOMER\` - Customer \`EMPLOYEE\` - Employee \`OTHER\` - Other
    * \`CHEQUE\` - Cheque \`BOND\` - Bond
    */
-  type?:
+  type?: (
     | \\"BANK\\"
     | \\"BOND\\"
     | \\"CASH\\"
@@ -39377,7 +39410,8 @@ export interface GetFinanceCashAccountsQueryParams {
     | \\"EMPLOYEE\\"
     | \\"OTHER\\"
     | \\"SUBCONTRACTOR\\"
-    | \\"VENDOR\\"[];
+    | \\"VENDOR\\"
+  )[];
 }
 
 export interface GetFinanceExpensesQueryParams {
@@ -39801,7 +39835,7 @@ export interface GetFinanceSupplierAccountsQueryParams {
    * - Subcontractor \`CUSTOMER\` - Customer \`EMPLOYEE\` - Employee \`OTHER\` - Other
    * \`CHEQUE\` - Cheque \`BOND\` - Bond
    */
-  type?:
+  type?: (
     | \\"BANK\\"
     | \\"BOND\\"
     | \\"CASH\\"
@@ -39810,7 +39844,8 @@ export interface GetFinanceSupplierAccountsQueryParams {
     | \\"EMPLOYEE\\"
     | \\"OTHER\\"
     | \\"SUBCONTRACTOR\\"
-    | \\"VENDOR\\"[];
+    | \\"VENDOR\\"
+  )[];
 }
 
 export interface GetFinanceTxnsExportQueryParams {
@@ -40038,7 +40073,7 @@ export interface GetProcurementApprovedOrderItemsQueryParams {
    * \`-ordered_quantity\` - Ordered quantity (descending) \`remaining_quantity\` -
    * Remaining quantity \`-remaining_quantity\` - Remaining quantity (descending)
    */
-  ordering?:
+  ordering?: (
     | \\"-activity\\"
     | \\"-approver\\"
     | \\"-company\\"
@@ -40066,7 +40101,8 @@ export interface GetProcurementApprovedOrderItemsQueryParams {
     | \\"remaining_quantity\\"
     | \\"resource\\"
     | \\"supplier\\"
-    | \\"wbs\\"[];
+    | \\"wbs\\"
+  )[];
   project?: string[] | string;
   /** A search term. */
   search?: string;
@@ -41249,7 +41285,7 @@ export interface GetWarehouseProductsQueryParams {
    * delivery date \`-expected_delivery_date\` - Expected delivery date
    * (descending)
    */
-  ordering?:
+  ordering?: (
     | \\"-company\\"
     | \\"-description\\"
     | \\"-expected_delivery_date\\"
@@ -41267,7 +41303,8 @@ export interface GetWarehouseProductsQueryParams {
     | \\"quantity_float\\"
     | \\"resource\\"
     | \\"supplier\\"
-    | \\"warehouse\\"[];
+    | \\"warehouse\\"
+  )[];
   /** Project Id */
   project?: string[];
   resource?: string[];

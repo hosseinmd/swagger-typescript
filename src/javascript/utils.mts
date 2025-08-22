@@ -176,7 +176,7 @@ function handleEnumType(enumValues: string[]): string {
  * @returns TypeScript array type string
  */
 function handleArrayType(items: Schema, config: Config): string {
-  return `${getTsType(items, config)}[]`;
+  return `(${getTsType(items, config)})[]`;
 }
 
 /**
@@ -463,7 +463,6 @@ function template(str: string, obj: { [x: string]: string } = {}) {
   }
   return str;
 }
-
 export {
   getPathParams,
   getHeaderParams,

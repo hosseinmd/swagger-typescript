@@ -2815,7 +2815,7 @@ export interface AccountConfiguration {
   email_verification_by_code_enabled: boolean;
   is_open_for_signup: boolean;
   login_by_code_enabled: boolean;
-  login_methods?: \\"email\\" | \\"username\\"[];
+  login_methods?: (\\"email\\" | \\"username\\")[];
   password_reset_by_code_enabled?: boolean;
 }
 
@@ -3134,7 +3134,7 @@ export type Process = \\"login\\" | \\"connect\\";
 
 export interface Provider {
   /** The authentication flows the provider integration supports. */
-  flows: \\"provider_redirect\\" | \\"provider_token\\"[];
+  flows: (\\"provider_redirect\\" | \\"provider_token\\")[];
   /**
    * The provider ID.
    *

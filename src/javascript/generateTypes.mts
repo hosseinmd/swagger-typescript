@@ -97,7 +97,7 @@ function getTypeDefinition(
   }
 
   if (type === SCHEMA_TYPES.ARRAY && items) {
-    return `export type ${name} = ${getTsType(items, config)}[];`;
+    return `export type ${name} = (${getTsType(items, config)})[];`;
   }
 
   if ($ref) {

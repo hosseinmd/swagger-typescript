@@ -128,7 +128,7 @@ exports[`generate enum as type generate type 1`] = `
  * 
  * - Format: date-time
  */
-\\"StartDate\\"?: string;\\"States\\"?: (SettlementRequestStatus)[];
+\\"StartDate\\"?: string;\\"States\\"?: ((SettlementRequestStatus))[];
 /**
  * 
  * - Format: int64
@@ -144,7 +144,7 @@ exports[`generate enum as type generate type 1`] = `
  * 
  * - Format: int64
  */
-\\"totalCount\\": number;\\"settlementRequests\\"?: SettlementRequestResultResponseVM[];}
+\\"totalCount\\": number;\\"settlementRequests\\"?: (SettlementRequestResultResponseVM)[];}
         
         
         export interface SettlementRequestResultResponseVM {\\"automaticSettlement\\": boolean;
@@ -320,7 +320,7 @@ exports[`generate enum generate type 1`] = `
  * 
  * - Format: date-time
  */
-\\"StartDate\\"?: string;\\"States\\"?: (SettlementRequestStatus)[];
+\\"StartDate\\"?: string;\\"States\\"?: ((SettlementRequestStatus))[];
 /**
  * 
  * - Format: int64
@@ -336,7 +336,7 @@ exports[`generate enum generate type 1`] = `
  * 
  * - Format: int64
  */
-\\"totalCount\\": number;\\"settlementRequests\\"?: SettlementRequestResultResponseVM[];}
+\\"totalCount\\": number;\\"settlementRequests\\"?: (SettlementRequestResultResponseVM)[];}
         
         
         export interface SettlementRequestResultResponseVM {\\"automaticSettlement\\": boolean;
