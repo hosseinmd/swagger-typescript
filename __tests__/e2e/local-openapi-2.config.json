@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/v6.json",
+  "url": "./__tests__/e2e/local-openapi-2.json",
+  "dir": "./__tests__/e2e/outputs/local-openapi-2",
+  "reactHooks": true,
+  "generateEnumAsType": true,
+  "useInfiniteQuery": [
+    "useGetSuppliersSuppliers",
+    "useGetWarehouseWarehouses",
+    "useGetFinanceAccounts"
+  ]
+}

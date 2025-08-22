@@ -110,7 +110,7 @@ exports[`generate enum as type generate type 1`] = `
 */
 
         
-        export type EnumWithoutName =0 | 1 | 2 | 10 | 30;
+        export type EnumWithoutName = 0 | 1 | 2 | 10 | 30;
         
         
         export interface GetSettlementV1PrivateSettlementGetQueryParams {\\"EndDate\\"?: string;\\"IsAuto\\"?: boolean;
@@ -136,7 +136,7 @@ exports[`generate enum as type generate type 1`] = `
 \\"UserWalletId\\"?: number;\\"status\\"?: SettlementRequestStatus;}
         
         
-        export type NotificationLevel =\\"Unknown\\" | \\"Default\\" | \\"Success\\" | \\"Info\\" | \\"Warning\\" | \\"Danger\\";
+        export type NotificationLevel = \\"Unknown\\" | \\"Default\\" | \\"Success\\" | \\"Info\\" | \\"Warning\\" | \\"Danger\\";
         
         
         export interface SettlementRequestResultListResponseVM {
@@ -180,7 +180,7 @@ exports[`generate enum as type generate type 1`] = `
 \\"userWalletId\\": number;\\"accountNumber\\"?: string;}
         
         
-        export type SettlementRequestStatus =\\"Pending\\" | \\"Paid\\";
+        export type SettlementRequestStatus = \\"Pending\\" | \\"Paid\\";
         
         
 /**
@@ -188,7 +188,7 @@ exports[`generate enum as type generate type 1`] = `
  * - Format: int32
  */
 
-        export type Type =\\"0\\" | \\"-1\\";
+        export type Type = \\"0\\" | \\"-1\\";
         "
 `;
 

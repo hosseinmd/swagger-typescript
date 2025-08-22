@@ -4,36 +4,62 @@ import { isAscending } from "../utils.mjs";
 
 function getPathParams(parameters?: Parameter[]): Parameter[] {
   return (
-    parameters?.filter(({ in: In }) => {
-      return In === "path";
+    parameters?.filter(({ in: location }) => {
+      return location === "path";
     }) || []
   );
 }
 
 function getHeaderParams(parameters: Parameter[] | undefined, config: Config) {
-  const queryParamsArray =
-    parameters?.filter(({ in: In, name }) => {
-      return In === "header" && !config.ignore?.headerParams?.includes(name);
+  const headerParamsArray =
+    parameters?.filter(({ in: location, name }) => {
+      return (
+        location === "header" && !config.ignore?.headerParams?.includes(name)
+      );
     }) || [];
 
-  const params = getObjectType(queryParamsArray, config);
+  const params = getObjectType(headerParamsArray, config);
 
   return {
     params,
-    isNullable: queryParamsArray.every(({ schema = {} }) => !schema.required),
+    isNullable: headerParamsArray.every(({ schema = {} }) => !schema.required),
   };
 }
 
+/**
+ * Converts a string to PascalCase (first letter uppercase)
+ *
+ * @param str - String to convert
+ * @returns PascalCase version of the string
+ */
 function toPascalCase(str: string): string {
   return `${str.substring(0, 1).toUpperCase()}${str.substring(1)}`;
 }
-function replaceWithUpper(str: string, sp: string) {
-  let pointArray = str.split(sp);
-  pointArray = pointArray.map((point) => toPascalCase(point));
 
-  return pointArray.join("");
+/**
+ * Replaces delimiter characters with uppercase following characters
+ *
+ * @param str - String to process
+ * @param delimiter - Delimiter character to split on
+ * @returns Processed string with delimiters removed and following chars
+ *   uppercased
+ */
+function replaceWithUpper(str: string, delimiter: string) {
+  let parts = str.split(delimiter);
+  parts = parts.map((part) => toPascalCase(part));
+
+  return parts.join("");
 }
 
+/**
+ * Generates a service method name based on endpoint, method, and configuration
+ *
+ * @param endPoint - API endpoint path
+ * @param method - HTTP method (GET, POST, etc.)
+ * @param operationId - Optional operation ID from OpenAPI spec
+ * @param config - Configuration object containing naming rules
+ * @returns Generated service method name
+ */
 function generateServiceName(
   endPoint: string,
   method: string,
@@ -42,8 +68,8 @@ function generateServiceName(
 ): string {
   const { methodName, prefix = "" } = config;
 
-  const _endPoint = endPoint.replace(new RegExp(`^${prefix}`, "i"), "");
-  const path = getSchemaName(_endPoint);
+  const cleanedEndPoint = endPoint.replace(new RegExp(`^${prefix}`, "i"), "");
+  const path = getSchemaName(cleanedEndPoint);
 
   const methodNameTemplate = getTemplate(methodName, operationId);
 
@@ -118,6 +144,145 @@ function normalizeObjectPropertyNullable(
   return true;
 }
 
+/**
+ * Handles reference types ($ref) and returns appropriate TypeScript type
+ *
+ * @param $ref - The reference string
+ * @returns TypeScript type for the reference
+ */
+function handleRefType($ref: string): string {
+  const refArray = $ref.split("/");
+  if (refArray[refArray.length - 2] === "requestBodies") {
+    return `RequestBody${getRefName($ref)}`;
+  }
+  return getRefName($ref);
+}
+
+/**
+ * Handles enum types and returns a union type string
+ *
+ * @param enumValues - Array of enum values
+ * @returns TypeScript union type string
+ */
+function handleEnumType(enumValues: string[]): string {
+  return enumValues.map((e) => JSON.stringify(e)).join(" | ");
+}
+
+/**
+ * Handles array types
+ *
+ * @param items - The items schema for the array
+ * @param config - Configuration object
+ * @returns TypeScript array type string
+ */
+function handleArrayType(items: Schema, config: Config): string {
+  return `${getTsType(items, config)}[]`;
+}
+
+/**
+ * Handles object types with properties
+ *
+ * @param properties - Object properties
+ * @param required - Required property names
+ * @param config - Configuration object
+ * @returns TypeScript object type string
+ */
+function handleObjectProperties(
+  properties: { [name: string]: Schema },
+  required: string[] | undefined,
+  config: Config,
+): string {
+  return getObjectType(
+    Object.entries(properties).map(([pName, _schema]) => ({
+      schema: {
+        ..._schema,
+        nullable: normalizeObjectPropertyNullable(pName, _schema, required),
+      },
+      name: pName,
+    })),
+    config,
+  );
+}
+
+/**
+ * Handles oneOf schema compositions
+ *
+ * @param oneOf - Array of schemas for oneOf
+ * @param result - Existing result string
+ * @param config - Configuration object
+ * @returns Updated result string
+ */
+function handleOneOfType(
+  oneOf: Schema[],
+  result: string,
+  config: Config,
+): string {
+  const unionTypes = oneOf.map((t) => `(${getTsType(t, config)})`).join(" | ");
+  return `${result} & (${unionTypes})`;
+}
+
+/**
+ * Handles allOf schema compositions
+ *
+ * @param allOf - Array of schemas for allOf
+ * @param result - Existing result string
+ * @param config - Configuration object
+ * @returns Updated result string
+ */
+function handleAllOfType(
+  allOf: Schema[],
+  result: string,
+  config: Config,
+): string {
+  const intersectionTypes = allOf
+    .map((_schema) => getTsType(_schema, config))
+    .join(" & ");
+  return `${result ? `${result} &` : ""}(${intersectionTypes})`;
+}
+
+/**
+ * Handles anyOf schema compositions
+ *
+ * @param anyOf - Array of schemas for anyOf
+ * @param result - Existing result string
+ * @param config - Configuration object
+ * @returns Updated result string
+ */
+function handleAnyOfType(
+  anyOf: Schema[],
+  result: string,
+  config: Config,
+): string {
+  const unionTypes = anyOf
+    .map((_schema) => getTsType(_schema, config))
+    .join(" | ");
+  return `${result ? `${result} |` : ""}(${unionTypes})`;
+}
+
+/**
+ * Handles basic object types without specific properties
+ *
+ * @param additionalProperties - Additional properties schema or boolean
+ * @param config - Configuration object
+ * @returns TypeScript object type string
+ */
+function handleBasicObjectType(
+  additionalProperties: Schema | true | {} | undefined,
+  config: Config,
+): string {
+  if (additionalProperties) {
+    return `{[x: string]: ${getTsType(additionalProperties, config)}}`;
+  }
+  return "{[x in string | number ]: any}";
+}
+
+/**
+ * Main function to convert a schema to TypeScript type
+ *
+ * @param schema - The schema to convert
+ * @param config - Configuration object
+ * @returns TypeScript type string
+ */
 function getTsType(
   schema: undefined | true | {} | Schema,
   config: Config,
@@ -140,67 +305,52 @@ function getTsType(
     nullable,
   } = schema as Schema;
 
+  // Handle reference types
   if ($ref) {
-    const refArray = $ref.split("/");
-    if (refArray[refArray.length - 2] === "requestBodies") {
-      return `RequestBody${getRefName($ref)}`;
-    } else {
-      return getRefName($ref);
-    }
-  }
-  if (Enum) {
-    return `${Enum.map((e) => JSON.stringify(e)).join(" | ")}`;
+    return handleRefType($ref);
   }
 
+  // Handle enum types
+  if (Enum) {
+    return handleEnumType(Enum);
+  }
+
+  // Handle array types
   if (items) {
-    return `${getTsType(items, config)}[]`;
+    return handleArrayType(items, config);
   }
 
   let result = "";
 
+  // Handle object properties
   if (properties) {
-    result += getObjectType(
-      Object.entries(properties).map(([pName, _schema]) => ({
-        schema: {
-          ..._schema,
-          nullable: normalizeObjectPropertyNullable(pName, _schema, required),
-        },
-        name: pName,
-      })),
-      config,
-    );
+    result += handleObjectProperties(properties, required, config);
   }
 
+  // Handle schema compositions
   if (oneOf) {
-    result = `${result} & (${oneOf
-      .map((t) => `(${getTsType(t, config)})`)
-      .join(" | ")})`;
+    result = handleOneOfType(oneOf, result, config);
   }
 
   if (allOf) {
-    result = `${result ? `${result} &` : ""}(${allOf
-      .map((_schema) => getTsType(_schema, config))
-      .join(" & ")})`;
+    result = handleAllOfType(allOf, result, config);
   }
 
   if (anyOf) {
-    result = `${result ? `${result} |` : ""}(${anyOf
-      .map((_schema) => getTsType(_schema, config))
-      .join(" | ")})`;
+    result = handleAnyOfType(anyOf, result, config);
   }
 
+  // Handle basic object types
   if (type === "object" && !result) {
-    if (additionalProperties) {
-      return `{[x: string]: ${getTsType(additionalProperties, config)}}`;
-    }
-
-    return "{[x in string | number ]: any}";
+    return handleBasicObjectType(additionalProperties, config);
   }
 
+  // Handle nullable types
   if (!result && !type && nullable) {
     return "null";
   }
 
+  // Return result or fallback to basic type mapping
   return result || TYPES[type as keyof typeof TYPES];
 }
 
@@ -267,8 +417,8 @@ function getParametersInfo(
   type: "query" | "header",
 ) {
   const params =
-    parameters?.filter(({ in: In }) => {
-      return In === type;
+    parameters?.filter(({ in: location }) => {
+      return location === type;
     }) || [];
 
   return {

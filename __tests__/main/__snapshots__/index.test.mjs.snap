@@ -12872,7 +12872,7 @@ exports[`generate generate type 1`] = `
 \\"yearShort\\"?: string;}
         
         
-        export type RequestBodyAccountCreationApiModel = AccountCreationApiModel
+        export type RequestBodyAccountCreationApiModel = AccountCreationApiModel;
         
         
         export interface RequestBodyFile_Upload {
@@ -12883,19 +12883,19 @@ exports[`generate generate type 1`] = `
 \\"file\\"?: string;}
         
         
-        export type RequestBodyLogEventLevel = LogEventLevel
+        export type RequestBodyLogEventLevel = LogEventLevel;
         
         
-        export type RequestBodyNewEpayRequestInput = NewEpayRequestInput
+        export type RequestBodyNewEpayRequestInput = NewEpayRequestInput;
         
         
-        export type RequestBodySubUserNotificationStatusInput = SubUserNotificationStatusInput
+        export type RequestBodySubUserNotificationStatusInput = SubUserNotificationStatusInput;
         
         
-        export type RequestBodyTransferMoneyInput = TransferMoneyInput
+        export type RequestBodyTransferMoneyInput = TransferMoneyInput;
         
         
-        export type RequestBodyUserBankInput = UserBankInput
+        export type RequestBodyUserBankInput = UserBankInput;
         
         
         export interface RequestTotpInput {\\"phoneNumber\\"?: string;}
@@ -13412,7 +13412,7 @@ exports[`generate generate type 1`] = `
         export interface UserBankChangeVisibilityInput {\\"isVisible\\"?: boolean;}
         
         
-        export type UserBankDetailApiModel = (UserBankApiModel & {\\"documents\\"?: DocumentApiModel[];\\"nationalCode\\"?: string;})
+        export type UserBankDetailApiModel = (UserBankApiModel & {\\"documents\\"?: DocumentApiModel[];\\"nationalCode\\"?: string;});
         
         
         export interface UserBankInput {\\"accountNumber\\"?: string;
@@ -13435,7 +13435,7 @@ exports[`generate generate type 1`] = `
         export interface UserChangePasswordInput {\\"currentPassword\\"?: string;\\"newPassword\\"?: string;}
         
         
-        export type UserDetailQuery = (UserMeQuery & {\\"address\\"?: string;\\"city\\"?: string;\\"email\\"?: string;\\"introducedBySubDomain\\"?: string;\\"nationalCode\\"?: string;\\"phoneNumber\\"?: string;\\"state\\"?: string;})
+        export type UserDetailQuery = (UserMeQuery & {\\"address\\"?: string;\\"city\\"?: string;\\"email\\"?: string;\\"introducedBySubDomain\\"?: string;\\"nationalCode\\"?: string;\\"phoneNumber\\"?: string;\\"state\\"?: string;});
         
         
         export interface UserForgetPasswordInput {\\"phoneNumber\\"?: string;}
@@ -13593,7 +13593,7 @@ exports[`generate generate type 1`] = `
  * 
  * - Format: int32
  */
-\\"posScanCount\\": number;\\"accountQrCodeUrl\\"?: string;\\"actionPolicies\\"?: CommissionPolicyApiModel[];\\"posLinkUrl\\"?: string;})
+\\"posScanCount\\": number;\\"accountQrCodeUrl\\"?: string;\\"actionPolicies\\"?: CommissionPolicyApiModel[];\\"posLinkUrl\\"?: string;});
         
         
         export interface WalletDisplayApiModel {\\"automaticSettlement\\": boolean;\\"getComissionFromPayer\\": boolean;
