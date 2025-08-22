@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.9.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.9.0...v6.9.1) (2025-08-22)
+
+
+### Bug Fixes
+
+* anyof type generation ([cb3b76b](https://github.com/hosseinmd/swagger-typescript/commit/cb3b76ba6da386d25713af0f5e79383def8bb2e6))
+* tests ([777f70b](https://github.com/hosseinmd/swagger-typescript/commit/777f70bbac5ad068cc9fb0824d90ce6c27fdb5df))
+
 ## [6.9.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.7.0...v6.9.0) (2024-11-30)
 
 
