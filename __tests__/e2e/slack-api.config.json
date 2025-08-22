@@ -10,7 +10,7 @@
       "url": "https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2.json"
     }
   ],
-  "dir": "./__tests__/e2e/swagger-output-0",
+  "dir": "./__tests__/e2e/outputs/slack-api",
   "language": "typescript",
   "keepJson": true,
   "reactHooks": true,

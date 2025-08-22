@@ -109,3 +109,7 @@ dist
 
 # MacOS
 .DS_Store
+
+# E2E test outputs
+__tests__/e2e/outputs/
+__tests__/e2e/error-output/

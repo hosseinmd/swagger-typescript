@@ -1,7 +1,7 @@
 {
   "$schema": "../../schema/v6.json",
   "url": "https://petstore3.swagger.io/api/v3/openapi.json",
-  "dir": "./__tests__/e2e/output",
+  "dir": "./__tests__/e2e/outputs/petstore3",
   "language": "typescript",
   "keepJson": true,
   "reactHooks": true,

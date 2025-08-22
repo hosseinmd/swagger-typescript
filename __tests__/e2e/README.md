@@ -2,114 +2,147 @@
 
 This directory contains comprehensive end-to-end tests that validate the `swag-ts` CLI binary by actually running it and verifying the generated output.
 
+## Structure
+
+All E2E tests follow a consistent naming pattern for better organization:
+
+- **Test files**: `{testname}.test.mjs`
+- **Config files**: `{testname}.config.json`
+- **Output directories**: `outputs/{testname}/` (git-ignored)
+- **Snapshots**: `__snapshots__/{testname}.test.mjs.snap`
+
+## Test Suites
+
+| Test Name       | Config File                 | Description                                   |
+| --------------- | --------------------------- | --------------------------------------------- |
+| `local-openapi` | `local-openapi.config.json` | Tests generation from local OpenAPI JSON file |
+| `petstore3`     | `petstore3.config.json`     | Tests Petstore3 API with enum handling        |
+| `slack-api`     | `slack-api.config.json`     | Tests Slack API with infinite query support   |
+| `kotlin-wms`    | `kotlin-wms.config.json`    | Tests Kotlin generation for WMS API           |
+
 ## Running the Tests
 
 ```bash
-# Run E2E tests only
-yarn test:e2e
+# Run all E2E tests
+npm test __tests__/e2e/
 
-# Run snapshot tests only
-yarn test:snapshots
+# Run specific test
+npm test __tests__/e2e/local-openapi.test.mjs
 
-# Run all E2E tests (both regular and snapshot)
-yarn test:e2e:all
+# Update snapshots
+npm test __tests__/e2e/ --updateSnapshot
 
-# Run all tests including E2E
-yarn test
+# Run with test name pattern
+npm test __tests__/e2e/ --testNamePattern="should generate"
 ```
+
+## Output Management
+
+- All test outputs are written to the `outputs/` directory
+- The `outputs/` directory is git-ignored to keep the repository clean
+- Each test has its own subdirectory within `outputs/`
+- Output directories are automatically cleaned before and after each test
 
 ## Test Coverage
 
 The E2E tests cover:
 
-1. **Configuration Tests**
-
-   - Default configuration usage
-   - Custom configuration files
-   - Missing configuration error handling
-
-2. **Input Source Tests**
-
-   - Remote OpenAPI v3 URL fetching
-   - Local mode with existing files
-   - Local mode error handling
-
-3. **Feature Tests**
+1. **TypeScript Generation**
 
    - React hooks generation
-   - JSON file preservation (keepJson option)
+   - TypeScript type definitions
+   - Service layer generation
+   - Configuration file creation
 
-4. **Error Handling Tests**
+2. **Kotlin Generation**
 
-   - Invalid URL handling
-   - Network error scenarios
+   - Kotlin class generation
+   - Package structure handling
+   - API client generation
 
-5. **File Generation Validation**
+3. **Configuration Validation**
 
-   - Generated file structure
-   - Content validation
-   - TypeScript syntax verification
+   - Local file input
+   - Remote URL fetching
+   - Custom output directories
+   - Language-specific options
 
-6. **Snapshot Testing**
-   - Regression testing for generated file content
-   - Consistent output validation across versions
-   - File size and structure monitoring
+4. **Feature Tests**
 
-## Test Files
+   - React hooks (`reactHooks: true`)
+   - JSON preservation (`keepJson: true`)
+   - Enum handling (`generateEnumAsType`)
+   - Infinite query support (`useInfiniteQuery`)
 
-- `bin.e2e.test.mjs` - Main E2E test suite with snapshot validation
-- `bin.snapshot.test.mjs` - Dedicated snapshot tests for generated files
-- `test-config.json` - Test configuration for Petstore API
-- `snapshot-config.json` - Configuration for snapshot tests (auto-generated)
-- `output/` - Generated output directory (created during tests)
-- `snapshot-output/` - Generated output directory for snapshot tests
-- `__snapshots__/` - Jest snapshot files for regression testing
-
-## Test Configuration
-
-The tests use the Petstore OpenAPI specification from:
-
-- URL: `https://petstore3.swagger.io/api/v3/openapi.json`
-- Language: TypeScript
-- Features: React hooks, JSON preservation
-
-## Test Timeout
-
-Each test has a 30-second timeout to handle network operations and code generation.
-
-## Cleanup
-
-Tests automatically clean up generated files after each test run.
+5. **Error Handling**
+   - Invalid configuration files
+   - Network connectivity issues
+   - Missing dependencies
 
 ## Snapshot Testing
 
-The snapshot tests capture the exact content of generated files and store them in the `__snapshots__/` directory. These snapshots serve as a baseline for future test runs to detect any unintended changes in the generated code.
+The snapshot tests capture the exact content of generated files and serve as regression tests:
+
+### Generated Files Captured
+
+- **TypeScript files**: `services.ts`, `types.ts`, `hooks.ts`, `config.ts`
+- **Configuration files**: `httpRequest.ts`, `hooksConfig.ts`
+- **OpenAPI specification**: `swagger.json` (normalized)
 
 ### When to Update Snapshots
 
 Update snapshots when you intentionally change the code generation logic:
 
 ```bash
-# Update snapshots for snapshot tests
-yarn test:snapshots -u
+# Update specific test snapshots
+npm test __tests__/e2e/local-openapi.test.mjs -u
 
-# Update snapshots for E2E tests
-yarn test:e2e -u
-
-# Update all snapshots
-yarn test:e2e:all -u
+# Update all e2e snapshots
+npm test __tests__/e2e/ -u
 ```
-
-### What Gets Snapshots
-
-- **Generated TypeScript files**: services.ts, types.ts, hooks.ts, config.ts
-- **Configuration files**: httpRequest.ts, hooksConfig.ts
-- **OpenAPI specification**: swagger.json (normalized)
-- **File metrics**: Line counts, character counts, structure validation
 
 ### Snapshot Benefits
 
 - **Regression Detection**: Automatically catch unintended changes
 - **Code Review**: Easily see what changed in generated output during PRs
-- **Version Consistency**: Ensure output remains consistent across tool versions
-- **Structure Validation**: Monitor file sizes and structural changes over time
+- **Version Consistency**: Ensure output remains consistent across versions
+- **Quality Assurance**: Validate generated code structure and content
+
+## Test Configuration Examples
+
+### TypeScript with React Hooks
+
+```json
+{
+  "$schema": "../../schema/v6.json",
+  "url": "https://petstore3.swagger.io/api/v3/openapi.json",
+  "dir": "./__tests__/e2e/outputs/petstore3",
+  "language": "typescript",
+  "keepJson": true,
+  "reactHooks": true,
+  "generateEnumAsType": false
+}
+```
+
+### Kotlin Generation
+
+```json
+{
+  "$schema": "../../schema/v6.json",
+  "url": "https://api.example.com/openapi.json",
+  "dir": "./__tests__/e2e/outputs/kotlin-wms",
+  "language": "kotlin",
+  "kotlinPackage": "com.example.api",
+  "ignore": {
+    "headerParams": ["Accept", "Content-Type"]
+  }
+}
+```
+
+## Test Utilities
+
+The `utils.mjs` file provides shared utilities for all tests:
+
+- `cleanOutputDir(configPath)` - Clean up output directories
+- `generate(configPath)` - Run CLI and capture generated files
+- `runCommand(args)` - Execute CLI with custom arguments

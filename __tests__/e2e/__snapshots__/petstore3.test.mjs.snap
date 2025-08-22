@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`swag-ts CLI E2E Tests Configuration Tests E2E-VALIDATION-002: Generated Files Snapshots: e2e-generated-files 1`] = `
+exports[`E2E: Petstore3 API Tests should generate Petstore3 API files with correct enum handling: petstore3-generated-files 1`] = `
 Object {
   "config.ts": "/**
  * You can modify this file
