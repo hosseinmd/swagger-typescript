@@ -65,6 +65,8 @@ async function generate(
  * @throws Error when configuration is invalid
  */
 function validateConfiguration(config: FileConfig): void {
+  console.log(chalk.blueBright(`Start ${config.dir} generation...`));
+
   if (!config.dir) {
     throw new Error("Configuration must specify an output directory (dir)");
   }
