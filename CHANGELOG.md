@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.9.2](https://github.com/hosseinmd/swagger-typescript/compare/v6.9.1...v6.9.2) (2025-08-22)
+
+
+### Bug Fixes
+
+* empty enum issue ([f0a7c60](https://github.com/hosseinmd/swagger-typescript/commit/f0a7c60656bd04846df9a3d8de5f0a904b6160e6))
+* update type generation to use parentheses for array types ([e51f062](https://github.com/hosseinmd/swagger-typescript/commit/e51f06261a88085022683fcd84976056614fbdf1))
+
 ### [6.9.1](https://github.com/hosseinmd/swagger-typescript/compare/v6.9.0...v6.9.1) (2025-08-22)
 
 
