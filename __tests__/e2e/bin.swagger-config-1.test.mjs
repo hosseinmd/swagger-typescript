@@ -6,21 +6,24 @@ import { cleanOutputDir, generate } from "./utils.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const configPath = path.join(__dirname, "test-config.json");
+const localConfigPath = path.join(__dirname, "swagger.config-1.json");
 
 describe("swag-ts CLI E2E Tests", () => {
   beforeEach(async () => {
-    await cleanOutputDir(configPath);
+    await cleanOutputDir(localConfigPath);
   });
 
   afterEach(async () => {
-    await cleanOutputDir(configPath);
+    await cleanOutputDir(localConfigPath);
   });
 
-  describe("Configuration Tests", () => {
-    test("E2E-VALIDATION-002: Generated Files Snapshots", async () => {
-      const generatedFiles = await generate(configPath);
-      // Create snapshot of all generated files
+  describe("Local OpenAPI Tests", () => {
+    test("E2E-LOCAL-001: Django Allauth API Generation", async () => {
+      const generatedFiles = await generate(localConfigPath);
+
+      // Create snapshot of all generated files for local OpenAPI
+
+      // Verify critical content exists
       expect(generatedFiles["services.ts"]).toContain("export const");
       expect(generatedFiles["types.ts"]).toContain("export interface");
       expect(generatedFiles["hooks.ts"]).toContain("useQuery");
@@ -31,8 +34,7 @@ describe("swag-ts CLI E2E Tests", () => {
       );
 
       delete generatedFiles["swagger.json"];
-
-      expect(generatedFiles).toMatchSnapshot("e2e-generated-files");
+      expect(generatedFiles).toMatchSnapshot("local-openapi-generated-files");
     }, 30000);
   });
 });

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`swag-ts CLI E2E Tests Local OpenAPI Tests E2E-LOCAL-001: Django Allauth API Generation: local-openapi-generated-files 1`] = `
+Object {
+  "config.ts": "",
+  "hooks.ts": "",
+  "hooksConfig.ts": "",
+  "httpRequest.ts": "",
+  "services.ts": "",
+  "types.ts": "",
+}
+`;

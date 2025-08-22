@@ -59,15 +59,18 @@ const fileExists = async (filePath) => {
 };
 
 // Helper function to clean up output directory
-export const cleanOutputDir = async (outputDir) => {
+export const cleanOutputDir = async (configPath) => {
+  const config = JSON.parse(await fs.readFile(configPath, "utf8"));
+
   try {
-    await fs.rm(outputDir, { recursive: true, force: true });
+    await fs.rm(config.dir, { recursive: true, force: true });
   } catch (error) {
     // Directory might not exist, that's okay
   }
 };
 
-export const generate = async (configPath, outputDir) => {
+export const generate = async (configPath) => {
+  const config = JSON.parse(await fs.readFile(configPath, "utf8"));
   const result = await runCommand(["--config", configPath]);
 
   if (result.code !== 0) {
@@ -78,7 +81,7 @@ export const generate = async (configPath, outputDir) => {
   // Helper function to read file content
   const readFileContent = async (fileName) => {
     try {
-      return await fs.readFile(path.join(outputDir, fileName), "utf8");
+      return await fs.readFile(path.join(config.dir, fileName), "utf8");
     } catch {
       return "";
     }

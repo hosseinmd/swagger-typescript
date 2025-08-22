@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/v6.json",
+  "url": [
+    {
+      "branch": "master",
+      "url": "https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2.json"
+    },
+    {
+      "branch": "develop",
+      "url": "https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2.json"
+    }
+  ],
+  "dir": "./__tests__/e2e/swagger-output-0",
+  "language": "typescript",
+  "keepJson": true,
+  "reactHooks": true,
+  "useInfiniteQuery": ["useGetRealmsRealm"],
+  "ignore": {
+    "headerParams": ["terminalId"]
+  }
+}

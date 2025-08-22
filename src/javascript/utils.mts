@@ -137,6 +137,7 @@ function getTsType(
     required,
     allOf,
     anyOf,
+    nullable,
   } = schema as Schema;
 
   if ($ref) {
@@ -194,6 +195,10 @@ function getTsType(
     }
 
     return "{[x in string | number ]: any}";
+  }
+
+  if (!result && !type && nullable) {
+    return "null";
   }
 
   return result || TYPES[type as keyof typeof TYPES];
