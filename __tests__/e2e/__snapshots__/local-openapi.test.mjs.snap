@@ -245,7 +245,6 @@ export const useDelete_allauthBrowserV1AccountAuthenticatorsTotp = <TExtra,>(
   return useMutation({
     mutationFn: (_o) => {
       const { headerParams, configOverride } = _o || {};
-
       return delete_allauthBrowserV1AccountAuthenticatorsTotp(
         headerParams,
         configOverride,
@@ -268,16 +267,9 @@ export const useDelete_allauthBrowserV1AccountEmail = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return delete_allauthBrowserV1AccountEmail(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -299,16 +291,9 @@ export const useDelete_allauthBrowserV1AccountProviders = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return delete_allauthBrowserV1AccountProviders(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -328,7 +313,6 @@ export const useDelete_allauthBrowserV1AuthSession = <TExtra,>(
   return useMutation({
     mutationFn: (_o) => {
       const { headerParams, configOverride } = _o || {};
-
       return delete_allauthBrowserV1AuthSession(headerParams, configOverride);
     },
     ...options,
@@ -348,16 +332,9 @@ export const useDelete_allauthBrowserV1AuthSessions = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return delete_allauthBrowserV1AuthSessions(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -376,6 +353,7 @@ export const useGet_allauthBrowserV1AccountAuthenticators = (
     headerParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -389,7 +367,6 @@ useGet_allauthBrowserV1AccountAuthenticators.info = (
   return {
     key: [
       get_allauthBrowserV1AccountAuthenticators.key,
-
       headerParams,
     ] as QueryKey,
     fun: () =>
@@ -427,6 +404,7 @@ export const useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes = (
       headerParams,
       configOverride,
     );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -440,7 +418,6 @@ useGet_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.info = (
   return {
     key: [
       get_allauthBrowserV1AccountAuthenticatorsRecoveryCodes.key,
-
       headerParams,
     ] as QueryKey,
     fun: () =>
@@ -481,6 +458,7 @@ export const useGet_allauthBrowserV1AccountAuthenticatorsTotp = (
     headerParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -494,7 +472,6 @@ useGet_allauthBrowserV1AccountAuthenticatorsTotp.info = (
   return {
     key: [
       get_allauthBrowserV1AccountAuthenticatorsTotp.key,
-
       headerParams,
     ] as QueryKey,
     fun: () =>
@@ -534,6 +511,7 @@ export const useGet_allauthBrowserV1AccountEmail = (
     headerParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -579,6 +557,7 @@ export const useGet_allauthBrowserV1AccountPhone = (
     headerParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -624,6 +603,7 @@ export const useGet_allauthBrowserV1AccountProviders = (
     headerParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -670,6 +650,7 @@ export const useGet_allauthBrowserV1AuthEmailVerify = (
     headerParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -716,6 +697,7 @@ export const useGet_allauthBrowserV1AuthPasswordReset = (
     headerParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -759,6 +741,7 @@ export const useGet_allauthBrowserV1AuthProviderSignup = (
 ) => {
   const { key, fun } =
     useGet_allauthBrowserV1AuthProviderSignup.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -800,6 +783,7 @@ export const useGet_allauthBrowserV1AuthSession = (
     headerParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -845,6 +829,7 @@ export const useGet_allauthBrowserV1AuthSessions = (
     headerParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -886,6 +871,7 @@ export const useGet_allauthBrowserV1Config = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGet_allauthBrowserV1Config.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -927,16 +913,9 @@ export const usePatch_allauthBrowserV1AccountEmail = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return patch_allauthBrowserV1AccountEmail(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -958,7 +937,6 @@ export const usePost_allauthBrowserV1AccountAuthenticatorsRecoveryCodes = <
   return useMutation({
     mutationFn: (_o) => {
       const { headerParams, configOverride } = _o || {};
-
       return post_allauthBrowserV1AccountAuthenticatorsRecoveryCodes(
         headerParams,
         configOverride,
@@ -981,16 +959,9 @@ export const usePost_allauthBrowserV1AccountAuthenticatorsTotp = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return post_allauthBrowserV1AccountAuthenticatorsTotp(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -1012,16 +983,9 @@ export const usePost_allauthBrowserV1AccountEmail = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return post_allauthBrowserV1AccountEmail(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -1043,16 +1007,9 @@ export const usePost_allauthBrowserV1AccountPasswordChange = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return post_allauthBrowserV1AccountPasswordChange(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -1074,16 +1031,9 @@ export const usePost_allauthBrowserV1AccountPhone = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return post_allauthBrowserV1AccountPhone(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -1105,16 +1055,9 @@ export const usePost_allauthBrowserV1Auth2faAuthenticate = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return post_allauthBrowserV1Auth2faAuthenticate(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -1134,7 +1077,6 @@ export const usePost_allauthBrowserV1Auth2faReauthenticate = <TExtra,>(
   return useMutation({
     mutationFn: (_o) => {
       const { headerParams, configOverride } = _o || {};
-
       return post_allauthBrowserV1Auth2faReauthenticate(
         headerParams,
         configOverride,
@@ -1154,17 +1096,8 @@ export const usePost_allauthBrowserV1AuthCodeConfirm = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return post_allauthBrowserV1AuthCodeConfirm(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return post_allauthBrowserV1AuthCodeConfirm(requestBody, configOverride);
     },
     ...options,
   });
@@ -1180,17 +1113,8 @@ export const usePost_allauthBrowserV1AuthCodeRequest = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return post_allauthBrowserV1AuthCodeRequest(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return post_allauthBrowserV1AuthCodeRequest(requestBody, configOverride);
     },
     ...options,
   });
@@ -1209,16 +1133,9 @@ export const usePost_allauthBrowserV1AuthEmailVerify = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return post_allauthBrowserV1AuthEmailVerify(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -1238,7 +1155,6 @@ export const usePost_allauthBrowserV1AuthEmailVerifyResend = <TExtra,>(
   return useMutation({
     mutationFn: (_o) => {
       const { headerParams, configOverride } = _o || {};
-
       return post_allauthBrowserV1AuthEmailVerifyResend(
         headerParams,
         configOverride,
@@ -1258,17 +1174,8 @@ export const usePost_allauthBrowserV1AuthLogin = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return post_allauthBrowserV1AuthLogin(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return post_allauthBrowserV1AuthLogin(requestBody, configOverride);
     },
     ...options,
   });
@@ -1284,15 +1191,9 @@ export const usePost_allauthBrowserV1AuthPasswordRequest = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, configOverride } = _o || {};
       return post_allauthBrowserV1AuthPasswordRequest(
         requestBody,
-
         configOverride,
       );
     },
@@ -1310,15 +1211,9 @@ export const usePost_allauthBrowserV1AuthPasswordReset = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, configOverride } = _o || {};
       return post_allauthBrowserV1AuthPasswordReset(
         requestBody,
-
         configOverride,
       );
     },
@@ -1339,16 +1234,9 @@ export const usePost_allauthBrowserV1AuthPhoneVerify = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return post_allauthBrowserV1AuthPhoneVerify(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -1368,7 +1256,6 @@ export const usePost_allauthBrowserV1AuthPhoneVerifyResend = <TExtra,>(
   return useMutation({
     mutationFn: (_o) => {
       const { headerParams, configOverride } = _o || {};
-
       return post_allauthBrowserV1AuthPhoneVerifyResend(
         headerParams,
         configOverride,
@@ -1388,15 +1275,9 @@ export const usePost_allauthBrowserV1AuthProviderRedirect = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, configOverride } = _o || {};
       return post_allauthBrowserV1AuthProviderRedirect(
         requestBody,
-
         configOverride,
       );
     },
@@ -1414,15 +1295,9 @@ export const usePost_allauthBrowserV1AuthProviderSignup = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, configOverride } = _o || {};
       return post_allauthBrowserV1AuthProviderSignup(
         requestBody,
-
         configOverride,
       );
     },
@@ -1443,16 +1318,9 @@ export const usePost_allauthBrowserV1AuthProviderToken = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return post_allauthBrowserV1AuthProviderToken(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -1474,16 +1342,9 @@ export const usePost_allauthBrowserV1AuthReauthenticate = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return post_allauthBrowserV1AuthReauthenticate(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -1502,17 +1363,8 @@ export const usePost_allauthBrowserV1AuthSignup = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return post_allauthBrowserV1AuthSignup(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return post_allauthBrowserV1AuthSignup(requestBody, configOverride);
     },
     ...options,
   });
@@ -1531,16 +1383,9 @@ export const usePut_allauthBrowserV1AccountEmail = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return put_allauthBrowserV1AccountEmail(
         requestBody,
-
         headerParams,
         configOverride,
       );

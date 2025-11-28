@@ -201,19 +201,8 @@ export const useDeletePetPetId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        petId,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
-      return deletePetPetId(
-        petId,
-
-        headerParams,
-        configOverride,
-      );
+      const { petId, headerParams, configOverride } = _o || {};
+      return deletePetPetId(petId, headerParams, configOverride);
     },
     ...options,
   });
@@ -232,17 +221,8 @@ export const useDeleteStoreOrderOrderId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        orderId,
-
-        configOverride,
-      } = _o || {};
-
-      return deleteStoreOrderOrderId(
-        orderId,
-
-        configOverride,
-      );
+      const { orderId, configOverride } = _o || {};
+      return deleteStoreOrderOrderId(orderId, configOverride);
     },
     ...options,
   });
@@ -261,17 +241,8 @@ export const useDeleteUserUsername = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        username,
-
-        configOverride,
-      } = _o || {};
-
-      return deleteUserUsername(
-        username,
-
-        configOverride,
-      );
+      const { username, configOverride } = _o || {};
+      return deleteUserUsername(username, configOverride);
     },
     ...options,
   });
@@ -284,6 +255,7 @@ export const useGetPetFindByStatus = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPetFindByStatus.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -296,12 +268,7 @@ useGetPetFindByStatus.info = (
 ) => {
   return {
     key: [getPetFindByStatus.key, queryParams] as QueryKey,
-    fun: () =>
-      getPetFindByStatus(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getPetFindByStatus(queryParams, configOverride),
   };
 };
 useGetPetFindByStatus.prefetch = (
@@ -328,6 +295,7 @@ export const useGetPetFindByTags = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetPetFindByTags.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -340,12 +308,7 @@ useGetPetFindByTags.info = (
 ) => {
   return {
     key: [getPetFindByTags.key, queryParams] as QueryKey,
-    fun: () =>
-      getPetFindByTags(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getPetFindByTags(queryParams, configOverride),
   };
 };
 useGetPetFindByTags.prefetch = (
@@ -372,11 +335,8 @@ export const useGetPetPetId = (
   options?: SwaggerTypescriptUseQueryOptions<Pet>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetPetPetId.info(
-    petId,
+  const { key, fun } = useGetPetPetId.info(petId, configOverride);
 
-    configOverride,
-  );
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -390,12 +350,7 @@ useGetPetPetId.info = (
 ) => {
   return {
     key: [getPetPetId.key, petId] as QueryKey,
-    fun: () =>
-      getPetPetId(
-        petId,
-
-        configOverride,
-      ),
+    fun: () => getPetPetId(petId, configOverride),
   };
 };
 useGetPetPetId.prefetch = (
@@ -406,11 +361,7 @@ useGetPetPetId.prefetch = (
   options?: SwaggerTypescriptUseQueryOptions<Pet>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetPetPetId.info(
-    petId,
-
-    configOverride,
-  );
+  const { key, fun } = useGetPetPetId.info(petId, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -427,6 +378,7 @@ export const useGetStoreInventory = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetStoreInventory.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -462,11 +414,8 @@ export const useGetStoreOrderOrderId = (
   options?: SwaggerTypescriptUseQueryOptions<Order>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetStoreOrderOrderId.info(
-    orderId,
+  const { key, fun } = useGetStoreOrderOrderId.info(orderId, configOverride);
 
-    configOverride,
-  );
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -480,12 +429,7 @@ useGetStoreOrderOrderId.info = (
 ) => {
   return {
     key: [getStoreOrderOrderId.key, orderId] as QueryKey,
-    fun: () =>
-      getStoreOrderOrderId(
-        orderId,
-
-        configOverride,
-      ),
+    fun: () => getStoreOrderOrderId(orderId, configOverride),
   };
 };
 useGetStoreOrderOrderId.prefetch = (
@@ -496,11 +440,7 @@ useGetStoreOrderOrderId.prefetch = (
   options?: SwaggerTypescriptUseQueryOptions<Order>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetStoreOrderOrderId.info(
-    orderId,
-
-    configOverride,
-  );
+  const { key, fun } = useGetStoreOrderOrderId.info(orderId, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -518,6 +458,7 @@ export const useGetUserLogin = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserLogin.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -530,12 +471,7 @@ useGetUserLogin.info = (
 ) => {
   return {
     key: [getUserLogin.key, queryParams] as QueryKey,
-    fun: () =>
-      getUserLogin(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getUserLogin(queryParams, configOverride),
   };
 };
 useGetUserLogin.prefetch = (
@@ -561,6 +497,7 @@ export const useGetUserLogout = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserLogout.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -596,11 +533,8 @@ export const useGetUserUsername = (
   options?: SwaggerTypescriptUseQueryOptions<User>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetUserUsername.info(
-    username,
+  const { key, fun } = useGetUserUsername.info(username, configOverride);
 
-    configOverride,
-  );
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -614,12 +548,7 @@ useGetUserUsername.info = (
 ) => {
   return {
     key: [getUserUsername.key, username] as QueryKey,
-    fun: () =>
-      getUserUsername(
-        username,
-
-        configOverride,
-      ),
+    fun: () => getUserUsername(username, configOverride),
   };
 };
 useGetUserUsername.prefetch = (
@@ -630,11 +559,7 @@ useGetUserUsername.prefetch = (
   options?: SwaggerTypescriptUseQueryOptions<User>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetUserUsername.info(
-    username,
-
-    configOverride,
-  );
+  const { key, fun } = useGetUserUsername.info(username, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -655,17 +580,8 @@ export const usePostPet = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postPet(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postPet(requestBody, configOverride);
     },
     ...options,
   });
@@ -685,19 +601,8 @@ export const usePostPetPetId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        petId,
-
-        queryParams,
-        configOverride,
-      } = _o || {};
-
-      return postPetPetId(
-        petId,
-
-        queryParams,
-        configOverride,
-      );
+      const { petId, queryParams, configOverride } = _o || {};
+      return postPetPetId(petId, queryParams, configOverride);
     },
     ...options,
   });
@@ -719,7 +624,6 @@ export const usePostPetPetIdUploadImage = <TExtra,>(
   return useMutation({
     mutationFn: (_o) => {
       const { petId, requestBody, queryParams, configOverride } = _o || {};
-
       return postPetPetIdUploadImage(
         petId,
         requestBody,
@@ -741,17 +645,8 @@ export const usePostStoreOrder = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postStoreOrder(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postStoreOrder(requestBody, configOverride);
     },
     ...options,
   });
@@ -767,17 +662,8 @@ export const usePostUser = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postUser(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postUser(requestBody, configOverride);
     },
     ...options,
   });
@@ -793,17 +679,8 @@ export const usePostUserCreateWithList = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postUserCreateWithList(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postUserCreateWithList(requestBody, configOverride);
     },
     ...options,
   });
@@ -819,17 +696,8 @@ export const usePutPet = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return putPet(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return putPet(requestBody, configOverride);
     },
     ...options,
   });
@@ -849,19 +717,8 @@ export const usePutUserUsername = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        username,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return putUserUsername(
-        username,
-        requestBody,
-
-        configOverride,
-      );
+      const { username, requestBody, configOverride } = _o || {};
+      return putUserUsername(username, requestBody, configOverride);
     },
     ...options,
   });
@@ -1131,7 +988,7 @@ export const deletePetPetId = (
     template(deletePetPetId.key, { petId }),
     undefined,
     undefined,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(
       {
         headers: {
@@ -1158,7 +1015,7 @@ export const deleteStoreOrderOrderId = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1176,7 +1033,7 @@ export const deleteUserUsername = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1192,8 +1049,8 @@ export const getPetFindByStatus = (
     getPetFindByStatus.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1209,8 +1066,8 @@ export const getPetFindByTags = (
     getPetFindByTags.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1228,7 +1085,7 @@ export const getPetPetId = (
     undefined,
     undefined,
     _CONSTANT2,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1244,7 +1101,7 @@ export const getStoreInventory = (
     undefined,
     undefined,
     _CONSTANT5,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1262,7 +1119,7 @@ export const getStoreOrderOrderId = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1295,7 +1152,7 @@ export const getUserLogout = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1313,7 +1170,7 @@ export const getUserUsername = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1329,8 +1186,8 @@ export const postPet = (
     postPet.key,
     undefined,
     requestBody,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1348,8 +1205,8 @@ export const postPetPetId = (
     template(postPetPetId.key, { petId }),
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1368,7 +1225,7 @@ export const postPetPetIdUploadImage = (
     template(postPetPetIdUploadImage.key, { petId }),
     queryParams,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -1386,7 +1243,7 @@ export const postStoreOrder = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1403,7 +1260,7 @@ export const postUser = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1420,7 +1277,7 @@ export const postUserCreateWithList = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1436,8 +1293,8 @@ export const putPet = (
     putPet.key,
     undefined,
     requestBody,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1456,19 +1313,19 @@ export const putUserUsername = (
     undefined,
     requestBody,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
 /** Key is end point string without base url */
 putUserUsername.key = \\"/user/{username}\\";
-export const _CONSTANT0 = {
+export const _CONSTANT0 = [{ petstore_auth: [\\"write:pets\\", \\"read:pets\\"] }];
+export const _CONSTANT1 = {
   headers: {
     \\"Content-Type\\": \\"application/json\\",
     Accept: \\"application/json\\",
   },
 };
-export const _CONSTANT1 = [{ petstore_auth: [\\"write:pets\\", \\"read:pets\\"] }];
 export const _CONSTANT2 = [
   { api_key: [] },
   { petstore_auth: [\\"write:pets\\", \\"read:pets\\"] },

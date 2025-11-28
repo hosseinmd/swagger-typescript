@@ -1,3 +1,4 @@
+import { existsSync, readFileSync } from "fs";
 import { Config } from "./types.mjs";
 import { exec } from "child_process";
 
@@ -97,4 +98,33 @@ async function execAsync(command: string) {
   });
 }
 
-export { getCurrentUrl, majorVersionsCheck, isAscending, isMatchWholeWord };
+const cache: { [key: string]: any } = {};
+/** Load Prettier options from config file */
+function getPrettierOptions(config: Config): any {
+  const configPaths = [
+    config.prettierPath,
+    ".prettierrc",
+    "prettier.json",
+  ].filter((path): path is string => Boolean(path));
+
+  for (const path of configPaths) {
+    if (existsSync(path)) {
+      if (cache[path]) {
+        return cache[path];
+      }
+      const options = JSON.parse(readFileSync(path).toString());
+      cache[path] = { parser: "typescript", ...options };
+      return cache[path];
+    }
+  }
+
+  return { parser: "typescript" };
+}
+
+export {
+  getCurrentUrl,
+  majorVersionsCheck,
+  isAscending,
+  isMatchWholeWord,
+  getPrettierOptions,
+};

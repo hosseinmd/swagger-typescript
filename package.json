@@ -13,7 +13,7 @@
     "lint": "eslint src/**/*.ts",
     "eslint-fix": "eslint src/**/*.ts --fix",
     "prettier-fix": "prettier --write \"**/*.{ts,tsx}\"",
-    "test": "yarn prepare && cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand",
+    "test": "yarn prepare && cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
     "release": "yarn prepare && yarn test && standard-version && git push --follow-tags origin master && npm publish"
   },
   "repository": {

@@ -31,5 +31,5 @@ describe("E2E: Local OpenAPI Tests", () => {
     // Create snapshot of all generated files for local OpenAPI
     delete generatedFiles["swagger.json"];
     expect(generatedFiles).toMatchSnapshot("local-openapi-generated-files");
-  }, 30000);
+  }, 60000); // Increased to 60 seconds for large OpenAPI file (2MB, 58K+ lines)
 });

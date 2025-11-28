@@ -8,7 +8,11 @@ import {
 } from "./types.mjs";
 import { getJson } from "./getJson.mjs";
 import { generateJavascriptService } from "./javascript/index.mjs";
-import { getCurrentUrl, majorVersionsCheck } from "./utils.mjs";
+import {
+  getCurrentUrl,
+  getPrettierOptions,
+  majorVersionsCheck,
+} from "./utils.mjs";
 import { swaggerToOpenApi } from "./utilities/swaggerToOpenApi.mjs";
 import chalk from "chalk";
 import { partialUpdateJson } from "./updateJson.mjs";
@@ -16,6 +20,7 @@ import { default as postmanToOpenApi } from "postman-ke-openapi";
 import yaml from "js-yaml";
 import path from "path";
 import { generateKotlinService } from "./kotlin/index.mjs";
+import { format } from "prettier";
 
 /**
  * Main generation function that processes one or multiple swagger
@@ -65,8 +70,6 @@ async function generate(
  * @throws Error when configuration is invalid
  */
 function validateConfiguration(config: FileConfig): void {
-  console.log(chalk.blueBright(`Start ${config.dir} generation...`));
-
   if (!config.dir) {
     throw new Error("Configuration must specify an output directory (dir)");
   }
@@ -77,12 +80,12 @@ function validateConfiguration(config: FileConfig): void {
     );
   }
 
-  if (
-    config.language &&
-    !["javascript", "typescript", "kotlin"].includes(config.language)
-  ) {
+  const validLanguages = ["javascript", "typescript", "kotlin"];
+  if (config.language && !validLanguages.includes(config.language)) {
     throw new Error(
-      `Unsupported language: ${config.language}. Supported languages: javascript, typescript, kotlin`,
+      `Unsupported language: ${
+        config.language
+      }. Supported languages: ${validLanguages.join(", ")}`,
     );
   }
 
@@ -97,20 +100,11 @@ function validateConfiguration(config: FileConfig): void {
  * @param fileConfig - Configuration from file
  * @param cli - CLI configuration overrides
  * @returns Merged configuration
- * @throws Error when fileConfig is invalid
  */
 function mergeConfigurations(
   fileConfig: FileConfig,
   cli?: Partial<CLIConfig>,
 ): Config {
-  if (!fileConfig) {
-    throw new Error("File configuration is required");
-  }
-
-  if (typeof fileConfig !== "object") {
-    throw new Error("File configuration must be an object");
-  }
-
   return {
     ...fileConfig,
     tag: cli?.tag ?? fileConfig.tag,
@@ -124,19 +118,10 @@ function mergeConfigurations(
  * Ensures the output directory exists
  *
  * @param dir - Directory path to create if it doesn't exist
- * @throws Error when dir is invalid or directory creation fails
  */
 function ensureOutputDirectory(dir: string): void {
-  if (!dir || typeof dir !== "string") {
-    throw new Error("Directory path must be a non-empty string");
-  }
-
   if (!existsSync(dir)) {
-    try {
-      mkdirSync(dir, { recursive: true });
-    } catch (error) {
-      throw new Error(`Failed to create output directory "${dir}": ${error}`);
-    }
+    mkdirSync(dir, { recursive: true });
   }
 }
 
@@ -195,30 +180,30 @@ async function normalizeJsonFormat(input: SwaggerJson): Promise<SwaggerJson> {
  * @param swaggerJsonPath - Path to save the JSON file
  * @returns Updated JSON data (if partial update was performed)
  */
-function handleJsonPersistence(
+async function handleJsonPersistence(
   config: Config,
   input: SwaggerJson,
   swaggerJsonPath: string,
-): SwaggerJson {
-  const { keepJson, tag, dir } = config;
-
-  if (!keepJson) {
+): Promise<SwaggerJson> {
+  if (!config.keepJson) {
     return input;
   }
 
   try {
-    if (!tag?.length) {
-      writeFileSync(swaggerJsonPath, JSON.stringify(input));
+    if (!config.tag?.length) {
+      writeFileSync(
+        swaggerJsonPath,
+        await format(JSON.stringify(input), getPrettierOptions(config)),
+      );
       return input;
-    } else {
-      const oldJson = getLocalJson(dir);
-      const updatedInput = partialUpdateJson(oldJson, input, tag);
-      writeFileSync(swaggerJsonPath, JSON.stringify(updatedInput));
-      return updatedInput;
     }
+
+    const oldJson = getLocalJson(config.dir);
+    const updatedInput = partialUpdateJson(oldJson, input, config.tag);
+    writeFileSync(swaggerJsonPath, JSON.stringify(updatedInput));
+    return updatedInput;
   } catch (error) {
-    console.log(chalk.red(error));
-    console.log(chalk.red("keepJson failed"));
+    console.log(chalk.red("keepJson failed"), chalk.red(error));
     return input;
   }
 }
@@ -254,49 +239,44 @@ const generateService = async (
   cli?: Partial<CLIConfig>,
 ): Promise<void> => {
   try {
+    console.log(chalk.blueBright(`Start ${fileConfig.dir} generation...`));
+
     const config = mergeConfigurations(fileConfig, cli);
-    const { dir } = config;
 
-    ensureOutputDirectory(dir);
+    ensureOutputDirectory(config.dir);
 
-    const swaggerJsonPath = `${dir}/swagger.json`;
+    const swaggerJsonPath = `${config.dir}/swagger.json`;
     let input = await fetchAndProcessJson(config);
 
-    input = handleJsonPersistence(config, input, swaggerJsonPath);
+    input = await handleJsonPersistence(config, input, swaggerJsonPath);
 
     await dispatchToGenerator(config, input);
   } catch (error) {
-    console.log(chalk.redBright(error));
-    console.log(chalk.redBright("Generation failed"));
+    console.log(chalk.redBright(error), chalk.redBright("Generation failed"));
   }
 };
 
 function getSwaggerConfig(cli?: CLIConfig): SwaggerConfig {
   try {
-    const isAbsolutePath = cli?.config?.startsWith("/");
-
-    let rawPath = cli?.config || "";
-    rawPath = rawPath.endsWith(".json")
+    const rawPath = cli?.config || "swagger.config.json";
+    const configPath = rawPath.endsWith(".json")
       ? rawPath
       : path.join(rawPath, "swagger.config.json");
 
-    const configPath = path.join(isAbsolutePath ? "" : process.cwd(), rawPath);
+    const fullPath = path.isAbsolute(configPath)
+      ? configPath
+      : path.join(process.cwd(), configPath);
 
-    console.log(chalk.grey(`Your config path: ${configPath}`));
+    console.log(chalk.grey(`Your config path: ${fullPath}`));
 
-    const config = JSON.parse(readFileSync(configPath).toString());
-
-    if (!config) {
-      throw "";
-    }
-
+    const config = readJson(fullPath);
     return config;
   } catch (error) {
     throw new Error("Please define swagger.config.json");
   }
 }
 
-function getLocalJson(dir: string) {
+function getLocalJson(dir: string): SwaggerJson {
   const swaggerJsonPath = `${dir}/swagger.json`;
 
   try {

@@ -24,247 +24,50 @@ import { generateTypes } from "./generateTypes.mjs";
 import { generateConstants } from "./generateConstants.mjs";
 import { generateHook } from "./generateHook.mjs";
 
+type GeneratorContext = {
+  apis: ApiAST[];
+  types: TypeAST[];
+  constants: ConstantsAST[];
+  constantsCounter: number;
+  input: SwaggerJson;
+  config: Config;
+  includeFilters: RegExp[];
+  excludeFilters: RegExp[];
+};
+
 function generator(
   input: SwaggerJson,
   config: Config,
 ): { code: string; hooks: string; type: string } {
-  const apis: ApiAST[] = [];
-  const types: TypeAST[] = [];
-  let constantsCounter = 0;
-  const constants: ConstantsAST[] = [];
-
-  function getConstantName(value: string) {
-    const constant = constants.find((_constant) => _constant.value === value);
-    if (constant) {
-      return constant.name;
-    }
-
-    const name = `_CONSTANT${constantsCounter++}`;
-
-    constants.push({
-      name,
-      value,
-    });
-
-    return name;
-  }
-
-  const includes = (config.includes || []).map(
-    (pattern) => new RegExp(pattern),
-  );
-  const excludes = (config.excludes || []).map(
-    (pattern) => new RegExp(pattern),
-  );
-
-  function getFilteredMethods(endPoint: string, value: PathItem) {
-    return Object.entries(value).filter(
-      ([method, options]: [string, SwaggerRequest]) => {
-        const { operationId } = options;
-
-        const serviceName = generateServiceName(
-          endPoint,
-          method,
-          operationId,
-          config,
-        );
-
-        const matchesInclude =
-          !includes.length || includes.some((regex) => regex.test(serviceName));
-
-        const matchesExclude = excludes.some((regex) =>
-          regex.test(serviceName),
-        );
-
-        return matchesInclude && !matchesExclude;
-      },
-    );
-  }
+  const context: GeneratorContext = {
+    apis: [],
+    types: [],
+    constants: [],
+    constantsCounter: 0,
+    input,
+    config,
+    includeFilters: (config.includes || []).map(
+      (pattern) => new RegExp(pattern),
+    ),
+    excludeFilters: (config.excludes || []).map(
+      (pattern) => new RegExp(pattern),
+    ),
+  };
 
   try {
-    Object.entries(input.paths).forEach(([endPoint, value]) => {
-      const parametersExtended = value.parameters as Parameter[] | undefined;
-      getFilteredMethods(endPoint, value).forEach(
-        ([method, options]: [string, SwaggerRequest]) => {
-          if (method === "parameters") {
-            return;
-          }
+    // Process API paths
+    processApiPaths(context);
 
-          const { operationId, security } = options;
+    // Extract types from components
+    extractComponentTypes(context);
 
-          const allParameters =
-            parametersExtended || options.parameters
-              ? [...(parametersExtended || []), ...(options.parameters || [])]
-              : undefined;
-
-          const parameters = allParameters?.map<Parameter>((parameter) => {
-            const { $ref } = parameter;
-            if ($ref) {
-              const name = $ref.replace("#/components/parameters/", "");
-              return {
-                ...input.components?.parameters?.[name]!,
-                $ref,
-                schema: { $ref } as Schema,
-              };
-            }
-            return parameter;
-          });
-
-          const serviceName = generateServiceName(
-            endPoint,
-            method,
-            operationId,
-            config,
-          );
-
-          const pathParams = getPathParams(parameters);
-
-          const {
-            exist: isQueryParamsExist,
-            isNullable: isQueryParamsNullable,
-            params: queryParameters,
-          } = getParametersInfo(parameters, "query");
-          const queryParamsTypeName: string | false = isQueryParamsExist
-            ? `${toPascalCase(serviceName)}QueryParams`
-            : false;
-
-          if (queryParamsTypeName) {
-            types.push({
-              name: queryParamsTypeName,
-              schema: {
-                type: "object",
-                nullable: isQueryParamsNullable,
-                properties: queryParameters?.reduce(
-                  (
-                    prev,
-                    { name, schema, $ref, required: _required, description },
-                  ) => {
-                    return {
-                      ...prev,
-                      [name]: {
-                        ...($ref ? { $ref } : schema),
-                        nullable: !_required,
-                        description,
-                      } as Schema,
-                    };
-                  },
-                  {},
-                ),
-              },
-            });
-          }
-
-          const { params: headerParams, isNullable: hasNullableHeaderParams } =
-            getHeaderParams(parameters, config);
-
-          const requestBody = getBodyContent(options.requestBody);
-
-          const contentType = Object.keys(
-            options.requestBody?.content ||
-              (options.requestBody?.$ref &&
-                input.components?.requestBodies?.[
-                  getRefName(options.requestBody.$ref as string)
-                ]?.content) || {
-                "application/json": null,
-              },
-          )[0] as ApiAST["contentType"];
-
-          const accept = Object.keys(
-            options.responses?.[200]?.content || {
-              "application/json": null,
-            },
-          )[0];
-
-          const responses = getBodyContent(options.responses?.[200]);
-
-          let pathParamsRefString: string | undefined = pathParams.reduce(
-            (prev, { name }) => `${prev}${name},`,
-            "",
-          );
-          pathParamsRefString = pathParamsRefString
-            ? `{${pathParamsRefString}}`
-            : undefined;
-
-          const additionalAxiosConfig = headerParams
-            ? `{
-              headers:{
-                ...${getConstantName(`{
-                  "Content-Type": "${contentType}",
-                  Accept: "${accept}",
-
-                }`)},
-                ...headerParams,
-              },
-            }`
-            : getConstantName(`{
-              headers: {
-                "Content-Type": "${contentType}",
-                Accept: "${accept}",
-              },
-            }`);
-
-          apis.push({
-            contentType,
-            summary: options.summary,
-            deprecated: options.deprecated,
-            serviceName,
-            queryParamsTypeName,
-            pathParams,
-            requestBody,
-            headerParams,
-            isQueryParamsNullable,
-            isHeaderParamsNullable: hasNullableHeaderParams,
-            responses,
-            pathParamsRefString,
-            endPoint,
-            method: method as Method,
-            security: security
-              ? getConstantName(JSON.stringify(security))
-              : "undefined",
-            additionalAxiosConfig,
-            queryParameters,
-          });
-        },
-      );
-    });
-
-    if (input?.components?.schemas) {
-      types.push(
-        ...Object.entries(input.components.schemas).map(([name, schema]) => {
-          return {
-            name,
-            schema,
-          };
-        }),
-      );
-    }
-
-    if (input?.components?.parameters) {
-      types.push(
-        ...Object.entries(input.components.parameters).map(([key, value]) => ({
-          ...value,
-          name: key,
-        })),
-      );
-    }
-
-    if (input?.components?.requestBodies) {
-      types.push(
-        ...(Object.entries(input.components.requestBodies)
-          .map(([name, _requestBody]) => {
-            return {
-              name: `RequestBody${name}`,
-              schema: Object.values(_requestBody.content || {})[0]?.schema,
-              description: _requestBody.description,
-            };
-          })
-          .filter((v) => v.schema) as any),
-      );
-    }
-
-    let code = generateApis(apis, types, config);
-    code += generateConstants(constants);
-    const type = generateTypes(types, config);
-    const hooks = config.reactHooks ? generateHook(apis, types, config) : "";
+    // Generate final code
+    let code = generateApis(context.apis, context.types, config);
+    code += generateConstants(context.constants);
+    const type = generateTypes(context.types, config);
+    const hooks = config.reactHooks
+      ? generateHook(context.apis, context.types, config)
+      : "";
 
     return { code, hooks, type };
   } catch (error) {
@@ -273,18 +76,307 @@ function generator(
   }
 }
 
-function getBodyContent(responses?: SwaggerResponse): Schema | undefined {
-  if (!responses) {
-    return responses;
+/** Get or create a constant and return its name */
+function getConstantName(context: GeneratorContext, value: string): string {
+  const existing = context.constants.find((c) => c.value === value);
+  if (existing) {
+    return existing.name;
   }
 
-  return responses.content
-    ? Object.values(responses.content)[0].schema
-    : responses.$ref
-    ? ({
-        $ref: responses.$ref,
-      } as Schema)
-    : undefined;
+  const name = `_CONSTANT${context.constantsCounter++}`;
+  context.constants.push({ name, value });
+  return name;
+}
+
+/** Check if a method should be included based on filters */
+function shouldIncludeMethod(
+  context: GeneratorContext,
+  serviceName: string,
+): boolean {
+  const matchesInclude =
+    !context.includeFilters.length ||
+    context.includeFilters.some((regex) => regex.test(serviceName));
+
+  const matchesExclude = context.excludeFilters.some((regex) =>
+    regex.test(serviceName),
+  );
+
+  return matchesInclude && !matchesExclude;
+}
+
+/** Resolve parameter references */
+function resolveParameters(
+  context: GeneratorContext,
+  parameters?: Parameter[],
+): Parameter[] | undefined {
+  return parameters?.map((parameter) => {
+    const { $ref } = parameter;
+    if (!$ref) {
+      return parameter;
+    }
+
+    const name = $ref.replace("#/components/parameters/", "");
+    return {
+      ...context.input.components?.parameters?.[name]!,
+      $ref,
+      schema: { $ref } as Schema,
+    };
+  });
+}
+
+/** Create query params type if needed */
+function createQueryParamsType(
+  context: GeneratorContext,
+  serviceName: string,
+  parameters?: Parameter[],
+): string | false {
+  const {
+    exist: isQueryParamsExist,
+    isNullable: isQueryParamsNullable,
+    params: queryParameters,
+  } = getParametersInfo(parameters, "query");
+
+  if (!isQueryParamsExist) {
+    return false;
+  }
+
+  const typeName = `${toPascalCase(serviceName)}QueryParams`;
+  const properties = queryParameters?.reduce(
+    (prev, { name, schema, $ref, required: _required, description }) => ({
+      ...prev,
+      [name]: {
+        ...($ref ? { $ref } : schema),
+        nullable: !_required,
+        description,
+      } as Schema,
+    }),
+    {},
+  );
+
+  context.types.push({
+    name: typeName,
+    schema: {
+      type: "object",
+      nullable: isQueryParamsNullable,
+      properties,
+    },
+  });
+
+  return typeName;
+}
+
+/** Get content type from request body */
+function getContentType(
+  context: GeneratorContext,
+  requestBody?: SwaggerRequest["requestBody"],
+): string {
+  const content = requestBody?.content ||
+    (requestBody?.$ref &&
+      context.input.components?.requestBodies?.[
+        getRefName(requestBody.$ref as string)
+      ]?.content) || { "application/json": null };
+
+  return Object.keys(content)[0];
+}
+
+/** Get accept header from responses */
+function getAcceptHeader(responses?: SwaggerRequest["responses"]): string {
+  const content = responses?.[200]?.content || { "application/json": null };
+  return Object.keys(content)[0];
+}
+
+/** Build path params reference string */
+function buildPathParamsRefString(pathParams: Parameter[]): string | undefined {
+  if (pathParams.length === 0) {
+    return undefined;
+  }
+
+  const paramNames = pathParams.map(({ name }) => name).join(",");
+  return `{${paramNames}}`;
+}
+
+/** Build Axios configuration object */
+function buildAxiosConfig(
+  context: GeneratorContext,
+  contentType: string,
+  accept: string,
+  headerParams?: string,
+): string {
+  if (headerParams) {
+    return `{
+      headers:{
+        ...${getConstantName(
+          context,
+          `{
+              "Content-Type": "${contentType}",
+              Accept: "${accept}",
+           }`,
+        )},
+        ...headerParams,
+      },
+    }`;
+  }
+
+  return getConstantName(
+    context,
+    `{
+        headers: {
+          "Content-Type": "${contentType}",
+          Accept: "${accept}",
+        },
+     }`,
+  );
+}
+
+/** Process a single API endpoint method */
+function processEndpointMethod(
+  context: GeneratorContext,
+  endPoint: string,
+  method: string,
+  options: SwaggerRequest,
+  pathLevelParams?: Parameter[],
+): void {
+  const { operationId, security } = options;
+
+  // Merge path-level and operation-level parameters
+  const allParameters = [
+    ...(pathLevelParams || []),
+    ...(options.parameters || []),
+  ];
+  const parameters = resolveParameters(
+    context,
+    allParameters.length > 0 ? allParameters : undefined,
+  );
+
+  const serviceName = generateServiceName(
+    endPoint,
+    method,
+    operationId,
+    context.config,
+  );
+
+  if (!shouldIncludeMethod(context, serviceName)) {
+    return;
+  }
+
+  // Extract parameters
+  const pathParams = getPathParams(parameters);
+  const { params: headerParams, isNullable: isHeaderParamsNullable } =
+    getHeaderParams(parameters, context.config);
+  const { isNullable: isQueryParamsNullable, params: queryParameters } =
+    getParametersInfo(parameters, "query");
+
+  // Create query params type
+  const queryParamsTypeName = createQueryParamsType(
+    context,
+    serviceName,
+    parameters,
+  );
+
+  // Extract body and response info
+  const requestBody = getBodyContent(options.requestBody);
+  const responses = getBodyContent(options.responses?.[200]);
+  const contentType = getContentType(context, options.requestBody);
+  const accept = getAcceptHeader(options.responses);
+
+  // Build API object
+  context.apis.push({
+    contentType: contentType as ApiAST["contentType"],
+    summary: options.summary,
+    deprecated: options.deprecated,
+    serviceName,
+    queryParamsTypeName,
+    pathParams,
+    requestBody,
+    headerParams,
+    isQueryParamsNullable,
+    isHeaderParamsNullable,
+    responses,
+    pathParamsRefString: buildPathParamsRefString(pathParams),
+    endPoint,
+    method: method as Method,
+    security: security
+      ? getConstantName(context, JSON.stringify(security))
+      : "undefined",
+    additionalAxiosConfig: buildAxiosConfig(
+      context,
+      contentType,
+      accept,
+      headerParams,
+    ),
+    queryParameters,
+  });
+}
+
+/** Process all API paths */
+function processApiPaths(context: GeneratorContext): void {
+  Object.entries(context.input.paths).forEach(([endPoint, pathItem]) => {
+    const pathLevelParams = pathItem.parameters as Parameter[] | undefined;
+
+    Object.entries(pathItem).forEach(([method, options]) => {
+      if (method === "parameters") {
+        return;
+      }
+
+      processEndpointMethod(
+        context,
+        endPoint,
+        method,
+        options as SwaggerRequest,
+        pathLevelParams,
+      );
+    });
+  });
+}
+
+/** Extract types from OpenAPI components */
+function extractComponentTypes(context: GeneratorContext): void {
+  const { components } = context.input;
+
+  // Extract schemas
+  if (components?.schemas) {
+    Object.entries(components.schemas).forEach(([name, schema]) => {
+      context.types.push({ name, schema });
+    });
+  }
+
+  // Extract parameters
+  if (components?.parameters) {
+    Object.entries(components.parameters).forEach(([key, value]) => {
+      context.types.push({ ...value, name: key });
+    });
+  }
+
+  // Extract request bodies
+  if (components?.requestBodies) {
+    Object.entries(components.requestBodies).forEach(([name, requestBody]) => {
+      const schema = Object.values(requestBody.content || {})[0]?.schema;
+      if (schema) {
+        context.types.push({
+          name: `RequestBody${name}`,
+          schema,
+          description: requestBody.description,
+        });
+      }
+    });
+  }
+}
+
+/** Extract body content from response or request body */
+function getBodyContent(responses?: SwaggerResponse): Schema | undefined {
+  if (!responses) {
+    return undefined;
+  }
+
+  if (responses.content) {
+    return Object.values(responses.content)[0].schema;
+  }
+
+  if (responses.$ref) {
+    return { $ref: responses.$ref } as Schema;
+  }
+
+  return undefined;
 }
 
 export { generator };

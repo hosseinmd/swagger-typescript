@@ -112,4 +112,6 @@ dist
 
 # E2E test outputs
 __tests__/e2e/outputs/
+__tests__/main/outputs/
+__tests__/outputs/
 __tests__/e2e/error-output/

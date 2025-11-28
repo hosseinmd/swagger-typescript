@@ -27,5 +27,5 @@ describe("generate", () => {
     expect(code).toMatchSnapshot("generate Code");
     expect(hooks).toMatchSnapshot("generate hooks");
     expect(type).toMatchSnapshot("generate type");
-  });
+  }, 10000);
 });

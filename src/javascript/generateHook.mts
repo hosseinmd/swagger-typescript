@@ -14,273 +14,450 @@ import {
 import { getJsdoc } from "../utilities/jsdoc.mjs";
 import { isAscending, isMatchWholeWord } from "../utils.mjs";
 
-const allowedPageParametersNames = ["page", "pageno", "pagenumber", "offset"];
+const ALLOWED_PAGE_PARAM_NAMES = ["page", "pageno", "pagenumber", "offset"];
+
+type HookContext = {
+  config: Config;
+  hasInfiniteQuery: boolean;
+};
 
 function generateHook(
   apis: ApiAST[],
   types: TypeAST[],
   config: Config,
 ): string {
-  let code = getHooksImports({
-    hasInfinity: !!config.useInfiniteQuery?.length,
-  });
   try {
-    apis = apis.sort(({ serviceName }, { serviceName: _serviceName }) =>
-      isAscending(serviceName, _serviceName),
+    const context: HookContext = {
+      config,
+      hasInfiniteQuery: !!config.useInfiniteQuery?.length,
+    };
+
+    const sortedApis = apis.sort(({ serviceName }, { serviceName: other }) =>
+      isAscending(serviceName, other),
     );
 
-    const apisCode = apis.reduce(
-      (
-        prev,
-        {
-          summary,
-          deprecated,
-          serviceName,
-          queryParamsTypeName,
-          pathParams,
-          requestBody,
-          headerParams,
-          isQueryParamsNullable,
-          isHeaderParamsNullable,
-          responses,
-          method,
-          queryParameters,
-        },
-      ) => {
-        const hookName = `use${toPascalCase(serviceName)}`;
+    const apisCode = sortedApis
+      .map((api) => generateSingleHook(api, context))
+      .join("\n");
 
-        const hasPaging = config.useInfiniteQuery?.find(
-          (name) =>
-            name.toLowerCase() === serviceName.toLowerCase() ||
-            name.toLowerCase() === hookName.toLowerCase(),
-        );
+    return buildFinalCode(apisCode, types, sortedApis, context);
+  } catch (error) {
+    console.error(error);
+    return "";
+  }
+}
 
-        const isGet =
-          hasPaging ||
-          method === "get" ||
-          config.useQuery?.find(
-            (name) =>
-              name.toLowerCase() === serviceName.toLowerCase() ||
-              name.toLowerCase() === hookName.toLowerCase(),
-          );
-        const getParamsString = (override?: boolean) => ` ${
-          pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""
-        }
-          ${requestBody ? "requestBody," : ""}
-          ${
-            queryParamsTypeName
-              ? hasPaging && override
-                ? `{
-                  ..._param,
-                  ...queryParams,
-                },`
-                : "queryParams,"
-              : ""
-          }
-          ${headerParams ? "headerParams," : ""}`;
+/** Generate code for a single hook */
+function generateSingleHook(api: ApiAST, context: HookContext): string {
+  const hookName = `use${toPascalCase(api.serviceName)}`;
+  const isInfiniteQuery = shouldUseInfiniteQuery(api, hookName, context);
+  const isQuery = isInfiniteQuery || shouldUseQuery(api, hookName, context);
 
-        const TData = `${responses ? getTsType(responses, config) : "any"}`;
-        const TQueryFnData = `SwaggerResponse<${TData}>`;
-        const TError = "RequestError | Error";
+  const hookConfig = buildHookConfig(api, isQuery, isInfiniteQuery, context);
 
-        const getQueryParamName = (
-          name: string,
-          nullable: boolean = isQueryParamsNullable,
-          isPartial?: boolean,
-        ) =>
-          queryParamsTypeName
-            ? `${getParamString(
-                name,
-                !nullable,
-                queryParamsTypeName,
-                undefined,
-                isPartial,
-              )},`
-            : "";
+  let code = generateHookJsDoc(api);
+  code += generateHookSignature(hookName, isQuery, hookConfig);
+  code += generateHookBody(api, hookName, isQuery, isInfiniteQuery, hookConfig);
 
-        const TVariables = `${
-          /** Path parameters */
-          pathParams
-            .map(({ name, required, schema, description }) =>
-              getDefineParam(name, required, schema, config, description),
-            )
-            .join(",")
-        }${pathParams.length > 0 ? "," : ""}${
-          /** Request Body */
-          requestBody
-            ? `${getDefineParam("requestBody", true, requestBody, config)},`
-            : ""
-        }${
-          /** Query parameters */
-          getQueryParamName("queryParams")
-        }${
-          /** Header parameters */
-          headerParams
-            ? `${getParamString(
-                "headerParams",
-                !isHeaderParamsNullable,
-                headerParams as string,
-              )},`
-            : ""
-        }`;
+  if (isQuery) {
+    code += generateInfoMethod(api, hookName, isInfiniteQuery, hookConfig);
+    code += generatePrefetchMethod(api, hookName, hookConfig);
+  }
 
-        const deps = `[${serviceName}.key,${
-          pathParams.length ? `${pathParams.map(({ name }) => name)},` : ""
-        }
-            ${requestBody ? "requestBody," : ""}
-            ${queryParamsTypeName ? "queryParams," : ""}
-            ${headerParams ? "headerParams," : ""}]`;
+  return code;
+}
 
-        let result: string =
-          prev +
-          `
-      ${getJsdoc({
-        description: summary,
-        deprecated: deprecated ? DEPRECATED_WARM_MESSAGE : undefined,
-      })}`;
+/** Build configuration object for hook generation */
+function buildHookConfig(
+  api: ApiAST,
+  isQuery: boolean,
+  isInfiniteQuery: boolean,
+  context: HookContext,
+) {
+  const TData = api.responses
+    ? getTsType(api.responses, context.config)
+    : "any";
+  const TQueryFnData = `SwaggerResponse<${TData}>`;
+  const TError = "RequestError | Error";
 
-        result += `export const ${hookName} =`;
-        if (!isGet) {
-          result += `<TExtra>`;
-        }
+  return {
+    api,
+    isQuery,
+    isInfiniteQuery,
+    TData,
+    TQueryFnData,
+    TError,
+    paramsString: buildParamsString(api, false),
+    paramsStringOverride: buildParamsString(api, isInfiniteQuery),
+    queryKey: buildQueryKey(api),
+    variables: buildVariables(api, context),
+    params: buildHookParams(
+      api,
+      isQuery,
+      isInfiniteQuery,
+      TData,
+      TQueryFnData,
+      TError,
+    ),
+  };
+}
 
-        const params = [
-          `${isGet ? TVariables : ""}`,
-          `options?:${
-            hasPaging
-              ? `UseInfiniteQueryOptions<${TQueryFnData}, ${TError}>`
-              : isGet
-              ? `SwaggerTypescriptUseQueryOptions<${TData}>`
-              : `${
-                  TVariables
-                    ? `SwaggerTypescriptUseMutationOptions<${TData}, {${TVariables}}, TExtra>`
-                    : `SwaggerTypescriptUseMutationOptionsVoid<${TData}, TExtra>`
-                }`
-          },`,
-          `${isGet ? `configOverride?:AxiosRequestConfig` : ""}`,
-        ];
+/** Check if hook should use infinite query */
+function shouldUseInfiniteQuery(
+  api: ApiAST,
+  hookName: string,
+  context: HookContext,
+): boolean {
+  return !!context.config.useInfiniteQuery?.find(
+    (name) =>
+      name.toLowerCase() === api.serviceName.toLowerCase() ||
+      name.toLowerCase() === hookName.toLowerCase(),
+  );
+}
 
-        result += ` (
-           ${params.join("")}
-           ) => {`;
-        if (isGet) {
-          result += `
-          const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
-          `;
-          if (hasPaging) {
-            result += `const {
-            data: { pages } = {},
-            data,
-            ...rest
-          } = useInfiniteQuery({
-            queryKey:key,
-            queryFn:({ pageParam }) =>
-              fun({
-                  ${
-                    queryParameters.find(({ name }) =>
-                      allowedPageParametersNames.includes(name.toLowerCase()),
-                    )?.name
-                  }:pageParam,
-              }),
-              initialPageParam: 1,
-              getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
-              ...(options as any),
-          });
-        
-          const list = useMemo(() => paginationFlattenData(pages), [pages]);
-          const total = getTotal(pages);
+/** Check if hook should use query (not mutation) */
+function shouldUseQuery(
+  api: ApiAST,
+  hookName: string,
+  context: HookContext,
+): boolean {
+  if (api.method === "get") {
+    return true;
+  }
 
-          const hasMore = useHasMore(pages, list, queryParams);
-          
-          return {...rest, data, list, hasMore, total}
-          `;
-          } else {
-            result += `return useQuery(
-               {
-                queryKey: key, 
-                queryFn:fun,
-                ...options
-              }
-               )`;
-          }
-        } else {
-          result += `return useMutation({mutationFn:(_o)=>{
-            const {${getParamsString()} configOverride } = _o || {};
+  return !!context.config.useQuery?.find(
+    (name) =>
+      name.toLowerCase() === api.serviceName.toLowerCase() ||
+      name.toLowerCase() === hookName.toLowerCase(),
+  );
+}
 
-            return ${serviceName}(
-                ${getParamsString()} configOverride,
-              )
-          },
-          ...options
-        }
-         )`;
-        }
+/** Build params string for function calls */
+function buildParamsString(api: ApiAST, usePageParam: boolean): string {
+  const parts: string[] = [];
 
-        result += `  
-          }
-        `;
+  if (api.pathParams.length) {
+    parts.push(api.pathParams.map(({ name }) => name).join(","));
+  }
 
-        if (isGet) {
-          result += `${hookName}.info = (${params
-            .filter((param) => !param.startsWith("options?:"))
-            .join("")}) => {
-              return {
-                key: ${deps} as QueryKey,
-                fun: (${
-                  hasPaging ? getQueryParamName("_param", true, true) : ""
-                }) =>
-                ${serviceName}(
-                  ${getParamsString(true)}
-                  configOverride
-                ),
-              };
-            };`;
+  if (api.requestBody) {
+    parts.push("requestBody");
+  }
 
-          result += `${hookName}.prefetch = (
-            client: QueryClient,
-            ${params.join("")}) => {
-                const { key, fun } = ${hookName}.info(${getParamsString()} configOverride);
+  if (api.queryParamsTypeName) {
+    if (usePageParam) {
+      parts.push("{ ..._param, ...queryParams }");
+    } else {
+      parts.push("queryParams");
+    }
+  }
 
-                return client.getQueryData(key)
-                ? Promise.resolve()
-                : client.prefetchQuery(
-                {
-                  queryKey:key,
-                  queryFn:()=>fun(),
-                  ...options
-                }
-                  );
-              }`;
-        }
+  if (api.headerParams) {
+    parts.push("headerParams");
+  }
 
-        return result;
-      },
-      "",
+  return parts.join(", ");
+}
+
+/** Build query key array */
+function buildQueryKey(api: ApiAST): string {
+  const parts = [`${api.serviceName}.key`];
+
+  if (api.pathParams.length) {
+    parts.push(...api.pathParams.map(({ name }) => name));
+  }
+
+  if (api.requestBody) {
+    parts.push("requestBody");
+  }
+
+  if (api.queryParamsTypeName) {
+    parts.push("queryParams");
+  }
+
+  if (api.headerParams) {
+    parts.push("headerParams");
+  }
+
+  return `[${parts.join(", ")}]`;
+}
+
+/** Build TypeScript variables type string */
+function buildVariables(api: ApiAST, context: HookContext): string {
+  const parts: string[] = [];
+
+  // Path parameters
+  api.pathParams.forEach(({ name, required, schema, description }) => {
+    parts.push(
+      getDefineParam(name, required, schema, context.config, description),
     );
+  });
 
-    code +=
-      types
-        .sort(({ name }, { name: _name }) => isAscending(name, _name))
-        .reduce((prev, { name: _name }) => {
-          const name = getSchemaName(_name);
-          if (!isMatchWholeWord(apisCode, name)) {
-            return prev;
-          }
-          return prev + ` ${name},`;
-        }, "import type {") + '}  from "./types"\n';
+  // Request body
+  if (api.requestBody) {
+    parts.push(
+      getDefineParam("requestBody", true, api.requestBody, context.config),
+    );
+  }
 
-    code +=
-      apis.reduce((prev, { serviceName }) => {
-        return prev + ` ${serviceName},`;
-      }, "import {") + '}  from "./services"\n';
+  // Query parameters
+  if (api.queryParamsTypeName) {
+    parts.push(
+      getParamString(
+        "queryParams",
+        !api.isQueryParamsNullable,
+        api.queryParamsTypeName,
+      ),
+    );
+  }
 
-    code += getHooksFunctions({
-      hasInfinity: !!config.useInfiniteQuery?.length,
+  // Header parameters
+  if (api.headerParams) {
+    parts.push(
+      getParamString(
+        "headerParams",
+        !api.isHeaderParamsNullable,
+        api.headerParams as string,
+      ),
+    );
+  }
+
+  return parts.join(", ");
+}
+
+/** Build hook parameters for function signature */
+function buildHookParams(
+  api: ApiAST,
+  isQuery: boolean,
+  isInfiniteQuery: boolean,
+  TData: string,
+  TQueryFnData: string,
+  TError: string,
+): string[] {
+  const params: string[] = [];
+
+  if (isQuery) {
+    const variables = buildVariables(api, {
+      config: {} as Config,
+      hasInfiniteQuery: false,
     });
+    if (variables.length > 0) {
+      params.push(variables);
+    }
+  }
 
+  // Options parameter
+  let optionsType: string;
+  if (isInfiniteQuery) {
+    optionsType = `UseInfiniteQueryOptions<${TQueryFnData}, ${TError}>`;
+  } else if (isQuery) {
+    optionsType = `SwaggerTypescriptUseQueryOptions<${TData}>`;
+  } else {
+    const variables = buildVariables(api, {
+      config: {} as Config,
+      hasInfiniteQuery: false,
+    });
+    if (variables?.length > 0) {
+      optionsType = `SwaggerTypescriptUseMutationOptions<${TData}, {${variables}}, TExtra>`;
+    } else {
+      optionsType = `SwaggerTypescriptUseMutationOptionsVoid<${TData}, TExtra>`;
+    }
+  }
+  params.push(`options?: ${optionsType}`);
+
+  if (isQuery) {
+    params.push("configOverride?: AxiosRequestConfig");
+  }
+
+  return params;
+}
+
+/** Generate JSDoc for hook */
+function generateHookJsDoc(api: ApiAST): string {
+  return getJsdoc({
+    description: api.summary,
+    deprecated: api.deprecated ? DEPRECATED_WARM_MESSAGE : undefined,
+  });
+}
+
+/** Generate hook function signature */
+function generateHookSignature(
+  hookName: string,
+  isQuery: boolean,
+  config: any,
+): string {
+  const generic = isQuery ? "" : "<TExtra>";
+  const params = config.params.join(", ");
+  return `export const ${hookName} =${generic} (${params}) => {`;
+}
+
+/** Generate hook body */
+function generateHookBody(
+  api: ApiAST,
+  hookName: string,
+  isQuery: boolean,
+  isInfiniteQuery: boolean,
+  config: any,
+): string {
+  if (isQuery) {
+    return generateQueryHookBody(api, hookName, isInfiniteQuery, config);
+  }
+  return generateMutationHookBody(api, config);
+}
+
+/** Generate query hook body */
+function generateQueryHookBody(
+  api: ApiAST,
+  hookName: string,
+  isInfiniteQuery: boolean,
+  config: any,
+): string {
+  let code = `
+    const { key, fun } = ${hookName}.info(${
+      config.paramsString ? `${config.paramsString}, ` : ""
+    }configOverride);
+  `;
+
+  if (isInfiniteQuery) {
+    const pageParam = findPageParameter(api);
     code += `
-    export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?:TExtra, configOverride?:AxiosRequestConfig}
-    type SwaggerTypescriptUseQueryOptions<TData> = Omit<UseQueryOptions<SwaggerResponse<TData>,RequestError | Error>,"queryKey">;
+      const {
+        data: { pages } = {},
+        data,
+        ...rest
+      } = useInfiniteQuery({
+        queryKey: key,
+        queryFn: ({ pageParam }) => fun({ ${pageParam}: pageParam }),
+        initialPageParam: 1,
+        getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
+        ...(options as any),
+      });
+
+      const list = useMemo(() => paginationFlattenData(pages), [pages]);
+      const total = getTotal(pages);
+      const hasMore = useHasMore(pages, list, queryParams);
+      
+      return { ...rest, data, list, hasMore, total };
+    `;
+  } else {
+    code += `
+      return useQuery({
+        queryKey: key,
+        queryFn: fun,
+        ...options
+      });
+    `;
+  }
+
+  code += "};";
+  return code;
+}
+
+/** Generate mutation hook body */
+function generateMutationHookBody(api: ApiAST, config: any): string {
+  return `
+    return useMutation({
+      mutationFn: (_o) => {
+        const { ${
+          config.paramsString ? `${config.paramsString},` : ""
+        }configOverride } = _o || {};
+        return ${api.serviceName}(${
+          config.paramsString ? `${config.paramsString},` : ""
+        }configOverride);
+      },
+      ...options
+    });
+  };`;
+}
+
+/** Find page parameter name from query parameters */
+function findPageParameter(api: ApiAST): string {
+  const param = api.queryParameters?.find(({ name }) =>
+    ALLOWED_PAGE_PARAM_NAMES.includes(name.toLowerCase()),
+  );
+  return param?.name || "page";
+}
+
+/** Generate info method for query hooks */
+function generateInfoMethod(
+  api: ApiAST,
+  hookName: string,
+  isInfiniteQuery: boolean,
+  config: any,
+): string {
+  const infoParams = config.params
+    .filter((p: string) => !p.startsWith("options?:"))
+    .join(", ");
+
+  const queryParamForPaging = isInfiniteQuery
+    ? api.queryParamsTypeName
+      ? getParamString("_param", true, api.queryParamsTypeName, undefined, true)
+      : ""
+    : "";
+
+  return `
+    ${hookName}.info = (${infoParams}) => {
+      return {
+        key: ${config.queryKey} as QueryKey,
+        fun: (${queryParamForPaging}) => ${api.serviceName}(
+          ${
+            config.paramsStringOverride
+              ? `${config.paramsStringOverride},
+            `
+              : ""
+          }configOverride
+        ),
+      };
+    };`;
+}
+
+/** Generate prefetch method for query hooks */
+function generatePrefetchMethod(
+  api: ApiAST,
+  hookName: string,
+  config: any,
+): string {
+  return `
+    ${hookName}.prefetch = (
+      client: QueryClient,
+      ${config.params.join(", ")}
+    ) => {
+      const { key, fun } = ${hookName}.info(${
+        config.paramsString ? `${config.paramsString},` : ""
+      }configOverride);
+
+      return client.getQueryData(key)
+        ? Promise.resolve()
+        : client.prefetchQuery({
+            queryKey: key,
+            queryFn: () => fun(),
+            ...options
+          });
+    };`;
+}
+
+/** Build final code with imports and exports */
+function buildFinalCode(
+  apisCode: string,
+  types: TypeAST[],
+  apis: ApiAST[],
+  context: HookContext,
+): string {
+  let code = getHooksImports({ hasInfinity: context.hasInfiniteQuery });
+
+  // Add type imports
+  code += buildTypeImports(types, apisCode);
+
+  // Add service imports
+  code += buildServiceImports(apis);
+
+  // Add helper functions
+  code += getHooksFunctions({ hasInfinity: context.hasInfiniteQuery });
+
+  // Add type definitions
+  code += `
+    export type SwaggerTypescriptMutationDefaultParams<TExtra> = {_extraVariables?: TExtra, configOverride?: AxiosRequestConfig}
+    type SwaggerTypescriptUseQueryOptions<TData> = Omit<UseQueryOptions<SwaggerResponse<TData>, RequestError | Error>, "queryKey">;
 
     type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> = UseMutationOptions<
       SwaggerResponse<TData>,
@@ -288,23 +465,37 @@ function generateHook(
       TRequest & SwaggerTypescriptMutationDefaultParams<TExtra>
     >;
 
-    type SwaggerTypescriptUseMutationOptionsVoid<
-      TData,
-      TExtra
-    > = UseMutationOptions<
+    type SwaggerTypescriptUseMutationOptionsVoid<TData, TExtra> = UseMutationOptions<
       SwaggerResponse<TData>,
       RequestError | Error,
       SwaggerTypescriptMutationDefaultParams<TExtra> | void
-    >;  
-    `;
+    >;
+  `;
 
-    code += apisCode;
+  // Add generated hooks
+  code += apisCode;
 
-    return code;
-  } catch (error) {
-    console.error(error);
-    return "";
+  return code;
+}
+
+/** Build type imports from types used in APIs */
+function buildTypeImports(types: TypeAST[], apisCode: string): string {
+  const usedTypes = types
+    .sort(({ name }, { name: other }) => isAscending(name, other))
+    .filter(({ name }) => isMatchWholeWord(apisCode, getSchemaName(name)))
+    .map(({ name }) => getSchemaName(name));
+
+  if (usedTypes.length === 0) {
+    return 'import type {} from "./types"\n';
   }
+
+  return `import type { ${usedTypes.join(", ")} } from "./types"\n`;
+}
+
+/** Build service imports */
+function buildServiceImports(apis: ApiAST[]): string {
+  const services = apis.map(({ serviceName }) => serviceName);
+  return `import { ${services.join(", ")} } from "./services"\n`;
 }
 
 export { generateHook };

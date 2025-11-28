@@ -235,8 +235,8 @@ export const deleteBusinessUserConnectionConnectionId = (
     template(deleteBusinessUserConnectionConnectionId.key, { connectionId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -257,7 +257,7 @@ export const deleteBusinessUserConnectionConnectionIdPermissionUserWalletId = (
     ),
     undefined,
     undefined,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT6, configOverride),
   );
 };
@@ -292,7 +292,7 @@ export const deleteBusinessUserConnectionInvitationIdRemove = (
     queryParams,
     undefined,
     _CONSTANT5,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -313,7 +313,7 @@ export const deleteBusinessUserInviteInvitationIdRemove = (
     undefined,
     undefined,
     _CONSTANT5,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -344,8 +344,8 @@ export const deleteSubUserConnectionConnectionId = (
     template(deleteSubUserConnectionConnectionId.key, { connectionId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -365,8 +365,8 @@ export const deleteUserConnectionConnectionId = (
     template(deleteUserConnectionConnectionId.key, { connectionId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -401,8 +401,8 @@ export const getAccessUserWalletIdLogicalAction = (
     }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -418,8 +418,8 @@ export const getBank = (
     getBank.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -434,8 +434,8 @@ export const getBusinessUserCategory = (
     getBusinessUserCategory.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -452,7 +452,7 @@ export const getBusinessUserConnection = (
     queryParams,
     undefined,
     _CONSTANT5,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -472,7 +472,7 @@ export const getBusinessUserConnectionActive = (
     queryParams,
     undefined,
     _CONSTANT5,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -492,8 +492,8 @@ export const getBusinessUserConnectionConnectionId = (
     template(getBusinessUserConnectionConnectionId.key, { connectionId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -516,8 +516,8 @@ export const getBusinessUserConnectionConnectionIdActivity = (
     }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -534,8 +534,8 @@ export const getBusinessUserConnectionConnectionIdEpay = (
     template(getBusinessUserConnectionConnectionIdEpay.key, { connectionId }),
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -558,8 +558,8 @@ export const getBusinessUserConnectionConnectionIdPermission = (
     }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -575,8 +575,8 @@ export const getEpayRequest = (
     getEpayRequest.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -590,8 +590,8 @@ export const getEpayRequestAudiencesRecent = (
     getEpayRequestAudiencesRecent.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -606,8 +606,8 @@ export const getEpayRequestCount = (
     getEpayRequestCount.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -624,8 +624,8 @@ export const getEpayRequestEpayId = (
     template(getEpayRequestEpayId.key, { epayId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -641,7 +641,7 @@ export const getEpayRequestEpayTokenDetail = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -674,7 +674,7 @@ export const getEpayRequestExcel = (
     getEpayRequestExcel.key,
     queryParams,
     undefined,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT6, configOverride),
   );
 };
@@ -694,8 +694,8 @@ export const getEpayRequestForMe = (
     getEpayRequestForMe.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -710,8 +710,8 @@ export const getEpayRequestForMeCount = (
     getEpayRequestForMeCount.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -726,8 +726,8 @@ export const getEpayRequestForMeReport = (
     getEpayRequestForMeReport.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -771,8 +771,8 @@ export const getEpayRequestReport = (
     getEpayRequestReport.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -789,8 +789,8 @@ export const getEpayRequestUserWalletIdCommission = (
     template(getEpayRequestUserWalletIdCommission.key, { userWalletId }),
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -806,8 +806,8 @@ export const getEpayRequestUserWalletIdCreators = (
     template(getEpayRequestUserWalletIdCreators.key, { userWalletId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -886,8 +886,8 @@ export const getGroupTransferCommission = (
     getGroupTransferCommission.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -903,7 +903,7 @@ export const getIntegration = (
     getIntegration.key,
     queryParams,
     undefined,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT8, configOverride),
   );
 };
@@ -919,8 +919,8 @@ export const getKpi = (
     getKpi.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -935,8 +935,8 @@ export const getKpiCurrent = (
     getKpiCurrent.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -951,8 +951,8 @@ export const getKpiLast = (
     getKpiLast.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -967,8 +967,8 @@ export const getNotificationIa = (
     getNotificationIa.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -983,8 +983,8 @@ export const getNotificationNotif = (
     getNotificationNotif.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -999,8 +999,8 @@ export const getNotificationUnread = (
     getNotificationUnread.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1015,8 +1015,8 @@ export const getPluginPluginId = (
     template(getPluginPluginId.key, { pluginId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1035,7 +1035,7 @@ export const getPosAccountNumber = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1053,7 +1053,7 @@ export const getReceiptBankEpayTryId = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1083,7 +1083,7 @@ export const getReceiptEpayToken = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1101,7 +1101,7 @@ export const getReceiptWalletEpayToken = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1120,7 +1120,7 @@ export const getResellerUser = (
     undefined,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1149,7 +1149,7 @@ export const getResellerUserDashboardCommissionReport = (
     queryParams,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1179,7 +1179,7 @@ export const getResellerUserDashboardCommissionSum = (
     queryParams,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1209,7 +1209,7 @@ export const getResellerUserDashboardIntroducedCount = (
     queryParams,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1239,7 +1239,7 @@ export const getResellerUserDashboardIntroducedReport = (
     queryParams,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1269,7 +1269,7 @@ export const getResellerUserDashboardLinksCount = (
     queryParams,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1298,7 +1298,7 @@ export const getResellerUserDashboardLinksPaidCount = (
     queryParams,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1328,7 +1328,7 @@ export const getResellerUserDashboardLinksPaidReport = (
     queryParams,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1358,7 +1358,7 @@ export const getResellerUserDashboardLinksReport = (
     queryParams,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1388,7 +1388,7 @@ export const getResellerUserDashboardTransactionsCount = (
     queryParams,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1418,7 +1418,7 @@ export const getResellerUserDashboardTransactionsReport = (
     queryParams,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1439,7 +1439,7 @@ export const getResellerUserIntroduced = (
     queryParams,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1458,7 +1458,7 @@ export const getResellerUserIntroducedFilterData = (
     undefined,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1475,7 +1475,7 @@ export const getResellerUserIntroducedUserIdActivity = (
     undefined,
     undefined,
     _CONSTANT10,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1541,8 +1541,8 @@ export const getSubUserAccountUserWalletId = (
     template(getSubUserAccountUserWalletId.key, { userWalletId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1569,8 +1569,8 @@ export const getSubUserConnection = (
     getSubUserConnection.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1585,8 +1585,8 @@ export const getTransaction = (
     getTransaction.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1601,7 +1601,7 @@ export const getTransactionExcel = (
     getTransactionExcel.key,
     queryParams,
     undefined,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT6, configOverride),
   );
 };
@@ -1627,8 +1627,8 @@ export const getTransactionReport = (
     getTransactionReport.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1653,8 +1653,8 @@ export const getTransactionReportAll = (
     getTransactionReportAll.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1670,8 +1670,8 @@ export const getTransactionTransactionId = (
     template(getTransactionTransactionId.key, { transactionId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1687,8 +1687,8 @@ export const getTransferRecent = (
     getTransferRecent.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1703,8 +1703,8 @@ export const getTransferSearch = (
     getTransferSearch.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1721,8 +1721,8 @@ export const getTransferUserWalletIdCommission = (
     template(getTransferUserWalletIdCommission.key, { userWalletId }),
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1737,8 +1737,8 @@ export const getUser = (
     getUser.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1753,8 +1753,8 @@ export const getUserBank = (
     getUserBank.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1769,8 +1769,8 @@ export const getUserBankReady = (
     getUserBankReady.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1787,8 +1787,8 @@ export const getUserBankUserBankId = (
     template(getUserBankUserBankId.key, { userBankId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1803,8 +1803,8 @@ export const getUserConnection = (
     getUserConnection.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1819,8 +1819,8 @@ export const getUserContactInput = (
     template(getUserContactInput.key, { input }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1838,8 +1838,8 @@ export const getUserIdentityRequest = (
     getUserIdentityRequest.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1854,8 +1854,8 @@ export const getUserInvitation = (
     getUserInvitation.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1871,8 +1871,8 @@ export const getUserInvitationInvitationToken = (
     template(getUserInvitationInvitationToken.key, { invitationToken }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1887,8 +1887,8 @@ export const getUserMe = (
     getUserMe.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1903,7 +1903,7 @@ export const getUserPlugin = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1921,8 +1921,8 @@ export const getUserUpgradeToBusinessRequest = (
     getUserUpgradeToBusinessRequest.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1936,8 +1936,8 @@ export const getUserWallet = (
     getUserWallet.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1979,8 +1979,8 @@ export const getUserWalletSearch = (
     getUserWalletSearch.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -1995,8 +1995,8 @@ export const getUserWalletUserWalletId = (
     template(getUserWalletUserWalletId.key, { userWalletId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2012,8 +2012,8 @@ export const getUserWalletUserWalletIdBalance = (
     template(getUserWalletUserWalletIdBalance.key, { userWalletId }),
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2041,8 +2041,8 @@ export const getUserWalletUserWalletIdEpayRequestComission = (
     }),
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2059,7 +2059,7 @@ export const getUserWalletUserWalletIdPermittedsubusers = (
     undefined,
     undefined,
     _CONSTANT5,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2078,8 +2078,8 @@ export const getUserWalletUserWalletIdSettlementRequestComission = (
     }),
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2108,8 +2108,8 @@ export const getUserWalletUserWalletIdTransferMoneyCommission = (
     }),
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2125,8 +2125,8 @@ export const getUserWorkspace = (
     getUserWorkspace.key,
     undefined,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2287,7 +2287,7 @@ export const postBusinessUserConnectionConnectionIdPermission = (
     }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -2330,7 +2330,7 @@ export const postBusinessUserInviteInvitationIdResend = (
     undefined,
     undefined,
     _CONSTANT5,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2361,7 +2361,7 @@ export const postBusinessUserResendInvitationId = (
     undefined,
     undefined,
     _CONSTANT5,
-    overrideConfig(_CONSTANT0, configOverride),
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
@@ -2376,7 +2376,7 @@ export const postEpayRequestEpayIdCancel = (
     template(postEpayRequestEpayIdCancel.key, { epayId }),
     undefined,
     undefined,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT6, configOverride),
   );
 };
@@ -2392,7 +2392,7 @@ export const postEpayRequestEpayIdResend = (
     template(postEpayRequestEpayIdResend.key, { epayId }),
     undefined,
     undefined,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT6, configOverride),
   );
 };
@@ -2423,7 +2423,7 @@ export const postEpayRequestEpayIdTask = (
     template(postEpayRequestEpayIdTask.key, { epayId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -2444,7 +2444,7 @@ export const postEpayRequestEpayTokenPayUserWalletId = (
     }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -2463,7 +2463,7 @@ export const postEpayRequestUserWalletId = (
     template(postEpayRequestUserWalletId.key, { userWalletId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -2480,7 +2480,7 @@ export const postFile = (
     postFile.key,
     undefined,
     objToForm(requestBody),
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT7, configOverride),
   );
 };
@@ -2497,7 +2497,7 @@ export const postGroupTransferExport = (
     postGroupTransferExport.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -2514,7 +2514,7 @@ export const postGroupTransferImport = (
     postGroupTransferImport.key,
     undefined,
     objToForm(requestBody),
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT7, configOverride),
   );
 };
@@ -2531,7 +2531,7 @@ export const postGroupTransferTransfer = (
     postGroupTransferTransfer.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -2548,7 +2548,7 @@ export const postIntegrationTaxiPayment = (
     postIntegrationTaxiPayment.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT9, configOverride),
   );
 };
@@ -2564,7 +2564,7 @@ export const postMachineRegisterUser = (
     postMachineRegisterUser.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -2615,7 +2615,7 @@ export const postPosPayTargetAccountNumberWallet = (
     template(postPosPayTargetAccountNumberWallet.key, { targetAccountNumber }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -2927,7 +2927,7 @@ export const postSubUserAccountUserWalletIdNotification = (
     template(postSubUserAccountUserWalletIdNotification.key, { userWalletId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -2956,7 +2956,7 @@ export const postSubUserNotificationUserWalletId = (
     template(postSubUserNotificationUserWalletId.key, { userWalletId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -2975,7 +2975,7 @@ export const postTransferUserWalletId = (
     template(postTransferUserWalletId.key, { userWalletId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -2995,7 +2995,7 @@ export const postUserBank = (
     postUserBank.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3012,7 +3012,7 @@ export const postUserChangePassword = (
     postUserChangePassword.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -3032,7 +3032,7 @@ export const postUserIdentityRequest = (
     postUserIdentityRequest.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3065,7 +3065,7 @@ export const postUserInvitationInvitationIdTask = (
     template(postUserInvitationInvitationIdTask.key, { invitationId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -3086,7 +3086,7 @@ export const postUserInvitationInvitationTokenAccept = (
     template(postUserInvitationInvitationTokenAccept.key, { invitationToken }),
     undefined,
     undefined,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT6, configOverride),
   );
 };
@@ -3105,7 +3105,7 @@ export const postUserInvitationInvitationTokenReject = (
     template(postUserInvitationInvitationTokenReject.key, { invitationToken }),
     undefined,
     undefined,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT6, configOverride),
   );
 };
@@ -3126,7 +3126,7 @@ export const postUserUpgradeToBusinessRequest = (
     postUserUpgradeToBusinessRequest.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3142,7 +3142,7 @@ export const postUserWallet = (
     postUserWallet.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3159,7 +3159,7 @@ export const postUserWalletUserWalletIdCharge = (
     template(postUserWalletUserWalletIdCharge.key, { userWalletId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3186,7 +3186,7 @@ export const postUserWalletUserWalletIdEpayRequest = (
     template(postUserWalletUserWalletIdEpayRequest.key, { userWalletId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3214,7 +3214,7 @@ export const postUserWalletUserWalletIdTransferMoney = (
     template(postUserWalletUserWalletIdTransferMoney.key, { userWalletId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3237,7 +3237,7 @@ export const putBusinessUserConnectionConnectionId = (
     template(putBusinessUserConnectionConnectionId.key, { connectionId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3260,7 +3260,7 @@ export const putBusinessUserConnectionConnectionIdPermissionUserWalletId = (
     }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -3278,7 +3278,7 @@ export const putGroupTransferAdd = (
     putGroupTransferAdd.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3295,7 +3295,7 @@ export const putNotificationIaNotifIdDismiss = (
     template(putNotificationIaNotifIdDismiss.key, { notifId }),
     undefined,
     undefined,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT6, configOverride),
   );
 };
@@ -3335,7 +3335,7 @@ export const putUser = (
     putUser.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3354,7 +3354,7 @@ export const putUserBankUserBankId = (
     template(putUserBankUserBankId.key, { userBankId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3372,7 +3372,7 @@ export const putUserBankUserBankIdChangeVisibility = (
     template(putUserBankUserBankIdChangeVisibility.key, { userBankId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -3390,7 +3390,7 @@ export const putUserChangeAvatar = (
     putUserChangeAvatar.key,
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -3407,7 +3407,7 @@ export const putUserPluginUserPluginIdChangeStatus = (
     template(putUserPluginUserPluginIdChangeStatus.key, { userPluginId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3425,7 +3425,7 @@ export const putUserWalletUserWalletId = (
     template(putUserWalletUserWalletId.key, { userWalletId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT2, configOverride),
   );
 };
@@ -3442,7 +3442,7 @@ export const putUserWalletUserWalletIdNotification = (
     template(putUserWalletUserWalletIdNotification.key, { userWalletId }),
     undefined,
     requestBody,
-    _CONSTANT1,
+    _CONSTANT0,
     overrideConfig(_CONSTANT4, configOverride),
   );
 };
@@ -3450,13 +3450,13 @@ export const putUserWalletUserWalletIdNotification = (
 /** Key is end point string without base url */
 putUserWalletUserWalletIdNotification.key =
   \\"/UserWallet/{userWalletId}/notification\\";
-export const _CONSTANT0 = {
+export const _CONSTANT0 = [{ bearer: [] }];
+export const _CONSTANT1 = {
   headers: {
     \\"Content-Type\\": \\"application/json\\",
     Accept: \\"application/json\\",
   },
 };
-export const _CONSTANT1 = [{ bearer: [] }];
 export const _CONSTANT10 = [{ bearer: [\\"Reseller\\"] }];
 export const _CONSTANT11 = {
   \\"Content-Type\\": \\"application/json\\",
@@ -3883,22 +3883,15 @@ export const useDeleteBusinessUserConnectionConnectionId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        connectionId,
-
-        configOverride,
-      } = _o || {};
-
+      const { connectionId, configOverride } = _o || {};
       return deleteBusinessUserConnectionConnectionId(
         connectionId,
-
         configOverride,
       );
     },
     ...options,
   });
 };
-
 export const useDeleteBusinessUserConnectionConnectionIdPermissionUserWalletId =
   <TExtra,>(
     options?: SwaggerTypescriptUseMutationOptions<
@@ -3913,17 +3906,10 @@ export const useDeleteBusinessUserConnectionConnectionIdPermissionUserWalletId =
   ) => {
     return useMutation({
       mutationFn: (_o) => {
-        const {
-          connectionId,
-          userWalletId,
-
-          configOverride,
-        } = _o || {};
-
+        const { connectionId, userWalletId, configOverride } = _o || {};
         return deleteBusinessUserConnectionConnectionIdPermissionUserWalletId(
           connectionId,
           userWalletId,
-
           configOverride,
         );
       },
@@ -3951,16 +3937,9 @@ export const useDeleteBusinessUserConnectionInvitationIdRemove = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        invitationId,
-
-        queryParams,
-        configOverride,
-      } = _o || {};
-
+      const { invitationId, queryParams, configOverride } = _o || {};
       return deleteBusinessUserConnectionInvitationIdRemove(
         invitationId,
-
         queryParams,
         configOverride,
       );
@@ -3982,15 +3961,9 @@ export const useDeleteBusinessUserInviteInvitationIdRemove = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        invitationId,
-
-        configOverride,
-      } = _o || {};
-
+      const { invitationId, configOverride } = _o || {};
       return deleteBusinessUserInviteInvitationIdRemove(
         invitationId,
-
         configOverride,
       );
     },
@@ -4018,17 +3991,8 @@ export const useDeleteSubUserConnectionConnectionId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        connectionId,
-
-        configOverride,
-      } = _o || {};
-
-      return deleteSubUserConnectionConnectionId(
-        connectionId,
-
-        configOverride,
-      );
+      const { connectionId, configOverride } = _o || {};
+      return deleteSubUserConnectionConnectionId(connectionId, configOverride);
     },
     ...options,
   });
@@ -4050,22 +4014,12 @@ export const useDeleteUserConnectionConnectionId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        connectionId,
-
-        configOverride,
-      } = _o || {};
-
-      return deleteUserConnectionConnectionId(
-        connectionId,
-
-        configOverride,
-      );
+      const { connectionId, configOverride } = _o || {};
+      return deleteUserConnectionConnectionId(connectionId, configOverride);
     },
     ...options,
   });
 };
-
 export const useGetAccessUserWalletIdLogicalAction = (
   userWalletId: number,
   logicalAction:
@@ -4091,9 +4045,9 @@ export const useGetAccessUserWalletIdLogicalAction = (
   const { key, fun } = useGetAccessUserWalletIdLogicalAction.info(
     userWalletId,
     logicalAction,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4131,7 +4085,6 @@ useGetAccessUserWalletIdLogicalAction.info = (
       getAccessUserWalletIdLogicalAction(
         userWalletId,
         logicalAction,
-
         configOverride,
       ),
   };
@@ -4162,7 +4115,6 @@ useGetAccessUserWalletIdLogicalAction.prefetch = (
   const { key, fun } = useGetAccessUserWalletIdLogicalAction.info(
     userWalletId,
     logicalAction,
-
     configOverride,
   );
 
@@ -4181,6 +4133,7 @@ export const useGetBank = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBank.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4215,6 +4168,7 @@ export const useGetBusinessUserCategory = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetBusinessUserCategory.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4253,6 +4207,7 @@ export const useGetBusinessUserConnection = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4265,12 +4220,7 @@ useGetBusinessUserConnection.info = (
 ) => {
   return {
     key: [getBusinessUserConnection.key, queryParams] as QueryKey,
-    fun: () =>
-      getBusinessUserConnection(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getBusinessUserConnection(queryParams, configOverride),
   };
 };
 useGetBusinessUserConnection.prefetch = (
@@ -4306,6 +4256,7 @@ export const useGetBusinessUserConnectionActive = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4318,12 +4269,7 @@ useGetBusinessUserConnectionActive.info = (
 ) => {
   return {
     key: [getBusinessUserConnectionActive.key, queryParams] as QueryKey,
-    fun: () =>
-      getBusinessUserConnectionActive(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getBusinessUserConnectionActive(queryParams, configOverride),
   };
 };
 useGetBusinessUserConnectionActive.prefetch = (
@@ -4358,9 +4304,9 @@ export const useGetBusinessUserConnectionConnectionId = (
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionId.info(
     connectionId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4375,11 +4321,7 @@ useGetBusinessUserConnectionConnectionId.info = (
   return {
     key: [getBusinessUserConnectionConnectionId.key, connectionId] as QueryKey,
     fun: () =>
-      getBusinessUserConnectionConnectionId(
-        connectionId,
-
-        configOverride,
-      ),
+      getBusinessUserConnectionConnectionId(connectionId, configOverride),
   };
 };
 useGetBusinessUserConnectionConnectionId.prefetch = (
@@ -4392,7 +4334,6 @@ useGetBusinessUserConnectionConnectionId.prefetch = (
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionId.info(
     connectionId,
-
     configOverride,
   );
 
@@ -4417,9 +4358,9 @@ export const useGetBusinessUserConnectionConnectionIdActivity = (
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdActivity.info(
     connectionId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4439,7 +4380,6 @@ useGetBusinessUserConnectionConnectionIdActivity.info = (
     fun: () =>
       getBusinessUserConnectionConnectionIdActivity(
         connectionId,
-
         configOverride,
       ),
   };
@@ -4454,7 +4394,6 @@ useGetBusinessUserConnectionConnectionIdActivity.prefetch = (
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdActivity.info(
     connectionId,
-
     configOverride,
   );
 
@@ -4474,10 +4413,10 @@ export const useGetBusinessUserConnectionConnectionIdEpay = (
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdEpay.info(
     connectionId,
-
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4493,15 +4432,12 @@ useGetBusinessUserConnectionConnectionIdEpay.info = (
     key: [
       getBusinessUserConnectionConnectionIdEpay.key,
       connectionId,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
       getBusinessUserConnectionConnectionIdEpay(
         connectionId,
-
         queryParams,
-
         configOverride,
       ),
   };
@@ -4515,7 +4451,6 @@ useGetBusinessUserConnectionConnectionIdEpay.prefetch = (
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdEpay.info(
     connectionId,
-
     queryParams,
     configOverride,
   );
@@ -4541,9 +4476,9 @@ export const useGetBusinessUserConnectionConnectionIdPermission = (
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdPermission.info(
     connectionId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4563,7 +4498,6 @@ useGetBusinessUserConnectionConnectionIdPermission.info = (
     fun: () =>
       getBusinessUserConnectionConnectionIdPermission(
         connectionId,
-
         configOverride,
       ),
   };
@@ -4578,7 +4512,6 @@ useGetBusinessUserConnectionConnectionIdPermission.prefetch = (
 ) => {
   const { key, fun } = useGetBusinessUserConnectionConnectionIdPermission.info(
     connectionId,
-
     configOverride,
   );
 
@@ -4596,6 +4529,7 @@ export const useGetEpayRequest = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequest.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4608,12 +4542,7 @@ useGetEpayRequest.info = (
 ) => {
   return {
     key: [getEpayRequest.key, queryParams] as QueryKey,
-    fun: () =>
-      getEpayRequest(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getEpayRequest(queryParams, configOverride),
   };
 };
 useGetEpayRequest.prefetch = (
@@ -4637,6 +4566,7 @@ export const useGetEpayRequestAudiencesRecent = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestAudiencesRecent.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4672,6 +4602,7 @@ export const useGetEpayRequestCount = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestCount.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4684,12 +4615,7 @@ useGetEpayRequestCount.info = (
 ) => {
   return {
     key: [getEpayRequestCount.key, queryParams] as QueryKey,
-    fun: () =>
-      getEpayRequestCount(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getEpayRequestCount(queryParams, configOverride),
   };
 };
 useGetEpayRequestCount.prefetch = (
@@ -4716,11 +4642,8 @@ export const useGetEpayRequestEpayId = (
   options?: SwaggerTypescriptUseQueryOptions<EpayRequestDetailApiModel>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetEpayRequestEpayId.info(
-    epayId,
+  const { key, fun } = useGetEpayRequestEpayId.info(epayId, configOverride);
 
-    configOverride,
-  );
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4734,12 +4657,7 @@ useGetEpayRequestEpayId.info = (
 ) => {
   return {
     key: [getEpayRequestEpayId.key, epayId] as QueryKey,
-    fun: () =>
-      getEpayRequestEpayId(
-        epayId,
-
-        configOverride,
-      ),
+    fun: () => getEpayRequestEpayId(epayId, configOverride),
   };
 };
 useGetEpayRequestEpayId.prefetch = (
@@ -4750,11 +4668,7 @@ useGetEpayRequestEpayId.prefetch = (
   options?: SwaggerTypescriptUseQueryOptions<EpayRequestDetailApiModel>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetEpayRequestEpayId.info(
-    epayId,
-
-    configOverride,
-  );
+  const { key, fun } = useGetEpayRequestEpayId.info(epayId, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -4771,9 +4685,9 @@ export const useGetEpayRequestEpayTokenDetail = (
 ) => {
   const { key, fun } = useGetEpayRequestEpayTokenDetail.info(
     epayToken,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4786,12 +4700,7 @@ useGetEpayRequestEpayTokenDetail.info = (
 ) => {
   return {
     key: [getEpayRequestEpayTokenDetail.key, epayToken] as QueryKey,
-    fun: () =>
-      getEpayRequestEpayTokenDetail(
-        epayToken,
-
-        configOverride,
-      ),
+    fun: () => getEpayRequestEpayTokenDetail(epayToken, configOverride),
   };
 };
 useGetEpayRequestEpayTokenDetail.prefetch = (
@@ -4802,7 +4711,6 @@ useGetEpayRequestEpayTokenDetail.prefetch = (
 ) => {
   const { key, fun } = useGetEpayRequestEpayTokenDetail.info(
     epayToken,
-
     configOverride,
   );
 
@@ -4824,9 +4732,9 @@ export const useGetEpayRequestEpayTokenQrcode = (
 ) => {
   const { key, fun } = useGetEpayRequestEpayTokenQrcode.info(
     epayToken,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4840,12 +4748,7 @@ useGetEpayRequestEpayTokenQrcode.info = (
 ) => {
   return {
     key: [getEpayRequestEpayTokenQrcode.key, epayToken] as QueryKey,
-    fun: () =>
-      getEpayRequestEpayTokenQrcode(
-        epayToken,
-
-        configOverride,
-      ),
+    fun: () => getEpayRequestEpayTokenQrcode(epayToken, configOverride),
   };
 };
 useGetEpayRequestEpayTokenQrcode.prefetch = (
@@ -4858,7 +4761,6 @@ useGetEpayRequestEpayTokenQrcode.prefetch = (
 ) => {
   const { key, fun } = useGetEpayRequestEpayTokenQrcode.info(
     epayToken,
-
     configOverride,
   );
 
@@ -4876,6 +4778,7 @@ export const useGetEpayRequestExcel = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestExcel.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4888,12 +4791,7 @@ useGetEpayRequestExcel.info = (
 ) => {
   return {
     key: [getEpayRequestExcel.key, queryParams] as QueryKey,
-    fun: () =>
-      getEpayRequestExcel(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getEpayRequestExcel(queryParams, configOverride),
   };
 };
 useGetEpayRequestExcel.prefetch = (
@@ -4923,6 +4821,7 @@ export const useGetEpayRequestForMe = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestForMe.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4935,12 +4834,7 @@ useGetEpayRequestForMe.info = (
 ) => {
   return {
     key: [getEpayRequestForMe.key, queryParams] as QueryKey,
-    fun: () =>
-      getEpayRequestForMe(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getEpayRequestForMe(queryParams, configOverride),
   };
 };
 useGetEpayRequestForMe.prefetch = (
@@ -4968,6 +4862,7 @@ export const useGetEpayRequestForMeCount = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -4980,12 +4875,7 @@ useGetEpayRequestForMeCount.info = (
 ) => {
   return {
     key: [getEpayRequestForMeCount.key, queryParams] as QueryKey,
-    fun: () =>
-      getEpayRequestForMeCount(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getEpayRequestForMeCount(queryParams, configOverride),
   };
 };
 useGetEpayRequestForMeCount.prefetch = (
@@ -5016,6 +4906,7 @@ export const useGetEpayRequestForMeReport = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5028,12 +4919,7 @@ useGetEpayRequestForMeReport.info = (
 ) => {
   return {
     key: [getEpayRequestForMeReport.key, queryParams] as QueryKey,
-    fun: () =>
-      getEpayRequestForMeReport(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getEpayRequestForMeReport(queryParams, configOverride),
   };
 };
 useGetEpayRequestForMeReport.prefetch = (
@@ -5070,10 +4956,10 @@ export const useGetEpayRequestPosQrAccountNumber = (
 ) => {
   const { key, fun } = useGetEpayRequestPosQrAccountNumber.info(
     accountNumber,
-
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5089,15 +4975,12 @@ useGetEpayRequestPosQrAccountNumber.info = (
     key: [
       getEpayRequestPosQrAccountNumber.key,
       accountNumber,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
       getEpayRequestPosQrAccountNumber(
         accountNumber,
-
         queryParams,
-
         configOverride,
       ),
   };
@@ -5111,7 +4994,6 @@ useGetEpayRequestPosQrAccountNumber.prefetch = (
 ) => {
   const { key, fun } = useGetEpayRequestPosQrAccountNumber.info(
     accountNumber,
-
     queryParams,
     configOverride,
   );
@@ -5133,6 +5015,7 @@ export const useGetEpayRequestReport = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5145,12 +5028,7 @@ useGetEpayRequestReport.info = (
 ) => {
   return {
     key: [getEpayRequestReport.key, queryParams] as QueryKey,
-    fun: () =>
-      getEpayRequestReport(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getEpayRequestReport(queryParams, configOverride),
   };
 };
 useGetEpayRequestReport.prefetch = (
@@ -5182,10 +5060,10 @@ export const useGetEpayRequestUserWalletIdCommission = (
 ) => {
   const { key, fun } = useGetEpayRequestUserWalletIdCommission.info(
     userWalletId,
-
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5201,15 +5079,12 @@ useGetEpayRequestUserWalletIdCommission.info = (
     key: [
       getEpayRequestUserWalletIdCommission.key,
       userWalletId,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
       getEpayRequestUserWalletIdCommission(
         userWalletId,
-
         queryParams,
-
         configOverride,
       ),
   };
@@ -5223,7 +5098,6 @@ useGetEpayRequestUserWalletIdCommission.prefetch = (
 ) => {
   const { key, fun } = useGetEpayRequestUserWalletIdCommission.info(
     userWalletId,
-
     queryParams,
     configOverride,
   );
@@ -5243,9 +5117,9 @@ export const useGetEpayRequestUserWalletIdCreators = (
 ) => {
   const { key, fun } = useGetEpayRequestUserWalletIdCreators.info(
     userWalletId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5258,12 +5132,7 @@ useGetEpayRequestUserWalletIdCreators.info = (
 ) => {
   return {
     key: [getEpayRequestUserWalletIdCreators.key, userWalletId] as QueryKey,
-    fun: () =>
-      getEpayRequestUserWalletIdCreators(
-        userWalletId,
-
-        configOverride,
-      ),
+    fun: () => getEpayRequestUserWalletIdCreators(userWalletId, configOverride),
   };
 };
 useGetEpayRequestUserWalletIdCreators.prefetch = (
@@ -5274,7 +5143,6 @@ useGetEpayRequestUserWalletIdCreators.prefetch = (
 ) => {
   const { key, fun } = useGetEpayRequestUserWalletIdCreators.info(
     userWalletId,
-
     configOverride,
   );
 
@@ -5291,6 +5159,7 @@ export const useGetError = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetError.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5323,6 +5192,7 @@ export const useGetErrorLocal = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetErrorLocal.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5355,11 +5225,8 @@ export const useGetErrorStatusCode = (
   options?: SwaggerTypescriptUseQueryOptions<string>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetErrorStatusCode.info(
-    code,
+  const { key, fun } = useGetErrorStatusCode.info(code, configOverride);
 
-    configOverride,
-  );
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5372,12 +5239,7 @@ useGetErrorStatusCode.info = (
 ) => {
   return {
     key: [getErrorStatusCode.key, code] as QueryKey,
-    fun: () =>
-      getErrorStatusCode(
-        code,
-
-        configOverride,
-      ),
+    fun: () => getErrorStatusCode(code, configOverride),
   };
 };
 useGetErrorStatusCode.prefetch = (
@@ -5386,11 +5248,7 @@ useGetErrorStatusCode.prefetch = (
   options?: SwaggerTypescriptUseQueryOptions<string>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetErrorStatusCode.info(
-    code,
-
-    configOverride,
-  );
+  const { key, fun } = useGetErrorStatusCode.info(code, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -5408,11 +5266,8 @@ export const useGetFileFileGuid = (
   options?: SwaggerTypescriptUseQueryOptions<string>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetFileFileGuid.info(
-    fileGuid,
+  const { key, fun } = useGetFileFileGuid.info(fileGuid, configOverride);
 
-    configOverride,
-  );
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5426,12 +5281,7 @@ useGetFileFileGuid.info = (
 ) => {
   return {
     key: [getFileFileGuid.key, fileGuid] as QueryKey,
-    fun: () =>
-      getFileFileGuid(
-        fileGuid,
-
-        configOverride,
-      ),
+    fun: () => getFileFileGuid(fileGuid, configOverride),
   };
 };
 useGetFileFileGuid.prefetch = (
@@ -5442,11 +5292,7 @@ useGetFileFileGuid.prefetch = (
   options?: SwaggerTypescriptUseQueryOptions<string>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetFileFileGuid.info(
-    fileGuid,
-
-    configOverride,
-  );
+  const { key, fun } = useGetFileFileGuid.info(fileGuid, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -5465,6 +5311,7 @@ export const useGetGroupTransferCommission = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5477,12 +5324,7 @@ useGetGroupTransferCommission.info = (
 ) => {
   return {
     key: [getGroupTransferCommission.key, queryParams] as QueryKey,
-    fun: () =>
-      getGroupTransferCommission(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getGroupTransferCommission(queryParams, configOverride),
   };
 };
 useGetGroupTransferCommission.prefetch = (
@@ -5512,6 +5354,7 @@ export const useGetIntegration = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetIntegration.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5524,12 +5367,7 @@ useGetIntegration.info = (
 ) => {
   return {
     key: [getIntegration.key, queryParams] as QueryKey,
-    fun: () =>
-      getIntegration(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getIntegration(queryParams, configOverride),
   };
 };
 useGetIntegration.prefetch = (
@@ -5554,6 +5392,7 @@ export const useGetKpi = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetKpi.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5566,12 +5405,7 @@ useGetKpi.info = (
 ) => {
   return {
     key: [getKpi.key, queryParams] as QueryKey,
-    fun: () =>
-      getKpi(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getKpi(queryParams, configOverride),
   };
 };
 useGetKpi.prefetch = (
@@ -5596,6 +5430,7 @@ export const useGetKpiCurrent = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetKpiCurrent.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5608,12 +5443,7 @@ useGetKpiCurrent.info = (
 ) => {
   return {
     key: [getKpiCurrent.key, queryParams] as QueryKey,
-    fun: () =>
-      getKpiCurrent(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getKpiCurrent(queryParams, configOverride),
   };
 };
 useGetKpiCurrent.prefetch = (
@@ -5638,6 +5468,7 @@ export const useGetKpiLast = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetKpiLast.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5650,12 +5481,7 @@ useGetKpiLast.info = (
 ) => {
   return {
     key: [getKpiLast.key, queryParams] as QueryKey,
-    fun: () =>
-      getKpiLast(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getKpiLast(queryParams, configOverride),
   };
 };
 useGetKpiLast.prefetch = (
@@ -5681,6 +5507,7 @@ export const useGetNotificationIa = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetNotificationIa.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5715,6 +5542,7 @@ export const useGetNotificationNotif = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetNotificationNotif.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5751,6 +5579,7 @@ export const useGetNotificationUnread = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5763,12 +5592,7 @@ useGetNotificationUnread.info = (
 ) => {
   return {
     key: [getNotificationUnread.key, queryParams] as QueryKey,
-    fun: () =>
-      getNotificationUnread(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getNotificationUnread(queryParams, configOverride),
   };
 };
 useGetNotificationUnread.prefetch = (
@@ -5795,11 +5619,8 @@ export const useGetPluginPluginId = (
   options?: SwaggerTypescriptUseQueryOptions<PluginApiModel>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetPluginPluginId.info(
-    pluginId,
+  const { key, fun } = useGetPluginPluginId.info(pluginId, configOverride);
 
-    configOverride,
-  );
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5812,12 +5633,7 @@ useGetPluginPluginId.info = (
 ) => {
   return {
     key: [getPluginPluginId.key, pluginId] as QueryKey,
-    fun: () =>
-      getPluginPluginId(
-        pluginId,
-
-        configOverride,
-      ),
+    fun: () => getPluginPluginId(pluginId, configOverride),
   };
 };
 useGetPluginPluginId.prefetch = (
@@ -5826,11 +5642,7 @@ useGetPluginPluginId.prefetch = (
   options?: SwaggerTypescriptUseQueryOptions<PluginApiModel>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetPluginPluginId.info(
-    pluginId,
-
-    configOverride,
-  );
+  const { key, fun } = useGetPluginPluginId.info(pluginId, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -5851,10 +5663,10 @@ export const useGetPosAccountNumber = (
 ) => {
   const { key, fun } = useGetPosAccountNumber.info(
     accountNumber,
-
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5869,14 +5681,7 @@ useGetPosAccountNumber.info = (
 ) => {
   return {
     key: [getPosAccountNumber.key, accountNumber, queryParams] as QueryKey,
-    fun: () =>
-      getPosAccountNumber(
-        accountNumber,
-
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getPosAccountNumber(accountNumber, queryParams, configOverride),
   };
 };
 useGetPosAccountNumber.prefetch = (
@@ -5890,7 +5695,6 @@ useGetPosAccountNumber.prefetch = (
 ) => {
   const { key, fun } = useGetPosAccountNumber.info(
     accountNumber,
-
     queryParams,
     configOverride,
   );
@@ -5913,9 +5717,9 @@ export const useGetReceiptBankEpayTryId = (
 ) => {
   const { key, fun } = useGetReceiptBankEpayTryId.info(
     epayTryId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5929,12 +5733,7 @@ useGetReceiptBankEpayTryId.info = (
 ) => {
   return {
     key: [getReceiptBankEpayTryId.key, epayTryId] as QueryKey,
-    fun: () =>
-      getReceiptBankEpayTryId(
-        epayTryId,
-
-        configOverride,
-      ),
+    fun: () => getReceiptBankEpayTryId(epayTryId, configOverride),
   };
 };
 useGetReceiptBankEpayTryId.prefetch = (
@@ -5947,7 +5746,6 @@ useGetReceiptBankEpayTryId.prefetch = (
 ) => {
   const { key, fun } = useGetReceiptBankEpayTryId.info(
     epayTryId,
-
     configOverride,
   );
 
@@ -5973,11 +5771,8 @@ export const useGetReceiptEpayToken = (
   options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetReceiptEpayToken.info(
-    epayToken,
+  const { key, fun } = useGetReceiptEpayToken.info(epayToken, configOverride);
 
-    configOverride,
-  );
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -5991,12 +5786,7 @@ useGetReceiptEpayToken.info = (
 ) => {
   return {
     key: [getReceiptEpayToken.key, epayToken] as QueryKey,
-    fun: () =>
-      getReceiptEpayToken(
-        epayToken,
-
-        configOverride,
-      ),
+    fun: () => getReceiptEpayToken(epayToken, configOverride),
   };
 };
 useGetReceiptEpayToken.prefetch = (
@@ -6007,11 +5797,7 @@ useGetReceiptEpayToken.prefetch = (
   options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetReceiptEpayToken.info(
-    epayToken,
-
-    configOverride,
-  );
+  const { key, fun } = useGetReceiptEpayToken.info(epayToken, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -6031,9 +5817,9 @@ export const useGetReceiptWalletEpayToken = (
 ) => {
   const { key, fun } = useGetReceiptWalletEpayToken.info(
     epayToken,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6047,12 +5833,7 @@ useGetReceiptWalletEpayToken.info = (
 ) => {
   return {
     key: [getReceiptWalletEpayToken.key, epayToken] as QueryKey,
-    fun: () =>
-      getReceiptWalletEpayToken(
-        epayToken,
-
-        configOverride,
-      ),
+    fun: () => getReceiptWalletEpayToken(epayToken, configOverride),
   };
 };
 useGetReceiptWalletEpayToken.prefetch = (
@@ -6065,7 +5846,6 @@ useGetReceiptWalletEpayToken.prefetch = (
 ) => {
   const { key, fun } = useGetReceiptWalletEpayToken.info(
     epayToken,
-
     configOverride,
   );
 
@@ -6087,6 +5867,7 @@ export const useGetResellerUser = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetResellerUser.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6131,6 +5912,7 @@ export const useGetResellerUserDashboardCommissionReport = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6144,15 +5926,10 @@ useGetResellerUserDashboardCommissionReport.info = (
   return {
     key: [
       getResellerUserDashboardCommissionReport.key,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
-      getResellerUserDashboardCommissionReport(
-        queryParams,
-
-        configOverride,
-      ),
+      getResellerUserDashboardCommissionReport(queryParams, configOverride),
   };
 };
 useGetResellerUserDashboardCommissionReport.prefetch = (
@@ -6191,6 +5968,7 @@ export const useGetResellerUserDashboardCommissionSum = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6204,11 +5982,7 @@ useGetResellerUserDashboardCommissionSum.info = (
   return {
     key: [getResellerUserDashboardCommissionSum.key, queryParams] as QueryKey,
     fun: () =>
-      getResellerUserDashboardCommissionSum(
-        queryParams,
-
-        configOverride,
-      ),
+      getResellerUserDashboardCommissionSum(queryParams, configOverride),
   };
 };
 useGetResellerUserDashboardCommissionSum.prefetch = (
@@ -6247,6 +6021,7 @@ export const useGetResellerUserDashboardIntroducedCount = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6260,11 +6035,7 @@ useGetResellerUserDashboardIntroducedCount.info = (
   return {
     key: [getResellerUserDashboardIntroducedCount.key, queryParams] as QueryKey,
     fun: () =>
-      getResellerUserDashboardIntroducedCount(
-        queryParams,
-
-        configOverride,
-      ),
+      getResellerUserDashboardIntroducedCount(queryParams, configOverride),
   };
 };
 useGetResellerUserDashboardIntroducedCount.prefetch = (
@@ -6303,6 +6074,7 @@ export const useGetResellerUserDashboardIntroducedReport = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6316,15 +6088,10 @@ useGetResellerUserDashboardIntroducedReport.info = (
   return {
     key: [
       getResellerUserDashboardIntroducedReport.key,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
-      getResellerUserDashboardIntroducedReport(
-        queryParams,
-
-        configOverride,
-      ),
+      getResellerUserDashboardIntroducedReport(queryParams, configOverride),
   };
 };
 useGetResellerUserDashboardIntroducedReport.prefetch = (
@@ -6363,6 +6130,7 @@ export const useGetResellerUserDashboardLinksCount = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6375,12 +6143,7 @@ useGetResellerUserDashboardLinksCount.info = (
 ) => {
   return {
     key: [getResellerUserDashboardLinksCount.key, queryParams] as QueryKey,
-    fun: () =>
-      getResellerUserDashboardLinksCount(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getResellerUserDashboardLinksCount(queryParams, configOverride),
   };
 };
 useGetResellerUserDashboardLinksCount.prefetch = (
@@ -6419,6 +6182,7 @@ export const useGetResellerUserDashboardLinksPaidCount = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6432,11 +6196,7 @@ useGetResellerUserDashboardLinksPaidCount.info = (
   return {
     key: [getResellerUserDashboardLinksPaidCount.key, queryParams] as QueryKey,
     fun: () =>
-      getResellerUserDashboardLinksPaidCount(
-        queryParams,
-
-        configOverride,
-      ),
+      getResellerUserDashboardLinksPaidCount(queryParams, configOverride),
   };
 };
 useGetResellerUserDashboardLinksPaidCount.prefetch = (
@@ -6475,6 +6235,7 @@ export const useGetResellerUserDashboardLinksPaidReport = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6488,11 +6249,7 @@ useGetResellerUserDashboardLinksPaidReport.info = (
   return {
     key: [getResellerUserDashboardLinksPaidReport.key, queryParams] as QueryKey,
     fun: () =>
-      getResellerUserDashboardLinksPaidReport(
-        queryParams,
-
-        configOverride,
-      ),
+      getResellerUserDashboardLinksPaidReport(queryParams, configOverride),
   };
 };
 useGetResellerUserDashboardLinksPaidReport.prefetch = (
@@ -6531,6 +6288,7 @@ export const useGetResellerUserDashboardLinksReport = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6543,12 +6301,7 @@ useGetResellerUserDashboardLinksReport.info = (
 ) => {
   return {
     key: [getResellerUserDashboardLinksReport.key, queryParams] as QueryKey,
-    fun: () =>
-      getResellerUserDashboardLinksReport(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getResellerUserDashboardLinksReport(queryParams, configOverride),
   };
 };
 useGetResellerUserDashboardLinksReport.prefetch = (
@@ -6587,6 +6340,7 @@ export const useGetResellerUserDashboardTransactionsCount = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6600,15 +6354,10 @@ useGetResellerUserDashboardTransactionsCount.info = (
   return {
     key: [
       getResellerUserDashboardTransactionsCount.key,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
-      getResellerUserDashboardTransactionsCount(
-        queryParams,
-
-        configOverride,
-      ),
+      getResellerUserDashboardTransactionsCount(queryParams, configOverride),
   };
 };
 useGetResellerUserDashboardTransactionsCount.prefetch = (
@@ -6647,6 +6396,7 @@ export const useGetResellerUserDashboardTransactionsReport = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6660,15 +6410,10 @@ useGetResellerUserDashboardTransactionsReport.info = (
   return {
     key: [
       getResellerUserDashboardTransactionsReport.key,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
-      getResellerUserDashboardTransactionsReport(
-        queryParams,
-
-        configOverride,
-      ),
+      getResellerUserDashboardTransactionsReport(queryParams, configOverride),
   };
 };
 useGetResellerUserDashboardTransactionsReport.prefetch = (
@@ -6704,6 +6449,7 @@ export const useGetResellerUserIntroduced = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6716,12 +6462,7 @@ useGetResellerUserIntroduced.info = (
 ) => {
   return {
     key: [getResellerUserIntroduced.key, queryParams] as QueryKey,
-    fun: () =>
-      getResellerUserIntroduced(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getResellerUserIntroduced(queryParams, configOverride),
   };
 };
 useGetResellerUserIntroduced.prefetch = (
@@ -6754,6 +6495,7 @@ export const useGetResellerUserIntroducedFilterData = (
 ) => {
   const { key, fun } =
     useGetResellerUserIntroducedFilterData.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6793,9 +6535,9 @@ export const useGetResellerUserIntroducedUserIdActivity = (
 ) => {
   const { key, fun } = useGetResellerUserIntroducedUserIdActivity.info(
     userId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6808,12 +6550,7 @@ useGetResellerUserIntroducedUserIdActivity.info = (
 ) => {
   return {
     key: [getResellerUserIntroducedUserIdActivity.key, userId] as QueryKey,
-    fun: () =>
-      getResellerUserIntroducedUserIdActivity(
-        userId,
-
-        configOverride,
-      ),
+    fun: () => getResellerUserIntroducedUserIdActivity(userId, configOverride),
   };
 };
 useGetResellerUserIntroducedUserIdActivity.prefetch = (
@@ -6824,7 +6561,6 @@ useGetResellerUserIntroducedUserIdActivity.prefetch = (
 ) => {
   const { key, fun } = useGetResellerUserIntroducedUserIdActivity.info(
     userId,
-
     configOverride,
   );
 
@@ -6846,6 +6582,7 @@ export const useGetSubDomain = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSubDomain.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6887,10 +6624,10 @@ export const useGetSubDomainSubDomainAddress = (
 ) => {
   const { key, fun } = useGetSubDomainSubDomainAddress.info(
     subDomainAddress,
-
     headerParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6910,13 +6647,11 @@ useGetSubDomainSubDomainAddress.info = (
     key: [
       getSubDomainSubDomainAddress.key,
       subDomainAddress,
-
       headerParams,
     ] as QueryKey,
     fun: () =>
       getSubDomainSubDomainAddress(
         subDomainAddress,
-
         headerParams,
         configOverride,
       ),
@@ -6936,7 +6671,6 @@ useGetSubDomainSubDomainAddress.prefetch = (
 ) => {
   const { key, fun } = useGetSubDomainSubDomainAddress.info(
     subDomainAddress,
-
     headerParams,
     configOverride,
   );
@@ -6958,9 +6692,9 @@ export const useGetSubUserAccountUserWalletId = (
 ) => {
   const { key, fun } = useGetSubUserAccountUserWalletId.info(
     userWalletId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -6973,12 +6707,7 @@ useGetSubUserAccountUserWalletId.info = (
 ) => {
   return {
     key: [getSubUserAccountUserWalletId.key, userWalletId] as QueryKey,
-    fun: () =>
-      getSubUserAccountUserWalletId(
-        userWalletId,
-
-        configOverride,
-      ),
+    fun: () => getSubUserAccountUserWalletId(userWalletId, configOverride),
   };
 };
 useGetSubUserAccountUserWalletId.prefetch = (
@@ -6989,7 +6718,6 @@ useGetSubUserAccountUserWalletId.prefetch = (
 ) => {
   const { key, fun } = useGetSubUserAccountUserWalletId.info(
     userWalletId,
-
     configOverride,
   );
 
@@ -7014,6 +6742,7 @@ export const useGetSubUserConnection = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetSubUserConnection.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7047,6 +6776,7 @@ export const useGetTransaction = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransaction.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7059,12 +6789,7 @@ useGetTransaction.info = (
 ) => {
   return {
     key: [getTransaction.key, queryParams] as QueryKey,
-    fun: () =>
-      getTransaction(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getTransaction(queryParams, configOverride),
   };
 };
 useGetTransaction.prefetch = (
@@ -7089,6 +6814,7 @@ export const useGetTransactionExcel = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransactionExcel.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7101,12 +6827,7 @@ useGetTransactionExcel.info = (
 ) => {
   return {
     key: [getTransactionExcel.key, queryParams] as QueryKey,
-    fun: () =>
-      getTransactionExcel(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getTransactionExcel(queryParams, configOverride),
   };
 };
 useGetTransactionExcel.prefetch = (
@@ -7139,6 +6860,7 @@ export const useGetTransactionReport = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7151,12 +6873,7 @@ useGetTransactionReport.info = (
 ) => {
   return {
     key: [getTransactionReport.key, queryParams] as QueryKey,
-    fun: () =>
-      getTransactionReport(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getTransactionReport(queryParams, configOverride),
   };
 };
 useGetTransactionReport.prefetch = (
@@ -7192,6 +6909,7 @@ export const useGetTransactionReportAll = (
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7204,12 +6922,7 @@ useGetTransactionReportAll.info = (
 ) => {
   return {
     key: [getTransactionReportAll.key, queryParams] as QueryKey,
-    fun: () =>
-      getTransactionReportAll(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getTransactionReportAll(queryParams, configOverride),
   };
 };
 useGetTransactionReportAll.prefetch = (
@@ -7240,9 +6953,9 @@ export const useGetTransactionTransactionId = (
 ) => {
   const { key, fun } = useGetTransactionTransactionId.info(
     transactionId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7255,12 +6968,7 @@ useGetTransactionTransactionId.info = (
 ) => {
   return {
     key: [getTransactionTransactionId.key, transactionId] as QueryKey,
-    fun: () =>
-      getTransactionTransactionId(
-        transactionId,
-
-        configOverride,
-      ),
+    fun: () => getTransactionTransactionId(transactionId, configOverride),
   };
 };
 useGetTransactionTransactionId.prefetch = (
@@ -7271,7 +6979,6 @@ useGetTransactionTransactionId.prefetch = (
 ) => {
   const { key, fun } = useGetTransactionTransactionId.info(
     transactionId,
-
     configOverride,
   );
 
@@ -7291,6 +6998,7 @@ export const useGetTransferRecent = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransferRecent.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7303,12 +7011,7 @@ useGetTransferRecent.info = (
 ) => {
   return {
     key: [getTransferRecent.key, queryParams] as QueryKey,
-    fun: () =>
-      getTransferRecent(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getTransferRecent(queryParams, configOverride),
   };
 };
 useGetTransferRecent.prefetch = (
@@ -7333,6 +7036,7 @@ export const useGetTransferSearch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetTransferSearch.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7345,12 +7049,7 @@ useGetTransferSearch.info = (
 ) => {
   return {
     key: [getTransferSearch.key, queryParams] as QueryKey,
-    fun: () =>
-      getTransferSearch(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getTransferSearch(queryParams, configOverride),
   };
 };
 useGetTransferSearch.prefetch = (
@@ -7379,10 +7078,10 @@ export const useGetTransferUserWalletIdCommission = (
 ) => {
   const { key, fun } = useGetTransferUserWalletIdCommission.info(
     userWalletId,
-
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7398,15 +7097,12 @@ useGetTransferUserWalletIdCommission.info = (
     key: [
       getTransferUserWalletIdCommission.key,
       userWalletId,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
       getTransferUserWalletIdCommission(
         userWalletId,
-
         queryParams,
-
         configOverride,
       ),
   };
@@ -7420,7 +7116,6 @@ useGetTransferUserWalletIdCommission.prefetch = (
 ) => {
   const { key, fun } = useGetTransferUserWalletIdCommission.info(
     userWalletId,
-
     queryParams,
     configOverride,
   );
@@ -7440,6 +7135,7 @@ export const useGetUser = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUser.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7474,6 +7170,7 @@ export const useGetUserBank = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserBank.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7508,6 +7205,7 @@ export const useGetUserBankReady = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserBankReady.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7545,9 +7243,9 @@ export const useGetUserBankUserBankId = (
 ) => {
   const { key, fun } = useGetUserBankUserBankId.info(
     userBankId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7561,12 +7259,7 @@ useGetUserBankUserBankId.info = (
 ) => {
   return {
     key: [getUserBankUserBankId.key, userBankId] as QueryKey,
-    fun: () =>
-      getUserBankUserBankId(
-        userBankId,
-
-        configOverride,
-      ),
+    fun: () => getUserBankUserBankId(userBankId, configOverride),
   };
 };
 useGetUserBankUserBankId.prefetch = (
@@ -7579,7 +7272,6 @@ useGetUserBankUserBankId.prefetch = (
 ) => {
   const { key, fun } = useGetUserBankUserBankId.info(
     userBankId,
-
     configOverride,
   );
 
@@ -7598,6 +7290,7 @@ export const useGetUserConnection = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserConnection.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7630,11 +7323,8 @@ export const useGetUserContactInput = (
   options?: SwaggerTypescriptUseQueryOptions<ContactApiModel>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetUserContactInput.info(
-    input,
+  const { key, fun } = useGetUserContactInput.info(input, configOverride);
 
-    configOverride,
-  );
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7647,12 +7337,7 @@ useGetUserContactInput.info = (
 ) => {
   return {
     key: [getUserContactInput.key, input] as QueryKey,
-    fun: () =>
-      getUserContactInput(
-        input,
-
-        configOverride,
-      ),
+    fun: () => getUserContactInput(input, configOverride),
   };
 };
 useGetUserContactInput.prefetch = (
@@ -7661,11 +7346,7 @@ useGetUserContactInput.prefetch = (
   options?: SwaggerTypescriptUseQueryOptions<ContactApiModel>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetUserContactInput.info(
-    input,
-
-    configOverride,
-  );
+  const { key, fun } = useGetUserContactInput.info(input, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -7685,6 +7366,7 @@ export const useGetUserIdentityRequest = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserIdentityRequest.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7719,6 +7401,7 @@ export const useGetUserInvitation = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserInvitation.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7755,9 +7438,9 @@ export const useGetUserInvitationInvitationToken = (
 ) => {
   const { key, fun } = useGetUserInvitationInvitationToken.info(
     invitationToken,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7771,11 +7454,7 @@ useGetUserInvitationInvitationToken.info = (
   return {
     key: [getUserInvitationInvitationToken.key, invitationToken] as QueryKey,
     fun: () =>
-      getUserInvitationInvitationToken(
-        invitationToken,
-
-        configOverride,
-      ),
+      getUserInvitationInvitationToken(invitationToken, configOverride),
   };
 };
 useGetUserInvitationInvitationToken.prefetch = (
@@ -7786,7 +7465,6 @@ useGetUserInvitationInvitationToken.prefetch = (
 ) => {
   const { key, fun } = useGetUserInvitationInvitationToken.info(
     invitationToken,
-
     configOverride,
   );
 
@@ -7805,6 +7483,7 @@ export const useGetUserMe = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserMe.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7837,6 +7516,7 @@ export const useGetUserPlugin = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserPlugin.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7874,6 +7554,7 @@ export const useGetUserUpgradeToBusinessRequest = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserUpgradeToBusinessRequest.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7908,6 +7589,7 @@ export const useGetUserWallet = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWallet.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7943,10 +7625,10 @@ export const useGetUserWalletAccountNumberQrcode = (
 ) => {
   const { key, fun } = useGetUserWalletAccountNumberQrcode.info(
     accountNumber,
-
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -7962,15 +7644,12 @@ useGetUserWalletAccountNumberQrcode.info = (
     key: [
       getUserWalletAccountNumberQrcode.key,
       accountNumber,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
       getUserWalletAccountNumberQrcode(
         accountNumber,
-
         queryParams,
-
         configOverride,
       ),
   };
@@ -7984,7 +7663,6 @@ useGetUserWalletAccountNumberQrcode.prefetch = (
 ) => {
   const { key, fun } = useGetUserWalletAccountNumberQrcode.info(
     accountNumber,
-
     queryParams,
     configOverride,
   );
@@ -8008,6 +7686,7 @@ export const useGetUserWalletSearch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWalletSearch.info(queryParams, configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -8020,12 +7699,7 @@ useGetUserWalletSearch.info = (
 ) => {
   return {
     key: [getUserWalletSearch.key, queryParams] as QueryKey,
-    fun: () =>
-      getUserWalletSearch(
-        queryParams,
-
-        configOverride,
-      ),
+    fun: () => getUserWalletSearch(queryParams, configOverride),
   };
 };
 useGetUserWalletSearch.prefetch = (
@@ -8051,9 +7725,9 @@ export const useGetUserWalletUserWalletId = (
 ) => {
   const { key, fun } = useGetUserWalletUserWalletId.info(
     userWalletId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -8066,12 +7740,7 @@ useGetUserWalletUserWalletId.info = (
 ) => {
   return {
     key: [getUserWalletUserWalletId.key, userWalletId] as QueryKey,
-    fun: () =>
-      getUserWalletUserWalletId(
-        userWalletId,
-
-        configOverride,
-      ),
+    fun: () => getUserWalletUserWalletId(userWalletId, configOverride),
   };
 };
 useGetUserWalletUserWalletId.prefetch = (
@@ -8082,7 +7751,6 @@ useGetUserWalletUserWalletId.prefetch = (
 ) => {
   const { key, fun } = useGetUserWalletUserWalletId.info(
     userWalletId,
-
     configOverride,
   );
 
@@ -8103,9 +7771,9 @@ export const useGetUserWalletUserWalletIdBalance = (
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdBalance.info(
     userWalletId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -8118,12 +7786,7 @@ useGetUserWalletUserWalletIdBalance.info = (
 ) => {
   return {
     key: [getUserWalletUserWalletIdBalance.key, userWalletId] as QueryKey,
-    fun: () =>
-      getUserWalletUserWalletIdBalance(
-        userWalletId,
-
-        configOverride,
-      ),
+    fun: () => getUserWalletUserWalletIdBalance(userWalletId, configOverride),
   };
 };
 useGetUserWalletUserWalletIdBalance.prefetch = (
@@ -8134,7 +7797,6 @@ useGetUserWalletUserWalletIdBalance.prefetch = (
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdBalance.info(
     userWalletId,
-
     configOverride,
   );
 
@@ -8159,10 +7821,10 @@ export const useGetUserWalletUserWalletIdEpayRequestComission = (
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdEpayRequestComission.info(
     userWalletId,
-
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -8178,15 +7840,12 @@ useGetUserWalletUserWalletIdEpayRequestComission.info = (
     key: [
       getUserWalletUserWalletIdEpayRequestComission.key,
       userWalletId,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
       getUserWalletUserWalletIdEpayRequestComission(
         userWalletId,
-
         queryParams,
-
         configOverride,
       ),
   };
@@ -8200,7 +7859,6 @@ useGetUserWalletUserWalletIdEpayRequestComission.prefetch = (
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdEpayRequestComission.info(
     userWalletId,
-
     queryParams,
     configOverride,
   );
@@ -8220,9 +7878,9 @@ export const useGetUserWalletUserWalletIdPermittedsubusers = (
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdPermittedsubusers.info(
     userWalletId,
-
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -8239,11 +7897,7 @@ useGetUserWalletUserWalletIdPermittedsubusers.info = (
       userWalletId,
     ] as QueryKey,
     fun: () =>
-      getUserWalletUserWalletIdPermittedsubusers(
-        userWalletId,
-
-        configOverride,
-      ),
+      getUserWalletUserWalletIdPermittedsubusers(userWalletId, configOverride),
   };
 };
 useGetUserWalletUserWalletIdPermittedsubusers.prefetch = (
@@ -8254,7 +7908,6 @@ useGetUserWalletUserWalletIdPermittedsubusers.prefetch = (
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdPermittedsubusers.info(
     userWalletId,
-
     configOverride,
   );
 
@@ -8275,10 +7928,10 @@ export const useGetUserWalletUserWalletIdSettlementRequestComission = (
   const { key, fun } =
     useGetUserWalletUserWalletIdSettlementRequestComission.info(
       userWalletId,
-
       queryParams,
       configOverride,
     );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -8294,15 +7947,12 @@ useGetUserWalletUserWalletIdSettlementRequestComission.info = (
     key: [
       getUserWalletUserWalletIdSettlementRequestComission.key,
       userWalletId,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
       getUserWalletUserWalletIdSettlementRequestComission(
         userWalletId,
-
         queryParams,
-
         configOverride,
       ),
   };
@@ -8317,7 +7967,6 @@ useGetUserWalletUserWalletIdSettlementRequestComission.prefetch = (
   const { key, fun } =
     useGetUserWalletUserWalletIdSettlementRequestComission.info(
       userWalletId,
-
       queryParams,
       configOverride,
     );
@@ -8343,10 +7992,10 @@ export const useGetUserWalletUserWalletIdTransferMoneyCommission = (
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdTransferMoneyCommission.info(
     userWalletId,
-
     queryParams,
     configOverride,
   );
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -8362,15 +8011,12 @@ useGetUserWalletUserWalletIdTransferMoneyCommission.info = (
     key: [
       getUserWalletUserWalletIdTransferMoneyCommission.key,
       userWalletId,
-
       queryParams,
     ] as QueryKey,
     fun: () =>
       getUserWalletUserWalletIdTransferMoneyCommission(
         userWalletId,
-
         queryParams,
-
         configOverride,
       ),
   };
@@ -8384,7 +8030,6 @@ useGetUserWalletUserWalletIdTransferMoneyCommission.prefetch = (
 ) => {
   const { key, fun } = useGetUserWalletUserWalletIdTransferMoneyCommission.info(
     userWalletId,
-
     queryParams,
     configOverride,
   );
@@ -8404,6 +8049,7 @@ export const useGetUserWorkspace = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserWorkspace.info(configOverride);
+
   return useQuery({
     queryKey: key,
     queryFn: fun,
@@ -8437,7 +8083,6 @@ export const usePostApiCspReportLog = <TExtra,>(
   return useMutation({
     mutationFn: (_o) => {
       const { configOverride } = _o || {};
-
       return postApiCspReportLog(configOverride);
     },
     ...options,
@@ -8454,17 +8099,8 @@ export const usePostAuthForgetPassword = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postAuthForgetPassword(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postAuthForgetPassword(requestBody, configOverride);
     },
     ...options,
   });
@@ -8480,22 +8116,12 @@ export const usePostAuthForgetPasswordVerify = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postAuthForgetPasswordVerify(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postAuthForgetPasswordVerify(requestBody, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostAuthLoginOtpGenerate = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     TotpLoginResult,
@@ -8505,22 +8131,12 @@ export const usePostAuthLoginOtpGenerate = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postAuthLoginOtpGenerate(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postAuthLoginOtpGenerate(requestBody, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostAuthRegister = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     RegisterNewUserQuery,
@@ -8547,19 +8163,8 @@ export const usePostAuthRegister = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
-      return postAuthRegister(
-        requestBody,
-
-        headerParams,
-        configOverride,
-      );
+      const { requestBody, headerParams, configOverride } = _o || {};
+      return postAuthRegister(requestBody, headerParams, configOverride);
     },
     ...options,
   });
@@ -8575,17 +8180,8 @@ export const usePostAuthRegisterBasic = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postAuthRegisterBasic(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postAuthRegisterBasic(requestBody, configOverride);
     },
     ...options,
   });
@@ -8601,17 +8197,8 @@ export const usePostAuthRegisterVerify = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postAuthRegisterVerify(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postAuthRegisterVerify(requestBody, configOverride);
     },
     ...options,
   });
@@ -8634,17 +8221,10 @@ export const usePostBusinessUserConnectionConnectionIdPermission = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        connectionId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { connectionId, requestBody, configOverride } = _o || {};
       return postBusinessUserConnectionConnectionIdPermission(
         connectionId,
         requestBody,
-
         configOverride,
       );
     },
@@ -8665,17 +8245,8 @@ export const usePostBusinessUserInvite = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postBusinessUserInvite(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postBusinessUserInvite(requestBody, configOverride);
     },
     ...options,
   });
@@ -8697,15 +8268,9 @@ export const usePostBusinessUserInviteInvitationIdResend = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        invitationId,
-
-        configOverride,
-      } = _o || {};
-
+      const { invitationId, configOverride } = _o || {};
       return postBusinessUserInviteInvitationIdResend(
         invitationId,
-
         configOverride,
       );
     },
@@ -8732,22 +8297,12 @@ export const usePostBusinessUserResendInvitationId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        invitationId,
-
-        configOverride,
-      } = _o || {};
-
-      return postBusinessUserResendInvitationId(
-        invitationId,
-
-        configOverride,
-      );
+      const { invitationId, configOverride } = _o || {};
+      return postBusinessUserResendInvitationId(invitationId, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostEpayRequestEpayIdCancel = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     string,
@@ -8757,22 +8312,12 @@ export const usePostEpayRequestEpayIdCancel = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        epayId,
-
-        configOverride,
-      } = _o || {};
-
-      return postEpayRequestEpayIdCancel(
-        epayId,
-
-        configOverride,
-      );
+      const { epayId, configOverride } = _o || {};
+      return postEpayRequestEpayIdCancel(epayId, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostEpayRequestEpayIdResend = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     string,
@@ -8782,17 +8327,8 @@ export const usePostEpayRequestEpayIdResend = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        epayId,
-
-        configOverride,
-      } = _o || {};
-
-      return postEpayRequestEpayIdResend(
-        epayId,
-
-        configOverride,
-      );
+      const { epayId, configOverride } = _o || {};
+      return postEpayRequestEpayIdResend(epayId, configOverride);
     },
     ...options,
   });
@@ -8815,24 +8351,12 @@ export const usePostEpayRequestEpayIdTask = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        epayId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postEpayRequestEpayIdTask(
-        epayId,
-        requestBody,
-
-        configOverride,
-      );
+      const { epayId, requestBody, configOverride } = _o || {};
+      return postEpayRequestEpayIdTask(epayId, requestBody, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostEpayRequestEpayTokenPayUserWalletId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     WalletReceiptApiModel,
@@ -8846,26 +8370,17 @@ export const usePostEpayRequestEpayTokenPayUserWalletId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        epayToken,
-        userWalletId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { epayToken, userWalletId, requestBody, configOverride } = _o || {};
       return postEpayRequestEpayTokenPayUserWalletId(
         epayToken,
         userWalletId,
         requestBody,
-
         configOverride,
       );
     },
     ...options,
   });
 };
-
 export const usePostEpayRequestUserWalletId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     EpayRequestDetailApiModel,
@@ -8879,17 +8394,10 @@ export const usePostEpayRequestUserWalletId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userWalletId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { userWalletId, requestBody, configOverride } = _o || {};
       return postEpayRequestUserWalletId(
         userWalletId,
         requestBody,
-
         configOverride,
       );
     },
@@ -8907,17 +8415,8 @@ export const usePostFile = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postFile(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postFile(requestBody, configOverride);
     },
     ...options,
   });
@@ -8933,17 +8432,8 @@ export const usePostGroupTransferExport = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postGroupTransferExport(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postGroupTransferExport(requestBody, configOverride);
     },
     ...options,
   });
@@ -8959,17 +8449,8 @@ export const usePostGroupTransferImport = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postGroupTransferImport(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postGroupTransferImport(requestBody, configOverride);
     },
     ...options,
   });
@@ -8985,17 +8466,8 @@ export const usePostGroupTransferTransfer = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postGroupTransferTransfer(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postGroupTransferTransfer(requestBody, configOverride);
     },
     ...options,
   });
@@ -9011,22 +8483,12 @@ export const usePostIntegrationTaxiPayment = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postIntegrationTaxiPayment(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postIntegrationTaxiPayment(requestBody, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostMachineRegisterUser = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     MachineSignUp,
@@ -9036,17 +8498,8 @@ export const usePostMachineRegisterUser = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postMachineRegisterUser(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postMachineRegisterUser(requestBody, configOverride);
     },
     ...options,
   });
@@ -9070,18 +8523,11 @@ export const usePostPosPayTargetAccountNumberOnline = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        targetAccountNumber,
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { targetAccountNumber, requestBody, headerParams, configOverride } =
+        _o || {};
       return postPosPayTargetAccountNumberOnline(
         targetAccountNumber,
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -9104,17 +8550,10 @@ export const usePostPosPayTargetAccountNumberWallet = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        targetAccountNumber,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { targetAccountNumber, requestBody, configOverride } = _o || {};
       return postPosPayTargetAccountNumberWallet(
         targetAccountNumber,
         requestBody,
-
         configOverride,
       );
     },
@@ -9135,19 +8574,8 @@ export const usePostServiceCancelAmount = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
-      return postServiceCancelAmount(
-        requestBody,
-
-        headerParams,
-        configOverride,
-      );
+      const { requestBody, headerParams, configOverride } = _o || {};
+      return postServiceCancelAmount(requestBody, headerParams, configOverride);
     },
     ...options,
   });
@@ -9163,16 +8591,9 @@ export const usePostServiceCancelPayment = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return postServiceCancelPayment(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -9191,16 +8612,9 @@ export const usePostServiceCheckEpayRequest = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return postServiceCheckEpayRequest(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -9226,16 +8640,9 @@ export const usePostServiceNewDivideEpayRequest = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return postServiceNewDivideEpayRequest(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -9261,16 +8668,9 @@ export const usePostServiceNewEpayRequest = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return postServiceNewEpayRequest(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -9292,16 +8692,9 @@ export const usePostServiceUnblockAmount = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return postServiceUnblockAmount(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -9321,13 +8714,11 @@ export const usePostServiceVerifyApiKey = <TExtra,>(
   return useMutation({
     mutationFn: (_o) => {
       const { headerParams, configOverride } = _o || {};
-
       return postServiceVerifyApiKey(headerParams, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostSettingsInit = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     InitApiModel,
@@ -9344,13 +8735,11 @@ export const usePostSettingsInit = <TExtra,>(
   return useMutation({
     mutationFn: (_o) => {
       const { headerParams, configOverride } = _o || {};
-
       return postSettingsInit(headerParams, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostSettingsLogSwitch = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     SettingApiModel,
@@ -9360,22 +8749,12 @@ export const usePostSettingsLogSwitch = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postSettingsLogSwitch(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postSettingsLogSwitch(requestBody, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostSettingsLogSwitchSeptapay = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     SettingApiModel,
@@ -9385,22 +8764,12 @@ export const usePostSettingsLogSwitchSeptapay = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postSettingsLogSwitchSeptapay(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postSettingsLogSwitchSeptapay(requestBody, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostSettingsLogSwitchSerilog = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     SettingApiModel,
@@ -9410,22 +8779,12 @@ export const usePostSettingsLogSwitchSerilog = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postSettingsLogSwitchSerilog(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postSettingsLogSwitchSerilog(requestBody, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostSettingsTerminalVersion = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     string,
@@ -9441,16 +8800,9 @@ export const usePostSettingsTerminalVersion = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        headerParams,
-        configOverride,
-      } = _o || {};
-
+      const { requestBody, headerParams, configOverride } = _o || {};
       return postSettingsTerminalVersion(
         requestBody,
-
         headerParams,
         configOverride,
       );
@@ -9458,7 +8810,6 @@ export const usePostSettingsTerminalVersion = <TExtra,>(
     ...options,
   });
 };
-
 export const usePostSubUserAccountUserWalletIdNotification = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     string,
@@ -9472,17 +8823,10 @@ export const usePostSubUserAccountUserWalletIdNotification = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userWalletId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { userWalletId, requestBody, configOverride } = _o || {};
       return postSubUserAccountUserWalletIdNotification(
         userWalletId,
         requestBody,
-
         configOverride,
       );
     },
@@ -9507,17 +8851,10 @@ export const usePostSubUserNotificationUserWalletId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userWalletId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { userWalletId, requestBody, configOverride } = _o || {};
       return postSubUserNotificationUserWalletId(
         userWalletId,
         requestBody,
-
         configOverride,
       );
     },
@@ -9535,17 +8872,10 @@ export const usePostTransferUserWalletId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userWalletId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { userWalletId, requestBody, configOverride } = _o || {};
       return postTransferUserWalletId(
         userWalletId,
         requestBody,
-
         configOverride,
       );
     },
@@ -9566,17 +8896,8 @@ export const usePostUserBank = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postUserBank(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postUserBank(requestBody, configOverride);
     },
     ...options,
   });
@@ -9592,17 +8913,8 @@ export const usePostUserChangePassword = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postUserChangePassword(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postUserChangePassword(requestBody, configOverride);
     },
     ...options,
   });
@@ -9621,17 +8933,8 @@ export const usePostUserIdentityRequest = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postUserIdentityRequest(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postUserIdentityRequest(requestBody, configOverride);
     },
     ...options,
   });
@@ -9659,17 +8962,10 @@ export const usePostUserInvitationInvitationIdTask = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        invitationId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { invitationId, requestBody, configOverride } = _o || {};
       return postUserInvitationInvitationIdTask(
         invitationId,
         requestBody,
-
         configOverride,
       );
     },
@@ -9693,15 +8989,9 @@ export const usePostUserInvitationInvitationTokenAccept = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        invitationToken,
-
-        configOverride,
-      } = _o || {};
-
+      const { invitationToken, configOverride } = _o || {};
       return postUserInvitationInvitationTokenAccept(
         invitationToken,
-
         configOverride,
       );
     },
@@ -9722,15 +9012,9 @@ export const usePostUserInvitationInvitationTokenReject = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        invitationToken,
-
-        configOverride,
-      } = _o || {};
-
+      const { invitationToken, configOverride } = _o || {};
       return postUserInvitationInvitationTokenReject(
         invitationToken,
-
         configOverride,
       );
     },
@@ -9751,22 +9035,12 @@ export const usePostUserUpgradeToBusinessRequest = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postUserUpgradeToBusinessRequest(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postUserUpgradeToBusinessRequest(requestBody, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostUserWallet = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     number,
@@ -9776,22 +9050,12 @@ export const usePostUserWallet = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return postUserWallet(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return postUserWallet(requestBody, configOverride);
     },
     ...options,
   });
 };
-
 export const usePostUserWalletUserWalletIdCharge = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     NewChargeRequestResultQuery,
@@ -9801,17 +9065,10 @@ export const usePostUserWalletUserWalletIdCharge = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userWalletId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { userWalletId, requestBody, configOverride } = _o || {};
       return postUserWalletUserWalletIdCharge(
         userWalletId,
         requestBody,
-
         configOverride,
       );
     },
@@ -9832,17 +9089,10 @@ export const usePostUserWalletUserWalletIdEpayRequest = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userWalletId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { userWalletId, requestBody, configOverride } = _o || {};
       return postUserWalletUserWalletIdEpayRequest(
         userWalletId,
         requestBody,
-
         configOverride,
       );
     },
@@ -9863,17 +9113,10 @@ export const usePostUserWalletUserWalletIdTransferMoney = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userWalletId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { userWalletId, requestBody, configOverride } = _o || {};
       return postUserWalletUserWalletIdTransferMoney(
         userWalletId,
         requestBody,
-
         configOverride,
       );
     },
@@ -9898,24 +9141,16 @@ export const usePutBusinessUserConnectionConnectionId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        connectionId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { connectionId, requestBody, configOverride } = _o || {};
       return putBusinessUserConnectionConnectionId(
         connectionId,
         requestBody,
-
         configOverride,
       );
     },
     ...options,
   });
 };
-
 export const usePutBusinessUserConnectionConnectionIdPermissionUserWalletId = <
   TExtra,
 >(
@@ -9932,19 +9167,12 @@ export const usePutBusinessUserConnectionConnectionIdPermissionUserWalletId = <
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        connectionId,
-        userWalletId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { connectionId, userWalletId, requestBody, configOverride } =
+        _o || {};
       return putBusinessUserConnectionConnectionIdPermissionUserWalletId(
         connectionId,
         userWalletId,
         requestBody,
-
         configOverride,
       );
     },
@@ -9962,17 +9190,8 @@ export const usePutGroupTransferAdd = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return putGroupTransferAdd(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return putGroupTransferAdd(requestBody, configOverride);
     },
     ...options,
   });
@@ -9988,17 +9207,8 @@ export const usePutNotificationIaNotifIdDismiss = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        notifId,
-
-        configOverride,
-      } = _o || {};
-
-      return putNotificationIaNotifIdDismiss(
-        notifId,
-
-        configOverride,
-      );
+      const { notifId, configOverride } = _o || {};
+      return putNotificationIaNotifIdDismiss(notifId, configOverride);
     },
     ...options,
   });
@@ -10017,17 +9227,8 @@ export const usePutSubDomain = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return putSubDomain(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return putSubDomain(requestBody, configOverride);
     },
     ...options,
   });
@@ -10046,17 +9247,8 @@ export const usePutUser = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return putUser(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return putUser(requestBody, configOverride);
     },
     ...options,
   });
@@ -10076,19 +9268,8 @@ export const usePutUserBankUserBankId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userBankId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return putUserBankUserBankId(
-        userBankId,
-        requestBody,
-
-        configOverride,
-      );
+      const { userBankId, requestBody, configOverride } = _o || {};
+      return putUserBankUserBankId(userBankId, requestBody, configOverride);
     },
     ...options,
   });
@@ -10104,17 +9285,10 @@ export const usePutUserBankUserBankIdChangeVisibility = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userBankId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { userBankId, requestBody, configOverride } = _o || {};
       return putUserBankUserBankIdChangeVisibility(
         userBankId,
         requestBody,
-
         configOverride,
       );
     },
@@ -10132,22 +9306,12 @@ export const usePutUserChangeAvatar = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
-      return putUserChangeAvatar(
-        requestBody,
-
-        configOverride,
-      );
+      const { requestBody, configOverride } = _o || {};
+      return putUserChangeAvatar(requestBody, configOverride);
     },
     ...options,
   });
 };
-
 export const usePutUserPluginUserPluginIdChangeStatus = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     UserPluginApiModel,
@@ -10157,24 +9321,16 @@ export const usePutUserPluginUserPluginIdChangeStatus = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userPluginId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { userPluginId, requestBody, configOverride } = _o || {};
       return putUserPluginUserPluginIdChangeStatus(
         userPluginId,
         requestBody,
-
         configOverride,
       );
     },
     ...options,
   });
 };
-
 export const usePutUserWalletUserWalletId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     WalletDisplayApiModel,
@@ -10184,24 +9340,16 @@ export const usePutUserWalletUserWalletId = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userWalletId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { userWalletId, requestBody, configOverride } = _o || {};
       return putUserWalletUserWalletId(
         userWalletId,
         requestBody,
-
         configOverride,
       );
     },
     ...options,
   });
 };
-
 export const usePutUserWalletUserWalletIdNotification = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     string,
@@ -10214,17 +9362,10 @@ export const usePutUserWalletUserWalletIdNotification = <TExtra,>(
 ) => {
   return useMutation({
     mutationFn: (_o) => {
-      const {
-        userWalletId,
-        requestBody,
-
-        configOverride,
-      } = _o || {};
-
+      const { userWalletId, requestBody, configOverride } = _o || {};
       return putUserWalletUserWalletIdNotification(
         userWalletId,
         requestBody,
-
         configOverride,
       );
     },

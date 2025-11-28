@@ -83,21 +83,21 @@ export const getSettlementV1PrivateSettlementGet = (
     getSettlementV1PrivateSettlementGet.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
 /** Key is end point string without base url */
 getSettlementV1PrivateSettlementGet.key =
   \\"/settlement/v1/private/settlement/get\\";
-export const _CONSTANT0 = {
+export const _CONSTANT0 = [{ bearer: [] }];
+export const _CONSTANT1 = {
   headers: {
     \\"Content-Type\\": \\"application/json\\",
     Accept: \\"text/plain\\",
   },
 };
-export const _CONSTANT1 = [{ bearer: [] }];
 "
 `;
 
@@ -251,21 +251,21 @@ export const getSettlementV1PrivateSettlementGet = (
     getSettlementV1PrivateSettlementGet.key,
     queryParams,
     undefined,
-    _CONSTANT1,
-    overrideConfig(_CONSTANT0, configOverride),
+    _CONSTANT0,
+    overrideConfig(_CONSTANT1, configOverride),
   );
 };
 
 /** Key is end point string without base url */
 getSettlementV1PrivateSettlementGet.key =
   \\"/settlement/v1/private/settlement/get\\";
-export const _CONSTANT0 = {
+export const _CONSTANT0 = [{ bearer: [] }];
+export const _CONSTANT1 = {
   headers: {
     \\"Content-Type\\": \\"application/json\\",
     Accept: \\"text/plain\\",
   },
 };
-export const _CONSTANT1 = [{ bearer: [] }];
 "
 `;
 

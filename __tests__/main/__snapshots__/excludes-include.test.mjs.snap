@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`excludes and include excludes post methods: generate Code 1`] = `
+exports[`excludes and include only includes get methods does not ends with Id: generate Code 1`] = `
 "//@ts-nocheck
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
@@ -14,7 +14,6 @@ import { Http } from \\"./httpRequest\\";
 //@ts-ignore
 import qs from \\"qs\\";
 import type {
-  DeleteBusinessUserConnectionInvitationIdRemoveQueryParams,
   GetBusinessUserConnectionQueryParams,
   GetBusinessUserConnectionActiveQueryParams,
   GetBusinessUserConnectionConnectionIdEpayQueryParams,
@@ -60,13 +59,10 @@ import type {
   BankApiModel,
   BusinessCategoryApiModel,
   SubUserConnectionApiModel,
-  EditConnectionInfoInput,
   SubUserPermissionApiModel,
-  EditSubUserPermissionInput,
   SubUserActivityApiModel,
   EpayRequestApiModel,
   EpayRequestForUserQuery,
-  EpayRequestDetailApiModel,
   ContactApiModel,
   CommissionAmountApiModel,
   UserMinimalDto,
@@ -74,14 +70,11 @@ import type {
   WalletReceiptApiModel,
   AggregationApiModel,
   ReportApiModel,
-  GroupTransferTargetValidationQuery,
-  GroupTransferTargetValidationInput,
   DriverInfoResult,
   KpiResult,
   ImportantActionApiModel,
   NotificationApiModel,
   UnreadNotificationCountApiModel,
-  PluginApiModel,
   PosLandingPageApiModel,
   BankReceiptApiModel,
   ResellerApiModel,
@@ -91,34 +84,22 @@ import type {
   DateReportApiModelOfDecimal,
   DateReportApiModelOfInteger,
   SubDomainApiModel,
-  SubDomainUpdateApiModel,
   BusinessUserConnectionApiModel,
-  SubUserAccountDetailQuery,
   TransactionApiModel,
   AllTransactionsReportApiModel,
   AccountInfoApiModel,
   TransferMoneyApiModel,
   UserBankApiModel,
-  UserBankDetailApiModel,
-  UserBankChangeVisibilityInput,
   UserDetailQuery,
   UserMeQuery,
-  UserProfileInput,
-  UserProfileAvatarInput,
   UserWorkspaceQuery,
   UserIdentityRequestQuery,
   UpgradeToBusinessApiModel,
   SubUserInvitationApiModel,
   UserPluginDetailApiModel,
-  UserPluginApiModel,
-  UserPluginTogggleApiModel,
   WalletDisplayApiModel,
-  WalletDetailApiModel,
-  AccountSettingNotificationStatusApiModel,
   AccountBalanceApiModel,
   AccountPermittedSubUserQuery,
-  RequestBodyUserBankInput,
-  RequestBodyAccountCreationApiModel,
 } from \\"./types\\";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -177,157 +158,6 @@ function objToForm(requestBody: object) {
 function objToUrlencoded(requestBody: object) {
   return qs.stringify(requestBody);
 }
-
-/**
- * Disconnect sub user connection [Feature just allowed for the business users]
- * [Needs secure login]
- */
-export const deleteBusinessUserConnectionConnectionId = (
-  /** Connection Id */
-  connectionId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserConnectionApiModel>> => {
-  return Http.deleteRequest(
-    template(deleteBusinessUserConnectionConnectionId.key, { connectionId }),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-deleteBusinessUserConnectionConnectionId.key =
-  \\"/BusinessUser/connection/{connectionId}\\";
-
-export const deleteBusinessUserConnectionConnectionIdPermissionUserWalletId = (
-  connectionId: number,
-  /** Id of Account to delete it's permissios */
-  userWalletId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<string>> => {
-  return Http.deleteRequest(
-    template(
-      deleteBusinessUserConnectionConnectionIdPermissionUserWalletId.key,
-      { connectionId, userWalletId },
-    ),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT5, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-deleteBusinessUserConnectionConnectionIdPermissionUserWalletId.key =
-  \\"/BusinessUser/connection/{connectionId}/permission/{userWalletId}\\";
-
-/**
- * Remove an invitation [Feature just allowed for the business users] [Needs
- * secure login] [Deprecated, use 'businessuser/invite/{invitationId}/remove'
- * instead]
- *
- * @deprecated This endpoint deprecated and will be remove. Please use an
- *   alternative
- */
-export const deleteBusinessUserConnectionInvitationIdRemove = (
-  invitationId: string,
-  queryParams?: DeleteBusinessUserConnectionInvitationIdRemoveQueryParams,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserConnectionApiModel>> => {
-  if (__DEV__) {
-    console.warn(
-      \\"deleteBusinessUserConnectionInvitationIdRemove\\",
-      \\"This endpoint deprecated and will be remove. Please use an alternative\\",
-    );
-  }
-  return Http.deleteRequest(
-    template(deleteBusinessUserConnectionInvitationIdRemove.key, {
-      invitationId,
-    }),
-    queryParams,
-    undefined,
-    _CONSTANT2,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-deleteBusinessUserConnectionInvitationIdRemove.key =
-  \\"/BusinessUser/connection/{invitationId}/remove\\";
-
-/**
- * Remove an invitation [Feature just allowed for the business users] [Needs
- * secure login]
- */
-export const deleteBusinessUserInviteInvitationIdRemove = (
-  invitationId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserConnectionApiModel>> => {
-  return Http.deleteRequest(
-    template(deleteBusinessUserInviteInvitationIdRemove.key, { invitationId }),
-    undefined,
-    undefined,
-    _CONSTANT2,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-deleteBusinessUserInviteInvitationIdRemove.key =
-  \\"/BusinessUser/invite/{invitationId}/remove\\";
-
-/**
- * Disconnect business user connection [Feature just allowed for SubUsers]
- * [Needs secure login] [Deprecated, use 'user/connection/{connectionId}'
- * instead]
- *
- * @deprecated This endpoint deprecated and will be remove. Please use an
- *   alternative
- */
-export const deleteSubUserConnectionConnectionId = (
-  /** Connection id */
-  connectionId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<BusinessUserConnectionApiModel>> => {
-  if (__DEV__) {
-    console.warn(
-      \\"deleteSubUserConnectionConnectionId\\",
-      \\"This endpoint deprecated and will be remove. Please use an alternative\\",
-    );
-  }
-  return Http.deleteRequest(
-    template(deleteSubUserConnectionConnectionId.key, { connectionId }),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-deleteSubUserConnectionConnectionId.key = \\"/SubUser/connection/{connectionId}\\";
-
-/**
- * Disconnect business user connection [Feature just allowed for normal users]
- * [Needs secure login]
- */
-export const deleteUserConnectionConnectionId = (
-  /** Connection id */
-  connectionId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<BusinessUserConnectionApiModel>> => {
-  return Http.deleteRequest(
-    template(deleteUserConnectionConnectionId.key, { connectionId }),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-deleteUserConnectionConnectionId.key = \\"/User/connection/{connectionId}\\";
 
 export const getAccessUserWalletIdLogicalAction = (
   userWalletId: number,
@@ -434,28 +264,6 @@ export const getBusinessUserConnectionActive = (
 
 /** Key is end point string without base url */
 getBusinessUserConnectionActive.key = \\"/BusinessUser/connection/active\\";
-
-/**
- * Get the connection detail [Feature just allowed for the business users]
- * [Needs secure login]
- */
-export const getBusinessUserConnectionConnectionId = (
-  /** Connection Id */
-  connectionId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserConnectionApiModel>> => {
-  return Http.getRequest(
-    template(getBusinessUserConnectionConnectionId.key, { connectionId }),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getBusinessUserConnectionConnectionId.key =
-  \\"/BusinessUser/connection/{connectionId}\\";
 
 /**
  * Get the connection amounts report [Feature just allowed for the business
@@ -570,24 +378,6 @@ export const getEpayRequestCount = (
 /** Key is end point string without base url */
 getEpayRequestCount.key = \\"/EpayRequest/count\\";
 
-/** Get epay request detail based on Id */
-export const getEpayRequestEpayId = (
-  /** EpayRequest's Id */
-  epayId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<EpayRequestDetailApiModel>> => {
-  return Http.getRequest(
-    template(getEpayRequestEpayId.key, { epayId }),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getEpayRequestEpayId.key = \\"/EpayRequest/{epayId}\\";
-
 export const getEpayRequestEpayTokenDetail = (
   epayToken: string,
   configOverride?: AxiosRequestConfig,
@@ -615,7 +405,7 @@ export const getEpayRequestEpayTokenQrcode = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT5, configOverride),
+    overrideConfig(_CONSTANT3, configOverride),
   );
 };
 
@@ -631,7 +421,7 @@ export const getEpayRequestExcel = (
     queryParams,
     undefined,
     _CONSTANT0,
-    overrideConfig(_CONSTANT5, configOverride),
+    overrideConfig(_CONSTANT3, configOverride),
   );
 };
 
@@ -712,7 +502,7 @@ export const getEpayRequestPosQrAccountNumber = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT5, configOverride),
+    overrideConfig(_CONSTANT3, configOverride),
   );
 };
 
@@ -778,7 +568,7 @@ export const getError = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT5, configOverride),
+    overrideConfig(_CONSTANT3, configOverride),
   );
 };
 
@@ -793,7 +583,7 @@ export const getErrorLocal = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT5, configOverride),
+    overrideConfig(_CONSTANT3, configOverride),
   );
 };
 
@@ -809,7 +599,7 @@ export const getErrorStatusCode = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT5, configOverride),
+    overrideConfig(_CONSTANT3, configOverride),
   );
 };
 
@@ -827,7 +617,7 @@ export const getFileFileGuid = (
     undefined,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT5, configOverride),
+    overrideConfig(_CONSTANT3, configOverride),
   );
 };
 
@@ -860,7 +650,7 @@ export const getIntegration = (
     queryParams,
     undefined,
     _CONSTANT0,
-    overrideConfig(_CONSTANT6, configOverride),
+    overrideConfig(_CONSTANT4, configOverride),
   );
 };
 
@@ -963,22 +753,6 @@ export const getNotificationUnread = (
 /** Key is end point string without base url */
 getNotificationUnread.key = \\"/Notification/unread\\";
 
-export const getPluginPluginId = (
-  pluginId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<PluginApiModel>> => {
-  return Http.getRequest(
-    template(getPluginPluginId.key, { pluginId }),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getPluginPluginId.key = \\"/Plugin/{pluginId}\\";
-
 /** Get epay request detail */
 export const getPosAccountNumber = (
   /** Account Number */
@@ -997,24 +771,6 @@ export const getPosAccountNumber = (
 
 /** Key is end point string without base url */
 getPosAccountNumber.key = \\"/Pos/{accountNumber}\\";
-
-/** Get bank receipt by EPayTry id [For anonymous users] */
-export const getReceiptBankEpayTryId = (
-  /** EpayTry's id to get receipt for */
-  epayTryId: string,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<BankReceiptApiModel>> => {
-  return Http.getRequest(
-    template(getReceiptBankEpayTryId.key, { epayTryId }),
-    undefined,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getReceiptBankEpayTryId.key = \\"/Receipt/bank/{epayTryId}\\";
 
 /**
  * Get bank receipt by EPayRequest token [For anonymous users] [Deprecated, use
@@ -1075,7 +831,7 @@ export const getResellerUser = (
     getResellerUser.key,
     undefined,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1104,7 +860,7 @@ export const getResellerUserDashboardCommissionReport = (
     getResellerUserDashboardCommissionReport.key,
     queryParams,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1134,7 +890,7 @@ export const getResellerUserDashboardCommissionSum = (
     getResellerUserDashboardCommissionSum.key,
     queryParams,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1164,7 +920,7 @@ export const getResellerUserDashboardIntroducedCount = (
     getResellerUserDashboardIntroducedCount.key,
     queryParams,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1194,7 +950,7 @@ export const getResellerUserDashboardIntroducedReport = (
     getResellerUserDashboardIntroducedReport.key,
     queryParams,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1224,7 +980,7 @@ export const getResellerUserDashboardLinksCount = (
     getResellerUserDashboardLinksCount.key,
     queryParams,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1253,7 +1009,7 @@ export const getResellerUserDashboardLinksPaidCount = (
     getResellerUserDashboardLinksPaidCount.key,
     queryParams,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1283,7 +1039,7 @@ export const getResellerUserDashboardLinksPaidReport = (
     getResellerUserDashboardLinksPaidReport.key,
     queryParams,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1313,7 +1069,7 @@ export const getResellerUserDashboardLinksReport = (
     getResellerUserDashboardLinksReport.key,
     queryParams,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1343,7 +1099,7 @@ export const getResellerUserDashboardTransactionsCount = (
     getResellerUserDashboardTransactionsCount.key,
     queryParams,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1373,7 +1129,7 @@ export const getResellerUserDashboardTransactionsReport = (
     getResellerUserDashboardTransactionsReport.key,
     queryParams,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1394,7 +1150,7 @@ export const getResellerUserIntroduced = (
     getResellerUserIntroduced.key,
     queryParams,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1413,7 +1169,7 @@ export const getResellerUserIntroducedFilterData = (
     getResellerUserIntroducedFilterData.key,
     undefined,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1430,7 +1186,7 @@ export const getResellerUserIntroducedUserIdActivity = (
     template(getResellerUserIntroducedUserIdActivity.key, { userId }),
     undefined,
     undefined,
-    _CONSTANT7,
+    _CONSTANT5,
     overrideConfig(_CONSTANT1, configOverride),
   );
 };
@@ -1450,8 +1206,8 @@ export const getSubDomain = (
     getSubDomain.key,
     undefined,
     undefined,
-    _CONSTANT7,
-    overrideConfig(_CONSTANT6, configOverride),
+    _CONSTANT5,
+    overrideConfig(_CONSTANT4, configOverride),
   );
 };
 
@@ -1476,7 +1232,7 @@ export const getSubDomainSubDomainAddress = (
     overrideConfig(
       {
         headers: {
-          ..._CONSTANT8,
+          ..._CONSTANT6,
           ...headerParams,
         },
       },
@@ -1487,23 +1243,6 @@ export const getSubDomainSubDomainAddress = (
 
 /** Key is end point string without base url */
 getSubDomainSubDomainAddress.key = \\"/SubDomain/{subDomainAddress}\\";
-
-/** Get permission details of an Account [Feature just allowed for SubUsers] */
-export const getSubUserAccountUserWalletId = (
-  userWalletId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserAccountDetailQuery>> => {
-  return Http.getRequest(
-    template(getSubUserAccountUserWalletId.key, { userWalletId }),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getSubUserAccountUserWalletId.key = \\"/SubUser/account/{userWalletId}\\";
 
 /**
  * Get the connections [Feature just allowed for SubUsers] [Deprecated. use
@@ -1558,7 +1297,7 @@ export const getTransactionExcel = (
     queryParams,
     undefined,
     _CONSTANT0,
-    overrideConfig(_CONSTANT5, configOverride),
+    overrideConfig(_CONSTANT3, configOverride),
   );
 };
 
@@ -1616,23 +1355,6 @@ export const getTransactionReportAll = (
 
 /** Key is end point string without base url */
 getTransactionReportAll.key = \\"/Transaction/report/all\\";
-
-/** Get a Transaction by it's Id [Needs secure login] */
-export const getTransactionTransactionId = (
-  transactionId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<TransactionApiModel>> => {
-  return Http.getRequest(
-    template(getTransactionTransactionId.key, { transactionId }),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getTransactionTransactionId.key = \\"/Transaction/{transactionId}\\";
 
 /** Get recent money transfers */
 export const getTransferRecent = (
@@ -1732,24 +1454,6 @@ export const getUserBankReady = (
 
 /** Key is end point string without base url */
 getUserBankReady.key = \\"/UserBank/ready\\";
-
-/** Get user bank detail [Needs secure login] */
-export const getUserBankUserBankId = (
-  /** User bank id */
-  userBankId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserBankDetailApiModel>> => {
-  return Http.getRequest(
-    template(getUserBankUserBankId.key, { userBankId }),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getUserBankUserBankId.key = \\"/UserBank/{userBankId}\\";
 
 /** Get the connections [Feature is allowed for normal users noly] */
 export const getUserConnection = (
@@ -1910,7 +1614,7 @@ export const getUserWalletAccountNumberQrcode = (
     queryParams,
     undefined,
     undefined,
-    overrideConfig(_CONSTANT5, configOverride),
+    overrideConfig(_CONSTANT3, configOverride),
   );
 };
 
@@ -1942,22 +1646,6 @@ export const getUserWalletSearch = (
 
 /** Key is end point string without base url */
 getUserWalletSearch.key = \\"/UserWallet/search\\";
-
-export const getUserWalletUserWalletId = (
-  userWalletId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<WalletDetailApiModel>> => {
-  return Http.getRequest(
-    template(getUserWalletUserWalletId.key, { userWalletId }),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT1, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-getUserWalletUserWalletId.key = \\"/UserWallet/{userWalletId}\\";
 
 /** Get user account balance */
 export const getUserWalletUserWalletIdBalance = (
@@ -2088,234 +1776,6 @@ export const getUserWorkspace = (
 
 /** Key is end point string without base url */
 getUserWorkspace.key = \\"/User/workspace\\";
-
-/**
- * Change sub user connection info [Feature just allowed for the business users]
- * [Needs secure login]
- */
-export const putBusinessUserConnectionConnectionId = (
-  /** Connection Id */
-  connectionId: number,
-  requestBody: EditConnectionInfoInput,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubUserConnectionApiModel>> => {
-  return Http.putRequest(
-    template(putBusinessUserConnectionConnectionId.key, { connectionId }),
-    undefined,
-    requestBody,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT3, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putBusinessUserConnectionConnectionId.key =
-  \\"/BusinessUser/connection/{connectionId}\\";
-
-export const putBusinessUserConnectionConnectionIdPermissionUserWalletId = (
-  connectionId: number,
-  /** Id of Account to edit it's permissios */
-  userWalletId: number,
-  requestBody: EditSubUserPermissionInput,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<string>> => {
-  return Http.putRequest(
-    template(putBusinessUserConnectionConnectionIdPermissionUserWalletId.key, {
-      connectionId,
-      userWalletId,
-    }),
-    undefined,
-    requestBody,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT4, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putBusinessUserConnectionConnectionIdPermissionUserWalletId.key =
-  \\"/BusinessUser/connection/{connectionId}/permission/{userWalletId}\\";
-
-/** [for Business users only] */
-export const putGroupTransferAdd = (
-  requestBody: GroupTransferTargetValidationInput,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<GroupTransferTargetValidationQuery>> => {
-  return Http.putRequest(
-    putGroupTransferAdd.key,
-    undefined,
-    requestBody,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT3, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putGroupTransferAdd.key = \\"/GroupTransfer/add\\";
-
-/** Dismiss an Important Action forever. */
-export const putNotificationIaNotifIdDismiss = (
-  notifId: number,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<string>> => {
-  return Http.putRequest(
-    template(putNotificationIaNotifIdDismiss.key, { notifId }),
-    undefined,
-    undefined,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT5, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putNotificationIaNotifIdDismiss.key = \\"/Notification/ia/{notifId}/dismiss\\";
-
-/**
- * Update the SubDomain of current Reseller user [Feature just allowed for
- * Resellers]
- */
-export const putSubDomain = (
-  requestBody: SubDomainUpdateApiModel,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<SubDomainApiModel>> => {
-  return Http.putRequest(
-    putSubDomain.key,
-    undefined,
-    requestBody,
-    _CONSTANT7,
-    overrideConfig(_CONSTANT9, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putSubDomain.key = \\"/SubDomain\\";
-
-/**
- * Edit profile [state, city, address] [Feature is not allowed for business
- * users] [Needs secure login]
- */
-export const putUser = (
-  requestBody: UserProfileInput,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserDetailQuery>> => {
-  return Http.putRequest(
-    putUser.key,
-    undefined,
-    requestBody,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT3, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putUser.key = \\"/User\\";
-
-/** Edit user bank [Needs secure login] */
-export const putUserBankUserBankId = (
-  /** User bank id */
-  userBankId: number,
-  requestBody: RequestBodyUserBankInput,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserBankApiModel>> => {
-  return Http.putRequest(
-    template(putUserBankUserBankId.key, { userBankId }),
-    undefined,
-    requestBody,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT3, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putUserBankUserBankId.key = \\"/UserBank/{userBankId}\\";
-
-/** Change user bank show-in-list property [Needs secure login] */
-export const putUserBankUserBankIdChangeVisibility = (
-  userBankId: number,
-  requestBody: UserBankChangeVisibilityInput,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<string>> => {
-  return Http.putRequest(
-    template(putUserBankUserBankIdChangeVisibility.key, { userBankId }),
-    undefined,
-    requestBody,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT4, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putUserBankUserBankIdChangeVisibility.key =
-  \\"/UserBank/{userBankId}/changeVisibility\\";
-
-/** Change user avatar [Needs secure login] */
-export const putUserChangeAvatar = (
-  requestBody: UserProfileAvatarInput,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<string>> => {
-  return Http.putRequest(
-    putUserChangeAvatar.key,
-    undefined,
-    requestBody,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT4, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putUserChangeAvatar.key = \\"/User/changeAvatar\\";
-
-export const putUserPluginUserPluginIdChangeStatus = (
-  userPluginId: number,
-  requestBody: UserPluginTogggleApiModel,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserPluginApiModel>> => {
-  return Http.putRequest(
-    template(putUserPluginUserPluginIdChangeStatus.key, { userPluginId }),
-    undefined,
-    requestBody,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT3, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putUserPluginUserPluginIdChangeStatus.key =
-  \\"/UserPlugin/{userPluginId}/ChangeStatus\\";
-
-export const putUserWalletUserWalletId = (
-  userWalletId: number,
-  requestBody: RequestBodyAccountCreationApiModel,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<WalletDisplayApiModel>> => {
-  return Http.putRequest(
-    template(putUserWalletUserWalletId.key, { userWalletId }),
-    undefined,
-    requestBody,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT3, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putUserWalletUserWalletId.key = \\"/UserWallet/{userWalletId}\\";
-
-export const putUserWalletUserWalletIdNotification = (
-  userWalletId: number,
-  requestBody: AccountSettingNotificationStatusApiModel,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<string>> => {
-  return Http.putRequest(
-    template(putUserWalletUserWalletIdNotification.key, { userWalletId }),
-    undefined,
-    requestBody,
-    _CONSTANT0,
-    overrideConfig(_CONSTANT4, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-putUserWalletUserWalletIdNotification.key =
-  \\"/UserWallet/{userWalletId}/notification\\";
 export const _CONSTANT0 = [{ bearer: [] }];
 export const _CONSTANT1 = {
   headers: {
@@ -2326,43 +1786,25 @@ export const _CONSTANT1 = {
 export const _CONSTANT2 = [{ bearer: [\\"Business\\"] }];
 export const _CONSTANT3 = {
   headers: {
-    \\"Content-Type\\": \\"application/json-patch+json\\",
-    Accept: \\"application/json\\",
+    \\"Content-Type\\": \\"application/json\\",
+    Accept: \\"*/*\\",
   },
 };
 export const _CONSTANT4 = {
   headers: {
-    \\"Content-Type\\": \\"application/json-patch+json\\",
-    Accept: \\"*/*\\",
-  },
-};
-export const _CONSTANT5 = {
-  headers: {
-    \\"Content-Type\\": \\"application/json\\",
-    Accept: \\"*/*\\",
-  },
-};
-export const _CONSTANT6 = {
-  headers: {
     \\"Content-Type\\": \\"application/json\\",
     Accept: \\"text/plain\\",
   },
 };
-export const _CONSTANT7 = [{ bearer: [\\"Reseller\\"] }];
-export const _CONSTANT8 = {
+export const _CONSTANT5 = [{ bearer: [\\"Reseller\\"] }];
+export const _CONSTANT6 = {
   \\"Content-Type\\": \\"application/json\\",
   Accept: \\"text/plain\\",
-};
-export const _CONSTANT9 = {
-  headers: {
-    \\"Content-Type\\": \\"application/json-patch+json\\",
-    Accept: \\"text/plain\\",
-  },
 };
 "
 `;
 
-exports[`excludes and include excludes post methods: generate hooks 1`] = `
+exports[`excludes and include only includes get methods does not ends with Id: generate hooks 1`] = `
 "//@ts-nocheck
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
@@ -2385,7 +1827,6 @@ import type {
   AccountBalanceApiModel,
   AccountInfoApiModel,
   AccountPermittedSubUserQuery,
-  AccountSettingNotificationStatusApiModel,
   AggregationApiModel,
   AllTransactionsReportApiModel,
   BankApiModel,
@@ -2396,12 +1837,8 @@ import type {
   ContactApiModel,
   DateReportApiModelOfDecimal,
   DateReportApiModelOfInteger,
-  DeleteBusinessUserConnectionInvitationIdRemoveQueryParams,
   DriverInfoResult,
-  EditConnectionInfoInput,
-  EditSubUserPermissionInput,
   EpayRequestApiModel,
-  EpayRequestDetailApiModel,
   EpayRequestForUserQuery,
   EpayRequestPublicInfoApiModel,
   GetBusinessUserConnectionActiveQueryParams,
@@ -2446,23 +1883,16 @@ import type {
   GetUserWalletUserWalletIdEpayRequestComissionQueryParams,
   GetUserWalletUserWalletIdSettlementRequestComissionQueryParams,
   GetUserWalletUserWalletIdTransferMoneyCommissionQueryParams,
-  GroupTransferTargetValidationInput,
-  GroupTransferTargetValidationQuery,
   ImportantActionApiModel,
   KpiResult,
   NotificationApiModel,
-  PluginApiModel,
   PosLandingPageApiModel,
   ReportApiModel,
-  RequestBodyAccountCreationApiModel,
-  RequestBodyUserBankInput,
   ReselledUserActivityApiModel,
   ReselledUserApiModel,
   ReselledUserFilterData,
   ResellerApiModel,
   SubDomainApiModel,
-  SubDomainUpdateApiModel,
-  SubUserAccountDetailQuery,
   SubUserActivityApiModel,
   SubUserConnectionApiModel,
   SubUserInvitationApiModel,
@@ -2472,42 +1902,27 @@ import type {
   UnreadNotificationCountApiModel,
   UpgradeToBusinessApiModel,
   UserBankApiModel,
-  UserBankChangeVisibilityInput,
-  UserBankDetailApiModel,
   UserDetailQuery,
   UserIdentityRequestQuery,
   UserMeQuery,
   UserMinimalDto,
-  UserPluginApiModel,
   UserPluginDetailApiModel,
-  UserPluginTogggleApiModel,
-  UserProfileAvatarInput,
-  UserProfileInput,
   UserWorkspaceQuery,
-  WalletDetailApiModel,
   WalletDisplayApiModel,
   WalletReceiptApiModel,
 } from \\"./types\\";
 import {
-  deleteBusinessUserConnectionConnectionId,
-  deleteBusinessUserConnectionConnectionIdPermissionUserWalletId,
-  deleteBusinessUserConnectionInvitationIdRemove,
-  deleteBusinessUserInviteInvitationIdRemove,
-  deleteSubUserConnectionConnectionId,
-  deleteUserConnectionConnectionId,
   getAccessUserWalletIdLogicalAction,
   getBank,
   getBusinessUserCategory,
   getBusinessUserConnection,
   getBusinessUserConnectionActive,
-  getBusinessUserConnectionConnectionId,
   getBusinessUserConnectionConnectionIdActivity,
   getBusinessUserConnectionConnectionIdEpay,
   getBusinessUserConnectionConnectionIdPermission,
   getEpayRequest,
   getEpayRequestAudiencesRecent,
   getEpayRequestCount,
-  getEpayRequestEpayId,
   getEpayRequestEpayTokenDetail,
   getEpayRequestEpayTokenQrcode,
   getEpayRequestExcel,
@@ -2530,9 +1945,7 @@ import {
   getNotificationIa,
   getNotificationNotif,
   getNotificationUnread,
-  getPluginPluginId,
   getPosAccountNumber,
-  getReceiptBankEpayTryId,
   getReceiptEpayToken,
   getReceiptWalletEpayToken,
   getResellerUser,
@@ -2551,20 +1964,17 @@ import {
   getResellerUserIntroducedUserIdActivity,
   getSubDomain,
   getSubDomainSubDomainAddress,
-  getSubUserAccountUserWalletId,
   getSubUserConnection,
   getTransaction,
   getTransactionExcel,
   getTransactionReport,
   getTransactionReportAll,
-  getTransactionTransactionId,
   getTransferRecent,
   getTransferSearch,
   getTransferUserWalletIdCommission,
   getUser,
   getUserBank,
   getUserBankReady,
-  getUserBankUserBankId,
   getUserConnection,
   getUserContactInput,
   getUserIdentityRequest,
@@ -2576,25 +1986,12 @@ import {
   getUserWallet,
   getUserWalletAccountNumberQrcode,
   getUserWalletSearch,
-  getUserWalletUserWalletId,
   getUserWalletUserWalletIdBalance,
   getUserWalletUserWalletIdEpayRequestComission,
   getUserWalletUserWalletIdPermittedsubusers,
   getUserWalletUserWalletIdSettlementRequestComission,
   getUserWalletUserWalletIdTransferMoneyCommission,
   getUserWorkspace,
-  putBusinessUserConnectionConnectionId,
-  putBusinessUserConnectionConnectionIdPermissionUserWalletId,
-  putGroupTransferAdd,
-  putNotificationIaNotifIdDismiss,
-  putSubDomain,
-  putUser,
-  putUserBankUserBankId,
-  putUserBankUserBankIdChangeVisibility,
-  putUserChangeAvatar,
-  putUserPluginUserPluginIdChangeStatus,
-  putUserWalletUserWalletId,
-  putUserWalletUserWalletIdNotification,
 } from \\"./services\\";
 
 export type SwaggerTypescriptMutationDefaultParams<TExtra> = {
@@ -2619,160 +2016,6 @@ type SwaggerTypescriptUseMutationOptionsVoid<TData, TExtra> =
     RequestError | Error,
     SwaggerTypescriptMutationDefaultParams<TExtra> | void
   >;
-
-/**
- * Disconnect sub user connection [Feature just allowed for the business users]
- * [Needs secure login]
- */
-export const useDeleteBusinessUserConnectionConnectionId = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    SubUserConnectionApiModel,
-    {
-      /** Connection Id */
-      connectionId: number;
-    },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { connectionId, configOverride } = _o || {};
-      return deleteBusinessUserConnectionConnectionId(
-        connectionId,
-        configOverride,
-      );
-    },
-    ...options,
-  });
-};
-export const useDeleteBusinessUserConnectionConnectionIdPermissionUserWalletId =
-  <TExtra,>(
-    options?: SwaggerTypescriptUseMutationOptions<
-      string,
-      {
-        connectionId: number;
-        /** Id of Account to delete it's permissios */
-        userWalletId: number;
-      },
-      TExtra
-    >,
-  ) => {
-    return useMutation({
-      mutationFn: (_o) => {
-        const { connectionId, userWalletId, configOverride } = _o || {};
-        return deleteBusinessUserConnectionConnectionIdPermissionUserWalletId(
-          connectionId,
-          userWalletId,
-          configOverride,
-        );
-      },
-      ...options,
-    });
-  };
-
-/**
- * Remove an invitation [Feature just allowed for the business users] [Needs
- * secure login] [Deprecated, use 'businessuser/invite/{invitationId}/remove'
- * instead]
- *
- * @deprecated This endpoint deprecated and will be remove. Please use an
- *   alternative
- */
-export const useDeleteBusinessUserConnectionInvitationIdRemove = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    SubUserConnectionApiModel,
-    {
-      invitationId: string;
-      queryParams?: DeleteBusinessUserConnectionInvitationIdRemoveQueryParams;
-    },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { invitationId, queryParams, configOverride } = _o || {};
-      return deleteBusinessUserConnectionInvitationIdRemove(
-        invitationId,
-        queryParams,
-        configOverride,
-      );
-    },
-    ...options,
-  });
-};
-
-/**
- * Remove an invitation [Feature just allowed for the business users] [Needs
- * secure login]
- */
-export const useDeleteBusinessUserInviteInvitationIdRemove = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    SubUserConnectionApiModel,
-    { invitationId: number },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { invitationId, configOverride } = _o || {};
-      return deleteBusinessUserInviteInvitationIdRemove(
-        invitationId,
-        configOverride,
-      );
-    },
-    ...options,
-  });
-};
-
-/**
- * Disconnect business user connection [Feature just allowed for SubUsers]
- * [Needs secure login] [Deprecated, use 'user/connection/{connectionId}'
- * instead]
- *
- * @deprecated This endpoint deprecated and will be remove. Please use an
- *   alternative
- */
-export const useDeleteSubUserConnectionConnectionId = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    BusinessUserConnectionApiModel,
-    {
-      /** Connection id */
-      connectionId: number;
-    },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { connectionId, configOverride } = _o || {};
-      return deleteSubUserConnectionConnectionId(connectionId, configOverride);
-    },
-    ...options,
-  });
-};
-
-/**
- * Disconnect business user connection [Feature just allowed for normal users]
- * [Needs secure login]
- */
-export const useDeleteUserConnectionConnectionId = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    BusinessUserConnectionApiModel,
-    {
-      /** Connection id */
-      connectionId: number;
-    },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { connectionId, configOverride } = _o || {};
-      return deleteUserConnectionConnectionId(connectionId, configOverride);
-    },
-    ...options,
-  });
-};
 export const useGetAccessUserWalletIdLogicalAction = (
   userWalletId: number,
   logicalAction:
@@ -3033,60 +2276,6 @@ useGetBusinessUserConnectionActive.prefetch = (
 ) => {
   const { key, fun } = useGetBusinessUserConnectionActive.info(
     queryParams,
-    configOverride,
-  );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery({
-        queryKey: key,
-        queryFn: () => fun(),
-        ...options,
-      });
-};
-
-/**
- * Get the connection detail [Feature just allowed for the business users]
- * [Needs secure login]
- */
-export const useGetBusinessUserConnectionConnectionId = (
-  /** Connection Id */
-  connectionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserConnectionApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetBusinessUserConnectionConnectionId.info(
-    connectionId,
-    configOverride,
-  );
-
-  return useQuery({
-    queryKey: key,
-    queryFn: fun,
-    ...options,
-  });
-};
-useGetBusinessUserConnectionConnectionId.info = (
-  /** Connection Id */
-  connectionId: number,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getBusinessUserConnectionConnectionId.key, connectionId] as QueryKey,
-    fun: () =>
-      getBusinessUserConnectionConnectionId(connectionId, configOverride),
-  };
-};
-useGetBusinessUserConnectionConnectionId.prefetch = (
-  client: QueryClient,
-
-  /** Connection Id */
-  connectionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserConnectionApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetBusinessUserConnectionConnectionId.info(
-    connectionId,
     configOverride,
   );
 
@@ -3378,50 +2567,6 @@ useGetEpayRequestCount.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetEpayRequestCount.info(queryParams, configOverride);
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery({
-        queryKey: key,
-        queryFn: () => fun(),
-        ...options,
-      });
-};
-
-/** Get epay request detail based on Id */
-export const useGetEpayRequestEpayId = (
-  /** EpayRequest's Id */
-  epayId: number,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestDetailApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetEpayRequestEpayId.info(epayId, configOverride);
-
-  return useQuery({
-    queryKey: key,
-    queryFn: fun,
-    ...options,
-  });
-};
-useGetEpayRequestEpayId.info = (
-  /** EpayRequest's Id */
-  epayId: number,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getEpayRequestEpayId.key, epayId] as QueryKey,
-    fun: () => getEpayRequestEpayId(epayId, configOverride),
-  };
-};
-useGetEpayRequestEpayId.prefetch = (
-  client: QueryClient,
-
-  /** EpayRequest's Id */
-  epayId: number,
-  options?: SwaggerTypescriptUseQueryOptions<EpayRequestDetailApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetEpayRequestEpayId.info(epayId, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -4367,44 +3512,6 @@ useGetNotificationUnread.prefetch = (
         ...options,
       });
 };
-export const useGetPluginPluginId = (
-  pluginId: number,
-  options?: SwaggerTypescriptUseQueryOptions<PluginApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPluginPluginId.info(pluginId, configOverride);
-
-  return useQuery({
-    queryKey: key,
-    queryFn: fun,
-    ...options,
-  });
-};
-useGetPluginPluginId.info = (
-  pluginId: number,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getPluginPluginId.key, pluginId] as QueryKey,
-    fun: () => getPluginPluginId(pluginId, configOverride),
-  };
-};
-useGetPluginPluginId.prefetch = (
-  client: QueryClient,
-  pluginId: number,
-  options?: SwaggerTypescriptUseQueryOptions<PluginApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetPluginPluginId.info(pluginId, configOverride);
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery({
-        queryKey: key,
-        queryFn: () => fun(),
-        ...options,
-      });
-};
 
 /** Get epay request detail */
 export const useGetPosAccountNumber = (
@@ -4449,56 +3556,6 @@ useGetPosAccountNumber.prefetch = (
   const { key, fun } = useGetPosAccountNumber.info(
     accountNumber,
     queryParams,
-    configOverride,
-  );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery({
-        queryKey: key,
-        queryFn: () => fun(),
-        ...options,
-      });
-};
-
-/** Get bank receipt by EPayTry id [For anonymous users] */
-export const useGetReceiptBankEpayTryId = (
-  /** EpayTry's id to get receipt for */
-  epayTryId: string,
-  options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetReceiptBankEpayTryId.info(
-    epayTryId,
-    configOverride,
-  );
-
-  return useQuery({
-    queryKey: key,
-    queryFn: fun,
-    ...options,
-  });
-};
-useGetReceiptBankEpayTryId.info = (
-  /** EpayTry's id to get receipt for */
-  epayTryId: string,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getReceiptBankEpayTryId.key, epayTryId] as QueryKey,
-    fun: () => getReceiptBankEpayTryId(epayTryId, configOverride),
-  };
-};
-useGetReceiptBankEpayTryId.prefetch = (
-  client: QueryClient,
-
-  /** EpayTry's id to get receipt for */
-  epayTryId: string,
-  options?: SwaggerTypescriptUseQueryOptions<BankReceiptApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetReceiptBankEpayTryId.info(
-    epayTryId,
     configOverride,
   );
 
@@ -5437,52 +4494,6 @@ useGetSubDomainSubDomainAddress.prefetch = (
       });
 };
 
-/** Get permission details of an Account [Feature just allowed for SubUsers] */
-export const useGetSubUserAccountUserWalletId = (
-  userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserAccountDetailQuery>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetSubUserAccountUserWalletId.info(
-    userWalletId,
-    configOverride,
-  );
-
-  return useQuery({
-    queryKey: key,
-    queryFn: fun,
-    ...options,
-  });
-};
-useGetSubUserAccountUserWalletId.info = (
-  userWalletId: number,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getSubUserAccountUserWalletId.key, userWalletId] as QueryKey,
-    fun: () => getSubUserAccountUserWalletId(userWalletId, configOverride),
-  };
-};
-useGetSubUserAccountUserWalletId.prefetch = (
-  client: QueryClient,
-  userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<SubUserAccountDetailQuery>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetSubUserAccountUserWalletId.info(
-    userWalletId,
-    configOverride,
-  );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery({
-        queryKey: key,
-        queryFn: () => fun(),
-        ...options,
-      });
-};
-
 /**
  * Get the connections [Feature just allowed for SubUsers] [Deprecated. use
  * 'user/connection' instead]
@@ -5686,52 +4697,6 @@ useGetTransactionReportAll.prefetch = (
 ) => {
   const { key, fun } = useGetTransactionReportAll.info(
     queryParams,
-    configOverride,
-  );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery({
-        queryKey: key,
-        queryFn: () => fun(),
-        ...options,
-      });
-};
-
-/** Get a Transaction by it's Id [Needs secure login] */
-export const useGetTransactionTransactionId = (
-  transactionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<TransactionApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetTransactionTransactionId.info(
-    transactionId,
-    configOverride,
-  );
-
-  return useQuery({
-    queryKey: key,
-    queryFn: fun,
-    ...options,
-  });
-};
-useGetTransactionTransactionId.info = (
-  transactionId: number,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getTransactionTransactionId.key, transactionId] as QueryKey,
-    fun: () => getTransactionTransactionId(transactionId, configOverride),
-  };
-};
-useGetTransactionTransactionId.prefetch = (
-  client: QueryClient,
-  transactionId: number,
-  options?: SwaggerTypescriptUseQueryOptions<TransactionApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetTransactionTransactionId.info(
-    transactionId,
     configOverride,
   );
 
@@ -5977,56 +4942,6 @@ useGetUserBankReady.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetUserBankReady.info(configOverride);
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery({
-        queryKey: key,
-        queryFn: () => fun(),
-        ...options,
-      });
-};
-
-/** Get user bank detail [Needs secure login] */
-export const useGetUserBankUserBankId = (
-  /** User bank id */
-  userBankId: number,
-  options?: SwaggerTypescriptUseQueryOptions<UserBankDetailApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetUserBankUserBankId.info(
-    userBankId,
-    configOverride,
-  );
-
-  return useQuery({
-    queryKey: key,
-    queryFn: fun,
-    ...options,
-  });
-};
-useGetUserBankUserBankId.info = (
-  /** User bank id */
-  userBankId: number,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getUserBankUserBankId.key, userBankId] as QueryKey,
-    fun: () => getUserBankUserBankId(userBankId, configOverride),
-  };
-};
-useGetUserBankUserBankId.prefetch = (
-  client: QueryClient,
-
-  /** User bank id */
-  userBankId: number,
-  options?: SwaggerTypescriptUseQueryOptions<UserBankDetailApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetUserBankUserBankId.info(
-    userBankId,
-    configOverride,
-  );
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -6471,50 +5386,6 @@ useGetUserWalletSearch.prefetch = (
         ...options,
       });
 };
-export const useGetUserWalletUserWalletId = (
-  userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<WalletDetailApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetUserWalletUserWalletId.info(
-    userWalletId,
-    configOverride,
-  );
-
-  return useQuery({
-    queryKey: key,
-    queryFn: fun,
-    ...options,
-  });
-};
-useGetUserWalletUserWalletId.info = (
-  userWalletId: number,
-  configOverride?: AxiosRequestConfig,
-) => {
-  return {
-    key: [getUserWalletUserWalletId.key, userWalletId] as QueryKey,
-    fun: () => getUserWalletUserWalletId(userWalletId, configOverride),
-  };
-};
-useGetUserWalletUserWalletId.prefetch = (
-  client: QueryClient,
-  userWalletId: number,
-  options?: SwaggerTypescriptUseQueryOptions<WalletDetailApiModel>,
-  configOverride?: AxiosRequestConfig,
-) => {
-  const { key, fun } = useGetUserWalletUserWalletId.info(
-    userWalletId,
-    configOverride,
-  );
-
-  return client.getQueryData(key)
-    ? Promise.resolve()
-    : client.prefetchQuery({
-        queryKey: key,
-        queryFn: () => fun(),
-        ...options,
-      });
-};
 
 /** Get user account balance */
 export const useGetUserWalletUserWalletIdBalance = (
@@ -6830,259 +5701,10 @@ useGetUserWorkspace.prefetch = (
         ...options,
       });
 };
-
-/**
- * Change sub user connection info [Feature just allowed for the business users]
- * [Needs secure login]
- */
-export const usePutBusinessUserConnectionConnectionId = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    SubUserConnectionApiModel,
-    {
-      /** Connection Id */
-      connectionId: number;
-      requestBody: EditConnectionInfoInput;
-    },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { connectionId, requestBody, configOverride } = _o || {};
-      return putBusinessUserConnectionConnectionId(
-        connectionId,
-        requestBody,
-        configOverride,
-      );
-    },
-    ...options,
-  });
-};
-export const usePutBusinessUserConnectionConnectionIdPermissionUserWalletId = <
-  TExtra,
->(
-  options?: SwaggerTypescriptUseMutationOptions<
-    string,
-    {
-      connectionId: number;
-      /** Id of Account to edit it's permissios */
-      userWalletId: number;
-      requestBody: EditSubUserPermissionInput;
-    },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { connectionId, userWalletId, requestBody, configOverride } =
-        _o || {};
-      return putBusinessUserConnectionConnectionIdPermissionUserWalletId(
-        connectionId,
-        userWalletId,
-        requestBody,
-        configOverride,
-      );
-    },
-    ...options,
-  });
-};
-
-/** [for Business users only] */
-export const usePutGroupTransferAdd = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    GroupTransferTargetValidationQuery,
-    { requestBody: GroupTransferTargetValidationInput },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { requestBody, configOverride } = _o || {};
-      return putGroupTransferAdd(requestBody, configOverride);
-    },
-    ...options,
-  });
-};
-
-/** Dismiss an Important Action forever. */
-export const usePutNotificationIaNotifIdDismiss = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    string,
-    { notifId: number },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { notifId, configOverride } = _o || {};
-      return putNotificationIaNotifIdDismiss(notifId, configOverride);
-    },
-    ...options,
-  });
-};
-
-/**
- * Update the SubDomain of current Reseller user [Feature just allowed for
- * Resellers]
- */
-export const usePutSubDomain = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    SubDomainApiModel,
-    { requestBody: SubDomainUpdateApiModel },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { requestBody, configOverride } = _o || {};
-      return putSubDomain(requestBody, configOverride);
-    },
-    ...options,
-  });
-};
-
-/**
- * Edit profile [state, city, address] [Feature is not allowed for business
- * users] [Needs secure login]
- */
-export const usePutUser = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    UserDetailQuery,
-    { requestBody: UserProfileInput },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { requestBody, configOverride } = _o || {};
-      return putUser(requestBody, configOverride);
-    },
-    ...options,
-  });
-};
-
-/** Edit user bank [Needs secure login] */
-export const usePutUserBankUserBankId = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    UserBankApiModel,
-    {
-      /** User bank id */
-      userBankId: number;
-      requestBody: RequestBodyUserBankInput;
-    },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { userBankId, requestBody, configOverride } = _o || {};
-      return putUserBankUserBankId(userBankId, requestBody, configOverride);
-    },
-    ...options,
-  });
-};
-
-/** Change user bank show-in-list property [Needs secure login] */
-export const usePutUserBankUserBankIdChangeVisibility = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    string,
-    { userBankId: number; requestBody: UserBankChangeVisibilityInput },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { userBankId, requestBody, configOverride } = _o || {};
-      return putUserBankUserBankIdChangeVisibility(
-        userBankId,
-        requestBody,
-        configOverride,
-      );
-    },
-    ...options,
-  });
-};
-
-/** Change user avatar [Needs secure login] */
-export const usePutUserChangeAvatar = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    string,
-    { requestBody: UserProfileAvatarInput },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { requestBody, configOverride } = _o || {};
-      return putUserChangeAvatar(requestBody, configOverride);
-    },
-    ...options,
-  });
-};
-export const usePutUserPluginUserPluginIdChangeStatus = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    UserPluginApiModel,
-    { userPluginId: number; requestBody: UserPluginTogggleApiModel },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { userPluginId, requestBody, configOverride } = _o || {};
-      return putUserPluginUserPluginIdChangeStatus(
-        userPluginId,
-        requestBody,
-        configOverride,
-      );
-    },
-    ...options,
-  });
-};
-export const usePutUserWalletUserWalletId = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    WalletDisplayApiModel,
-    { userWalletId: number; requestBody: RequestBodyAccountCreationApiModel },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { userWalletId, requestBody, configOverride } = _o || {};
-      return putUserWalletUserWalletId(
-        userWalletId,
-        requestBody,
-        configOverride,
-      );
-    },
-    ...options,
-  });
-};
-export const usePutUserWalletUserWalletIdNotification = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    string,
-    {
-      userWalletId: number;
-      requestBody: AccountSettingNotificationStatusApiModel;
-    },
-    TExtra
-  >,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { userWalletId, requestBody, configOverride } = _o || {};
-      return putUserWalletUserWalletIdNotification(
-        userWalletId,
-        requestBody,
-        configOverride,
-      );
-    },
-    ...options,
-  });
-};
 "
 `;
 
-exports[`excludes and include excludes post methods: generate type 1`] = `
+exports[`excludes and include only includes get methods does not ends with Id: generate type 1`] = `
 "//@ts-nocheck
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead
@@ -7359,11 +5981,6 @@ export interface DateReportApiModelOfInteger {
   dayName?: string;
   label?: string;
   monthName?: string;
-}
-
-export interface DeleteBusinessUserConnectionInvitationIdRemoveQueryParams {
-  /** - Format: int64 */
-  id?: number;
 }
 
 export interface DivideEpayRequestServiceInput {
