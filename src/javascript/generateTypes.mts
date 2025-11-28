@@ -27,6 +27,14 @@ function generateTypes(types: TypeAST[], config: Config): string {
     isAscending(name, otherName),
   );
 
+  // Build a map of all schemas for discriminator resolution
+  const schemasMap = new Map<string, Schema>();
+  for (const { name: typeName, schema } of sortedTypes) {
+    if (schema) {
+      schemasMap.set(getSchemaName(typeName), schema);
+    }
+  }
+
   for (const { name: typeName, schema, description } of sortedTypes) {
     try {
       const name = getSchemaName(typeName);
@@ -38,7 +46,7 @@ function generateTypes(types: TypeAST[], config: Config): string {
           : undefined,
       });
 
-      const typeDefinition = getTypeDefinition(name, schema, config);
+      const typeDefinition = getTypeDefinition(name, schema, config, schemasMap);
 
       code += `
         ${typeJsdoc}
@@ -69,12 +77,14 @@ const DEFAULT_ANY_TYPE = "any";
  * @param name - The name of the type to generate
  * @param schema - The schema object defining the type structure
  * @param config - Configuration object for generation options
+ * @param schemasMap - Map of all schemas for discriminator resolution
  * @returns TypeScript type definition as a string
  */
 function getTypeDefinition(
   name: string,
   schema: Schema = {},
   config: Config,
+  schemasMap: Map<string, Schema>,
 ): string {
   const {
     type,
@@ -93,11 +103,11 @@ function getTypeDefinition(
   }
 
   if (allOf || oneOf) {
-    return `export type ${name} = ${getTsType(schema, config)};`;
+    return `export type ${name} = ${getTsType(schema, config, schemasMap, name)};`;
   }
 
   if (type === SCHEMA_TYPES.ARRAY && items) {
-    return `export type ${name} = (${getTsType(items, config)})[];`;
+    return `export type ${name} = (${getTsType(items, config, schemasMap)})[];`;
   }
 
   if ($ref) {
@@ -105,7 +115,7 @@ function getTypeDefinition(
   }
 
   if (type === SCHEMA_TYPES.OBJECT) {
-    const typeObject = getTsType(schema, config);
+    const typeObject = getTsType(schema, config, schemasMap);
 
     if ((additionalProperties || properties) && !oneOf) {
       return `export interface ${name} ${typeObject}`;

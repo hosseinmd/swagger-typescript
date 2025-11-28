@@ -18,7 +18,7 @@ function getHeaderParams(parameters: Parameter[] | undefined, config: Config) {
       );
     }) || [];
 
-  const params = getObjectType(headerParamsArray, config);
+  const params = getObjectType(headerParamsArray, config, undefined);
 
   return {
     params,
@@ -112,7 +112,12 @@ function getDefineParam(
   config: Config,
   description?: string,
 ): string {
-  return getParamString(name, required, getTsType(schema, config), description);
+  return getParamString(
+    name,
+    required,
+    getTsType(schema, config, undefined),
+    description,
+  );
 }
 
 function getParamString(
@@ -173,10 +178,15 @@ function handleEnumType(enumValues: string[]): string {
  *
  * @param items - The items schema for the array
  * @param config - Configuration object
+ * @param schemasMap - Optional map of all schemas for discriminator resolution
  * @returns TypeScript array type string
  */
-function handleArrayType(items: Schema, config: Config): string {
-  return `(${getTsType(items, config)})[]`;
+function handleArrayType(
+  items: Schema,
+  config: Config,
+  schemasMap?: Map<string, Schema>,
+): string {
+  return `(${getTsType(items, config, schemasMap)})[]`;
 }
 
 /**
@@ -185,22 +195,46 @@ function handleArrayType(items: Schema, config: Config): string {
  * @param properties - Object properties
  * @param required - Required property names
  * @param config - Configuration object
+ * @param discriminator - Optional discriminator information
+ * @param schemasMap - Optional map of all schemas for discriminator resolution
  * @returns TypeScript object type string
  */
 function handleObjectProperties(
   properties: { [name: string]: Schema },
   required: string[] | undefined,
   config: Config,
+  discriminator?: { propertyName: string; mapping?: { [key: string]: string } },
+  schemasMap?: Map<string, Schema>,
 ): string {
   return getObjectType(
-    Object.entries(properties).map(([pName, _schema]) => ({
-      schema: {
+    Object.entries(properties).map(([pName, _schema]) => {
+      let schema = {
         ..._schema,
         nullable: normalizeObjectPropertyNullable(pName, _schema, required),
-      },
-      name: pName,
-    })),
+      };
+
+      // If this is a discriminator property, use the mapping keys as a union type
+      // and make it required (not nullable)
+      if (
+        discriminator &&
+        pName === discriminator.propertyName &&
+        discriminator.mapping
+      ) {
+        const discriminatorValues = Object.keys(discriminator.mapping);
+        schema = {
+          ...schema,
+          enum: discriminatorValues,
+          nullable: false,
+        };
+      }
+
+      return {
+        schema,
+        name: pName,
+      };
+    }),
     config,
+    schemasMap,
   );
 }
 
@@ -210,14 +244,18 @@ function handleObjectProperties(
  * @param oneOf - Array of schemas for oneOf
  * @param result - Existing result string
  * @param config - Configuration object
+ * @param schemasMap - Optional map of all schemas for discriminator resolution
  * @returns Updated result string
  */
 function handleOneOfType(
   oneOf: Schema[],
   result: string,
   config: Config,
+  schemasMap?: Map<string, Schema>,
 ): string {
-  const unionTypes = oneOf.map((t) => `(${getTsType(t, config)})`).join(" | ");
+  const unionTypes = oneOf
+    .map((t) => `(${getTsType(t, config, schemasMap)})`)
+    .join(" | ");
   return `${result} & (${unionTypes})`;
 }
 
@@ -227,17 +265,50 @@ function handleOneOfType(
  * @param allOf - Array of schemas for allOf
  * @param result - Existing result string
  * @param config - Configuration object
+ * @param schemasMap - Optional map of all schemas for discriminator resolution
+ * @param currentTypeName - Optional current type name for discriminator
+ *   resolution
  * @returns Updated result string
  */
 function handleAllOfType(
   allOf: Schema[],
   result: string,
   config: Config,
+  schemasMap?: Map<string, Schema>,
+  currentTypeName?: string,
 ): string {
   const intersectionTypes = allOf
-    .map((_schema) => getTsType(_schema, config))
+    .map((_schema) => getTsType(_schema, config, schemasMap))
     .join(" & ");
-  return `${result ? `${result} &` : ""}(${intersectionTypes})`;
+
+  let allOfResult = `${result ? `${result} &` : ""}(${intersectionTypes})`;
+
+  // Check if any of the allOf schemas has a discriminator
+  // If so, and we have a currentTypeName, add the discriminator literal type
+  if (schemasMap && currentTypeName) {
+    for (const schema of allOf) {
+      if (schema.$ref) {
+        const refName = getRefName(schema.$ref);
+        const refSchema = schemasMap.get(refName);
+
+        if (refSchema?.discriminator?.mapping) {
+          // Find which discriminator value maps to the current type
+          const discriminatorEntry = Object.entries(
+            refSchema.discriminator.mapping,
+          ).find(([, refPath]) => getRefName(refPath) === currentTypeName);
+
+          if (discriminatorEntry) {
+            const [discriminatorValue] = discriminatorEntry;
+            const discriminatorProp = refSchema.discriminator.propertyName;
+            // Add the discriminator property with literal type
+            allOfResult = `{${discriminatorProp}: '${discriminatorValue}'} & ${allOfResult}`;
+          }
+        }
+      }
+    }
+  }
+
+  return allOfResult;
 }
 
 /**
@@ -246,15 +317,17 @@ function handleAllOfType(
  * @param anyOf - Array of schemas for anyOf
  * @param result - Existing result string
  * @param config - Configuration object
+ * @param schemasMap - Optional map of all schemas for discriminator resolution
  * @returns Updated result string
  */
 function handleAnyOfType(
   anyOf: Schema[],
   result: string,
   config: Config,
+  schemasMap?: Map<string, Schema>,
 ): string {
   const unionTypes = anyOf
-    .map((_schema) => getTsType(_schema, config))
+    .map((_schema) => getTsType(_schema, config, schemasMap))
     .join(" | ");
   return `${result ? `${result} |` : ""}(${unionTypes})`;
 }
@@ -281,11 +354,16 @@ function handleBasicObjectType(
  *
  * @param schema - The schema to convert
  * @param config - Configuration object
+ * @param schemasMap - Optional map of all schemas for discriminator resolution
+ * @param currentTypeName - Optional current type name for discriminator
+ *   resolution
  * @returns TypeScript type string
  */
 function getTsType(
   schema: undefined | true | {} | Schema,
   config: Config,
+  schemasMap?: Map<string, Schema>,
+  currentTypeName?: string,
 ): string {
   if (isTypeAny(schema)) {
     return "any";
@@ -303,6 +381,7 @@ function getTsType(
     allOf,
     anyOf,
     nullable,
+    discriminator,
   } = schema as Schema;
 
   // Handle reference types
@@ -317,27 +396,39 @@ function getTsType(
 
   // Handle array types
   if (items) {
-    return handleArrayType(items, config);
+    return handleArrayType(items, config, schemasMap);
   }
 
   let result = "";
 
   // Handle object properties
   if (properties) {
-    result += handleObjectProperties(properties, required, config);
+    result += handleObjectProperties(
+      properties,
+      required,
+      config,
+      discriminator,
+      schemasMap,
+    );
   }
 
   // Handle schema compositions
   if (oneOf) {
-    result = handleOneOfType(oneOf, result, config);
+    result = handleOneOfType(oneOf, result, config, schemasMap);
   }
 
   if (allOf) {
-    result = handleAllOfType(allOf, result, config);
+    result = handleAllOfType(
+      allOf,
+      result,
+      config,
+      schemasMap,
+      currentTypeName,
+    );
   }
 
   if (anyOf) {
-    result = handleAnyOfType(anyOf, result, config);
+    result = handleAnyOfType(anyOf, result, config, schemasMap);
   }
 
   // Handle basic object types
@@ -357,6 +448,7 @@ function getTsType(
 function getObjectType(
   parameter: { schema?: Schema; name: string }[],
   config: Config,
+  schemasMap?: Map<string, Schema>,
 ) {
   const object = parameter
     .sort(
@@ -392,7 +484,11 @@ function getObjectType(
           deprecated:
             deprecated || deprecatedMessage ? deprecatedMessage : undefined,
           example,
-        })}"${name}"${nullable ? "?" : ""}: ${getTsType(schema, config)};`;
+        })}"${name}"${nullable ? "?" : ""}: ${getTsType(
+          schema,
+          config,
+          schemasMap,
+        )};`;
       },
       "",
     );
