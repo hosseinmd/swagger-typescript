@@ -1,20 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`generate enum as type generate Code 1`] = `
-"
-//@ts-nocheck
+exports[`enums generate enum as type: generate Code 1`] = `
+"//@ts-nocheck
 /**
-* AUTO_GENERATED Do not change this file directly, use config.ts file instead
-*
-* @version 6
-*/
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
 
 import type { AxiosRequestConfig } from \\"axios\\";
 import type { SwaggerResponse } from \\"./config\\";
 import { Http } from \\"./httpRequest\\";
 //@ts-ignore
 import qs from \\"qs\\";
-import type { GetSettlementV1PrivateSettlementGetQueryParams, SettlementRequestResultListResponseVM,}  from \\"./types\\"
+import type {
+  GetSettlementV1PrivateSettlementGetQueryParams,
+  SettlementRequestResultListResponseVM,
+} from \\"./types\\";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const __DEV__ = process.env.NODE_ENV !== \\"production\\";
@@ -36,12 +38,12 @@ function overrideConfig(
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function template(path: string, obj: { [x: string]: any } = {}) {
-    Object.keys(obj).forEach((key) => {
-      const re = new RegExp(\`{\${key}}\`, \\"i\\");
-      path = path.replace(re, obj[key]);
-    });
+  Object.keys(obj).forEach((key) => {
+    const re = new RegExp(\`{\${key}}\`, \\"i\\");
+    path = path.replace(re, obj[key]);
+  });
 
-    return path;
+  return path;
 }
 
 function isFormData(obj: any) {
@@ -70,143 +72,119 @@ function objToForm(requestBody: object) {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function objToUrlencoded(requestBody: object) {
-  return qs.stringify(requestBody)
+  return qs.stringify(requestBody);
 }
 
 export const getSettlementV1PrivateSettlementGet = (
-    queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse<(SettlementRequestResultListResponseVM)>> => {
-  
+  queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<SettlementRequestResultListResponseVM>> => {
   return Http.getRequest(
     getSettlementV1PrivateSettlementGet.key,
     queryParams,
     undefined,
     _CONSTANT1,
-    overrideConfig(_CONSTANT0,
-      configOverride,
-    )
-  )
-}
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
 
 /** Key is end point string without base url */
-getSettlementV1PrivateSettlementGet.key = \\"/settlement/v1/private/settlement/get\\";
+getSettlementV1PrivateSettlementGet.key =
+  \\"/settlement/v1/private/settlement/get\\";
 export const _CONSTANT0 = {
-              headers: {
-                \\"Content-Type\\": \\"application/json\\",
-                Accept: \\"text/plain\\",
-              },
-            };export const _CONSTANT1 = [{\\"bearer\\":[]}];"
+  headers: {
+    \\"Content-Type\\": \\"application/json\\",
+    Accept: \\"text/plain\\",
+  },
+};
+export const _CONSTANT1 = [{ bearer: [] }];
+"
 `;
 
-exports[`generate enum as type generate hooks 1`] = `""`;
+exports[`enums generate enum as type: generate hooks 1`] = `""`;
 
-exports[`generate enum as type generate type 1`] = `
+exports[`enums generate enum as type: generate type 1`] = `
+"//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+export type EnumWithoutName = 0 | 1 | 2 | 10 | 30;
+
+export interface GetSettlementV1PrivateSettlementGetQueryParams {
+  EndDate?: string;
+  IsAuto?: boolean;
+  /** - Format: decimal */
+  MinimumAmount?: number;
+  /** - Format: int32 */
+  Skip?: number;
+  /** - Format: date-time */
+  StartDate?: string;
+  States?: SettlementRequestStatus[];
+  /** - Format: int64 */
+  UserWalletId?: number;
+  status?: SettlementRequestStatus;
+}
+
+export type NotificationLevel =
+  | \\"Unknown\\"
+  | \\"Default\\"
+  | \\"Success\\"
+  | \\"Info\\"
+  | \\"Warning\\"
+  | \\"Danger\\";
+
+export interface SettlementRequestResultListResponseVM {
+  /** - Format: int64 */
+  totalCount: number;
+  settlementRequests?: SettlementRequestResultResponseVM[];
+}
+
+export interface SettlementRequestResultResponseVM {
+  automaticSettlement: boolean;
+  /** - Format: decimal */
+  commissionAmount: number;
+  /** - Format: date-time */
+  createDateUtc: string;
+  /** - Format: guid */
+  creatorUserId: string;
+  /** - Format: int32 */
+  domainId: number;
+  /** - Format: int64 */
+  id: number;
+  status: SettlementRequestStatus;
+  /** - Format: int64 */
+  userWalletId: number;
+  accountNumber?: string;
+}
+
+export type SettlementRequestStatus = \\"Pending\\" | \\"Paid\\";
+
+/** - Format: int32 */
+
+export type Type = \\"0\\" | \\"-1\\";
 "
-//@ts-nocheck
-/**
-* AUTO_GENERATED Do not change this file directly, use config.ts file instead
-*
-* @version 6
-*/
-
-        
-        export type EnumWithoutName = 0 | 1 | 2 | 10 | 30;
-        
-        
-        export interface GetSettlementV1PrivateSettlementGetQueryParams {\\"EndDate\\"?: string;\\"IsAuto\\"?: boolean;
-/**
- * 
- * - Format: decimal
- */
-\\"MinimumAmount\\"?: number;
-/**
- * 
- * - Format: int32
- */
-\\"Skip\\"?: number;
-/**
- * 
- * - Format: date-time
- */
-\\"StartDate\\"?: string;\\"States\\"?: ((SettlementRequestStatus))[];
-/**
- * 
- * - Format: int64
- */
-\\"UserWalletId\\"?: number;\\"status\\"?: SettlementRequestStatus;}
-        
-        
-        export type NotificationLevel = \\"Unknown\\" | \\"Default\\" | \\"Success\\" | \\"Info\\" | \\"Warning\\" | \\"Danger\\";
-        
-        
-        export interface SettlementRequestResultListResponseVM {
-/**
- * 
- * - Format: int64
- */
-\\"totalCount\\": number;\\"settlementRequests\\"?: (SettlementRequestResultResponseVM)[];}
-        
-        
-        export interface SettlementRequestResultResponseVM {\\"automaticSettlement\\": boolean;
-/**
- * 
- * - Format: decimal
- */
-\\"commissionAmount\\": number;
-/**
- * 
- * - Format: date-time
- */
-\\"createDateUtc\\": string;
-/**
- * 
- * - Format: guid
- */
-\\"creatorUserId\\": string;
-/**
- * 
- * - Format: int32
- */
-\\"domainId\\": number;
-/**
- * 
- * - Format: int64
- */
-\\"id\\": number;\\"status\\": SettlementRequestStatus;
-/**
- * 
- * - Format: int64
- */
-\\"userWalletId\\": number;\\"accountNumber\\"?: string;}
-        
-        
-        export type SettlementRequestStatus = \\"Pending\\" | \\"Paid\\";
-        
-        
-/**
- * 
- * - Format: int32
- */
-
-        export type Type = \\"0\\" | \\"-1\\";
-        "
 `;
 
-exports[`generate enum generate Code 1`] = `
-"
-//@ts-nocheck
+exports[`enums generate enum: generate Code 1`] = `
+"//@ts-nocheck
 /**
-* AUTO_GENERATED Do not change this file directly, use config.ts file instead
-*
-* @version 6
-*/
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
 
 import type { AxiosRequestConfig } from \\"axios\\";
 import type { SwaggerResponse } from \\"./config\\";
 import { Http } from \\"./httpRequest\\";
 //@ts-ignore
 import qs from \\"qs\\";
-import type { GetSettlementV1PrivateSettlementGetQueryParams, SettlementRequestResultListResponseVM,}  from \\"./types\\"
+import type {
+  GetSettlementV1PrivateSettlementGetQueryParams,
+  SettlementRequestResultListResponseVM,
+} from \\"./types\\";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const __DEV__ = process.env.NODE_ENV !== \\"production\\";
@@ -228,12 +206,12 @@ function overrideConfig(
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function template(path: string, obj: { [x: string]: any } = {}) {
-    Object.keys(obj).forEach((key) => {
-      const re = new RegExp(\`{\${key}}\`, \\"i\\");
-      path = path.replace(re, obj[key]);
-    });
+  Object.keys(obj).forEach((key) => {
+    const re = new RegExp(\`{\${key}}\`, \\"i\\");
+    path = path.replace(re, obj[key]);
+  });
 
-    return path;
+  return path;
 }
 
 function isFormData(obj: any) {
@@ -262,124 +240,111 @@ function objToForm(requestBody: object) {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function objToUrlencoded(requestBody: object) {
-  return qs.stringify(requestBody)
+  return qs.stringify(requestBody);
 }
 
 export const getSettlementV1PrivateSettlementGet = (
-    queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,configOverride?:AxiosRequestConfig
-): Promise<SwaggerResponse<(SettlementRequestResultListResponseVM)>> => {
-  
+  queryParams?: GetSettlementV1PrivateSettlementGetQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<SettlementRequestResultListResponseVM>> => {
   return Http.getRequest(
     getSettlementV1PrivateSettlementGet.key,
     queryParams,
     undefined,
     _CONSTANT1,
-    overrideConfig(_CONSTANT0,
-      configOverride,
-    )
-  )
-}
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
 
 /** Key is end point string without base url */
-getSettlementV1PrivateSettlementGet.key = \\"/settlement/v1/private/settlement/get\\";
+getSettlementV1PrivateSettlementGet.key =
+  \\"/settlement/v1/private/settlement/get\\";
 export const _CONSTANT0 = {
-              headers: {
-                \\"Content-Type\\": \\"application/json\\",
-                Accept: \\"text/plain\\",
-              },
-            };export const _CONSTANT1 = [{\\"bearer\\":[]}];"
+  headers: {
+    \\"Content-Type\\": \\"application/json\\",
+    Accept: \\"text/plain\\",
+  },
+};
+export const _CONSTANT1 = [{ bearer: [] }];
+"
 `;
 
-exports[`generate enum generate hooks 1`] = `""`;
+exports[`enums generate enum: generate hooks 1`] = `""`;
 
-exports[`generate enum generate type 1`] = `
+exports[`enums generate enum: generate type 1`] = `
+"//@ts-nocheck
+/**
+ * AUTO_GENERATED Do not change this file directly, use config.ts file instead
+ *
+ * @version 6
+ */
+
+export enum EnumWithoutName {
+  0 = 0,
+  1 = 1,
+  2 = 2,
+  10 = 10,
+  30 = 30,
+}
+
+export interface GetSettlementV1PrivateSettlementGetQueryParams {
+  EndDate?: string;
+  IsAuto?: boolean;
+  /** - Format: decimal */
+  MinimumAmount?: number;
+  /** - Format: int32 */
+  Skip?: number;
+  /** - Format: date-time */
+  StartDate?: string;
+  States?: SettlementRequestStatus[];
+  /** - Format: int64 */
+  UserWalletId?: number;
+  status?: SettlementRequestStatus;
+}
+
+export enum NotificationLevel {
+  Unknown = \\"Unknown\\",
+  Default = \\"Default\\",
+  Success = \\"Success\\",
+  Info = \\"Info\\",
+  Warning = \\"Warning\\",
+  Danger = \\"Danger\\",
+}
+
+export interface SettlementRequestResultListResponseVM {
+  /** - Format: int64 */
+  totalCount: number;
+  settlementRequests?: SettlementRequestResultResponseVM[];
+}
+
+export interface SettlementRequestResultResponseVM {
+  automaticSettlement: boolean;
+  /** - Format: decimal */
+  commissionAmount: number;
+  /** - Format: date-time */
+  createDateUtc: string;
+  /** - Format: guid */
+  creatorUserId: string;
+  /** - Format: int32 */
+  domainId: number;
+  /** - Format: int64 */
+  id: number;
+  status: SettlementRequestStatus;
+  /** - Format: int64 */
+  userWalletId: number;
+  accountNumber?: string;
+}
+
+export enum SettlementRequestStatus {
+  Pending = \\"Pending\\",
+  Paid = \\"Paid\\",
+}
+
+/** - Format: int32 */
+
+export enum Type {
+  \\"0\\" = \\"0\\",
+  \\"-1\\" = \\"-1\\",
+}
 "
-//@ts-nocheck
-/**
-* AUTO_GENERATED Do not change this file directly, use config.ts file instead
-*
-* @version 6
-*/
-
-        
-        export enum EnumWithoutName {0=0,1=1,2=2,10=10,30=30}
-        
-        
-        export interface GetSettlementV1PrivateSettlementGetQueryParams {\\"EndDate\\"?: string;\\"IsAuto\\"?: boolean;
-/**
- * 
- * - Format: decimal
- */
-\\"MinimumAmount\\"?: number;
-/**
- * 
- * - Format: int32
- */
-\\"Skip\\"?: number;
-/**
- * 
- * - Format: date-time
- */
-\\"StartDate\\"?: string;\\"States\\"?: ((SettlementRequestStatus))[];
-/**
- * 
- * - Format: int64
- */
-\\"UserWalletId\\"?: number;\\"status\\"?: SettlementRequestStatus;}
-        
-        
-        export enum NotificationLevel {Unknown=\\"Unknown\\",Default=\\"Default\\",Success=\\"Success\\",Info=\\"Info\\",Warning=\\"Warning\\",Danger=\\"Danger\\"}
-        
-        
-        export interface SettlementRequestResultListResponseVM {
-/**
- * 
- * - Format: int64
- */
-\\"totalCount\\": number;\\"settlementRequests\\"?: (SettlementRequestResultResponseVM)[];}
-        
-        
-        export interface SettlementRequestResultResponseVM {\\"automaticSettlement\\": boolean;
-/**
- * 
- * - Format: decimal
- */
-\\"commissionAmount\\": number;
-/**
- * 
- * - Format: date-time
- */
-\\"createDateUtc\\": string;
-/**
- * 
- * - Format: guid
- */
-\\"creatorUserId\\": string;
-/**
- * 
- * - Format: int32
- */
-\\"domainId\\": number;
-/**
- * 
- * - Format: int64
- */
-\\"id\\": number;\\"status\\": SettlementRequestStatus;
-/**
- * 
- * - Format: int64
- */
-\\"userWalletId\\": number;\\"accountNumber\\"?: string;}
-        
-        
-        export enum SettlementRequestStatus {Pending=\\"Pending\\",Paid=\\"Paid\\"}
-        
-        
-/**
- * 
- * - Format: int32
- */
-
-        export enum Type {\\"0\\"=\\"0\\",\\"-1\\"=\\"-1\\"}
-        "
 `;

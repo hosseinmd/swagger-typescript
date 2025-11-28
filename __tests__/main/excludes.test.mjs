@@ -1,39 +1,52 @@
-import { generator } from "../../lib/javascript/generator.mjs";
+import { cleanOutputDir, generator } from "./utils.mjs";
 import swaggerJson from "./swagger.json";
 
-describe("excludes post methods", () => {
-  const { code, hooks, type } = generator(swaggerJson, {
-    dir: "",
-    reactHooks: true,
-    excludes: ["^post"],
+describe("excludes and include", () => {
+  beforeAll(async () => {
+    await cleanOutputDir("./__tests__/main/outputs/excludes");
   });
 
-  it("generate Code", () => {
-    expect(code).toMatchSnapshot();
-  });
-  it("generate hooks", () => {
-    expect(hooks).toMatchSnapshot();
-  });
-  it("generate type", () => {
-    expect(type).toMatchSnapshot();
-  });
-});
-
-describe("only includes get methods does not ends with Id", () => {
-  const { code, hooks, type } = generator(swaggerJson, {
-    dir: "",
-    reactHooks: true,
-    includes: ["^get"],
-    excludes: ["Id$"],
+  afterEach(async () => {
+    await cleanOutputDir("./__tests__/main/outputs/excludes");
   });
 
-  it("generate Code", () => {
-    expect(code).toMatchSnapshot();
+  test("excludes post methods", async () => {
+    const {
+      "services.ts": code,
+      "hooks.ts": hooks,
+      "types.ts": type,
+    } = await generator(
+      {
+        url: "./__tests__/main/outputs/excludes/swagger.json",
+        dir: "./__tests__/main/outputs/excludes",
+        reactHooks: true,
+        excludes: ["^post"],
+      },
+      swaggerJson,
+    );
+    expect(code).toMatchSnapshot("generate Code");
+    expect(hooks).toMatchSnapshot("generate hooks");
+    expect(type).toMatchSnapshot("generate type");
   });
-  it("generate hooks", () => {
-    expect(hooks).toMatchSnapshot();
-  });
-  it("generate type", () => {
-    expect(type).toMatchSnapshot();
+
+  test("only includes get methods does not ends with Id", async () => {
+    const {
+      "services.ts": code,
+      "hooks.ts": hooks,
+      "types.ts": type,
+    } = await generator(
+      {
+        url: "./__tests__/main/outputs/excludes/swagger.json",
+        dir: "./__tests__/main/outputs/excludes",
+        reactHooks: true,
+        includes: ["^get"],
+        excludes: ["Id$"],
+      },
+      swaggerJson,
+    );
+
+    expect(code).toMatchSnapshot("generate Code");
+    expect(hooks).toMatchSnapshot("generate hooks");
+    expect(type).toMatchSnapshot("generate type");
   });
 });

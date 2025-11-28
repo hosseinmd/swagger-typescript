@@ -1,19 +1,31 @@
-import { generator } from "../../lib/javascript/generator.mjs";
+import { cleanOutputDir, generator } from "./utils.mjs";
 import swaggerJson from "./swagger.json";
 
 describe("generate", () => {
-  const { code, hooks, type } = generator(swaggerJson, {
-    dir: "",
-    reactHooks: true,
+  beforeAll(async () => {
+    await cleanOutputDir("./__tests__/main/outputs/index");
   });
 
-  it("generate Code", () => {
-    expect(code).toMatchSnapshot();
+  afterEach(async () => {
+    await cleanOutputDir("./__tests__/main/outputs/index");
   });
-  it("generate hooks", () => {
-    expect(hooks).toMatchSnapshot();
-  });
-  it("generate type", () => {
-    expect(type).toMatchSnapshot();
+
+  test("generate Code, hooks, and type", async () => {
+    const {
+      "services.ts": code,
+      "hooks.ts": hooks,
+      "types.ts": type,
+    } = await generator(
+      {
+        url: "./__tests__/main/outputs/index/swagger.json",
+        dir: "./__tests__/main/outputs/index",
+        reactHooks: true,
+      },
+      swaggerJson,
+    );
+
+    expect(code).toMatchSnapshot("generate Code");
+    expect(hooks).toMatchSnapshot("generate hooks");
+    expect(type).toMatchSnapshot("generate type");
   });
 });

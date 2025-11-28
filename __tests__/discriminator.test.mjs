@@ -1,7 +1,15 @@
-import { generator } from "../lib/javascript/generator.mjs";
+import { cleanOutputDir, generator } from "./main/utils.mjs";
 
 describe("discriminator support", () => {
-  it("should handle discriminator with propertyName and mapping", () => {
+  beforeAll(async () => {
+    await cleanOutputDir("./__tests__/outputs/discriminator");
+  });
+
+  afterEach(async () => {
+    await cleanOutputDir("./__tests__/outputs/discriminator");
+  });
+
+  test("should handle discriminator with propertyName and mapping", async () => {
     const swagger = {
       openapi: "3.0.0",
       info: {
@@ -108,7 +116,13 @@ describe("discriminator support", () => {
       },
     };
 
-    const { type } = generator(swagger, {});
+    const { "types.ts": type } = await generator(
+      {
+        url: "./__tests__/outputs/discriminator/swagger.json",
+        dir: "./__tests__/outputs/discriminator",
+      },
+      swagger,
+    );
 
     // Test that the base discriminator type has the union type and is required
     expect(type).toContain("export interface HotShearDto");
@@ -122,19 +136,19 @@ describe("discriminator support", () => {
 
     // Check that discriminator property has union type
     expect(hotShearDtoCode).toMatch(
-      /"hotShearType":\s*"CRANK"\s*\|\s*"ROTARY"\s*\|\s*"COMBI"/,
+      /hotShearType:\s*"CRANK"\s*\|\s*"ROTARY"\s*\|\s*"COMBI"/,
     );
 
     // Test that discriminator property is required (no question mark) in HotShearDto
     expect(hotShearDtoCode).not.toMatch(/"hotShearType"\?:/);
 
     // Test that child types have specific discriminator literals
-    expect(type).toMatch(/HotShearCRANKDto.*hotShearType:\s*'CRANK'/s);
-    expect(type).toMatch(/HotShearROTARYDto.*hotShearType:\s*'ROTARY'/s);
-    expect(type).toMatch(/HotShearCOMBIDto.*hotShearType:\s*'COMBI'/s);
+    expect(type).toMatch(/HotShearCRANKDto.*hotShearType:\s*"CRANK"/s);
+    expect(type).toMatch(/HotShearROTARYDto.*hotShearType:\s*"ROTARY"/s);
+    expect(type).toMatch(/HotShearCOMBIDto.*hotShearType:\s*"COMBI"/s);
   });
 
-  it("should handle discriminator property when not explicitly in required array", () => {
+  test("should handle discriminator property when not explicitly in required array", async () => {
     const swagger = {
       openapi: "3.0.0",
       info: {
@@ -190,17 +204,23 @@ describe("discriminator support", () => {
       },
     };
 
-    const { type } = generator(swagger, {});
+    const { "types.ts": type } = await generator(
+      {
+        url: "./__tests__/outputs/discriminator/swagger.json",
+        dir: "./__tests__/outputs/discriminator",
+      },
+      swagger,
+    );
 
     // Test that discriminator property uses union type from mapping
     expect(type).toContain("export interface Animal");
-    expect(type).toMatch(/"animalType":\s*"dog"\s*\|\s*"cat"/);
+    expect(type).toMatch(/animalType:\s*"dog"\s*\|\s*"cat"/);
 
     // Test that discriminator property is required (no question mark)
     expect(type).not.toMatch(/"animalType"\?:/);
 
     // Test that child types have specific discriminator literals
-    expect(type).toMatch(/Dog.*animalType:\s*'dog'/s);
-    expect(type).toMatch(/Cat.*animalType:\s*'cat'/s);
+    expect(type).toMatch(/Dog.*animalType:\s*"dog"/s);
+    expect(type).toMatch(/Cat.*animalType:\s*"cat"/s);
   });
 });

@@ -1,38 +1,52 @@
-import { generator } from "../../lib/javascript/generator.mjs";
+import { cleanOutputDir, generator } from "./utils.mjs";
 import swaggerJson from "./swagger.json";
 
-describe("only includes get methods", () => {
-  const { code, hooks, type } = generator(swaggerJson, {
-    dir: "",
-    reactHooks: true,
-    includes: ["^get"],
+describe("includes", () => {
+  beforeAll(async () => {
+    await cleanOutputDir("./__tests__/main/outputs/includes");
   });
 
-  it("generate Code", () => {
-    expect(code).toMatchSnapshot();
-  });
-  it("generate hooks", () => {
-    expect(hooks).toMatchSnapshot();
-  });
-  it("generate type", () => {
-    expect(type).toMatchSnapshot();
-  });
-});
-
-describe("only includes methods ends with Id", () => {
-  const { code, hooks, type } = generator(swaggerJson, {
-    dir: "",
-    reactHooks: true,
-    includes: ["Id$"],
+  afterEach(async () => {
+    await cleanOutputDir("./__tests__/main/outputs/includes");
   });
 
-  it("generate Code", () => {
-    expect(code).toMatchSnapshot();
+  test("only includes get methods", async () => {
+    const {
+      "services.ts": code,
+      "hooks.ts": hooks,
+      "types.ts": type,
+    } = await generator(
+      {
+        url: "./__tests__/main/outputs/includes/swagger.json",
+        dir: "./__tests__/main/outputs/includes",
+        reactHooks: true,
+        includes: ["^get"],
+      },
+      swaggerJson,
+    );
+
+    expect(code).toMatchSnapshot("generate Code");
+    expect(hooks).toMatchSnapshot("generate hooks");
+    expect(type).toMatchSnapshot("generate type");
   });
-  it("generate hooks", () => {
-    expect(hooks).toMatchSnapshot();
-  });
-  it("generate type", () => {
-    expect(type).toMatchSnapshot();
+
+  test("only includes methods ends with Id", async () => {
+    const {
+      "services.ts": code,
+      "hooks.ts": hooks,
+      "types.ts": type,
+    } = await generator(
+      {
+        url: "./__tests__/main/outputs/includes/swagger.json",
+        dir: "./__tests__/main/outputs/includes",
+        reactHooks: true,
+        includes: ["Id$"],
+      },
+      swaggerJson,
+    );
+
+    expect(code).toMatchSnapshot("generate Code");
+    expect(hooks).toMatchSnapshot("generate hooks");
+    expect(type).toMatchSnapshot("generate type");
   });
 });
