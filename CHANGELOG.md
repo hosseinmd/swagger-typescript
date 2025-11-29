@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.10.0](https://github.com/hosseinmd/swagger-typescript/compare/v6.9.3...v6.10.0) (2025-11-29)
+
+
+### Features
+
+* support Discriminator ([3960ddf](https://github.com/hosseinmd/swagger-typescript/commit/3960ddffaa44c4db797567d66522ae02ea54cfe9))
+
 ### [6.9.3](https://github.com/hosseinmd/swagger-typescript/compare/v6.9.2...v6.9.3) (2025-08-22)
 
 
