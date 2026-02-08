@@ -2009,13 +2009,6 @@ type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> =
     RequestError | Error,
     TRequest & SwaggerTypescriptMutationDefaultParams<TExtra>
   >;
-
-type SwaggerTypescriptUseMutationOptionsVoid<TData, TExtra> =
-  UseMutationOptions<
-    SwaggerResponse<TData>,
-    RequestError | Error,
-    SwaggerTypescriptMutationDefaultParams<TExtra> | void
-  >;
 export const useGetAccessUserWalletIdLogicalAction = (
   userWalletId: number,
   logicalAction:

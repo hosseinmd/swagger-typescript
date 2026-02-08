@@ -180,13 +180,6 @@ type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> =
     TRequest & SwaggerTypescriptMutationDefaultParams<TExtra>
   >;
 
-type SwaggerTypescriptUseMutationOptionsVoid<TData, TExtra> =
-  UseMutationOptions<
-    SwaggerResponse<TData>,
-    RequestError | Error,
-    SwaggerTypescriptMutationDefaultParams<TExtra> | void
-  >;
-
 /** Deletes a pet. */
 export const useDeletePetPetId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<

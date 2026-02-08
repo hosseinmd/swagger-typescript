@@ -2613,13 +2613,6 @@ type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> =
     TRequest & SwaggerTypescriptMutationDefaultParams<TExtra>
   >;
 
-type SwaggerTypescriptUseMutationOptionsVoid<TData, TExtra> =
-  UseMutationOptions<
-    SwaggerResponse<TData>,
-    RequestError | Error,
-    SwaggerTypescriptMutationDefaultParams<TExtra> | void
-  >;
-
 /**
  * Disconnect sub user connection [Feature just allowed for the business users]
  * [Needs secure login]

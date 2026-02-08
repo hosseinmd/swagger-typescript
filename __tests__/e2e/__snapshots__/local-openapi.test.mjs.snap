@@ -227,13 +227,6 @@ type SwaggerTypescriptUseMutationOptions<TData, TRequest, TExtra> =
     TRequest & SwaggerTypescriptMutationDefaultParams<TExtra>
   >;
 
-type SwaggerTypescriptUseMutationOptionsVoid<TData, TExtra> =
-  UseMutationOptions<
-    SwaggerResponse<TData>,
-    RequestError | Error,
-    SwaggerTypescriptMutationDefaultParams<TExtra> | void
-  >;
-
 /** Deactivate TOTP */
 export const useDelete_allauthBrowserV1AccountAuthenticatorsTotp = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<

@@ -19,6 +19,7 @@ const ALLOWED_PAGE_PARAM_NAMES = ["page", "pageno", "pagenumber", "offset"];
 type HookContext = {
   config: Config;
   hasInfiniteQuery: boolean;
+  hasMutationWithoutVariables: boolean;
 };
 
 function generateHook(
@@ -30,6 +31,7 @@ function generateHook(
     const context: HookContext = {
       config,
       hasInfiniteQuery: !!config.useInfiniteQuery?.length,
+      hasMutationWithoutVariables: false,
     };
 
     const sortedApis = apis.sort(({ serviceName }, { serviceName: other }) =>
@@ -98,6 +100,7 @@ function buildHookConfig(
       TData,
       TQueryFnData,
       TError,
+      context,
     ),
   };
 }
@@ -233,6 +236,7 @@ function buildHookParams(
   TData: string,
   TQueryFnData: string,
   TError: string,
+  context: HookContext,
 ): string[] {
   const params: string[] = [];
 
@@ -240,6 +244,7 @@ function buildHookParams(
     const variables = buildVariables(api, {
       config: {} as Config,
       hasInfiniteQuery: false,
+      hasMutationWithoutVariables: false,
     });
     if (variables.length > 0) {
       params.push(variables);
@@ -256,10 +261,13 @@ function buildHookParams(
     const variables = buildVariables(api, {
       config: {} as Config,
       hasInfiniteQuery: false,
+      hasMutationWithoutVariables: false,
     });
     if (variables?.length > 0) {
       optionsType = `SwaggerTypescriptUseMutationOptions<${TData}, {${variables}}, TExtra>`;
     } else {
+      // Mark that we need the void mutation type
+      context.hasMutationWithoutVariables = true;
       optionsType = `SwaggerTypescriptUseMutationOptionsVoid<${TData}, TExtra>`;
     }
   }
@@ -464,13 +472,18 @@ function buildFinalCode(
       RequestError | Error,
       TRequest & SwaggerTypescriptMutationDefaultParams<TExtra>
     >;
+  `;
 
+  // Add SwaggerTypescriptUseMutationOptionsVoid only if needed
+  if (context.hasMutationWithoutVariables) {
+    code += `
     type SwaggerTypescriptUseMutationOptionsVoid<TData, TExtra> = UseMutationOptions<
       SwaggerResponse<TData>,
       RequestError | Error,
       SwaggerTypescriptMutationDefaultParams<TExtra> | void
     >;
   `;
+  }
 
   // Add generated hooks
   code += apisCode;
