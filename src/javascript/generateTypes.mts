@@ -167,7 +167,7 @@ function generateEnumAsEnum(
 ): string {
   const entries = enumValues.map((value, index) => {
     const key = enumNames?.[index] ?? JSON.stringify(value);
-    return `${key}=${JSON.stringify(value)}`;
+    return `"${key.replace(/"/g, "")}"=${JSON.stringify(value)}`;
   });
 
   return `export enum ${name} {${entries.join(",")}}`;
