@@ -9434,8 +9434,8 @@ export interface AccountSettingNotificationStatusApiModel {
 }
 
 export enum AccountStatus {
-  Block = \\"Block\\",
-  OK = \\"OK\\",
+  \\"Block\\" = \\"Block\\",
+  \\"OK\\" = \\"OK\\",
 }
 
 export interface AggregationApiModel {
@@ -9492,21 +9492,21 @@ export interface BusinessCategoryApiModel {
 }
 
 export enum BusinessShareType {
-  Person = \\"Person\\",
-  PrivateStock = \\"PrivateStock\\",
-  PublicStock = \\"PublicStock\\",
-  Limited = \\"Limited\\",
-  GeneralPartnership = \\"GeneralPartnership\\",
-  Institute = \\"Institute\\",
-  Cooperative = \\"Cooperative\\",
+  \\"Person\\" = \\"Person\\",
+  \\"PrivateStock\\" = \\"PrivateStock\\",
+  \\"PublicStock\\" = \\"PublicStock\\",
+  \\"Limited\\" = \\"Limited\\",
+  \\"GeneralPartnership\\" = \\"GeneralPartnership\\",
+  \\"Institute\\" = \\"Institute\\",
+  \\"Cooperative\\" = \\"Cooperative\\",
 }
 
 export enum BusinessType {
-  Ads = \\"Ads\\",
-  Investment = \\"Investment\\",
-  Production = \\"Production\\",
-  Trade = \\"Trade\\",
-  Software = \\"Software\\",
+  \\"Ads\\" = \\"Ads\\",
+  \\"Investment\\" = \\"Investment\\",
+  \\"Production\\" = \\"Production\\",
+  \\"Trade\\" = \\"Trade\\",
+  \\"Software\\" = \\"Software\\",
 }
 
 export interface BusinessUserConnectionApiModel {
@@ -9534,10 +9534,10 @@ export interface BusinessUserConnectionApiModel {
 }
 
 export enum CallbackType {
-  None = \\"None\\",
-  Redirect = \\"Redirect\\",
-  RedirectWithPost = \\"RedirectWithPost\\",
-  Call = \\"Call\\",
+  \\"None\\" = \\"None\\",
+  \\"Redirect\\" = \\"Redirect\\",
+  \\"RedirectWithPost\\" = \\"RedirectWithPost\\",
+  \\"Call\\" = \\"Call\\",
 }
 
 export interface ClientPurchaseInput {
@@ -9551,8 +9551,8 @@ export interface ClientPurchaseInput {
 }
 
 export enum ComissionType {
-  Percentage = \\"Percentage\\",
-  Fixed = \\"Fixed\\",
+  \\"Percentage\\" = \\"Percentage\\",
+  \\"Fixed\\" = \\"Fixed\\",
 }
 
 export interface CommissionAmountApiModel {
@@ -9613,13 +9613,13 @@ export interface ContactApiModel {
 }
 
 export enum DatePart {
-  Minute = \\"Minute\\",
-  Hour = \\"Hour\\",
-  Day = \\"Day\\",
-  Week = \\"Week\\",
-  Month = \\"Month\\",
-  Year = \\"Year\\",
-  All = \\"All\\",
+  \\"Minute\\" = \\"Minute\\",
+  \\"Hour\\" = \\"Hour\\",
+  \\"Day\\" = \\"Day\\",
+  \\"Week\\" = \\"Week\\",
+  \\"Month\\" = \\"Month\\",
+  \\"Year\\" = \\"Year\\",
+  \\"All\\" = \\"All\\",
 }
 
 export interface DateReportApiModelOfDecimal {
@@ -9745,13 +9745,13 @@ export interface DocumentApiModel {
 }
 
 export enum DocumentContentType {
-  Other = \\"Other\\",
-  UserBankVerification = \\"UserBankVerification\\",
-  IdentityCard = \\"IdentityCard\\",
-  BusinessStatute = \\"BusinessStatute\\",
-  BusinessLatestChangesAnnouncement = \\"BusinessLatestChangesAnnouncement\\",
-  BusinessOwnersIdentityCards = \\"BusinessOwnersIdentityCards\\",
-  BusinessOwnersBirthCertificates = \\"BusinessOwnersBirthCertificates\\",
+  \\"Other\\" = \\"Other\\",
+  \\"UserBankVerification\\" = \\"UserBankVerification\\",
+  \\"IdentityCard\\" = \\"IdentityCard\\",
+  \\"BusinessStatute\\" = \\"BusinessStatute\\",
+  \\"BusinessLatestChangesAnnouncement\\" = \\"BusinessLatestChangesAnnouncement\\",
+  \\"BusinessOwnersIdentityCards\\" = \\"BusinessOwnersIdentityCards\\",
+  \\"BusinessOwnersBirthCertificates\\" = \\"BusinessOwnersBirthCertificates\\",
 }
 
 export interface DocumentInput {
@@ -9822,10 +9822,10 @@ export interface EditSubUserPermissionInput {
 }
 
 export enum EpayRequestActualState {
-  Initiated = \\"Initiated\\",
-  Paid = \\"Paid\\",
-  Cancelled = \\"Cancelled\\",
-  Expired = \\"Expired\\",
+  \\"Initiated\\" = \\"Initiated\\",
+  \\"Paid\\" = \\"Paid\\",
+  \\"Cancelled\\" = \\"Cancelled\\",
+  \\"Expired\\" = \\"Expired\\",
 }
 
 export interface EpayRequestApiModel {
@@ -10045,11 +10045,11 @@ export interface EpayRequestServiceInput {
 }
 
 export enum EpayRequestStatus {
-  Initiated = \\"Initiated\\",
-  Paid = \\"Paid\\",
-  Cancelled = \\"Cancelled\\",
-  Expired = \\"Expired\\",
-  Viewed = \\"Viewed\\",
+  \\"Initiated\\" = \\"Initiated\\",
+  \\"Paid\\" = \\"Paid\\",
+  \\"Cancelled\\" = \\"Cancelled\\",
+  \\"Expired\\" = \\"Expired\\",
+  \\"Viewed\\" = \\"Viewed\\",
 }
 
 export interface EpayRequestTaskInput {
@@ -10057,17 +10057,17 @@ export interface EpayRequestTaskInput {
 }
 
 export enum EpayRequestTaskType {
-  Resend = \\"Resend\\",
-  Cancel = \\"Cancel\\",
+  \\"Resend\\" = \\"Resend\\",
+  \\"Cancel\\" = \\"Cancel\\",
 }
 
 export enum EpayRequestType {
-  Link = \\"Link\\",
-  POS = \\"POS\\",
-  Divide = \\"Divide\\",
-  DivideWithBlock = \\"DivideWithBlock\\",
-  Charge = \\"Charge\\",
-  IPG = \\"IPG\\",
+  \\"Link\\" = \\"Link\\",
+  \\"POS\\" = \\"POS\\",
+  \\"Divide\\" = \\"Divide\\",
+  \\"DivideWithBlock\\" = \\"DivideWithBlock\\",
+  \\"Charge\\" = \\"Charge\\",
+  \\"IPG\\" = \\"IPG\\",
 }
 
 export interface EpayRequestWcfResult {
@@ -10076,13 +10076,13 @@ export interface EpayRequestWcfResult {
 }
 
 export enum FieldDisplayType {
-  String = \\"String\\",
-  Text = \\"Text\\",
-  Currency = \\"Currency\\",
-  Integer = \\"Integer\\",
-  Float = \\"Float\\",
-  Boolean = \\"Boolean\\",
-  List = \\"List\\",
+  \\"String\\" = \\"String\\",
+  \\"Text\\" = \\"Text\\",
+  \\"Currency\\" = \\"Currency\\",
+  \\"Integer\\" = \\"Integer\\",
+  \\"Float\\" = \\"Float\\",
+  \\"Boolean\\" = \\"Boolean\\",
+  \\"List\\" = \\"List\\",
 }
 
 export interface FileApiModel {
@@ -10095,9 +10095,9 @@ export interface FileApiModel {
 }
 
 export enum FileTypes {
-  Other = \\"Other\\",
-  Image = \\"Image\\",
-  Pdf = \\"Pdf\\",
+  \\"Other\\" = \\"Other\\",
+  \\"Image\\" = \\"Image\\",
+  \\"Pdf\\" = \\"Pdf\\",
 }
 
 export interface ForgetPasswordQuery {
@@ -10111,9 +10111,9 @@ export interface FullRegisterApiModel {
 }
 
 export enum Gender {
-  Unknown = \\"Unknown\\",
-  Male = \\"Male\\",
-  Female = \\"Female\\",
+  \\"Unknown\\" = \\"Unknown\\",
+  \\"Male\\" = \\"Male\\",
+  \\"Female\\" = \\"Female\\",
 }
 
 export interface GetBusinessUserConnectionActiveQueryParams {
@@ -10964,11 +10964,11 @@ export interface GroupTransferTargetQuery {
 }
 
 export enum GroupTransferTargetStatus {
-  InvalidIdentifier = \\"InvalidIdentifier\\",
-  Ok = \\"Ok\\",
-  Unregistered = \\"Unregistered\\",
-  BlockedAccount = \\"BlockedAccount\\",
-  InvalidAmount = \\"InvalidAmount\\",
+  \\"InvalidIdentifier\\" = \\"InvalidIdentifier\\",
+  \\"Ok\\" = \\"Ok\\",
+  \\"Unregistered\\" = \\"Unregistered\\",
+  \\"BlockedAccount\\" = \\"BlockedAccount\\",
+  \\"InvalidAmount\\" = \\"InvalidAmount\\",
 }
 
 export interface GroupTransferTargetValidationInput {
@@ -11002,16 +11002,16 @@ export interface GroupTransferTargetValidationQuery {
 }
 
 export enum IPGStatus {
-  NotRequested = \\"NotRequested\\",
+  \\"NotRequested\\" = \\"NotRequested\\",
 }
 
 export enum IdentityStatus {
-  None = \\"None\\",
-  WatingForCheck = \\"WatingForCheck\\",
-  Checking = \\"Checking\\",
-  EditingRequired = \\"EditingRequired\\",
-  Approved = \\"Approved\\",
-  Rejected = \\"Rejected\\",
+  \\"None\\" = \\"None\\",
+  \\"WatingForCheck\\" = \\"WatingForCheck\\",
+  \\"Checking\\" = \\"Checking\\",
+  \\"EditingRequired\\" = \\"EditingRequired\\",
+  \\"Approved\\" = \\"Approved\\",
+  \\"Rejected\\" = \\"Rejected\\",
 }
 
 export interface ImportantActionApiModel {
@@ -11062,12 +11062,12 @@ export interface KpiResultValue {
 }
 
 export enum LogEventLevel {
-  Verbose = \\"Verbose\\",
-  Debug = \\"Debug\\",
-  Information = \\"Information\\",
-  Warning = \\"Warning\\",
-  Error = \\"Error\\",
-  Fatal = \\"Fatal\\",
+  \\"Verbose\\" = \\"Verbose\\",
+  \\"Debug\\" = \\"Debug\\",
+  \\"Information\\" = \\"Information\\",
+  \\"Warning\\" = \\"Warning\\",
+  \\"Error\\" = \\"Error\\",
+  \\"Fatal\\" = \\"Fatal\\",
 }
 
 export interface LogSetting {
@@ -11077,22 +11077,22 @@ export interface LogSetting {
 }
 
 export enum LogicalActionType {
-  EpayRequest = \\"EpayRequest\\",
-  TransferMoney = \\"TransferMoney\\",
-  AccountChargeRequest = \\"AccountChargeRequest\\",
-  ServiceBill = \\"ServiceBill\\",
-  ServiceMobileCharge = \\"ServiceMobileCharge\\",
-  POS = \\"POS\\",
-  ShareAndBlockRequest = \\"ShareAndBlockRequest\\",
-  ShareRequest = \\"ShareRequest\\",
-  Settlement = \\"Settlement\\",
-  GroupTransferMoney = \\"GroupTransferMoney\\",
-  ShareAndUnblock = \\"ShareAndUnblock\\",
-  Refund = \\"Refund\\",
-  PayCommand = \\"PayCommand\\",
-  Gift = \\"Gift\\",
-  TaxiFairPayment = \\"TaxiFairPayment\\",
-  HitoBitFee = \\"HitoBitFee\\",
+  \\"EpayRequest\\" = \\"EpayRequest\\",
+  \\"TransferMoney\\" = \\"TransferMoney\\",
+  \\"AccountChargeRequest\\" = \\"AccountChargeRequest\\",
+  \\"ServiceBill\\" = \\"ServiceBill\\",
+  \\"ServiceMobileCharge\\" = \\"ServiceMobileCharge\\",
+  \\"POS\\" = \\"POS\\",
+  \\"ShareAndBlockRequest\\" = \\"ShareAndBlockRequest\\",
+  \\"ShareRequest\\" = \\"ShareRequest\\",
+  \\"Settlement\\" = \\"Settlement\\",
+  \\"GroupTransferMoney\\" = \\"GroupTransferMoney\\",
+  \\"ShareAndUnblock\\" = \\"ShareAndUnblock\\",
+  \\"Refund\\" = \\"Refund\\",
+  \\"PayCommand\\" = \\"PayCommand\\",
+  \\"Gift\\" = \\"Gift\\",
+  \\"TaxiFairPayment\\" = \\"TaxiFairPayment\\",
+  \\"HitoBitFee\\" = \\"HitoBitFee\\",
 }
 
 export interface MachineSignUp {
@@ -11182,60 +11182,60 @@ export interface NotificationApiModel {
 }
 
 export enum NotificationChannel {
-  Notification = \\"Notification\\",
-  ImportantAction = \\"ImportantAction\\",
-  SMS = \\"SMS\\",
-  Email = \\"Email\\",
-  FCM = \\"FCM\\",
-  SignalR = \\"SignalR\\",
+  \\"Notification\\" = \\"Notification\\",
+  \\"ImportantAction\\" = \\"ImportantAction\\",
+  \\"SMS\\" = \\"SMS\\",
+  \\"Email\\" = \\"Email\\",
+  \\"FCM\\" = \\"FCM\\",
+  \\"SignalR\\" = \\"SignalR\\",
 }
 
 export enum NotificationLevel {
-  Unknown = \\"Unknown\\",
-  Default = \\"Default\\",
-  Success = \\"Success\\",
-  Info = \\"Info\\",
-  Warning = \\"Warning\\",
-  Danger = \\"Danger\\",
+  \\"Unknown\\" = \\"Unknown\\",
+  \\"Default\\" = \\"Default\\",
+  \\"Success\\" = \\"Success\\",
+  \\"Info\\" = \\"Info\\",
+  \\"Warning\\" = \\"Warning\\",
+  \\"Danger\\" = \\"Danger\\",
 }
 
 export enum NotificationModelType {
-  Default = \\"Default\\",
-  EPayRequestUnpaid = \\"EPayRequestUnpaid\\",
-  EPayRequestPaid = \\"EPayRequestPaid\\",
-  UserIdentityUnknown = \\"UserIdentityUnknown\\",
-  UserIdentityApproved = \\"UserIdentityApproved\\",
-  UserIdentityRejected = \\"UserIdentityRejected\\",
-  UpgradeToBusinessApproved = \\"UpgradeToBusinessApproved\\",
-  UpgradeToBusinessRejected = \\"UpgradeToBusinessRejected\\",
-  UserBankApproved = \\"UserBankApproved\\",
-  UserBankRejected = \\"UserBankRejected\\",
-  SubUserConnectionCreated = \\"SubUserConnectionCreated\\",
-  SubUserInvitationRejected = \\"SubUserInvitationRejected\\",
-  SubUserInvitationSent = \\"SubUserInvitationSent\\",
-  MoneyDeposit = \\"MoneyDeposit\\",
-  MoneyWithdrawal = \\"MoneyWithdrawal\\",
-  SubUserDisconnectedByBusiness = \\"SubUserDisconnectedByBusiness\\",
-  SubUserDisconnectedBySubUser = \\"SubUserDisconnectedBySubUser\\",
-  Activities = \\"Activities\\",
-  TradeNotification = \\"TradeNotification\\",
-  HitoBitNews = \\"HitoBitNews\\",
-  SystemMessages = \\"SystemMessages\\",
+  \\"Default\\" = \\"Default\\",
+  \\"EPayRequestUnpaid\\" = \\"EPayRequestUnpaid\\",
+  \\"EPayRequestPaid\\" = \\"EPayRequestPaid\\",
+  \\"UserIdentityUnknown\\" = \\"UserIdentityUnknown\\",
+  \\"UserIdentityApproved\\" = \\"UserIdentityApproved\\",
+  \\"UserIdentityRejected\\" = \\"UserIdentityRejected\\",
+  \\"UpgradeToBusinessApproved\\" = \\"UpgradeToBusinessApproved\\",
+  \\"UpgradeToBusinessRejected\\" = \\"UpgradeToBusinessRejected\\",
+  \\"UserBankApproved\\" = \\"UserBankApproved\\",
+  \\"UserBankRejected\\" = \\"UserBankRejected\\",
+  \\"SubUserConnectionCreated\\" = \\"SubUserConnectionCreated\\",
+  \\"SubUserInvitationRejected\\" = \\"SubUserInvitationRejected\\",
+  \\"SubUserInvitationSent\\" = \\"SubUserInvitationSent\\",
+  \\"MoneyDeposit\\" = \\"MoneyDeposit\\",
+  \\"MoneyWithdrawal\\" = \\"MoneyWithdrawal\\",
+  \\"SubUserDisconnectedByBusiness\\" = \\"SubUserDisconnectedByBusiness\\",
+  \\"SubUserDisconnectedBySubUser\\" = \\"SubUserDisconnectedBySubUser\\",
+  \\"Activities\\" = \\"Activities\\",
+  \\"TradeNotification\\" = \\"TradeNotification\\",
+  \\"HitoBitNews\\" = \\"HitoBitNews\\",
+  \\"SystemMessages\\" = \\"SystemMessages\\",
 }
 
 export enum PlatformType {
-  Unknown = \\"Unknown\\",
-  Server = \\"Server\\",
-  Android = \\"Android\\",
-  iOS = \\"iOS\\",
-  Device = \\"Device\\",
-  Browser = \\"Browser\\",
-  PWA = \\"PWA\\",
-  Web = \\"Web\\",
-  Windows = \\"Windows\\",
-  Linux = \\"Linux\\",
-  macOS = \\"macOS\\",
-  Desktop = \\"Desktop\\",
+  \\"Unknown\\" = \\"Unknown\\",
+  \\"Server\\" = \\"Server\\",
+  \\"Android\\" = \\"Android\\",
+  \\"iOS\\" = \\"iOS\\",
+  \\"Device\\" = \\"Device\\",
+  \\"Browser\\" = \\"Browser\\",
+  \\"PWA\\" = \\"PWA\\",
+  \\"Web\\" = \\"Web\\",
+  \\"Windows\\" = \\"Windows\\",
+  \\"Linux\\" = \\"Linux\\",
+  \\"macOS\\" = \\"macOS\\",
+  \\"Desktop\\" = \\"Desktop\\",
 }
 
 export interface PluginApiModel {
@@ -11428,8 +11428,8 @@ export interface SendConnectionRequestInput {
 }
 
 export enum SepidResponseType {
-  Succesful = \\"Succesful\\",
-  Unsuccesful = \\"Unsuccesful\\",
+  \\"Succesful\\" = \\"Succesful\\",
+  \\"Unsuccesful\\" = \\"Unsuccesful\\",
 }
 
 export interface SetAccountAccessForSubUserInput {
@@ -11548,11 +11548,11 @@ export interface SubUserConnectionApiModel {
 }
 
 export enum SubUserConnectionStatus {
-  Pending = \\"Pending\\",
-  Rejected = \\"Rejected\\",
-  Connected = \\"Connected\\",
-  Disconnected = \\"Disconnected\\",
-  Deleted = \\"Deleted\\",
+  \\"Pending\\" = \\"Pending\\",
+  \\"Rejected\\" = \\"Rejected\\",
+  \\"Connected\\" = \\"Connected\\",
+  \\"Disconnected\\" = \\"Disconnected\\",
+  \\"Deleted\\" = \\"Deleted\\",
 }
 
 export interface SubUserInvitationApiModel {
@@ -11598,16 +11598,16 @@ export interface SubUserPermissionApiModel {
 }
 
 export enum SubUserPermissionType {
-  Default = \\"Default\\",
-  CanReceiveMoney = \\"CanReceiveMoney\\",
-  CanSeeEpayRequests = \\"CanSeeEpayRequests\\",
-  CanTransferMoney = \\"CanTransferMoney\\",
-  CanSeeTransactions = \\"CanSeeTransactions\\",
-  CanRequestSettlement = \\"CanRequestSettlement\\",
-  CanChargeAccount = \\"CanChargeAccount\\",
-  CanSeeSettlementRequests = \\"CanSeeSettlementRequests\\",
-  CanGroupTransferMoney = \\"CanGroupTransferMoney\\",
-  CanAssistantsCreatesEpayRequest = \\"CanAssistantsCreatesEpayRequest\\",
+  \\"Default\\" = \\"Default\\",
+  \\"CanReceiveMoney\\" = \\"CanReceiveMoney\\",
+  \\"CanSeeEpayRequests\\" = \\"CanSeeEpayRequests\\",
+  \\"CanTransferMoney\\" = \\"CanTransferMoney\\",
+  \\"CanSeeTransactions\\" = \\"CanSeeTransactions\\",
+  \\"CanRequestSettlement\\" = \\"CanRequestSettlement\\",
+  \\"CanChargeAccount\\" = \\"CanChargeAccount\\",
+  \\"CanSeeSettlementRequests\\" = \\"CanSeeSettlementRequests\\",
+  \\"CanGroupTransferMoney\\" = \\"CanGroupTransferMoney\\",
+  \\"CanAssistantsCreatesEpayRequest\\" = \\"CanAssistantsCreatesEpayRequest\\",
 }
 
 export interface SubuserInvitationTaskInput {
@@ -11615,14 +11615,14 @@ export interface SubuserInvitationTaskInput {
 }
 
 export enum SubuserInvitationTaskType {
-  Accept = \\"Accept\\",
-  Reject = \\"Reject\\",
+  \\"Accept\\" = \\"Accept\\",
+  \\"Reject\\" = \\"Reject\\",
 }
 
 export enum SubuserStatus {
-  Connected = \\"Connected\\",
-  DisconnectedByBusinessUser = \\"DisconnectedByBusinessUser\\",
-  DisconnectedBySubUser = \\"DisconnectedBySubUser\\",
+  \\"Connected\\" = \\"Connected\\",
+  \\"DisconnectedByBusinessUser\\" = \\"DisconnectedByBusinessUser\\",
+  \\"DisconnectedBySubUser\\" = \\"DisconnectedBySubUser\\",
 }
 
 export interface TaxiInfoOutput {
@@ -11637,8 +11637,8 @@ export interface TaxiInfoOutput {
 }
 
 export enum TaxiPaymentProvider {
-  Sepid = \\"Sepid\\",
-  Simorgh = \\"Simorgh\\",
+  \\"Sepid\\" = \\"Sepid\\",
+  \\"Simorgh\\" = \\"Simorgh\\",
 }
 
 export interface TaxiPriceOutput {
@@ -11667,10 +11667,10 @@ export interface TerminalVersionApiModel {
 }
 
 export enum TerminalVersionState {
-  Default = \\"Default\\",
-  UpToDate = \\"UpToDate\\",
-  Supported = \\"Supported\\",
-  Deprecated = \\"Deprecated\\",
+  \\"Default\\" = \\"Default\\",
+  \\"UpToDate\\" = \\"UpToDate\\",
+  \\"Supported\\" = \\"Supported\\",
+  \\"Deprecated\\" = \\"Deprecated\\",
 }
 
 export interface TotpLoginResult {
@@ -11709,29 +11709,29 @@ export interface TransactionApiModel {
 }
 
 export enum TransactionOperationType {
-  Unknown = \\"Unknown\\",
-  Normal = \\"Normal\\",
-  System = \\"System\\",
-  DomainCommission = \\"DomainCommission\\",
-  ResellerCommission = \\"ResellerCommission\\",
-  Block = \\"Block\\",
-  Unblock = \\"Unblock\\",
-  Refund = \\"Refund\\",
-  NoCommissionRemainGift = \\"NoCommissionRemainGift\\",
-  RemainGift = \\"RemainGift\\",
-  DomainBankBatchTransfer = \\"DomainBankBatchTransfer\\",
-  SettlementBatchTransferItem = \\"SettlementBatchTransferItem\\",
-  Synchronization = \\"Synchronization\\",
-  BlockchainWithdrawInternalTransfer = \\"BlockchainWithdrawInternalTransfer\\",
-  BlockchainWithdrawUserWallet = \\"BlockchainWithdrawUserWallet\\",
-  BlockchainIncomingTransaction = \\"BlockchainIncomingTransaction\\",
-  BlockchainWithdrawUserWalletOffchain = \\"BlockchainWithdrawUserWalletOffchain\\",
-  BlockchainFee = \\"BlockchainFee\\",
+  \\"Unknown\\" = \\"Unknown\\",
+  \\"Normal\\" = \\"Normal\\",
+  \\"System\\" = \\"System\\",
+  \\"DomainCommission\\" = \\"DomainCommission\\",
+  \\"ResellerCommission\\" = \\"ResellerCommission\\",
+  \\"Block\\" = \\"Block\\",
+  \\"Unblock\\" = \\"Unblock\\",
+  \\"Refund\\" = \\"Refund\\",
+  \\"NoCommissionRemainGift\\" = \\"NoCommissionRemainGift\\",
+  \\"RemainGift\\" = \\"RemainGift\\",
+  \\"DomainBankBatchTransfer\\" = \\"DomainBankBatchTransfer\\",
+  \\"SettlementBatchTransferItem\\" = \\"SettlementBatchTransferItem\\",
+  \\"Synchronization\\" = \\"Synchronization\\",
+  \\"BlockchainWithdrawInternalTransfer\\" = \\"BlockchainWithdrawInternalTransfer\\",
+  \\"BlockchainWithdrawUserWallet\\" = \\"BlockchainWithdrawUserWallet\\",
+  \\"BlockchainIncomingTransaction\\" = \\"BlockchainIncomingTransaction\\",
+  \\"BlockchainWithdrawUserWalletOffchain\\" = \\"BlockchainWithdrawUserWalletOffchain\\",
+  \\"BlockchainFee\\" = \\"BlockchainFee\\",
 }
 
 export enum TransactionType {
-  Debt = \\"Debt\\",
-  Credit = \\"Credit\\",
+  \\"Debt\\" = \\"Debt\\",
+  \\"Credit\\" = \\"Credit\\",
 }
 
 export interface TransferMoneyApiModel {
@@ -11853,9 +11853,9 @@ export interface UpgradeToBusinessApiModel {
 }
 
 export enum UpgradeToBusinessRejectCause {
-  DocumentsLack = \\"DocumentsLack\\",
-  DocumentsMismatch = \\"DocumentsMismatch\\",
-  Other = \\"Other\\",
+  \\"DocumentsLack\\" = \\"DocumentsLack\\",
+  \\"DocumentsMismatch\\" = \\"DocumentsMismatch\\",
+  \\"Other\\" = \\"Other\\",
 }
 
 export interface UpgradeToBusinessUserInput {
@@ -11948,9 +11948,9 @@ export interface UserBankInput {
 }
 
 export enum UserBankRejectCause {
-  DocumentsLack = \\"DocumentsLack\\",
-  DocumentsMismatch = \\"DocumentsMismatch\\",
-  Etc = \\"Etc\\",
+  \\"DocumentsLack\\" = \\"DocumentsLack\\",
+  \\"DocumentsMismatch\\" = \\"DocumentsMismatch\\",
+  \\"Etc\\" = \\"Etc\\",
 }
 
 export interface UserChangePasswordInput {
@@ -11973,18 +11973,18 @@ export interface UserForgetPasswordInput {
 }
 
 export enum UserIdentifierType {
-  Default = \\"Default\\",
-  PhoneNumber = \\"PhoneNumber\\",
-  Email = \\"Email\\",
-  CustomerNumber = \\"CustomerNumber\\",
-  AccountNumber = \\"AccountNumber\\",
+  \\"Default\\" = \\"Default\\",
+  \\"PhoneNumber\\" = \\"PhoneNumber\\",
+  \\"Email\\" = \\"Email\\",
+  \\"CustomerNumber\\" = \\"CustomerNumber\\",
+  \\"AccountNumber\\" = \\"AccountNumber\\",
 }
 
 export enum UserIdentityRejectCause {
-  DocumentsLack = \\"DocumentsLack\\",
-  DocumentsMismatch = \\"DocumentsMismatch\\",
-  DocumentsRejected = \\"DocumentsRejected\\",
-  Etc = \\"Etc\\",
+  \\"DocumentsLack\\" = \\"DocumentsLack\\",
+  \\"DocumentsMismatch\\" = \\"DocumentsMismatch\\",
+  \\"DocumentsRejected\\" = \\"DocumentsRejected\\",
+  \\"Etc\\" = \\"Etc\\",
 }
 
 export interface UserIdentityRequestQuery {
@@ -12091,12 +12091,12 @@ export interface UserProfileInput {
 }
 
 export enum UserStatus {
-  None = \\"None\\",
-  NotVerified = \\"NotVerified\\",
-  VerifiedButNotCompleted = \\"VerifiedButNotCompleted\\",
-  Active = \\"Active\\",
-  TemporaryBlocked = \\"TemporaryBlocked\\",
-  AutoPasswordGenerated = \\"AutoPasswordGenerated\\",
+  \\"None\\" = \\"None\\",
+  \\"NotVerified\\" = \\"NotVerified\\",
+  \\"VerifiedButNotCompleted\\" = \\"VerifiedButNotCompleted\\",
+  \\"Active\\" = \\"Active\\",
+  \\"TemporaryBlocked\\" = \\"TemporaryBlocked\\",
+  \\"AutoPasswordGenerated\\" = \\"AutoPasswordGenerated\\",
 }
 
 export interface UserVerifyForgetPasswordInput {
@@ -12125,38 +12125,38 @@ export interface VerifyPhoneNumberInput {
 }
 
 export enum VoucherOperationType {
-  Unknown = \\"Unknown\\",
-  EPayViaBankWithCommissionByPayer = \\"EPayViaBankWithCommissionByPayer\\",
-  EPayViaBankWithCommissionByUser = \\"EPayViaBankWithCommissionByUser\\",
-  EPayViaPSPWithCommissionByPayer = \\"EPayViaPSPWithCommissionByPayer\\",
-  EPayViaPSPWithCommissionByUser = \\"EPayViaPSPWithCommissionByUser\\",
-  EPayViaWalletWithCommissionByPayer = \\"EPayViaWalletWithCommissionByPayer\\",
-  EPayViaWalletWithCommissionByUser = \\"EPayViaWalletWithCommissionByUser\\",
-  TransferMoney = \\"TransferMoney\\",
-  ChargeWallet = \\"ChargeWallet\\",
-  ServiceBill = \\"ServiceBill\\",
-  ServiceMobileCharge = \\"ServiceMobileCharge\\",
-  POSViaBank = \\"POSViaBank\\",
-  POSViaWallet = \\"POSViaWallet\\",
-  ShareAndBlockRequest = \\"ShareAndBlockRequest\\",
-  ShareRequest = \\"ShareRequest\\",
-  SettlementAuto = \\"SettlementAuto\\",
-  SettlementManual = \\"SettlementManual\\",
-  SettlementSuspected = \\"SettlementSuspected\\",
-  GroupTransferMoney = \\"GroupTransferMoney\\",
-  ShareAndUnblock = \\"ShareAndUnblock\\",
-  RefundWithSystemPayer = \\"RefundWithSystemPayer\\",
-  RefundWithAnonymousPayer = \\"RefundWithAnonymousPayer\\",
-  PayCommand = \\"PayCommand\\",
-  GiftForReferrer = \\"GiftForReferrer\\",
-  GiftForNoCommissionRemain = \\"GiftForNoCommissionRemain\\",
-  Sepid = \\"Sepid\\",
-  BatchTransferItem = \\"BatchTransferItem\\",
-  AbstractProviderSynchronization = \\"AbstractProviderSynchronization\\",
-  BlockchainWithdrawInternalTransfer = \\"BlockchainWithdrawInternalTransfer\\",
-  BlockchainWithdrawUserWallet = \\"BlockchainWithdrawUserWallet\\",
-  BlockchainIncomingTransaction = \\"BlockchainIncomingTransaction\\",
-  BlockchainWithdrawUserWalletOnChain = \\"BlockchainWithdrawUserWalletOnChain\\",
+  \\"Unknown\\" = \\"Unknown\\",
+  \\"EPayViaBankWithCommissionByPayer\\" = \\"EPayViaBankWithCommissionByPayer\\",
+  \\"EPayViaBankWithCommissionByUser\\" = \\"EPayViaBankWithCommissionByUser\\",
+  \\"EPayViaPSPWithCommissionByPayer\\" = \\"EPayViaPSPWithCommissionByPayer\\",
+  \\"EPayViaPSPWithCommissionByUser\\" = \\"EPayViaPSPWithCommissionByUser\\",
+  \\"EPayViaWalletWithCommissionByPayer\\" = \\"EPayViaWalletWithCommissionByPayer\\",
+  \\"EPayViaWalletWithCommissionByUser\\" = \\"EPayViaWalletWithCommissionByUser\\",
+  \\"TransferMoney\\" = \\"TransferMoney\\",
+  \\"ChargeWallet\\" = \\"ChargeWallet\\",
+  \\"ServiceBill\\" = \\"ServiceBill\\",
+  \\"ServiceMobileCharge\\" = \\"ServiceMobileCharge\\",
+  \\"POSViaBank\\" = \\"POSViaBank\\",
+  \\"POSViaWallet\\" = \\"POSViaWallet\\",
+  \\"ShareAndBlockRequest\\" = \\"ShareAndBlockRequest\\",
+  \\"ShareRequest\\" = \\"ShareRequest\\",
+  \\"SettlementAuto\\" = \\"SettlementAuto\\",
+  \\"SettlementManual\\" = \\"SettlementManual\\",
+  \\"SettlementSuspected\\" = \\"SettlementSuspected\\",
+  \\"GroupTransferMoney\\" = \\"GroupTransferMoney\\",
+  \\"ShareAndUnblock\\" = \\"ShareAndUnblock\\",
+  \\"RefundWithSystemPayer\\" = \\"RefundWithSystemPayer\\",
+  \\"RefundWithAnonymousPayer\\" = \\"RefundWithAnonymousPayer\\",
+  \\"PayCommand\\" = \\"PayCommand\\",
+  \\"GiftForReferrer\\" = \\"GiftForReferrer\\",
+  \\"GiftForNoCommissionRemain\\" = \\"GiftForNoCommissionRemain\\",
+  \\"Sepid\\" = \\"Sepid\\",
+  \\"BatchTransferItem\\" = \\"BatchTransferItem\\",
+  \\"AbstractProviderSynchronization\\" = \\"AbstractProviderSynchronization\\",
+  \\"BlockchainWithdrawInternalTransfer\\" = \\"BlockchainWithdrawInternalTransfer\\",
+  \\"BlockchainWithdrawUserWallet\\" = \\"BlockchainWithdrawUserWallet\\",
+  \\"BlockchainIncomingTransaction\\" = \\"BlockchainIncomingTransaction\\",
+  \\"BlockchainWithdrawUserWalletOnChain\\" = \\"BlockchainWithdrawUserWalletOnChain\\",
 }
 
 export type WalletDetailApiModel = WalletDisplayApiModel & {
@@ -12226,8 +12226,8 @@ export interface WalletReceiptApiModel {
 }
 
 export enum WorkspaceType {
-  User = \\"User\\",
-  SubUser = \\"SubUser\\",
+  \\"User\\" = \\"User\\",
+  \\"SubUser\\" = \\"SubUser\\",
 }
 "
 `;

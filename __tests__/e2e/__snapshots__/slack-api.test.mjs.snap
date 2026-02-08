@@ -14400,13 +14400,13 @@ export type Defs_group_id = string;
 /** Default failure response */
 
 export enum Defs_ok_false {
-  false = false,
+  \\"false\\" = false,
 }
 
 /** Default success response */
 
 export enum Defs_ok_true {
-  true = true,
+  \\"true\\" = true,
 }
 
 /**

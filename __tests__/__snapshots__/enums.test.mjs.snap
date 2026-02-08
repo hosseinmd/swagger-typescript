@@ -280,11 +280,11 @@ exports[`enums generate enum: generate type 1`] = `
  */
 
 export enum EnumWithoutName {
-  0 = 0,
-  1 = 1,
-  2 = 2,
-  10 = 10,
-  30 = 30,
+  \\"0\\" = 0,
+  \\"1\\" = 1,
+  \\"2\\" = 2,
+  \\"10\\" = 10,
+  \\"30\\" = 30,
 }
 
 export interface GetSettlementV1PrivateSettlementGetQueryParams {
@@ -303,12 +303,12 @@ export interface GetSettlementV1PrivateSettlementGetQueryParams {
 }
 
 export enum NotificationLevel {
-  Unknown = \\"Unknown\\",
-  Default = \\"Default\\",
-  Success = \\"Success\\",
-  Info = \\"Info\\",
-  Warning = \\"Warning\\",
-  Danger = \\"Danger\\",
+  \\"Unknown\\" = \\"Unknown\\",
+  \\"Default\\" = \\"Default\\",
+  \\"Success\\" = \\"Success\\",
+  \\"Info\\" = \\"Info\\",
+  \\"Warning\\" = \\"Warning\\",
+  \\"Danger\\" = \\"Danger\\",
 }
 
 export interface SettlementRequestResultListResponseVM {
@@ -336,8 +336,8 @@ export interface SettlementRequestResultResponseVM {
 }
 
 export enum SettlementRequestStatus {
-  Pending = \\"Pending\\",
-  Paid = \\"Paid\\",
+  \\"Pending\\" = \\"Pending\\",
+  \\"Paid\\" = \\"Paid\\",
 }
 
 /** - Format: int32 */
